@@ -1,0 +1,157 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{D8FD27DE-47B7-4DA3-B8A9-844144C27B71}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:ui_data_packet::PClassUIDataPacket<
+  Datasets={
+    object:ui_data_packet::PClassUIDataSet<
+      Name='PackageDef'
+      StructureDefName='PackageDef'
+      Records={
+        object:ui_dp_data::PackageDef<
+          Name='AhliWaris'
+          Description='Impor massal Ahli Waris'
+          Mode='NORMAL'
+          LastModifiedUser='root'
+          LastModifiedTime=date('12/29/1899 00:00:00')
+        >
+      }
+    >
+    , object:ui_data_packet::PClassUIDataSet<
+      Name='SourceDef'
+      StructureDefName='SourceDef'
+      Records={
+        object:ui_dp_data::SourceDef<
+          Description='paket definisi source untuk impor ahli waris'
+          Type='MSEXCEL'
+          FirstDataRow=11
+          SheetName='Sheet1'
+          ControlColumn=1
+        >
+      }
+    >
+    , object:ui_data_packet::PClassUIDataSet<
+      Name='SourceFieldDefs'
+      StructureDefName='SourceFieldDefs'
+      Records={
+        object:ui_dp_data::SourceFieldDefs<
+          Name='HubunganKeluarga'
+          Type='STRING'
+          Length=0
+          Index=5
+        >
+        , object:ui_dp_data::SourceFieldDefs<
+          Name='JenisKelamin'
+          Type='STRING'
+          Length=0
+          Index=3
+        >
+        , object:ui_dp_data::SourceFieldDefs<
+          Name='Keterangan'
+          Type='STRING'
+          Length=0
+          Index=7
+        >
+        , object:ui_dp_data::SourceFieldDefs<
+          Name='NamaLengkap'
+          Type='STRING'
+          Length=0
+          Index=2
+        >
+        , object:ui_dp_data::SourceFieldDefs<
+          Name='NoUrutPrioritas'
+          Type='INTEGER'
+          Length=0
+          Index=1
+        >
+        , object:ui_dp_data::SourceFieldDefs<
+          Name='StatusAhliWaris'
+          Type='STRING'
+          Length=0
+          Index=6
+        >
+        , object:ui_dp_data::SourceFieldDefs<
+          Name='TanggalLahir'
+          Type='DATETIME'
+          Length=0
+          Index=4
+        >
+        , object:ui_dp_data::SourceFieldDefs<
+          Name='NoPeserta'
+          Type='STRING'
+          Length=0
+          Index=8
+        >
+      }
+    >
+    , object:ui_data_packet::PClassUIDataSet<
+      Name='TransformationDef'
+      StructureDefName='TransformationDef'
+      Records={
+        object:ui_dp_data::TransformationDef<
+          Description='Definisi target metadata untuk impor ahli waris'
+          TargetClassName='AhliWaris'
+          AfterApplyRowModule='importmassal.CIF'
+          AfterApplyRowFunctionName='ProcessingImport'
+        >
+      }
+    >
+    , object:ui_data_packet::PClassUIDataSet<
+      Name='TransItemDefs'
+      StructureDefName='TransItemDefs'
+      Records={
+        object:ui_dp_data::TransItemDefs<
+          Name='hubungan_keluarga'
+          LookupClass=''
+          LookupField=''
+          SourceFieldName='HubunganKeluarga'
+        >
+        , object:ui_dp_data::TransItemDefs<
+          Name='jenis_kelamin'
+          LookupClass=''
+          LookupField=''
+          SourceFieldName='JenisKelamin'
+        >
+        , object:ui_dp_data::TransItemDefs<
+          Name='keterangan'
+          LookupClass=''
+          LookupField=''
+          SourceFieldName='Keterangan'
+        >
+        , object:ui_dp_data::TransItemDefs<
+          Name='nama_lengkap'
+          LookupClass=''
+          LookupField=''
+          SourceFieldName='NamaLengkap'
+        >
+        , object:ui_dp_data::TransItemDefs<
+          Name='no_urut_prioritas'
+          LookupClass=''
+          LookupField=''
+          SourceFieldName='NoUrutPrioritas'
+        >
+        , object:ui_dp_data::TransItemDefs<
+          Name='status_ahli_waris'
+          LookupClass=''
+          LookupField=''
+          SourceFieldName='StatusAhliWaris'
+        >
+        , object:ui_dp_data::TransItemDefs<
+          Name='tanggal_lahir'
+          LookupClass=''
+          LookupField=''
+          SourceFieldName='TanggalLahir'
+        >
+        , object:ui_dp_data::TransItemDefs<
+          Name='no_peserta'
+          LookupClass='RekeningDPLK'
+          LookupField='no_peserta'
+          SourceFieldName='NoPeserta'
+        >
+      }
+    >
+  }
+>

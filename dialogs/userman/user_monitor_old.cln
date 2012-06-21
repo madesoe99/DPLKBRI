@@ -1,0 +1,144 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='1'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['split']
+  Caption='User Monitor'
+  State=rsMaximized
+  Left=-1
+  Top=-1
+  Width=800
+  Height=600
+  AfterProcessServerData='FormAfterProcessServerData'
+  UIParts={object:rtf::PClassUI<
+      Name='userlist'
+      MultiLine=true
+      FillInDefaultValues=true
+      InitWithDefaultValues=true
+    >}Containers={object:rtf::DualSplit<
+      Name='split'
+      Width=800
+      Height=600
+      Container1=$CONTAINERS['button_panel']
+      Container2=$CONTAINERS['user_panel']
+      InversedAlign=true
+    >, object:rtf::Grid<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='session_id'
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >, object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='UserName'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=40
+        >, object:rtf::FieldUIElmtSetting<
+          Name='branch_code'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=4
+        >, object:rtf::FieldUIElmtSetting<
+          Name='BranchName'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=40
+        >}Name='user_panel'
+      Width=800
+      Height=549
+      Bordered=true
+      UIPart=$UIPARTS['userlist']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Columns={*object:rtf::GridColumn<
+          Name='user_id'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='user_id'
+          DisplayFormat=''
+          TitleCaption='ID Pengguna'
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='UserName'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='UserName'
+          DisplayFormat=''
+          TitleCaption='Nama Pengguna'
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='branch_code'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='branch_code'
+          DisplayFormat=''
+          TitleCaption='Kode Cabang'
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='BranchName'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='BranchName'
+          DisplayFormat=''
+          TitleCaption='Nama Cabang'
+          ReadOnly=true
+        >}>, object:rtf::Panel<
+      Name='button_panel'
+      Width=800
+      Height=50
+      Controls={object:rtf::Button<
+          Name='bRefresh'
+          Layout=clNextSide
+          Top=8
+          Left=8
+          ControlCaption=''
+          Caption='&Refresh'
+          OnClick='bRefresh_Click'
+        >, object:rtf::Button<
+          Name='bKick'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          ControlCaption=''
+          Caption='&Kick'
+          Default=true
+          OnClick='bKick_Click'
+        >, object:rtf::Button<
+          Name='bKickAll'
+          Layout=clNextSide
+          Top=8
+          Left=166
+          ControlCaption=''
+          Caption='Kick &All'
+          OnClick='bKickAll_Click'
+        >, object:rtf::Button<
+          Name='bCancel'
+          Layout=clNextSide
+          Top=8
+          Left=245
+          ControlCaption=''
+          Caption='Quit'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >}ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >}>

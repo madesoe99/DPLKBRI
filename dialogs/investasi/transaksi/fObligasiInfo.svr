@@ -1,0 +1,26 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rpclass::TPClassUIDefList<
+  UIDefs={object:rpclass::TPClassUIDef<
+      Name='uipObligasi'
+      PClassName='Obligasi'
+      LoadedFieldList='id_investasi;nama_obligasi;LPihakKetiga.kode_pihak_ketiga;LPihakKetiga.kode_pihak_ketiga;LPihakKetiga.nama_pihak_ketiga;LRincianPaketInvestasi.kode_paket_investasi;LRincianPaketInvestasi.kode_jns_investasi;LRincianPaketInvestasi.kode_paket_investasi;tgl_buka;tgl_tutup;nominal_pembukaan;akum_nominal;akum_LR;akum_piutangLR;harga_pari;harga_beli;nilai_wajar;tgl_jatuh_tempo;jenisKupon;jenis_obligasi;LCustodianBank.BankCode;LCustodianBank.BankCode;LCustodianBank.BankName;no_rekening;TreatmentObligasi'
+      CustomLoadedLinks={object:rpclass::TCustomLoadedLink<
+          Name='LPihakKetiga'
+          ClassTypeName='PihakKetiga'
+          FieldNames='kode_pihak_ketiga;kode_pihak_ketiga;nama_pihak_ketiga'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LRincianPaketInvestasi'
+          ClassTypeName='RincianPaketInvestasi'
+          FieldNames='kode_paket_investasi;kode_jns_investasi;kode_paket_investasi'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LCustodianBank'
+          ClassTypeName='CustodianBank'
+          FieldNames='BankCode;BankCode;BankName'
+        >}Mode=imSingleRow
+    >}OnSetDataEx='FormSetDataEx'
+>

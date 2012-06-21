@@ -1,0 +1,217 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='1'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['split']
+  Caption='Browse Application Directory'
+  State=rsMaximized
+  Left=-1
+  Top=-1
+  Width=800
+  Height=600
+  AfterProcessServerData='FormAfterProcessServerData'
+  UIParts={
+    object:rtf::PClassUI<
+      Name='active_directory'
+    >
+    , object:rtf::PClassUI<
+      Name='list_class'
+      MultiLine=true
+      FillInDefaultValues=true
+      InitWithDefaultValues=true
+    >
+  }
+  Containers={
+    object:rtf::DualSplit<
+      Name='split'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['button_panel']
+      Container2=$CONTAINERS['display_panel']
+      InversedAlign=true
+    >
+    , object:rtf::DualSplit<
+      Name='display_panel'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['active_panel']
+      Container2=$CONTAINERS['list_panel']
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='actual_server_path'
+          Hidden=true
+          DataTypeName='VARCHAR'
+          DataLength=255
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='display_path'
+          ControlCaption='Active Directory'
+          DataTypeName='VARCHAR'
+          DataLength=255
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='path_type'
+          Hidden=true
+          DataTypeName='INTEGER'
+          DataLength=20
+        >
+      }
+      Name='active_panel'
+      Width=240
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['active_directory']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='display_path'
+          Width=400
+          Height=21
+          ReadOnly=true
+        >
+      }
+      EqualCaptionWidth=150
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Grid<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='fd_name'
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='fd_size'
+          DataTypeName='INTEGER'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='fd_type'
+          Hidden=true
+          DataTypeName='INTEGER'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='fd_type_char'
+          DataTypeName='VARCHAR'
+          DataLength=40
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='fd_mdate'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+      }
+      Name='list_panel'
+      Width=240
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['list_class']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Columns={
+        *object:rtf::GridColumn<
+          Name='fd_name'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='fd_name'
+          DisplayFormat=''
+          TitleCaption='Name'
+          Width=200
+          ReadOnly=true
+        >
+        , *object:rtf::GridColumn<
+          Name='fd_size'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='fd_size'
+          DisplayFormat=''
+          TitleCaption='Size (KB)'
+          Width=80
+          ReadOnly=true
+        >
+        , *object:rtf::GridColumn<
+          Name='fd_type_char'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='fd_type_char'
+          DisplayFormat=''
+          TitleCaption='Type'
+          Width=100
+          ReadOnly=true
+        >
+        , *object:rtf::GridColumn<
+          Name='fd_mdate'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='fd_mdate'
+          DisplayFormat=''
+          TitleCaption='Date Modified'
+          Width=140
+          ReadOnly=true
+        >
+      }
+      ReadOnly=true
+      RowSelect=true
+    >
+    , object:rtf::Panel<
+      Name='button_panel'
+      Width=800
+      Height=50
+      Controls={
+        object:rtf::Button<
+          Name='bUp'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='Up'
+          OnClick='bUp_Click'
+        >
+        , object:rtf::Button<
+          Name='bOpen'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Open'
+          Default=true
+          OnClick='bOpen_Click'
+        >
+        , object:rtf::Button<
+          Name='bRefresh'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='Refresh'
+          OnClick='bRefresh_Click'
+        >
+        , object:rtf::Button<
+          Name='bCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='Quit'
+          Default=true
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+  }
+>

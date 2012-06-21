@@ -1,0 +1,59 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipTransaksi'
+      PClassName='TransaksiDPLKManual'
+      LoadedFieldList='tgl_transaksi;keterangan;mutasi_iuran_pk;mutasi_iuran_pst;mutasi_pengembangan;mutasi_peralihan;LTransactionBatch.ID_TransactionBatch;LTransactionBatch.ID_TransactionBatch;LTransactionBatch.no_batch;LJenisTransaksiManual.kode_jenis_transaksi;LJenisTransaksiManual.kode_jenis_transaksi;LJenisTransaksiManual.nama_transaksi'
+      StoredFieldList='tgl_transaksi;keterangan;mutasi_iuran_pk;mutasi_iuran_pst;mutasi_pengembangan;mutasi_peralihan;LTransactionBatch;LJenisTransaksiManual'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='TB_BranchCode'
+          DataTypeName='varchar'
+          DataLength=5
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LTransactionBatch'
+          ClassTypeName='TransactionBatch'
+          FieldNames='ID_TransactionBatch;ID_TransactionBatch;no_batch'
+        >
+        , object:rpclass::TCustomLoadedLink<
+          Name='LJenisTransaksiManual'
+          ClassTypeName='JenisTransaksiDPLK'
+          FieldNames='kode_jenis_transaksi;kode_jenis_transaksi;nama_transaksi'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipParameter'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='PRESISI_ANGKA_FLOAT'
+          DataTypeName='double'
+          DataLength=5
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipNasabah'
+      PClassName='NasabahDPLK'
+      LoadedFieldList='no_peserta;nama_lengkap;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos'
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+  }
+  OnGeneralProcessData='FormGeneralProcessData'
+  OnEndSetData='FormEndSetData'
+>

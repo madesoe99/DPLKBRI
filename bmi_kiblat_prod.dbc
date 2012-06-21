@@ -1,0 +1,27 @@
+[DBPROVIDER]
+;dbprovider = DAFIFX30i
+DBPROVIDER=DAFdbEx20i
+
+[BMIDB_LIAB]
+connectionname=Oracle Net (Core Lab)
+drivername=Oracle Net (Core Lab)
+getdriverfunc=getSQLDriverORANET
+libraryname=dbexpoda.dll
+vendorlib=OCI.dll
+;database=10.55.80.4:1521:kiblatdb
+database=10.55.81.12:1521:kiblatdb
+username=liability
+password=solusi
+showlogin=0
+
+[BMIDB_CARD]
+connectionname=Oracle Net (Core Lab)
+drivername=Oracle Net (Core Lab)
+getdriverfunc=getSQLDriverORANET
+libraryname=dbexpoda.dll
+vendorlib=OCI.dll
+;database=10.55.80.4:1521:kiblatdb
+database=10.55.81.12:1521:kiblatdb
+username=CMS
+password=solusi
+showlogin=0

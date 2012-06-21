@@ -1,0 +1,280 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='1'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['split']
+  Caption='Koreksi Data Pengguna'
+  Left=100
+  Top=100
+  Width=400
+  Height=300
+  UIParts={
+    object:rtf::PClassUI<
+      Name='UserApp'
+      ClassTypeName='UserApp'
+      DataBinding=bmMaster
+      FillInDefaultValues=true
+      InitWithDefaultValues=true
+      AfterApplyRow='UserApp_AfterApplyRow'
+    >
+  }
+  Containers={
+    object:rtf::DualSplit<
+      Name='split'
+      Width=400
+      Height=300
+      Container1=$CONTAINERS['panel_Button']
+      Container2=$CONTAINERS['multipages1']
+      InversedAlign=true
+    >, object:rtf::Panel<
+      Name='panel_Button'
+      Width=320
+      Height=50
+      Controls={
+        object:rtf::Button<
+          Name='bSave'
+          Layout=clNextSide
+          Top=8
+          Left=8
+          ControlCaption=''
+          Caption='Save'
+          Default=true
+          DefaultAction=daProcessAllAndClear
+          ExitAction=eaQuitOK
+        >, object:rtf::Button<
+          Name='bCancel'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          ControlCaption=''
+          Caption='Cancel'
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::MultiPages<
+      Name='multipages1'
+      Width=400
+      Height=249
+      Pages={
+        object:rtf::Page<
+          PageTitle='User data'
+          Container=$CONTAINERS['mp_data']
+        >, object:rtf::Page<
+          PageTitle='File system access'
+          Container=$CONTAINERS['pFileSys']
+          Index=1
+        >
+      }
+    >, object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='ID Pengguna'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='UserName'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Nama Pengguna'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >, object:rtf::FieldUIElmtSetting<
+          Name='Description'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >, object:rtf::FieldUIElmtSetting<
+          Name='NoLimitLocation'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Bisa Lihat Data Cabang Lain'
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['F=False'#13#10,
+            'T=True'#13#10]
+          GenerateCheckBoxForEnum=true
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LBranchLocation'
+          RequiredOption=roAlwaysRequired
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Cabang Pengguna'
+          ClassTypeName='BranchLocation'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LBranchLocation.branch_code'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=5
+              UsedAsKey=true
+              KeyOrDisplayName='branch_code'
+              FinalDisplayFieldName='branch_code'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LBranchLocation.branch_code'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=5
+              UsedAsDisplay=true
+              KeyOrDisplayName='branch_code'
+              FinalDisplayFieldName='branch_code'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LBranchLocation.BranchName'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=50
+              UsedAsDisplay=true
+              KeyOrDisplayName='BranchName'
+              FinalDisplayFieldName='BranchName'
+            >
+          }
+          Restrictions=''
+          OQLText='SELECT FROM BranchLocation (branch_code, BranchName, self) THEN ORDER BY branch_code;'
+          LookupOption=loCustomOQL
+          FieldBaseName='LBranchLocation'
+        >
+      }
+      Name='mp_data'
+      Width=320
+      Height=240
+      Bordered=true
+      UIPart=$UIPARTS['UserApp']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='user_id'
+          Top=8
+          Left=8
+          Color=-16777192
+          ControlCaption='ID Pengguna'
+        >, *object:rtf::DBEdit<
+          Name='UserName'
+          Top=36
+          Left=8
+          ControlCaption='Nama Pengguna'
+        >, *object:rtf::DBEdit<
+          Name='Description'
+          Top=64
+          Left=8
+          ControlCaption='description'
+        >, *object:rtf::DBCheckBox<
+          Name='NoLimitLocation'
+          Top=92
+          Left=8
+          Width=200
+          Height=21
+          ControlCaption='Bisa Lihat Data Cabang Lain'
+        >, *object:rtf::DBLookupEdit<
+          Name='LBranchLocation'
+          Top=120
+          Left=8
+          ControlCaption='Cabang Pengguna'
+          LookupField='LBranchLocation.BranchName'
+          DisplayLookupField=true
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='home_directory'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=255
+        >, object:rtf::FieldUIElmtSetting<
+          Name='allow_download'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['F=false'#13#10,
+            'T=true'#13#10]
+          GenerateCheckBoxForEnum=true
+        >, object:rtf::FieldUIElmtSetting<
+          Name='download_limit_kb'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='INTEGER'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='allow_upload'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='varchar'
+          DataLength=1
+          EnumeratedValues=['F=false'#13#10,
+            'T=true'#13#10]
+          GenerateCheckBoxForEnum=true
+        >, object:rtf::FieldUIElmtSetting<
+          Name='upload_limit_kb'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='INTEGER'
+          DataLength=0
+        >
+      }
+      Name='pFileSys'
+      Width=393
+      Height=240
+      UIPart=$UIPARTS['UserApp']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='home_directory'
+          Top=8
+          Left=8
+          ControlCaption='home directory'
+        >, *object:rtf::DBCheckBox<
+          Name='allow_download'
+          Top=36
+          Left=8
+          ControlCaption='allow download'
+        >, *object:rtf::DBEdit<
+          Name='download_limit_kb'
+          Top=64
+          Left=8
+          ControlCaption='download limit kb'
+        >, *object:rtf::DBCheckBox<
+          Name='allow_upload'
+          Top=92
+          Left=8
+          ControlCaption='allow upload'
+        >, *object:rtf::DBEdit<
+          Name='upload_limit_kb'
+          Top=120
+          Left=8
+          ControlCaption='upload limit kb'
+        >
+      }
+      EqualCaptionWidth=110
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+  }
+>

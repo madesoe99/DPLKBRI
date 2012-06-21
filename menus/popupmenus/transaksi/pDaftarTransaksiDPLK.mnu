@@ -1,0 +1,168 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{FF6521AE-DCB8-457C-933C-35D88DB5B672}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rmn::Menu<
+  MenuItems={
+    object:rmn::MenuItem<
+      Caption='Pilih'
+      OnClick='PilihClick'
+      AllowedGroups='Admin;Root;SPV'
+      StringTag='Y'
+    >
+    , object:rmn::MenuItem<
+      Caption='Batal Pilih'
+      OnClick='PilihClick'
+      AllowedGroups='Admin;Root;SPV'
+    >
+    , object:rmn::MenuItem<
+      Caption='Pilih semua'
+      OnClick='PilihSemuaClick'
+      AllowedGroups='Admin;Root;SPV'
+      StringTag='Y'
+    >
+    , object:rmn::MenuItem<
+      Caption='Batal pilih semua'
+      OnClick='PilihSemuaClick'
+      AllowedGroups='Admin;Root;SPV'
+    >
+    , object:rmn::MenuItem<
+      Caption='-'
+      AllowedGroups='Admin;Root;SPV'
+    >
+    , object:rmn::MenuItem<
+      Caption='Otorisasi Massal'
+      OnClick='OtomassalClick'
+      AllowedGroups='Root;SPV'
+      StringTag='Yakin otorisasi semua transaksi yang sudah dipilih?'
+    >
+    , object:rmn::MenuItem<
+      Caption='-'
+      AllowedGroups='Admin;Root;Teller;SPV'
+    >
+    , object:rmn::MenuItem<
+      Name='InputSingle'
+      Caption='Input Transaksi DPLK Manual'
+      OnClick='mnuShowModalWithData'
+      AllowedGroups='Root;BOD'
+      StringTag='transaksi'
+      NumberTag=100
+    >
+    , object:rmn::MenuItem<
+      Caption='-'
+      AllowedGroups='Admin;Root;BOD'
+    >
+    , object:rmn::MenuItem<
+      Name='InputSingle'
+      Caption='Pembayaran Iuran Peserta'
+      OnClick='mnuShowModalWithData'
+      AllowedGroups='Root;Teller;BOD'
+      StringTag='transaksi'
+      NumberTag=70
+    >
+    , object:rmn::MenuItem<
+      Caption='Pengalihan Dana'
+      MenuItems={
+        object:rmn::MenuItem<
+          Name='InputSingle'
+          Caption='Dari DPLK Lain'
+          OnClick='mnuShowModalWithData'
+          AllowedGroups='BOD'
+          StringTag='transaksi'
+          NumberTag=11
+        >
+        , object:rmn::MenuItem<
+          Name='InputSingle'
+          Caption='Dari DPPK Lain'
+          OnClick='mnuShowModalWithData'
+          AllowedGroups='BOD'
+          StringTag='transaksi'
+          NumberTag=12
+        >
+        , object:rmn::MenuItem<
+          Name='InputSingle'
+          Caption='Dari DPK Lain'
+          OnClick='mnuShowModalWithData'
+          AllowedGroups='BOD'
+          StringTag='transaksi'
+          NumberTag=13
+        >
+        , object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='BOD'
+        >
+        , object:rmn::MenuItem<
+          Name='InputSingle'
+          Caption='Ke DPLK Lain'
+          OnClick='mnuShowModalWithData'
+          AllowedGroups='BOD'
+          StringTag='transaksi'
+          NumberTag=10
+        >
+      }
+      AllowedGroups='BOD;SPV'
+    >
+    , object:rmn::MenuItem<
+      Caption='Penarikan Dana'
+      MenuItems={
+        object:rmn::MenuItem<
+          Name='InputSingle'
+          Caption='Dana 30%'
+          OnClick='mnuShowModalWithData'
+          AllowedGroups='BOD'
+          StringTag='transaksi'
+          NumberTag=60
+        >
+        , object:rmn::MenuItem<
+          Name='InputSingle'
+          Caption='Dana PHK'
+          OnClick='mnuShowModalWithData'
+          AllowedGroups='BOD'
+          StringTag='transaksi'
+          NumberTag=61
+        >
+      }
+      AllowedGroups='BOD'
+    >
+    , object:rmn::MenuItem<
+      Name='InputSingle'
+      Caption='Pengambilan Manfaat Pensiun'
+      OnClick='mnuShowModalWithData'
+      AllowedGroups='BOD'
+      StringTag='transaksi'
+      NumberTag=80
+    >
+    , object:rmn::MenuItem<
+      Caption='-'
+      AllowedGroups='BOD'
+    >
+    , object:rmn::MenuItem<
+      Caption='Lihat Detil Transaksi DPLK'
+      OnClick='mnuShowModalWithData'
+      AllowedGroups='Admin;Root;BOD;SPV'
+      StringTag='transaksi'
+      NumberTag=2000
+    >
+    , object:rmn::MenuItem<
+      Caption='Otorisasi Transaksi DPLK'
+      OnClick='mnuShowModalWithData'
+      AllowedGroups='SPV'
+      StringTag='transaksi'
+      NumberTag=1000
+    >
+    , object:rmn::MenuItem<
+      Caption='-'
+      AllowedGroups='Admin;Root;BOD'
+    >
+    , object:rmn::MenuItem<
+      Caption='Cetak Advis Transaksi'
+      OnClick='mnuCetakAdvisClick'
+      AllowedGroups='BOD;SPV'
+    >
+  }
+  MenuType=mtPopupMenu
+  DenyThenAllow=true
+>

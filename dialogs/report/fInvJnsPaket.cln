@@ -1,0 +1,176 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit2']
+  Caption='Investasi Akhir Bulan'
+  Left=50
+  Top=50
+  Width=420
+  Height=150
+  OnFormShow='FormShow'
+  UIParts={object:rtf::PClassUI<
+      Name='uipNoData'
+    >}Containers={object:rtf::DualSplit<
+      Name='dualsplit2'
+      Width=420
+      Height=150
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['pInfo']
+      InversedAlign=true
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Bordered=true
+      Controls={object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=20
+          Color=0
+          ControlCaption=''
+          Caption='&OK'
+          OnClick='btnOKClick'
+        >, object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=99
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          ExitAction=eaQuitCancel
+        >}ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=420
+      Height=150
+    >, object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='pilihinvestasi'
+          Hidden=true
+          DataTypeName='integer'
+          DataLength=20
+          EnumeratedValues=['0=0'#13#10,
+            '1=1'#13#10]
+          GenerateCheckBoxForEnum=true
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LJenisInvestasi'
+          Hidden=true
+          ClassTypeName='JenisInvestasi'
+          KeyFields={object:rtf::FieldUIElmtSetting<
+              Name='LJenisInvestasi.kode_jns_investasi'
+              DataTypeName='VARCHAR'
+              DataLength=3
+              UsedAsKey=true
+              KeyOrDisplayName='kode_jns_investasi'
+              FinalDisplayFieldName='kode_jns_investasi'
+            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+              Name='LJenisInvestasi.kode_jns_investasi'
+              DataTypeName='VARCHAR'
+              DataLength=3
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_jns_investasi'
+              FinalDisplayFieldName='kode_jns_investasi'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LJenisInvestasi.nama_jns_investasi'
+              DataTypeName='VARCHAR'
+              DataLength=50
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_jns_investasi'
+              FinalDisplayFieldName='nama_jns_investasi'
+            >}Restrictions=''
+          OQLText=['select from JenisInvestasi'#13#10,
+            '('#13#10,
+            '  kode_jns_investasi,'#13#10,
+            '  nama_jns_investasi,'#13#10,
+            '  self'#13#10,
+            ') then order by kode_jns_investasi;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LJenisInvestasi'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='monthFrom'
+          DataTypeName='integer'
+          DataLength=20
+          EnumeratedValues=['1=Januari'#13#10,
+            '2=Februari'#13#10,
+            '3=Maret'#13#10,
+            '4=April'#13#10,
+            '5=Mei'#13#10,
+            '6=Juni'#13#10,
+            '7=Juli'#13#10,
+            '8=Agustus'#13#10,
+            '9=September'#13#10,
+            '10=Oktober'#13#10,
+            '11=November'#13#10,
+            '12=Desember'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='yearFrom'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='monthUntil'
+          DataTypeName='integer'
+          DataLength=20
+          EnumeratedValues=['1=Januari'#13#10,
+            '2=Februari'#13#10,
+            '3=Maret'#13#10,
+            '4=April'#13#10,
+            '5=Mei'#13#10,
+            '6=Juni'#13#10,
+            '7=Juli'#13#10,
+            '8=Agustus'#13#10,
+            '9=September'#13#10,
+            '10=Oktober'#13#10,
+            '11=November'#13#10,
+            '12=Desember'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='yearUntil'
+          DataTypeName='integer'
+          DataLength=20
+        >}Name='pInfo'
+      Width=420
+      Height=153
+      Bordered=true
+      UIPart=$UIPARTS['uipNoData']
+      Controls={*object:rtf::DBComboBox<
+          Name='monthFrom'
+          Top=20
+          Left=20
+          Color=0
+          ControlCaption='dari (bulan tahun)'
+        >, *object:rtf::DBEdit<
+          Name='yearFrom'
+          Layout=clNextSide
+          Top=20
+          Left=259
+          Color=0
+          ControlCaption=' '
+        >, *object:rtf::DBComboBox<
+          Name='monthUntil'
+          Top=48
+          Left=20
+          Color=0
+          ControlCaption='sampai (bulan tahun)'
+        >, *object:rtf::DBEdit<
+          Name='yearUntil'
+          Layout=clNextSide
+          Top=48
+          Left=259
+          Color=0
+          ControlCaption=' '
+        >}EqualCaptionWidth=110
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >}>

@@ -1,0 +1,43 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipRegisterUbahStatusKerja'
+      PClassName='RegisterUbahStatusKerja'
+      LoadedFieldList='no_referensi;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.nama_perusahaan;keterangan;user_id;terminal_id;tanggal_register;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap'
+      StoredFieldList='no_referensi;LNasabahDPLKCorporate;keterangan;user_id;terminal_id;tanggal_register;LNasabahDPLK'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='no_peserta'
+          DataTypeName='varchar'
+          DataLength=11
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='nama_lengkap'
+          DataTypeName='varchar'
+          DataLength=30
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLKCorporate'
+          ClassTypeName='NasabahDPLKCorporate'
+          FieldNames='kode_nasabah_corporate;kode_nasabah_corporate;nama_perusahaan'
+        >
+        , object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLK'
+          ClassTypeName='NasabahDPLK'
+          FieldNames='no_peserta;no_peserta;nama_lengkap'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+  }
+>

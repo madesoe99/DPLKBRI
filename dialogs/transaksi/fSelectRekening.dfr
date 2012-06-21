@@ -1,0 +1,133 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit1']
+  Caption='Pilih Rekening Atau Nama Peserta'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=700
+  Height=500
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnClose='Form_OnClose'
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipInput'
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Name='pButton'
+      Width=320
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='bOK'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          ControlCaption=''
+          Caption='&Pilih'
+          OnClick='bPilihClick'
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=700
+      Height=500
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['dualsplit2']
+      DynamicSplit=true
+      InversedAlign=true
+    >, object:rtf::DualSplit<
+      Name='dualsplit2'
+      Width=700
+      Height=459
+      Container1=$CONTAINERS['pSearch']
+      Container2=$CONTAINERS['qNomorRekening']
+      DynamicSplit=true
+    >, object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='eNomorRekening'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Nomor Rekening'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='eNamaPeserta'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Nama Peserta'
+        >
+      }
+      Name='pSearch'
+      Width=320
+      Height=100
+      UIPart=$UIPARTS['uipInput']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='eNomorRekening'
+          Top=8
+          Left=8
+          ControlCaption='Nomor Rekening'
+          CharCase=ecUpperCase
+        >, *object:rtf::DBEdit<
+          Name='eNamaPeserta'
+          Top=36
+          Left=8
+          ControlCaption='Nama Peserta'
+          CharCase=ecUpperCase
+        >, object:rtf::Button<
+          Name='bCari'
+          Layout=clNewLine
+          Top=64
+          Left=8
+          ControlCaption=''
+          Caption='&Cari'
+          Default=true
+          OnClick='bCariRekeningPeserta'
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      ControlCharCase=ecUpperCase
+    >, object:rtf::Query<
+      Name='qNomorRekening'
+      Width=700
+      Height=358
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      PacketMessaging=true
+      HideSearchPanel=true
+      ServerMethodID='execQrySELECT'
+    >
+  }
+  FormClassName='fSelectRekening'
+>

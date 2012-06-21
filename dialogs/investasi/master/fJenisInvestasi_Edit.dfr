@@ -1,0 +1,181 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['DualSplit']
+  Caption='Koreksi Jenis Investasi'
+  Left=50
+  Top=50
+  Width=380
+  Height=400
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData='FormBeginProcessData'
+  OnEndProcessData=''
+  UIParts={object:rtf::PClassUI<
+      Name='uipJenisInvestasi'
+      ClassTypeName='JenisInvestasi'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >}Containers={object:rtf::Panel<
+      ControlDefs={object:rtf::ControlDef<
+          Action=caView
+          DataMember='kode_jns_Investasi'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='nama_jns_Investasi'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='expected_rate'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='acc_biayainvest'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='acc_investasi'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='acc_pendapatan'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='acc_piutangpendapatan'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='acc_potensi_profit'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='user_id'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='last_update'
+        >}Elements={*object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          ReadOnlyControl=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='last_update'
+          ReadOnlyControl=true
+        >}Name='pData'
+      Width=360
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipJenisInvestasi']
+      Controls={*object:rtf::DBEdit<
+          Name='kode_jns_Investasi'
+          Top=20
+          Left=20
+          Color=-2147483624
+          ControlCaption='Kode Jenis Investasi'
+        >, *object:rtf::DBEdit<
+          Name='nama_jns_Investasi'
+          Top=48
+          Left=20
+          Color=0
+          ControlCaption='Nama Jenis Investasi'
+        >, *object:rtf::DBEdit<
+          Name='expected_rate'
+          Top=76
+          Left=20
+          Color=0
+          ControlCaption='Expected Rate'
+          FieldName='expected_rate'
+          DisplayFormat='0.###'
+        >, *object:rtf::DBEdit<
+          Name='acc_biayainvest'
+          Top=104
+          Left=20
+          Color=0
+          ControlCaption='Akun Biaya Investasi'
+        >, *object:rtf::DBEdit<
+          Name='acc_investasi'
+          Top=132
+          Left=20
+          Color=0
+          ControlCaption='Akun Investasi'
+        >, *object:rtf::DBEdit<
+          Name='acc_pendapatan'
+          Top=160
+          Left=20
+          Color=0
+          ControlCaption='Akun Pendapatan'
+        >, *object:rtf::DBEdit<
+          Name='acc_piutangpendapatan'
+          Top=188
+          Left=20
+          Color=0
+          ControlCaption='Akun Piutang Pendapatan'
+        >, *object:rtf::DBEdit<
+          Name='acc_potensi_profit'
+          Top=216
+          Left=20
+          Visible=false
+          Enabled=false
+          Color=0
+          ControlCaption='Akun Potensi Profit'
+        >, *object:rtf::DBEdit<
+          Name='user_id'
+          Top=244
+          Left=20
+          Color=-2147483624
+          ControlCaption='ID Pengguna'
+          ReadOnly=true
+        >, *object:rtf::DBDateEdit<
+          Name='last_update'
+          Top=272
+          Left=20
+          Color=-2147483624
+          ControlCaption='Terakhir Diperbarui'
+        >}EqualCaptionWidth=130
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Controls={object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=20
+          Color=0
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          DefaultAction=daProcessAllUI
+          ExitAction=eaQuitOK
+        >, object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=99
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >}ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=380
+      Height=400
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['pData']
+      InversedAlign=true
+    >}>

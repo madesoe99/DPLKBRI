@@ -1,0 +1,183 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['DualSplit']
+  Caption='Cetak SKB Deposito'
+  Left=50
+  Top=50
+  Width=473
+  Height=297
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnFormShow='FormShow'
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={object:rtf::PClassUI<
+      Name='uipNoData'
+      FillInDefaultValues=true
+      InitWithDefaultValues=true
+    >}Containers={object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='is_all_lampiran'
+          DataTypeName='varchar'
+          DataLength=1
+          EnumeratedValues=['F=Lampiran Tertentu'#13#10,
+            'T=Semua Lampiran'#13#10]
+          GenerateCheckBoxForEnum=true
+        >, object:rtf::FieldUIElmtSetting<
+          Name='Lampiran'
+          DataTypeName='varchar'
+          DataLength=1
+          EnumeratedValues=['A=Lampiran 1'#13#10,
+            'B=Lampiran IV A'#13#10,
+            'C=Lampiran V A'#13#10,
+            'D=Lampiran V B'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='Semester'
+          DataTypeName='varchar'
+          DataLength=1
+          EnumeratedValues=['1=Semester 1'#13#10,
+            '2=Semester 2'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='Periode'
+          DataTypeName='varchar'
+          DataLength=1
+          EnumeratedValues=['1=Maret sd Agustus'#13#10,
+            '2=September sd Februari'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='Tahun'
+          ControlCaption='Tahun'
+          DataTypeName='varchar'
+          DataLength=5
+        >, object:rtf::FieldUIElmtSetting<
+          Name='is_all_pihak_ketiga'
+          DataTypeName='varchar'
+          DataLength=20
+          EnumeratedValues=['F=Pihak Ketiga Tertentu'#13#10,
+            'T=Semua Pihak Ketiga'#13#10]
+          GenerateCheckBoxForEnum=true
+        >, object:rtf::LinkUIElmtSetting<
+          Name='pihak_ketiga'
+          ControlCaption='Pihak Ketiga'
+          ClassTypeName='PihakKetiga'
+          DisplayFields='kode_pihak_ketiga;nama_pihak_ketiga;NPWP;alamat_pihak_ketiga'
+          Restrictions=''
+          FieldBaseName='pihak_ketiga'
+        >}Name='pInfo'
+      Width=529
+      Height=257
+      Bordered=true
+      UIPart=$UIPARTS['uipNoData']
+      Controls={*object:rtf::DBCheckBox<
+          Name='is_all_lampiran'
+          Top=20
+          Left=20
+          Width=141
+          Height=17
+          Color=0
+          ControlCaption='Cetak semua lampiran Rev'
+          ValueChecked='T'
+          ValueUnchecked='F'
+          OnClick='is_all_lampiran_onchange'
+        >, *object:rtf::DBComboBox<
+          Name='Lampiran'
+          Top=48
+          Left=20
+          Color=0
+          ControlCaption='Lampiran'
+          OnChange='lampiran_onchange'
+        >, *object:rtf::DBComboBox<
+          Name='Semester'
+          Top=76
+          Left=20
+          Visible=false
+          Color=0
+          ControlCaption='Semester'
+        >, *object:rtf::DBComboBox<
+          Name='Periode'
+          Top=104
+          Left=20
+          Color=0
+          ControlCaption='Periode'
+        >, *object:rtf::DBEdit<
+          Name='Tahun'
+          Top=132
+          Left=20
+          Color=0
+          ControlCaption='Tahun'
+        >, *object:rtf::DBCheckBox<
+          Name='is_all_pihak_ketiga'
+          Top=160
+          Left=20
+          Width=253
+          Height=17
+          Color=0
+          ControlCaption='Cetak untuk semua pihak ketiga'
+          ValueChecked='T'
+          ValueUnchecked='F'
+          OnClick='is_all_pihak_ketiga_onchange'
+        >, *object:rtf::DBLookupEdit<
+          Name='pihak_ketiga'
+          Top=188
+          Left=20
+          ControlCaption='Pihak Ketiga'
+          FieldName='pihak_ketiga.kode_pihak_ketiga'
+          DisplayFormat=''
+          LookupField='pihak_ketiga.nama_pihak_ketiga'
+          DisplayLookupField=true
+          DisplayLookupColor=-2147483624
+          DisplayLookupWidth=250
+        >}EqualCaptionWidth=110
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Bordered=true
+      Controls={object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=20
+          Color=0
+          ControlCaption=''
+          Caption='&OK'
+          OnClick='btnOKClick'
+        >, object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=99
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >}ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=473
+      Height=297
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['pInfo']
+      InversedAlign=true
+    >}>

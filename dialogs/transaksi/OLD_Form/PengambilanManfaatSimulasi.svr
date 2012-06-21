@@ -1,0 +1,316 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipTransaksi'
+      PClassName='PengambilanManfaat'
+      LoadedFieldList='tgl_transaksi;jenis_biaya;biaya_lain;keterangan;Ljenis_penerimaan_manfaat.kode_jns_manfaat;Ljenis_penerimaan_manfaat.kode_jns_manfaat;Ljenis_penerimaan_manfaat.nama_jns_manfaat;LAhliWaris.ahliwaris_id;LAhliWaris.ahliwaris_id;LAhliWaris.nama_lengkap;LAhliWaris.hubungan_keluarga;LAhliWaris.nomor_urut_prioritas;nama_anuitas'
+      StoredFieldList='tgl_transaksi;jenis_biaya;biaya_lain;keterangan;Ljenis_penerimaan_manfaat;LAhliWaris;nama_anuitas'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='HiddenIDTransaksi'
+          DataTypeName='integer'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='SumKurangSetahunMutasiIuran'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='SumKurangSetahunMutasiPengembangan'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='SumKurangSetahunMutasiPeralihan'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='TB_BranchCode'
+          DataTypeName='varchar'
+          DataLength=5
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='isKurangSetahunKepesertaan'
+          DataTypeName='integer'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='isAdaKurangSetahunPengalihan'
+          DataTypeName='integer'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='CekAturanMenkeu'
+          DataTypeName='integer'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='TotalDana'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='skip_pajak'
+          DataTypeName='varchar'
+          DataLength=1
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='Ljenis_penerimaan_manfaat'
+          ClassTypeName='JenisPenerimaanManfaat'
+          FieldNames='kode_jns_manfaat;kode_jns_manfaat;nama_jns_manfaat'
+        >
+        , object:rpclass::TCustomLoadedLink<
+          Name='LAhliWaris'
+          ClassTypeName='AhliWaris'
+          FieldNames='ahliwaris_id;ahliwaris_id;nama_lengkap;hubungan_keluarga;nomor_urut_prioritas'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipNasabah'
+      PClassName='NasabahDPLK'
+      LoadedFieldList='no_peserta;nama_lengkap;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;tanggal_lahir;tgl_registrasi;NPWP;LRekeningDPLK.no_peserta;LRekeningDPLK.akum_dana_iuran_pk;LRekeningDPLK.akum_dana_iuran_pst;LRekeningDPLK.akum_dana_pengembangan;LRekeningDPLK.akum_dana_peralihan;LRekeningDPLK.LPaketInvestasi.kode_paket_investasi;LRekeningDPLK.LPaketInvestasi.nama_paket_investasi;LRekeningDPLK.usia_pensiun;LRekeningDPLK.tgl_pensiun;LRekeningDPLK.tgl_pensiun_dipercepat'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='UsiaPensiun'
+          DataTypeName='integer'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='TglPensiun'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='TglPensiunDipercepat'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='DanaPk'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='DanaPst'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='DanaPengembangan'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='DanaPeralihan'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='PaketInvestasi'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LRekeningDPLK'
+          ClassTypeName='RekeningDPLK'
+          FieldNames='no_peserta;akum_dana_iuran_pk;akum_dana_iuran_pst;akum_dana_pengembangan;akum_dana_peralihan;LPaketInvestasi.kode_paket_investasi;LPaketInvestasi.nama_paket_investasi;usia_pensiun;tgl_pensiun;tgl_pensiun_dipercepat'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipUserInfo'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='isPrintAdvis'
+          DataTypeName='integer'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='HitungMode'
+          DataTypeName='integer'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='FileAdvis'
+          DataTypeName='varchar'
+          DataLength=100
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipParameter'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='BiayaTunai'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='BiayaSKN'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='BiayaRTGS'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='JUMLAH_HARI_SETAHUN'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='PRESISI_ANGKA_FLOAT'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='BiayaPindahBuku'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='PERSEN_DENDA_NPWP'
+          DataTypeName='double'
+          DataLength=20
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipHitung'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='saldo_iuran_pk'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='saldo_iuran_pst'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='saldo_pengembangan'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='saldo_peralihan'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='saldo_jml_dana'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='pengalihan_bwh1th'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='biaya_pencairan'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='biaya_pengelolaan'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='biaya_administrasi'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='saldo_manfaat'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='pajak'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='manfaat_stlh_pajak'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='manfaat_tunai'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='manfaat_anuitas'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='jenis_biaya'
+          DataTypeName='varchar'
+          DataLength=1
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='biaya_lain'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='manfaat_tunai_diterima'
+          DataTypeName='double'
+          DataLength=20
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipJenisManfaat'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='isDipercepatAllowed'
+          DataTypeName='integer'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='isBiasaAllowed'
+          DataTypeName='integer'
+          DataLength=20
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+  }
+  OnGeneralProcessData='FormGeneralProcessData'
+  OnBeginSetData='FormBeginSetData'
+  OnEndSetData='FormEndSetData'
+  OnEndProcessData='FormEndProcessData'
+>

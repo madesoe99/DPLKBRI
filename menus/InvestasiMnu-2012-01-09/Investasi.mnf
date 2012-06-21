@@ -1,0 +1,7 @@
+[menu]
+DenyThenAllow=1
+AllowedUsers=
+AllowedGroups='Admin;Root;FM;FMS'
+MenuID=Investasi
+MenuTitle=Investasi
+ImageIndex=0

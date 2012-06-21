@@ -1,0 +1,503 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['DualSplitUtama']
+  Caption='Pengalihan Dana dari DPPK Lain'
+  Left=100
+  Top=100
+  Width=800
+  Height=540
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData='FormGeneralProcessData'
+  OnProcessRawData=''
+  OnFormShow='FormShow'
+  OnBeginSetData=''
+  OnEndSetData='FormEndSetData'
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipTransaksi'
+      ClassTypeName='PengalihanDariDPLKLain'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+    , object:rtf::PClassUI<
+      Name='uipNasabah'
+      ClassTypeName='NasabahDPLK'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Name='pButton'
+      Width=300
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='bSimpan'
+          Layout=clNextSide
+          Top=8
+          Left=8
+          Color=0
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          OnClick='bSimpanClick'
+        >
+        , object:rtf::Button<
+          Name='bCancel'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+        , object:rtf::Button<
+          Name='Button'
+          Layout=clNextSide
+          Top=8
+          Left=166
+          Visible=false
+          Color=0
+          ControlCaption=''
+          DefaultAction=daShowDebugWindow
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['no_peserta'#13#10,
+            'nama_lengkap'#13#10,
+            'alamat_jalan'#13#10,
+            'alamat_rtrw'#13#10,
+            'alamat_kelurahan'#13#10,
+            'alamat_kecamatan'#13#10,
+            'alamat_kota'#13#10,
+            'alamat_kode_pos'#13#10]
+        >
+      }
+      Elements={
+      }
+      Name='pNasabah'
+      Width=400
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipNasabah']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='no_peserta'
+          Top=20
+          Left=10
+          Enabled=false
+          Color=15128749
+          ControlCaption='no peserta'
+        >
+        , *object:rtf::DBEdit<
+          Name='nama_lengkap'
+          Top=48
+          Left=10
+          Enabled=false
+          Color=15128749
+          ControlCaption='nama lengkap'
+        >
+        , *object:rtf::DBEdit<
+          Name='alamat_jalan'
+          Top=76
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='alamat jalan'
+        >
+        , *object:rtf::DBEdit<
+          Name='alamat_rtrw'
+          Top=104
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='alamat rtrw'
+        >
+        , *object:rtf::DBEdit<
+          Name='alamat_kelurahan'
+          Top=132
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='alamat kelurahan'
+        >
+        , *object:rtf::DBEdit<
+          Name='alamat_kecamatan'
+          Top=160
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='alamat kecamatan'
+        >
+        , *object:rtf::DBEdit<
+          Name='alamat_kota'
+          Top=188
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='alamat kota'
+        >
+        , *object:rtf::DBEdit<
+          Name='alamat_kode_pos'
+          Top=216
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='alamat kode pos'
+        >
+      }
+      EqualCaptionWidth=130
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Nasabah'
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplitUtama'
+      Width=800
+      Height=540
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['DualSplitV']
+      InversedAlign=true
+    >
+    , object:rtf::Panel<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caView
+          DataMember='LRekeningDPLK'
+        >
+      }
+      Elements={
+        *object:rtf::LinkUIElmtSetting<
+          Name='LRekeningDPLK'
+          Hidden=true
+          DisplayFields='akum_dana_iuran_pk;akum_dana_iuran_pst;akum_dana_pengembangan;akum_dana_peralihan;LPaketInvestasi.kode_paket_investasi;LPaketInvestasi.nama_paket_investasi'
+          Restrictions=''
+          FieldBaseName='LRekeningDPLK'
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='DanaPk'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='DanaPst'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='DanaPengembangan'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='DanaPeralihan'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='PaketInvestasi'
+        >
+      }
+      Name='pDanaNasabah'
+      Width=240
+      Height=160
+      Bordered=true
+      UIPart=$UIPARTS['uipNasabah']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='DanaPk'
+          Top=20
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Akumulasi Dana Iuran Pemberi Kerja'
+          FieldName='LRekeningDPLK.akum_dana_iuran_pk'
+          DisplayFormat=',0.00'
+        >
+        , *object:rtf::DBEdit<
+          Name='DanaPst'
+          Top=48
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Akumulasi Dana Iuran Peserta'
+          FieldName='LRekeningDPLK.akum_dana_iuran_pst'
+          DisplayFormat=',0.00'
+        >
+        , *object:rtf::DBEdit<
+          Name='DanaPengembangan'
+          Top=76
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Akumulasi Dana Pengembangan'
+          FieldName='LRekeningDPLK.akum_dana_pengembangan'
+          DisplayFormat=',0.00'
+        >
+        , *object:rtf::DBEdit<
+          Name='DanaPeralihan'
+          Top=104
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Akumulasi Dana Peralihan'
+          FieldName='LRekeningDPLK.akum_dana_peralihan'
+          DisplayFormat=',0.00'
+        >
+        , *object:rtf::DBEdit<
+          Name='PaketInvestasi'
+          Top=132
+          Left=10
+          Width=120
+          Height=21
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Paket Investasi'
+          FieldName='LRekeningDPLK.LPaketInvestasi.nama_paket_investasi'
+          DisplayFormat=''
+        >
+      }
+      EqualCaptionWidth=210
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Rekening Nasabah'
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplitV'
+      Width=800
+      Height=499
+      Container1=$CONTAINERS['pNasabah']
+      Container2=$CONTAINERS['DualSplitH']
+      SplitDirection=sdrSplitLeftRight
+      InversedAlign=true
+    >
+    , object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caEdit
+          DataMembers=['tgl_transaksi'#13#10,
+            'no_dplk_lain'#13#10]
+        >
+        , object:rtf::ControlDef<
+          Action=caViewAndNone
+          DataMember='LTransactionBatch'
+        >
+        , object:rtf::MultiControlDef<
+          Action=caEdit
+          DataMembers=['saldo_iuran_pk'#13#10,
+            'saldo_iuran_pst'#13#10,
+            'saldo_pengembangan'#13#10,
+            'saldo_peralihan'#13#10]
+        >
+        , object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='keterangan'
+        >
+        , object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LLDP'
+        >
+      }
+      Elements={
+        *object:rtf::LinkUIElmtSetting<
+          Name='LTransactionBatch'
+          ControlCaption='Batch Transaksi'
+          DisplayFields='ID_TransactionBatch;no_batch'
+          Restrictions=''
+          FieldBaseName='LTransactionBatch'
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='saldo_iuran_pk'
+          ControlCaption='Saldo Iuran Pemberi Kerja'
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='saldo_iuran_pst'
+          ControlCaption='Saldo Iuran Peserta'
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='saldo_pengembangan'
+          ControlCaption='Saldo Pengembangan'
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='saldo_peralihan'
+          ControlCaption='Saldo Peralihan'
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          ControlCaption='Keterangan'
+        >
+        , *object:rtf::LinkUIElmtSetting<
+          Name='LLDP'
+          ControlCaption='DPPK Lain'
+          DisplayFields='kode_dp;nama_dp'
+          Restrictions=''
+          OQLText=['select from LDP'#13#10,
+            '[jenis_dp = ''A''] '#13#10,
+            '(kode_dp,'#13#10,
+            'nama_dp,'#13#10,
+            'alamat_dp,'#13#10,
+            'self)'#13#10,
+            'then order by kode_dp;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LLDP'
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='TB_BranchCode'
+          ReadOnlyControl=true
+          ControlCaption='Cabang Batch Transaksi'
+          DataTypeName='varchar'
+          DataLength=5
+        >
+      }
+      Name='pTransaksi'
+      Width=297
+      Height=305
+      Bordered=true
+      UIPart=$UIPARTS['uipTransaksi']
+      Controls={
+        *object:rtf::DBDateEdit<
+          Name='tgl_transaksi'
+          Top=20
+          Left=10
+          Color=0
+          ControlCaption='Tanggal Transaksi'
+        >
+        , *object:rtf::DBEdit<
+          Name='no_dplk_lain'
+          Top=160
+          Left=10
+          Color=15128749
+          ControlCaption='Nomor DPPK Lain'
+          LayoutOrder=6
+        >
+        , *object:rtf::DBLookupEdit<
+          Name='LTransactionBatch'
+          Top=48
+          Left=10
+          ControlCaption='Batch Transaksi'
+          FieldName='LTransactionBatch.ID_TransactionBatch'
+          DisplayFormat=''
+          LookupField='LTransactionBatch.no_batch'
+          DisplayLookupField=true
+          DisplayLookupColor=-2147483624
+          DisplayLookupWidth=125
+        >
+        , *object:rtf::DBEdit<
+          Name='saldo_iuran_pk'
+          Top=188
+          Left=10
+          Color=12695295
+          ControlCaption='Saldo Iuran Pemberi Kerja'
+          LayoutOrder=7
+          FieldName='saldo_iuran_pk'
+          DisplayFormat=',0.00'
+        >
+        , *object:rtf::DBEdit<
+          Name='saldo_iuran_pst'
+          Top=216
+          Left=10
+          Color=12695295
+          ControlCaption='Saldo Iuran Peserta'
+          LayoutOrder=8
+          FieldName='saldo_iuran_pst'
+          DisplayFormat=',0.00'
+        >
+        , *object:rtf::DBEdit<
+          Name='saldo_pengembangan'
+          Top=244
+          Left=10
+          Color=12695295
+          ControlCaption='Saldo Pengembangan'
+          LayoutOrder=9
+          FieldName='saldo_pengembangan'
+          DisplayFormat=',0.00'
+        >
+        , *object:rtf::DBEdit<
+          Name='saldo_peralihan'
+          Top=272
+          Left=10
+          Color=12695295
+          ControlCaption='Saldo Peralihan'
+          LayoutOrder=10
+          FieldName='saldo_peralihan'
+          DisplayFormat=',0.00'
+        >
+        , *object:rtf::DBEdit<
+          Name='keterangan'
+          Top=104
+          Left=10
+          Color=0
+          ControlCaption='Keterangan'
+          LayoutOrder=4
+        >
+        , *object:rtf::DBLookupEdit<
+          Name='LLDP'
+          Top=132
+          Left=10
+          Color=15128749
+          ControlCaption='DPPK Lain'
+          LayoutOrder=5
+          FieldName='LLDP.kode_dp'
+          DisplayFormat=''
+          LookupField='LLDP.nama_dp'
+          DisplayLookupField=true
+          DisplayLookupColor=-2147483624
+          DisplayLookupWidth=125
+        >
+        , *object:rtf::DBEdit<
+          Name='TB_BranchCode'
+          Top=76
+          Left=10
+          Color=-2147483624
+          ControlCaption='Cabang Batch Transaksi'
+        >
+      }
+      EqualCaptionWidth=130
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Transaksi Pengalihan'
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplitH'
+      Width=399
+      Height=499
+      Container1=$CONTAINERS['pDanaNasabah']
+      Container2=$CONTAINERS['pTransaksi']
+    >
+  }
+>

@@ -1,0 +1,35 @@
+delete from dbo.PIHAKKETIGA;
+
+delete from investasi;
+delete from deposito;
+delete from obligasi;
+delete from reksadana;
+delete from registerinvestasi;
+delete from registerdeposito;
+delete from registerobligasi;
+delete from registerreksadana;
+delete from rincianinvestasi;
+delete from rincianregisterinvestasi;
+
+delete from transaksiinvestasi;
+delete from transpiutanginvestasi;
+delete from transpiutanglrinvestasi;
+delete from translrinvestasi;
+delete from bagihasildeposito;
+delete from bagihasilreksadana;
+delete from pendapatanobligasi;
+delete from pendapatanreksadana;
+delete from realisasireturn;
+delete from beliobligasi;
+delete from jualobligasi;
+delete from redemptreksadana;
+delete from rolloverdeposito;
+delete from SubscribeReksadana;
+delete from TutupDeposito;
+
+delete from HISTNABREKSADANA;
+delete from HISTPERUBAHANDEPOSITO;
+
+delete from id_gen where
+id_code in ('REGISTERINVESTASI','RINCIANREGISTERINVESTASI','INVESTASI',
+ 'TRANSAKSIINVESTASI','RINCIANINVESTASI','HISTNABREKSADANA','HISTPERUBAHANDEPOSITO')

@@ -1,0 +1,193 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['MultiSplit']
+  Caption='Ubah Custodian Bank'
+  Left=50
+  Top=50
+  Width=401
+  Height=353
+  UIParts={object:rtf::PClassUI<
+      Name='uipCustodianBank'
+      ClassTypeName='CustodianBank'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >}Containers={object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='BankCode'
+          AccessOption=aoReadOnly
+          ControlCaption='Kode Bank'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='BankName'
+          ControlCaption='Nama Bank'
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >, object:rtf::FieldUIElmtSetting<
+          Name='no_telp'
+          ControlCaption='Telepon'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='no_fax'
+          ControlCaption='Fax'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='alamat_bank'
+          ControlCaption='Alamat Bank'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >, object:rtf::FieldUIElmtSetting<
+          Name='jenis'
+          ControlCaption='Jenis'
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['U=Bank Umum'#13#10,
+            'R=BPRS'#13#10,
+            'M=Manajer Investasi'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='kantor'
+          ControlCaption='Kantor'
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['C=Cabang'#13#10,
+            'K=Kantor Cabang'#13#10,
+            'P=Kantor Cabang Pembantu'#13#10]
+        >}Name='pData'
+      Width=401
+      Height=222
+      Bordered=true
+      UIPart=$UIPARTS['uipCustodianBank']
+      Controls={*object:rtf::DBEdit<
+          Name='BankCode'
+          Top=20
+          Left=20
+          Color=-2147483624
+          ControlCaption='Kode Bank'
+        >, *object:rtf::DBEdit<
+          Name='BankName'
+          Top=48
+          Left=20
+          Color=0
+          ControlCaption='Nama Bank'
+        >, *object:rtf::DBEdit<
+          Name='no_telp'
+          Top=76
+          Left=20
+          Color=0
+          ControlCaption='Telepon'
+        >, *object:rtf::DBEdit<
+          Name='no_fax'
+          Top=104
+          Left=20
+          Color=0
+          ControlCaption='Fax'
+        >, *object:rtf::DBEdit<
+          Name='alamat_bank'
+          Top=132
+          Left=20
+          Color=0
+          ControlCaption='Alamat Bank'
+        >, *object:rtf::DBComboBox<
+          Name='jenis'
+          Top=160
+          Left=20
+          Visible=false
+          Color=0
+          ControlCaption='Jenis'
+        >, *object:rtf::DBComboBox<
+          Name='kantor'
+          Top=188
+          Left=20
+          Visible=false
+          Color=0
+          ControlCaption='Kantor'
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Controls={object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=20
+          Color=0
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          DefaultAction=daProcessAllUI
+          ExitAction=eaQuitOK
+          OnClick='btnOKClick'
+        >, object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=99
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >}ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          ReadOnlyControl=true
+          ControlCaption='ID Pengguna'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='last_update'
+          ReadOnlyControl=true
+          ControlCaption='Terakhir Diperbarui'
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >}Name='pUser'
+      Width=240
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipCustodianBank']
+      Controls={*object:rtf::DBEdit<
+          Name='user_id'
+          Top=20
+          Left=20
+          Color=-2147483624
+          ControlCaption='ID Pengguna'
+          ReadOnly=true
+        >, *object:rtf::DBDateEdit<
+          Name='last_update'
+          Top=48
+          Left=20
+          Color=-2147483624
+          ControlCaption='Terakhir Diperbarui'
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::MultiSplit<
+      Name='MultiSplit'
+      Width=401
+      Height=353
+      Side1Containers={$CONTAINERS['pData']
+      }Side2Containers={$CONTAINERS['pButton']
+      }SpaceContainer=$CONTAINERS['pUser']
+    >}>

@@ -1,0 +1,1399 @@
+Python 2.3.2 (#49, Oct  2 2003, 20:02:00) [MSC v.1200 32 bit (Intel)] on win32
+Type "copyright", "credits" or "license()" for more information.
+
+    ****************************************************************
+    Personal firewall software may warn about the connection IDLE
+    makes to its subprocess using this computer's internal loopback
+    interface.  This connection is not visible on any external
+    interface and no data is sent to or received from the Internet.
+    ****************************************************************
+    
+IDLE 1.0      ==== No Subprocess ====
+>>> 
+No Peserta              [0]: 10200025162 
+Nama Lengkap            [1]: AGUSTINA 
+Alamat telepon2         [2]: 0818424822 
+Tanggal Registrasi      [3]: 09/13/2006 0:00 
+Tempat Lahir            [4]: WARGOMULYO 
+Tanggal Lahir           [5]: 04/10/1978 0:00 
+Alamat Jalan            [6]: JL.CARINGIN GG.KARYA BHAKTI BABAKAN CIPARAY 
+Alamat rt/rw            [7]: 003/004 
+Alamat kelurahan        [8]: MARGAHAYU UTARA 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40224 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: WIRASWASTA 
+Nama perusahaan        [14]: BALIK 
+Alamat kantor jalan    [15]: JL.CARINGIN GG.KARYA BHAK TI BBK.CIPARAY 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL.CARINGIN GG.KARYA BHAKTI BABAKAN CIPARAY 
+Alamat surat rt/rw     [23]: 003/004 
+Alamat surat kelurahan [24]: MARGAHAYU UTARA 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40224 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025346 
+Nama Lengkap            [1]: GUNTARI KURNIA 
+Alamat telepon2         [2]: 08157328317 
+Tanggal Registrasi      [3]: 09/27/2006 0:00 
+Tempat Lahir            [4]: BANDUNG 
+Tanggal Lahir           [5]: 06/05/1973 0:00 
+Alamat Jalan            [6]: BABAKAN CIAMIS NO.295/5B SUMUR BANDUNG 
+Alamat rt/rw            [7]: 007/003 
+Alamat kelurahan        [8]: BABAKAN CIAMIS 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40117 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: PEGAWAI SWASTA 
+Nama perusahaan        [14]: SMF BUMI SILIWANGI 
+Alamat kantor jalan    [15]: BABAKAN CIAMIS NO.295/5B SUMUR BANDUNG 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: BABAKAN CIAMIS NO.295/5B SUMUR BANDUNG 
+Alamat surat rt/rw     [23]: 007/003 
+Alamat surat kelurahan [24]: BABAKAN CIAMIS 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40117 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025348 
+Nama Lengkap            [1]: KENTI PRAHMANTI 
+Alamat telepon2         [2]: 0224201456 
+Tanggal Registrasi      [3]: 09/27/2006 0:00 
+Tempat Lahir            [4]: BANDUNG 
+Tanggal Lahir           [5]: 01/28/1970 0:00 
+Alamat Jalan            [6]: GG.KEBON PISANG NO.54/34B SUMUR BANDUNG 
+Alamat rt/rw            [7]: 008/010 
+Alamat kelurahan        [8]: KEBON PISANG 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40112 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: PEGAWAI SWASTA 
+Nama perusahaan        [14]: SMF BUMI SILIWANGI 
+Alamat kantor jalan    [15]: GG.KEBON PISANG NO.54/34B SUMUR BANDUNG 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: GG.KEBON PISANG NO.54/34B SUMUR BANDUNG 
+Alamat surat rt/rw     [23]: 008/010 
+Alamat surat kelurahan [24]: KEBON PISANG 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40112 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025356 
+Nama Lengkap            [1]: TITI HALIMATUL HASANAH 
+Alamat telepon2         [2]: 02270111236 
+Tanggal Registrasi      [3]: 09/27/2006 0:00 
+Tempat Lahir            [4]: CIREBON 
+Tanggal Lahir           [5]: 07/13/1967 0:00 
+Alamat Jalan            [6]: JL.ANTAKARYA NO.5 MARGACINTA 
+Alamat rt/rw            [7]: 005/002 
+Alamat kelurahan        [8]: MARGASARI 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]:  
+Alamat telepon         [12]:  
+Pekerjaan              [13]: PEGAWAI SWASTA 
+Nama perusahaan        [14]: SMF BUMI SILIWANGI 
+Alamat kantor jalan    [15]: JL.ANTAKARYA NO.5 MARGACINTA 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL.ANTAKARYA NO.5 MARGACINTA 
+Alamat surat rt/rw     [23]: 005/002 
+Alamat surat kelurahan [24]: MARGASARI 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]:  
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025588 
+Nama Lengkap            [1]: GOFARANA WILAR 
+Alamat telepon2         [2]: 0222020614 
+Tanggal Registrasi      [3]: 10/09/2006 0:00 
+Tempat Lahir            [4]: BANDUNG 
+Tanggal Lahir           [5]: 10/16/1981 0:00 
+Alamat Jalan            [6]: JL. MULYASARI TRS NO. 51 
+Alamat rt/rw            [7]: 001/004 
+Alamat kelurahan        [8]: SUKAGALIH 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40163 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: GURU 
+Nama perusahaan        [14]: SMF BUMI SILIWANGI 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JAWA BARAT 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL. MULYASARI TRS NO. 51 
+Alamat surat rt/rw     [23]: 001/004 
+Alamat surat kelurahan [24]: SUKAGALIH 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40163 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025590 
+Nama Lengkap            [1]: R A ROGAYAH EFFENDY 
+Alamat telepon2         [2]: 0222505107 
+Tanggal Registrasi      [3]: 10/09/2006 0:00 
+Tempat Lahir            [4]: PALEMBANG 
+Tanggal Lahir           [5]: 05/02/1972 0:00 
+Alamat Jalan            [6]: DAGO TIMUR 19. A  
+Alamat rt/rw            [7]: 006/006 
+Alamat kelurahan        [8]: DAAGO 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40135 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: GURU 
+Nama perusahaan        [14]: SMF BUMI SILIWANGI 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: DAGO TIMUR 19. A  
+Alamat surat rt/rw     [23]: 006/006 
+Alamat surat kelurahan [24]: DAAGO 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40135 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025593 
+Nama Lengkap            [1]: SRI ADI SUMIWI 
+Alamat telepon2         [2]: 0227205162 
+Tanggal Registrasi      [3]: 10/09/2006 0:00 
+Tempat Lahir            [4]: BANDUNG 
+Tanggal Lahir           [5]: 11/10/1957 0:00 
+Alamat Jalan            [6]: JL. SARI ASRI I NO. 18 BUMI ASRI PADASUKA 
+Alamat rt/rw            [7]: 005/005 
+Alamat kelurahan        [8]: PADASUKA 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40192 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: GURU 
+Nama perusahaan        [14]: SMF BUMI SILIWANGI 
+Alamat kantor jalan    [15]: JL. SARI ASRI I NO. 18 BUMI ASRI PADASUKA 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL. SARI ASRI I NO. 18 BUMI ASRI PADASUKA 
+Alamat surat rt/rw     [23]: 005/005 
+Alamat surat kelurahan [24]: PADASUKA 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40192 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025599 
+Nama Lengkap            [1]: DANIS HAMARA 
+Alamat telepon2         [2]: 0226649326 
+Tanggal Registrasi      [3]: 10/09/2006 0:00 
+Tempat Lahir            [4]: BANDUNG 
+Tanggal Lahir           [5]: 08/30/1964 0:00 
+Alamat Jalan            [6]: JL. SRIWIJAYA RAYA H-16 BLOK H-3113 
+Alamat rt/rw            [7]: 005/001 
+Alamat kelurahan        [8]: KARANGMEKAR 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: CIMAHI 
+Alamat kode pos        [11]: 40523 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: GURU 
+Nama perusahaan        [14]: SMF BUMI SILIWANGI 
+Alamat kantor jalan    [15]: JL. SRIWIJAYA RAYA H-16 BLOK H-3113 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL. SRIWIJAYA RAYA H-16 BLOK H-3113 
+Alamat surat rt/rw     [23]: 005/001 
+Alamat surat kelurahan [24]: KARANGMEKAR 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: CIMAHI 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40523 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025601 
+Nama Lengkap            [1]: NUR'AENI PUSPITASARI 
+Alamat telepon2         [2]: 0225209860 
+Tanggal Registrasi      [3]: 10/09/2006 0:00 
+Tempat Lahir            [4]: BANDUNG 
+Tanggal Lahir           [5]: 02/10/1982 0:00 
+Alamat Jalan            [6]: PASIRLUYU NO. 34/205 A  
+Alamat rt/rw            [7]: 008/001 
+Alamat kelurahan        [8]: PASIRLUYU 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40254 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: GURU SMF 
+Nama perusahaan        [14]: SMF BUMI SILIWANGI 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: PASIRLUYU NO. 34/205 A  
+Alamat surat rt/rw     [23]: 008/001 
+Alamat surat kelurahan [24]: PASIRLUYU 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40254 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025603 
+Nama Lengkap            [1]: SUROSO ADI YUDIANTO, DR 
+Alamat telepon2         [2]: 0222012316 
+Tanggal Registrasi      [3]: 10/09/2006 0:00 
+Tempat Lahir            [4]: CIREBON 
+Tanggal Lahir           [5]: 05/22/1953 0:00 
+Alamat Jalan            [6]: GEGERKALONG TENGAH NO. 97  
+Alamat rt/rw            [7]: 006/003 
+Alamat kelurahan        [8]: GEGERKALONG 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40153 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: GURU 
+Nama perusahaan        [14]: SMF BUMI SILIWANGI 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: GEGERKALONG TENGAH NO. 97  
+Alamat surat rt/rw     [23]: 006/003 
+Alamat surat kelurahan [24]: GEGERKALONG 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40153 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025607 
+Nama Lengkap            [1]: PONCO WIDANINGSIH 
+Alamat telepon2         [2]: 0227533774 
+Tanggal Registrasi      [3]: 10/09/2006 0:00 
+Tempat Lahir            [4]: BANDUNG 
+Tanggal Lahir           [5]: 01/08/1967 0:00 
+Alamat Jalan            [6]: GBI H-1 NO. 1  
+Alamat rt/rw            [7]: 001/001 
+Alamat kelurahan        [8]: BOJONGSOANG 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40287 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: GURU 
+Nama perusahaan        [14]: SMF BUMI SILIWANGI 
+Alamat kantor jalan    [15]: KP. SARIWANGI PARONGPONG RT. 001 RW. 008 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: GBI H-1 NO. 1  
+Alamat surat rt/rw     [23]: 001/001 
+Alamat surat kelurahan [24]: BOJONGSOANG 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40287 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025608 
+Nama Lengkap            [1]: LEILY EIDINA 
+Alamat telepon2         [2]: 02270764732 
+Tanggal Registrasi      [3]: 10/09/2006 0:00 
+Tempat Lahir            [4]: BANDUNG 
+Tanggal Lahir           [5]: 02/06/1971 0:00 
+Alamat Jalan            [6]: JL. SARIJADI BLOK 26 KAV. B  NO. 20 
+Alamat rt/rw            [7]: 003/001 
+Alamat kelurahan        [8]: SUKAWARNA 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40000 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: GURU 
+Nama perusahaan        [14]: SMF BUMI SILIWANGI 
+Alamat kantor jalan    [15]: JL. SARIMADU BARAT KAV. B NO. 20 SARIJADI BLOK 26 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL. SARIJADI BLOK 26 KAV. B  NO. 20 
+Alamat surat rt/rw     [23]: 003/001 
+Alamat surat kelurahan [24]: SUKAWARNA 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40000 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025611 
+Nama Lengkap            [1]: SRI WAHJUNI, SSI APT 
+Alamat telepon2         [2]: 0227834478 
+Tanggal Registrasi      [3]: 10/09/2006 0:00 
+Tempat Lahir            [4]: BALIKPAPAN 
+Tanggal Lahir           [5]: 10/12/1969 0:00 
+Alamat Jalan            [6]: JL. RAYA SINDANGLAYA 62.A  
+Alamat rt/rw            [7]: 003/002 
+Alamat kelurahan        [8]: CISARANTEN 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40000 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: GURU 
+Nama perusahaan        [14]: SMF BUMI SILIWANGI 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL. RAYA SINDANGLAYA 62.A  
+Alamat surat rt/rw     [23]: 003/002 
+Alamat surat kelurahan [24]: CISARANTEN 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40000 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025612 
+Nama Lengkap            [1]: DRS. DOLIH GOZALI, MS 
+Alamat telepon2         [2]: 0222038947 
+Tanggal Registrasi      [3]: 10/09/2006 0:00 
+Tempat Lahir            [4]: GARUT 
+Tanggal Lahir           [5]: 12/19/1959 0:00 
+Alamat Jalan            [6]: JL. HEGAR ASIH DUA / 46.B  
+Alamat rt/rw            [7]: 003/003 
+Alamat kelurahan        [8]: CIPAGANTI 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNF 
+Alamat kode pos        [11]: 40131 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: GURU 
+Nama perusahaan        [14]: SMF BUMI SILIWANGI 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL. HEGAR ASIH DUA / 46.B  
+Alamat surat rt/rw     [23]: 003/003 
+Alamat surat kelurahan [24]: CIPAGANTI 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40131 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025613 
+Nama Lengkap            [1]: ELLIN FEBRINA 
+Alamat telepon2         [2]: 0222501049 
+Tanggal Registrasi      [3]: 10/09/2006 0:00 
+Tempat Lahir            [4]: BANDUNG 
+Tanggal Lahir           [5]: 03/24/1976 0:00 
+Alamat Jalan            [6]: JL. SUKASARI II NO. 74  
+Alamat rt/rw            [7]: 002/002 
+Alamat kelurahan        [8]: SEKELOA 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40134 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: GURU 
+Nama perusahaan        [14]: SMF BUMI SILIWANGI 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL. SUKASARI II NO. 74  
+Alamat surat rt/rw     [23]: 002/002 
+Alamat surat kelurahan [24]: SEKELOA 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40134 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025615 
+Nama Lengkap            [1]: YUSUF SUPRIADI 
+Alamat telepon2         [2]: 0222039073 
+Tanggal Registrasi      [3]: 10/09/2006 0:00 
+Tempat Lahir            [4]: BANDUNG 
+Tanggal Lahir           [5]: 05/24/1968 0:00 
+Alamat Jalan            [6]: JL. GARUNGGANG KULON NO. 184/65 
+Alamat rt/rw            [7]: 005/012 
+Alamat kelurahan        [8]: SUKABUNGAH 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40162 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: GURU 
+Nama perusahaan        [14]: SMF BUMI SILIWANGI 
+Alamat kantor jalan    [15]: JL. GARUNGGANG KULON NO. 184/65 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL. GARUNGGANG KULON NO. 184/65 
+Alamat surat rt/rw     [23]: 005/012 
+Alamat surat kelurahan [24]: SUKABUNGAH 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40162 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025622 
+Nama Lengkap            [1]: FITRIANI AGUSTINA 
+Alamat telepon2         [2]: 0222009555 
+Tanggal Registrasi      [3]: 10/09/2006 0:00 
+Tempat Lahir            [4]: KUNINGAN 
+Tanggal Lahir           [5]: 08/14/1981 0:00 
+Alamat Jalan            [6]: JL. SETRASARI KULON III NO.7  
+Alamat rt/rw            [7]: 006/003 
+Alamat kelurahan        [8]: SUKARASA 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40152 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: GURU 
+Nama perusahaan        [14]: SMF BUMI SILIWANGI 
+Alamat kantor jalan    [15]: JL. SETRASARI KULON III NO. 7 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL. SETRASARI KULON III NO.7  
+Alamat surat rt/rw     [23]: 006/003 
+Alamat surat kelurahan [24]: SUKARASA 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40152 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025623 
+Nama Lengkap            [1]: BUDI SUPRIADI 
+Alamat telepon2         [2]: 08156267769 
+Tanggal Registrasi      [3]: 10/09/2006 0:00 
+Tempat Lahir            [4]: BANDUNG 
+Tanggal Lahir           [5]: 08/21/1969 0:00 
+Alamat Jalan            [6]: JL. SERSAN SURIP 102/69.A  
+Alamat rt/rw            [7]: 002/004 
+Alamat kelurahan        [8]: LEDENG 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40143 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: GURU 
+Nama perusahaan        [14]: SMF BUMI SILIWANGI 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL. SERSAN SURIP 102/69.A  
+Alamat surat rt/rw     [23]: 002/004 
+Alamat surat kelurahan [24]: LEDENG 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40143 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025625 
+Nama Lengkap            [1]: SITI ROKAYAH, S AG 
+Alamat telepon2         [2]: 0227214196 
+Tanggal Registrasi      [3]: 10/09/2006 0:00 
+Tempat Lahir            [4]: BANDUNG 
+Tanggal Lahir           [5]: 05/07/1972 0:00 
+Alamat Jalan            [6]: JL. MADTASAN NO. 2-A  
+Alamat rt/rw            [7]: 002/009 
+Alamat kelurahan        [8]: SUKAMAJU 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG] 
+Alamat kode pos        [11]: 40121 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: GURU 
+Nama perusahaan        [14]: SMF - BS 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]:  
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL. MADTASAN NO. 2-A  
+Alamat surat rt/rw     [23]: 002/009 
+Alamat surat kelurahan [24]: SUKAMAJU 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40121 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025630 
+Nama Lengkap            [1]: DRS. EDDIE BAEDI, APT 
+Alamat telepon2         [2]: 0225409541 
+Tanggal Registrasi      [3]: 10/09/2006 0:00 
+Tempat Lahir            [4]: BANJAR 
+Tanggal Lahir           [5]: 12/08/1955 0:00 
+Alamat Jalan            [6]: JL. CARINGIN IV / 29  
+Alamat rt/rw            [7]: 001/005 
+Alamat kelurahan        [8]: BABAKAN CIPARAY 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40223 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: GURU 
+Nama perusahaan        [14]: SMF - BS 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL. CARINGIN IV / 29  
+Alamat surat rt/rw     [23]: 001/005 
+Alamat surat kelurahan [24]: BABAKAN CIPARAY 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40223 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025631 
+Nama Lengkap            [1]: DRA. NINING KARNINGSIH, APT 
+Alamat telepon2         [2]: 0225409541 
+Tanggal Registrasi      [3]: 10/09/2006 0:00 
+Tempat Lahir            [4]: BANDUNG 
+Tanggal Lahir           [5]: 08/20/1958 0:00 
+Alamat Jalan            [6]: JL. CARINGIN GG. LUMBUNG IV/29  
+Alamat rt/rw            [7]: 001/005 
+Alamat kelurahan        [8]: BABAKAN CIPARAY 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40223 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: GURU 
+Nama perusahaan        [14]: SMF - BS 
+Alamat kantor jalan    [15]: JL. CARINGIN GG.LUMBUNG IV NO. 29 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL. CARINGIN GG. LUMBUNG IV/29  
+Alamat surat rt/rw     [23]: 001/005 
+Alamat surat kelurahan [24]: BABAKAN CIPARAY 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40223 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025634 
+Nama Lengkap            [1]: EVY ENDAH PURWANDANI 
+Alamat telepon2         [2]: 02270803398 
+Tanggal Registrasi      [3]: 10/09/2006 0:00 
+Tempat Lahir            [4]: BANDUNG 
+Tanggal Lahir           [5]: 07/06/1975 0:00 
+Alamat Jalan            [6]: GG. MESJID JL. CIGIRINGSING  
+Alamat rt/rw            [7]: 004/019 
+Alamat kelurahan        [8]: GIRI MEKAR 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40619 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: GURU 
+Nama perusahaan        [14]: SMF - BS 
+Alamat kantor jalan    [15]: GG. MESJID JL. CIGIRINGSI NG RT 04/19 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: GG. MESJID JL. CIGIRINGSING  
+Alamat surat rt/rw     [23]: 004/019 
+Alamat surat kelurahan [24]: GIRI MEKAR 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40619 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025660 
+Nama Lengkap            [1]: KIKI KUSNADI 
+Alamat telepon2         [2]: 0227200914 
+Tanggal Registrasi      [3]: 10/10/2006 0:00 
+Tempat Lahir            [4]: CIAMIS 
+Tanggal Lahir           [5]: 07/20/1982 0:00 
+Alamat Jalan            [6]: JL.AHMAD YANI NO.877  
+Alamat rt/rw            [7]: 001/001 
+Alamat kelurahan        [8]: PADASUKA 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40125 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: WIRASWASTA 
+Nama perusahaan        [14]: PADASUKA BASO 
+Alamat kantor jalan    [15]: GG.SUKARESMI RT 05/05 CICAHEUM 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL.AHMAD YANI NO.877  
+Alamat surat rt/rw     [23]: 001/001 
+Alamat surat kelurahan [24]: PADASUKA 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40125 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025661 
+Nama Lengkap            [1]: JUPRI ANTO 
+Alamat telepon2         [2]: 0227200914 
+Tanggal Registrasi      [3]: 10/10/2006 0:00 
+Tempat Lahir            [4]: SOLO 
+Tanggal Lahir           [5]: 10/15/1978 0:00 
+Alamat Jalan            [6]: JL.AHMAD YANI NO.877  
+Alamat rt/rw            [7]: 001/001 
+Alamat kelurahan        [8]: PADASUKA 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40125 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: PEGAWAI SWASTA 
+Nama perusahaan        [14]: PADASUKA BASO 
+Alamat kantor jalan    [15]: JL.A.YANI GG.SUKANEGLA NO.2A CICADAS 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL.AHMAD YANI NO.877  
+Alamat surat rt/rw     [23]: 001/001 
+Alamat surat kelurahan [24]: PADASUKA 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40125 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025684 
+Nama Lengkap            [1]: ARJO SURJANTO, DRS M KES 
+Alamat telepon2         [2]: 0226034891 
+Tanggal Registrasi      [3]: 10/10/2006 0:00 
+Tempat Lahir            [4]: YOGYAKARTA 
+Tanggal Lahir           [5]: 11/11/1949 0:00 
+Alamat Jalan            [6]: JL. GEMPOLSARI NO. 4  
+Alamat rt/rw            [7]: 002/001 
+Alamat kelurahan        [8]: GEMPOLSARI 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40215 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: GURU 
+Nama perusahaan        [14]: SMF - BS 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL. GEMPOLSARI NO. 4  
+Alamat surat rt/rw     [23]: 002/001 
+Alamat surat kelurahan [24]: GEMPOLSARI 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40215 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025686 
+Nama Lengkap            [1]: ARWAN YUNIANTO, DRS APT 
+Alamat telepon2         [2]: 0227307975 
+Tanggal Registrasi      [3]: 10/10/2006 0:00 
+Tempat Lahir            [4]: BLITAR 
+Tanggal Lahir           [5]: 06/23/1969 0:00 
+Alamat Jalan            [6]: JL. PUSPA UTARA II / 9 TAMAN PUSPA INDAH 
+Alamat rt/rw            [7]: 009/026 
+Alamat kelurahan        [8]: SEKEJATI 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40286 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: GURU 
+Nama perusahaan        [14]: SMF - BS 
+Alamat kantor jalan    [15]: JL. PUSPA UTARA II / 9 TAMAN PUSPA INADAH 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL. PUSPA UTARA II / 9 TAMAN PUSPA INDAH 
+Alamat surat rt/rw     [23]: 009/026 
+Alamat surat kelurahan [24]: SEKEJATI 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40286 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025691 
+Nama Lengkap            [1]: EKO NOVIPRATAMA, SPD 
+Alamat telepon2         [2]: 0227561345 
+Tanggal Registrasi      [3]: 10/10/2006 0:00 
+Tempat Lahir            [4]: BANDUNG 
+Tanggal Lahir           [5]: 11/17/1973 0:00 
+Alamat Jalan            [6]: JL. MARGAASIH-CIJAWURA HILIR II NO. 249 
+Alamat rt/rw            [7]: 006/010 
+Alamat kelurahan        [8]: MAARGASENANG 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40287 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: GURU 
+Nama perusahaan        [14]: SMF - BS 
+Alamat kantor jalan    [15]: JL. MARGAASIH-CIJAWURA HI LIR II NO. 249 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL. MARGAASIH-CIJAWURA HILIR II NO. 249 
+Alamat surat rt/rw     [23]: 006/010 
+Alamat surat kelurahan [24]: MAARGASENANG 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40287 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025692 
+Nama Lengkap            [1]: KAMELIA AGUSTINI, SE 
+Alamat telepon2         [2]: 02270768362 
+Tanggal Registrasi      [3]: 10/10/2006 0:00 
+Tempat Lahir            [4]: BENGKULU 
+Tanggal Lahir           [5]: 08/21/1980 0:00 
+Alamat Jalan            [6]: JL. CIJERAH II BLOK 13 GANG NUSA INDAH 4 
+Alamat rt/rw            [7]: 005/017 
+Alamat kelurahan        [8]: MELONG-CIMAHI 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40534 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: GURU 
+Nama perusahaan        [14]: SMF - BS 
+Alamat kantor jalan    [15]: JL. CIJERAH II BLOK 13 GG. NUSA INDAH 4 - MELONG 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: CIMAHI 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL. CIJERAH II BLOK 13 GANG NUSA INDAH 4 
+Alamat surat rt/rw     [23]: 005/017 
+Alamat surat kelurahan [24]: MELONG-CIMAHI 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40534 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025694 
+Nama Lengkap            [1]: FIKRI ALATAS, SSI, MSI 
+Alamat telepon2         [2]: 0226632535 
+Tanggal Registrasi      [3]: 10/10/2006 0:00 
+Tempat Lahir            [4]: TANGERANG 
+Tanggal Lahir           [5]: 04/06/1973 0:00 
+Alamat Jalan            [6]: GRIYA ASRI CAHAYA CIPAGERAN I.67 - CIMAHI 
+Alamat rt/rw            [7]: 004/011 
+Alamat kelurahan        [8]: CIPAGERAN 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40511 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: GURU 
+Nama perusahaan        [14]: SMF - BS 
+Alamat kantor jalan    [15]: GRIYA ASRI CAHAYA CIPAGERAN I.67 - CIMAHI 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: GRIYA ASRI CAHAYA CIPAGERAN I.67 - CIMAHI 
+Alamat surat rt/rw     [23]: 004/011 
+Alamat surat kelurahan [24]: CIPAGERAN 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40511 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025696 
+Nama Lengkap            [1]: AMPRASTO, DRS 
+Alamat telepon2         [2]: 0227814181 
+Tanggal Registrasi      [3]: 10/10/2006 0:00 
+Tempat Lahir            [4]: LAMPUNG 
+Tanggal Lahir           [5]: 07/16/1966 0:00 
+Alamat Jalan            [6]: BUMI PANYILEUKAN BLOK L2 NO. 5  
+Alamat rt/rw            [7]: 004/011 
+Alamat kelurahan        [8]: CIPADUNG KIDUL 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40614 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: GURU 
+Nama perusahaan        [14]: SMF - BS 
+Alamat kantor jalan    [15]: BUMI PANYILEUKAN BLOK L2 NO. 5 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: BUMI PANYILEUKAN BLOK L2 NO. 5  
+Alamat surat rt/rw     [23]: 004/011 
+Alamat surat kelurahan [24]: CIPADUNG KIDUL 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40614 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025700 
+Nama Lengkap            [1]: CHRISTINA MERIANA 
+Alamat telepon2         [2]: 0224263944 
+Tanggal Registrasi      [3]: 10/10/2006 0:00 
+Tempat Lahir            [4]: BANDUNG 
+Tanggal Lahir           [5]: 04/09/1972 0:00 
+Alamat Jalan            [6]: JL. LINGGAWASTU NO. 359  
+Alamat rt/rw            [7]: 003/017 
+Alamat kelurahan        [8]: TAMANSARI 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40116 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: GURU 
+Nama perusahaan        [14]: SMF - BS 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL. LINGGAWASTU NO. 359  
+Alamat surat rt/rw     [23]: 003/017 
+Alamat surat kelurahan [24]: TAMANSARI 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40116 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025707 
+Nama Lengkap            [1]: MEGA PURNAMASARI, SE. 
+Alamat telepon2         [2]: 0227275531 
+Tanggal Registrasi      [3]: 10/10/2006 0:00 
+Tempat Lahir            [4]: BANDUNG 
+Tanggal Lahir           [5]: 03/17/1981 0:00 
+Alamat Jalan            [6]: JL.ATLETIK III NO.9 ARCAMANIK ENDAH 
+Alamat rt/rw            [7]: 003/013 
+Alamat kelurahan        [8]: SUKAMISKIN 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40293 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: PEGAWAI SWASTA 
+Nama perusahaan        [14]: SMF BUMI SILIWANGI 
+Alamat kantor jalan    [15]: JL.ATLETIK III NO.9 ARCAMANIK ENDAH 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JAWA BARAT 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL.ATLETIK III NO.9 ARCAMANIK ENDAH 
+Alamat surat rt/rw     [23]: 003/013 
+Alamat surat kelurahan [24]: SUKAMISKIN 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40293 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200025740 
+Nama Lengkap            [1]: PUJI ANDRI 
+Alamat telepon2         [2]: 085722403680 
+Tanggal Registrasi      [3]: 10/12/2006 0:00 
+Tempat Lahir            [4]: TEGAL 
+Tanggal Lahir           [5]: 03/24/1982 0:00 
+Alamat Jalan            [6]: CIMAREME NO.340 B 
+Alamat rt/rw            [7]:  
+Alamat kelurahan        [8]: NGAMPRAH 
+Alamat kecamatan        [9]: BANDUNG BARAT 
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]:  
+Alamat telepon         [12]:  
+Pekerjaan              [13]: PEGAWAI SWASTA 
+Nama perusahaan        [14]: AL-AZHAR SYIFA BUDI 
+Alamat kantor jalan    [15]: JL.CILANDAK DLM I/5 CILANDAK BARAT 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: JAKSEL 
+Alamat kantor propinsi [20]: JAKARTA 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: CIMAREME NO.340 B 
+Alamat surat rt/rw     [23]:  
+Alamat surat kelurahan [24]: NGAMPRAH 
+Alamat surat kecamatan [25]: BANDUNG BARAT 
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]:  
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10200026908 
+Nama Lengkap            [1]: ANY BINTARI 
+Alamat telepon2         [2]: 02291500296 
+Tanggal Registrasi      [3]: 01/23/2007 0:00 
+Tempat Lahir            [4]: JAKARTA 
+Tanggal Lahir           [5]: 04/26/1978 0:00 
+Alamat Jalan            [6]: JL.CIBIRU NO.5 CIBIRU 
+Alamat rt/rw            [7]: 001/011 
+Alamat kelurahan        [8]: CIBIRU WETAN 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BANDUNG 
+Alamat kode pos        [11]: 40393 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: KARYAWAN SWASTA 
+Nama perusahaan        [14]: ITB 
+Alamat kantor jalan    [15]: JL.CIBIRU NO.5 CIBIRU 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BANDUNG 
+Alamat kantor propinsi [20]: JAWA BARAT 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL.CIBIRU NO.5 CIBIRU 
+Alamat surat rt/rw     [23]: 001/011 
+Alamat surat kelurahan [24]: CIBIRU WETAN 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40393 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10299000002 
+Nama Lengkap            [1]: SYA'BAN TRI HERNAWAN 
+Alamat telepon2         [2]: 08562883792 
+Tanggal Registrasi      [3]: 11/03/2008 15:46 
+Tempat Lahir            [4]: YOGYAKARTA 
+Tanggal Lahir           [5]: 05/17/1985 0:00 
+Alamat Jalan            [6]: TEGAL KRAPYAK PANGGUNGHARJO 
+Alamat rt/rw            [7]: 001/043 
+Alamat kelurahan        [8]: PANGGUNGHARJO 
+Alamat kecamatan        [9]: SEWON 
+Alamat kota            [10]: BANTUL 
+Alamat kode pos        [11]: 55188 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: TNI AU 
+Nama perusahaan        [14]: TNI AU 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]:  
+Alamat kantor propinsi [20]:  
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: SUBAGIO DALAM NO.H-8 
+Alamat surat rt/rw     [23]:  
+Alamat surat kelurahan [24]: HUSEIN SASTRANEGARA 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BANDUNG 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 40174 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 10400025780 
+Nama Lengkap            [1]: IYAN AHMAD SOPIAN.S,SE 
+Alamat telepon2         [2]: 0262234325 
+Tanggal Registrasi      [3]: 10/17/2006 0:00 
+Tempat Lahir            [4]: GARUT 
+Tanggal Lahir           [5]: 09/29/1978 0:00 
+Alamat Jalan            [6]: JL.SLA'AWI NO.38  
+Alamat rt/rw            [7]: 03 /03 
+Alamat kelurahan        [8]: CIMANGANTEN 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: GARUT 
+Alamat kode pos        [11]: 44151 
+Alamat telepon         [12]: BUMD 
+Pekerjaan              [13]: LPK TAROGONG 
+Nama perusahaan        [14]: JL.CIPANAS NO.38 BBK SLA'AWI RT.02 RW.03 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]: GARUT 
+Alamat kantor kota     [19]: JAWA BARAT 
+Alamat kantor propinsi [20]: JABAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL.SLA'AWI NO.38  
+Alamat surat rt/rw     [23]: 03 /03 
+Alamat surat kelurahan [24]: CIMANGANTEN 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: GARUT 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 44151 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 32399000020 
+Nama Lengkap            [1]: PENI PUJIARTI 
+Alamat telepon2         [2]: 021 7996649 
+Tanggal Registrasi      [3]: 08/24/2009 11:39 
+Tempat Lahir            [4]: JAKARTA 
+Tanggal Lahir           [5]: 05/10/1970 0:00 
+Alamat Jalan            [6]: JL.PERDATAM V /17 
+Alamat rt/rw            [7]: 005/08 
+Alamat kelurahan        [8]: PENGADEGAN 
+Alamat kecamatan        [9]: PANCORAN 
+Alamat kota            [10]: JAKARTA SELATAN 
+Alamat kode pos        [11]: 12770 
+Alamat telepon         [12]: 0217996649 
+Pekerjaan              [13]: guru 
+Nama perusahaan        [14]: tk tunas harapan I 
+Alamat kantor jalan    [15]: pancoran timur/44b 
+Alamat kantor kode pos [16]: 12770 
+Alamat kantor kelurahan[17]: pancoran 
+Alamat kantor kecamatan[18]: pancoran  
+Alamat kantor kota     [19]: jakarta selatan 
+Alamat kantor propinsi [20]: dki jakarta 
+Alamat kantor telepon  [21]: 0217990526 
+Alamat surat jalan     [22]: jl. Pancoran timur ix no 17 
+Alamat surat rt/rw     [23]: pengadegan 
+Alamat surat kelurahan [24]: pancoran 
+Alamat surat kecamatan [25]: jakarta selatan 
+Alamat surat kota      [26]:  
+Alamat surat propinsi  [27]:  
+Alamat surat kode pos  [28]:  
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 50300025407 
+Nama Lengkap            [1]: ANNI DWI K 
+Alamat telepon2         [2]: 0296424746 
+Tanggal Registrasi      [3]: 10/03/2006 0:00 
+Tempat Lahir            [4]: BLORA 
+Tanggal Lahir           [5]: 03/07/1980 0:00 
+Alamat Jalan            [6]: DESA BAJO KEDUNG TUBAN  
+Alamat rt/rw            [7]: 007/002 
+Alamat kelurahan        [8]: KEDUNG TUBAN 
+Alamat kecamatan        [9]: CEPU 
+Alamat kota            [10]: BLORA 
+Alamat kode pos        [11]: 58381 
+Alamat telepon         [12]: 0296424746 / '081330490881 
+Pekerjaan              [13]: SWASTA 
+Nama perusahaan        [14]: PUSKESMAS ALUN-ALUN KAB. GRESIK 
+Alamat kantor jalan    [15]: JL PEMUDA NO.1 GRESIK 
+Alamat kantor kode pos [16]: - 
+Alamat kantor kelurahan[17]: GRESIK 
+Alamat kantor kecamatan[18]: GRESIK 
+Alamat kantor kota     [19]: GRESIK 
+Alamat kantor propinsi [20]: JATIM 
+Alamat kantor telepon  [21]: 0313981965 
+Alamat surat jalan     [22]: DESA BAJO KEDUNG TUBAN  
+Alamat surat rt/rw     [23]: 007/002 
+Alamat surat kelurahan [24]: KEDUNG TUBAN 
+Alamat surat kecamatan [25]: CEPU 
+Alamat surat kota      [26]: BLORA 
+Alamat surat propinsi  [27]: JATENG 
+Alamat surat kode pos  [28]: 58381 
+NPWP                   [29]: TIDAK ADA 
+Email                  [30]: dwikanni@yahoo.co.id
+ 
+###----------End --------------#
+No Peserta              [0]: 50300025484 
+Nama Lengkap            [1]: HUSNA SA'ADAH 
+Alamat telepon2         [2]: 085782482496 / 0296422614 
+Tanggal Registrasi      [3]: 10/05/2006 0:00 
+Tempat Lahir            [4]: BLORA 
+Tanggal Lahir           [5]: 03/27/1972 0:00 
+Alamat Jalan            [6]: PERUMAHAN TELAGA PASIRAYA BLOK R.4/NO.08 
+Alamat rt/rw            [7]: 005/011 
+Alamat kelurahan        [8]: SUKASARI 
+Alamat kecamatan        [9]: SERANG BARU, CIKARANG 
+Alamat kota            [10]: KOTA BEKASI 
+Alamat kode pos        [11]: - 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: IBU RUMAH TANGGA 
+Nama perusahaan        [14]: TIDAK BEKERJA 
+Alamat kantor jalan    [15]: - 
+Alamat kantor kode pos [16]: - 
+Alamat kantor kelurahan[17]: - 
+Alamat kantor kecamatan[18]: - 
+Alamat kantor kota     [19]: - 
+Alamat kantor propinsi [20]: - 
+Alamat kantor telepon  [21]: - 
+Alamat surat jalan     [22]: PERUMAHAN TELAGA PASIRAYA BLOK R.4/NO.08 
+Alamat surat rt/rw     [23]: 005/011 
+Alamat surat kelurahan [24]: SUKASARI 
+Alamat surat kecamatan [25]: SERANG BARU, CIKARANG 
+Alamat surat kota      [26]: KOTA BEKASI 
+Alamat surat propinsi  [27]: JABAR 
+Alamat surat kode pos  [28]: - 
+NPWP                   [29]: TIDAK ADA 
+Email                  [30]: husnaarrozy@gmail.com
+ 
+###----------End --------------#
+No Peserta              [0]: 71100022983 
+Nama Lengkap            [1]: DRS.EDY MUSTOFA 
+Alamat telepon2         [2]: 0341896653 
+Tanggal Registrasi      [3]: 04/25/2006 0:00 
+Tempat Lahir            [4]: MALANG 
+Tanggal Lahir           [5]: 05/07/1960 0:00 
+Alamat Jalan            [6]: JL.SEMERU I/1055 
+Alamat rt/rw            [7]: 002 /001 
+Alamat kelurahan        [8]: KAUMAN 
+Alamat kecamatan        [9]: KLOJEN 
+Alamat kota            [10]: MALANG 
+Alamat kode pos        [11]: 65119 
+Alamat telepon         [12]: 081334982234 
+Pekerjaan              [13]: GURU 
+Nama perusahaan        [14]: SMK PETRA 
+Alamat kantor jalan    [15]: JL BRAWIJAYA 1 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: MALANG 
+Alamat kantor propinsi [20]: JAWA TIMUR 
+Alamat kantor telepon  [21]: - 
+Alamat surat jalan     [22]: JL.SEMERU I/1055 
+Alamat surat rt/rw     [23]: 002 /001 
+Alamat surat kelurahan [24]: KAUMAN 
+Alamat surat kecamatan [25]: KLOJEN 
+Alamat surat kota      [26]: MALANG 
+Alamat surat propinsi  [27]: JAWA TIMUR 
+Alamat surat kode pos  [28]: - 
+NPWP                   [29]: 35.217.852.9-623.000 
+Email                  [30]: ir_mlg@yahoo.co.id
+ 
+###----------End --------------#
+No Peserta              [0]: 82100025389 
+Nama Lengkap            [1]: MUHAMMAD AS'AD.S 
+Alamat telepon2         [2]: 323564 
+Tanggal Registrasi      [3]: 10/03/2006 0:00 
+Tempat Lahir            [4]: KENDARI 
+Tanggal Lahir           [5]: 05/01/1982 0:00 
+Alamat Jalan            [6]: JL.MANUNGGAL NO.14  
+Alamat rt/rw            [7]: 013/005 
+Alamat kelurahan        [8]: PUUNGGALOBA 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: KENDARI 
+Alamat kode pos        [11]: 93123 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: PEGAWAI NEGERI 
+Nama perusahaan        [14]: DEP.AGAMA SULTRA 
+Alamat kantor jalan    [15]: JL.MANUNGGAL NO.14 RT/RW.013/005 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: KENDARI 
+Alamat kantor propinsi [20]: SULTRA 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL.MANUNGGAL NO.14  
+Alamat surat rt/rw     [23]: 013/005 
+Alamat surat kelurahan [24]: PUUNGGALOBA 
+Alamat surat kecamatan [25]: KENDARI BARAT 
+Alamat surat kota      [26]: KENDARI 
+Alamat surat propinsi  [27]: SULTRA 
+Alamat surat kode pos  [28]:  
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 82199000013 
+Nama Lengkap            [1]: ANDRIK ROSELA SYA'BAN,ST 
+Alamat telepon2         [2]: 08124276224 
+Tanggal Registrasi      [3]: 05/25/2010 8:53 
+Tempat Lahir            [4]: MAKASSAR 
+Tanggal Lahir           [5]: 09/30/1980 0:00 
+Alamat Jalan            [6]: HAEBA I KEL.WUA-WUA 
+Alamat rt/rw            [7]: -/- 
+Alamat kelurahan        [8]: WUA-WUA 
+Alamat kecamatan        [9]: WUA-WUA 
+Alamat kota            [10]: KENDARI 
+Alamat kode pos        [11]: 93117 
+Alamat telepon         [12]:  
+Pekerjaan              [13]:  
+Nama perusahaan        [14]:  
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]:  
+Alamat kantor propinsi [20]:  
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL.HAEBA I KOMP.ADB TRANS NO.18 
+Alamat surat rt/rw     [23]: 000/000 
+Alamat surat kelurahan [24]: WUA-WUA 
+Alamat surat kecamatan [25]: WUA-WUA 
+Alamat surat kota      [26]: KENDARI 
+Alamat surat propinsi  [27]: SULTRA 
+Alamat surat kode pos  [28]: 93117 
+NPWP                   [29]: 02.946.315.5-811.000 
+Email                  [30]: rosela_chem@yahoo.co.id
+ 
+###----------End --------------#
+>>> 

@@ -1,0 +1,49 @@
+PackageDef()
+<s20,Name='AhliWaris' 
+s20,Description='Impor massal Ahli Waris' 
+s20,Mode='NORMAL' 
+s20,LastModifiedUser='root' 
+d,LastModifiedTime='12/29/1899 00:00:00'
+>
+,
+SourceDef()
+<s20,Description='paket definisi source untuk impor ahli waris' 
+s20,Type='MSEXCEL' 
+i,FirstDataRow=11
+s20,SheetName='Sheet1' 
+i,ControlColumn=1
+>
+,
+SourceFieldDefs()
+<s20,Name='HubunganKeluarga' 
+s20,Type='STRING' 
+i,Length=0
+i,Index=5
+>
+<'JenisKelamin'  'STRING'  0 3>
+<'Keterangan'  'STRING'  0 7>
+<'NamaLengkap'  'STRING'  0 2>
+<'NoUrutPrioritas'  'INTEGER'  0 1>
+<'StatusAhliWaris'  'STRING'  0 6>
+<'TanggalLahir'  'DATETIME'  0 4>
+<'NoPeserta'  'STRING'  0 8>,
+TransformationDef()
+<s20,Description='Definisi target metadata untuk impor ahli waris' 
+s20,TargetClassName='AhliWaris' 
+s20,AfterApplyRowModule='importmassal.CIF' 
+s20,AfterApplyRowFunctionName='ProcessingImport' 
+>
+,
+TransItemDefs()
+<s20,Name='hubungan_keluarga' 
+s20,LookupClass='' 
+s20,LookupField='' 
+s20,SourceFieldName='HubunganKeluarga' 
+>
+<'jenis_kelamin'  ''  ''  'JenisKelamin' >
+<'keterangan'  ''  ''  'Keterangan' >
+<'nama_lengkap'  ''  ''  'NamaLengkap' >
+<'no_urut_prioritas'  ''  ''  'NoUrutPrioritas' >
+<'status_ahli_waris'  ''  ''  'StatusAhliWaris' >
+<'tanggal_lahir'  ''  ''  'TanggalLahir' >
+<'no_peserta'  'RekeningDPLK'  'no_peserta'  'NoPeserta' >..

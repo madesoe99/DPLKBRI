@@ -1,0 +1,144 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipTransaksi'
+      PClassName='PengalihanKeDPLKLain'
+      LoadedFieldList='tgl_transaksi;keterangan;LLDP.kode_dp;LLDP.kode_dp;LLDP.nama_dp;jenis_biaya;biaya_lain;ktr_biaya_lain'
+      StoredFieldList='tgl_transaksi;keterangan;LLDP;jenis_biaya;biaya_lain;ktr_biaya_lain'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LLDP'
+          ClassTypeName='LDP'
+          FieldNames='kode_dp;kode_dp;nama_dp'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >, object:rpclass::TPClassUIDef<
+      Name='uipPeserta'
+      PClassName='NasabahDPLK'
+      LoadedFieldList='no_peserta;nama_lengkap;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_email'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='IuranPk'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='IuranPst'
+          DataTypeName='double'
+          DataLength=20
+        >
+      }
+      Mode=imSingleRow
+    >, object:rpclass::TPClassUIDef<
+      Name='uipParameter'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='PRESISI_ANGKA_FLOAT'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='BiayaSKN'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='BiayaRTGS'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='isHitungMode'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='BiayaADM'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='BiayaPindah'
+          DataTypeName='double'
+          DataLength=20
+        >
+      }
+      Mode=imSingleRow
+    >, object:rpclass::TPClassUIDef<
+      Name='uipRekening'
+      PClassName='RekInvDPLK'
+      LoadedFieldList='akum_pmb_pk;akum_pmb_pst;akum_pmb_tmb;akum_pmb_psl;no_rekening;iuran_pk;iuran_pst;akum_iuran_pk;akum_iuran_pst;akum_iuran_tmb;akum_psl'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='akum_pmb'
+          DataTypeName='double'
+          DataLength=20
+        >
+      }
+      Mode=imSingleRow
+    >, object:rpclass::TPClassUIDef<
+      Name='uipHitung'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='saldo_iuran_pk'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='saldo_iuran_pst'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='saldo_iuran_tmb'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='saldo_pmb'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='saldo_psl'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='saldo_jml_dana'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='biaya_pengelolaan'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='biaya_administrasi'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='biaya_pengalihan'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='saldo_dana_dialihkan'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='jenis_biaya_lain'
+          DataTypeName='varchar'
+          DataLength=1
+        >, object:rpclass::TCustomLoadedField<
+          Name='nominal_biaya_lain'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='dana_dialihkan'
+          DataTypeName='double'
+          DataLength=20
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+  }
+  OnSetDataEx='Form_OnSetDataEx'
+>

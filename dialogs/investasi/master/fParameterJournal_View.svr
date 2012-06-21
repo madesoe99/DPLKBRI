@@ -1,0 +1,20 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rpclass::TPClassUIDefList<
+  UIDefs={object:rpclass::TPClassUIDef<
+      Name='uip'
+      PClassName='ParameterJournal'
+      LoadedFieldList='journal_code;description'
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >, object:rpclass::TPClassUIDef<
+      Name='uipList'
+      MasterUIName='uip'
+      ListName='Ls_PARAMETERJOURNALITEM'
+      LoadedFieldList='account_code;mnemonic_code;description'
+      SetMasterDetailRelationship=true
+    >}>

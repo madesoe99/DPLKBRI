@@ -1,0 +1,104 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['MultiSplit']
+  Caption='Lihat Tax'
+  Left=50
+  Top=50
+  Width=380
+  Height=310
+  UIParts={object:rtf::PClassUI<
+      Name='uip'
+      ClassTypeName='Tax'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >}Containers={object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='tax_code'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=5
+        >, object:rtf::FieldUIElmtSetting<
+          Name='description'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tax_percentage'
+          AccessOption=aoReadOnly
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >}Name='pData'
+      Width=240
+      Height=177
+      Bordered=true
+      UIPart=$UIPARTS['uip']
+      Controls={*object:rtf::DBEdit<
+          Name='tax_code'
+          Top=20
+          Left=20
+          Color=-2147483624
+          ControlCaption='Tax Code'
+        >, *object:rtf::DBEdit<
+          Name='description'
+          Top=48
+          Left=20
+          Color=-2147483624
+          ControlCaption='Description'
+        >, *object:rtf::DBEdit<
+          Name='tax_percentage'
+          Top=76
+          Left=20
+          Color=-2147483624
+          ControlCaption='Percentage'
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Controls={object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=20
+          Color=0
+          ControlCaption=''
+          Caption='&Tutup'
+          Default=true
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >}ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Name='pUser'
+      Width=240
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uip']
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::MultiSplit<
+      Name='MultiSplit'
+      Width=380
+      Height=310
+      Side1Containers={$CONTAINERS['pData']
+      }Side2Containers={$CONTAINERS['pButton']
+      }SpaceContainer=$CONTAINERS['pUser']
+    >}>

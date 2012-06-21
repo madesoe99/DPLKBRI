@@ -1,0 +1,43 @@
+PackageDef()
+<s20,Name='AkseptasiWasiatUmmat' 
+s20,Description='Impor massal akseptasi wasiat ummat' 
+s20,Mode='NORMAL' 
+s20,LastModifiedUser='ade herman' 
+d,LastModifiedTime*
+>
+,
+SourceDef()
+<s20,Description='Template impor massal akseptasi wasiat ummat' 
+s20,Type='MSEXCEL' 
+i,FirstDataRow=9
+s20,SheetName='Sheet1' 
+i,ControlColumn=1
+>
+,
+SourceFieldDefs()
+<s20,Name='NoPeserta' 
+s20,Type='STRING' 
+i,Length=0
+i,Index=1
+>
+<'NoPolis'  'STRING'  0 2>
+<'TanggalAkseptasi'  'DATETIME'  0 3>
+<'BesarPremi'  'FLOAT'  0 4>
+<'ManfaatAsuransi'  'FLOAT'  0 5>,
+TransformationDef()
+<s20,Description='Template impor massal akseptasi wasiat ummat' 
+s20,TargetClassName='RekeningWasiatUmmat' 
+s20,AfterApplyRowModule='importmassal.CIF' 
+s20,AfterApplyRowFunctionName='ProcessingImport' 
+>
+,
+TransItemDefs()
+<s20,Name='no_peserta' 
+s20,LookupClass='RekeningDPLK' 
+s20,LookupField='no_peserta' 
+s20,SourceFieldName='NoPeserta' 
+>
+<'no_polis'  ''  ''  'NoPolis' >
+<'tgl_akseptasi'  ''  ''  'TanggalAkseptasi' >
+<'besar_premi'  ''  ''  'BesarPremi' >
+<'manfaat_asuransi'  ''  ''  'ManfaatAsuransi' >..

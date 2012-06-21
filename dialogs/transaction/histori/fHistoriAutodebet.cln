@@ -1,0 +1,189 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['pData']
+  Caption='Histori Autodebet'
+  Left=50
+  Top=50
+  Width=800
+  Height=280
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipHistoriAutoDebet'
+      ClassTypeName='HistoriAutoDebet'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      AfterApplyRow='uipHistoriAutoDebetApplyRow'
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='no_referensi'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=15
+        >
+        , object:rtf::LinkUIElmtSetting<
+          Name='LRekeningDPLK'
+          RequiredOption=roAlwaysRequired
+          AccessOption=aoReadOnly
+          ClassTypeName='RekeningDPLK'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LRekeningDPLK.no_peserta'
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsKey=true
+              KeyOrDisplayName='no_peserta'
+              FinalDisplayFieldName='no_peserta'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LRekeningDPLK.no_peserta'
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsDisplay=true
+              KeyOrDisplayName='no_peserta'
+              FinalDisplayFieldName='no_peserta'
+            >
+            , object:rtf::FieldUIElmtSetting<
+              Name='LRekeningDPLK.LNasabahDPLK.nama_lengkap'
+              DataTypeName='VARCHAR'
+              DataLength=30
+              UsedAsDisplay=true
+              KeyOrDisplayName='LNasabahDPLK.nama_lengkap'
+              FinalDisplayFieldName='nama_lengkap'
+            >
+          }
+          Restrictions=''
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='auth_user_id'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='terminal_id'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=15
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='mode'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=20
+        >
+      }
+      Name='pData'
+      Width=400
+      Height=180
+      UIPart=$UIPARTS['uipHistoriAutoDebet']
+      Controls={
+        *object:rtf::DBLookupEdit<
+          Name='LRekeningDPLK'
+          Enabled=false
+          Color=0
+          ControlCaption='nasabah dplk'
+          LookupField='LRekeningDPLK.LNasabahDPLK.nama_lengkap'
+          DisplayLookupField=true
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=30
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Histori'
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Bordered=true
+      Controls={
+        object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Tutup'
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['DualSplitLR']
+      InversedAlign=true
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='no_rekening'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='nama_rekening'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='tanggal_autodebet'
+          AccessOption=aoReadOnly
+          DataTypeName='INTEGER'
+          DataLength=0
+        >
+      }
+      Name='pDataBaru'
+      Width=240
+      Height=40
+      UIPart=$UIPARTS['uipHistoriAutoDebet']
+      Controls={
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=30
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Auto Debet'
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplitLR'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['pData']
+      Container2=$CONTAINERS['pDataBaru']
+      SplitDirection=sdrSplitLeftRight
+    >
+  }
+>

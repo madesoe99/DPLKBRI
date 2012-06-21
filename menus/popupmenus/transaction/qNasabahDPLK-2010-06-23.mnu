@@ -1,0 +1,136 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{FF6521AE-DCB8-457C-933C-35D88DB5B672}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rmn::Menu<
+  MenuItems={
+    object:rmn::MenuItem<
+      Name='mnuNew'
+      Caption='Registrasi Peserta Baru...'
+      OnClick='mnuNewClick'
+      AllowedGroups='BOD;Admin;MRKT'
+      StringTag='fRegistrasi_New'
+    >
+    , object:rmn::MenuItem<
+      Name='mnuEdit'
+      Caption='Koreksi Data Peserta'
+      MenuItems={
+        object:rmn::MenuItem<
+          Name='mnuEditAhliWaris'
+          Caption='Koreksi Ahli Waris...'
+          OnClick='displayWithDataSpecific'
+          AllowedGroups='BOD;MRKT'
+          StringTag='W'
+        >
+        , object:rmn::MenuItem<
+          Name='mnuEditUbahAlamat'
+          Caption='Koreksi Alamat...'
+          OnClick='displayWithDataSpecific'
+          AllowedGroups='MRKT'
+          StringTag='A'
+        >
+        , object:rmn::MenuItem<
+          Name='mnuEditPindahPaketInvestasi'
+          Caption='Pindah Paket Investasi...'
+          OnClick='displayWithDataSpecific'
+          AllowedGroups='BOD'
+          StringTag='P'
+        >
+        , object:rmn::MenuItem<
+          Name='mnuEditIuran'
+          Caption='Koreksi Iuran Peserta / Pemberi Kerja...'
+          OnClick='displayWithDataSpecific'
+          AllowedGroups='BOD'
+          StringTag='I'
+        >
+        , object:rmn::MenuItem<
+          Name='mnuEditStatusKerja'
+          Caption='PHK dari / Pendaftaran ke Perusahaan...'
+          OnClick='displayWithDataSpecific'
+          AllowedGroups='BOD'
+          StringTag='K'
+        >
+        , object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='BOD'
+        >
+        , object:rmn::MenuItem<
+          Name='mnuEditAutoDebet'
+          Caption='Pendaftaran / Penutupan Autodebet...'
+          OnClick='displayWithDataSpecific'
+          AllowedGroups='BOD'
+          StringTag='D'
+        >
+        , object:rmn::MenuItem<
+          Name='mnuEditWasiatUmmat'
+          Caption='Pendaftaran / Penutupan Wasiat Ummat...'
+          OnClick='displayWithDataSpecific'
+          AllowedGroups='BOD'
+          StringTag='U'
+        >
+        , object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='MRKT;BOD'
+        >
+        , object:rmn::MenuItem<
+          Name='mnuEdit'
+          Caption='Koreksi Data Lain-lain...'
+          OnClick='displayWithDataSpecific'
+          AllowedGroups='BOD'
+          StringTag='Z'
+        >
+      }
+      AllowedGroups='MRKT;BOD'
+    >
+    , object:rmn::MenuItem<
+      Name='mnuView'
+      Caption='Lihat Detil Data Peserta'
+      OnClick='displayWithData'
+      AllowedGroups='MRKT;BOD;CC;CS'
+      StringTag='view'
+    >
+    , object:rmn::MenuItem<
+      Caption='-'
+    >
+    , object:rmn::MenuItem<
+      Name='mnuHistori'
+      Caption='Lihat Riwayat Perubahan CIF'
+      OnClick='mnuHistoriClick'
+      AllowedGroups='MRKT;BOD'
+      StringTag='fHistoriNasabahRekening'
+    >
+    , object:rmn::MenuItem<
+      Name='mnuHistoriTransaksi'
+      Caption='Lihat Riwayat Transaksi'
+      OnClick='mnuHistoriClick'
+      AllowedGroups='MRKT;BOD'
+      StringTag='fHistoriTransaksi'
+    >
+    , object:rmn::MenuItem<
+      Caption='-'
+    >
+    , object:rmn::MenuItem<
+      Name='mnuDelete'
+      Caption='Hapus Peserta'
+      AllowedGroups='root'
+      OnClick='mnuDeleteClick'
+    >
+    , object:rmn::MenuItem<
+      Caption='-'
+    >
+    , object:rmn::MenuItem<
+      Caption='-'
+    >
+    , object:rmn::MenuItem<
+      Name='mnuStatemen'
+      Caption='Statemen peserta...'
+      OnClick='mnuStatemenClick'
+      AllowedGroups='BOD;MRKT;CC;CS'
+    >
+  }
+  AllowedGroups='MRKT;BOD;CC;CS'
+  MenuType=mtPopupMenu
+>

@@ -1,0 +1,136 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['qSRRCalc']
+  Caption='Daftar Hasil Penghitungan Saldo Rata-rata'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=320
+  Height=240
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnFormShow='FormShow'
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipFilter'
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Query<
+      Name='qSRRCalc'
+      Width=240
+      Height=40
+      ContextMenuName='popupmenus/transaksi/pDaftarSRRCalc'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      WindowSize=20
+      Columns={
+        object:rtf::QueryColumn<
+          FieldName='SRRCalc.tgl_mulai_hitung'
+          Width=120
+          Caption='Tanggal Awal'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='SRRCalc.tgl_akhir_hitung'
+          Width=120
+          Caption='Tanggal Akhir'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='SRRCalc.tgl_create'
+          Width=120
+          Caption='Tanggal Penghitungan'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='SRRCalc.status_bagihasil'
+          Width=120
+          Caption='Sudah Dibagihasilkan'
+          UseCustomColor=true
+          Color=15128749
+        >
+        , object:rtf::QueryColumn<
+          FieldName='SRRCalc.user_id_create'
+          Width=100
+          Caption='User Penghitung'
+        >
+      }
+      EnableColumns=true
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='StatusBagiHasil'
+          ControlCaption='Status Bagi Hasil'
+          DataTypeName='varchar'
+          DataLength=1
+          EnumeratedValues=['A=Semua status'#13#10,
+            'T=True'#13#10,
+            'F=False'#13#10]
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='AwalTanggal'
+          ControlCaption='Mulai Tanggal Penghitungan'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='AkhirTanggal'
+          ControlCaption='Hingga Tanggal'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+      }
+      Name='pFilter'
+      Width=700
+      Height=80
+      Bordered=true
+      UIPart=$UIPARTS['uipFilter']
+      Controls={
+        *object:rtf::DBDateEdit<
+          Name='AkhirTanggal'
+          Layout=clNextSide
+        >
+        , object:rtf::Button<
+          Name='bTampilkan'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Tampilkan'
+          Default=true
+          OnClick='bTampilkanClick'
+        >
+      }
+      EqualCaptionWidth=150
+      ControlLeftMargin=10
+      ControlTopMargin=10
+      DefaultControlHeight=21
+      HorizontalControlGap=7
+      RowControlGap=20
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['pFilter']
+      Container2=$CONTAINERS['qSRRCalc']
+    >
+  }
+>

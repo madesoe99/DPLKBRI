@@ -1,0 +1,38 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{FF6521AE-DCB8-457C-933C-35D88DB5B672}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rmn::Menu<
+  MenuItems={
+    object:rmn::MenuItem<
+      Name='mnuNew'
+      Caption='Buat Sumber Dana Baru...'
+      OnClick='mnuNewClick'
+      StringTag='fSumberDana_New'
+    >
+    , object:rmn::MenuItem<
+      Name='mnuEdit'
+      Caption='Koreksi Sumber Dana...'
+      OnClick='displayWithData'
+      StringTag='fSumberDana_Edit'
+    >
+    , object:rmn::MenuItem<
+      Name='mnuView'
+      Caption='Lihat Detil Sumber Dana...'
+      OnClick='displayWithData'
+      StringTag='fSumberDana_View'
+    >
+    , object:rmn::MenuItem<
+      Caption='-'
+    >
+    , object:rmn::MenuItem<
+      Name='mnuDelete'
+      Caption='Hapus Sumber Dana'
+      OnClick='mnuDeleteClick'
+    >
+  }
+  MenuType=mtPopupMenu
+>

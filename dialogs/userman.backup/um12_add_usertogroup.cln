@@ -1,0 +1,210 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='1'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['split']
+  Caption='Tambahkan Pengguna Ke Dalam Kelompok'
+  Left=100
+  Top=100
+  Width=350
+  Height=400
+  UIParts={
+    object:rtf::PClassUI<
+      Name='UserApp'
+      ClassTypeName='UserApp'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+    >
+    , object:rtf::PClassUI<
+      Name='UserGroupApp'
+      ClassTypeName='UserGroupApp'
+      DataBinding=bmList
+      Master=$UIPARTS['UserApp']
+      ListName='Ls_UserGroupApp'
+      CreateInstanceOnNew=true
+      DeleteInstanceOnDel=true
+      AfterNewRow='UserGroupApp_AfterNewRow'
+      AfterApplyRow='UserGroupApp_AfterApplyRow'
+    >
+  }
+  Containers={
+    object:rtf::DualSplit<
+      Name='split'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['panel_Button']
+      Container2=$CONTAINERS['mp_data']
+      InversedAlign=true
+    >
+    , object:rtf::DualSplit<
+      Name='mp_data'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['data_user']
+      Container2=$CONTAINERS['usertogroup']
+    >
+    , object:rtf::DualSplit<
+      Name='usertogroup'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['nav_usertogroup']
+      Container2=$CONTAINERS['data_usertogroup']
+      InversedAlign=true
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          AccessOption=aoReadOnly
+          ControlCaption='ID Pengguna'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='UserName'
+          AccessOption=aoReadOnly
+          ControlCaption='Nama Pengguna'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >
+      }
+      Name='data_user'
+      Width=600
+      Height=80
+      Bordered=true
+      UIPart=$UIPARTS['UserApp']
+      Controls={
+      }
+      EqualCaptionWidth=80
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Grid<
+      Elements={
+        object:rtf::LinkUIElmtSetting<
+          Name='LUserGroup'
+          RequiredOption=roAlwaysRequired
+          ClassTypeName='UserGroup'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LUserGroup.group_id'
+              DataTypeName='VARCHAR'
+              DataLength=8
+              UsedAsKey=true
+              KeyOrDisplayName='group_id'
+              FinalDisplayFieldName='group_id'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LUserGroup.group_id'
+              DataTypeName='VARCHAR'
+              DataLength=8
+              UsedAsDisplay=true
+              KeyOrDisplayName='group_id'
+              FinalDisplayFieldName='group_id'
+            >
+            , object:rtf::FieldUIElmtSetting<
+              Name='LUserGroup.GroupName'
+              DataTypeName='VARCHAR'
+              DataLength=30
+              UsedAsDisplay=true
+              KeyOrDisplayName='GroupName'
+              FinalDisplayFieldName='GroupName'
+            >
+          }
+          Restrictions=''
+          OQLText='SELECT FROM UserGroup (group_id, GroupName, self) THEN ORDER BY group_id;'
+          LookupOption=loCustomOQL
+        >
+      }
+      Name='data_usertogroup'
+      Width=450
+      Height=250
+      Bordered=true
+      UIPart=$UIPARTS['UserGroupApp']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Columns={
+        *object:rtf::GridColumn<
+          Name='LUserGroup.group_id'
+          InputStyle=cisLookup
+          EnumeratedValues=''
+          FieldName='LUserGroup.group_id'
+          DisplayFormat=''
+          TitleCaption='ID Kelompok Pengguna'
+        >
+        , *object:rtf::GridColumn<
+          Name='LUserGroup.GroupName'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='LUserGroup.GroupName'
+          DisplayFormat=''
+          TitleCaption='Kelompok Pengguna'
+        >
+      }
+    >
+    , object:rtf::DBNavigator<
+      Name='nav_usertogroup'
+      Width=240
+      Height=10
+      UIPart=$UIPARTS['UserGroupApp']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      VFirst=false
+      VPrior=false
+      VNext=false
+      VLast=false
+      VInsert=true
+      VDelete=true
+      VEdit=true
+      VPost=true
+      VCancel=true
+      VRefresh=false
+    >
+    , object:rtf::Panel<
+      Name='panel_Button'
+      Width=240
+      Height=50
+      Controls={
+        object:rtf::Button<
+          Name='bSave'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          DefaultAction=daProcessAllAndClear
+          ExitAction=eaQuitOK
+        >
+        , object:rtf::Button<
+          Name='bCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Tutup'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+  }
+>

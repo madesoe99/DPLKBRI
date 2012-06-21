@@ -1,0 +1,110 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rpclass::TPClassUIDefList<
+  UIDefs={object:rpclass::TPClassUIDef<
+      Name='uipReksadana'
+      PClassName='Reksadana'
+      LoadedFieldList='nama_reksadana;LPihakKetiga.kode_pihak_ketiga;LPihakKetiga.kode_pihak_ketiga;LPihakKetiga.nama_pihak_ketiga;LRincianPaketInvestasi.kode_paket_investasi;LRincianPaketInvestasi.kode_jns_investasi;LRincianPaketInvestasi.kode_paket_investasi;LRincianPaketInvestasi.LPaketInvestasi.nama_paket_investasi;LRincianPaketInvestasi.kode_jns_investasi;LCustodianBank.BankCode;LCustodianBank.BankCode;LCustodianBank.BankName;tgl_buka;unit_penyertaan;akum_nominal;NAB_awal;NAB;id_investasi'
+      StoredFieldList='NAB'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='IsCommited'
+          DataTypeName='integer'
+          DataLength=1
+        >, object:rpclass::TCustomLoadedField<
+          Name='ModeOto'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='Mode'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='NABSubs'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='NomRedempt'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='OtoRedempt'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='NABRedempt'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='UPRedempt'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='NAB_lama'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='Jenis_Perubahan'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='unit_penyertaanbaru'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='NomSubscribe'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='ProsesHasilReksadana'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='Tgl_penetapan'
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='user_id'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='terminal_id'
+          DataTypeName='varchar'
+          DataLength=20
+        >}CustomLoadedLinks={object:rpclass::TCustomLoadedLink<
+          Name='LPihakKetiga'
+          ClassTypeName='PihakKetiga'
+          FieldNames='kode_pihak_ketiga;kode_pihak_ketiga;nama_pihak_ketiga'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LRincianPaketInvestasi'
+          ClassTypeName='RincianPaketInvestasi'
+          FieldNames='kode_paket_investasi;kode_jns_investasi;kode_paket_investasi;LPaketInvestasi.nama_paket_investasi;kode_jns_investasi'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LCustodianBank'
+          ClassTypeName='CustodianBank'
+          FieldNames='BankCode;BankCode;BankName'
+        >}Mode=imSingleRow
+      CreateInstanceOnNew=true
+      OnSetData='uipReksadanaSetData'
+    >, object:rpclass::TPClassUIDef<
+      Name='uipParameter'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='nowDate'
+          DataTypeName='varchar'
+          DataLength=10
+        >, object:rpclass::TCustomLoadedField<
+          Name='inv'
+          DataTypeName='varchar'
+          DataLength=1
+        >, object:rpclass::TCustomLoadedField<
+          Name='strInv'
+          DataTypeName='varchar'
+          DataLength=20
+        >}Mode=imSingleRow
+      CreateInstanceOnNew=true
+      OnSetData='uipParameterSetData'
+    >}OnEndProcessData='FormEndProcessData'
+>

@@ -1,0 +1,7 @@
+[menu]
+DenyThenAllow=1
+AllowedUsers=
+AllowedGroups='Admin;Root;Teller;CS;BOD;BO;MRKT;CC;TNLG;SPV'
+MenuID=Liabilitas
+MenuTitle=Nasabah dan Transaksi
+ImageIndex=1

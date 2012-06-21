@@ -1,0 +1,41 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{FF6521AE-DCB8-457C-933C-35D88DB5B672}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rmn::Menu<
+  MenuItems={
+    object:rmn::MenuItem<
+      Name='InputSingle'
+      Caption='Input Iuran Pendaftaran Manual'
+      OnClick='mnuShowModalWithData'
+      AllowedGroups='Admin;Root;BOD'
+      StringTag='transaksi'
+      NumberTag=110
+    >
+    , object:rmn::MenuItem<
+      Caption='-'
+      AllowedGroups='Admin;Root;BOD'
+    >
+    , object:rmn::MenuItem<
+      Name='fOtorisasiIuranPendaftaran'
+      Caption='Lihat Detil Iuran Pendaftaran'
+      OnClick='mnuShowModalWithData'
+      AllowedGroups='Admin;Root;BOD'
+      StringTag='transaksi'
+      NumberTag=2000
+    >
+    , object:rmn::MenuItem<
+      Name='fOtorisasiIuranPendaftaran'
+      Caption='Otorisasi Iuran Pendaftaran'
+      OnClick='mnuShowModalWithData'
+      AllowedGroups='Admin;Root;BO'
+      StringTag='transaksi'
+      NumberTag=1000
+    >
+  }
+  MenuType=mtPopupMenu
+  DenyThenAllow=true
+>

@@ -1,0 +1,36 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='UserApp'
+      PClassName='UserApp'
+      LoadedFieldList='user_id;UserName;Description;NoLimitLocation;LBranchLocation.branch_code;LBranchLocation.branch_code;LBranchLocation.BranchName;home_directory;allow_download;download_limit_kb;allow_upload;upload_limit_kb'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LBranchLocation'
+          ClassTypeName='BranchLocation'
+          FieldNames='branch_code;branch_code;BranchName'
+        >
+      }
+      Mode=imSingleRow
+    >, object:rpclass::TPClassUIDef<
+      Name='UserGroupApp'
+      MasterUIName='UserApp'
+      ListName='Ls_UserGroupApp'
+      LoadedFieldList='LUserGroup.group_id;LUserGroup.group_id;LUserGroup.GroupName'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LUserGroup'
+          ClassTypeName='UserGroup'
+          FieldNames='group_id;group_id;GroupName'
+        >
+      }
+    >
+  }
+>

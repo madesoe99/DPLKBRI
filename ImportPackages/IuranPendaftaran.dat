@@ -1,0 +1,45 @@
+PackageDef()
+<s20,Name='IuranPendaftaran' 
+s20,Description='Impor massal Iuran Pendaftaran peserta' 
+s20,Mode='NORMAL' 
+s20,LastModifiedUser='yuniar' 
+d,LastModifiedTime='04/29/2008 22:46:10'
+>
+,
+SourceDef()
+<s20,Description='definisi template source yang akan diimpor' 
+s20,Type='MSEXCEL' 
+i,FirstDataRow=11
+s20,SheetName='Sheet1' 
+i,ControlColumn=1
+>
+,
+SourceFieldDefs()
+<s20,Name='IDTransactionBatch' 
+s20,Type='STRING' 
+i,Length=0
+i,Index=1
+>
+<'NoPeserta'  'STRING'  0 2>
+<'KodeCabang'  'STRING'  0 3>
+<'BesarBiayaDaftar'  'FLOAT'  0 4>
+<'Keterangan'  'STRING'  0 5>
+<'ReferensiCoreBanking'  'STRING'  0 6>,
+TransformationDef()
+<s20,Description='Template destination file yang akan dimpor' 
+s20,TargetClassName='IuranPendaftaran' 
+s20,AfterApplyRowModule='importmassal.Transaksi' 
+s20,AfterApplyRowFunctionName='ProcessingImport' 
+>
+,
+TransItemDefs()
+<s20,Name='ID_TransactionBatch' 
+s20,LookupClass='TransactionBatch' 
+s20,LookupField='ID_TransactionBatch' 
+s20,SourceFieldName='IDTransactionBatch' 
+>
+<'no_peserta'  'RekeningDPLK'  'no_peserta'  'NoPeserta' >
+<'branch_code'  'BranchLocation'  'branch_code'  'KodeCabang' >
+<'besar_biaya_daftar'  ''  ''  'BesarBiayaDaftar' >
+<'keterangan'  ''  ''  'Keterangan' >
+<'Ref_CoreBanking'  ''  ''  'ReferensiCoreBanking' >..

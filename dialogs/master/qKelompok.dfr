@@ -1,0 +1,69 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['qKelompok']
+  Caption='Daftar Kelompok Peserta'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  Containers={
+    object:rtf::Query<
+      Name='qKelompok'
+      Width=240
+      Height=40
+      ContextMenuName='popupmenus/master/qKelompok'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from Kelompok'#13#10,
+        '('#13#10,
+        '  kode_kelompok,'#13#10,
+        '  nama_kelompok,'#13#10,
+        '  keterangan,'#13#10,
+        '  user_id,'#13#10,
+        '  last_update,'#13#10,
+        '  self'#13#10,
+        ') then order by kode_kelompok;']
+      DirectDisplay=true
+      WindowSize=20
+      Columns={
+        object:rtf::QueryColumn<
+          FieldName='Kelompok.kode_kelompok'
+          Width=150
+          Caption='Kode Kelompok'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='Kelompok.nama_kelompok'
+          Width=250
+          Caption='Nama Kelompok'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='Kelompok.keterangan'
+          Width=500
+          Caption='Keterangan'
+        >
+      }
+      EnableColumns=true
+    >
+  }
+>

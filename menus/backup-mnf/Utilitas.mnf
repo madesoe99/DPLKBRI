@@ -1,0 +1,7 @@
+[menu]
+DenyThenAllow=0
+AllowedUsers=
+AllowedGroups='Admin;Root'
+MenuID=Utilitas
+MenuTitle=Kakas
+ImageIndex=3

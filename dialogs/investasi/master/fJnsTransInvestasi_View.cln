@@ -1,0 +1,142 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['pData']
+  Caption='Lihat Jenis Transaksi Investasi'
+  Left=50
+  Top=50
+  Width=380
+  Height=260
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipJnsTransInvestasi'
+      ClassTypeName='JnsTransInvestasi'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='kode_jenis_trinvestasi'
+          AccessOption=aoReadOnly
+          ControlCaption='Kode Jenis Transaksi'
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['A=Investasi Baru/Alokasi Investasi Tambahan'#13#10,
+            'C=Tutup Investasi'#13#10,
+            'B=Pembukuan Pendapatan Investasi secara Tunai'#13#10,
+            'D=Pembukuan Biaya Investasi'#13#10,
+            'F=Kapitalisir Investasi'#13#10,
+            'G=Transaksi Investasi Manual'#13#10,
+            'H=Transaksi Piutang LR Investasi Manual'#13#10,
+            'I=Transaksi LR Investasi Manual'#13#10,
+            'P=Pembukuan Pendapatan Investasi ke Piutang'#13#10]
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='deskripsi'
+          AccessOption=aoReadOnly
+          ControlCaption='Deskripsi'
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >
+      }
+      Name='pData'
+      Width=240
+      Height=90
+      Bordered=true
+      UIPart=$UIPARTS['uipJnsTransInvestasi']
+      Controls={
+        *object:rtf::DBComboBox<
+          Name='kode_jenis_trinvestasi'
+          Enabled=false
+          Color=-2147483624
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Tutup'
+          Default=true
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          AccessOption=aoReadOnly
+          ReadOnlyControl=true
+          ControlCaption='ID Pengguna'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='last_update'
+          AccessOption=aoReadOnly
+          ReadOnlyControl=true
+          ControlCaption='Terakhir Diperbarui'
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >
+      }
+      Name='pUser'
+      Width=240
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipJnsTransInvestasi']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='user_id'
+          ReadOnly=true
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::MultiSplit<
+      Name='MultiSplit'
+      Width=240
+      Height=100
+      Side1Containers={
+        $CONTAINERS['pData']
+      }
+      Side2Containers={
+        $CONTAINERS['pButton']
+      }
+      SpaceContainer=$CONTAINERS['pUser']
+    >
+  }
+>

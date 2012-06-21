@@ -1,0 +1,61 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{FF6521AE-DCB8-457C-933C-35D88DB5B672}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rmn::Menu<
+  MenuItems={
+    object:rmn::MenuItem<
+      Name='fNewManualBatch'
+      Caption='Buat &Batch Manual...'
+      OnClick='mnuShowModalWithData'
+      AllowedGroups='Admin;Root;BOD'
+      StringTag='transaksi'
+    >
+    , object:rmn::MenuItem<
+      Name='fNewSpesificBatch'
+      Caption='Buat Batch Teller...'
+      OnClick='mnuShowModalWithData'
+      AllowedGroups='Admin;Root'
+      StringTag='transaksi'
+    >
+    , object:rmn::MenuItem<
+      Name='fViewBatchDetail'
+      Caption='&Lihat Detil Batch...'
+      OnClick='mnuShowModalWithData'
+      AllowedGroups='Admin;Root;Teller;BO;BOD'
+      StringTag='transaksi'
+      NumberTag=1
+    >
+    , object:rmn::MenuItem<
+      Caption='-'
+      AllowedGroups='Admin;Root;Teller;BO;BOD'
+    >
+    , object:rmn::MenuItem<
+      Name='mnuCetakIsiBatch'
+      Caption='&Cetak Transaksi Isi Batch'
+      OnClick='mnuCetakIsiBatchClick'
+      AllowedGroups='Admin;Root;Teller;BO;BOD'
+    >
+    , object:rmn::MenuItem<
+      Caption='-'
+      AllowedGroups='Admin;Root;BOD'
+    >
+    , object:rmn::MenuItem<
+      Name='mnuBukaBatch'
+      Caption='Buka Kembali Batch'
+      OnClick='mnuBukaBatchClick'
+      AllowedGroups='Admin;Root'
+    >
+    , object:rmn::MenuItem<
+      Name='mnuTutupBatch'
+      Caption='&Tutup Batch'
+      OnClick='mnuTutupBatchClick'
+      AllowedGroups='Root;Admin;BOD'
+    >
+  }
+  MenuType=mtPopupMenu
+  DenyThenAllow=true
+>

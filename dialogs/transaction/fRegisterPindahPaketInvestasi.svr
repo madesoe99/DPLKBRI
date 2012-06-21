@@ -1,0 +1,121 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipRegisterCIF'
+      PClassName='RegisterPindahPaketInvestasi'
+      LoadedFieldList='no_referensi;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;keterangan;user_id;terminal_id;registercif_id;LRekeningDPLK.no_rekening;LRekeningDPLK.no_rekening;LRekeningDPLK.keterangan'
+      StoredFieldList='no_referensi;LNasabahDPLK;keterangan;user_id;terminal_id;LRekeningDPLK'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='cbKombinasiPaket'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='mode'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLK'
+          ClassTypeName='NasabahDPLK'
+          FieldNames='no_peserta;no_peserta;nama_lengkap'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LRekeningDPLK'
+          ClassTypeName='RekInvDPLK'
+          FieldNames='no_rekening;no_rekening;keterangan'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+      AfterApplyRow='uipRegisterCIFApplyRow'
+    >, object:rpclass::TPClassUIDef<
+      Name='uipMaster'
+      PClassName='RekInvDPLK'
+      LoadedFieldList='no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;no_rekening;keterangan'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLK'
+          ClassTypeName='NasabahDPLK'
+          FieldNames='no_peserta;nama_lengkap'
+        >
+      }
+      Mode=imSingleRow
+    >, object:rpclass::TPClassUIDef<
+      Name='uipParameter'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='TanggalPakai'
+          DataTypeName='varchar'
+          DataLength=10
+        >
+      }
+      Mode=imSingleRow
+    >, object:rpclass::TPClassUIDef<
+      Name='uipRekeningDPLK'
+      MasterUIName='uipMaster'
+      ListName='Ls_RekeningDPLK'
+      LoadedFieldList='LPaketInvestasi.kode_paket_investasi;LPaketInvestasi.kode_paket_investasi;LPaketInvestasi.nama_paket_investasi;pct_alokasi'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LPaketInvestasi'
+          ClassTypeName='PaketInvestasi'
+          FieldNames='kode_paket_investasi;kode_paket_investasi;nama_paket_investasi'
+        >
+      }
+    >, object:rpclass::TPClassUIDef<
+      Name='uipRekDPLK_New'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='LPaketInvestasi.kode_paket_investasi'
+          DataTypeName='VARCHAR'
+          DataLength=2
+        >, object:rpclass::TCustomLoadedField<
+          Name='LPaketInvestasi.kode_paket_investasi'
+          DataTypeName='VARCHAR'
+          DataLength=2
+        >, object:rpclass::TCustomLoadedField<
+          Name='LPaketInvestasi.nama_paket_investasi'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >, object:rpclass::TCustomLoadedField<
+          Name='pct_alokasi'
+          DataTypeName='double'
+          DataLength=20
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LPaketInvestasi'
+          ClassTypeName='PaketInvestasi'
+          FieldNames='kode_paket_investasi;kode_paket_investasi;nama_paket_investasi'
+        >
+      }
+      Mode=imMultiRow
+    >, object:rpclass::TPClassUIDef<
+      Name='uipTmpPaket'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='kode_pi'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='nama_pi'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+      }
+      Mode=imSingleRow
+    >
+  }
+  OnBeginSetData='FormBeginSetData'
+  OnEndSetData='FormEndSetData'
+>

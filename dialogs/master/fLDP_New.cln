@@ -1,0 +1,166 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['DualSplit']
+  Caption='Penambahan Lembaga Dana Pensiun'
+  Left=50
+  Top=50
+  Width=380
+  Height=280
+  OnFormShow='FormShow'
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipLDP'
+      ClassTypeName='LDP'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='kode_dp'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='nama_dp'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='alamat_dp'
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='jenis_dp'
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['A=DPPK'#13#10,
+            'B=DPLK'#13#10,
+            'C=DPK'#13#10]
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          ReadOnlyControl=true
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='last_update'
+          ReadOnlyControl=true
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >
+      }
+      Name='pData'
+      Width=240
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipLDP']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='kode_dp'
+          Top=20
+          Left=20
+          Color=0
+          ControlCaption='Kode DP'
+          CharCase=ecUpperCase
+        >
+        , *object:rtf::DBEdit<
+          Name='nama_dp'
+          Top=48
+          Left=20
+          Color=0
+          ControlCaption='Nama DP'
+        >
+        , *object:rtf::DBEdit<
+          Name='alamat_dp'
+          Top=76
+          Left=20
+          Color=0
+          ControlCaption='Alamat DP'
+        >
+        , *object:rtf::DBComboBox<
+          Name='jenis_dp'
+          Top=104
+          Left=20
+          Color=0
+          ControlCaption='Jenis DP'
+        >
+        , *object:rtf::DBEdit<
+          Name='user_id'
+          Top=132
+          Left=20
+          Color=-2147483624
+          ControlCaption='User ID'
+          ReadOnly=true
+        >
+        , *object:rtf::DBDateEdit<
+          Name='last_update'
+          Top=160
+          Left=20
+          Color=-2147483624
+          ControlCaption='Last Update'
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          Color=0
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          DefaultAction=daProcessAllUI
+          ExitAction=eaQuitOK
+        >
+        , object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=240
+      Height=96
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['pData']
+      InversedAlign=true
+    >
+  }
+>

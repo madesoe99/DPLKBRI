@@ -1,0 +1,94 @@
+import sys, os
+
+# GLOBAL_SETTINGS
+default_passwd = ''
+
+def DAFScriptMain(config, parameter, returnpacket):
+    # config: ISysConfig object
+    # parameter: TPClassUIDataPacket
+    # returnpacket: TPClassUIDataPacket (undefined structure)
+    
+    IsErr = 0
+    ErrMsg = ''
+    
+    try:
+        sec = config.SecurityContext
+        if not sec.ResetData():
+            raise 'userlib', 'error reseting data'
+        
+        #~ branch location validation
+        qtext = 'select branch_code, BranchName from BranchLocation'
+        q = config.CreateSQL(qtext)
+        q.Active = 1
+        
+        ds = q.RawResult
+        while not ds.Eof:
+            branch_code = ds.branch_code; BranchName = ds.BranchName        
+            sec.AddDepartment(branch_code, BranchName)
+            ds.Next()
+        
+        homeroot = '%s\\' % (config.GetGlobalSetting('USERHOMEDIR_ROOT'))
+        
+        #~ user app validation
+        qtext = '\
+            select user_id, UserName, description, branch_code \
+            from UserApp '
+            
+        q = config.CreateSQL(qtext)
+        q.Active = 1
+        
+        ds = q.RawResult
+        while not ds.Eof:
+            userid = ds.user_id
+            sec.AddUser(userid, ds.UserName, str(ds.description),
+                ds.branch_code, default_passwd, default_passwd)
+            
+            userdir = homeroot + userid
+            if not os.access(userdir, os.F_OK): 
+                os.makedirs(userdir)
+            ds.Next()
+                
+        #~ role validation
+        qtext = '\
+            select group_id, GroupName, description \
+            from UserGroup'
+            
+        q = config.CreateSQL(qtext)
+        q.Active = 1
+        
+        config.SendDebugMsg('masuk groups...')
+
+        ds = q.RawResult
+        while not ds.Eof:
+            sec.AddGroup(ds.group_id, ds.GroupName, ds.description)
+
+            config.SendDebugMsg('lopping...')
+
+            ds.Next()
+        
+        config.SendDebugMsg('After Groups...')
+
+        #~ user role validation
+        qtext = '\
+            select user_id, group_id \
+            from UserGroupApp \
+            where user_id in (\
+                select user_id \
+                from UserApp)'
+            
+        q = config.CreateSQL(qtext)
+        q.Active = 1
+        
+        ds = q.RawResult
+        while not ds.Eof:
+            sec.IncludeUserInGroup(ds.user_id, ds.group_id)
+            ds.Next()
+
+        config.SendDebugMsg('After Users-Groups...')
+
+    except:
+        IsErr = 1; ErrMsg = str(sys.exc_info()[1])
+    
+    returnpacket.CreateValues(['IsErr', IsErr], ['ErrMessage', ErrMsg])
+    
+    return 1

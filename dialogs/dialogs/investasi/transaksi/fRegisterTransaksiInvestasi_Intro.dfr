@@ -1,0 +1,148 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['pData']
+  Caption='Register Transaksi Investasi'
+  Left=50
+  Top=50
+  Width=400
+  Height=170
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData='FormEndProcessData'
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipNoData'
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::LinkUIElmtSetting<
+          Name='LInvestasi'
+          ClassTypeName='Investasi'
+          DisplayFields='id_investasi;no_bilyet'
+          Restrictions=''
+          OQLText=['select from Investasi'#13#10,
+            '['#13#10,
+            '  status = ''T'''#13#10,
+            ']'#13#10,
+            '('#13#10,
+            '  no_bilyet,'#13#10,
+            '  status,'#13#10,
+            '  LPihakKetiga.nama_pihak_ketiga as nama_pihak_ketiga,'#13#10,
+            '  LRincianPaketInvestasi.LPaketInvestasi.nama_paket_investasi as nama_paket_investasi,'#13#10,
+            '  LRincianPaketInvestasi.LJenisInvestasi.nama_jns_investasi as nama_jns_investasi,'#13#10,
+            '  akum_nominal,'#13#10,
+            '  akum_piutangLR,'#13#10,
+            '  akum_LR,'#13#10,
+            '  tgl_buka,'#13#10,
+            '  tgl_tutup,'#13#10,
+            '  tgl_otorisasi,'#13#10,
+            '  user_id,'#13#10,
+            '  user_id_auth,'#13#10,
+            '  terminal_id,'#13#10,
+            '  terminal_id_auth,'#13#10,
+            '  id_investasi as ID,'#13#10,
+            '  self'#13#10,
+            ') then order by no_bilyet;']
+          LookupOption=loCustomOQL
+        >
+        , object:rtf::LinkUIElmtSetting<
+          Name='LJnsTransInvestasi'
+          ClassTypeName='JnsTransInvestasi'
+          DisplayFields='kode_jenis_trinvestasi;deskripsi'
+          Restrictions=''
+          OQLText=['select from JnsTransInvestasi'#13#10,
+            '('#13#10,
+            '  kode_jenis_trinvestasi,'#13#10,
+            '  deskripsi,'#13#10,
+            '  user_id,'#13#10,
+            '  last_update,'#13#10,
+            '  self'#13#10,
+            ') then order by kode_jenis_trinvestasi;']
+          LookupOption=loCustomOQL
+        >
+      }
+      Name='pData'
+      Width=400
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipNoData']
+      Controls={
+        *object:rtf::DBLookupEdit<
+          Name='LInvestasi'
+          ControlCaption='investasi'
+          LookupField='LInvestasi.no_bilyet'
+          DisplayLookupField=true
+        >
+        , *object:rtf::DBLookupEdit<
+          Name='LJnsTransInvestasi'
+          ControlCaption='jenis transaksi investasi'
+          LookupField='LJnsTransInvestasi.deskripsi'
+          DisplayLookupField=true
+          DirectInput=true
+          AlternateKeyValueSrc='LJnsTransInvestasi.kode_jenis_trinvestasi'
+          AlternateKeyName='kode_jenis_trinvestasi'
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Color=0
+          ControlCaption=''
+          Caption='&OK'
+          Default=true
+          OnClick='btnOKClick'
+        >
+        , object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['pData']
+      InversedAlign=true
+    >
+  }
+>

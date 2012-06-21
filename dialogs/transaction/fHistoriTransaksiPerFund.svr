@@ -1,0 +1,54 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipRekeningDPLK'
+      PClassName='RekeningDPLK'
+      LoadedFieldList='nomor_rekening'
+      Mode=imSingleRow
+    >, object:rpclass::TPClassUIDef<
+      Name='uipRekInvDPLK'
+      MasterUIName='uipRekeningDPLK'
+      LinkName='LRekInvDPLK'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='tanggal_filter'
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='tanggal_filter_akhir'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+      }
+    >, object:rpclass::TPClassUIDef<
+      Name='uipNasabahDPLK'
+      MasterUIName='uipRekInvDPLK'
+      LinkName='LNasabahDPLK'
+      LoadedFieldList='no_peserta;nama_lengkap;tempat_lahir;tanggal_lahir;LDaerahAsal.kode_propinsi;LDaerahAsal.kode_propinsi;LDaerahAsal.nama_propinsi;LKepemilikan.kode_pemilikan;LKepemilikan.kode_pemilikan;LKepemilikan.keterangan;LJenisUsaha.kode_jenis_usaha;LJenisUsaha.kode_jenis_usaha;LJenisUsaha.nama_jenis_usaha'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LDaerahAsal'
+          ClassTypeName='DaerahAsal'
+          FieldNames='kode_propinsi;kode_propinsi;nama_propinsi'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LKepemilikan'
+          ClassTypeName='Kepemilikan'
+          FieldNames='kode_pemilikan;kode_pemilikan;keterangan'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LJenisUsaha'
+          ClassTypeName='JenisUsaha'
+          FieldNames='kode_jenis_usaha;kode_jenis_usaha;nama_jenis_usaha'
+        >
+      }
+    >
+  }
+  OnEndSetData='FormEndSetData'
+  OnSetDataEx='OnSetDataEx'
+>

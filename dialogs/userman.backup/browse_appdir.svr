@@ -1,0 +1,64 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='active_directory'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='actual_server_path'
+          DataTypeName='VARCHAR'
+          DataLength=255
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='display_path'
+          DataTypeName='VARCHAR'
+          DataLength=255
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='path_type'
+          DataTypeName='INTEGER'
+          DataLength=20
+        >
+      }
+      Mode=imSingleRow
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='list_class'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='fd_name'
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='fd_size'
+          DataTypeName='INTEGER'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='fd_type'
+          DataTypeName='INTEGER'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='fd_type_char'
+          DataTypeName='VARCHAR'
+          DataLength=40
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='fd_mdate'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+      }
+      Mode=imMultiRow
+    >
+  }
+  OnGeneralSetData='FormGeneralSetData'
+>

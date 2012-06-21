@@ -1,0 +1,38 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipRegisterUbahAlamat'
+      PClassName='RegisterUbahAlamat'
+      LoadedFieldList='no_referensi;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_surat_jalan;alamat_surat_kelurahan;alamat_surat_kecamatan;alamat_surat_rtrw;alamat_surat_kota;alamat_surat_propinsi;alamat_surat_kode_pos;alamat_kantor_jalan;alamat_kantor_kode_pos;alamat_kantor_kelurahan;alamat_kantor_kecamatan;alamat_kantor_kota;alamat_kantor_propinsi;alamat_kantor_telepon;kirim_statemen;keterangan;user_id;tanggal_register;terminal_id;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap'
+      StoredFieldList='no_referensi;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_surat_jalan;alamat_surat_kelurahan;alamat_surat_kecamatan;alamat_surat_rtrw;alamat_surat_kota;alamat_surat_propinsi;alamat_surat_kode_pos;alamat_kantor_jalan;alamat_kantor_kode_pos;alamat_kantor_kelurahan;alamat_kantor_kecamatan;alamat_kantor_kota;alamat_kantor_propinsi;alamat_kantor_telepon;kirim_statemen;keterangan;user_id;tanggal_register;terminal_id;LNasabahDPLK'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='no_peserta'
+          DataTypeName='varchar'
+          DataLength=11
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='nama_lengkap'
+          DataTypeName='varchar'
+          DataLength=30
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLK'
+          ClassTypeName='NasabahDPLK'
+          FieldNames='no_peserta;no_peserta;nama_lengkap'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+  }
+>

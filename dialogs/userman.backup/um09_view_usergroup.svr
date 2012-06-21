@@ -1,0 +1,30 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='UserGroup'
+      PClassName='UserGroup'
+      LoadedFieldList='group_id;GroupName;Description'
+      Mode=imSingleRow
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='Ls_UserGroupApp'
+      MasterUIName='UserGroup'
+      ListName='Ls_UserGroupApp'
+      LoadedFieldList='LUser.user_id;LUser.user_id;LUser.UserName'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LUser'
+          ClassTypeName='UserApp'
+          FieldNames='user_id;user_id;UserName'
+        >
+      }
+    >
+  }
+>

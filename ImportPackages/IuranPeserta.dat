@@ -1,0 +1,53 @@
+PackageDef()
+<s20,Name='IuranPeserta' 
+s20,Description='Impor massal Iuran Peserta' 
+s20,Mode='NORMAL' 
+s20,LastModifiedUser='root' 
+d,LastModifiedTime='12/29/1899 00:00:00'
+>
+,
+SourceDef()
+<s20,Description='definisi template source file yang akan diimpor' 
+s20,Type='MSEXCEL' 
+i,FirstDataRow=11
+s20,SheetName='Sheet1' 
+i,ControlColumn=1
+>
+,
+SourceFieldDefs()
+<s20,Name='IDTransactionBatch' 
+s20,Type='STRING' 
+i,Length=0
+i,Index=1
+>
+<'Keterangan'  'STRING'  0 6>
+<'KodePaketInvestasi'  'STRING'  0 3>
+<'MutasiIuranPemberiKerja'  'FLOAT'  0 4>
+<'MutasiIuranPeserta'  'FLOAT'  0 5>
+<'NoPeserta'  'STRING'  0 2>
+<'IsPindahBuku'  'STRING'  0 7>
+<'RekeningPindahBuku'  'STRING'  0 8>
+<'TipeRekeningPindahBuku'  'STRING'  0 9>
+<'ReferensiCoreBanking'  'STRING'  0 10>,
+TransformationDef()
+<s20,Description='Template destination file yang akan diimpor' 
+s20,TargetClassName='IuranPeserta' 
+s20,AfterApplyRowModule='importmassal.Transaksi' 
+s20,AfterApplyRowFunctionName='ProcessingImport' 
+>
+,
+TransItemDefs()
+<s20,Name='no_peserta' 
+s20,LookupClass='RekeningDPLK' 
+s20,LookupField='no_peserta' 
+s20,SourceFieldName='NoPeserta' 
+>
+<'ID_TransactionBatch'  'TransactionBatch'  'ID_TransactionBatch'  'IDTransactionBatch' >
+<'kode_paket_investasi'  'PaketInvestasi'  'kode_paket_investasi'  'KodePaketInvestasi' >
+<'mutasi_iuran_pk'  ''  ''  'MutasiIuranPemberiKerja' >
+<'mutasi_iuran_pst'  ''  ''  'MutasiIuranPeserta' >
+<'isPindahBuku'  ''  ''  'IsPindahBuku' >
+<'Rekening_Pindah_Buku'  ''  ''  'RekeningPindahBuku' >
+<'Tipe_Rekening_Pindah_Buku'  ''  ''  'TipeRekeningPindahBuku' >
+<'Ref_CoreBanking'  ''  ''  'ReferensiCoreBanking' >
+<'keterangan'  ''  ''  'Keterangan' >..

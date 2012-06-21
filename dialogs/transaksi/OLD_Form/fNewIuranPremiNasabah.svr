@@ -1,0 +1,165 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rpclass::TPClassUIDefList<
+  UIDefs={object:rpclass::TPClassUIDef<
+      Name='uipTransaksi'
+      PClassName='IuranPeserta'
+      LoadedFieldList='LTransactionBatch.ID_TransactionBatch;LTransactionBatch.ID_TransactionBatch;LTransactionBatch.no_batch;tgl_transaksi;keterangan;titipan_premi;catatan_bayar_iuran;isPindahBuku;Rekening_Pindah_Buku;Tipe_Rekening_Pindah_Buku'
+      StoredFieldList='LTransactionBatch;tgl_transaksi;keterangan;titipan_premi;catatan_bayar_iuran;isPindahBuku;Rekening_Pindah_Buku;Tipe_Rekening_Pindah_Buku'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='HiddenIDIuranPeserta'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='HiddenIDTitipanPremi'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='IuranPeserta'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='TB_BranchCode'
+          DataTypeName='varchar'
+          DataLength=5
+        >, object:rpclass::TCustomLoadedField<
+          Name='TB_Premi.ID_TransactionBatch'
+          DataTypeName='INTEGER'
+        >, object:rpclass::TCustomLoadedField<
+          Name='TB_Premi.ID_TransactionBatch'
+          DataTypeName='INTEGER'
+        >, object:rpclass::TCustomLoadedField<
+          Name='TB_Premi.no_batch'
+          DataTypeName='VARCHAR'
+          DataLength=32
+        >, object:rpclass::TCustomLoadedField<
+          Name='TB_Premi.tgl_used'
+          DataTypeName='TIMESTAMP'
+        >, object:rpclass::TCustomLoadedField<
+          Name='TB_Premi.batch_type'
+          DataTypeName='VARCHAR'
+          DataLength=1
+        >, object:rpclass::TCustomLoadedField<
+          Name='TB_Premi.branch_code'
+          DataTypeName='VARCHAR'
+          DataLength=5
+        >, object:rpclass::TCustomLoadedField<
+          Name='IuranPemberiKerja'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='IuranTambahan'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='isOnlyTitipanPremi'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='NamaPemilikRekening'
+          DataTypeName='varchar'
+          DataLength=50
+        >, object:rpclass::TCustomLoadedField<
+          Name='IDNumber'
+          DataTypeName='varchar'
+          DataLength=30
+        >, object:rpclass::TCustomLoadedField<
+          Name='BranchCode'
+          DataTypeName='varchar'
+          DataLength=5
+        >, object:rpclass::TCustomLoadedField<
+          Name='CurrencyCode'
+          DataTypeName='varchar'
+          DataLength=20
+        >}CustomLoadedLinks={object:rpclass::TCustomLoadedLink<
+          Name='LTransactionBatch'
+          ClassTypeName='TransactionBatch'
+          FieldNames='ID_TransactionBatch;ID_TransactionBatch;no_batch'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='TB_Premi'
+          ClassTypeName='TransactionBatch'
+          FieldNames='ID_TransactionBatch;ID_TransactionBatch;no_batch;tgl_used;batch_type;branch_code'
+        >}Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >, object:rpclass::TPClassUIDef<
+      Name='uipUserInfo'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='BranchCode'
+          DataTypeName='varchar'
+          DataLength=5
+        >, object:rpclass::TCustomLoadedField<
+          Name='UserIDOwner'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='isTeller'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='TanggalPakai'
+          DataTypeName='varchar'
+          DataLength=10
+        >}Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >, object:rpclass::TPClassUIDef<
+      Name='uipNasabah'
+      PClassName='NasabahDPLK'
+      LoadedFieldList='no_peserta;nama_lengkap;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='IuranPk'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='IuranPeserta'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='isWasiatUmmat'
+          DataTypeName='varchar'
+          DataLength=1
+        >, object:rpclass::TCustomLoadedField<
+          Name='KolektibilitasPremi'
+          DataTypeName='varchar'
+          DataLength=1
+        >, object:rpclass::TCustomLoadedField<
+          Name='KewajibanWasiatUmmat'
+          DataTypeName='double'
+          DataLength=20
+        >}Mode=imSingleRow
+    >, object:rpclass::TPClassUIDef<
+      Name='uipRekeningWU'
+      PClassName='RekeningWasiatUmmat'
+      LoadedFieldList='no_polis;tgl_akseptasi;tgl_berakhir;besar_premi'
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >, object:rpclass::TPClassUIDef<
+      Name='uipBatchDefined'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='isBatchPremiExist'
+          DataTypeName='integer'
+          DataLength=20
+        >}Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >, object:rpclass::TPClassUIDef<
+      Name='uipParameter'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='PRESISI_ANGKA_FLOAT'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='FileSlipIuran'
+          DataTypeName='varchar'
+          DataLength=100
+        >, object:rpclass::TCustomLoadedField<
+          Name='FileSlipPremi'
+          DataTypeName='varchar'
+          DataLength=100
+        >}Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >}OnGeneralProcessData='FormGeneralProcessData'
+  OnEndSetData='FormEndSetData'
+>

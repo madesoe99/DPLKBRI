@@ -1,0 +1,15 @@
+Langkah perbaikan tanggal akseptasi wasiat ummat
+
+1. Buka PythonWin 2.3.x
+2. Jika interactive window di PythonWin belum muncul, aktifkan melalui menu View > Interactive Window.
+3. Di interactive window, ketik "import dafdb".
+   Jika berhasil, akan tampak seperti ini:
+	>>> import dafdb
+	>>> 
+4. Buka file "perbaikan tanggal akseptasi wasiat ummat v23.py" melalui menu File > Open...
+5. Jalankan skrip melalui menu File > Run...
+6. Tunggu hingga skrip selesai berjalan. Perhatikan status bar di bagian bawah PythonWin.
+   Jika berhasil, akan muncul pesan seperti:
+   "Script 'perbaikan tanggal akseptasi wasiat ummat v23.py' returned exit code 0
+   Jika ada pesan error, lihat rincian pesan error tersebut di interactive window.
+7. Lihat pesan-pesan di interactive window.

@@ -1,0 +1,451 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['MultiSplit']
+  Caption='Update Reksadana'
+  Left=50
+  Top=50
+  Width=409
+  Height=393
+  OnFormShow='FormShow'
+  UIParts={object:rtf::PClassUI<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='IsCommited'
+          Hidden=true
+          DataTypeName='integer'
+          DataLength=1
+        >, object:rtf::FieldUIElmtSetting<
+          Name='Mode'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='ModeOto'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=20
+        >}Name='uipReksadana'
+      ClassTypeName='Reksadana'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      OnSetData='uipReksadanaSetData'
+    >, object:rtf::PClassUI<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='nowDate'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=10
+        >, object:rtf::FieldUIElmtSetting<
+          Name='inv'
+          DataTypeName='varchar'
+          DataLength=1
+        >, object:rtf::FieldUIElmtSetting<
+          Name='strInv'
+          DataTypeName='varchar'
+          DataLength=20
+        >}Name='uipParameter'
+      CreateInstanceOnNew=true
+      OnSetData='uipParameterSetData'
+    >, object:rtf::PClassUI<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='id_transaksiinvestasi'
+          AccessOption=aoReadOnly
+          DataTypeName='INTEGER'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='id_investasi'
+          AccessOption=aoReadOnly
+          DataTypeName='INTEGER'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tgl_transaksi'
+          AccessOption=aoReadOnly
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='mutasi_debet'
+          AccessOption=aoReadOnly
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='mutasi_kredit'
+          AccessOption=aoReadOnly
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='terminal_id'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=15
+        >, object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >, object:rtf::FieldUIElmtSetting<
+          Name='ID_TransactionBatch'
+          AccessOption=aoReadOnly
+          DataTypeName='INTEGER'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='id_transaksiinduk'
+          AccessOption=aoReadOnly
+          DataTypeName='INTEGER'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='isCommitted'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['F=false'#13#10,
+            'T=true'#13#10]
+        >}Name='uipTransLRInvestasi'
+      ClassTypeName='TransaksiInvestasi'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      PostLinkValues=true
+      OnSetData='uipTransLRSetData'
+    >, object:rtf::PClassUI<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='id_investasi'
+          AccessOption=aoReadOnly
+          DataTypeName='INTEGER'
+          DataLength=0
+        >}Name='uipL'
+      ClassTypeName='Investasi'
+      DataBinding=bmLink
+      Master=$UIPARTS['uipTransLRInvestasi']
+      LinkName='LInvestasi'
+    >}Containers={object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='nama_reksadana'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LPihakKetiga'
+          RequiredOption=roAlwaysRequired
+          AccessOption=aoReadOnly
+          ClassTypeName='PihakKetiga'
+          KeyFields={object:rtf::FieldUIElmtSetting<
+              Name='LPihakKetiga.kode_pihak_ketiga'
+              DataTypeName='VARCHAR'
+              DataLength=8
+              UsedAsKey=true
+              KeyOrDisplayName='kode_pihak_ketiga'
+              FinalDisplayFieldName='kode_pihak_ketiga'
+            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+              Name='LPihakKetiga.kode_pihak_ketiga'
+              DataTypeName='VARCHAR'
+              DataLength=8
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_pihak_ketiga'
+              FinalDisplayFieldName='kode_pihak_ketiga'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LPihakKetiga.nama_pihak_ketiga'
+              DataTypeName='VARCHAR'
+              DataLength=30
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_pihak_ketiga'
+              FinalDisplayFieldName='nama_pihak_ketiga'
+            >}Restrictions=''
+          OQLText=['select from PihakKetiga'#13#10,
+            '('#13#10,
+            '  kode_pihak_ketiga,'#13#10,
+            '  nama_pihak_ketiga,'#13#10,
+            '  alamat_pihak_ketiga,'#13#10,
+            '  self_investment,'#13#10,
+            '  last_update,'#13#10,
+            '  user_id,'#13#10,
+            '  self'#13#10,
+            ') then order by kode_pihak_ketiga;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LPihakKetiga'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tgl_buka'
+          AccessOption=aoReadOnly
+          ReadOnlyControl=true
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='id_investasi'
+          AccessOption=aoReadOnly
+          Hidden=true
+          DataTypeName='INTEGER'
+          DataLength=0
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LTransactionBatch'
+          ControlCaption='Batch Transaksi'
+          ClassTypeName='TransactionBatch'
+          KeyFields={object:rtf::FieldUIElmtSetting<
+              Name='LTransactionBatch.ID_TransactionBatch'
+              DataTypeName='INTEGER'
+              DataLength=0
+              UsedAsKey=true
+              KeyOrDisplayName='ID_TransactionBatch'
+              FinalDisplayFieldName='ID_TransactionBatch'
+            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+              Name='LTransactionBatch.ID_TransactionBatch'
+              DataTypeName='INTEGER'
+              DataLength=0
+              UsedAsDisplay=true
+              KeyOrDisplayName='ID_TransactionBatch'
+              FinalDisplayFieldName='ID_TransactionBatch'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LTransactionBatch.no_batch'
+              DataTypeName='VARCHAR'
+              DataLength=32
+              UsedAsDisplay=true
+              KeyOrDisplayName='no_batch'
+              FinalDisplayFieldName='no_batch'
+            >}Restrictions='uipParameter.nowDate|NowDate'
+          OQLText=['select from TransactionBatch'#13#10,
+            '['#13#10,
+            '  batch_status = ''O'' '#13#10,
+            '  and batch_type = ''I'' '#13#10,
+            '  and batch_sub_type = ''M'''#13#10,
+            '  and account_link_type = ''S'''#13#10,
+            '  and tgl_used = :NowDate'#13#10,
+            ']'#13#10,
+            '('#13#10,
+            '  no_batch,'#13#10,
+            '  tgl_create,'#13#10,
+            '  account_link_type$ as account_link_type,'#13#10,
+            '  user_id_owner,'#13#10,
+            '  ID_TransactionBatch,'#13#10,
+            '  self'#13#10,
+            ') then order by no_batch;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LTransactionBatch'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='Biaya'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='Keterangan'
+          DataTypeName='varchar'
+          DataLength=100
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LIndukTransaksiInvestasi'
+          ClassTypeName='TransaksiInvestasi'
+          KeyFields={object:rtf::FieldUIElmtSetting<
+              Name='LIndukTransaksiInvestasi.id_transaksiinvestasi'
+              DataTypeName='INTEGER'
+              DataLength=0
+              UsedAsKey=true
+              KeyOrDisplayName='id_transaksiinvestasi'
+              FinalDisplayFieldName='id_transaksiinvestasi'
+            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+              Name='LIndukTransaksiInvestasi.nama_investasi'
+              DataTypeName='VARCHAR'
+              DataLength=50
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_investasi'
+              FinalDisplayFieldName='nama_investasi'
+            >}Restrictions=''
+          FieldBaseName='LIndukTransaksiInvestasi'
+        >}Name='pData'
+      Width=385
+      Height=235
+      Bordered=true
+      UIPart=$UIPARTS['uipReksadana']
+      Controls={*object:rtf::DBEdit<
+          Name='nama_reksadana'
+          Top=20
+          Left=20
+          Color=-2147483624
+          ControlCaption='Nama Reksadana'
+        >, *object:rtf::DBLookupEdit<
+          Name='LPihakKetiga'
+          Top=48
+          Left=20
+          Enabled=false
+          Color=0
+          ControlCaption='Manajer Investasi'
+          LayoutOrder=2
+          LookupField='LPihakKetiga.nama_pihak_ketiga'
+          DisplayLookupField=true
+        >, *object:rtf::DBDateEdit<
+          Name='tgl_buka'
+          Top=104
+          Left=20
+          Color=-2147483624
+          ControlCaption='Tgl Buka'
+          LayoutOrder=4
+        >, *object:rtf::DBLookupEdit<
+          Name='LTransactionBatch'
+          Top=132
+          Left=20
+          ControlCaption='Batch Transaksi'
+          LayoutOrder=8
+          LookupField='LTransactionBatch.no_batch'
+          DisplayLookupField=true
+        >, *object:rtf::DBEdit<
+          Name='Biaya'
+          Top=160
+          Left=20
+          Color=0
+          ControlCaption='Biaya'
+          LayoutOrder=9
+        >, *object:rtf::DBEdit<
+          Name='Keterangan'
+          Top=188
+          Left=20
+          Color=0
+          ControlCaption='Keterangan'
+          LayoutOrder=10
+        >, *object:rtf::DBLookupEdit<
+          Name='LIndukTransaksiInvestasi'
+          Top=76
+          Left=20
+          ControlCaption='Transaksi Investasi'
+          LayoutOrder=3
+          LookupField='LIndukTransaksiInvestasi.nama_investasi'
+          DisplayLookupField=true
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=400
+      Height=40
+      Controls={object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=20
+          Color=0
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          OnClick='btnOKClick'
+        >, object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=99
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          OnClick='btnCancelClick'
+        >, object:rtf::Button<
+          Name='btnClose'
+          Layout=clNextSide
+          Top=8
+          Left=178
+          Visible=false
+          Color=0
+          ControlCaption=''
+          Caption='&Tutup'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >}ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='Tgl_penetapan'
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          ReadOnlyControl=true
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='terminal_id'
+          ReadOnlyControl=true
+          DataTypeName='varchar'
+          DataLength=20
+        >}Name='pRegister'
+      Width=393
+      Height=113
+      Bordered=true
+      UIPart=$UIPARTS['uipReksadana']
+      Controls={*object:rtf::DBDateEdit<
+          Name='Tgl_penetapan'
+          Top=20
+          Left=20
+          Color=0
+          ControlCaption='tgl transaksi'
+        >, *object:rtf::DBEdit<
+          Name='user_id'
+          Top=48
+          Left=20
+          Color=-2147483624
+          ControlCaption='user id'
+          ReadOnly=true
+        >, *object:rtf::DBEdit<
+          Name='terminal_id'
+          Top=76
+          Left=20
+          Color=-2147483624
+          ControlCaption='terminal'
+          ReadOnly=true
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::MultiSplit<
+      Name='MultiSplit'
+      Width=409
+      Height=393
+      Side1Containers={$CONTAINERS['pData']
+      }Side2Containers={$CONTAINERS['dualsplit1']
+      }SpaceContainer=$CONTAINERS['pRegister']
+    >, object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=409
+      Height=44
+      Container1=$CONTAINERS['pPrint']
+      Container2=$CONTAINERS['pButton']
+      SplitDirection=sdrSplitLeftRight
+      InversedAlign=true
+    >, object:rtf::Panel<
+      Name='panel1'
+      Width=800
+      Height=40
+      Bordered=true
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      SubContainer=$CONTAINERS['dualsplit1']
+    >, object:rtf::Panel<
+      Name='pPrint'
+      Width=113
+      Height=40
+      Controls={object:rtf::Button<
+          Name='btnPrint'
+          Layout=clNewLine
+          Top=8
+          Left=20
+          Visible=false
+          Color=0
+          ControlCaption=''
+          Caption='&Cetak'
+          OnClick='btnPrintClick'
+        >}ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >}>

@@ -1,0 +1,664 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['pInfoOtoriasasi']
+  Caption='Otorisasi Pengambilan Manfaat Pensiun'
+  Left=50
+  Top=30
+  Width=700
+  Height=680
+  OnFormShow='FormShow'
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipTransaksi'
+      ClassTypeName='PengambilanManfaat'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+    >
+    , object:rtf::PClassUI<
+      Name='uipNasabah'
+      ClassTypeName='NasabahDPLK'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='terminal_id'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=15
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='tgl_sistem'
+          AccessOption=aoReadOnly
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='user_id_auth'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='terminal_id_auth'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=15
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='tgl_otorisasi'
+          AccessOption=aoReadOnly
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='isCommitted'
+          AccessOption=aoReadOnly
+          Hidden=true
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['F=false'#13#10,
+            'T=true'#13#10]
+        >
+      }
+      Name='pInfoOtoriasasi'
+      Width=700
+      Height=80
+      Bordered=true
+      UIPart=$UIPARTS['uipTransaksi']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='terminal_id'
+          Layout=clNextSide
+          ControlCaption='terminal id        '
+        >
+        , *object:rtf::DBDateEdit<
+          Name='tgl_sistem'
+          Layout=clNextSide
+          ControlCaption='tgl sistem   '
+        >
+        , *object:rtf::DBEdit<
+          Name='terminal_id_auth'
+          Layout=clNextSide
+        >
+        , *object:rtf::DBDateEdit<
+          Name='tgl_otorisasi'
+          Layout=clNextSide
+        >
+      }
+      EqualCaptionWidth=75
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=7
+      RowControlGap=7
+      Caption='Data Otorisasi'
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=500
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='bApprove'
+          Layout=clNewLine
+          Color=0
+          ControlCaption=''
+          Caption='&Setujui'
+          Default=true
+          DefaultAction=daProcessAllAndClear
+          ExitAction=eaQuitOK
+        >
+        , object:rtf::Button<
+          Name='bReject'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Tolak'
+          ExitAction=eaQuitOK
+          OnClick='bRejectClick'
+        >
+        , object:rtf::Button<
+          Name='bCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+        , object:rtf::Button<
+          Name='bSkip'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          LayoutOrder=5
+          Caption='&Lewati'
+        >
+        , object:rtf::Button<
+          Name='bNext'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='Beri&kutnya'
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::MultiSplit<
+      Name='MultiSplit'
+      Width=240
+      Height=100
+      Side1Containers={
+        $CONTAINERS['pInfoOtoriasasi']
+      }
+      Side2Containers={
+        $CONTAINERS['pButton']
+      }
+      SpaceContainer=$CONTAINERS['DualSplit']
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='tgl_transaksi'
+          AccessOption=aoReadOnly
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='no_peserta'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=11
+        >
+        , object:rtf::LinkUIElmtSetting<
+          Name='Ljenis_penerimaan_manfaat'
+          RequiredOption=roAlwaysRequired
+          AccessOption=aoReadOnly
+          ClassTypeName='JenisPenerimaanManfaat'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='Ljenis_penerimaan_manfaat.kode_jns_manfaat'
+              DataTypeName='VARCHAR'
+              DataLength=1
+              UsedAsKey=true
+              KeyOrDisplayName='kode_jns_manfaat'
+              FinalDisplayFieldName='kode_jns_manfaat'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='Ljenis_penerimaan_manfaat.kode_jns_manfaat'
+              DataTypeName='VARCHAR'
+              DataLength=1
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_jns_manfaat'
+              FinalDisplayFieldName='kode_jns_manfaat'
+            >
+            , object:rtf::FieldUIElmtSetting<
+              Name='Ljenis_penerimaan_manfaat.nama_jns_manfaat'
+              DataTypeName='VARCHAR'
+              DataLength=30
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_jns_manfaat'
+              FinalDisplayFieldName='nama_jns_manfaat'
+            >
+          }
+          Restrictions=''
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='ID_Transaksi'
+          AccessOption=aoReadOnly
+          Hidden=true
+          DataTypeName='INTEGER'
+          DataLength=0
+        >
+        , object:rtf::LinkUIElmtSetting<
+          Name='LTransactionBatch'
+          RequiredOption=roAlwaysRequired
+          AccessOption=aoReadOnly
+          ControlCaption='batch transaksi'
+          ClassTypeName='TransactionBatch'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LTransactionBatch.ID_TransactionBatch'
+              DataTypeName='INTEGER'
+              DataLength=0
+              UsedAsKey=true
+              KeyOrDisplayName='ID_TransactionBatch'
+              FinalDisplayFieldName='ID_TransactionBatch'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LTransactionBatch.ID_TransactionBatch'
+              DataTypeName='INTEGER'
+              DataLength=0
+              UsedAsDisplay=true
+              KeyOrDisplayName='ID_TransactionBatch'
+              FinalDisplayFieldName='ID_TransactionBatch'
+            >
+            , object:rtf::FieldUIElmtSetting<
+              Name='LTransactionBatch.no_batch'
+              DataTypeName='VARCHAR'
+              DataLength=32
+              UsedAsDisplay=true
+              KeyOrDisplayName='no_batch'
+              FinalDisplayFieldName='no_batch'
+            >
+            , object:rtf::FieldUIElmtSetting<
+              Name='LTransactionBatch.branch_code'
+              DataTypeName='VARCHAR'
+              DataLength=5
+              UsedAsDisplay=true
+              KeyOrDisplayName='branch_code'
+              FinalDisplayFieldName='branch_code'
+            >
+          }
+          Restrictions=''
+        >
+        , object:rtf::LinkUIElmtSetting<
+          Name='LAhliWaris'
+          AccessOption=aoReadOnly
+          ControlCaption='ahli waris penerima manfaat'
+          ClassTypeName='AhliWaris'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LAhliWaris.ahliwaris_id'
+              DataTypeName='INTEGER'
+              DataLength=0
+              UsedAsKey=true
+              KeyOrDisplayName='ahliwaris_id'
+              FinalDisplayFieldName='ahliwaris_id'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LAhliWaris.ahliwaris_id'
+              DataTypeName='INTEGER'
+              DataLength=0
+              UsedAsDisplay=true
+              KeyOrDisplayName='ahliwaris_id'
+              FinalDisplayFieldName='ahliwaris_id'
+            >
+            , object:rtf::FieldUIElmtSetting<
+              Name='LAhliWaris.nama_lengkap'
+              DataTypeName='VARCHAR'
+              DataLength=100
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_lengkap'
+              FinalDisplayFieldName='nama_lengkap'
+            >
+          }
+          Restrictions=''
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='nama_anuitas'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='TB_BranchCode'
+          ReadOnlyControl=true
+          ControlCaption='cabang batch transaksi'
+          DataTypeName='varchar'
+          DataLength=5
+        >
+      }
+      Name='pDataTransaksi'
+      Width=350
+      Height=250
+      Bordered=true
+      UIPart=$UIPARTS['uipTransaksi']
+      Controls={
+        *object:rtf::DBDateEdit<
+          Name='tgl_transaksi'
+          LayoutOrder=3
+        >
+        , *object:rtf::DBEdit<
+          Name='keterangan'
+          LayoutOrder=4
+        >
+        , *object:rtf::DBEdit<
+          Name='no_peserta'
+          Color=15128749
+          LayoutOrder=5
+        >
+        , *object:rtf::DBLookupEdit<
+          Name='Ljenis_penerimaan_manfaat'
+          Enabled=false
+          Color=15128749
+          ControlCaption='jenis penerimaan manfaat'
+          LayoutOrder=6
+          FieldName='Ljenis_penerimaan_manfaat.kode_jns_manfaat'
+          DisplayFormat=''
+          LookupField='Ljenis_penerimaan_manfaat.nama_jns_manfaat'
+          DisplayLookupField=true
+          DisplayLookupColor=-2147483624
+          DisplayLookupWidth=125
+        >
+        , *object:rtf::DBLookupEdit<
+          Name='LTransactionBatch'
+          Enabled=false
+          Color=0
+          FieldName='LTransactionBatch.ID_TransactionBatch'
+          DisplayFormat=''
+          LookupField='LTransactionBatch.no_batch'
+          DisplayLookupField=true
+          DisplayLookupColor=-2147483624
+          DisplayLookupWidth=125
+        >
+        , *object:rtf::DBLookupEdit<
+          Name='LAhliWaris'
+          Enabled=false
+          Color=0
+          LayoutOrder=7
+          FieldName='LAhliWaris.ahliwaris_id'
+          DisplayFormat=''
+          LookupField='LAhliWaris.nama_lengkap'
+          DisplayLookupField=true
+          DisplayLookupColor=-2147483624
+          DisplayLookupWidth=125
+        >
+        , *object:rtf::DBEdit<
+          Name='nama_anuitas'
+          LayoutOrder=8
+        >
+        , *object:rtf::DBEdit<
+          Name='TB_BranchCode'
+          LayoutOrder=2
+          ReadOnly=true
+        >
+      }
+      EqualCaptionWidth=140
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Transaksi'
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='saldo_iuran_pst'
+          AccessOption=aoReadOnly
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='saldo_pengembangan'
+          AccessOption=aoReadOnly
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='saldo_peralihan'
+          AccessOption=aoReadOnly
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='saldo_jml_dana'
+          AccessOption=aoReadOnly
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='biaya_pencairan'
+          AccessOption=aoReadOnly
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='biaya_pengelolaan'
+          AccessOption=aoReadOnly
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='biaya_administrasi'
+          AccessOption=aoReadOnly
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='saldo_manfaat'
+          AccessOption=aoReadOnly
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='pajak'
+          AccessOption=aoReadOnly
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='saldo_iuran_pk'
+          AccessOption=aoReadOnly
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='manfaat_stlh_pajak'
+          AccessOption=aoReadOnly
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='manfaat_tunai'
+          AccessOption=aoReadOnly
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='manfaat_anuitas'
+          AccessOption=aoReadOnly
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='jenis_biaya'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['T=Tunai'#13#10,
+            'S=SKN'#13#10,
+            'R=RTGS'#13#10,
+            'P=Pindah Buku'#13#10]
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='biaya_lain'
+          AccessOption=aoReadOnly
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='manfaat_tunai_diterima'
+          AccessOption=aoReadOnly
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >
+      }
+      Name='pDataPerhitungan'
+      Width=240
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipTransaksi']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='saldo_jml_dana'
+          Color=12695295
+        >
+        , *object:rtf::DBEdit<
+          Name='biaya_pencairan'
+          Color=9498256
+        >
+        , *object:rtf::DBEdit<
+          Name='biaya_pengelolaan'
+          Color=9498256
+        >
+        , *object:rtf::DBEdit<
+          Name='biaya_administrasi'
+          Color=9498256
+        >
+        , *object:rtf::DBEdit<
+          Name='saldo_manfaat'
+          Color=12695295
+        >
+        , *object:rtf::DBEdit<
+          Name='saldo_iuran_pk'
+          LayoutOrder=1
+        >
+        , *object:rtf::DBEdit<
+          Name='manfaat_stlh_pajak'
+          Color=12695295
+        >
+        , *object:rtf::DBEdit<
+          Name='manfaat_tunai'
+          Color=15128749
+        >
+        , *object:rtf::DBEdit<
+          Name='manfaat_anuitas'
+          Color=15128749
+        >
+        , *object:rtf::DBComboBox<
+          Name='jenis_biaya'
+          Enabled=false
+          Color=-2147483624
+        >
+        , *object:rtf::DBEdit<
+          Name='manfaat_tunai_diterima'
+          Color=12695295
+        >
+      }
+      EqualCaptionWidth=130
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Perhitungan Transaksi'
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=700
+      Height=100
+      Container1=$CONTAINERS['DualSplitV']
+      Container2=$CONTAINERS['pDataPerhitungan']
+      SplitDirection=sdrSplitLeftRight
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='nama_lengkap'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='alamat_jalan'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=200
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='alamat_rtrw'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=7
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='alamat_kelurahan'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='alamat_kecamatan'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='alamat_kota'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='alamat_kode_pos'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='tanggal_lahir'
+          AccessOption=aoReadOnly
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='tgl_registrasi'
+          AccessOption=aoReadOnly
+          ControlCaption='tanggal registrasi'
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >
+      }
+      Name='pNasabah'
+      Width=350
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipNasabah']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='nama_lengkap'
+          Color=15128749
+        >
+      }
+      EqualCaptionWidth=140
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Nasabah'
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplitV'
+      Width=370
+      Height=100
+      Container1=$CONTAINERS['pDataTransaksi']
+      Container2=$CONTAINERS['pNasabah']
+    >
+  }
+>

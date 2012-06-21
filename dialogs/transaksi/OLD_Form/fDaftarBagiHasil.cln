@@ -1,0 +1,157 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['DualSplit']
+  Caption='Daftar Hasil Penghitungan Bagi Hasil'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=320
+  Height=240
+  OnFormShow='FormShow'
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipFilter'
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Query<
+      Name='qBagiHasil'
+      Width=320
+      Height=159
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      WindowSize=20
+      Columns={
+        object:rtf::QueryColumn<
+          FieldName='BagiHasil.tgl_bagi_hasil'
+          Width=130
+          Caption='Tanggal Bagi Hasil'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='SRRCalcBagiHasil.kode_paket_investasi'
+          Width=80
+          Caption='Paket Investasi'
+          UseCustomColor=true
+          Color=12695295
+        >
+        , object:rtf::QueryColumn<
+          FieldName='BagiHasil.kode_jns_investasi'
+          Width=80
+          Caption='Jenis Investasi'
+          UseCustomColor=true
+          Color=12695295
+        >
+        , object:rtf::QueryColumn<
+          FieldName='BagiHasil.status_posting'
+          Width=80
+          Caption='Status Posting'
+          UseCustomColor=true
+          Color=15128749
+        >
+        , object:rtf::QueryColumn<
+          FieldName='BagiHasil.keuntungan_dibagikan'
+          Width=120
+          Caption='Keuntungan Dibagikan'
+          UseCustomColor=true
+          Color=9498256
+        >
+        , object:rtf::QueryColumn<
+          FieldName='BagiHasil.indeks'
+          Width=100
+          Caption='Ekuivalen Rate'
+          UseCustomColor=true
+          Color=9498256
+        >
+      }
+      EnableColumns=true
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='StatusPosting'
+          ControlCaption='Status Posting'
+          DataTypeName='varchar'
+          DataLength=1
+          EnumeratedValues=['A=Semua status'#13#10,
+            'T=True'#13#10,
+            'F=False'#13#10]
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='AwalTanggal'
+          ControlCaption='Mulai Tanggal Penghitungan'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='AkhirTanggal'
+          ControlCaption='Hingga Tanggal'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+      }
+      Name='pFilter'
+      Width=700
+      Height=80
+      Bordered=true
+      UIPart=$UIPARTS['uipFilter']
+      Controls={
+        *object:rtf::DBComboBox<
+          Name='StatusPosting'
+          Top=10
+          Left=10
+          Color=0
+          ControlCaption='Status Posting'
+        >
+        , *object:rtf::DBDateEdit<
+          Name='AwalTanggal'
+          Top=38
+          Left=10
+          Color=0
+          ControlCaption='Mulai Tanggal Penghitungan'
+        >
+        , *object:rtf::DBDateEdit<
+          Name='AkhirTanggal'
+          Layout=clNextSide
+          Top=38
+          Left=294
+          Color=0
+          ControlCaption='Hingga Tanggal'
+        >
+        , object:rtf::Button<
+          Name='bTampilkan'
+          Layout=clNextSide
+          Top=38
+          Left=502
+          Color=0
+          ControlCaption=''
+          Caption='&Tampilkan'
+          Default=true
+          OnClick='bTampilkanClick'
+        >
+      }
+      EqualCaptionWidth=150
+      ControlLeftMargin=10
+      ControlTopMargin=10
+      DefaultControlHeight=21
+      HorizontalControlGap=7
+      RowControlGap=20
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=320
+      Height=240
+      Container1=$CONTAINERS['pFilter']
+      Container2=$CONTAINERS['qBagiHasil']
+    >
+  }
+>

@@ -1,0 +1,175 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='1'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['split']
+  Caption='Lihat Data Kelompok Pengguna'
+  Left=100
+  Top=100
+  Width=450
+  Height=500
+  UIParts={
+    object:rtf::PClassUI<
+      Name='UserGroup'
+      ClassTypeName='UserGroup'
+      DataBinding=bmMaster
+    >
+    , object:rtf::PClassUI<
+      Name='Ls_UserGroupApp'
+      ClassTypeName='UserGroupApp'
+      DataBinding=bmList
+      Master=$UIPARTS['UserGroup']
+      ListName='Ls_UserGroupApp'
+    >
+  }
+  Containers={
+    object:rtf::DualSplit<
+      Name='split'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['panel_Button']
+      Container2=$CONTAINERS['mp_data']
+      InversedAlign=true
+    >
+    , object:rtf::DualSplit<
+      Name='mp_data'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['data_group']
+      Container2=$CONTAINERS['data_usertogroup']
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='group_id'
+          AccessOption=aoReadOnly
+          ControlCaption='ID Kelompok Pengguna'
+          DataTypeName='VARCHAR'
+          DataLength=8
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='GroupName'
+          AccessOption=aoReadOnly
+          ControlCaption='Nama Kelompok Pengguna'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='Description'
+          AccessOption=aoReadOnly
+          ControlCaption='Keterangan'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+      }
+      Name='data_group'
+      Width=240
+      Height=110
+      Bordered=true
+      UIPart=$UIPARTS['UserGroup']
+      Controls={
+      }
+      EqualCaptionWidth=150
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Grid<
+      Elements={
+        object:rtf::LinkUIElmtSetting<
+          Name='LUser'
+          RequiredOption=roAlwaysRequired
+          AccessOption=aoReadOnly
+          ClassTypeName='UserApp'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LUser.user_id'
+              DataTypeName='VARCHAR'
+              DataLength=20
+              UsedAsKey=true
+              KeyOrDisplayName='user_id'
+              FinalDisplayFieldName='user_id'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LUser.user_id'
+              DataTypeName='VARCHAR'
+              DataLength=20
+              UsedAsDisplay=true
+              KeyOrDisplayName='user_id'
+              FinalDisplayFieldName='user_id'
+            >
+            , object:rtf::FieldUIElmtSetting<
+              Name='LUser.UserName'
+              DataTypeName='VARCHAR'
+              DataLength=30
+              UsedAsDisplay=true
+              KeyOrDisplayName='UserName'
+              FinalDisplayFieldName='UserName'
+            >
+          }
+          Restrictions=''
+        >
+      }
+      Name='data_usertogroup'
+      Width=240
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['Ls_UserGroupApp']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Columns={
+        *object:rtf::GridColumn<
+          Name='LUser.user_id'
+          InputStyle=cisLookup
+          EnumeratedValues=''
+          FieldName='LUser.user_id'
+          DisplayFormat=''
+          TitleCaption='ID Pengguna'
+          ReadOnly=true
+        >
+        , *object:rtf::GridColumn<
+          Name='LUser.UserName'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='LUser.UserName'
+          DisplayFormat=''
+          TitleCaption='Nama Pengguna'
+          ReadOnly=true
+        >
+      }
+    >
+    , object:rtf::Panel<
+      Name='panel_Button'
+      Width=240
+      Height=50
+      Controls={
+        object:rtf::Button<
+          Name='bClose'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Tutup'
+          Default=true
+          Cancel=true
+          ExitAction=eaQuitOK
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+  }
+>

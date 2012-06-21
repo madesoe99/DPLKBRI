@@ -1,0 +1,110 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rpclass::TPClassUIDefList<
+  UIDefs={object:rpclass::TPClassUIDef<
+      Name='uipRedemptionReksadana'
+      PClassName='RedemptReksadana'
+      LoadedFieldList='id_transaksiinvestasi;tgl_transaksi;mutasi_kredit;nilai_redempt;unit_penyertaan;biaya_redempt;no_rekening;user_id;terminal_id;tgl_otorisasi;user_id_auth;terminal_id_auth;tgl_sistem;LReksadana.id_investasi;LReksadana.nama_reksadana;LReksadana.tgl_buka;LReksadana.id_investasi;LReksadana.LPihakKetiga.nama_pihak_ketiga;LReksadana.LRincianPaketInvestasi.LPaketInvestasi.Nama_paket_investasi;LReksadana.LRincianPaketInvestasi.LJenisInvestasi.nama_jns_investasi;LReksadana.akum_nominal;LReksadana.akum_piutangLR;LReksadana.akum_LR;LReksadana.kode_pihak_ketiga;LReksadana.kode_paket_investasi;LReksadana.kode_jns_investasi;LReksadana.unit_penyertaan;LReksadana.NAB;LReksadana.min_inv_awal'
+      StoredFieldList='tgl_transaksi;nilai_redempt;unit_penyertaan;biaya_redempt;no_rekening;tgl_sistem;LReksadana'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='nama_reksadana'
+          DataTypeName='varchar'
+          DataLength=15
+        >, object:rpclass::TCustomLoadedField<
+          Name='LPihakKetiga.kode_pihak_ketiga'
+          DataTypeName='VARCHAR'
+          DataLength=8
+        >, object:rpclass::TCustomLoadedField<
+          Name='LPihakKetiga.kode_pihak_ketiga'
+          DataTypeName='VARCHAR'
+          DataLength=8
+        >, object:rpclass::TCustomLoadedField<
+          Name='LPihakKetiga.nama_pihak_ketiga'
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >, object:rpclass::TCustomLoadedField<
+          Name='LPaketInvestasi.kode_paket_investasi'
+          DataTypeName='VARCHAR'
+          DataLength=2
+        >, object:rpclass::TCustomLoadedField<
+          Name='LPaketInvestasi.kode_paket_investasi'
+          DataTypeName='VARCHAR'
+          DataLength=2
+        >, object:rpclass::TCustomLoadedField<
+          Name='LPaketInvestasi.nama_paket_investasi'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >, object:rpclass::TCustomLoadedField<
+          Name='LMasterGiro.acc_giro'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='LMasterGiro.no_giro'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >, object:rpclass::TCustomLoadedField<
+          Name='LMasterGiro.acc_giro'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='LReksadanaSwitch.id_investasi'
+          DataTypeName='INTEGER'
+        >, object:rpclass::TCustomLoadedField<
+          Name='LReksadanaSwitch.id_investasi'
+          DataTypeName='INTEGER'
+        >, object:rpclass::TCustomLoadedField<
+          Name='LReksadanaSwitch.nama_reksadana'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >, object:rpclass::TCustomLoadedField<
+          Name='mode'
+          DataTypeName='varchar'
+          DataLength=20
+        >}CustomLoadedLinks={object:rpclass::TCustomLoadedLink<
+          Name='LReksadana'
+          ClassTypeName='Reksadana'
+          FieldNames='id_investasi;nama_reksadana;tgl_buka;id_investasi;LPihakKetiga.nama_pihak_ketiga;LRincianPaketInvestasi.LPaketInvestasi.Nama_paket_investasi;LRincianPaketInvestasi.LJenisInvestasi.nama_jns_investasi;akum_nominal;akum_piutangLR;akum_LR;kode_pihak_ketiga;kode_paket_investasi;kode_jns_investasi;unit_penyertaan;NAB;min_inv_awal'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LPihakKetiga'
+          ClassTypeName='PihakKetiga'
+          FieldNames='kode_pihak_ketiga;kode_pihak_ketiga;nama_pihak_ketiga'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LPaketInvestasi'
+          ClassTypeName='PaketInvestasi'
+          FieldNames='kode_paket_investasi;kode_paket_investasi;nama_paket_investasi'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LMasterGiro'
+          ClassTypeName='MasterGiro'
+          FieldNames='acc_giro;no_giro;acc_giro'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LReksadanaSwitch'
+          ClassTypeName='Reksadana'
+          FieldNames='id_investasi;id_investasi;nama_reksadana'
+        >}Mode=imSingleRow
+      CreateInstanceOnNew=true
+      AfterApplyRow='uipRedemptionReksadanaApplyRow'
+    >, object:rpclass::TPClassUIDef<
+      Name='uipReksadana'
+      MasterUIName='uipRedemptionReksadana'
+      LinkName='LReksadana'
+      LoadedFieldList='id_investasi;akum_nominal;NAB;unit_penyertaan'
+      OnSetData='uipReksadanaSetData'
+    >, object:rpclass::TPClassUIDef<
+      Name='uipParameter'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='nowDate'
+          DataTypeName='varchar'
+          DataLength=10
+        >, object:rpclass::TCustomLoadedField<
+          Name='inv'
+          DataTypeName='varchar'
+          DataLength=1
+        >}Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >}OnGeneralSetData='FormGeneralSetData'
+  OnEndProcessData='FormEndProcessData'
+>

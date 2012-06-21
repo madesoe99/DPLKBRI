@@ -1,0 +1,413 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['MultiSplit']
+  Caption='Koreksi Ahli Waris'
+  Left=120
+  Top=75
+  Width=800
+  Height=600
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnFormShow='FormShow'
+  OnBeginSetData=''
+  OnEndSetData='FormEndSetData'
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['no_peserta'#13#10,
+            'nama_lengkap'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='no_peserta'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='nama_lengkap'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='uipMaster'
+      ClassTypeName='NasabahDPLK'
+      DataBinding=bmMaster
+    >, object:rtf::PClassUI<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['nama_lengkap'#13#10,
+            'tanggal_lahir'#13#10,
+            'jenis_kelamin'#13#10,
+            'status_ahli_waris'#13#10,
+            'keterangan'#13#10,
+            'nomor_urut_prioritas'#13#10]
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='hubungan_keluarga'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='nama_lengkap'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tanggal_lahir'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='jenis_kelamin'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='status_ahli_waris'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='nomor_urut_prioritas'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='hubungan_keluarga'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='uipAhliWaris'
+      ClassTypeName='AhliWaris'
+      DataBinding=bmList
+      Master=$UIPARTS['uipMaster']
+      ListName='Ls_AhliWaris'
+      SetMasterDetailRelationship=true
+    >, object:rtf::PClassUI<
+      Name='uipRegisterCIF'
+      ClassTypeName='RegisterAhliWaris'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      AfterApplyRow='uipRegisterCIFApplyRow'
+    >, object:rtf::PClassUI<
+      Name='uipRegisterAhliWarisDetail'
+      ClassTypeName='RegisterAhliWarisDetail'
+      DataBinding=bmList
+      Master=$UIPARTS['uipRegisterCIF']
+      ListName='Ls_RegisterAhliWarisDetail'
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      DeleteInstanceOnDel=true
+      SetMasterDetailRelationship=true
+      BeforePost='RAWBeforePost'
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caEdit
+          DataMembers=['no_referensi'#13#10,
+            'LNasabahDPLK'#13#10,
+            'keterangan'#13#10,
+            'user_id'#13#10,
+            'terminal_id'#13#10]
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='registercif_id'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='no_referensi'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='No Referensi'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLK'
+          Hidden=false
+          ReadOnlyControl=true
+          ControlCaption='Nasabah DPLK'
+          DisplayFields='no_peserta;nama_lengkap'
+          Restrictions=''
+          OQLText=['SELECT FROM NasabahDPLPK ('#13#10,
+            '  self,'#13#10,
+            '  no_peserta,'#13#10,
+            '  nama_lengkap'#13#10,
+            ') THEN ORDER BY no_peserta;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LNasabahDPLK'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Keterangan'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          Hidden=false
+          ReadOnlyControl=true
+          ControlCaption='ID User'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='terminal_id'
+          Hidden=false
+          ReadOnlyControl=true
+          ControlCaption='ID Terminal'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='registercif_id'
+          Hidden=true
+          ReadOnlyControl=false
+        >, object:rtf::FieldUIElmtSetting<
+          Name='mode'
+          Hidden=true
+          ReadOnlyControl=false
+        >
+      }
+      Name='pData'
+      Width=400
+      Height=180
+      Bordered=true
+      UIPart=$UIPARTS['uipRegisterCIF']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='no_referensi'
+          Top=20
+          Left=20
+          Color=12695295
+          ControlCaption='Nomor Referensi'
+        >, *object:rtf::DBLookupEdit<
+          Name='LNasabahDPLK'
+          Top=48
+          Left=20
+          Width=100
+          Height=21
+          Enabled=false
+          Color=15128749
+          ControlCaption='Peserta DPLK'
+          LookupField='LNasabahDPLK.nama_lengkap'
+          DisplayLookupField=true
+        >, *object:rtf::DBEdit<
+          Name='keterangan'
+          Top=76
+          Left=20
+          ControlCaption='Keterangan'
+        >, *object:rtf::DBEdit<
+          Name='user_id'
+          Top=104
+          Left=20
+          Color=-2147483624
+          ControlCaption='User Penginput'
+          ReadOnly=true
+        >, *object:rtf::DBEdit<
+          Name='terminal_id'
+          Top=132
+          Left=20
+          Color=-2147483624
+          ControlCaption='Terminal Input'
+          ReadOnly=true
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Grid<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caEdit
+          DataMembers=['nomor_urut_prioritas'#13#10,
+            'nama_lengkap'#13#10,
+            'tanggal_lahir'#13#10,
+            'jenis_kelamin'#13#10,
+            'status_ahli_waris'#13#10,
+            'hubungan_keluarga'#13#10,
+            'keterangan'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='nomor_urut_prioritas'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Nomor Urut Prioritas'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='nama_lengkap'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Nama Lengkap'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tanggal_lahir'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Tanggal Lahir'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='jenis_kelamin'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Jenis Kelamin'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='status_ahli_waris'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Status Ahli Waris'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='hubungan_keluarga'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Hubungan Keluarga'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Keterangan'
+        >
+      }
+      Name='gDetails'
+      Width=240
+      Height=240
+      UIPart=$UIPARTS['uipRegisterAhliWarisDetail']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='&Rincian Ahli Waris'
+      Columns={
+        *object:rtf::GridColumn<
+          Name='nomor_urut_prioritas'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='nomor_urut_prioritas'
+          DisplayFormat=''
+          TitleCaption='Urutan Prioritas'
+        >, *object:rtf::GridColumn<
+          Name='nama_lengkap'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='nama_lengkap'
+          DisplayFormat=''
+          TitleCaption='Nama Lengkap'
+          Width=160
+        >, *object:rtf::GridColumn<
+          Name='tanggal_lahir'
+          InputStyle=cisDate
+          EnumeratedValues=''
+          FieldName='tanggal_lahir'
+          DisplayFormat=''
+          TitleCaption='Tanggal Lahir'
+          Width=70
+        >, *object:rtf::GridColumn<
+          Name='jenis_kelamin'
+          InputStyle=cisEnumerated
+          EnumeratedValues=['P=Pria'#13#10,
+            'W=Wanita'#13#10]
+          FieldName='jenis_kelamin'
+          DisplayFormat=''
+          TitleCaption='Jenis Kelamin'
+        >, *object:rtf::GridColumn<
+          Name='status_ahli_waris'
+          InputStyle=cisEnumerated
+          EnumeratedValues=['A=Aktif'#13#10,
+            'N=Tidak Aktif'#13#10]
+          FieldName='status_ahli_waris'
+          DisplayFormat=''
+          TitleCaption='Status Ahli Waris'
+        >, *object:rtf::GridColumn<
+          Name='hubungan_keluarga'
+          InputStyle=cisEnumerated
+          EnumeratedValues=['0=Peserta'#13#10,
+            '1=Ayah'#13#10,
+            '2=Ibu'#13#10,
+            '3=Anak'#13#10,
+            '4=Kakak'#13#10,
+            '5=Adik'#13#10,
+            '6=Istri'#13#10,
+            '7=Suami'#13#10,
+            '8=Lain-lain'#13#10]
+          FieldName='hubungan_keluarga'
+          DisplayFormat=''
+          TitleCaption='Hub. Keluarga'
+          Width=80
+        >, *object:rtf::GridColumn<
+          Name='keterangan'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='keterangan'
+          DisplayFormat=''
+          TitleCaption='Keterangan'
+          Width=200
+        >
+      }
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=800
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          OnClick='btnOKClick'
+        >, object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          ControlCaption=''
+          Caption='&Batal'
+          OnClick='btnCancelClick'
+        >, object:rtf::Button<
+          Name='btnClose'
+          Layout=clNextSide
+          Top=8
+          Left=166
+          Visible=false
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::MultiSplit<
+      Name='MultiSplit'
+      Width=800
+      Height=600
+      Side1Containers={
+        $CONTAINERS['pData']
+
+      }
+      Side2Containers={
+        $CONTAINERS['pButton']
+
+      }
+      SpaceContainer=$CONTAINERS['gDetails']
+    >
+  }
+>

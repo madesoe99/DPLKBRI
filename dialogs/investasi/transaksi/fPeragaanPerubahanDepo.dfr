@@ -1,0 +1,186 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['multisplit1']
+  Caption='Peragaan Perubahan Investasi MM'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=561
+  Height=393
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={object:rtf::PClassUI<
+      ControlDefs={object:rtf::ControlDef<
+          Action=caView
+          DataMember='id_investasi'
+        >}Elements={}Name='uipDeposito'
+      ClassTypeName='Deposito'
+      DataBinding=bmMaster
+    >}Containers={object:rtf::Panel<
+      ControlDefs={object:rtf::ControlDef<
+          Action=caView
+          DataMember='no_bilyet'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='Rekening_Deposito'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='nominal_pembukaan'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='tgl_buka'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='LPihakKetiga'
+        >}Elements={*object:rtf::LinkUIElmtSetting<
+          Name='LPihakKetiga'
+          DisplayFields='kode_pihak_ketiga;nama_pihak_ketiga'
+          Restrictions=''
+          FieldBaseName='LPihakKetiga'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='TglAwal'
+          ControlCaption='Tanggal Awal'
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='TglAkhir'
+          ControlCaption='Tanggal Akhir'
+          DataTypeName='timestamp'
+          DataLength=20
+        >}Name='pFilter'
+      Width=457
+      Height=206
+      UIPart=$UIPARTS['uipDeposito']
+      Controls={*object:rtf::DBEdit<
+          Name='no_bilyet'
+          Top=8
+          Left=8
+          Color=-2147483624
+          ControlCaption='no bilyet'
+        >, *object:rtf::DBEdit<
+          Name='Rekening_Deposito'
+          Top=36
+          Left=8
+          Color=-2147483624
+          ControlCaption='no rekening'
+        >, *object:rtf::DBEdit<
+          Name='nominal_pembukaan'
+          Top=64
+          Left=8
+          Color=-2147483624
+          ControlCaption='nominal pembukaan'
+        >, *object:rtf::DBDateEdit<
+          Name='tgl_buka'
+          Top=92
+          Left=8
+          Color=-2147483624
+          ControlCaption='tgl buka'
+        >, *object:rtf::DBLookupEdit<
+          Name='LPihakKetiga'
+          Top=120
+          Left=8
+          Enabled=false
+          Color=0
+          ControlCaption='Issuer'
+          LookupField='LPihakKetiga.nama_pihak_ketiga'
+          DisplayLookupField=true
+        >, *object:rtf::DBDateEdit<
+          Name='TglAwal'
+          Top=148
+          Left=8
+          Color=0
+          ControlCaption='Tanggal Awal'
+        >, *object:rtf::DBDateEdit<
+          Name='TglAkhir'
+          Layout=clNextSide
+          Top=148
+          Left=236
+          Color=0
+          ControlCaption='Tanggal Akhir'
+        >, object:rtf::Button<
+          Name='bExe'
+          Layout=clNewLine
+          Top=176
+          Left=8
+          Color=0
+          ControlCaption=''
+          Caption='T&ampilkan'
+          OnClick='bExeClick'
+        >}EqualCaptionWidth=100
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Query<
+      Name='qHistori'
+      Width=240
+      Height=240
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from HistPerubahanDeposito'#13#10,
+        '[   (TglUbah >= :dateFrom)'#13#10,
+        '    and (TglUbah < :dateUntil_tmrw)'#13#10,
+        '    and (id_investasi =:id_investasi)'#13#10,
+        ']'#13#10,
+        '('#13#10,
+        'NoBilyetAwal,'#13#10,
+        'NoBilyetPerb,'#13#10,
+        'RekDepoAwal,'#13#10,
+        'RekDepoPerb,'#13#10,
+        'ER_Awal,'#13#10,
+        'ER_Perb,'#13#10,
+        'IsKapitalisirAwal $,'#13#10,
+        'IsKapitalisirPrb $,'#13#10,
+        'NoRekPBAwal,'#13#10,
+        'NoRekPBPerb,'#13#10,
+        'UserPengubah,'#13#10,
+        'TglUbah,'#13#10,
+        'UserOtorisasi,'#13#10,
+        'TglOtorisasi,'#13#10,
+        'self'#13#10,
+        ') then order by TglUbah;']
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=320
+      Height=48
+      Controls={object:rtf::Button<
+          Name='bClose'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          Color=0
+          ControlCaption=''
+          Caption='&Tutup'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >}ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::MultiSplit<
+      Name='multisplit1'
+      Width=320
+      Height=320
+      Side1Containers={$CONTAINERS['pFilter']
+      }Side2Containers={$CONTAINERS['pButton']
+      }SpaceContainer=$CONTAINERS['qHistori']
+    >}>

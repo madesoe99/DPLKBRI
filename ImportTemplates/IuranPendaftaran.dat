@@ -1,0 +1,18 @@
+__InfoTemplate()
+<s20,namaTemplate='Iuran Pendaftaran' 
+s20,deskripsiTemplate='Impor biaya pendaftaran peserta DPLK' 
+s20,targetClass='IuranPendaftaran' 
+s20,processScript='AuthorizeTransaksi' 
+s20,processFunction='AuthorizeOperation' 
+>
+,
+__DeskripsiField()
+<s20,namaField='tgl_transaksi' 
+s20,tipeField='datetime' 
+s20,lookupClass='' 
+s20,lookupField='' 
+>
+<'besar_biaya_daftar'  'float'  ''  '' >
+<'no_peserta'  'string'  'RekeningDPLK'  'no_peserta' >
+<'branch_code'  'string'  'BranchLocation'  'branch_code' >
+<'user_id'  'string'  'UserApp'  'user_id' >..

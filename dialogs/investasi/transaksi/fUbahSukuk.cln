@@ -1,0 +1,227 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit1']
+  Left=50
+  Top=50
+  Width=337
+  Height=273
+  OnFormShow='FormShow'
+  UIParts={object:rtf::PClassUI<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='no_bilyet'
+          DataTypeName='VARCHAR'
+          DataLength=15
+        >, object:rtf::FieldUIElmtSetting<
+          Name='UbahStat'
+          Hidden=true
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='ModeOto'
+          Hidden=true
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='CreateMode'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='TreatmentObligasiOld'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=20
+        >}Name='uipObligasi'
+      ClassTypeName='Obligasi'
+      DataBinding=bmMaster
+      OnSetData='uipObligasiSetData'
+    >}Containers={object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=337
+      Height=273
+      Container1=$CONTAINERS['pAction']
+      Container2=$CONTAINERS['pData']
+      InversedAlign=true
+    >, object:rtf::Panel<
+      Name='pAction'
+      Width=320
+      Height=48
+      Controls={object:rtf::Button<
+          Name='bOK'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          Color=0
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          OnClick='OnClick_OK'
+        >, object:rtf::Button<
+          Name='bCancel'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          OnClick='OnClick_Cancel'
+        >, object:rtf::Button<
+          Name='bClose'
+          Layout=clNextSide
+          Top=8
+          Left=166
+          Visible=false
+          Color=0
+          ControlCaption=''
+          Caption='&Tutup'
+          Cancel=true
+        >}ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='id_investasi'
+          AccessOption=aoReadOnly
+          Hidden=true
+          DataTypeName='INTEGER'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='nama_obligasi'
+          AccessOption=aoReadOnly
+          ControlCaption='nama sukuk'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >, object:rtf::FieldUIElmtSetting<
+          Name='nominal_pembukaan'
+          AccessOption=aoReadOnly
+          ControlCaption='harga beli'
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='harga_pari'
+          AccessOption=aoReadOnly
+          ControlCaption='nilai sukuk'
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='TreatmentObligasi'
+          ControlCaption='treatmen sukuk'
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['H=Hold to Maturity'#13#10,
+            'R=Ready to Sell'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='user_id_auth'
+          Hidden=true
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='last_update'
+          Hidden=true
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='no_rekening'
+          Hidden=true
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='RateSekarang'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tgl_settlement'
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LMasterGiro'
+          ControlCaption='no rekening baghas'
+          ClassTypeName='MasterGiro'
+          KeyFields={object:rtf::FieldUIElmtSetting<
+              Name='LMasterGiro.acc_giro'
+              DataTypeName='VARCHAR'
+              DataLength=20
+              UsedAsKey=true
+              KeyOrDisplayName='acc_giro'
+              FinalDisplayFieldName='acc_giro'
+            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+              Name='LMasterGiro.no_giro'
+              DataTypeName='VARCHAR'
+              DataLength=30
+              UsedAsDisplay=true
+              KeyOrDisplayName='no_giro'
+              FinalDisplayFieldName='no_giro'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LMasterGiro.acc_giro'
+              DataTypeName='VARCHAR'
+              DataLength=20
+              UsedAsDisplay=true
+              KeyOrDisplayName='acc_giro'
+              FinalDisplayFieldName='acc_giro'
+            >}Restrictions=''
+          FieldBaseName='LMasterGiro'
+        >}Name='pData'
+      Width=321
+      Height=217
+      UIPart=$UIPARTS['uipObligasi']
+      Controls={*object:rtf::DBEdit<
+          Name='nama_obligasi'
+          Top=8
+          Left=8
+          Color=-2147483624
+          ControlCaption='nama investasi'
+        >, *object:rtf::DBEdit<
+          Name='nominal_pembukaan'
+          Top=36
+          Left=8
+          Color=-2147483624
+          ControlCaption='harga beli'
+        >, *object:rtf::DBEdit<
+          Name='harga_pari'
+          Top=64
+          Left=8
+          Color=-2147483624
+          ControlCaption='nilai pari'
+        >, *object:rtf::DBComboBox<
+          Name='TreatmentObligasi'
+          Top=92
+          Left=8
+          Color=0
+          ControlCaption='treatmen sukuk'
+        >, *object:rtf::DBEdit<
+          Name='RateSekarang'
+          Top=120
+          Left=8
+          Color=0
+          ControlCaption='rate sekarang'
+        >, *object:rtf::DBDateEdit<
+          Name='tgl_settlement'
+          Top=176
+          Left=8
+          Color=0
+          ControlCaption='tgl settlement'
+          LayoutOrder=8
+        >, *object:rtf::DBLookupEdit<
+          Name='LMasterGiro'
+          Top=148
+          Left=8
+          Width=120
+          Height=21
+          ControlCaption='no rekening bunga'
+          LookupField='LMasterGiro.acc_giro'
+          DisplayLookupField=false
+          OnAfterLookup='OnAfterLookup_Rek'
+        >}EqualCaptionWidth=100
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >}>

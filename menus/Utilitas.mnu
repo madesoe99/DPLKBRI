@@ -1,0 +1,44 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{FF6521AE-DCB8-457C-933C-35D88DB5B672}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rmn::Menu<
+  MenuItems={
+    object:rmn::MenuItem<
+      Name='Kakas'
+      Caption='&Komunikasi'
+      MenuItems={
+        object:rmn::MenuItem<
+          Name='fModifyLoginMessage'
+          Caption='&Modifikasi Pesan Login...'
+          OnClick='mnuShowModalWithData'
+          AllowedGroups='Admin;Root'
+          StringTag='kakas'
+          ImageIndex=2
+        >
+        , object:rmn::MenuItem<
+          Name='fWarningCoreBanking'
+          Caption='&Pesan Peringatan Koneksi CoreBanking...'
+          OnClick='mnuShowModalWithData'
+          AllowedGroups='Admin;Root'
+          StringTag='kakas'
+          ImageIndex=3
+        >
+        , object:rmn::MenuItem<
+          Name='fBroadcastMessage'
+          Caption='&Kirim Pesan Administrator...'
+          OnClick='mnuShowModalWithData'
+          AllowedGroups='Admin;Root'
+          StringTag='kakas'
+          ImageIndex=0
+        >
+      }
+      AllowedGroups='Admin;Root'
+    >
+  }
+  DenyThenAllow=true
+  ImageListID='utilitas'
+>

@@ -1,0 +1,1044 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{FF6521AE-DCB8-457C-933C-35D88DB5B672}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rmn::Menu<
+  MenuItems={
+    object:rmn::MenuItem<
+      Name='Master'
+      Caption='&Master'
+      MenuItems={
+        object:rmn::MenuItem<
+          Name='mnuDaerahAsal'
+          Caption='Daerah Asal'
+          OnClick='DisplayMasterQuery'
+          AllowedGroups='Admin;MRKT;BOD;SPV'
+          StringTag='qDaerahAsal'
+          ImageIndex=0
+        >, object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='Admin;Root;BOD;SPV'
+        >, object:rmn::MenuItem<
+          Name='mnuJenisPenerimaanManfaat'
+          Caption='Jenis Penerimaan Manfaat'
+          OnClick='DisplayMasterQuery'
+          AllowedGroups='MRKT;BOD;SPV'
+          StringTag='qJenisPenerimaanManfaat'
+          ImageIndex=1
+        >, object:rmn::MenuItem<
+          Name='mnuJenisResgisterCIF'
+          Caption='Jenis Register CIF'
+          OnClick='DisplayMasterQuery'
+          AllowedGroups='Root;Admin;SPV'
+          StringTag='qJenisRegisterCIF'
+        >, object:rmn::MenuItem<
+          Name='mnuJenisTransaksiDPLK'
+          Caption='Jenis Transaksi DPLK'
+          OnClick='DisplayMasterQuery'
+          AllowedGroups='Admin;Root;BOD;SPV'
+          StringTag='qJenisTransaksiDPLK'
+          ImageIndex=40
+        >, object:rmn::MenuItem<
+          Name='mnuJenisUsaha'
+          Caption='Bidang Usaha'
+          OnClick='DisplayMasterQuery'
+          AllowedGroups='Root;Admin;SPV;MRKT;BOD'
+          StringTag='qJenisUsaha'
+        >, object:rmn::MenuItem<
+          Name='mnuJenisJabatan'
+          Caption='Jabatan Pekerjaan'
+          OnClick='DisplayMasterQuery'
+          AllowedGroups='Root;Admin;SPV;MRKT;BOD'
+          StringTag='qJenisJabatan'
+        >, object:rmn::MenuItem<
+          Name='mnuJenisPekerjaan'
+          Caption='Jenis Pekerjaan'
+          OnClick='DisplayMasterQuery'
+          AllowedGroups='Root;Admin;SPV;MRKT;BOD'
+          StringTag='qJenisPekerjaan'
+        >, object:rmn::MenuItem<
+          Name='mnuNegara'
+          Caption='Negara'
+          OnClick='DisplayMasterQuery'
+          AllowedGroups='Root;Admin;SPV;MRKT;BOD'
+          StringTag='qNegara'
+        >, object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='Admin'
+        >, object:rmn::MenuItem<
+          Name='mnuLDP'
+          Caption='Lembaga Dana Pensiun'
+          OnClick='DisplayMasterQuery'
+          AllowedGroups='Admin;SPV;MRKT;BOD'
+          StringTag='qLDP'
+          ImageIndex=32
+        >, object:rmn::MenuItem<
+          Name='mnuKelompok'
+          Caption='Kelompok'
+          OnClick='DisplayMasterQuery'
+          AllowedGroups='Admin;SPV;MRKT;BOD'
+          StringTag='qKelompok'
+          ImageIndex=28
+        >, object:rmn::MenuItem<
+          Name='mnuKepemilikan'
+          Caption='Kepemilikan'
+          OnClick='DisplayMasterQuery'
+          AllowedGroups='Admin;MRKT;SPV;BOD'
+          StringTag='qKepemilikan'
+          ImageIndex=3
+        >, object:rmn::MenuItem<
+          Name='mnuSumberDana'
+          Caption='Sumber Dana'
+          OnClick='DisplayMasterQuery'
+          AllowedGroups='Admin;'
+          StringTag='qSumberDana'
+          ImageIndex=5
+        >, object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='Admin;Root'
+        >, object:rmn::MenuItem<
+          Name='fMasterGiro'
+          Caption='Master Giro...'
+          OnClick='mnuShowModalWithData'
+          AllowedGroups='Admin;SPV;Root;BOD'
+          StringTag='master'
+          ImageIndex=34
+        >, object:rmn::MenuItem<
+          Name='fLoginAkuntansi'
+          Caption='Koneksi Aplikasi Akuntansi...'
+          OnClick='mnuShowModalWithData'
+          AllowedGroups='Admin;Root;SPV'
+          StringTag='master'
+          ImageIndex=33
+        >, object:rmn::MenuItem<
+          Name='qParameterAkuntansi'
+          Caption='Parameter Aplikasi Akuntansi...'
+          OnClick='mnuShowModalWithData'
+          AllowedGroups='Admin;Root;SPV'
+          StringTag='master'
+          ImageIndex=35
+        >, object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='Admin;Root'
+        >, object:rmn::MenuItem<
+          Name='fConnectCoreBanking'
+          Caption='Koneksi Core Banking...'
+          OnClick='mnuShowModalWithData'
+          AllowedGroups='Admin;Root'
+          StringTag='master'
+          ImageIndex=31
+        >, object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='Admin;Root'
+        >, object:rmn::MenuItem<
+          Name='mnuOperationCode'
+          Caption='Operation Code'
+          OnClick='DisplayMasterQuery'
+          AllowedGroups='Admin;Root'
+          StringTag='qOperationCode'
+          ImageIndex=14
+        >, object:rmn::MenuItem<
+          Name='qParameterAplikasi'
+          Caption='Parameter Aplikasi...'
+          OnClick='mnuShowModalWithData'
+          AllowedGroups='Root'
+          StringTag='master'
+          ImageIndex=19
+        >
+      }
+      AllowedGroups='Admin;Root;MRKT;BOD;SPV;BOC'
+    >, object:rmn::MenuItem<
+      Name='mnuNasabah'
+      Caption='&Nasabah'
+      MenuItems={
+        object:rmn::MenuItem<
+          Name='mnuRegistrasiCorp'
+          Caption='Registrasi Korporat Baru...'
+          OnClick='DisplayWithDataTransX'
+          AllowedGroups='Admin;MRKT'
+          StringTag='fRegistrasiCorp_New'
+          ImageIndex=6
+        >, object:rmn::MenuItem<
+          Name='mnuDaftarOtorisasiPerusahaan'
+          Caption='Daftar Register Korporat Baru'
+          OnClick='DisplayTransactionQuery'
+          AllowedGroups='Admin;SPV;MRKT'
+          StringTag='qRegistrasiCorp'
+          ImageIndex=15
+        >, object:rmn::MenuItem<
+          Name='mnuDaftarPerusahaan'
+          Caption='Daftar Korporat'
+          OnClick='DisplayTransactionQuery'
+          AllowedGroups='Admin;BOD;SPV;MRKT'
+          StringTag='qNasabahDPLKCorporate'
+          ImageIndex=7
+        >, object:rmn::MenuItem<
+          Name='mnuEditNasabahCorp'
+          Caption='Koreksi Data Korporat...'
+          OnClick='DisplayTransactionForm'
+          AllowedGroups='Admin;MRKT'
+          StringTag='fEditNasabahCorp_Intro'
+        >, object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='Root;BOD;Admin;MRKT'
+        >, object:rmn::MenuItem<
+          Name='mnuRegistrasi'
+          Caption='Registrasi Peserta Baru...'
+          OnClick='DisplayWithDataTransX'
+          AllowedGroups='BOD;CS;MRKT'
+          StringTag='fRegistrasi_New'
+          ImageIndex=8
+        >, object:rmn::MenuItem<
+          Name='mnuDaftarOtorisasiNasabah'
+          Caption='Daftar Register Peserta Baru'
+          OnClick='DisplayQueryWDataTransX'
+          AllowedGroups='Admin;BOD;SPV;CS'
+          StringTag='qRegistrasi'
+          ImageIndex=9
+        >, object:rmn::MenuItem<
+          Name='mnuDaftarNasabah'
+          Caption='Daftar Peserta'
+          OnClick='DisplayQueryWDataTransX'
+          AllowedGroups='Admin;BOD;SPV;MRKT;CS;PIC'
+          StringTag='qNasabahDPLK'
+          ImageIndex=10
+        >, object:rmn::MenuItem<
+          Name='mnuDaftarRekening'
+          Caption='Daftar Rekening'
+          OnClick='DisplayQueryWDataTransX'
+          AllowedGroups='Admin;BOD;SPV;MRKT;CS;PIC'
+          StringTag='qRekInvDPLK'
+          ImageIndex=10
+        >, object:rmn::MenuItem<
+          Name='mnuMasterKartuDPLK'
+          Caption='Daftar Kartu Rekening'
+          OnClick='DisplayQueryWDataTransX'
+          AllowedGroups='Admin;BOD;SPV;MRKT;CS;PIC'
+          StringTag='qMasterKartuDPLK'
+          ImageIndex=10
+        >, object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='MRKT;CS;PIC'
+        >, object:rmn::MenuItem<
+          Name='InputPeserta'
+          Caption='Lihat Detil Data Peserta...'
+          OnClick='mnuShowModal'
+          AllowedGroups='Admin;SPV;BOD;CS;MRKT;CC;PIC'
+          StringTag='transaction'
+          NumberTag=5000
+          ImageIndex=13
+        >, object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='Admin;BOD;Root;MRKT'
+        >, object:rmn::MenuItem<
+          Name='mnuDaftarKoreksiCIF'
+          Caption='Daftar Register CIF Peserta'
+          OnClick='DisplayQueryWDataTransX'
+          AllowedGroups='Admin;BOD;SPV'
+          StringTag='qRegisterCIF'
+          ImageIndex=18
+        >, object:rmn::MenuItem<
+          Name='mnuDaftarKoreksiCS'
+          Caption='Otorisasi Perubahan CIF'
+          OnClick='DisplayQueryWDataTransX'
+          AllowedGroups='Admin;BOD;CS;PIC'
+          StringTag='qRegisterCIFCs'
+          ImageIndex=18
+        >, object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='Admin;BOD;Root;MRKT'
+        >, object:rmn::MenuItem<
+          Name='mnuDaftarAkseptasiWU'
+          Caption='Daftar Akseptasi Asuransi'
+          OnClick='DisplayQueryWDataTransX'
+          AllowedGroups='Root'
+          StringTag='qRegisterWasiatUmmat'
+          ImageIndex=11
+        >, object:rmn::MenuItem<
+          Name='mnuRegisterWasiatUmmat'
+          Caption='Koreksi Status Asuransi...'
+          OnClick='DisplayTransactionForm'
+          AllowedGroups='Root'
+          StringTag='fRegisterWasiatUmmat_Intro'
+        >, object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='Admin;BOD;Root'
+        >, object:rmn::MenuItem<
+          Name='qRegisterAnuitas'
+          Caption='Daftar Pengajuan Anuitas'
+          OnClick='mnuShowWithData'
+          AllowedGroups='Root'
+          StringTag='transaction'
+          ImageIndex=16
+        >, object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='Admin;BOD;Root;MRKT'
+        >, object:rmn::MenuItem<
+          Name='mnuHistoriCIF'
+          Caption='Lihat Riwayat Perubahan CIF Peserta...'
+          OnClick='DisplayTransactionForm'
+          AllowedGroups='Admin;BOD;SPV;MRKT;CS;PIC'
+          StringTag='fHistoriNasabahRekening_Intro'
+        >, object:rmn::MenuItem<
+          Name='mnuHistoriTransaksi'
+          Caption='Lihat Riwayat Transaksi Peserta...'
+          OnClick='DisplayTransactionForm'
+          AllowedGroups='CS;Admin;BOD;SPV;MRKT;PIC'
+          StringTag='fHistoriTransaksi_Intro'
+        >, object:rmn::MenuItem<
+          Name='mnuHistoriTransaksiPerFund'
+          Caption='Lihat Riwayat Transaksi Peserta per Fund'
+          OnClick='DisplayTransactionForm'
+          StringTag='fHistoriTransaksiPerFund_Intro'
+        >, object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='CS;PIC'
+        >, object:rmn::MenuItem<
+          Name='InputAmbilBuku'
+          Caption='Registrasi Nomor Buku DPLK'
+          OnClick='DisplayTransactionForm'
+          AllowedGroups='Admin;CS;PIC'
+          StringTag='InputAmbilBuku'
+          ImageIndex=13
+        >, object:rmn::MenuItem<
+          Name='GantiBukuBaru'
+          Caption='Penggantian Buku Hilang / Rusak'
+          OnClick='DisplayTransactionForm'
+          AllowedGroups='Admin;CS;PIC'
+          StringTag='GantiBukuBaru'
+          ImageIndex=13
+        >, object:rmn::MenuItem<
+          Name='fReserveNoBuku'
+          Caption='Maintenance Nomor Buku DPLK'
+          OnClick='mnuShowModal2'
+          AllowedGroups='Admin;BOD;SPV'
+          StringTag='transaction'
+          NumberTag=5000
+          ImageIndex=13
+        >, object:rmn::MenuItem<
+          Name='mnuHistori Buku DPLK'
+          Caption='Histori Buku DPLK'
+          OnClick='DisplayQueryWDataTransX'
+          AllowedGroups='Admin;CS;PIC;BOD;SPV'
+          StringTag='qHistoriBukuDPLK'
+          ImageIndex=10
+        >, object:rmn::MenuItem<
+          Name='mnuDaftar Buku DPLK '
+          Caption='Daftar Master Buku DPLK'
+          OnClick='DisplayQueryWDataTransX'
+          AllowedGroups='Admin;BOD;SPV;CS;PIC'
+          StringTag='qMasterBukuDPLK'
+          ImageIndex=10
+        >
+      }
+      AllowedGroups='Admin;Root;BOD;CS;MRKT;CC;SPV;PIC;BOC'
+    >, object:rmn::MenuItem<
+      Name='mnuTransaksi'
+      Caption='&Transaksi'
+      MenuItems={
+        object:rmn::MenuItem<
+          Name='transaksi/fSelectTransaksi'
+          Caption='Daftar Transaksi'
+          OnClick='mnuSelectTransaksi'
+        >, object:rmn::MenuItem<
+          Caption='-'
+        >, object:rmn::MenuItem<
+          Name='transaksi/fSelectRekening'
+          Caption='Input Iuran Pendaftaran Manual'
+          OnClick='mnuSelectRekening'
+          AllowedGroups='BOD'
+          StringTag='transaksi/fIuranPendaftaran'
+        >, object:rmn::MenuItem<
+          Caption='-'
+        >, object:rmn::MenuItem<
+          Name='transaksi/fSelectRekening'
+          Caption='Pembayaran Iuran Peserta'
+          OnClick='mnuSelectRekening'
+          StringTag='transaksi/fIuranPeserta'
+        >, object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='Admin;Root;BOD'
+        >, object:rmn::MenuItem<
+          Caption='&Pengalihan Dana'
+          MenuItems={
+            object:rmn::MenuItem<
+              Name='transaksi/fSelectRekening'
+              Caption='Pengalihan Dari DPLK Lain'
+              OnClick='mnuSelectRekening'
+              StringTag='transaksi/fPengalihanDariDPLK'
+            >, object:rmn::MenuItem<
+              Name='transaksi/fSelectRekening'
+              Caption='Pengalihan Dari DPPK Lain'
+              OnClick='mnuSelectRekening'
+              StringTag='transaksi/fPengalihanDariDPPK'
+            >, object:rmn::MenuItem<
+              Name='transaksi/fSelectRekening'
+              Caption='Pengalihan Dari DPK Lain'
+              OnClick='mnuSelectRekening'
+              StringTag='transaksi/fPengalihanDariDPK'
+            >, object:rmn::MenuItem<
+              Caption='-'
+            >, object:rmn::MenuItem<
+              Name='transaksi/fSelectRekening'
+              Caption='Pengalihan Ke DPLK Lain'
+              OnClick='mnuSelectRekening'
+              StringTag='transaksi/fPengalihanKeDPLK'
+            >
+          }
+          AllowedGroups='Admin;BOD;Root'
+        >, object:rmn::MenuItem<
+          Caption='Penarikan &Dana'
+          MenuItems={
+            object:rmn::MenuItem<
+              Name='transaksi/fSelectRekening'
+              Caption='Penarikan Dana &30%'
+              OnClick='mnuSelectRekening'
+              AllowedGroups='BOD'
+              StringTag='transaksi/fPenarikanDana30'
+            >, object:rmn::MenuItem<
+              Name='transaksi/fSelectRekening'
+              Caption='Penarikan Dana &PHK'
+              OnClick='mnuSelectRekening'
+              AllowedGroups='BOD'
+              StringTag='transaksi/fPenarikanDanaPHK'
+            >
+          }
+          AllowedGroups='Admin;BOD'
+        >, object:rmn::MenuItem<
+          Name='transaksi/fSelectRekening'
+          Caption='Pengambilan &Manfaat Pensiun...'
+          OnClick='mnuSelectRekening'
+          AllowedGroups='BOD'
+          StringTag='transaksi/fPengambilanManfaatPensiun'
+          ImageIndex=1
+        >, object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='Admin;Root'
+        >, object:rmn::MenuItem<
+          Name='InputBiayaMasal'
+          Caption='Biaya Administrasi Pengelolaan Dana...'
+          OnClick='mnuShowModalWithData'
+          AllowedGroups='Admin;Root'
+          StringTag='transaksi'
+          NumberTag=131
+        >, object:rmn::MenuItem<
+          Name='InputBiayaMasal'
+          Caption='Biaya Administrasi Tahunan...'
+          OnClick='mnuShowModalWithData'
+          AllowedGroups='Admin;Root'
+          StringTag='transaksi'
+          NumberTag=130
+        >, object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='Admin;Root'
+        >, object:rmn::MenuItem<
+          Name='fReconcileTransaksi'
+          Caption='Rekonsiliasi Transaksi DPLK - Riwayat Transaksi Giro DPLK...'
+          OnClick='ClassFormClick'
+          AllowedGroups='Admin;Root'
+          StringTag='transaksi'
+        >, object:rmn::MenuItem<
+          Name='fCreateTransaksiHistoriGiro'
+          Caption='Buat Transaksi DPLK untuk Riwayat Transaksi Giro DPLK...'
+          OnClick='ClassFormClick'
+          AllowedGroups='Admin;Root'
+          StringTag='transaksi'
+        >, object:rmn::MenuItem<
+          Name='fConvertHistoriGiro2Journal'
+          Caption='Konversi Riwayat Transaksi Giro DPLK...'
+          OnClick='ClassFormClick'
+          AllowedGroups='Admin;Root;BOD'
+          StringTag='transaksi'
+        >
+      }
+      AllowedGroups='Admin;BOD;Root;MRKT;SPV;BOC'
+    >, object:rmn::MenuItem<
+      Name='Program Asuransi'
+      Caption='&Program Asuransi'
+      MenuItems={
+        object:rmn::MenuItem<
+          Name='fSimulasiPremiManfaat'
+          Caption='Simulasi Premi atau Manfaat Pensiun'
+          OnClick='mnuShowModal2'
+          AllowedGroups='Admin;Root;BOD;CS;PIC'
+          StringTag='transaction'
+          NumberTag=5000
+          ImageIndex=13
+        >, object:rmn::MenuItem<
+          Name='mnuMaster Asuransi'
+          Caption='Master Peserta Asuransi / Jiwa'
+          OnClick='DisplayQueryWDataTransX'
+          AllowedGroups='Admin;Root;BOD;CS;PIC'
+          StringTag='qPesertaWasiatUmmat'
+          ImageIndex=10
+        >, object:rmn::MenuItem<
+          Name='mnuMaster Kecelakaan Diri'
+          Caption='Master Peserta Kecelakaan Diri'
+          OnClick='DisplayQueryWDataTransX'
+          AllowedGroups='Admin;Root;BOD;CS;PIC'
+          StringTag='qPesertaKecelakaanDiri'
+          ImageIndex=10
+        >, object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='Admin;Root;BOD;CS;PIC'
+        >, object:rmn::MenuItem<
+          Name='mnuSuratAkseptasi'
+          Caption='Cetak Surat Akseptasi'
+          OnClick='mnuLaporanClick'
+          AllowedGroups='Admin;Root;BOD;CS;PIC'
+          StringTag='fSuratAkseptasi'
+        >, object:rmn::MenuItem<
+          Name='mnuSuratTunggakanPremi'
+          Caption='Cetak Surat Tunggakan Premi'
+          OnClick='mnuLaporanClick'
+          AllowedGroups='Admin;Root;BOD;CS;PIC'
+          StringTag='fSuratTunggakanPremi'
+        >, object:rmn::MenuItem<
+          Name='mnuCetakPolis'
+          Caption='Cetak Polis Asuransi'
+          OnClick='DisplayReportForm2'
+          AllowedGroups='Admin;Root;BOD;CS;PIC'
+          StringTag='fCetakPolis'
+        >, object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='Admin;Root;BOD;CS;PIC'
+        >, object:rmn::MenuItem<
+          Name='mnuMonitoring Alkhairat'
+          Caption='Monitoring Proses Pengajuan Akseptasi'
+          OnClick='DisplayQueryWDataTransX'
+          AllowedGroups='Admin;Root;BOD;CS;PIC'
+          StringTag='qMonitoringAlkhairat'
+          ImageIndex=10
+        >, object:rmn::MenuItem<
+          Name='mnuMonitoringPendingAlkhairat'
+          Caption='Monitoring Proses Tunda Akseptasi'
+          OnClick='DisplayQueryWDataTransX'
+          AllowedGroups='Admin;Root;BOD;CS;PIC'
+          StringTag='qMonitoringPendingAlkhairat'
+          ImageIndex=10
+        >, object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='Admin;Root;BOD;CS;PIC'
+        >, object:rmn::MenuItem<
+          Name='fSimulasiAlkhairat'
+          Caption='Input Peserta Akseptasi'
+          OnClick='mnuShowModal2'
+          AllowedGroups='Admin;Root;BOD'
+          StringTag='transaction'
+          NumberTag=5000
+          ImageIndex=13
+        >, object:rmn::MenuItem<
+          Name='ProsesPendingAlkhairat'
+          Caption='Input Pending Akseptasi'
+          OnClick='DisplayTransactionForm'
+          AllowedGroups='Admin;Root;BOD'
+          StringTag='ProsesPendingAlkhairat'
+          ImageIndex=13
+        >, object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='Admin;Root;BOD'
+        >, object:rmn::MenuItem<
+          Name='mnuProses Kirim Data '
+          Caption='Kirim Data Ke Asuransi'
+          OnClick='mnuLaporanClick'
+          AllowedGroups='Admin;Root;BOD'
+          StringTag='fMonitoringAlkhairat'
+        >, object:rmn::MenuItem<
+          Name='mnuKirim Ulang Data Alkhairat'
+          Caption='Kirim Ulang Data Ke Asuransi'
+          OnClick='mnuLaporanClick'
+          AllowedGroups='Admin;Root;BOD'
+          StringTag='fMonitoringAlkhairatUlang'
+        >
+      }
+      AllowedGroups='Admin;Root;BOD;CS;PIC'
+    >, object:rmn::MenuItem<
+      Name='Report'
+      Caption='&Laporan'
+      MenuItems={
+        object:rmn::MenuItem<
+          Name='mnuStatemen'
+          Caption='Statemen'
+          MenuItems={
+            object:rmn::MenuItem<
+              Name='mnuStatemenIndividual'
+              Caption='Statemen Individual...'
+              OnClick='DisplayReportForm2'
+              AllowedGroups='CS;Admin;BOD;Root;MRKT;CC;SPV;PIC'
+              StringTag='fStatemenIndividual'
+            >, object:rmn::MenuItem<
+              Name='mnuStatemenKorporat'
+              Caption='Statemen Korporat...'
+              OnClick='DisplayReportForm2'
+              AllowedGroups='CS;Admin;BOD;Root;MRKT;SPV;PIC'
+              StringTag='fStatemenKorporat'
+            >, object:rmn::MenuItem<
+              Name='mnuStatemenCabang'
+              Caption='Statemen per Cabang...'
+              OnClick='DisplayReportForm2'
+              AllowedGroups='CS;Admin;BOD;Root;MRKT;SPV'
+              StringTag='fStatemenCabang'
+            >, object:rmn::MenuItem<
+              Name='mnuStatemenPremi'
+              Caption='Statemen Premi...'
+              OnClick='DisplayReportForm'
+              AllowedGroups='CS;Admin;BOD;Root;MRKT;SPV'
+              StringTag='fStatemenPremi'
+            >, object:rmn::MenuItem<
+              Name='mnuStatemenIndividualKhusus'
+              Caption='Statemen Individual Khusus......'
+              OnClick='DisplayReportForm2'
+              AllowedGroups='CS;Admin;BOD;Root;MRKT;SPV'
+              StringTag='fStatemenIndividualKhusus'
+            >, object:rmn::MenuItem<
+              Name='mnuStatemenKorporatKhusus'
+              Caption='Statemen Korporat Khusus .....'
+              OnClick='DisplayReportForm2'
+              AllowedGroups='CS;Admin;BOD;Root;MRKT;SPV'
+              StringTag='fStatemenKorporatKhusus'
+            >, object:rmn::MenuItem<
+              Name='mnuSuratManfaatPensiun'
+              Caption='Surat Manfaat Pensiun ........'
+              OnClick='DisplayReportForm2'
+              AllowedGroups='Root;Admin;'
+              StringTag='fSuratManfaatPensiun'
+            >
+          }
+          AllowedGroups='CS;Admin;BOD;Root;MRKT;CC;SPV;PIC'
+        >, object:rmn::MenuItem<
+          Name='mnuAnalisa'
+          Caption='Analisa'
+          MenuItems={
+            object:rmn::MenuItem<
+              Name='mnuProfilPeserta'
+              Caption='Profil Peserta...'
+              OnClick='DisplayReportForm'
+              AllowedGroups='Admin;BOD;Root;MRKT;SPV'
+              StringTag='fProfilPeserta'
+            >, object:rmn::MenuItem<
+              Name='mnuKontrolJmlPstBln'
+              Caption='Kontrol Jumlah Peserta Bulanan...'
+              OnClick='mnuKontrolJmlPstBlnClick'
+              AllowedGroups='Admin;BOD;Root;MRKT;SPV'
+              StringTag='B'
+            >, object:rmn::MenuItem<
+              Name='mnuRekapTransBln'
+              Caption='Rekapitulasi Transaksi Bulanan...'
+              OnClick='mnuRekapTransClick'
+              AllowedGroups='Admin;BOD;Root;MRKT;SPV'
+              StringTag='B'
+            >, object:rmn::MenuItem<
+              Name='mnuRekapitulasiTransHarian'
+              Caption='Rekapitulasi Transaksi Harian...'
+              OnClick='DisplayReportForm'
+              AllowedGroups='Admin;BOD;Root;MRKT;SPV'
+              StringTag='fRekapTransaksiHarian'
+            >
+          }
+          AllowedGroups='Admin;BOD;Root;MRKT;SPV'
+          ImageIndex=36
+        >, object:rmn::MenuItem<
+          Name='mnuLaporanTransaksi'
+          Caption='Transaksi'
+          MenuItems={
+            object:rmn::MenuItem<
+              Name='mnuPengambilanMnft'
+              Caption='Pengambilan Manfaat...'
+              OnClick='mnuLaporanClick'
+              AllowedGroups='Admin;BOD;Root;MRKT;SPV'
+              StringTag='fPengambilanManfaat'
+            >, object:rmn::MenuItem<
+              Name='mnuPembayaranPremi'
+              Caption='Pembayaran Premi...'
+              OnClick='mnuPembayaranPremiClick'
+              AllowedGroups='Admin;BOD;Root;MRKT;SPV'
+              StringTag='B'
+            >, object:rmn::MenuItem<
+              Name='mnuPengalihanKeDPLKLain'
+              Caption='Pengalihan ke DPLK Lain...'
+              OnClick='mnuLaporanClick'
+              AllowedGroups='Admin;BOD;Root;MRKT;SPV'
+              StringTag='fPengalihanKe'
+            >, object:rmn::MenuItem<
+              Name='mnuPengalihanDariDPLKLain'
+              Caption='Pengalihan dari DPLK Lain...'
+              OnClick='mnuLaporanTransaksiClick'
+              AllowedGroups='Admin;BOD;Root;MRKT;SPV'
+              StringTag='I;O'
+            >, object:rmn::MenuItem<
+              Name='mnuPenarikanDana'
+              Caption='Penarikan Dana...'
+              OnClick='mnuLaporanClick'
+              AllowedGroups='Admin;BOD;Root;MRKT;SPV'
+              StringTag='fPenarikanDana'
+            >, object:rmn::MenuItem<
+              Name='mnuBagiHasil'
+              Caption='Profit Distribution...'
+              OnClick='mnuLaporanTransaksiClick'
+              AllowedGroups='Admin;BOD;Root;MRKT;SPV'
+              StringTag='G'
+            >, object:rmn::MenuItem<
+              Name='mnuBiayaAdmTahunan'
+              Caption='Biaya Administrasi Tahunan...'
+              OnClick='mnuLaporanTransaksiClick'
+              AllowedGroups='Admin;BOD;Root;MRKT;SPV'
+              StringTag='D'
+            >, object:rmn::MenuItem<
+              Name='mnuBiayaPengDana'
+              Caption='Biaya Pengelolaan Dana...'
+              OnClick='mnuLaporanTransaksiClick'
+              AllowedGroups='Admin;BOD;Root;MRKT;SPV'
+              StringTag='C'
+            >
+          }
+          AllowedGroups='Admin;BOD;Root;MRKT;SPV'
+        >, object:rmn::MenuItem<
+          Name='mnuRekeningPeserta'
+          Caption='Rekening Peserta'
+          MenuItems={
+            object:rmn::MenuItem<
+              Name='mnuSaldoIuranPst'
+              Caption='Saldo Iuran Peserta...'
+              OnClick='DisplayReportForm'
+              AllowedGroups='Admin;BOD;Root;MRKT;SPV'
+              StringTag='fSaldoIuranPst'
+            >, object:rmn::MenuItem<
+              Name='mnuMasaPensiun'
+              Caption='Masa Pensiun...'
+              OnClick='mnuMasaPensiunClick'
+              AllowedGroups='Admin;BOD;Root;MRKT;SPV'
+              StringTag='F'
+            >, object:rmn::MenuItem<
+              Name='mnuMasaPensiunDipercepat'
+              Caption='Masa Pensiun Dipercepat...'
+              OnClick='mnuMasaPensiunClick'
+              AllowedGroups='Admin;BOD;Root;MRKT;SPV'
+              StringTag='T'
+            >
+          }
+          AllowedGroups='Admin;BOD;Root;MRKT;SPV'
+        >, object:rmn::MenuItem<
+          Name='mnuGiro'
+          Caption='Giro'
+          MenuItems={
+            object:rmn::MenuItem<
+              Name='mnuHistoriGiro'
+              Caption='Histori giro dan status transaksi...'
+              OnClick='DisplayReportForm2'
+              AllowedGroups='Admin;BOD;Root;SPV'
+              StringTag='fHistoriGiro'
+            >
+          }
+          AllowedGroups='Admin;BOD;Root'
+        >, object:rmn::MenuItem<
+          Name='mnuOther'
+          Caption='Other'
+          MenuItems={
+            object:rmn::MenuItem<
+              Name='mnuPerolehanPeserta'
+              Caption='Perolehan Peserta...'
+              OnClick='mnuLaporanClick'
+              AllowedGroups='Admin;BOD;Root;MRKT;CS;SPV;PIC'
+              StringTag='fPerolehanPeserta'
+            >, object:rmn::MenuItem<
+              Name='mnuPerolehanCabang'
+              Caption='Perolehan Cabang...'
+              OnClick='mnuLaporanClick'
+              AllowedGroups='Admin;BOD;Root;MRKT;CS;SPV;PIC'
+              StringTag='fPerolehanCabang'
+            >, object:rmn::MenuItem<
+              Name='mnuPesertaPerpaket'
+              Caption='Peserta Perpaket...'
+              OnClick='mnuLaporanClick'
+              AllowedGroups='Admin;BOD;Root;MRKT;SPV'
+              StringTag='fPesertaPerpaket'
+            >, object:rmn::MenuItem<
+              Name='mnuCetakKartu'
+              Caption='Cetak Kartu...'
+              OnClick='mnuLaporanClick'
+              AllowedGroups='Admin;BOD;Root'
+              StringTag='fCetakKartu'
+            >, object:rmn::MenuItem<
+              Name='mnuCetakKartuCorporate'
+              Caption='Kartu Peserta Corporate...'
+              OnClick='mnuLaporanClick'
+              AllowedGroups='Admin;BOD;Root'
+              StringTag='fCetakKartuCorporate'
+            >, object:rmn::MenuItem<
+              Name='mnuKelompokUmur'
+              Caption='Kelompok Umur....'
+              OnClick='mnuLaporanClick'
+              AllowedGroups='Admin;Root;'
+              StringTag='fKelompokUmur'
+            >, object:rmn::MenuItem<
+              Name='mnuKelompokIuran'
+              Caption='Kelompok Iuran....'
+              OnClick='mnuLaporanClick'
+              AllowedGroups='Admin;Root;'
+              StringTag='fKelompokIuran'
+            >, object:rmn::MenuItem<
+              Name='mnuKelompokIuranJenisIndustri'
+              Caption='Kelompok Iuran Menurut Jenis Industri'
+              OnClick='mnuLaporanClick'
+              StringTag='fKelompokIuranJenisIndustri'
+            >, object:rmn::MenuItem<
+              Name='Perusahaan'
+              Caption='&Perusahaan'
+              MenuItems={
+                object:rmn::MenuItem<
+                  Name='mnuPesertaCorporate'
+                  Caption='Peserta Corporate...'
+                  OnClick='mnuLaporanClick'
+                  AllowedGroups='Admin;BOD;Root;MRKT'
+                  StringTag='fPesertaCorporate'
+                >, object:rmn::MenuItem<
+                  Name='mnuRincianDanaCorporate'
+                  Caption='Rincian Dana Corporate...'
+                  OnClick='mnuLaporanClick'
+                  AllowedGroups='Admin;BOD;Root;MRKT'
+                  StringTag='fRincianDanaPesertaCorporate'
+                >
+              }
+              AllowedGroups='Admin;BOD;Root;MRKT;SPV'
+            >, object:rmn::MenuItem<
+              Name='Program SIP'
+              Caption='Program &S I P'
+              MenuItems={
+                object:rmn::MenuItem<
+                  Name='mnuSipBranch'
+                  Caption='Perolehan SIP Cabang'
+                  OnClick='mnuLaporanClick'
+                  AllowedGroups='Admin;BOD;Root;MRKT;CS;PIC'
+                  StringTag='fSipBranch'
+                >, object:rmn::MenuItem<
+                  Name='mnuSipReferral'
+                  Caption='Perolehan SIP Referral'
+                  OnClick='mnuLaporanClick'
+                  AllowedGroups='Admin;BOD;Root;MRKT;CS;PIC'
+                  StringTag='fSipReferral'
+                >, object:rmn::MenuItem<
+                  Name='mnuSipNik'
+                  Caption='Perolehan SIP NIK'
+                  OnClick='mnuLaporanClick'
+                  AllowedGroups='Admin;BOD;Root;MRKT;CS;PIC'
+                  StringTag='fSipNik'
+                >, object:rmn::MenuItem<
+                  Name='mnuSipNoReferral'
+                  Caption='Perolehan SIP No Referral'
+                  OnClick='mnuLaporanClick'
+                  AllowedGroups='Admin;BOD;Root;MRKT;CS'
+                  StringTag='fSipNoReferral'
+                >
+              }
+              AllowedGroups='Admin;BOD;Root;MRKT;SPV;CS;PIC'
+            >, object:rmn::MenuItem<
+              Name='Akumulasi Dana'
+              Caption='&Akumulasi Dana'
+              MenuItems={
+                object:rmn::MenuItem<
+                  Name='mnuAkumulasiDana'
+                  Caption='Akumulasi Dana Perpaket'
+                  OnClick='mnuLaporanClick'
+                  AllowedGroups='Admin;BOD;Root;MRKT'
+                  StringTag='fAkumulasiDana'
+                >, object:rmn::MenuItem<
+                  Name='mnuAkumPesertaTutup'
+                  Caption='Akumulasi Dana Peserta Tutup...'
+                  OnClick='mnuLaporanClick'
+                  AllowedGroups='Admin;BOD;Root'
+                  StringTag='fAkumPesertaTutup'
+                >, object:rmn::MenuItem<
+                  Name='mnuAkumulasiDanaCabang'
+                  Caption='Akumulasi Dana Percabang'
+                  OnClick='mnuLaporanClick'
+                  AllowedGroups='Admin;BOD;Root;MRKT;SPV'
+                  StringTag='fAkumulasiDanaCabang'
+                >, object:rmn::MenuItem<
+                  Name='mnuPosisiDana'
+                  Caption='Posisi Dana DPLK'
+                  OnClick='mnuLaporanClick'
+                  AllowedGroups='Admin;BOD;Root;MRKT;SPV'
+                  StringTag='fPosisiDanaDPLK'
+                >
+              }
+              AllowedGroups='Admin;BOD;Root;MRKT'
+            >, object:rmn::MenuItem<
+              Name='Performance Cabang'
+              Caption='Performance &Cabang'
+              MenuItems={
+                object:rmn::MenuItem<
+                  Name='mnuPosisiPerformanceCabang'
+                  Caption='Posisi Peroformance Cabang'
+                  OnClick='mnuLaporanClick'
+                  AllowedGroups='Admin;BOD;Root;MRKT;SPV'
+                  StringTag='fPerformanceCabang'
+                >, object:rmn::MenuItem<
+                  Name='mnuPeriodePerformanceCabang'
+                  Caption='Periode Performance Cabang'
+                  OnClick='mnuLaporanClick'
+                  AllowedGroups='Admin;BOD;Root;MRKT;SPV'
+                  StringTag='fPerformanceCabangPeriode'
+                >, object:rmn::MenuItem<
+                  Name='mnuPerformanceCabangPerbulan'
+                  Caption='Performance Cabang Perbulan'
+                  OnClick='mnuLaporanClick'
+                  AllowedGroups='Admin;BOD;Root;MRKT;SPV;CS;PIC'
+                  StringTag='fPerformanceCabangPerbulan'
+                >, object:rmn::MenuItem<
+                  Name='mnuTes'
+                  Caption='Performance Kantor Kas Perbulan'
+                  OnClick='mnuLaporanClick'
+                  AllowedGroups='Admin;MRKT;SPV;CS;PIC'
+                  StringTag='fPerformanceKasPerbulan'
+                >, object:rmn::MenuItem<
+                  Name='mnuRataRataInvestasi'
+                  Caption='Rata-Rata Hasil investasi'
+                  OnClick='mnuLaporanClick'
+                  AllowedGroups='Admin;BOD;Root;MRKT;SPV;CS;PIC'
+                  StringTag='fInvJnsPaket'
+                >, object:rmn::MenuItem<
+                  Name='mnuTesReport'
+                  Caption='Tes Report Performance'
+                  OnClick='mnuLaporanClick'
+                  AllowedGroups='Admin;Root'
+                  StringTag='fPerformanceCabangPerbulanRev'
+                  ImageIndex=1
+                >
+              }
+              AllowedGroups='Admin;BOD;Root;MRKT;SPV;CS;PIC'
+            >
+          }
+          AllowedGroups='Admin;BOD;Root;MRKT;CS;SPV;CS;PIC'
+        >
+      }
+      AllowedGroups='CS;Admin;BOD;Root;MRKT;CC;SPV;PIC;BOC'
+    >, object:rmn::MenuItem<
+      Name='KakasBaru'
+      Caption='&Kakas'
+      MenuItems={
+        object:rmn::MenuItem<
+          Name='fImportPackageList'
+          Caption='Daftar Paket Impor'
+          OnClick='mnuShowWithData'
+          AllowedGroups='Admin;Root;BOC'
+          StringTag='kakas'
+          ImageIndex=29
+        >, object:rmn::MenuItem<
+          Name='executePackage'
+          Caption='Eksekusi Paket Impor...'
+          OnClick='executePackageClick'
+          AllowedGroups='Admin;Root;BOC'
+          ImageIndex=30
+        >, object:rmn::MenuItem<
+          Name='UploadMassal'
+          Caption='Impor Iuran Massal'
+          OnClick='ClassFormClick'
+          AllowedGroups='Admin;Root;BOC'
+          StringTag='transaksi'
+        >, object:rmn::MenuItem<
+          Name='UploadPesertaMassal'
+          Caption='Impor Peserta Massal'
+          OnClick='ClassFormClick'
+          AllowedGroups='Admin;Root;BOC'
+          StringTag='transaksi'
+        >
+      }
+      AllowedGroups='Admin;Root;BOC'
+    >, object:rmn::MenuItem<
+      Name='Passbook'
+      Caption='&Passbook'
+      MenuItems={
+        object:rmn::MenuItem<
+          Caption='Cetak nama passbook...'
+          OnClick='DisplayReportForm2'
+          AllowedGroups='Admin;BOD;CS;SPV;PIC;Teller'
+          StringTag='fCetakNamaPassbook'
+        >, object:rmn::MenuItem<
+          Caption='Cetak seluruh transaksi belum tercetak...'
+          OnClick='DisplayReportForm2'
+          AllowedGroups='Admin;BOD;CS;SPV;PIC;Teller'
+          StringTag='fCetakTransPassbook'
+        >, object:rmn::MenuItem<
+          Caption='Cetak ulang transaksi...'
+          OnClick='DisplayReportForm2'
+          AllowedGroups='Admin;BOD;CS;SPV;PIC;Teller'
+          StringTag='fCetakUlangTransPassbook'
+        >
+      }
+      AllowedGroups='Admin;BOD;Root;CS;CC;SPV;MRKT;PIC;BOC;Teller'
+    >, object:rmn::MenuItem<
+      Name='Simulasi'
+      Caption='&Simulasi'
+      MenuItems={
+        object:rmn::MenuItem<
+          Name='mnuSimulasiNormal'
+          Caption='Simulasi Peserta Baru...'
+          OnClick='mnuLaporanClick'
+          AllowedGroups='Admin;BOD;Root;MRKT;CS;CC;SPV;PIC'
+          StringTag='fSimulasiDPLK'
+          ImageIndex=12
+        >, object:rmn::MenuItem<
+          Name='mnuSimulasiLama'
+          Caption='Simulasi Peserta Lama...'
+          OnClick='mnuLaporanClick'
+          AllowedGroups='Admin;BOD;Root;MRKT;CS;CC;SPV;PIC'
+          StringTag='fSimulasiLama'
+          ImageIndex=12
+        >, object:rmn::MenuItem<
+          Name='mnuSimulasiGlobal'
+          Caption='Simulasi All (45-60)'
+          OnClick='mnuLaporanClick'
+          AllowedGroups='Admin;BOD;Root;MRKT;CS;CC;SPV;PIC'
+          StringTag='fSimulasiGlobal'
+          ImageIndex=12
+        >, object:rmn::MenuItem<
+          Name='mnuKlaim Asuransi'
+          Caption='Perhitungan Pengcoveran Asuransi'
+          OnClick='mnuLaporanClick'
+          AllowedGroups='Admin;BOD;Root;CS;SPV;PIC'
+          StringTag='fClaimWu'
+        >, object:rmn::MenuItem<
+          Name='InputSingleSimulasi'
+          Caption='Dana &30%...'
+          OnClick='mnuShowModalWithData'
+          AllowedGroups='Admin;BOD;Root;CS;SPV;PIC'
+          StringTag='transaksi'
+          NumberTag=60
+        >, object:rmn::MenuItem<
+          Name='InputSingleSimulasi'
+          Caption='Dana &PHK...'
+          OnClick='mnuShowModalWithData'
+          AllowedGroups='Admin;BOD;Root;CS;SPV;PIC'
+          StringTag='Transaksi'
+          NumberTag=61
+        >, object:rmn::MenuItem<
+          Name='InputSingleSimulasi'
+          Caption='Pengambilan &Manfaat Pensiun...'
+          OnClick='mnuShowModalWithData'
+          AllowedGroups='Admin;BOD;Root;CS;SPV'
+          StringTag='Transaksi'
+          NumberTag=80
+        >, object:rmn::MenuItem<
+          Name='mnuSimulasiPercepat'
+          Caption='Simulasi All Percepat'
+          OnClick='mnuLaporanClick'
+          AllowedGroups='Admin;BOD;Root;SPV'
+          StringTag='fSimulasiPercepat'
+        >, object:rmn::MenuItem<
+          Name='mnuTes'
+          Caption='Tes Simulasi 30%'
+          OnClick='mnuShowModalWithData'
+          StringTag='transaksi'
+        >
+      }
+      AllowedGroups='Admin;BOD;Root;CS;CC;SPV;MRKT;PIC;BOC'
+    >
+  }
+  DenyThenAllow=true
+  DesktopFormName='fMenuLiabilitas'
+  DesktopFormServerID='desktop/fMenuLiabilitas'
+  ImageListID='liabilities'
+>

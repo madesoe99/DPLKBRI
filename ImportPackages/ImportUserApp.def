@@ -1,0 +1,146 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{3371A9D8-7183-4DBB-BD3A-B0E5DC9D3DFE}'
+  DocumentID='DAF UI data packet'
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:ui_data_packet::UIDataPacketDef<
+  UIStructureDefs={
+    object:ui_data_packet::UIStructureDef<
+      UIFieldDefs={
+        object:ui_data_packet::UIFieldDef<
+          FieldName='Name'
+          DataType=ftString
+          DataLength=20
+        >
+        , object:ui_data_packet::UIFieldDef<
+          FieldName='Description'
+          DataType=ftString
+          DataLength=20
+        >
+        , object:ui_data_packet::UIFieldDef<
+          FieldName='Mode'
+          DataType=ftString
+          DataLength=20
+        >
+        , object:ui_data_packet::UIFieldDef<
+          FieldName='LastModifiedUser'
+          DataType=ftString
+          DataLength=20
+        >
+        , object:ui_data_packet::UIFieldDef<
+          FieldName='LastModifiedTime'
+          DataType=ftDateTime
+          DataLength=20
+        >
+      }
+      StructureName='PackageDef'
+    >
+    , object:ui_data_packet::UIStructureDef<
+      UIFieldDefs={
+        object:ui_data_packet::UIFieldDef<
+          FieldName='Description'
+          DataType=ftString
+          DataLength=20
+        >
+        , object:ui_data_packet::UIFieldDef<
+          FieldName='Type'
+          DataType=ftString
+          DataLength=20
+        >
+        , object:ui_data_packet::UIFieldDef<
+          FieldName='FirstDataRow'
+          DataType=ftInteger
+          DataLength=20
+        >
+        , object:ui_data_packet::UIFieldDef<
+          FieldName='SheetName'
+          DataType=ftString
+          DataLength=20
+        >
+        , object:ui_data_packet::UIFieldDef<
+          FieldName='ControlColumn'
+          DataType=ftInteger
+          DataLength=20
+        >
+      }
+      StructureName='SourceDef'
+    >
+    , object:ui_data_packet::UIStructureDef<
+      UIFieldDefs={
+        object:ui_data_packet::UIFieldDef<
+          FieldName='Name'
+          DataType=ftString
+          DataLength=20
+        >
+        , object:ui_data_packet::UIFieldDef<
+          FieldName='Type'
+          DataType=ftString
+          DataLength=20
+        >
+        , object:ui_data_packet::UIFieldDef<
+          FieldName='Length'
+          DataType=ftInteger
+          DataLength=20
+        >
+        , object:ui_data_packet::UIFieldDef<
+          FieldName='Index'
+          DataType=ftInteger
+          DataLength=20
+        >
+      }
+      StructureName='SourceFieldDefs'
+    >
+    , object:ui_data_packet::UIStructureDef<
+      UIFieldDefs={
+        object:ui_data_packet::UIFieldDef<
+          FieldName='Description'
+          DataType=ftString
+          DataLength=20
+        >
+        , object:ui_data_packet::UIFieldDef<
+          FieldName='TargetClassName'
+          DataType=ftString
+          DataLength=20
+        >
+        , object:ui_data_packet::UIFieldDef<
+          FieldName='AfterApplyRowModule'
+          DataType=ftString
+          DataLength=20
+        >
+        , object:ui_data_packet::UIFieldDef<
+          FieldName='AfterApplyRowFunctionName'
+          DataType=ftString
+          DataLength=20
+        >
+      }
+      StructureName='TransformationDef'
+    >
+    , object:ui_data_packet::UIStructureDef<
+      UIFieldDefs={
+        object:ui_data_packet::UIFieldDef<
+          FieldName='Name'
+          DataType=ftString
+          DataLength=20
+        >
+        , object:ui_data_packet::UIFieldDef<
+          FieldName='LookupClass'
+          DataType=ftString
+          DataLength=20
+        >
+        , object:ui_data_packet::UIFieldDef<
+          FieldName='LookupField'
+          DataType=ftString
+          DataLength=20
+        >
+        , object:ui_data_packet::UIFieldDef<
+          FieldName='SourceFieldName'
+          DataType=ftString
+          DataLength=20
+        >
+      }
+      StructureName='TransItemDefs'
+    >
+  }
+>

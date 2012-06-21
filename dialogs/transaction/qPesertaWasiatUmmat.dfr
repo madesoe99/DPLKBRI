@@ -1,0 +1,165 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['DualSplit']
+  Caption='Daftar Peserta Wasiat Ummat '
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData='FormGeneralSetData'
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnFormShow='FormShow'
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={object:rtf::PClassUI<
+      Name='uipNoData'
+    >}Containers={object:rtf::Query<
+      Name='qRekeningWasiatUmmat'
+      Width=800
+      Height=559
+      ContextMenuName='popupmenus/transaction/qMasterWasiatUmmat'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from RekeningWasiatUmmat'#13#10,
+        '['#13#10,
+        '   (LRekeningDPLK.status_dplk = ''A''  and LRekeningDPLK.status_wasiat_ummat =''T'' )'#13#10,
+        '   and  (1 = :display_all_cabang OR  LRekeningDPLK.kode_cab_daftar = :kode_cab_daftar )'#13#10,
+        ']'#13#10,
+        '('#13#10,
+        '  no_peserta,'#13#10,
+        '  no_polis,'#13#10,
+        '  LRekeningDPLK.LNasabahDPLK.nama_lengkap as nama_lengkap,'#13#10,
+        '  tgl_akseptasi,'#13#10,
+        '  besar_premi,'#13#10,
+        '  manfaat_asuransi,'#13#10,
+        '  LRekeningDPLK.bln_tunggakan_wasiat_ummat as tunggakan_bulan,'#13#10,
+        '  LRekeningDPLK.Kewajiban_Wasiat_Ummat as jumlah_premi,'#13#10,
+        '  LRekeningDPLK.status_dplk as status_dplk,'#13#10,
+        '  LRekeningDPLK.status_wasiat_ummat as status_wu,'#13#10,
+        '  tgl_cetak,'#13#10,
+        '  cabang_cetak,'#13#10,
+        '  userid_cetak,'#13#10,
+        '  self'#13#10,
+        ') then order by no_peserta;']
+      WindowSize=20
+      Columns={object:rtf::QueryColumn<
+          FieldName='RekeningWasiatUmmat.no_peserta'
+          Width=75
+          Caption='Nomor Peserta'
+        >, object:rtf::QueryColumn<
+          FieldName='RekeningWasiatUmmat.nama_lengkap'
+          Width=200
+          Caption='Nama Lengkap'
+        >, object:rtf::QueryColumn<
+          FieldName='RekeningWasiatUmmat.tgl_akseptasi'
+          Width=75
+          Caption='Tanggal Akseptasi'
+        >, object:rtf::QueryColumn<
+          FieldName='RekeningWasiatUmmat.besar_premi'
+          Width=75
+          Caption='Besar Premi'
+        >, object:rtf::QueryColumn<
+          FieldName='RekeningWasiatUmmat.manfaat_asuransi'
+          Caption='Manfaat Yang Dicover'
+        >, object:rtf::QueryColumn<
+          FieldName='RekeningWasiatUmmat.tunggakan_bulan'
+          Caption='Tunggakan Bulan'
+          UseCustomColor=true
+          Color=12695295
+        >, object:rtf::QueryColumn<
+          FieldName='RekeningWasiatUmmat.jumlah_premi'
+          Width=75
+          Caption='Jumlah Premi'
+          UseCustomColor=true
+          Color=12695295
+        >, object:rtf::QueryColumn<
+          FieldName='RekeningWasiatUmmat.status_dplk'
+          Caption='Status DPLK'
+        >, object:rtf::QueryColumn<
+          FieldName='RekeningWasiatUmmat.status_wu'
+          Caption='Status WU'
+        >, object:rtf::QueryColumn<
+          FieldName='RekeningWasiatUmmat.no_polis'
+          Width=100
+          Caption='No Polis'
+        >, object:rtf::QueryColumn<
+          FieldName='RekeningWasiatUmmat.tgl_cetak'
+          Caption='Tgl Cetak Polis'
+        >, object:rtf::QueryColumn<
+          FieldName='RekeningWasiatUmmat.cabang_cetak'
+          Caption='Cabang Cetak'
+        >}EnableColumns=true
+    >, object:rtf::Panel<
+      Elements={object:rtf::LinkUIElmtSetting<
+          Name='LBranchLocation'
+          ClassTypeName='BranchLocation'
+          DisplayFields='branch_code;BranchName'
+          Restrictions=''
+          FieldBaseName='LBranchLocation'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='NoLimitLocation'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=1
+        >}Name='pFilter'
+      Width=713
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipNoData']
+      Controls={*object:rtf::DBLookupEdit<
+          Name='LBranchLocation'
+          Top=10
+          Left=10
+          ControlCaption='Kantor Cabang Pendaftaran'
+          LookupField='LBranchLocation.BranchName'
+          DisplayLookupField=true
+          OnAfterLookup='BranchLocationAfterLookup'
+          DirectInput=true
+        >, object:rtf::CheckBox<
+          Name='cbDisplayAllCabang'
+          Layout=clAbsolute
+          Top=8
+          Left=400
+          Width=225
+          Height=17
+          Color=0
+          ControlCaption='Tampilkan seluruh data'
+          OnClick='cbDisplayAllCabangClick'
+        >, object:rtf::Button<
+          Name='bPetunjuk'
+          Layout=clAbsolute
+          Top=8
+          Left=624
+          Color=0
+          ControlCaption=''
+          Caption='&Petunjuk'
+          OnClick='bPetunjukClick'
+        >}EqualCaptionWidth=150
+      ControlLeftMargin=10
+      ControlTopMargin=10
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=800
+      Height=600
+      Container1=$CONTAINERS['pFilter']
+      Container2=$CONTAINERS['qRekeningWasiatUmmat']
+    >}>

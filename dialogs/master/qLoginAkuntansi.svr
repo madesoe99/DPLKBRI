@@ -1,0 +1,28 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipParameter'
+      PClassName='Parameter'
+      LoadedFieldList='Key_Parameter;Numeric_Value;Varchar_Value;Description'
+      StoredFieldList='Key_Parameter;Numeric_Value;Varchar_Value;Description'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='ValueType'
+          DataTypeName='integer'
+          DataLength=5
+        >
+      }
+      Mode=imMultiRow
+      CreateInstanceOnNew=true
+    >
+  }
+  OnGeneralSetData='FormGeneralSetData'
+  OnGeneralProcessData='FormGeneralProcessData'
+>

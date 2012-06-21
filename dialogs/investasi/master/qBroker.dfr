@@ -1,0 +1,53 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['qBroker']
+  Caption='Daftar Broker'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  Containers={object:rtf::Query<
+      Name='qBroker'
+      Width=800
+      Height=600
+      ContextMenuName='popupmenus/investasi/master/qBroker'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from Broker'#13#10,
+        '('#13#10,
+        '  broker_code,'#13#10,
+        '  broker_name,'#13#10,
+        '  self'#13#10,
+        ') then order by broker_code;']
+      DirectDisplay=true
+      WindowSize=20
+      Columns={object:rtf::QueryColumn<
+          FieldName='Broker.broker_code'
+          Width=60
+          Caption='Kode Broker'
+        >, object:rtf::QueryColumn<
+          FieldName='Broker.broker_name'
+          Width=180
+          Caption='Nama Broker'
+        >}EnableColumns=true
+    >}>

@@ -1,0 +1,95 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['DualSplit']
+  Caption='Ambil Riwayat Transaksi Semua Giro DPLK (tercantum di Master Giro)'
+  Left=300
+  Top=250
+  Width=400
+  Height=150
+  AfterProcessServerData='FormAfterProcessServerData'
+  UIParts={object:rtf::PClassUI<
+      Name='uipFilter'
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >}Containers={object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='TanggalTransaksi'
+          ControlCaption='Tanggal Transaksi'
+          DataTypeName='timestamp'
+          DataLength=20
+        >}Name='pFilter'
+      Width=800
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipFilter']
+      Controls={*object:rtf::DBDateEdit<
+          Name='TanggalTransaksi'
+          Top=10
+          Left=10
+          Color=0
+          ControlCaption='Tanggal Transaksi'
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=10
+      ControlTopMargin=10
+      DefaultControlHeight=21
+      HorizontalControlGap=10
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=800
+      Height=40
+      Controls={object:rtf::Button<
+          Name='bProses'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          Color=0
+          ControlCaption=''
+          Caption='&Mulai Proses'
+          Default=true
+          OnClick='bProsesClick'
+        >, object:rtf::Button<
+          Name='bCancel'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >, object:rtf::Button<
+          Name='Button'
+          Layout=clNextSide
+          Top=8
+          Left=166
+          Visible=false
+          Enabled=false
+          Color=0
+          ControlCaption=''
+          DefaultAction=daShowDebugWindow
+        >}ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=400
+      Height=150
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['DualSplit2']
+      InversedAlign=true
+    >, object:rtf::DualSplit<
+      Name='DualSplit2'
+      Width=400
+      Height=109
+      Container2=$CONTAINERS['pFilter']
+      InversedAlign=true
+    >}FormClassName='fConvertGiro2Journal'
+>

@@ -1,0 +1,75 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipRegisterCIF'
+      PClassName='RegisterAutoDebet'
+      LoadedFieldList='no_referensi;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;keterangan;user_id;terminal_id;jenis_transaksi;registercif_id;no_rekening;nama_rekening;tanggal_autodebet'
+      StoredFieldList='no_referensi;LNasabahDPLK;keterangan;user_id;terminal_id;jenis_transaksi;no_rekening;nama_rekening;tanggal_autodebet'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='mode'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='TipeRekening'
+          DataTypeName='varchar'
+          DataLength=2
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='IDNumber'
+          DataTypeName='varchar'
+          DataLength=30
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='BranchCode'
+          DataTypeName='varchar'
+          DataLength=5
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='CurrencyCode'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLK'
+          ClassTypeName='NasabahDPLK'
+          FieldNames='no_peserta;no_peserta;nama_lengkap'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+      AfterApplyRow='uipRegisterCIFApplyRow'
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipMaster'
+      PClassName='RekeningDPLK'
+      LoadedFieldList='no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;status_autodebet'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLK'
+          ClassTypeName='NasabahDPLK'
+          FieldNames='no_peserta;no_peserta;nama_lengkap'
+        >
+      }
+      Mode=imSingleRow
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipRekeningAutoDebet'
+      MasterUIName='uipMaster'
+      ListName='Ls_RekeningAutoDebet'
+      LoadedFieldList='no_rekening;nama_rekening;tanggal_autodebet'
+      SetMasterDetailRelationship=true
+    >
+  }
+  OnEndSetData='FormEndSetData'
+>

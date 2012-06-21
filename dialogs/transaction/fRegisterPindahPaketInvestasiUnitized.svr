@@ -1,0 +1,75 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipRegisterCIF'
+      PClassName='RegisterPindahPaketInvestasi'
+      LoadedFieldList='LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;no_referensi;keterangan;user_id;terminal_id;registercif_id'
+      StoredFieldList='LNasabahDPLK;no_referensi;keterangan;user_id;terminal_id'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='mode'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLK'
+          ClassTypeName='NasabahDPLK'
+          FieldNames='no_peserta;no_peserta;nama_lengkap'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+      AfterApplyRow='uipRegisterCIFApplyRow'
+    >, object:rpclass::TPClassUIDef<
+      Name='uipMaster'
+      MasterUIName='uipRegisterCIF'
+      LinkName='LRekeningDPLK'
+      LoadedFieldList='no_rekening;no_peserta'
+      StoredFieldList='no_peserta'
+    >, object:rpclass::TPClassUIDef<
+      Name='uipParameter'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='TanggalPakai'
+          DataTypeName='varchar'
+          DataLength=10
+        >
+      }
+      Mode=imSingleRow
+    >, object:rpclass::TPClassUIDef<
+      Name='uipRekDPLK'
+      MasterUIName='uipMaster'
+      ListName='Ls_RekeningDPLK'
+      LoadedFieldList='kode_paket_investasi;pct_alokasi'
+      CreateInstanceOnNew=true
+      DeleteOnDel=true
+      SetMasterDetailRelationship=true
+    >, object:rpclass::TPClassUIDef<
+      Name='uipRegDetail'
+      MasterUIName='uipRegisterCIF'
+      ListName='Ls_RegPindahPaketDetil'
+      LoadedFieldList='LPaketInvestasi.kode_paket_investasi;LPaketInvestasi.kode_paket_investasi;LPaketInvestasi.nama_paket_investasi;proporsi'
+      StoredFieldList='LPaketInvestasi;proporsi'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LPaketInvestasi'
+          ClassTypeName='PaketInvestasi'
+          FieldNames='kode_paket_investasi;kode_paket_investasi;nama_paket_investasi'
+        >
+      }
+      CreateInstanceOnNew=true
+      DeleteOnDel=true
+      SetMasterDetailRelationship=true
+    >
+  }
+  OnBeginSetData='FormBeginSetData'
+>

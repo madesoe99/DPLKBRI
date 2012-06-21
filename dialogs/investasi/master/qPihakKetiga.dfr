@@ -1,0 +1,73 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['qPihakKetiga']
+  Caption='Daftar Pihak Ketiga'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  Containers={object:rtf::Query<
+      Name='qPihakKetiga'
+      Width=800
+      Height=600
+      ContextMenuName='popupmenus/investasi/master/qPihakKetiga'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from PihakKetiga'#13#10,
+        '('#13#10,
+        '  kode_pihak_ketiga,'#13#10,
+        '  nama_pihak_ketiga,'#13#10,
+        '  alamat_pihak_ketiga,'#13#10,
+        '  self_investment$ as self_investment,'#13#10,
+        '  npwp,'#13#10,
+        '  user_id,'#13#10,
+        '  last_update,'#13#10,
+        '  self'#13#10,
+        ') then order by kode_pihak_ketiga;']
+      DirectDisplay=true
+      WindowSize=20
+      Columns={object:rtf::QueryColumn<
+          FieldName='PihakKetiga.kode_pihak_ketiga'
+          Caption='Kode Pihak Ketiga'
+        >, object:rtf::QueryColumn<
+          FieldName='PihakKetiga.nama_pihak_ketiga'
+          Caption='Nama Pihak Ketiga'
+        >, object:rtf::QueryColumn<
+          FieldName='PihakKetiga.alamat_pihak_ketiga'
+          Width=200
+          Caption='Alamat Pihak Ketiga'
+        >, object:rtf::QueryColumn<
+          FieldName='PihakKetiga.self_investment'
+          Width=75
+          Caption='Pihak Terkait'
+        >, object:rtf::QueryColumn<
+          FieldName='PihakKetiga.user_id'
+          Caption='ID Pengguna'
+        >, object:rtf::QueryColumn<
+          FieldName='PihakKetiga.last_update'
+          Caption='Terakhir Diperbarui'
+        >, object:rtf::QueryColumn<
+          FieldName='PihakKetiga.npwp'
+          Caption='N P W P'
+        >}EnableColumns=true
+    >}>

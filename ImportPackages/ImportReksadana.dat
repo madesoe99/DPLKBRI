@@ -1,0 +1,51 @@
+PackageDef()
+<s20,Name='ImportReksadana' 
+s20,Description='Import Data Reksadana' 
+s20,Mode='NORMAL' 
+s20,LastModifiedUser='ade herman' 
+d,LastModifiedTime*
+>
+,
+SourceDef()
+<s20,Description='Import Data Reksadana' 
+s20,Type='MSEXCEL' 
+i,FirstDataRow=11
+s20,SheetName='Sheet1' 
+i,ControlColumn=2
+>
+,
+SourceFieldDefs()
+<s20,Name='Id_Investasi' 
+s20,Type='INTEGER' 
+i,Length=0
+i,Index=1
+>
+<'NamaReksadana'  'STRING'  0 2>
+<'ManajerInvestasi'  'STRING'  0 3>
+<'JenisReksadana'  'STRING'  0 4>
+<'UP'  'FLOAT'  0 5>
+<'NilaiInvestasi'  'FLOAT'  0 6>
+<'NABSubscribe'  'FLOAT'  0 7>
+<'NABRedempt'  'FLOAT'  0 8>
+<'NAB_Rata'  'FLOAT'  0 9>
+<'NAB_Sekarang'  'FLOAT'  0 10>
+<'TglPenetapanNAB'  'DATETIME'  0 11>
+<'status'  'STRING'  0 12>
+<'tanggal_buka'  'DATETIME'  0 13>
+<'NilaiPasar'  'FLOAT'  0 14>
+<'ReturnUnRealize'  'FLOAT'  0 15>
+<'ReturnRealize'  'FLOAT'  0 16>,
+TransformationDef()
+<s20,Description='Import Data Reksadana' 
+s20,TargetClassName='Reksadana' 
+s20,AfterApplyRowModule='importmassal.Investasi' 
+s20,AfterApplyRowFunctionName='ProcessingImport' 
+>
+,
+TransItemDefs()
+<*s20,Name*
+s20,LookupClass*
+s20,LookupField*
+s20,SourceFieldName*
+>
+..

@@ -1,0 +1,77 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{FF6521AE-DCB8-457C-933C-35D88DB5B672}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rmn::Menu<
+  MenuItems={object:rmn::MenuItem<
+      Name='mnuTransaksiReksadana'
+      Caption='Transaksi Investasi EQ'
+      MenuItems={object:rmn::MenuItem<
+          Name='mnuSubscribeReksadana'
+          Caption='Subscribe Investasi Tambahan...'
+          OnClick='mnuTransInvClick'
+          AllowedGroups='Root;Admin;FMS'
+          StringTag='fSubscribeReksadana'
+        >, object:rmn::MenuItem<
+          Name='mnuTutupInvestasi'
+          Caption='Redeem Investasi...'
+          OnClick='mnuTransInvClick'
+          AllowedGroups='Root;Admin;FMS'
+          StringTag='fRedemptionReksadana'
+        >, object:rmn::MenuItem<
+          Name='mnuRealisasiReturn'
+          Caption='Realisasi Return Investasi...'
+          OnClick='mnuTransInvClick'
+          AllowedGroups='RESERVEAdmin'
+          StringTag='fRealisasiReturn'
+        >, object:rmn::MenuItem<
+          Name='mnuInputBiaya'
+          Caption='Input Biaya...'
+          OnClick='mnuKoreksiNABClick'
+          AllowedGroups='RESERVEAdmin'
+          StringTag='fReksadana_Biaya'
+        >, object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='Root;Admin;FMS'
+        >, object:rmn::MenuItem<
+          Name='mnuTransaksiManual'
+          Caption='Transaksi Manual'
+          MenuItems={object:rmn::MenuItem<
+              Name='mnuInvestasiManual'
+              Caption='Koreksi Investasi...'
+              OnClick='mnuTransManClick'
+              AllowedGroups='Root;Admin;FMS'
+              StringTag='fManInvestasiRksdn'
+            >, object:rmn::MenuItem<
+              Name='mnuLRManual'
+              Caption='Koreksi Hasil Investasi...'
+              OnClick='mnuTransManClick'
+              AllowedGroups='Root;Admin;FMS'
+              StringTag='fManLRInvestasiRksdn'
+            >}AllowedGroups='Root;Admin;FMS'
+        >}AllowedGroups='Root;Admin;FMS'
+    >, object:rmn::MenuItem<
+      Name='mnuKoreksiNAB'
+      Caption='Koreksi NAB dan UP...'
+      OnClick='mnuKoreksiNABClick'
+      AllowedGroups='Root;Admin;FMS'
+      StringTag='fReksadana_SetNAB'
+    >, object:rmn::MenuItem<
+      Name='mnuOtoNAB'
+      Caption='Otorisasi Update NAB dan Hasil Investasi...'
+      OnClick='mnuKoreksiNABClick'
+      AllowedGroups='Root;Admin;FM'
+      StringTag='fReksadana_SetNAB'
+    >, object:rmn::MenuItem<
+      Caption='-'
+      AllowedGroups='Root;Admin;FM;FMS'
+    >, object:rmn::MenuItem<
+      Name='mnuView'
+      Caption='Lihat Detil Investasi...'
+      OnClick='mnuViewClick'
+      AllowedGroups='Root;Admin;FM;FMS'
+      StringTag='view'
+    >}MenuType=mtPopupMenu
+>

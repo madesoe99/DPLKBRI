@@ -1,0 +1,253 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit1']
+  Caption='Reservasi no peserta'
+  Left=50
+  Top=50
+  Width=457
+  Height=313
+  Position=1
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipInput'
+      FillInDefaultValues=true
+      AlwaysPostToServer=true
+      InitWithDefaultValues=true
+    >
+    , object:rtf::PClassUI<
+      Name='uipOutput'
+      NeverPostToServer=true
+    >
+  }
+  Containers={
+    object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=457
+      Height=313
+      Container1=$CONTAINERS['panel1']
+      Container2=$CONTAINERS['dualsplit2']
+    >
+    , object:rtf::Panel<
+      Name='panel1'
+      Width=377
+      Height=69
+      Controls={
+        object:rtf::Label<
+          Name='label1'
+          Layout=clAbsolute
+          Top=8
+          Left=8
+          Width=26
+          Height=17
+          Color=0
+          ControlCaption=''
+          Caption='Reservasi no peserta'
+          AutoSize=true
+          FontName='Tahoma'
+          FontColor=-2147483640
+          FontSize=14
+          FontStyleBold=true
+        >
+        , object:rtf::Label<
+          Name='label2'
+          Layout=clAbsolute
+          Top=40
+          Left=8
+          Width=26
+          Height=17
+          Color=0
+          ControlCaption=''
+          Caption='Perhatian! Nomor yang sudah direservasi tidak dapat digunakan kembali'
+          AutoSize=true
+          FontName='Tahoma'
+          FontColor=-2147483640
+          FontSize=8
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::DualSplit<
+      Name='dualsplit2'
+      Width=457
+      Height=243
+      Container1=$CONTAINERS['panel3']
+      Container2=$CONTAINERS['dualsplit3']
+      InversedAlign=true
+    >
+    , object:rtf::Panel<
+      Name='panel3'
+      Width=320
+      Height=42
+      Controls={
+        object:rtf::Button<
+          Name='bReserve'
+          Layout=clAbsolute
+          Top=8
+          Left=8
+          Color=0
+          ControlCaption=''
+          Caption='&Reservasi'
+          Default=true
+          OnClick='bReserveClick'
+        >
+        , object:rtf::Button<
+          Name='button2'
+          Layout=clAbsolute
+          Top=8
+          Left=88
+          Color=0
+          ControlCaption=''
+          Caption='&Selesai'
+          Cancel=true
+          ExitAction=eaQuitOK
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::LinkUIElmtSetting<
+          Name='cabang'
+          RequiredOption=roAlwaysRequired
+          ClassTypeName='BranchLocation'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='cabang.branch_code'
+              DataTypeName='VARCHAR'
+              DataLength=5
+              UsedAsKey=true
+              KeyOrDisplayName='branch_code'
+              FinalDisplayFieldName='branch_code'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='cabang.branch_code'
+              DataTypeName='VARCHAR'
+              DataLength=5
+              UsedAsDisplay=true
+              KeyOrDisplayName='branch_code'
+              FinalDisplayFieldName='branch_code'
+            >
+            , object:rtf::FieldUIElmtSetting<
+              Name='cabang.BranchName'
+              DataTypeName='VARCHAR'
+              DataLength=50
+              UsedAsDisplay=true
+              KeyOrDisplayName='BranchName'
+              FinalDisplayFieldName='BranchName'
+            >
+          }
+          Restrictions=''
+          FieldBaseName='cabang'
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='reserve_count'
+          RequiredOption=roAlwaysRequired
+          DataTypeName='integer'
+          DataLength=20
+        >
+      }
+      Name='pnlInput'
+      Width=385
+      Height=94
+      UIPart=$UIPARTS['uipInput']
+      Controls={
+        *object:rtf::DBLookupEdit<
+          Name='cabang'
+          Top=20
+          Left=8
+          ControlCaption='cabang'
+          LookupField='cabang.BranchName'
+          DisplayLookupField=true
+          DirectInput=true
+        >
+        , *object:rtf::DBEdit<
+          Name='reserve_count'
+          Top=48
+          Left=8
+          Width=57
+          Height=21
+          Color=0
+          ControlCaption='# nomor direserve'
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=8
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Input data reservasi'
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='no_awal'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='no_akhir'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+      }
+      Name='pnlOutput'
+      Width=385
+      Height=240
+      UIPart=$UIPARTS['uipOutput']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='no_awal'
+          Top=20
+          Left=8
+          Width=140
+          Height=21
+          Color=-2147483624
+          ControlCaption='no awal'
+          ReadOnly=true
+        >
+        , *object:rtf::DBEdit<
+          Name='no_akhir'
+          Top=48
+          Left=8
+          Width=139
+          Height=21
+          Color=-2147483624
+          ControlCaption='no akhir'
+          ReadOnly=true
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=8
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Hasil reservasi'
+    >
+    , object:rtf::DualSplit<
+      Name='dualsplit3'
+      Width=457
+      Height=200
+      Container1=$CONTAINERS['pnlInput']
+      Container2=$CONTAINERS['pnlOutput']
+    >
+  }
+  FormClassName='frmReserveCustID'
+>

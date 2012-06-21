@@ -1,0 +1,150 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['MultiSplit']
+  Caption='Tambah Jenis Reksadana'
+  Left=50
+  Top=50
+  Width=401
+  Height=241
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData='FormGeneralSetData'
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={object:rtf::PClassUI<
+      Name='uipJenisReksadana'
+      ClassTypeName='JenisReksadana'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >}Containers={object:rtf::Panel<
+      ControlDefs={object:rtf::MultiControlDef<
+          Action=caNew
+          DataMembers=['kode_jns_reksadana'#13#10,
+            'jenis_reksadana'#13#10,
+            'keterangan'#13#10]
+        >}Elements={*object:rtf::FieldUIElmtSetting<
+          Name='kode_jns_reksadana'
+          ControlCaption='Kode Jenis Reksadana'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='jenis_reksadana'
+          ControlCaption='Jenis Reksadana'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          ControlCaption='Keterangan'
+        >}Name='pData'
+      Width=401
+      Height=117
+      Bordered=true
+      UIPart=$UIPARTS['uipJenisReksadana']
+      Controls={*object:rtf::DBEdit<
+          Name='kode_jns_reksadana'
+          Top=20
+          Left=20
+          Color=0
+          ControlCaption='Kode Jenis Reksadana'
+        >, *object:rtf::DBEdit<
+          Name='jenis_reksadana'
+          Top=48
+          Left=20
+          Color=0
+          ControlCaption='Jenis Reksadana'
+        >, *object:rtf::DBEdit<
+          Name='keterangan'
+          Top=76
+          Left=20
+          Color=0
+          ControlCaption='Keterangan'
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Controls={object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=20
+          Color=0
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          OnClick='btnOKClick'
+        >, object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=99
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >}ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      ControlDefs={object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='user_id'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='last_update'
+        >}Elements={*object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          ReadOnlyControl=true
+          ControlCaption='ID Pengguna'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='last_update'
+          ReadOnlyControl=true
+          ControlCaption='Terakhir Diperbarui'
+        >}Name='pUser'
+      Width=240
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipJenisReksadana']
+      Controls={*object:rtf::DBEdit<
+          Name='user_id'
+          Top=20
+          Left=20
+          Color=-2147483624
+          ControlCaption='ID Pengguna'
+          ReadOnly=true
+        >, *object:rtf::DBDateEdit<
+          Name='last_update'
+          Top=48
+          Left=20
+          Color=-2147483624
+          ControlCaption='Terakhir Diperbarui'
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::MultiSplit<
+      Name='MultiSplit'
+      Width=401
+      Height=241
+      Side1Containers={$CONTAINERS['pData']
+      }Side2Containers={$CONTAINERS['pButton']
+      }SpaceContainer=$CONTAINERS['pUser']
+    >}>

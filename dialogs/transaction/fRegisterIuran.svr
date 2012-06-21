@@ -1,0 +1,81 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipRegisterCIF'
+      PClassName='RegisterIuran'
+      LoadedFieldList='no_referensi;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;keterangan;user_id;terminal_id;registercif_id;LRekeningDPLK.no_rekening;LRekeningDPLK.no_rekening;LRekeningDPLK.keterangan;iuran_pst;iuran_pk'
+      StoredFieldList='no_referensi;LNasabahDPLK;keterangan;user_id;terminal_id;LRekeningDPLK;iuran_pst;iuran_pk'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='mode'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='iuran_pst_lama'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='iuran_pk_lama'
+          DataTypeName='double'
+          DataLength=20
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLK'
+          ClassTypeName='NasabahDPLK'
+          FieldNames='no_peserta;no_peserta;nama_lengkap'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LRekeningDPLK'
+          ClassTypeName='RekInvDPLK'
+          FieldNames='no_rekening;no_rekening;keterangan'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+      AfterApplyRow='uipRegisterCIFApplyRow'
+    >, object:rpclass::TPClassUIDef<
+      Name='uipMaster'
+      PClassName='RekInvDPLK'
+      LoadedFieldList='no_rekening;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;iuran_pst;iuran_pk;no_peserta;keterangan'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLK'
+          ClassTypeName='NasabahDPLK'
+          FieldNames='no_peserta;nama_lengkap'
+        >
+      }
+      Mode=imSingleRow
+    >, object:rpclass::TPClassUIDef<
+      Name='uipParameter'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='PRESISI_ANGKA_FLOAT'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='MIN_JML_IURAN_PST'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='MIN_JML_IURAN_PK'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='IS_ONLY_MIN_JML_IURAN_PST'
+          DataTypeName='integer'
+          DataLength=20
+        >
+      }
+      Mode=imSingleRow
+    >
+  }
+  OnEndSetData='FormEndSetData'
+>

@@ -1,0 +1,282 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit2']
+  Left=50
+  Top=50
+  Width=431
+  Height=500
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={object:rtf::PClassUI<
+      Name='uipInput'
+    >, object:rtf::PClassUI<
+      Name='uipOutput'
+      NeverPostToServer=true
+    >}Containers={object:rtf::DualSplit<
+      Name='dualsplit2'
+      Width=431
+      Height=500
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['dualsplit1']
+      InversedAlign=true
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=297
+      Height=50
+      Bordered=true
+      Controls={object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          Color=0
+          ControlCaption=''
+          Caption='&Proses'
+          OnClick='btnOKClick'
+        >, object:rtf::Button<
+          Name='btnCancel'
+          Layout=clAbsolute
+          Top=8
+          Left=96
+          Color=0
+          ControlCaption=''
+          Caption='&Cancel'
+          ExitAction=eaQuitOK
+        >, object:rtf::Button<
+          Name='btnPetunjuk'
+          Layout=clAbsolute
+          Top=8
+          Left=184
+          Visible=false
+          Color=0
+          ControlCaption=''
+          Caption='&Petunjuk'
+          OnClick='btnPetunjukClick'
+        >}ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=431
+      Height=449
+      Container1=$CONTAINERS['pnlOutput']
+      Container2=$CONTAINERS['pData']
+      InversedAlign=true
+    >, object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='tanggal_registrasi'
+          ControlCaption='Tanggal Registrasi DPLK '
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='no_peserta'
+          ControlCaption='No Peserta'
+          DataTypeName='varchar'
+          DataLength=11
+        >, object:rtf::FieldUIElmtSetting<
+          Name='iuran_perbulan'
+          ControlCaption='Iuran Perbulan'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='premi_perbulan'
+          ControlCaption='Premi Perbulan'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='manfaat_pensiun'
+          ControlCaption='Manfaat Pensiun'
+          DataTypeName='double'
+          DataLength=20
+        >}Name='pData'
+      Width=430
+      Height=193
+      Bordered=true
+      UIPart=$UIPARTS['uipInput']
+      Controls={*object:rtf::DBDateEdit<
+          Name='tanggal_registrasi'
+          Top=68
+          Left=20
+          Width=100
+          Height=21
+          Color=0
+          ControlCaption='Tanggal Registrasi DPLK'
+          LayoutOrder=2
+        >, *object:rtf::DBEdit<
+          Name='no_peserta'
+          Top=40
+          Left=20
+          Color=0
+          ControlCaption='No Peserta'
+          LayoutOrder=1
+        >, *object:rtf::DBEdit<
+          Name='iuran_perbulan'
+          Top=96
+          Left=20
+          Width=100
+          Height=21
+          Color=0
+          ControlCaption='Iuran Perbulan'
+          LayoutOrder=3
+        >, *object:rtf::DBEdit<
+          Name='premi_perbulan'
+          Top=124
+          Left=20
+          Width=100
+          Height=21
+          Color=0
+          ControlCaption='Premi Perbulan'
+          LayoutOrder=4
+        >, *object:rtf::DBEdit<
+          Name='manfaat_pensiun'
+          Top=152
+          Left=20
+          Width=100
+          Height=21
+          Color=0
+          ControlCaption='Manfaat Pensiun'
+          LayoutOrder=5
+        >}EqualCaptionWidth=180
+      ControlLeftMargin=20
+      ControlTopMargin=40
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='SIMULASI PERHITUNGAN SIMPANAN TERPROTEKSI'
+    >, object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='usia_masuk'
+          DataTypeName='varchar'
+          DataLength=2
+        >, object:rtf::FieldUIElmtSetting<
+          Name='rate_premi'
+          DataTypeName='double'
+          DataLength=3
+        >, object:rtf::FieldUIElmtSetting<
+          Name='premi_perbulan'
+          DataTypeName='double'
+          DataLength=10
+        >, object:rtf::FieldUIElmtSetting<
+          Name='manfaat_pensiun'
+          DataTypeName='double'
+          DataLength=10
+        >, object:rtf::FieldUIElmtSetting<
+          Name='saldo_awal'
+          ControlCaption='Saldo'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tingkat_investasi'
+          ControlCaption='Tingkat Investasi'
+          DataTypeName='double'
+          DataLength=10
+        >, object:rtf::FieldUIElmtSetting<
+          Name='nama_peserta'
+          ControlCaption='Nama Peserta'
+          DataTypeName='varchar'
+          DataLength=30
+        >, object:rtf::FieldUIElmtSetting<
+          Name='usia_pensiun'
+          ControlCaption='Usia Pensiun'
+          DataTypeName='varchar'
+          DataLength=4
+        >}Name='pnlOutput'
+      Width=430
+      Height=265
+      Bordered=true
+      UIPart=$UIPARTS['uipOutput']
+      Controls={*object:rtf::DBEdit<
+          Name='usia_masuk'
+          Top=91
+          Left=15
+          Width=40
+          Height=21
+          Color=0
+          ControlCaption='Usia Masuk'
+          LayoutOrder=3
+        >, *object:rtf::DBEdit<
+          Name='rate_premi'
+          Top=147
+          Left=15
+          Width=40
+          Height=21
+          Color=0
+          ControlCaption='Rate Premi'
+          LayoutOrder=5
+        >, *object:rtf::DBEdit<
+          Name='premi_perbulan'
+          Top=203
+          Left=15
+          Width=100
+          Height=21
+          Color=0
+          ControlCaption='Premi Perbulan'
+          LayoutOrder=7
+        >, *object:rtf::DBEdit<
+          Name='manfaat_pensiun'
+          Top=231
+          Left=15
+          Width=100
+          Height=21
+          Color=0
+          ControlCaption='Manfaat Pensiun'
+          LayoutOrder=8
+        >, *object:rtf::DBEdit<
+          Name='saldo_awal'
+          Top=175
+          Left=15
+          Width=100
+          Height=21
+          Color=0
+          ControlCaption='Saldo'
+          LayoutOrder=6
+        >, *object:rtf::DBEdit<
+          Name='tingkat_investasi'
+          Top=119
+          Left=15
+          Width=40
+          Height=21
+          Color=0
+          ControlCaption='Tingkat Investasi'
+          LayoutOrder=4
+        >, *object:rtf::DBEdit<
+          Name='nama_peserta'
+          Top=35
+          Left=15
+          Color=0
+          ControlCaption='Nama Peserta'
+          LayoutOrder=1
+        >, *object:rtf::DBEdit<
+          Name='usia_pensiun'
+          Top=63
+          Left=15
+          Width=40
+          Height=21
+          Color=0
+          ControlCaption='Usia Pensiun'
+          LayoutOrder=2
+        >}EqualCaptionWidth=180
+      ControlLeftMargin=15
+      ControlTopMargin=35
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Hasil Perhitungan '
+    >}FormClassName='frmReserveCustID'
+>

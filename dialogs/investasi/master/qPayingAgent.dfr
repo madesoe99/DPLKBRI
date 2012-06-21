@@ -1,0 +1,63 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['qPayingAgent']
+  Caption='Daftar Paying Agent'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  Containers={object:rtf::Query<
+      Name='qPayingAgent'
+      Width=800
+      Height=600
+      ContextMenuName='popupmenus/investasi/master/qPayingAgent'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from PayingAgent'#13#10,
+        '('#13#10,
+        '  agent_code,'#13#10,
+        '  agent_name,'#13#10,
+        '  agent_address,'#13#10,
+        '  agent_phone,'#13#10,
+        '  self'#13#10,
+        ') then order by agent_code;']
+      DirectDisplay=true
+      WindowSize=20
+      Columns={object:rtf::QueryColumn<
+          FieldName='PayingAgent.agent_code'
+          Width=60
+          Caption='Kode'
+        >, object:rtf::QueryColumn<
+          FieldName='PayingAgent.agent_name'
+          Width=180
+          Caption='Nama'
+        >, object:rtf::QueryColumn<
+          FieldName='PayingAgent.agent_address'
+          Width=200
+          Caption='Alamat'
+        >, object:rtf::QueryColumn<
+          FieldName='PayingAgent.agent_phone'
+          Width=130
+          Caption='Telepon'
+        >}EnableColumns=true
+    >}>

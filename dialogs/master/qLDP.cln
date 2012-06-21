@@ -1,0 +1,66 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['qLDP']
+  Caption='Daftar Lembaga Dana Pensiun'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  Containers={
+    object:rtf::Query<
+      Name='qLDP'
+      Width=240
+      Height=40
+      ContextMenuName='popupmenus/master/qLDP'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from LDP'#13#10,
+        '('#13#10,
+        '  kode_dp,'#13#10,
+        '  nama_dp,'#13#10,
+        '  alamat_dp,'#13#10,
+        '  jenis_dp$ as jenis_dp,'#13#10,
+        '  user_id,'#13#10,
+        '  last_update,'#13#10,
+        '  self'#13#10,
+        ') then order by LDP;']
+      DirectDisplay=true
+      WindowSize=20
+      Columns={
+        object:rtf::QueryColumn<
+          FieldName='LDP.kode_dp'
+          Width=200
+          Caption='Kode Dana Pensiun'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='LDP.nama_dp'
+          Width=200
+          Caption='Nama Dana Pensiun'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='LDP.alamat_dp'
+          Width=300
+          Caption='Alamat'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='LDP.jenis_dp'
+          Width=100
+          Caption='Jenis Dana Pensiun'
+          UseCustomColor=true
+          Color=15128749
+        >
+      }
+      EnableColumns=true
+    >
+  }
+>

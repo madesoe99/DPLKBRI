@@ -1,0 +1,584 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['DSMain']
+  Caption='Buat Register Deposito Baru'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=921
+  Height=600
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData='FormGeneralSetData'
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnFormShow='FormShow'
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={object:rtf::PClassUI<
+      Name='uipRegisterDeposito'
+      ClassTypeName='RegisterDeposito'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      AfterApplyRow='uipRegisterDepositoApplyRow'
+    >, object:rtf::PClassUI<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='nowDate'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=10
+        >, object:rtf::FieldUIElmtSetting<
+          Name='inv'
+          DataTypeName='varchar'
+          DataLength=1
+        >, object:rtf::FieldUIElmtSetting<
+          Name='strInv'
+        >}Name='uipParameter'
+      CreateInstanceOnNew=true
+    >, object:rtf::PClassUI<
+      Name='uipRincianRegisterDeposito'
+      ClassTypeName='RincianRegisterInvestasi'
+      DataBinding=bmList
+      Master=$UIPARTS['uipRegisterDeposito']
+      ListName='Ls_RincianRegisterInvestasi'
+      AlwaysPostToServer=true
+      PostLinkValues=true
+      CreateInstanceOnNew=true
+      DeleteInstanceOnDel=true
+      SetMasterDetailRelationship=true
+      BeforePost='uipRRDBeforePost'
+      AfterPost='uipRRDAfterPost'
+      AfterDelete='uipRRDAfterDelete'
+      ShadowBufferFields='LRincianPaketInvestasi.kode_paket_investasi'
+      UniqueShadowBufferFields='LRincianPaketInvestasi.kode_paket_investasi'
+    >}Containers={object:rtf::Panel<
+      ControlDefs={object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='no_bilyet'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LTransactionBatch'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LPihakKetiga'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='nisbah'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='equivalent_rate'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='tgl_buka'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='Rekening_Deposito'
+        >}Elements={*object:rtf::LinkUIElmtSetting<
+          Name='LTransactionBatch'
+          ControlCaption='batch investasi'
+          DisplayFields='ID_TransactionBatch;no_batch'
+          Restrictions='uipParameter.nowDate|NowDate'
+          OQLText=['select from TransactionBatch'#13#10,
+            '['#13#10,
+            '  batch_status = ''O'' '#13#10,
+            '  and batch_type = ''I'' '#13#10,
+            '  and batch_sub_type = ''M'''#13#10,
+            '  and account_link_type = ''S'''#13#10,
+            '  and tgl_used = :NowDate'#13#10,
+            ']'#13#10,
+            '('#13#10,
+            '  no_batch,'#13#10,
+            '  tgl_create,'#13#10,
+            '  account_link_type$ as account_link_type,'#13#10,
+            '  user_id_owner,'#13#10,
+            '  ID_TransactionBatch,'#13#10,
+            '  self'#13#10,
+            ') then order by no_batch;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LTransactionBatch'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LPihakKetiga'
+          DisplayFields='kode_pihak_ketiga;nama_pihak_ketiga'
+          Restrictions=''
+          OQLText=['select from PihakKetiga'#13#10,
+            '('#13#10,
+            '  kode_pihak_ketiga,'#13#10,
+            '  nama_pihak_ketiga,'#13#10,
+            '  alamat_pihak_ketiga,'#13#10,
+            '  self_investment,'#13#10,
+            '  last_update,'#13#10,
+            '  user_id,'#13#10,
+            '  self'#13#10,
+            ') then order by kode_pihak_ketiga;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LPihakKetiga'
+        >}Name='pData'
+      Width=496
+      Height=360
+      UIPart=$UIPARTS['uipRegisterDeposito']
+      Controls={*object:rtf::DBEdit<
+          Name='no_bilyet'
+          Top=76
+          Left=20
+          Color=0
+          ControlCaption='no bilyet'
+          LayoutOrder=3
+        >, *object:rtf::DBLookupEdit<
+          Name='LTransactionBatch'
+          Top=20
+          Left=20
+          ControlCaption='batch investasi'
+          LayoutOrder=1
+          LookupField='LTransactionBatch.no_batch'
+          DisplayLookupField=true
+        >, *object:rtf::DBLookupEdit<
+          Name='LPihakKetiga'
+          Top=104
+          Left=20
+          ControlCaption='pihak ketiga'
+          LayoutOrder=4
+          LookupField='LPihakKetiga.nama_pihak_ketiga'
+          DisplayLookupField=true
+          DirectInput=true
+        >, *object:rtf::DBEdit<
+          Name='nisbah'
+          Top=132
+          Left=20
+          Color=0
+          ControlCaption='nisbah (%)'
+          LayoutOrder=5
+          FieldName='nisbah'
+          DisplayFormat='0.##'
+        >, *object:rtf::DBEdit<
+          Name='equivalent_rate'
+          Layout=clNextSide
+          Top=132
+          Left=268
+          Color=0
+          ControlCaption='equivalent rate'
+          LayoutOrder=6
+        >, *object:rtf::DBDateEdit<
+          Name='tgl_buka'
+          Top=160
+          Left=20
+          Color=0
+          ControlCaption='tgl buka'
+          LayoutOrder=10
+        >, *object:rtf::DBEdit<
+          Name='Rekening_Deposito'
+          Top=48
+          Left=20
+          Color=0
+          ControlCaption='rekening deposito'
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      ControlDefs={object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='jenisJatuhTempo'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='jmlHariOnCall'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='treatmentPokok'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='kapitalisir_rollover'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='biaya'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='no_rekening'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LMasterGiro'
+        >}Elements={*object:rtf::FieldUIElmtSetting<
+          Name='kapitalisir_rollover'
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['F=Pindah Buku'#13#10,
+            'T=Kapitalisir'#13#10]
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='biaya'
+          Hidden=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='no_rekening'
+          Hidden=true
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LMasterGiro'
+          DisplayFields='no_giro;acc_giro'
+          Restrictions=''
+          OQLText=['select from MasterGiro'#13#10,
+            '('#13#10,
+            '  no_giro,'#13#10,
+            '  acc_giro,'#13#10,
+            '  self'#13#10,
+            ') then order by no_giro;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LMasterGiro'
+        >}Name='pDataRight'
+      Width=425
+      Height=169
+      UIPart=$UIPARTS['uipRegisterDeposito']
+      Controls={*object:rtf::DBComboBox<
+          Name='jenisJatuhTempo'
+          Top=20
+          Left=20
+          Color=0
+          ControlCaption='jangka waktu'
+          LayoutOrder=1
+          OnChange='jenisJatuhTempoChange'
+        >, *object:rtf::DBEdit<
+          Name='jmlHariOnCall'
+          Top=48
+          Left=20
+          Visible=false
+          Color=0
+          ControlCaption='jatuh tempo on call (hari)'
+          LayoutOrder=2
+        >, *object:rtf::DBComboBox<
+          Name='treatmentPokok'
+          Top=76
+          Left=20
+          Color=0
+          ControlCaption='pokok saat jatuh tempo'
+          LayoutOrder=3
+        >, *object:rtf::DBComboBox<
+          Name='kapitalisir_rollover'
+          Top=104
+          Left=20
+          Color=0
+          ControlCaption='bagi hasil'
+          LayoutOrder=4
+          OnChange='kapitalisir_rolloverChange'
+        >, *object:rtf::DBLookupEdit<
+          Name='LMasterGiro'
+          Top=132
+          Left=20
+          Width=122
+          Height=21
+          ControlCaption='rekening tujuan'
+          LayoutOrder=5
+          LookupField='LMasterGiro.acc_giro'
+          DisplayLookupField=false
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='DualSplitRight'
+      Width=424
+      Height=196
+      Container1=$CONTAINERS['pDataRight']
+    >, object:rtf::MultiSplit<
+      Name='MSMain'
+      Width=921
+      Height=559
+      Side1Containers={$CONTAINERS['DualSplitTop']
+      }Side2Containers={$CONTAINERS['DSBottom']
+      }SpaceContainer=$CONTAINERS['gRincianInvestasi']
+    >, object:rtf::DualSplit<
+      Name='DualSplitTop'
+      Width=921
+      Height=196
+      Container1=$CONTAINERS['pData']
+      Container2=$CONTAINERS['DualSplitRight']
+      SplitDirection=sdrSplitLeftRight
+    >, object:rtf::Grid<
+      ControlDefs={object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LRincianPaketInvestasi'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='dpkPaket'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='nilaiMaksProporsi'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='dpkInvExisting'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='dpkTersedia'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='nominalGiro'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='nominal'
+        >}Elements={*object:rtf::LinkUIElmtSetting<
+          Name='LRincianPaketInvestasi'
+          DisplayFields='kode_paket_investasi;LPaketInvestasi.nama_paket_investasi;maks_proporsi'
+          Restrictions=''
+          OQLText=['select from RincianPaketInvestasi'#13#10,
+            '['#13#10,
+            '  kode_jns_investasi = ''D'''#13#10,
+            ']'#13#10,
+            '('#13#10,
+            '  kode_paket_investasi,'#13#10,
+            '  LPaketInvestasi.nama_paket_investasi as nama_paket_investasi,'#13#10,
+            '  maks_proporsi,'#13#10,
+            '  self'#13#10,
+            ') then order by kode_paket_investasi;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LRincianPaketInvestasi'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='dpkPaket'
+          ReadOnlyControl=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='nilaiMaksProporsi'
+          ReadOnlyControl=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='dpkInvExisting'
+          ReadOnlyControl=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='dpkTersedia'
+          ReadOnlyControl=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='nominalGiro'
+          Hidden=true
+          ReadOnlyControl=true
+        >}Name='gRincianInvestasi'
+      Width=921
+      Height=261
+      UIPart=$UIPARTS['uipRincianRegisterDeposito']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='&Rincian Investasi'
+      Columns={*object:rtf::GridColumn<
+          Name='LRincianPaketInvestasi.kode_paket_investasi'
+          InputStyle=cisLookup
+          EnumeratedValues=''
+          OnAfterLookup='LRincianPaketInvestasiAfterLookup'
+          FieldName='LRincianPaketInvestasi.kode_paket_investasi'
+          DisplayFormat=''
+          TitleCaption='Paket'
+          Width=50
+          AlternateKeyValueSrc='LRincianPaketInvestasi.kode_paket_investasi'
+          AlternateKeyName='kode_paket_investasi'
+        >, *object:rtf::GridColumn<
+          Name='LRincianPaketInvestasi.LPaketInvestasi.nama_paket_investasi'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='LRincianPaketInvestasi.LPaketInvestasi.nama_paket_investasi'
+          DisplayFormat=''
+          Width=200
+          Hidden=true
+        >, *object:rtf::GridColumn<
+          Name='LRincianPaketInvestasi.maks_proporsi'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='LRincianPaketInvestasi.maks_proporsi'
+          DisplayFormat='0.##'
+          TitleCaption='Maks. Proporsi'
+          Width=100
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='dpkPaket'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='dpkPaket'
+          DisplayFormat='#,##0.00'
+          TitleCaption='nominal paket'
+          Width=110
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='nilaiMaksProporsi'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='nilaiMaksProporsi'
+          DisplayFormat='#,##0.00'
+          TitleCaption='proporsi maksimum'
+          Width=110
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='dpkInvExisting'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='dpkInvExisting'
+          DisplayFormat='#,##0.00'
+          TitleCaption='deposito existing'
+          Width=110
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='dpkTersedia'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='dpkTersedia'
+          DisplayFormat='#,##0.00'
+          TitleCaption='dana idle'
+          Width=110
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='nominal'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='nominal'
+          DisplayFormat='#,##0.00'
+          Width=110
+        >}>, object:rtf::DualSplit<
+      Name='DSMain'
+      Width=921
+      Height=600
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['MSMain']
+      InversedAlign=true
+    >, object:rtf::Panel<
+      ControlDefs={object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='nominal'
+        >}Elements={*object:rtf::FieldUIElmtSetting<
+          Name='nominal'
+          ReadOnlyControl=true
+        >}Name='pNominal'
+      Width=400
+      Height=240
+      UIPart=$UIPARTS['uipRegisterDeposito']
+      Controls={*object:rtf::DBEdit<
+          Name='nominal'
+          Top=20
+          Left=20
+          Color=-2147483624
+          ControlCaption='Nominal Pembukaan'
+          FieldName='nominal'
+          DisplayFormat='#,##0.00'
+          ReadOnly=true
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=400
+      Height=40
+      Bordered=true
+      Controls={object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=20
+          Color=0
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          OnClick='btnOKClick'
+        >, object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=99
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          OnClick='btnCancelClick'
+        >, object:rtf::Button<
+          Name='btnClose'
+          Layout=clNextSide
+          Top=8
+          Left=178
+          Visible=false
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          ExitAction=eaQuitCancel
+        >, object:rtf::Button<
+          Name='btnPrint'
+          Layout=clAbsolute
+          Top=8
+          Left=256
+          Width=105
+          Height=25
+          Visible=false
+          Color=0
+          ControlCaption=''
+          Caption='&Cetak Ulang Advis'
+          OnClick='btnPrintClick'
+        >}ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      ControlDefs={object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='user_id'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='terminal_id'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='tanggal_register'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='id_registerinvestasi'
+        >}Elements={*object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          ReadOnlyControl=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='terminal_id'
+          ReadOnlyControl=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tanggal_register'
+          Hidden=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='id_registerinvestasi'
+          Hidden=true
+        >, object:rtf::FieldUIElmtSetting<
+          Name='mode'
+          Hidden=true
+        >}Name='pRegister'
+      Width=240
+      Height=40
+      UIPart=$UIPARTS['uipRegisterDeposito']
+      Controls={*object:rtf::DBEdit<
+          Name='user_id'
+          Top=20
+          Left=20
+          Color=-2147483624
+          ControlCaption='user id'
+          ReadOnly=true
+        >, *object:rtf::DBEdit<
+          Name='terminal_id'
+          Top=48
+          Left=20
+          Color=-2147483624
+          ControlCaption='terminal id'
+          ReadOnly=true
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='DSBottom'
+      Width=921
+      Height=100
+      Container1=$CONTAINERS['pNominal']
+      Container2=$CONTAINERS['pRegister']
+      SplitDirection=sdrSplitLeftRight
+    >}>

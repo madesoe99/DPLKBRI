@@ -1,0 +1,105 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rpclass::TPClassUIDefList<
+  UIDefs={object:rpclass::TPClassUIDef<
+      Name='uipReksadana'
+      PClassName='Reksadana'
+      LoadedFieldList='nama_reksadana;LPihakKetiga.kode_pihak_ketiga;LPihakKetiga.kode_pihak_ketiga;LPihakKetiga.nama_pihak_ketiga;tgl_buka;id_investasi'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='IsCommited'
+          DataTypeName='integer'
+          DataLength=1
+        >, object:rpclass::TCustomLoadedField<
+          Name='Mode'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='ModeOto'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='LTransactionBatch.ID_TransactionBatch'
+          DataTypeName='INTEGER'
+        >, object:rpclass::TCustomLoadedField<
+          Name='LTransactionBatch.ID_TransactionBatch'
+          DataTypeName='INTEGER'
+        >, object:rpclass::TCustomLoadedField<
+          Name='LTransactionBatch.no_batch'
+          DataTypeName='VARCHAR'
+          DataLength=32
+        >, object:rpclass::TCustomLoadedField<
+          Name='Biaya'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='Keterangan'
+          DataTypeName='varchar'
+          DataLength=100
+        >, object:rpclass::TCustomLoadedField<
+          Name='LIndukTransaksiInvestasi.id_transaksiinvestasi'
+          DataTypeName='INTEGER'
+        >, object:rpclass::TCustomLoadedField<
+          Name='LIndukTransaksiInvestasi.nama_investasi'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >, object:rpclass::TCustomLoadedField<
+          Name='Tgl_penetapan'
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='user_id'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='terminal_id'
+          DataTypeName='varchar'
+          DataLength=20
+        >}CustomLoadedLinks={object:rpclass::TCustomLoadedLink<
+          Name='LPihakKetiga'
+          ClassTypeName='PihakKetiga'
+          FieldNames='kode_pihak_ketiga;kode_pihak_ketiga;nama_pihak_ketiga'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LTransactionBatch'
+          ClassTypeName='TransactionBatch'
+          FieldNames='ID_TransactionBatch;ID_TransactionBatch;no_batch'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LIndukTransaksiInvestasi'
+          ClassTypeName='TransaksiInvestasi'
+          FieldNames='id_transaksiinvestasi;nama_investasi'
+        >}Mode=imSingleRow
+      CreateInstanceOnNew=true
+      OnSetData='uipReksadanaSetData'
+    >, object:rpclass::TPClassUIDef<
+      Name='uipParameter'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='nowDate'
+          DataTypeName='varchar'
+          DataLength=10
+        >, object:rpclass::TCustomLoadedField<
+          Name='inv'
+          DataTypeName='varchar'
+          DataLength=1
+        >, object:rpclass::TCustomLoadedField<
+          Name='strInv'
+          DataTypeName='varchar'
+          DataLength=20
+        >}Mode=imSingleRow
+      CreateInstanceOnNew=true
+      OnSetData='uipParameterSetData'
+    >, object:rpclass::TPClassUIDef<
+      Name='uipTransLRInvestasi'
+      PClassName='TransaksiInvestasi'
+      LoadedFieldList='id_transaksiinvestasi;id_investasi;tgl_transaksi;mutasi_debet;mutasi_kredit;user_id;terminal_id;keterangan;ID_TransactionBatch;id_transaksiinduk;isCommitted'
+      Mode=imSingleRow
+      OnSetData='uipTransLRSetData'
+    >, object:rpclass::TPClassUIDef<
+      Name='uipL'
+      MasterUIName='uipTransLRInvestasi'
+      LinkName='LInvestasi'
+      LoadedFieldList='id_investasi'
+    >}OnEndProcessData='FormEndProcessData'
+>

@@ -1,0 +1,64 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='1'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['BranchLocation']
+  Caption='Lokasi Cabang'
+  State=rsMaximized
+  Left=-1
+  Top=-1
+  Width=600
+  Height=400
+  Containers={
+    object:rtf::Query<
+      Name='BranchLocation'
+      Width=240
+      Height=40
+      ContextMenuName='popupmenus/userman/pBranchLocation'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      PClassName='BranchLocation'
+      OQLText=['Select from BranchLocation '#13#10,
+        '(branch_code as Kode_Cabang, '#13#10,
+        'BranchName as Nama_Cabang, '#13#10,
+        'BranchStatus $ as Status_Cabang, '#13#10,
+        'Branch_Time_Zone$ as Zona_Waktu,'#13#10,
+        'self) '#13#10,
+        'then order by Kode_Cabang;']
+      DirectDisplay=true
+      WindowSize=20
+      Columns={
+        object:rtf::QueryColumn<
+          FieldName='BranchLocation.Kode_Cabang'
+          Width=75
+          Caption='Kode Cabang'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='BranchLocation.Nama_Cabang'
+          Width=300
+          Caption='Nama Cabang'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='BranchLocation.Status_Cabang'
+          Width=100
+          Caption='Status Cabang'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='BranchLocation.Zona_Waktu'
+          Width=200
+          Caption='Zona Waktu'
+          UseCustomColor=true
+          Color=15128749
+        >
+      }
+      EnableColumns=true
+    >
+  }
+>

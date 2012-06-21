@@ -1,0 +1,73 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipRegisterNasabahRekening'
+      PClassName='RegisterNasabahRekening'
+      LoadedFieldList='registernr_id;kode_cab_daftar;iuran_pst;iuran_pk;no_referensi;no_peserta;nama_lengkap;no_rekening'
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >, object:rpclass::TPClassUIDef<
+      Name='uipIuranPendaftaran'
+      PClassName='IuranPendaftaran'
+      LoadedFieldList='besar_biaya_daftar;keterangan;isCommitted;LBranchLocation.branch_code;LBranchLocation.branch_code;LBranchLocation.BranchName;user_id;terminal_id;tgl_transaksi'
+      StoredFieldList='besar_biaya_daftar;keterangan;isCommitted;LBranchLocation;user_id;terminal_id;tgl_transaksi'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LBranchLocation'
+          ClassTypeName='BranchLocation'
+          FieldNames='branch_code;branch_code;BranchName'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >, object:rpclass::TPClassUIDef<
+      Name='uipParameterBatch'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='UserIDOwner'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='TanggalPakai'
+          DataTypeName='varchar'
+          DataLength=10
+        >, object:rpclass::TCustomLoadedField<
+          Name='NeedUser'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='FileSlipPendaftaran'
+          DataTypeName='varchar'
+          DataLength=100
+        >, object:rpclass::TCustomLoadedField<
+          Name='FileSlipIuran'
+          DataTypeName='varchar'
+          DataLength=100
+        >
+      }
+      Mode=imSingleRow
+    >, object:rpclass::TPClassUIDef<
+      Name='uipIuranPeserta'
+      PClassName='IuranPeserta'
+      LoadedFieldList='mutasi_iuran_pst;keterangan;mutasi_iuran_pk'
+      StoredFieldList='mutasi_iuran_pst;keterangan;mutasi_iuran_pk'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='cbLangsungIuran'
+          DataTypeName='varchar'
+          DataLength=1
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+  }
+  OnSetDataEx='FormOnSetDataEx'
+>

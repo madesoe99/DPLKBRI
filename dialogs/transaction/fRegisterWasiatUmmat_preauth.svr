@@ -1,0 +1,69 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipRegisterWasiatUmmat'
+      PClassName='RegisterWasiatUmmat'
+      LoadedFieldList='no_referensi;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;keterangan;user_id;terminal_id;alasan_berhenti;jenis_transaksi;registercif_id'
+      StoredFieldList='jenis_transaksi'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='no_polis'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='tgl_akseptasi'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='besar_premi'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='manfaat_asuransi'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='kolektibilitas_premi'
+          DataTypeName='varchar'
+          DataLength=1
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='tunggakan_premi'
+          DataTypeName='double'
+          DataLength=20
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLK'
+          ClassTypeName='NasabahDPLK'
+          FieldNames='no_peserta;no_peserta;nama_lengkap'
+        >
+      }
+      Mode=imSingleRow
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipParameter'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='PRESISI_ANGKA_FLOAT'
+          DataTypeName='double'
+          DataLength=20
+        >
+      }
+      Mode=imSingleRow
+    >
+  }
+  OnEndSetData='FormEndSetData'
+>

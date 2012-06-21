@@ -1,0 +1,282 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{FF6521AE-DCB8-457C-933C-35D88DB5B672}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rmn::Menu<
+  MenuItems={
+    object:rmn::MenuItem<
+      Name='mnuSettings'
+      Caption='Settings'
+      MenuItems={
+        object:rmn::MenuItem<
+          Name='mnuJenisInvestasi'
+          Caption='Jenis Investasi'
+          OnClick='DisplayMasterInvestasiQuery'
+          AllowedGroups='Admin;Root'
+          StringTag='qJenisInvestasi'
+          ImageIndex=1
+        >
+        , object:rmn::MenuItem<
+          Name='mnuSubJnsTransLRInvestasi'
+          Caption='Sub Jenis Investasi'
+          OnClick='DisplayMasterInvestasiQuery'
+          AllowedGroups='Admin;Root'
+          StringTag='qSubJnsTransLRInvestasi'
+        >
+        , object:rmn::MenuItem<
+          Name='mnuJnsTransInvestasi'
+          Caption='Jenis Transaksi Investasi'
+          OnClick='DisplayMasterInvestasiQuery'
+          AllowedGroups='Admin;Root'
+          StringTag='qJnsTransInvestasi'
+          ImageIndex=9
+        >
+        , object:rmn::MenuItem<
+          Name='mnuJenisReksadana'
+          Caption='Jenis Reksadana'
+          OnClick='DisplayMasterInvestasiQuery'
+          StringTag='qJenisReksadana'
+          AllowedGroups='Admin;Root'
+        >
+      }
+      AllowedGroups='Admin;Root;FM'
+    >
+    , object:rmn::MenuItem<
+      Name='Master'
+      Caption='&Master'
+      MenuItems={
+        object:rmn::MenuItem<
+          Name='mnuPaketInvestasi'
+          Caption='Paket Investasi'
+          OnClick='DisplayMasterInvestasiQuery'
+          AllowedGroups='Admin;Root'
+          StringTag='qPaketInvestasi'
+          ImageIndex=0
+        >
+        , object:rmn::MenuItem<
+          Name='mnuPihakKetiga'
+          Caption='Pihak Ketiga (Manager Investasi)'
+          OnClick='DisplayMasterInvestasiQuery'
+          AllowedGroups='Admin;Root'
+          StringTag='qPihakKetiga'
+          ImageIndex=2
+        >
+        , object:rmn::MenuItem<
+          Name='mnuCustodianBank'
+          Caption='Custodian Bank'
+          OnClick='DisplayMasterInvestasiQuery'
+          AllowedGroups='Admin;Root'
+          StringTag='qCustodianBank'
+        >
+      }
+      AllowedGroups='Admin;Root;FM'
+    >
+    , object:rmn::MenuItem<
+      Name='Deposito'
+      Caption='Deposito'
+      MenuItems={
+        object:rmn::MenuItem<
+          Name='mnuRegistrasiInvestasi'
+          Caption='Buka Deposito Baru...'
+          OnClick='mnuRegistrasiInvestasiClick'
+          AllowedGroups='Admin;Root;FM'
+          StringTag='fRegisterDeposito'
+          ImageIndex=3
+        >
+        , object:rmn::MenuItem<
+          Name='mnuRegisterInvestasi'
+          Caption='Daftar Register Deposito Baru'
+          OnClick='DisplayTransaksiInvestasiQuery'
+          AllowedGroups='Admin;Root;FM'
+          StringTag='qRegisterDeposito'
+          ImageIndex=4
+        >
+        , object:rmn::MenuItem<
+          Name='mnuInvestasi'
+          Caption='Daftar Deposito'
+          OnClick='DisplayTransaksiInvestasiQuery'
+          AllowedGroups='Admin;Root;FM'
+          StringTag='qDeposito'
+          ImageIndex=5
+        >
+        , object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='Admin;Root;FM'
+        >
+        , object:rmn::MenuItem<
+          Name='mnuRegisterTransaksiInv'
+          Caption='Daftar Transaksi Deposito Baru'
+          OnClick='DisplayTransaksiInvestasiQuery'
+          AllowedGroups='Admin;Root;FM'
+          StringTag='qRegisterTransaksiDeposito'
+          ImageIndex=7
+        >
+        , object:rmn::MenuItem<
+          Name='mnuTransaksiInvestasi'
+          Caption='Daftar Transaksi Deposito'
+          OnClick='DisplayQueryWDataTransX'
+          AllowedGroups='Admin;Root;FM'
+          StringTag='qTransaksiDeposito'
+          ImageIndex=8
+        >
+      }
+      AllowedGroups='Admin;Root;FM'
+    >
+    , object:rmn::MenuItem<
+      Name='Obligasi'
+      Caption='Obligasi'
+      MenuItems={
+        object:rmn::MenuItem<
+          Name='mnuRegistrasiInvestasiObl'
+          Caption='Buka Obligasi Baru...'
+          OnClick='mnuRegistrasiInvestasiClick'
+          AllowedGroups='Admin;Root;FM'
+          StringTag='fRegisterObligasi'
+          ImageIndex=3
+        >
+        , object:rmn::MenuItem<
+          Name='mnuRegisterInvestasiObl'
+          Caption='Daftar Register Obligasi Baru'
+          OnClick='DisplayTransaksiInvestasiQuery'
+          AllowedGroups='Admin;Root;FM'
+          StringTag='qRegisterObligasi'
+          ImageIndex=4
+        >
+        , object:rmn::MenuItem<
+          Name='mnuInvestasiObl'
+          Caption='Daftar Obligasi'
+          OnClick='DisplayTransaksiInvestasiQuery'
+          AllowedGroups='Admin;Root;FM'
+          StringTag='qObligasi'
+          ImageIndex=5
+        >
+        , object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='Admin;Root;FM'
+        >
+        , object:rmn::MenuItem<
+          Name='mnuRegisterTransaksiInvObl'
+          Caption='Daftar Transaksi Obligasi Baru'
+          OnClick='DisplayTransaksiInvestasiQuery'
+          AllowedGroups='Admin;Root;FM'
+          StringTag='qRegisterTransaksiObligasi'
+          ImageIndex=7
+        >
+        , object:rmn::MenuItem<
+          Name='mnuTransaksiInvestasiObl'
+          Caption='Daftar Transaksi Obligasi'
+          OnClick='DisplayQueryWDataTransX'
+          AllowedGroups='Admin;Root;FM'
+          StringTag='qTransaksiObligasi'
+          ImageIndex=8
+        >
+      }
+      AllowedGroups='Admin;Root;FM'
+    >
+    , object:rmn::MenuItem<
+      Name='Reksadana'
+      Caption='Reksadana'
+      MenuItems={
+        object:rmn::MenuItem<
+          Name='mnuRegistrasiInvestasiRksd'
+          Caption='Subscribe Reksadana Baru...'
+          OnClick='mnuRegistrasiInvestasiClick'
+          AllowedGroups='Admin;Root;FM'
+          StringTag='fRegisterReksadana'
+          ImageIndex=3
+        >
+        , object:rmn::MenuItem<
+          Name='mnuRegisterInvestasiRksd'
+          Caption='Daftar Register Subscribe Reksadana Baru'
+          OnClick='DisplayTransaksiInvestasiQuery'
+          AllowedGroups='Admin;Root;FM'
+          StringTag='qRegisterReksadana'
+          ImageIndex=4
+        >
+        , object:rmn::MenuItem<
+          Name='mnuInvestasiRksd'
+          Caption='Daftar Reksadana'
+          OnClick='DisplayTransaksiInvestasiQuery'
+          AllowedGroups='Admin;Root;FM'
+          StringTag='qReksadana'
+          ImageIndex=5
+        >
+        , object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='Admin;Root;FM'
+        >
+        , object:rmn::MenuItem<
+          Name='mnuRegisterTransaksiInvRksd'
+          Caption='Daftar Transaksi Reksadana Baru'
+          OnClick='DisplayTransaksiInvestasiQuery'
+          AllowedGroups='Admin;Root;FM'
+          StringTag='qRegisterTransaksiReksadana'
+          ImageIndex=7
+        >
+        , object:rmn::MenuItem<
+          Name='mnuTransaksiInvestasiRksd'
+          Caption='Daftar Transaksi Reksadana'
+          OnClick='DisplayQueryWDataTransX'
+          AllowedGroups='Admin;Root;FM'
+          StringTag='qTransaksiReksadana'
+          ImageIndex=8
+        >
+      }
+      AllowedGroups='Admin;Root;FM'
+    >
+    , object:rmn::MenuItem<
+      Name='Kakas'
+      Caption='Kakas'
+      MenuItems={
+        object:rmn::MenuItem<
+          Name='mnuPOD'
+          Caption='POD...'
+          OnClick='mnuPODClick'
+          AllowedGroups='Admin;Root;FM'
+          StringTag='fPOD'
+        >
+      }
+      AllowedGroups='Admin;Root;FM'
+    >
+    , object:rmn::MenuItem<
+      Name='Laporan'
+      Caption='Laporan'
+      MenuItems={
+        object:rmn::MenuItem<
+          Name='mnuROIJenisInv'
+          Caption='ROI per Jenis Investasi...'
+          OnClick='mnuReportClick'
+          AllowedGroups='Admin;Root;FM'
+          StringTag='fROIJenisInv'
+        >
+        , object:rmn::MenuItem<
+          Name='mnuPosisiInv'
+          Caption='Posisi Portofolio Investasi...'
+          OnClick='mnuReportClick'
+          AllowedGroups='Admin;Root;FM'
+          StringTag='fPosisiPortofolio'
+        >
+        , object:rmn::MenuItem<
+          Name='mnuHasilInv'
+          Caption='Hasil Investasi...'
+          OnClick='mnuReportClick'
+          AllowedGroups='Admin;Root;FM'
+          StringTag='fHasilInvestasi'
+        >
+        , object:rmn::MenuItem<
+          Name='mnuInvAkhirBulan'
+          Caption='Investasi Akhir Bulan...'
+          OnClick='mnuReportClick'
+          AllowedGroups='Admin;Root;FM'
+          StringTag='fInvAkhirBulan'
+        >
+      }
+      AllowedGroups='Admin;Root;FM'
+    >
+  }
+  DenyThenAllow=true
+  ImageListID='investasi'
+>

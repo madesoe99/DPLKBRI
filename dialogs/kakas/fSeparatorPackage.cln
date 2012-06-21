@@ -1,0 +1,421 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['actionPanel']
+  Caption='Separator import package'
+  Left=50
+  Top=50
+  Width=700
+  Height=530
+  UIParts={
+    object:rtf::PClassUI<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='Mode'
+          DataTypeName='varchar'
+          DataLength=8
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='LastModifiedUser'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='LastModifiedTime'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+      }
+      Name='PackageDef'
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+    , object:rtf::PClassUI<
+      Name='SourceDef'
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+    , object:rtf::PClassUI<
+      Name='SourceFieldDefs'
+      MultiLine=true
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      AfterPost='fieldDefAfterPost'
+      BeforeDelete='fieldDefBeforeDelete'
+      AfterDelete='fieldDefAfterDelete'
+      ShadowBufferFields='Index'
+      UniqueShadowBufferFields='Index'
+    >
+    , object:rtf::PClassUI<
+      Name='TransformationDef'
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+    , object:rtf::PClassUI<
+      Name='TransItemDefs'
+      MultiLine=true
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      BeforePost='itemDefBeforePost'
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Name='actionPanel'
+      Width=400
+      Height=40
+      Bordered=true
+      Controls={
+        object:rtf::Button<
+          Name='bOK'
+          Layout=clNewLine
+          Color=0
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          ExitAction=eaQuitOK
+          OnClick='bOKClick'
+        >
+        , object:rtf::Button<
+          Name='bCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='Name'
+          ControlCaption='Name'
+          DataTypeName='varchar'
+          DataLength=50
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='Description'
+          ControlCaption='Description'
+          DataTypeName='varchar'
+          DataLength=50
+        >
+      }
+      Name='packageDefPanel'
+      Width=240
+      Height=70
+      Bordered=true
+      UIPart=$UIPARTS['PackageDef']
+      Controls={
+      }
+      EqualCaptionWidth=150
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='Type'
+          ControlCaption='Type'
+          DataTypeName='varchar'
+          DataLength=20
+          EnumeratedValues=['FIXEDLENGTH=Fixed Length Data Format'#13#10,
+            'SEPARATOR=Text With Separator'#13#10,
+            'MSEXCEL=Microsoft Excel 1997-2003'#13#10]
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='Description'
+          ControlCaption='Description'
+          DataTypeName='varchar'
+          DataLength=50
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='FirstDataRow'
+          ControlCaption='First data row'
+          DataTypeName='integer'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='Separator'
+          ControlCaption='Separator'
+          DataTypeName='varchar'
+          DataLength=1
+        >
+      }
+      Name='sourceDefPanel'
+      Width=240
+      Height=130
+      UIPart=$UIPARTS['SourceDef']
+      Controls={
+        *object:rtf::DBComboBox<
+          Name='Type'
+          Width=200
+          Height=21
+          Enabled=false
+          Color=0
+        >
+        , *object:rtf::DBEdit<
+          Name='Separator'
+          Width=50
+          Height=21
+        >
+      }
+      EqualCaptionWidth=150
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Grid<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='Name'
+          ControlCaption='Name'
+          DataTypeName='varchar'
+          DataLength=25
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='Type'
+          ControlCaption='Type'
+          DataTypeName='varchar'
+          DataLength=20
+          EnumeratedValues=['INTEGER=INTEGER'#13#10,
+            'FLOAT=FLOAT'#13#10,
+            'DATETIME=DATETIME'#13#10,
+            'STRING=STRING'#13#10]
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='Length'
+          ControlCaption='Length'
+          DataTypeName='integer'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='Index'
+          ControlCaption='Index'
+          DataTypeName='integer'
+          DataLength=20
+        >
+      }
+      Name='sourceFieldDefsGrid'
+      Width=240
+      Height=40
+      UIPart=$UIPARTS['SourceFieldDefs']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Source field defs'
+      Columns={
+        *object:rtf::GridColumn<
+          Name='Name'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='Name'
+          DisplayFormat=''
+          TitleCaption='Name'
+        >
+        , *object:rtf::GridColumn<
+          Name='Type'
+          InputStyle=cisEnumerated
+          EnumeratedValues=['INTEGER=INTEGER'#13#10,
+            'FLOAT=FLOAT'#13#10,
+            'DATETIME=DATETIME'#13#10,
+            'STRING=STRING'#13#10]
+          FieldName='Type'
+          DisplayFormat=''
+          TitleCaption='Type'
+        >
+        , *object:rtf::GridColumn<
+          Name='Length'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='Length'
+          DisplayFormat=''
+          TitleCaption='Length'
+        >
+        , *object:rtf::GridColumn<
+          Name='Index'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='Index'
+          DisplayFormat=''
+          TitleCaption='Index'
+        >
+      }
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='Description'
+          ControlCaption='Description'
+          DataTypeName='varchar'
+          DataLength=50
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='TargetClassName'
+          ControlCaption='Target classname'
+          DataTypeName='varchar'
+          DataLength=30
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='AfterApplyRowModule'
+          ControlCaption='After apply row module'
+          DataTypeName='varchar'
+          DataLength=30
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='AfterApplyRowFunctionName'
+          ControlCaption='After apply row function name'
+          DataTypeName='varchar'
+          DataLength=30
+        >
+      }
+      Name='transformationDefPanel'
+      Width=240
+      Height=130
+      UIPart=$UIPARTS['TransformationDef']
+      Controls={
+      }
+      EqualCaptionWidth=150
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Grid<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='Name'
+          ControlCaption='Name'
+          DataTypeName='varchar'
+          DataLength=25
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='LookupClass'
+          ControlCaption='Lookup classname'
+          DataTypeName='varchar'
+          DataLength=25
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='LookupField'
+          ControlCaption='Lookup fieldname'
+          DataTypeName='varchar'
+          DataLength=25
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='SourceFieldName'
+          ControlCaption='Source fieldname'
+          DataTypeName='varchar'
+          DataLength=25
+        >
+      }
+      Name='transItemDefsGrid'
+      Width=240
+      Height=40
+      UIPart=$UIPARTS['TransItemDefs']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Transformation item'
+      Columns={
+        *object:rtf::GridColumn<
+          Name='Name'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='Name'
+          DisplayFormat=''
+          TitleCaption='Name'
+        >
+        , *object:rtf::GridColumn<
+          Name='LookupClass'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='LookupClass'
+          DisplayFormat=''
+          TitleCaption='Lookup classname'
+        >
+        , *object:rtf::GridColumn<
+          Name='LookupField'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='LookupField'
+          DisplayFormat=''
+          TitleCaption='Lookup fieldname'
+        >
+        , *object:rtf::GridColumn<
+          Name='SourceFieldName'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='SourceFieldName'
+          DisplayFormat=''
+          TitleCaption='Source fieldname'
+        >
+      }
+    >
+    , object:rtf::MultiSplit<
+      Name='msMain'
+      Width=240
+      Height=100
+      Side1Containers={
+        $CONTAINERS['packageDefPanel']
+      }
+      Side2Containers={
+        $CONTAINERS['actionPanel']
+      }
+      SpaceContainer=$CONTAINERS['MultiPages']
+    >
+    , object:rtf::MultiPages<
+      Name='MultiPages'
+      Width=240
+      Height=100
+      Pages={
+        object:rtf::Page<
+          PageName='pgSource'
+          PageTitle='Source'
+          Container=$CONTAINERS['dsSource']
+        >
+        , object:rtf::Page<
+          PageName='pgTransformation'
+          PageTitle='Transformation'
+          Container=$CONTAINERS['dsTransformation']
+          Index=1
+        >
+      }
+    >
+    , object:rtf::DualSplit<
+      Name='dsSource'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['sourceDefPanel']
+      Container2=$CONTAINERS['sourceFieldDefsGrid']
+    >
+    , object:rtf::DualSplit<
+      Name='dsTransformation'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['transformationDefPanel']
+      Container2=$CONTAINERS['transItemDefsGrid']
+    >
+  }
+  FormClassName='frmImportPackage'
+>

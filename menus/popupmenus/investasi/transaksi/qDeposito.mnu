@@ -1,0 +1,96 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{FF6521AE-DCB8-457C-933C-35D88DB5B672}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rmn::Menu<
+  MenuItems={object:rmn::MenuItem<
+      Name='mnuTransaksiDeposito'
+      Caption='Transaksi Investasi MM'
+      MenuItems={object:rmn::MenuItem<
+          Name='mnuBagiHasil'
+          Caption='Pembayaran Bunga...'
+          OnClick='mnuTransDepositoClick'
+          AllowedGroups='Admin;Root;FMS'
+          StringTag='fBagiHasilDeposito'
+        >, object:rmn::MenuItem<
+          Name='mnuRollover'
+          Caption='Rollover Deposito...'
+          OnClick='mnuTransDepositoClick'
+          AllowedGroups='RESERVEAdmin'
+          StringTag='fRolloverInvestasi'
+        >, object:rmn::MenuItem<
+          Name='mnuTutupInvestasi'
+          Caption='Tutup Investasi MM...'
+          OnClick='mnuTransDepositoClick'
+          AllowedGroups='Admin;Root;FMS'
+          StringTag='fTutupDeposito'
+        >, object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='Admin;Root;FMS'
+        >, object:rmn::MenuItem<
+          Name='mnuTransaksiManual'
+          Caption='Transaksi Manual'
+          MenuItems={object:rmn::MenuItem<
+              Name='mnuInvestasiManual'
+              Caption='Koreksi Investasi...'
+              OnClick='mnuTransInvClick'
+              AllowedGroups='Admin;Root;FMS'
+              StringTag='fManInvestasi'
+            >, object:rmn::MenuItem<
+              Name='mnuPiutangLRManual'
+              Caption='Koreksi Piutang Hasil Investasi...'
+              OnClick='mnuTransInvClick'
+              AllowedGroups='Admin;Root;FMS'
+              StringTag='fManPiutangLRInvestasi'
+            >, object:rmn::MenuItem<
+              Name='mnuLRManual'
+              Caption='Koreksi Hasil Investasi...'
+              OnClick='mnuTransInvClick'
+              AllowedGroups='Admin;Root;FMS'
+              StringTag='fManLRInvestasi'
+            >}AllowedGroups='Admin;Root;FMS'
+        >}AllowedGroups='Admin;Root;FMS'
+    >, object:rmn::MenuItem<
+      Name='mnuKoreksiARO'
+      Caption='Ubah Data Investasi MM...'
+      OnClick='mnuKoreksiAROClick'
+      AllowedGroups='Admin;Root;FMS'
+      StringTag='fDeposito_SetARO'
+    >, object:rmn::MenuItem<
+      Name='mnuUbahPeriode'
+      Caption='Ubah Periode Investasi MM...'
+      OnClick='mnuKoreksiAROClick'
+      AllowedGroups='Admin;Root;FMS'
+      StringTag='fDeposito_SetARO'
+    >, object:rmn::MenuItem<
+      Name='Oto'
+      Caption='Otorisasi Perubahan Data Investasi MM...'
+      OnClick='mnuKoreksiAROClick'
+      AllowedGroups='Admin;Root;FM'
+      StringTag='fDeposito_SetARO'
+    >, object:rmn::MenuItem<
+      Caption='-'
+      AllowedGroups='Admin;Root;FM;FMS'
+    >, object:rmn::MenuItem<
+      Caption='Peragaan Perubahan Investasi MM'
+      OnClick='mnuKoreksiAROClick'
+      AllowedGroups='Admin;Root;FM;FMS'
+      StringTag='fPeragaanPerubahanDepo'
+    >, object:rmn::MenuItem<
+      Name='mnuView'
+      Caption='Lihat Detil Investasi...'
+      OnClick='mnuViewClick'
+      AllowedGroups='Admin;Root;FM;FMS'
+      StringTag='view'
+    >, object:rmn::MenuItem<
+      Caption='-'
+      AllowedGroups='Admin;Root;FM;FMS'
+    >, object:rmn::MenuItem<
+      Caption='Batalkan Investasi Terotorisasi'
+      OnClick='BatalkanDeposito'
+      AllowedGroups='Admin;Root;FM'
+    >}MenuType=mtPopupMenu
+  DenyThenAllow=true
+>

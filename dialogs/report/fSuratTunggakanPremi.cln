@@ -1,0 +1,137 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit1']
+  Caption='Surat Tunggakan Premi'
+  Left=50
+  Top=50
+  Width=450
+  Height=275
+  UIParts={object:rtf::PClassUI<
+      Name='uipNoData'
+    >}Containers={object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=450
+      Height=275
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['pData']
+      InversedAlign=true
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=300
+      Height=45
+      Bordered=true
+      Controls={object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=20
+          Color=0
+          ControlCaption=''
+          Caption='&OK'
+          OnClick='btnOKClick'
+        >, object:rtf::Button<
+          Name='btnCancel'
+          Layout=clAbsolute
+          Top=8
+          Left=104
+          Color=0
+          ControlCaption=''
+          Caption='&Cancel'
+          ExitAction=eaQuitCancel
+        >}ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='no_peserta'
+          DataTypeName='varchar'
+          DataLength=11
+        >}Name='pData'
+      Width=385
+      Height=225
+      Bordered=true
+      UIPart=$UIPARTS['uipNoData']
+      Controls={*object:rtf::DBEdit<
+          Name='no_peserta'
+          Top=20
+          Left=20
+          Color=0
+          ControlCaption='Nomor Peserta'
+        >, object:rtf::Label<
+          Name='label1'
+          Layout=clAbsolute
+          Top=64
+          Left=20
+          Color=0
+          ControlCaption=''
+          Caption='Hasil cetaknya di pindakan ke Aplikasi Word.  Dengan format page setupnya sbb: '
+          AutoSize=true
+          WordWrap=true
+          FontSize=8
+        >, object:rtf::Label<
+          Name='label3'
+          Layout=clAbsolute
+          Top=92
+          Left=60
+          Color=0
+          ControlCaption=''
+          Caption='Top :1.5"'
+          AutoSize=true
+          FontSize=8
+        >, object:rtf::Label<
+          Name='label4'
+          Layout=clAbsolute
+          Top=112
+          Left=60
+          Color=0
+          ControlCaption=''
+          Caption='Bottom :0.05"'
+          AutoSize=true
+          FontSize=8
+        >, object:rtf::Label<
+          Name='label5'
+          Layout=clAbsolute
+          Top=132
+          Left=60
+          Color=0
+          ControlCaption=''
+          Caption='Left : 1"'
+          AutoSize=true
+          FontSize=8
+        >, object:rtf::Label<
+          Name='label6'
+          Layout=clAbsolute
+          Top=152
+          Left=60
+          Width=49
+          Height=17
+          Color=0
+          ControlCaption=''
+          Caption='Right : 1"'
+          AutoSize=true
+          FontSize=8
+        >, object:rtf::Label<
+          Name='label7'
+          Layout=clAbsolute
+          Top=176
+          Left=60
+          Color=0
+          ControlCaption=''
+          Caption='Header dan Footer : 0.05"'
+          AutoSize=true
+          FontSize=8
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Surat Tunggakan Premi'
+    >}>

@@ -1,0 +1,138 @@
+// dialog resource to show user active
+
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  MajorVersion='1'
+  MinorVersion='0'
+>
+
+object: rtf::Form <
+  caption = 'User Monitor'
+  left = -1
+  top = -1
+  width = 800
+  height = 600
+  state = rsMaximized
+
+  (* server-side events *)
+  OnGeneralSetData = FormGeneralSetData
+
+  (* client-side events *)
+  AfterProcessServerData = FormAfterProcessServerData
+
+  UIParts = {
+    object: rtf::PClassUI <
+      name = 'userlist'
+      databinding = bmNone
+      multiline = true
+      fillindefaultvalues = true
+    >
+  }
+
+  Containers = {
+    object: rtf::DualSPlit <
+      Name = 'split'
+      SplitDirection = sdrSplitUpDown
+      Container2 = $Containers[user_panel]
+      Container1 = $Containers[button_panel]
+      InversedAlign = true
+    >
+    
+    object: rtf::Grid <
+      Name = 'user_panel'
+      Bordered = true
+      UIPart = $UIParts['userlist']
+
+      Elements = {
+        object: rtf::FieldUIElmtSetting <
+          Name = 'session_id'
+          DataTypeName = 'VARCHAR'
+          DataLength = 100
+          //AccessOption = aoReadOnly
+          Hidden = true
+        >
+        object: rtf::FieldUIElmtSetting <
+          Name = 'user_id'
+          DataTypeName = 'VARCHAR'
+          DataLength = 20
+          //AccessOption = aoReadOnly
+        >
+        object: rtf::FieldUIElmtSetting <
+          Name = 'UserName'
+          DataTypeName = 'VARCHAR'
+          DataLength = 40
+          //AccessOption = aoReadOnly
+        >
+        object: rtf::FieldUIElmtSetting <
+          Name = 'branch_code'
+          DataTypeName = 'VARCHAR'
+          DataLength = 4
+          //AccessOption = aoReadOnly
+        >
+        object: rtf::FieldUIElmtSetting <
+          Name = 'BranchName'
+          DataTypeName = 'VARCHAR'
+          DataLength = 40
+          //AccessOption = aoReadOnly
+        >
+      } // elements
+      Columns = {
+        *object: rtf::GridColumn<
+          Name = 'user_id'
+          ReadOnly = true
+          TitleCaption = 'ID Pengguna'
+        >
+        *object: rtf::GridColumn<
+          Name = 'UserName'
+          ReadOnly = true
+          TitleCaption = 'Nama Pengguna'
+        >
+        *object: rtf::GridColumn<
+          Name = 'branch_code'
+          ReadOnly = true
+          TitleCaption = 'Kode Cabang'
+        >
+        *object: rtf::GridColumn<
+          Name = 'BranchName'
+          ReadOnly = true
+          TitleCaption = 'Nama Cabang'
+        >
+      }
+    > // panel1
+
+    object: rtf::Panel <
+      Name = 'button_panel'
+      Height = 50
+      Width = 800
+      Controls = {
+        object: rtf::Button <
+          Caption = '&Refresh'
+          Name = 'bRefresh'
+          OnClick = 'bRefresh_Click'
+          Layout = clNextSide
+        >
+        object: rtf::Button <
+          Caption = '&Kick'
+          Default = True
+          Name = 'bKick'
+          OnClick = 'bKick_Click'
+          Layout = clNextSide
+        >
+        object: rtf::Button <
+          Caption = 'Kick &All'
+          Name = 'bKickAll'
+          OnClick = 'bKickAll_Click'
+          Layout = clNextSide
+        >
+        object: rtf::Button <
+          Caption = 'Quit'
+          Cancel = True
+          Name = 'bCancel'
+          ExitAction = eaQuitCancel
+          Layout = clNextSide
+        >
+      }
+    >
+  } // containers
+> // form object

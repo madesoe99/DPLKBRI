@@ -1,0 +1,66 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rpclass::TPClassUIDefList<
+  UIDefs={object:rpclass::TPClassUIDef<
+      Name='uipInvestasi'
+      PClassName='Investasi'
+      LoadedFieldList='kode_jns_investasi;id_investasi;rollover_counter;status;tgl_otorisasi;user_id;user_id_auth;terminal_id;terminal_id_auth;LRincianPaketInvestasi.kode_paket_investasi;LRincianPaketInvestasi.kode_jns_investasi;LRincianPaketInvestasi.kode_jns_investasi'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='TglAwal'
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='TglAkhir'
+          DataTypeName='timestamp'
+          DataLength=20
+        >}CustomLoadedLinks={object:rpclass::TCustomLoadedLink<
+          Name='LRincianPaketInvestasi'
+          ClassTypeName='RincianPaketInvestasi'
+          FieldNames='kode_paket_investasi;kode_jns_investasi;kode_jns_investasi'
+        >}Mode=imSingleRow
+      OnSetData='uipInvestasiSetData'
+    >, object:rpclass::TPClassUIDef<
+      Name='uipTransaksi'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='No_Batch'
+          DataTypeName='varchar'
+          DataLength=32
+        >, object:rpclass::TCustomLoadedField<
+          Name='TglEfektif'
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='TglTransaksi'
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='Kode'
+          DataTypeName='varchar'
+          DataLength=10
+        >, object:rpclass::TCustomLoadedField<
+          Name='Keterangan'
+          DataTypeName='varchar'
+          DataLength=100
+        >, object:rpclass::TCustomLoadedField<
+          Name='Mutasi_Debet'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='Mutasi_Kredit'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='Status_Otorisasi'
+          DataTypeName='varchar'
+          DataLength=1
+        >, object:rpclass::TCustomLoadedField<
+          Name='id_transaksiinvestasi'
+          DataTypeName='integer'
+          DataLength=20
+        >}Mode=imSingleRow
+    >}OnSetDataEx='FormSetDataEx'
+>

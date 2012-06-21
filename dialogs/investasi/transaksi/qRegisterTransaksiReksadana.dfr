@@ -1,0 +1,144 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['DualSplit']
+  Caption='Daftar Register Transaksi Investasi EQ'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnFormShow='FormShow'
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={object:rtf::PClassUI<
+      Name='uipNoData'
+    >}Containers={object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='dateFrom'
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='dateUntil'
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='dateUntil_tmrw'
+          Hidden=true
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='isDisplay'
+          Hidden=true
+          DataTypeName='integer'
+          DataLength=20
+        >}Name='pFilter'
+      Width=500
+      Height=60
+      Bordered=true
+      UIPart=$UIPARTS['uipNoData']
+      Controls={*object:rtf::DBDateEdit<
+          Name='dateFrom'
+          Top=20
+          Left=20
+          Color=0
+          ControlCaption='Interval Tanggal'
+        >, *object:rtf::DBDateEdit<
+          Name='dateUntil'
+          Layout=clNextSide
+          Top=20
+          Left=248
+          Color=0
+          ControlCaption='-'
+        >, object:rtf::Button<
+          Name='btnShow'
+          Layout=clNextSide
+          Top=20
+          Left=380
+          Color=0
+          ControlCaption=''
+          Caption='T&ampilkan'
+          OnClick='btnShowClick'
+        >}EqualCaptionWidth=100
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Query<
+      Name='qRegisterTransaksiReksadana'
+      Width=800
+      Height=539
+      ContextMenuName='popupmenus/investasi/transaksi/qRegisterTransaksiReksadana'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from TransaksiInvestasi'#13#10,
+        '['#13#10,
+        '  (isCommitted = ''F'')'#13#10,
+        '  and (LInvestasi.kode_jns_investasi = ''R'')'#13#10,
+        ']'#13#10,
+        '('#13#10,
+        '  tgl_transaksi as  tgl_transaksi,'#13#10,
+        '  mutasi_debet,'#13#10,
+        '  mutasi_kredit,'#13#10,
+        '  LNamaJnsTransInv.kode_jenis_trinvestasi as kode_jenis_trinvestasi,'#13#10,
+        '  LNamaJnsTransInv.nama as jenis_trinvestasi,'#13#10,
+        '  tgl_sistem,'#13#10,
+        '  user_id,'#13#10,
+        '  terminal_id,'#13#10,
+        '  id_transaksiinvestasi as ID,'#13#10,
+        '  self'#13#10,
+        ') then order by ID;']
+      WindowSize=20
+      Columns={object:rtf::QueryColumn<
+          FieldName='TransaksiInvestasi.tgl_transaksi'
+          Width=130
+          Caption='Tanggal Transaksi'
+        >, object:rtf::QueryColumn<
+          FieldName='TransaksiInvestasi.jenis_trinvestasi'
+          Width=250
+          Caption='Jenis Transaksi'
+        >, object:rtf::QueryColumn<
+          FieldName='TransaksiInvestasi.mutasi_debet'
+          Width=100
+          Caption='Mutasi Debet'
+        >, object:rtf::QueryColumn<
+          FieldName='TransaksiInvestasi.mutasi_kredit'
+          Width=100
+          Caption='Mutasi Kredit'
+        >, object:rtf::QueryColumn<
+          FieldName='TransaksiInvestasi.tgl_sistem'
+          Width=130
+          Caption='Tanggal Sistem'
+        >, object:rtf::QueryColumn<
+          FieldName='TransaksiInvestasi.user_id'
+          Width=100
+          Caption='ID Pengguna'
+        >, object:rtf::QueryColumn<
+          FieldName='TransaksiInvestasi.terminal_id'
+          Width=100
+          Caption='ID Terminal'
+        >}EnableColumns=true
+    >, object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=800
+      Height=600
+      Container1=$CONTAINERS['pFilter']
+      Container2=$CONTAINERS['qRegisterTransaksiReksadana']
+    >}>

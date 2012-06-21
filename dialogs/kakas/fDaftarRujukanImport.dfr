@@ -1,0 +1,130 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['pButton']
+  Caption='Daftar Rujukan (Template) Impor Data Massal'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData='FormGeneralSetData'
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnFormShow='FormShow'
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipTemplateList'
+      MultiLine=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Name='pButton'
+      Width=300
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnRefresh'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Refresh'
+          Default=true
+          OnClick='btnRefreshClick'
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Grid<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='NamaTemplate'
+          ControlCaption='Nama Rujukan'
+          DataTypeName='varchar'
+          DataLength=100
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='DeskripsiTemplate'
+          ControlCaption='Deskripsi Rujukan'
+          DataTypeName='varchar'
+          DataLength=100
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='TargetImport'
+          ControlCaption='Target Impor'
+          DataTypeName='varchar'
+          DataLength=50
+        >
+      }
+      Name='gTemplateList'
+      Width=240
+      Height=40
+      ContextMenuName='popupmenus/kakas/pDaftarRujukanImpor'
+      UIPart=$UIPARTS['uipTemplateList']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Daftar Rujukan (Template) Impor Data Massal'
+      Columns={
+        *object:rtf::GridColumn<
+          Name='NamaTemplate'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='NamaTemplate'
+          DisplayFormat=''
+          TitleCaption='Nama Rujukan'
+          Width=200
+        >
+        , *object:rtf::GridColumn<
+          Name='DeskripsiTemplate'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='DeskripsiTemplate'
+          DisplayFormat=''
+          TitleCaption='Deskripsi Rujukan'
+          Width=500
+        >
+        , *object:rtf::GridColumn<
+          Name='TargetImport'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='TargetImport'
+          DisplayFormat=''
+          TitleCaption='Target Impor'
+          Width=200
+        >
+      }
+      ReadOnly=true
+      RowSelect=true
+      SuppressHelpLine=true
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['gTemplateList']
+      InversedAlign=true
+    >
+  }
+>

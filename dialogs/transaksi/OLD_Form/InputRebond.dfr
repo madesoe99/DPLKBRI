@@ -1,0 +1,237 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['dsMain']
+  Caption='Input untuk Rebond'
+  Left=250
+  Top=150
+  Width=510
+  Height=400
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData='FormGeneralSetData'
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={object:rtf::PClassUI<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='PRESISI_ANGKA_FLOAT'
+          Hidden=true
+          DataTypeName='double'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='Today'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=10
+        >}Name='uipInput'
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >, object:rtf::PClassUI<
+      Name='uipPaketInvestasi'
+      ClassTypeName='RincianPaketInvestasi'
+      DataBinding=bmMaster
+      MultiLine=true
+      CreateInstanceOnNew=true
+    >}Containers={object:rtf::Panel<
+      Elements={object:rtf::LinkUIElmtSetting<
+          Name='SRRCalc'
+          ControlCaption='SRR yang dipakai untuk Bagi Hasil'
+          ClassTypeName='SRRCalc'
+          DisplayFields='ID_SRRCalc;tgl_create;tgl_akhir_hitung'
+          Restrictions=''
+          OQLText=['select from SRRCalc'#13#10,
+            '[status_rebond is null'#13#10,
+            'or status_rebond <> ''T'']'#13#10,
+            '(tgl_mulai_hitung,'#13#10,
+            'tgl_akhir_hitung,'#13#10,
+            'tgl_create,'#13#10,
+            'user_id_create,'#13#10,
+            'ID_SRRCalc,'#13#10,
+            'self)'#13#10,
+            'then order by ID_SRRCalc;']
+          LookupOption=loCustomOQL
+          FieldBaseName='SRRCalc'
+        >, object:rtf::LinkUIElmtSetting<
+          Name='BatchTransaksi'
+          ControlCaption='Batch Transaksi'
+          ClassTypeName='TransactionBatch'
+          DisplayFields='ID_TransactionBatch;no_batch'
+          Restrictions=['uipInput.Today|Today'#13#10,
+            'uipInput.tgl_akhir_hitung|tgl_akhir_hitung']
+          OQLText=['select from TransactionBatch'#13#10,
+            '[batch_status = ''O'' and batch_type = ''T'' and '#13#10,
+            'batch_sub_type = ''M'' and LUserOwner.NoLimitLocation = ''T'''#13#10,
+            'and tgl_used <= :tgl_akhir_hitung]'#13#10,
+            '(no_batch,'#13#10,
+            'tgl_used,'#13#10,
+            'user_id_owner,'#13#10,
+            'self)'#13#10,
+            'then order by no_batch;']
+          LookupOption=loCustomOQL
+          FieldBaseName='BatchTransaksi'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tgl_akhir_hitung'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=10
+        >}Name='pInput'
+      Width=505
+      Height=80
+      Bordered=true
+      UIPart=$UIPARTS['uipInput']
+      Controls={*object:rtf::DBLookupEdit<
+          Name='SRRCalc'
+          Top=10
+          Left=20
+          ControlCaption='SRR yang dipakai untuk Rebond'
+          LookupField='SRRCalc.tgl_create'
+          DisplayLookupField=true
+          OnAfterLookup='SRRCalcAfterLookup'
+        >, *object:rtf::DBLookupEdit<
+          Name='BatchTransaksi'
+          Top=38
+          Left=20
+          ControlCaption='Batch Transaksi'
+          LayoutOrder=4
+          LookupField='BatchTransaksi.no_batch'
+          DisplayLookupField=true
+        >}EqualCaptionWidth=200
+      ControlLeftMargin=20
+      ControlTopMargin=10
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=375
+      Height=40
+      Controls={object:rtf::Button<
+          Name='bOK'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          Color=0
+          ControlCaption='&Hitung'
+          Caption='&Hitung'
+          Default=true
+          OnClick='bOKClick'
+        >, object:rtf::Button<
+          Name='bCancel'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          DefaultAction=daClear
+          ExitAction=eaQuitCancel
+        >}ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='dsMain'
+      Width=240
+      Height=96
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['MultiSplit']
+      InversedAlign=true
+    >, object:rtf::Grid<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='kode_paket_investasi'
+          ReadOnlyControl=true
+          ControlCaption='Kode Paket'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='nama_paket_investasi'
+          ReadOnlyControl=true
+          ControlCaption='Nama Paket'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='nama_jns_investasi'
+          ReadOnlyControl=true
+          ControlCaption='Jenis Investasi'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='maks_proporsi'
+          ReadOnlyControl=true
+          ControlCaption='Maks. Proporsi (%)'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='NominalProfit'
+          ControlCaption='Nominal Profit'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='kode_jns_investasi'
+          Hidden=true
+        >}Name='gPaketInvestasi'
+      Width=240
+      Height=240
+      UIPart=$UIPARTS['uipPaketInvestasi']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Daftar Laba Paket Investasi'
+      Columns={*object:rtf::GridColumn<
+          Name='kode_paket_investasi'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='kode_paket_investasi'
+          DisplayFormat=''
+          TitleCaption='Kode Paket'
+          Width=60
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='nama_paket_investasi'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='nama_paket_investasi'
+          DisplayFormat=''
+          TitleCaption='Nama Paket'
+          Width=120
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='nama_jns_investasi'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='nama_jns_investasi'
+          DisplayFormat=''
+          TitleCaption='Jenis Investasi'
+          Width=80
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='maks_proporsi'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='maks_proporsi'
+          DisplayFormat=''
+          TitleCaption='Maks. Proporsi (%)'
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='NominalProfit'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='NominalProfit'
+          DisplayFormat=',0.00'
+          TitleCaption='Nominal Profit'
+          Width=100
+        >}>, object:rtf::MultiSplit<
+      Name='MultiSplit'
+      Width=320
+      Height=320
+      Side1Containers={$CONTAINERS['pInput']
+      }SpaceContainer=$CONTAINERS['gPaketInvestasi']
+    >}>

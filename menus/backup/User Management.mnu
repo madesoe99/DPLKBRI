@@ -1,0 +1,109 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{FF6521AE-DCB8-457C-933C-35D88DB5B672}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rmn::Menu<
+  MenuItems={
+    object:rmn::MenuItem<
+      Caption='User &Management'
+      MenuItems={
+        object:rmn::MenuItem<
+          Name='UM001'
+          Caption='&User List'
+          OnClick='Action1Click'
+          AllowedGroups='Admin;Root'
+          StringTag='query_user'
+          ImageIndex=4
+        >
+        , object:rmn::MenuItem<
+          Name='UM002'
+          Caption='User &Group List'
+          OnClick='Action1Click'
+          AllowedGroups='Admin;Root'
+          StringTag='query_usergroup'
+          ImageIndex=5
+        >
+        , object:rmn::MenuItem<
+          Caption='Branch &Location'
+          OnClick='Action1Click'
+          AllowedGroups='Admin;Root'
+          StringTag='query_branchlocation'
+          ImageIndex=2
+        >
+        , object:rmn::MenuItem<
+          Name='qWorkingUnit'
+          Caption='Data unit &kerja'
+          OnClick='Action1Click'
+          StringTag='qWorkingUnit'
+        >
+        , object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='Admin;Root'
+        >
+        , object:rmn::MenuItem<
+          Name='select_menu'
+          Caption='Register &Menu Authority'
+          OnClick='Action2Click'
+          AllowedGroups='Admin;Root'
+          StringTag='menulist'
+        >
+        , object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='Admin;Root'
+        >
+        , object:rmn::MenuItem<
+          Name='user_monitor'
+          Caption='User M&onitor'
+          OnClick='Action2Click'
+          AllowedGroups='Admin;Root'
+          StringTag='userlist'
+          ImageIndex=3
+        >
+        , object:rmn::MenuItem<
+          Name='browse_appdir'
+          Caption='Browse Server Directory'
+          OnClick='browseDirClick'
+          AllowedGroups='Admin;Root'
+          StringTag='BACKUP_ROOT'
+        >
+        , object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='Admin;Root'
+        >
+        , object:rmn::MenuItem<
+          Name='S_UserValidasi'
+          Caption='Security Data &Validation'
+          OnClick='stdExecScript'
+          AllowedGroups='Admin;Root'
+          StringTag='Apakah anda yakin memvalidasi security data?'
+          ImageIndex=6
+        >
+        , object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='Admin;Root'
+        >
+        , object:rmn::MenuItem<
+          Name='backupdata'
+          Caption='Backup data...'
+          OnClick='backupdataClick'
+          AllowedGroups='Admin;Root'
+          ImageIndex=1
+        >
+        , object:rmn::MenuItem<
+          Name='restoredata'
+          Caption='Restore data...'
+          OnClick='restoredata'
+          AllowedGroups='Admin;Root'
+          ImageIndex=0
+        >
+      }
+      AllowedUsers='ADE HERMAN'
+      AllowedGroups='Admin;Root;TNLG'
+    >
+  }
+  DenyThenAllow=true
+  ImageListID='usermanagement'
+>

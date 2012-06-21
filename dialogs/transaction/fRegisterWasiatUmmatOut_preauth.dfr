@@ -1,0 +1,181 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['pRegister']
+  Caption='Pra Otorisasi Pendaftaran Wasiat Ummat'
+  Left=50
+  Top=50
+  Width=420
+  Height=300
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnFormShow='FormShow'
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipRegisterWasiatUmmat'
+      ClassTypeName='RegisterWasiatUmmat'
+      DataBinding=bmMaster
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['no_referensi'#13#10,
+            'LNasabahDPLK'#13#10,
+            'keterangan'#13#10,
+            'user_id'#13#10,
+            'terminal_id'#13#10,
+            'alasan_berhenti'#13#10]
+        >
+        , object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='jenis_transaksi'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='registercif_id'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='no_referensi'
+          ReadOnlyControl=true
+        >
+        , *object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLK'
+          ReadOnlyControl=true
+          DisplayFields='no_peserta;nama_lengkap'
+          Restrictions=''
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          ReadOnlyControl=true
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          ReadOnlyControl=true
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='terminal_id'
+          ReadOnlyControl=true
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='alasan_berhenti'
+          ReadOnlyControl=true
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='jenis_transaksi'
+          Hidden=true
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='registercif_id'
+          Hidden=true
+        >
+      }
+      Name='pRegister'
+      Width=240
+      Height=220
+      Bordered=true
+      UIPart=$UIPARTS['uipRegisterWasiatUmmat']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='no_referensi'
+          ControlCaption='Nomor Referensi'
+          ReadOnly=true
+        >
+        , *object:rtf::DBLookupEdit<
+          Name='LNasabahDPLK'
+          Width=100
+          Height=21
+          Enabled=false
+          Color=15128749
+          ControlCaption='Peserta DPLK'
+          LookupField='LNasabahDPLK.nama_lengkap'
+          DisplayLookupField=true
+        >
+        , *object:rtf::DBEdit<
+          Name='keterangan'
+          ControlCaption='Keterangan'
+          ReadOnly=true
+        >
+        , *object:rtf::DBEdit<
+          Name='user_id'
+          ControlCaption='User Penginput'
+          ReadOnly=true
+        >
+        , *object:rtf::DBEdit<
+          Name='terminal_id'
+          ControlCaption='Terminal Input'
+          ReadOnly=true
+        >
+        , *object:rtf::DBEdit<
+          Name='alasan_berhenti'
+          ControlCaption='Alasan Berhenti'
+          ReadOnly=true
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=30
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Register'
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Color=0
+          ControlCaption=''
+          Caption='&OK'
+          Default=true
+          ExitAction=eaQuitOK
+          OnClick='btnOKClick'
+        >
+        , object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['pRegister']
+      InversedAlign=true
+    >
+  }
+>

@@ -1,0 +1,104 @@
+def SetToCenterForm(prevForm, currForm):
+  currForm.Left = (prevForm.Width - currForm.Width)/2 + prevForm.Left
+  currForm.Top = (prevForm.Height - currForm.Height)/2 + prevForm.Top
+
+def ShowRegisterReksadana(sender, context):
+  app = context.OwnerForm.ClientApplication
+
+  formID = 'fRegisterReksadana'
+  form = app.GetFormWithData('investasi/transaksi/'+ formID, formID, 0, 'new', 'new')
+  form.Show(
+    app.CreateValues(
+      ['mode', sender.StringTag]
+      , ['inv', 'C']
+      , ['caption', sender.Caption.replace('...','')]
+    )
+  )
+
+def displayWithData(sender, context):
+  app = context.OwnerForm.ClientApplication
+  mode = sender.StringTag
+
+  if mode == 'new':
+    key = mode
+    uipart = mode
+    formid = 'fRegisterReksadana'
+  else:
+    # mode == view
+    key = context.KeyObjConst
+    uipart = 'uipInvestasi'
+    formid = 'fInvestasi'
+
+  aform = app.GetFormWithData('investasi/transaksi/'+formid,formid,0,key,uipart)
+  SetToCenterForm(context.OwnerForm, aform.FormObject)
+  ea = aform.Show(app.CreateValues(['mode',mode]))
+
+def mnuViewClick(sender, context):
+  app = context.OwnerForm.ClientApplication
+
+  key = context.KeyObjConst
+  formid = 'fInvestasi'
+
+  oRForm = app.CreateForm(
+    'investasi/transaksi/'+formid
+    , formid
+    , 0
+    , app.CreateValues(['key', key])
+    , None
+  )
+  aform = oRForm.FormContainer
+  SetToCenterForm(context.OwnerForm, aform.FormObject)
+  ea = aform.Show()
+
+def mnuTransManClick(sender, context):
+  app = context.OwnerForm.ClientApplication
+
+  key = context.KeyObjConst
+  uipart = 'uipInvestasi'
+  formid = sender.StringTag
+
+  aform = app.GetFormWithData('investasi/transaksi/'+formid,formid,0,key,uipart)
+  SetToCenterForm(context.OwnerForm, aform.FormObject)
+  ea = aform.Show(
+    app.CreateValues(
+      ['mode','new']
+      , ['caption', sender.Caption.replace('...','')]
+    )
+  )
+
+def mnuTransInvClick(sender, context):
+  app = context.OwnerForm.ClientApplication
+
+  key = context.KeyObjConst
+  uipart = 'uipReksadana'
+  formid = sender.StringTag
+
+  y,m,d = context.GetFieldValue('Reksadana.tgl_buka')[:3]
+  if app.ModDateTime.EncodeDate(y,m,d) > app.ModDateTime.Now() :
+     raise 'PERINGATAN','Tanggal transaksi tidak boleh lebih kecil dari tanggal buka'
+
+  aform = app.GetFormWithData('investasi/transaksi/'+formid,formid,0,key,uipart)
+  SetToCenterForm(context.OwnerForm, aform.FormObject)
+  ea = aform.Show(
+    app.CreateValues(
+      ['mode','new']
+      , ['caption', sender.Caption.replace('...','')]
+    )
+  )
+
+def mnuKoreksiNABClick(sender, context):
+  app = context.OwnerForm.ClientApplication
+
+  key = context.KeyObjConst
+  uipart = 'uipReksadana'
+  formid = sender.StringTag
+
+  aform = app.GetFormWithData('investasi/transaksi/'+formid,formid,0,key,uipart)
+  SetToCenterForm(context.OwnerForm, aform.FormObject)
+  aform.Show(app.CreateValues(
+      ['mode',sender.Name]
+      , ['caption', sender.Caption.replace('...','')]
+    )
+    )
+
+

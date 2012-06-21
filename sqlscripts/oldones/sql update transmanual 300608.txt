@@ -1,0 +1,4 @@
+update TransaksiDPLK
+set kode_transaksi_manual = 'M'
+where kode_jenis_transaksi = 'M'
+  and kode_transaksi_manual is null;

@@ -1,0 +1,43 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='userlist'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='session_id'
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='user_id'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='UserName'
+          DataTypeName='VARCHAR'
+          DataLength=40
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='branch_code'
+          DataTypeName='VARCHAR'
+          DataLength=4
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='BranchName'
+          DataTypeName='VARCHAR'
+          DataLength=40
+        >
+      }
+      Mode=imMultiRow
+    >
+  }
+  OnGeneralSetData='FormGeneralSetData'
+>

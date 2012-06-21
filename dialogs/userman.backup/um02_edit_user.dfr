@@ -1,0 +1,144 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='1'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['split']
+  Caption='Koreksi Data Pengguna'
+  Left=100
+  Top=100
+  Width=400
+  Height=300
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='UserApp'
+      ClassTypeName='UserApp'
+      DataBinding=bmMaster
+      FillInDefaultValues=true
+      InitWithDefaultValues=true
+      AfterApplyRow='UserApp_AfterApplyRow'
+    >
+  }
+  Containers={
+    object:rtf::DualSplit<
+      Name='split'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['panel_Button']
+      Container2=$CONTAINERS['mp_data']
+      InversedAlign=true
+    >
+    , object:rtf::Panel<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caView
+          DataMember='user_id'
+        >
+        , object:rtf::MultiControlDef<
+          Action=caEdit
+          DataMembers=['UserName'#13#10,
+            'Description'#13#10,
+            'NoLimitLocation'#13#10,
+            'LBranchLocation'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          ControlCaption='ID Pengguna'
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='UserName'
+          ControlCaption='Nama Pengguna'
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='NoLimitLocation'
+          ControlCaption='Bisa Lihat Data Cabang Lain'
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['F=False'#13#10,
+            'T=True'#13#10]
+          GenerateCheckBoxForEnum=true
+        >
+        , *object:rtf::LinkUIElmtSetting<
+          Name='LBranchLocation'
+          ControlCaption='Cabang Pengguna'
+          ClassTypeName='BranchLocation'
+          DisplayFields='branch_code;BranchName'
+          Restrictions=''
+          OQLText='SELECT FROM BranchLocation (branch_code, BranchName, self) THEN ORDER BY branch_code;'
+          LookupOption=loCustomOQL
+        >
+      }
+      Name='mp_data'
+      Width=240
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['UserApp']
+      Controls={
+        *object:rtf::DBCheckBox<
+          Name='NoLimitLocation'
+          Width=200
+          Height=21
+        >
+        , *object:rtf::DBLookupEdit<
+          Name='LBranchLocation'
+          LookupField='LBranchLocation.BranchName'
+          DisplayLookupField=true
+          DirectInput=true
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Name='panel_Button'
+      Width=240
+      Height=50
+      Controls={
+        object:rtf::Button<
+          Name='bSave'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          DefaultAction=daProcessAllAndClear
+          ExitAction=eaQuitOK
+        >
+        , object:rtf::Button<
+          Name='bCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+  }
+>

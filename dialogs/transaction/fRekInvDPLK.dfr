@@ -1,0 +1,1758 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit1']
+  Caption='Data Peserta DPLK'
+  State=rsMaximized
+  Left=100
+  Top=75
+  Width=800
+  Height=600
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnFormShow='FormShow'
+  OnBeginSetData=''
+  OnEndSetData='FormEndSetData'
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['collectivity_asuransi'#13#10,
+            'kewajiban_asuransi'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='collectivity_asuransi'
+          Hidden=true
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='kewajiban_asuransi'
+          Hidden=true
+          ReadOnlyControl=false
+        >
+      }
+      Name='uipRekInvDPLK'
+      ClassTypeName='RekInvDPLK'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      SetMasterDetailRelationship=true
+    >, object:rtf::PClassUI<
+      Name='uipNasabahDPLK'
+      ClassTypeName='NasabahDPLK'
+      DataBinding=bmLink
+      Master=$UIPARTS['uipRekInvDPLK']
+      LinkName='LNasabahDPLK'
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >, object:rtf::PClassUI<
+      Name='uipAhliWaris'
+      ClassTypeName='AhliWaris'
+      DataBinding=bmList
+      Master=$UIPARTS['uipNasabahDPLK']
+      ListName='Ls_AhliWaris'
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      SetMasterDetailRelationship=true
+    >, object:rtf::PClassUI<
+      Name='uipRekeningDPLK'
+      ClassTypeName='RekeningDPLK'
+      DataBinding=bmList
+      Master=$UIPARTS['uipRekInvDPLK']
+      ListName='Ls_RekeningDPLK'
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['alamat_jalan'#13#10,
+            'alamat_rtrw'#13#10,
+            'alamat_kelurahan'#13#10,
+            'alamat_kecamatan'#13#10,
+            'alamat_kota'#13#10,
+            'alamat_kode_pos'#13#10,
+            'alamat_telepon'#13#10]
+        >, object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['alamat_jalan2'#13#10,
+            'alamat_telepon2'#13#10,
+            'alamat_propinsi'#13#10,
+            'alamat_email'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='alamat_jalan'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Jalan'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_rtrw'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='RT RW'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kelurahan'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Kelurahan'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kecamatan'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Kecamatan'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kota'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Kota'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kode_pos'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Kode Pos'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_telepon'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Telepon 1'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_jalan2'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Jalan (lanjutan)'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_telepon2'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Telepon 2'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_propinsi'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Propinsi'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_email'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Email'
+        >
+      }
+      Name='pAlamat'
+      Width=400
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipNasabahDPLK']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='alamat_jalan'
+          Top=20
+          Left=10
+          Color=-2147483624
+          ControlCaption='Jalan'
+        >, *object:rtf::DBEdit<
+          Name='alamat_rtrw'
+          Top=76
+          Left=10
+          Color=-2147483624
+          ControlCaption='RT RW'
+          LayoutOrder=3
+        >, *object:rtf::DBEdit<
+          Name='alamat_kelurahan'
+          Top=104
+          Left=10
+          Color=-2147483624
+          ControlCaption='Kelurahan'
+          LayoutOrder=4
+        >, *object:rtf::DBEdit<
+          Name='alamat_kecamatan'
+          Top=132
+          Left=10
+          Color=-2147483624
+          ControlCaption='Kecamatan'
+          LayoutOrder=5
+        >, *object:rtf::DBEdit<
+          Name='alamat_kota'
+          Top=160
+          Left=10
+          Color=-2147483624
+          ControlCaption='Kota'
+          LayoutOrder=6
+        >, *object:rtf::DBEdit<
+          Name='alamat_kode_pos'
+          Top=216
+          Left=10
+          Color=-2147483624
+          ControlCaption='Kode Pos'
+          LayoutOrder=8
+        >, *object:rtf::DBEdit<
+          Name='alamat_telepon'
+          Top=244
+          Left=10
+          Color=-2147483624
+          ControlCaption='Telepon 1'
+          LayoutOrder=9
+        >, *object:rtf::DBEdit<
+          Name='alamat_jalan2'
+          Top=48
+          Left=10
+          Color=-2147483624
+          ControlCaption='Jalan (lanjutan)'
+        >, *object:rtf::DBEdit<
+          Name='alamat_telepon2'
+          Top=272
+          Left=10
+          Color=-2147483624
+          ControlCaption='Telepon 2'
+          LayoutOrder=10
+        >, *object:rtf::DBEdit<
+          Name='alamat_propinsi'
+          Top=188
+          Left=10
+          Color=-2147483624
+          ControlCaption='Propinsi'
+          LayoutOrder=7
+        >, *object:rtf::DBEdit<
+          Name='alamat_email'
+          Top=300
+          Left=10
+          Color=-2147483624
+          ControlCaption='Email'
+          LayoutOrder=11
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Alamat Tempat Tinggal'
+    >, object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['alamat_surat_jalan'#13#10,
+            'alamat_surat_kelurahan'#13#10,
+            'alamat_surat_kecamatan'#13#10,
+            'alamat_surat_rtrw'#13#10,
+            'alamat_surat_kota'#13#10,
+            'alamat_surat_propinsi'#13#10,
+            'alamat_surat_kode_pos'#13#10]
+        >, object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['alamat_surat_jalan2'#13#10,
+            'alamat_surat_telepon'#13#10,
+            'alamat_surat_telepon2'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_jalan'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Jalan'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_kelurahan'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Kelurahan'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_kecamatan'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Kecamatan'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_rtrw'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='RT RW'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_kota'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Kota'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_propinsi'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Propinsi'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_kode_pos'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Kode Pos'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_jalan2'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Jalan (lanjutan)'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_telepon'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Telepon 1'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_telepon2'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Telepon 2'
+        >
+      }
+      Name='pAlamatSurat'
+      Width=400
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipNasabahDPLK']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='alamat_surat_jalan'
+          Top=20
+          Left=10
+          Color=-2147483624
+          ControlCaption='Jalan'
+        >, *object:rtf::DBEdit<
+          Name='alamat_surat_kelurahan'
+          Top=104
+          Left=10
+          Color=-2147483624
+          ControlCaption='Kelurahan'
+          LayoutOrder=4
+        >, *object:rtf::DBEdit<
+          Name='alamat_surat_kecamatan'
+          Top=132
+          Left=10
+          Color=-2147483624
+          ControlCaption='Kecamatan'
+          LayoutOrder=5
+        >, *object:rtf::DBEdit<
+          Name='alamat_surat_rtrw'
+          Top=76
+          Left=10
+          Color=-2147483624
+          ControlCaption='RT RW'
+          LayoutOrder=3
+        >, *object:rtf::DBEdit<
+          Name='alamat_surat_kota'
+          Top=160
+          Left=10
+          Color=-2147483624
+          ControlCaption='Kota'
+          LayoutOrder=6
+        >, *object:rtf::DBEdit<
+          Name='alamat_surat_propinsi'
+          Top=188
+          Left=10
+          Color=-2147483624
+          ControlCaption='Propinsi'
+          LayoutOrder=7
+        >, *object:rtf::DBEdit<
+          Name='alamat_surat_kode_pos'
+          Top=216
+          Left=10
+          Color=-2147483624
+          ControlCaption='Kode Pos'
+          LayoutOrder=8
+        >, *object:rtf::DBEdit<
+          Name='alamat_surat_jalan2'
+          Top=48
+          Left=10
+          Color=-2147483624
+          ControlCaption='Jalan (lanjutan)'
+          LayoutOrder=2
+        >, *object:rtf::DBEdit<
+          Name='alamat_surat_telepon'
+          Top=244
+          Left=10
+          Color=-2147483624
+          ControlCaption='Telepon 1'
+          LayoutOrder=9
+        >, *object:rtf::DBEdit<
+          Name='alamat_surat_telepon2'
+          Top=272
+          Left=10
+          Color=-2147483624
+          ControlCaption='Telepon 2'
+          LayoutOrder=10
+        >
+      }
+      EqualCaptionWidth=130
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Alamat Surat'
+    >, object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['iuran_pk'#13#10,
+            'iuran_pst'#13#10]
+        >, object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['akum_iuran_pk'#13#10,
+            'akum_iuran_pst'#13#10,
+            'akum_pmb_pk'#13#10,
+            'nilai_bayar_anuitas'#13#10,
+            'sumber_dana'#13#10]
+        >, object:rtf::MultiControlDef<
+          Action=caEdit
+          DataMembers=['sistem_pembayaran_iuran'#13#10,
+            'tujuan_pembukaan_rekening'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='iuran_pk'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Iuran Pemberi Kerja'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='iuran_pst'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Iuran Peserta'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='akum_iuran_pk'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Akum Dana Iuran Pemberi Kerja'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='akum_iuran_pst'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Akum Dana Iuran Peserta'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='akum_pmb_pk'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Akum Dana Pengembangan'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='nilai_bayar_anuitas'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Nilai Bayar Anuitas'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='sumber_dana'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Sumber Dana'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='sistem_pembayaran_iuran'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['1=Tunai'#13#10,
+            '2=Transfer'#13#10,
+            '3=Debet Otomatis'#13#10]
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tujuan_pembukaan_rekening'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['1=Tabungan Pribadi'#13#10,
+            '2=Bisnis'#13#10,
+            '3=Lainnya'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='saldo_total'
+          Hidden=false
+          ReadOnlyControl=true
+          DataTypeName='double'
+          DataLength=20
+        >
+      }
+      Name='pRekeningAkumDana'
+      Width=400
+      Height=425
+      Bordered=true
+      UIPart=$UIPARTS['uipRekInvDPLK']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='iuran_pk'
+          Top=20
+          Left=10
+          Color=-2147483624
+          ControlCaption='Iuran Pemberi Kerja'
+        >, *object:rtf::DBEdit<
+          Name='iuran_pst'
+          Top=48
+          Left=10
+          Color=-2147483624
+          ControlCaption='Iuran Peserta'
+        >, *object:rtf::DBEdit<
+          Name='akum_iuran_pk'
+          Top=76
+          Left=10
+          Color=-2147483624
+          ControlCaption='Akum Dana Iuran Pemberi Kerja'
+        >, *object:rtf::DBEdit<
+          Name='akum_iuran_pst'
+          Top=104
+          Left=10
+          Color=-2147483624
+          ControlCaption='Akum Dana Iuran Peserta'
+        >, *object:rtf::DBEdit<
+          Name='akum_pmb_pk'
+          Top=132
+          Left=10
+          Color=-2147483624
+          ControlCaption='Akum Dana Pengembangan'
+        >, *object:rtf::DBEdit<
+          Name='nilai_bayar_anuitas'
+          Top=160
+          Left=10
+          Color=-2147483624
+          ControlCaption='Nilai Bayar Anuitas'
+        >, *object:rtf::DBEdit<
+          Name='sumber_dana'
+          Top=216
+          Left=10
+          Color=-2147483624
+          ControlCaption='Sumber Dana'
+        >, *object:rtf::DBComboBox<
+          Name='sistem_pembayaran_iuran'
+          Top=244
+          Left=10
+          Enabled=false
+          ControlCaption='Sistem Pembayaran Iuran'
+        >, *object:rtf::DBComboBox<
+          Name='tujuan_pembukaan_rekening'
+          Top=272
+          Left=10
+          Enabled=false
+          ControlCaption='Tujuan Pembukaan Rekening'
+        >, *object:rtf::DBEdit<
+          Name='saldo_total'
+          Top=188
+          Left=10
+          Color=-2147483624
+          ControlCaption='Saldo Total'
+          LayoutOrder=6
+          ReadOnly=true
+        >
+      }
+      EqualCaptionWidth=160
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Informasi Iuran && Akumulasi Dana'
+    >, object:rtf::DualSplit<
+      Name='DualSplitPribadi'
+      Width=792
+      Height=531
+      Container1=$CONTAINERS['dualsplit2']
+      Container2=$CONTAINERS['gAhliWaris']
+    >, object:rtf::DualSplit<
+      Name='DualSplitAlamat'
+      Width=240
+      Height=96
+      Container1=$CONTAINERS['pAlamat']
+      Container2=$CONTAINERS['pAlamatSurat']
+      SplitDirection=sdrSplitLeftRight
+    >, object:rtf::DualSplit<
+      Name='DualSplitRekening'
+      Width=792
+      Height=531
+      Container1=$CONTAINERS['pRekeningAkumDana']
+      Container2=$CONTAINERS['pRekeningTanggal']
+      SplitDirection=sdrSplitLeftRight
+    >, object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['no_referensi'#13#10,
+            'keterangan'#13#10,
+            'user_id'#13#10,
+            'auth_user_id'#13#10,
+            'terminal_id'#13#10,
+            'last_terminal_id'#13#10,
+            'tgl_registrasi'#13#10,
+            'last_update'#13#10]
+        >, object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['isPesertaPengalihan'#13#10,
+            'LLDPLain'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='no_referensi'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Nomor Referensi'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Keterangan'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='User Penginput'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='auth_user_id'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='User Pengotor'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='terminal_id'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Terminal Input'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='last_terminal_id'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Terminal Pengoreksi'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tgl_registrasi'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Tanggal Registrasi'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='last_update'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Terakhir Dikoreksi'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='isPesertaPengalihan'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Termasuk Peserta Pengalihan'
+          GenerateCheckBoxForEnum=true
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LLDPLain'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Keikutsertaan Dana Pensiun Lain (opsional)'
+          DisplayFields='kode_dp;nama_dp'
+          Restrictions=''
+          FieldBaseName='LLDPLain'
+        >
+      }
+      Name='pRegister'
+      Width=769
+      Height=409
+      Bordered=true
+      UIPart=$UIPARTS['uipNasabahDPLK']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='no_referensi'
+          Top=76
+          Left=10
+          Color=-2147483624
+          ControlCaption='Nomor Referensi'
+          LayoutOrder=3
+        >, *object:rtf::DBEdit<
+          Name='keterangan'
+          Top=104
+          Left=10
+          Color=-2147483624
+          ControlCaption='Keterangan'
+          LayoutOrder=4
+        >, *object:rtf::DBEdit<
+          Name='user_id'
+          Top=132
+          Left=10
+          Color=-2147483624
+          ControlCaption='User Penginput'
+          LayoutOrder=5
+        >, *object:rtf::DBEdit<
+          Name='auth_user_id'
+          Top=160
+          Left=10
+          Color=-2147483624
+          ControlCaption='User Pengotor'
+          LayoutOrder=6
+        >, *object:rtf::DBEdit<
+          Name='terminal_id'
+          Top=188
+          Left=10
+          Color=-2147483624
+          ControlCaption='Terminal Input'
+          LayoutOrder=7
+        >, *object:rtf::DBEdit<
+          Name='last_terminal_id'
+          Top=216
+          Left=10
+          Color=-2147483624
+          ControlCaption='Terminal Pengoreksi'
+          LayoutOrder=8
+        >, *object:rtf::DBDateEdit<
+          Name='tgl_registrasi'
+          Top=244
+          Left=10
+          Color=-2147483624
+          ControlCaption='Tanggal Registrasi'
+          LayoutOrder=9
+        >, *object:rtf::DBDateEdit<
+          Name='last_update'
+          Top=272
+          Left=10
+          Color=-2147483624
+          ControlCaption='Terakhir Dikoreksi'
+          LayoutOrder=10
+        >, *object:rtf::DBCheckBox<
+          Name='isPesertaPengalihan'
+          Top=20
+          Left=10
+          Width=175
+          Height=21
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Termasuk Peserta Pengalihan'
+          LayoutOrder=1
+        >, *object:rtf::DBLookupEdit<
+          Name='LLDPLain'
+          Top=48
+          Left=10
+          Enabled=false
+          ControlCaption='Keikutsertaan Dana Pensiun Lain (opsional)'
+          LayoutOrder=2
+          LookupField='LLDPLain.nama_dp'
+          DisplayLookupField=true
+          DisableLookup=true
+        >
+      }
+      EqualCaptionWidth=225
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Register Peserta'
+    >, object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['usia_pensiun'#13#10,
+            'tgl_pensiun'#13#10,
+            'tgl_pensiun_dipercepat'#13#10,
+            'TGL_TUTUP'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='usia_pensiun'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Usia Pensiun'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tgl_pensiun'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Tanggal Pensiun'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tgl_pensiun_dipercepat'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Tanggal Pensiun Dipercepat'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='TGL_TUTUP'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Tanggal Tutup Kepesertaan'
+        >
+      }
+      Name='pRekeningTanggal'
+      Width=385
+      Height=177
+      Bordered=true
+      UIPart=$UIPARTS['uipRekInvDPLK']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='usia_pensiun'
+          Top=20
+          Left=10
+          Color=-2147483624
+          ControlCaption='Usia Pensiun'
+        >, *object:rtf::DBDateEdit<
+          Name='tgl_pensiun'
+          Top=48
+          Left=10
+          Color=-2147483624
+          ControlCaption='Tanggal Pensiun'
+        >, *object:rtf::DBDateEdit<
+          Name='tgl_pensiun_dipercepat'
+          Top=76
+          Left=10
+          Color=-2147483624
+          ControlCaption='Tanggal Pensiun Dipercepat'
+        >, *object:rtf::DBDateEdit<
+          Name='TGL_TUTUP'
+          Top=104
+          Left=10
+          Color=-2147483624
+          ControlCaption='Tanggal Tutup Kepesertaan'
+        >
+      }
+      EqualCaptionWidth=150
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Info Kalender Peserta'
+    >, object:rtf::DualSplit<
+      Name='DualSplitStatusRekening'
+      Width=792
+      Height=531
+      Container1=$CONTAINERS['DualSplitV1']
+      Container2=$CONTAINERS['gRekeningDPLK']
+    >, object:rtf::DualSplit<
+      Name='DualSplitV1'
+      Width=792
+      Height=177
+      Container1=$CONTAINERS['pRekeningStatus']
+      SplitDirection=sdrSplitLeftRight
+    >, object:rtf::Panel<
+      Name='pPrint'
+      Width=91
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnStatemenIndividual'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          ControlCaption=''
+          Caption='Stat&emen...'
+          OnClick='btnStatemenIndividualClick'
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=8
+          ControlCaption=''
+          Caption='&Tutup'
+          Default=true
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >, object:rtf::Button<
+          Name='Button'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          Visible=false
+          Enabled=false
+          ControlCaption=''
+          DefaultAction=daShowDebugWindow
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::MultiPages<
+      Name='MultiPages'
+      Width=320
+      Height=320
+      Pages={
+        object:rtf::Page<
+          PageTitle='Data &Pribadi'
+          Container=$CONTAINERS['DualSplitPribadi']
+        >, object:rtf::Page<
+          PageTitle='&Alamat'
+          Container=$CONTAINERS['DualSplitAlamat']
+          Index=1
+        >, object:rtf::Page<
+          PageTitle='Data &Rekening'
+          Container=$CONTAINERS['DualSplitRekening']
+          Index=2
+        >, object:rtf::Page<
+          PageTitle='&Status Rekening'
+          Container=$CONTAINERS['DualSplitStatusRekening']
+          Index=3
+        >, object:rtf::Page<
+          PageTitle='&Data Register'
+          Container=$CONTAINERS['pRegister']
+          Index=4
+        >
+      }
+    >, object:rtf::Grid<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['nomor_urut_prioritas'#13#10,
+            'nama_lengkap'#13#10,
+            'tanggal_lahir'#13#10,
+            'jenis_kelamin'#13#10,
+            'status_ahli_waris'#13#10,
+            'hubungan_keluarga'#13#10,
+            'keterangan'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='nomor_urut_prioritas'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='nama_lengkap'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tanggal_lahir'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='jenis_kelamin'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='status_ahli_waris'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='hubungan_keluarga'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='gAhliWaris'
+      Width=792
+      Height=128
+      UIPart=$UIPARTS['uipAhliWaris']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Daftar Ahli Waris'
+      Columns={
+        *object:rtf::GridColumn<
+          Name='nomor_urut_prioritas'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='nomor_urut_prioritas'
+          DisplayFormat=''
+          TitleCaption='Nomor Urut Prioritas'
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='nama_lengkap'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='nama_lengkap'
+          DisplayFormat=''
+          TitleCaption='Nama Lengkap'
+          Width=300
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='tanggal_lahir'
+          InputStyle=cisDate
+          EnumeratedValues=''
+          FieldName='tanggal_lahir'
+          DisplayFormat=''
+          TitleCaption='Tanggal Lahir'
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='jenis_kelamin'
+          InputStyle=cisEnumerated
+          EnumeratedValues=['P=Pria'#13#10,
+            'W=Wanita'#13#10]
+          FieldName='jenis_kelamin'
+          DisplayFormat=''
+          TitleCaption='Jenis Kelamin'
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='status_ahli_waris'
+          InputStyle=cisEnumerated
+          EnumeratedValues=['A=Aktif'#13#10,
+            'N=Tidak Aktif'#13#10]
+          FieldName='status_ahli_waris'
+          DisplayFormat=''
+          TitleCaption='Status Ahli Waris'
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='hubungan_keluarga'
+          InputStyle=cisEnumerated
+          EnumeratedValues=['0=Peserta'#13#10,
+            '1=Ayah'#13#10,
+            '2=Ibu'#13#10,
+            '3=Anak'#13#10,
+            '4=Kakak'#13#10,
+            '5=Adik'#13#10,
+            '6=Istri'#13#10,
+            '7=Suami'#13#10,
+            '8=Lain-lain'#13#10]
+          FieldName='hubungan_keluarga'
+          DisplayFormat=''
+          TitleCaption='Hubungan Keluarga'
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='keterangan'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='keterangan'
+          DisplayFormat=''
+          TitleCaption='Keterangan'
+          ReadOnly=true
+        >
+      }
+      ReadOnly=true
+      SuppressHelpLine=true
+    >, object:rtf::DualSplit<
+      Name='DSButton'
+      Width=240
+      Height=40
+      Container1=$CONTAINERS['pPrint']
+      Container2=$CONTAINERS['pButton']
+      SplitDirection=sdrSplitLeftRight
+      InversedAlign=true
+    >, object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=240
+      Height=96
+      Container1=$CONTAINERS['DSButton']
+      Container2=$CONTAINERS['MultiPages']
+      InversedAlign=true
+    >, object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['no_peserta'#13#10,
+            'nama_lengkap'#13#10,
+            'tempat_lahir'#13#10,
+            'tanggal_lahir'#13#10,
+            'LDaerahAsal'#13#10]
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='jenis_kelamin'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='LKelompok'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='no_identitas_diri'
+        >, object:rtf::MultiControlDef<
+          Action=caEdit
+          DataMembers=['kewarganegaraan'#13#10,
+            'golongan_darah'#13#10,
+            'agama'#13#10,
+            'pendidikan_terakhir'#13#10,
+            'status_perkawinan'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='no_peserta'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Nomor Peserta'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='nama_lengkap'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Nama Lengkap'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tempat_lahir'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Tempat Lahir'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tanggal_lahir'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Tanggal Lahir'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LDaerahAsal'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Daerah Asal'
+          DisplayFields='kode_propinsi;nama_propinsi'
+          Restrictions=''
+          FieldBaseName='LDaerahAsal'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='jenis_kelamin'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Jenis Kelamin'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LKelompok'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Kelompok Peserta (opsional)'
+          DisplayFields='kode_kelompok;nama_kelompok'
+          Restrictions=''
+          OQLText=['select from Kelompok'#13#10,
+            '('#13#10,
+            '  kode_kelompok,'#13#10,
+            '  nama_kelompok,'#13#10,
+            '  keterangan,'#13#10,
+            '  self'#13#10,
+            ') then order by kode_kelompok;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LKelompok'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='no_identitas_diri'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Nomor Identitas Diri'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='kewarganegaraan'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['1=WNI'#13#10,
+            '2=WNA'#13#10]
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='golongan_darah'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['1=A'#13#10,
+            '2=B'#13#10,
+            '3=AB'#13#10,
+            '4=O'#13#10]
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='agama'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['1=Islam'#13#10,
+            '2=Protestan'#13#10,
+            '3=Katolik'#13#10,
+            '4=Hindu'#13#10,
+            '5=Budha'#13#10]
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='pendidikan_terakhir'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['1=s/d SLTP'#13#10,
+            '2=SMA'#13#10,
+            '3=D-3'#13#10,
+            '4=S-1'#13#10,
+            '5=S-2'#13#10,
+            '6=S-3'#13#10]
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='status_perkawinan'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['1=Belum Menikah'#13#10,
+            '2=Menikah'#13#10,
+            '3=Janda/Duda'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='mode'
+          Hidden=true
+          ReadOnlyControl=false
+        >
+      }
+      Name='pNasabah'
+      Width=400
+      Height=417
+      Bordered=true
+      UIPart=$UIPARTS['uipNasabahDPLK']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='no_peserta'
+          Top=20
+          Left=10
+          Color=-2147483624
+          ControlCaption='Nomor Peserta'
+        >, *object:rtf::DBEdit<
+          Name='nama_lengkap'
+          Top=48
+          Left=10
+          Color=-2147483624
+          ControlCaption='Nama Lengkap'
+          LayoutOrder=4
+        >, *object:rtf::DBEdit<
+          Name='tempat_lahir'
+          Top=76
+          Left=10
+          Color=-2147483624
+          ControlCaption='Tempat Lahir'
+          LayoutOrder=5
+        >, *object:rtf::DBDateEdit<
+          Name='tanggal_lahir'
+          Top=104
+          Left=10
+          Color=-2147483624
+          ControlCaption='Tanggal Lahir'
+          LayoutOrder=6
+        >, *object:rtf::DBLookupEdit<
+          Name='LDaerahAsal'
+          Top=188
+          Left=10
+          Enabled=false
+          ControlCaption='Daerah Asal'
+          LayoutOrder=9
+          LookupField='LDaerahAsal.nama_propinsi'
+          DisplayLookupField=true
+          DisableLookup=true
+        >, *object:rtf::DBComboBox<
+          Name='jenis_kelamin'
+          Top=160
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Jenis Kelamin'
+          LayoutOrder=8
+        >, *object:rtf::DBLookupEdit<
+          Name='LKelompok'
+          Top=216
+          Left=10
+          Enabled=false
+          ControlCaption='Kelompok Peserta (opsional)'
+          LayoutOrder=10
+          LookupField='LKelompok.nama_kelompok'
+          DisplayLookupField=true
+          DisableLookup=true
+        >, *object:rtf::DBEdit<
+          Name='no_identitas_diri'
+          Top=132
+          Left=10
+          Color=-2147483624
+          ControlCaption='Nomor Identitas Diri'
+          LayoutOrder=7
+        >, *object:rtf::DBComboBox<
+          Name='kewarganegaraan'
+          Top=244
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Kewarganegaraan'
+          LayoutOrder=11
+        >, *object:rtf::DBComboBox<
+          Name='golongan_darah'
+          Top=272
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Golongan Darah'
+          LayoutOrder=13
+        >, *object:rtf::DBComboBox<
+          Name='agama'
+          Top=300
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Agama'
+          LayoutOrder=14
+        >, *object:rtf::DBComboBox<
+          Name='pendidikan_terakhir'
+          Top=328
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Pendidikan Terakhir'
+          LayoutOrder=15
+        >, *object:rtf::DBComboBox<
+          Name='status_perkawinan'
+          Top=356
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Status Perkawinan'
+          LayoutOrder=16
+        >
+      }
+      EqualCaptionWidth=140
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Identitas Peserta'
+    >, object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['NPWP'#13#10,
+            'nama_perusahaan'#13#10,
+            'LJenisUsaha'#13#10,
+            'LKepemilikan'#13#10]
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='LNasabahDPLKCorporate'
+        >, object:rtf::MultiControlDef<
+          Action=caEdit
+          DataMembers=['alamat_kantor_jalan'#13#10,
+            'alamat_kantor_kelurahan'#13#10,
+            'alamat_kantor_kecamatan'#13#10,
+            'alamat_kantor_kota'#13#10,
+            'alamat_kantor_propinsi'#13#10,
+            'alamat_kantor_kode_pos'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='NPWP'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='NPWP'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='nama_perusahaan'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Nama Perusahaan'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LJenisUsaha'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Jenis Usaha'
+          DisplayFields='kode_jenis_usaha;nama_jenis_usaha'
+          Restrictions=''
+          FieldBaseName='LJenisUsaha'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LKepemilikan'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Kepemilikan'
+          DisplayFields='kode_pemilikan;keterangan'
+          Restrictions=''
+          FieldBaseName='LKepemilikan'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLKCorporate'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Korporat Pemberi Kerja'
+          DisplayFields='kode_nasabah_corporate;nama_perusahaan'
+          Restrictions=''
+          FieldBaseName='LNasabahDPLKCorporate'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kantor_jalan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kantor_kelurahan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kantor_kecamatan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kantor_kota'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kantor_propinsi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kantor_kode_pos'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='pPekerjaan'
+      Width=513
+      Height=417
+      Bordered=true
+      UIPart=$UIPARTS['uipNasabahDPLK']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='NPWP'
+          Top=20
+          Left=20
+          Color=-2147483624
+          ControlCaption='NPWP'
+        >, *object:rtf::DBEdit<
+          Name='nama_perusahaan'
+          Top=48
+          Left=20
+          Color=-2147483624
+          ControlCaption='Nama Perusahaan'
+        >, *object:rtf::DBLookupEdit<
+          Name='LJenisUsaha'
+          Top=76
+          Left=20
+          Enabled=false
+          ControlCaption='Jenis Usaha'
+          LookupField='LJenisUsaha.nama_jenis_usaha'
+          DisplayLookupField=true
+          DisableLookup=true
+        >, *object:rtf::DBLookupEdit<
+          Name='LKepemilikan'
+          Top=104
+          Left=20
+          Enabled=false
+          ControlCaption='Kepemilikan'
+          LookupField='LKepemilikan.keterangan'
+          DisplayLookupField=true
+          DisableLookup=true
+        >, *object:rtf::DBLookupEdit<
+          Name='LNasabahDPLKCorporate'
+          Top=132
+          Left=20
+          Enabled=false
+          ControlCaption='Korporat Pemberi Kerja'
+          LookupField='LNasabahDPLKCorporate.nama_perusahaan'
+          DisplayLookupField=true
+          DisableLookup=true
+        >, *object:rtf::DBEdit<
+          Name='alamat_kantor_jalan'
+          Top=160
+          Left=20
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Alamat Kantor Jalan'
+          LayoutOrder=6
+        >, *object:rtf::DBEdit<
+          Name='alamat_kantor_kelurahan'
+          Top=188
+          Left=20
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Alamat Kantor Kelurahan'
+        >, *object:rtf::DBEdit<
+          Name='alamat_kantor_kecamatan'
+          Top=216
+          Left=20
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Alamat Kantor Kecamatan'
+        >, *object:rtf::DBEdit<
+          Name='alamat_kantor_kota'
+          Top=244
+          Left=20
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Alamat Kantor Kota'
+        >, *object:rtf::DBEdit<
+          Name='alamat_kantor_propinsi'
+          Top=272
+          Left=20
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Alamat Kantor Propinsi'
+        >, *object:rtf::DBEdit<
+          Name='alamat_kantor_kode_pos'
+          Top=300
+          Left=20
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Alamat Kantor Kode Pos'
+        >, object:rtf::Button<
+          Name='btnViewCorp'
+          Layout=clNewLine
+          Top=328
+          Left=20
+          Width=120
+          Height=25
+          ControlCaption=''
+          Caption='&Detil Korporat'
+          OnClick='btnViewCorpClick'
+        >
+      }
+      EqualCaptionWidth=140
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Informasi Pekerjaan'
+    >, object:rtf::DualSplit<
+      Name='dualsplit2'
+      Width=240
+      Height=402
+      Container1=$CONTAINERS['pNasabah']
+      Container2=$CONTAINERS['pPekerjaan']
+      SplitDirection=sdrSplitLeftRight
+    >, object:rtf::Grid<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['no_rekening'#13#10,
+            'kode_paket_investasi'#13#10,
+            'pct_alokasi'#13#10,
+            'akum_iuran_pk'#13#10,
+            'akum_iuran_pst'#13#10,
+            'akum_iuran_tmb'#13#10,
+            'akum_psl'#13#10,
+            'akum_pmb_pk'#13#10,
+            'akum_pmb_pst'#13#10,
+            'akum_pmb_tmb'#13#10,
+            'akum_pmb_psl'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='no_rekening'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='kode_paket_investasi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='pct_alokasi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='akum_iuran_pk'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='akum_iuran_pst'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='akum_iuran_tmb'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='akum_psl'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='akum_pmb_pk'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='akum_pmb_pst'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='akum_pmb_tmb'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='akum_pmb_psl'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='gRekeningDPLK'
+      Width=792
+      Height=353
+      UIPart=$UIPARTS['uipRekeningDPLK']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Rekening DPLK'
+      Columns={
+        *object:rtf::GridColumn<
+          Name='no_rekening'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='no_rekening'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='kode_paket_investasi'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='kode_paket_investasi'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='pct_alokasi'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='pct_alokasi'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='akum_iuran_pk'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='akum_iuran_pk'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='akum_iuran_pst'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='akum_iuran_pst'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='akum_iuran_tmb'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='akum_iuran_tmb'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='akum_psl'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='akum_psl'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='akum_pmb_pk'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='akum_pmb_pk'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='akum_pmb_pst'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='akum_pmb_pst'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='akum_pmb_tmb'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='akum_pmb_tmb'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='akum_pmb_psl'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='akum_pmb_psl'
+          DisplayFormat=''
+          ReadOnly=true
+        >
+      }
+    >, object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['STATUS_BIAYA_DAFTAR'#13#10,
+            'status_autodebet'#13#10,
+            'status_anuitas'#13#10,
+            'status_asuransi'#13#10]
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='kirim_statemen'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='STATUS_BIAYA_DAFTAR'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Kelunasan Biaya Pendaftaran'
+          GenerateCheckBoxForEnum=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='status_autodebet'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Status Autodebet'
+          GenerateCheckBoxForEnum=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='status_anuitas'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Status Anuitas'
+          GenerateCheckBoxForEnum=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='status_asuransi'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Status Asuransi'
+          GenerateCheckBoxForEnum=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='kirim_statemen'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Status Kirim Statemen'
+        >
+      }
+      Name='pRekeningStatus'
+      Width=361
+      Height=393
+      Bordered=true
+      UIPart=$UIPARTS['uipRekInvDPLK']
+      Controls={
+        *object:rtf::DBCheckBox<
+          Name='STATUS_BIAYA_DAFTAR'
+          Top=20
+          Left=10
+          Width=175
+          Height=21
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Kelunasan Biaya Pendaftaran'
+        >, *object:rtf::DBCheckBox<
+          Name='status_autodebet'
+          Top=48
+          Left=10
+          Width=175
+          Height=21
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Status Autodebet'
+        >, *object:rtf::DBCheckBox<
+          Name='status_anuitas'
+          Top=76
+          Left=10
+          Width=175
+          Height=21
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Status Anuitas'
+        >, *object:rtf::DBCheckBox<
+          Name='status_asuransi'
+          Top=104
+          Left=10
+          Width=175
+          Height=21
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Status Asuransi'
+        >, *object:rtf::DBComboBox<
+          Name='kirim_statemen'
+          Top=132
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Status Kirim Statemen'
+        >
+      }
+      EqualCaptionWidth=175
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Status Rekening'
+    >
+  }
+>

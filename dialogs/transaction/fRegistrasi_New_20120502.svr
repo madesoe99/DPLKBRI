@@ -1,0 +1,150 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipRegisterNasabahRekening'
+      PClassName='RegisterNasabahRekening'
+      LoadedFieldList='isRegisteredByAdmin;STATUS_BIAYA_DAFTAR;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_jalan2;alamat_telepon2;alamat_email;alamat_propinsi;alamat_surat_jalan;alamat_surat_kelurahan;alamat_surat_kecamatan;alamat_surat_rtrw;alamat_surat_kota;alamat_surat_propinsi;alamat_surat_kode_pos;alamat_surat_jalan2;alamat_surat_telepon;alamat_surat_telepon2;kode_cab_daftar;ikut_asuransi;kirim_statemen;LSumberDana.sumber_dana;LSumberDana.sumber_dana;LSumberDana.keterangan;usia_pensiun;isPesertaPengalihan;tgl_pensiun;tgl_pensiun_dipercepat;sistem_pembayaran_iuran;tujuan_pembukaan_rekening;iuran_pst;iuran_pk;auto_debet;no_rek_autodebet;nama_rek_autodebet;tanggal_autodebet;no_referensi;keterangan;user_id;terminal_id;tanggal_register;LLDPLain.kode_dp;LLDPLain.kode_dp;LLDPLain.nama_dp;no_peserta;nama_lengkap;tempat_lahir;tanggal_lahir;LDaerahAsal.kode_propinsi;LDaerahAsal.kode_propinsi;LDaerahAsal.nama_propinsi;registernr_id;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.nama_perusahaan;LNasabahDPLKCorporate.kode_pemilikan;LNasabahDPLKCorporate.LKepemilikan.keterangan;LNasabahDPLKCorporate.kode_jenis_usaha;LNasabahDPLKCorporate.LJenisUsaha.nama_jenis_usaha;kewarganegaraan;golongan_darah;jenis_kelamin;LKelompok.kode_kelompok;LKelompok.kode_kelompok;LKelompok.nama_kelompok;no_identitas_diri;agama;pendidikan_terakhir;penghasilan_tetap;status_perkawinan;asal_negara;penghasilan_tidak_tetap;pekerjaan;NPWP;nama_perusahaan;LJenisUsaha.kode_jenis_usaha;LJenisUsaha.kode_jenis_usaha;LJenisUsaha.nama_jenis_usaha;LKepemilikan.kode_pemilikan;LKepemilikan.kode_pemilikan;LKepemilikan.keterangan;alamat_kantor_jalan;alamat_kantor_kelurahan;alamat_kantor_kecamatan;alamat_kantor_propinsi;alamat_kantor_kota;alamat_kantor_kode_pos;nama_orang_tua;pekerjaan_orang_tua;nama_perusahaan1;penghasilan_orang_tua;alamat_kantor_jalan;alamat_kantor_kode_pos;alamat_kantor_kelurahan;alamat_kantor_kecamatan;alamat_kantor_kota;alamat_kantor_propinsi;alamat_kantor_telepon;alamat_kantor_telepon2'
+      StoredFieldList='isRegisteredByAdmin;STATUS_BIAYA_DAFTAR;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_jalan2;alamat_telepon2;alamat_email;alamat_propinsi;alamat_surat_jalan;alamat_surat_kelurahan;alamat_surat_kecamatan;alamat_surat_rtrw;alamat_surat_kota;alamat_surat_propinsi;alamat_surat_kode_pos;alamat_surat_jalan2;alamat_surat_telepon;alamat_surat_telepon2;kode_cab_daftar;ikut_asuransi;kirim_statemen;LSumberDana;usia_pensiun;isPesertaPengalihan;tgl_pensiun;tgl_pensiun_dipercepat;sistem_pembayaran_iuran;tujuan_pembukaan_rekening;iuran_pst;iuran_pk;auto_debet;no_rek_autodebet;nama_rek_autodebet;tanggal_autodebet;no_referensi;keterangan;user_id;terminal_id;tanggal_register;LLDPLain;no_peserta;nama_lengkap;tempat_lahir;tanggal_lahir;LDaerahAsal;LNasabahDPLKCorporate;kewarganegaraan;golongan_darah;jenis_kelamin;LKelompok;no_identitas_diri;agama;pendidikan_terakhir;penghasilan_tetap;status_perkawinan;asal_negara;penghasilan_tidak_tetap;ibu_kandung;pekerjaan;NPWP;nama_perusahaan;LJenisUsaha;LKepemilikan;alamat_kantor_jalan;alamat_kantor_kelurahan;alamat_kantor_kecamatan;alamat_kantor_propinsi;alamat_kantor_kota;alamat_kantor_kode_pos;nama_orang_tua;pekerjaan_orang_tua;nama_perusahaan1;penghasilan_orang_tua;alamat_kantor_jalan;alamat_kantor_kode_pos;alamat_kantor_kelurahan;alamat_kantor_kecamatan;alamat_kantor_kota;alamat_kantor_propinsi;alamat_kantor_telepon;alamat_kantor_telepon2'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='isSamaAlamat'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='TipeRekening'
+          DataTypeName='varchar'
+          DataLength=2
+        >, object:rpclass::TCustomLoadedField<
+          Name='IDNumber'
+          DataTypeName='varchar'
+          DataLength=30
+        >, object:rpclass::TCustomLoadedField<
+          Name='BranchCode'
+          DataTypeName='varchar'
+          DataLength=5
+        >, object:rpclass::TCustomLoadedField<
+          Name='CurrencyCode'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='mode'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='nolimitlocation'
+          DataTypeName='varchar'
+          DataLength=1
+        >, object:rpclass::TCustomLoadedField<
+          Name='nasabah_korporat'
+          DataTypeName='integer'
+          DataLength=1
+        >, object:rpclass::TCustomLoadedField<
+          Name='LBranchLocation.branch_code'
+          DataTypeName='VARCHAR'
+          DataLength=5
+        >, object:rpclass::TCustomLoadedField<
+          Name='LBranchLocation.branch_code'
+          DataTypeName='VARCHAR'
+          DataLength=5
+        >, object:rpclass::TCustomLoadedField<
+          Name='LBranchLocation.BranchName'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LSumberDana'
+          ClassTypeName='SumberDana'
+          FieldNames='sumber_dana;sumber_dana;keterangan'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LLDPLain'
+          ClassTypeName='LDP'
+          FieldNames='kode_dp;kode_dp;nama_dp'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LDaerahAsal'
+          ClassTypeName='DaerahAsal'
+          FieldNames='kode_propinsi;kode_propinsi;nama_propinsi'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLKCorporate'
+          ClassTypeName='NasabahDPLKCorporate'
+          FieldNames='kode_nasabah_corporate;kode_nasabah_corporate;nama_perusahaan;kode_pemilikan;LKepemilikan.keterangan;kode_jenis_usaha;LJenisUsaha.nama_jenis_usaha'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LKelompok'
+          ClassTypeName='Kelompok'
+          FieldNames='kode_kelompok;kode_kelompok;nama_kelompok'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LJenisUsaha'
+          ClassTypeName='JenisUsaha'
+          FieldNames='kode_jenis_usaha;kode_jenis_usaha;nama_jenis_usaha'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LKepemilikan'
+          ClassTypeName='Kepemilikan'
+          FieldNames='kode_pemilikan;kode_pemilikan;keterangan'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LBranchLocation'
+          ClassTypeName='BranchLocation'
+          FieldNames='branch_code;branch_code;BranchName'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+      AfterApplyRow='uipRegisterNasabahRekeningApplyRow'
+    >, object:rpclass::TPClassUIDef<
+      Name='uipRegNRAhliWaris'
+      MasterUIName='uipRegisterNasabahRekening'
+      ListName='Ls_RegNRAhliWaris'
+      LoadedFieldList='nomor_urut_prioritas;nama_lengkap;tanggal_lahir;jenis_kelamin;status_ahli_waris;hubungan_keluarga;keterangan'
+      StoredFieldList='nomor_urut_prioritas;nama_lengkap;tanggal_lahir;jenis_kelamin;status_ahli_waris;hubungan_keluarga;keterangan'
+      CreateInstanceOnNew=true
+      DeleteOnDel=true
+      SetMasterDetailRelationship=true
+    >, object:rpclass::TPClassUIDef<
+      Name='uipParameter'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='MIN_JML_IURAN_PST'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='MIN_JML_IURAN_PK'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='MIN_SELISIH_TGL_DAFTAR_PENSIUN'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='IS_ONLY_MIN_JML_IURAN_PST'
+          DataTypeName='integer'
+          DataLength=20
+        >
+      }
+      Mode=imSingleRow
+    >, object:rpclass::TPClassUIDef<
+      Name='uipPaket'
+      MasterUIName='uipRegisterNasabahRekening'
+      ListName='Ls_RegisterNasabahRekPaket'
+      StoredFieldList='LPaketInvestasi;proporsi'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LPaketInvestasi'
+          ClassTypeName='PaketInvestasi'
+          FieldNames='kode_paket_investasi'
+        >
+      }
+      CreateInstanceOnNew=true
+      DeleteOnDel=true
+      SetMasterDetailRelationship=true
+    >
+  }
+  OnGeneralSetData='FormGeneralSetData'
+  OnEndProcessData='FormEndProcessData'
+>

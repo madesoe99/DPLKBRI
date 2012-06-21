@@ -1,0 +1,125 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit2']
+  Left=50
+  Top=50
+  Width=400
+  Height=200
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipNoData'
+    >
+  }
+  Containers={
+    object:rtf::DualSplit<
+      Name='dualsplit2'
+      Width=400
+      Height=200
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['pData']
+      InversedAlign=true
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=320
+      Height=45
+      Bordered=true
+      Controls={
+        object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=20
+          Color=0
+          ControlCaption=''
+          Caption='&OK'
+          OnClick='btnOKClick'
+        >
+        , object:rtf::Button<
+          Name='btnCancel'
+          Layout=clAbsolute
+          Top=8
+          Left=112
+          Color=0
+          ControlCaption=''
+          Caption='&Cancel'
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='nama_lengkap'
+          ControlCaption='Nomor Peserta'
+          DataTypeName='varchar'
+          DataLength=12
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='tanggal_registrasi'
+          ControlCaption='Tanggal Registrasi'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+      }
+      Name='pData'
+      Width=380
+      Height=150
+      Bordered=true
+      UIPart=$UIPARTS['uipNoData']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='nama_lengkap'
+          Top=50
+          Left=35
+          Color=0
+          ControlCaption='Nomor Peserta'
+        >
+        , *object:rtf::DBDateEdit<
+          Name='tanggal_registrasi'
+          Top=78
+          Left=35
+          Width=100
+          Height=21
+          Color=0
+          ControlCaption='Tanggal MP Meninggal'
+        >
+      }
+      EqualCaptionWidth=135
+      ControlLeftMargin=35
+      ControlTopMargin=50
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='PERHITUNGAN PENGCOVERAN WASIAT UMMAT'
+    >
+    , object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=400
+      Height=200
+      InversedAlign=true
+    >
+  }
+>

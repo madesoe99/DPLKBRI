@@ -1,0 +1,161 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['qHistoriGiro']
+  Caption='Detil Riwayat Transaksi Giro'
+  Left=60
+  Top=100
+  Width=900
+  Height=600
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx='FormGeneralSetDataEx'
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='hidden_id'
+          Hidden=true
+          DataTypeName='integer'
+          DataLength=20
+        >
+      }
+      Name='uipParameter'
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Query<
+      Name='qHistoriGiro'
+      Width=240
+      Height=40
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      DisplayCloseButton=true
+      WindowSize=20
+      Columns={
+        object:rtf::QueryColumn<
+          FieldName='HistoriGiro.Nomor_Batch_CoreBanking'
+          Width=130
+          Caption='Nomor Batch CoreBanking'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='HistoriGiro.Nomor_Urut'
+          Width=100
+          Caption='Nomor Urut'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='HistoriGiro.Nomor_Referensi'
+          Width=130
+          Caption='Nomor Referensi'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='HistoriGiro.Nomor_Peserta'
+          Width=120
+          Caption='Nomor Peserta'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='HistoriGiro.Kode_Debet_Kredit'
+          Width=120
+          Caption='Kode Debet / Kredit'
+          UseCustomColor=true
+          Color=15128749
+        >
+        , object:rtf::QueryColumn<
+          FieldName='HistoriGiro.Nominal'
+          Width=150
+          Caption='Nominal'
+          UseCustomColor=true
+          Color=9498256
+        >
+        , object:rtf::QueryColumn<
+          FieldName='HistoriGiro.Keterangan'
+          Width=200
+          Caption='Keterangan'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='HistoriGiro.isSettled'
+          Width=75
+          Caption='isSettled'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='HistoriGiro.Status_Pembuatan_Transaksi'
+          Width=150
+          Caption='Status Pembuatan Transaksi'
+        >
+      }
+      EnableColumns=true
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='no_giro'
+          ReadOnlyControl=true
+          ControlCaption='Nomor Giro DPLK'
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='acc_giro'
+          ReadOnlyControl=true
+          ControlCaption='Kode Akun Giro'
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='sum_nominal'
+          ReadOnlyControl=true
+          ControlCaption='Total Nominal'
+          DataTypeName='double'
+          DataLength=20
+        >
+      }
+      Name='pFilter'
+      Width=240
+      Height=100
+      Bordered=true
+      UIPart=$UIPARTS['uipParameter']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='no_giro'
+          ReadOnly=true
+        >
+        , *object:rtf::DBEdit<
+          Name='acc_giro'
+          ReadOnly=true
+        >
+        , *object:rtf::DBEdit<
+          Name='sum_nominal'
+          Color=-2147483624
+          ReadOnly=true
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=10
+      ControlTopMargin=10
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['pFilter']
+      Container2=$CONTAINERS['qHistoriGiro']
+    >
+  }
+  FormClassName='qViewDaftarHistoriGiro'
+>

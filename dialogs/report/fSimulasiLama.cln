@@ -1,0 +1,166 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit1']
+  Left=50
+  Top=50
+  Width=400
+  Height=270
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipNoData'
+    >
+  }
+  Containers={
+    object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=400
+      Height=270
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['pData']
+      InversedAlign=true
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=320
+      Height=45
+      Bordered=true
+      Controls={
+        object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=20
+          Color=0
+          ControlCaption=''
+          Caption='&OK'
+          OnClick='btnOKClick'
+        >
+        , object:rtf::Button<
+          Name='btnCancel'
+          Layout=clAbsolute
+          Top=8
+          Left=112
+          Color=0
+          ControlCaption=''
+          Caption='&Cancel'
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='nama_lengkap'
+          ControlCaption='Nomor Peserta'
+          DataTypeName='varchar'
+          DataLength=12
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='iuran_bulanan'
+          ControlCaption='Iuran Bulanan'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='kenaikan_iuran'
+          ControlCaption='Kenaikan Iuran'
+          DataTypeName='integer'
+          DataLength=10
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='tanggal_registrasi'
+          ControlCaption='Tanggal Registrasi'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='paket_investasi'
+          ControlCaption='Paket Investasi'
+          DataTypeName='varchar'
+          DataLength=2
+        >
+      }
+      Name='pData'
+      Width=380
+      Height=220
+      Bordered=true
+      UIPart=$UIPARTS['uipNoData']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='nama_lengkap'
+          Top=50
+          Left=35
+          Color=0
+          ControlCaption='Nomor Peserta'
+        >
+        , *object:rtf::DBEdit<
+          Name='iuran_bulanan'
+          Top=78
+          Left=35
+          Width=90
+          Height=21
+          Color=0
+          ControlCaption='Iuran Bulanan'
+        >
+        , *object:rtf::DBEdit<
+          Name='kenaikan_iuran'
+          Top=106
+          Left=35
+          Width=35
+          Height=21
+          Color=0
+          ControlCaption='Kenaikan Iuran'
+        >
+        , *object:rtf::DBDateEdit<
+          Name='tanggal_registrasi'
+          Top=134
+          Left=35
+          Width=100
+          Height=21
+          Color=0
+          ControlCaption='Tanggal Registrasi'
+        >
+        , *object:rtf::DBEdit<
+          Name='paket_investasi'
+          Top=162
+          Left=35
+          Color=0
+          ControlCaption='Paket Investasi'
+        >
+        , object:rtf::Label<
+          Name='label1'
+          Layout=clAbsolute
+          Top=166
+          Left=208
+          Width=26
+          Height=17
+          Color=0
+          ControlCaption=''
+          Caption='A.  B.  C.'
+          AutoSize=true
+          FontName='Tahoma'
+          FontColor=-2147483640
+          FontSize=8
+        >
+      }
+      EqualCaptionWidth=135
+      ControlLeftMargin=35
+      ControlTopMargin=50
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='S I M U L A S I  *** P E S E R T A *** L A M A'
+    >
+  }
+>

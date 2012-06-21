@@ -1,0 +1,276 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit1']
+  Caption='Pembayaran Iuran Peserta'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipTransaksi'
+      ClassTypeName='IuranPeserta'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >, object:rtf::PClassUI<
+      Name='uipPeserta'
+      ClassTypeName='NasabahDPLK'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Name='pButton'
+      Width=320
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='bSimpan'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+        >, object:rtf::Button<
+          Name='bBatal'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='tgl_transaksi'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >
+      }
+      Name='pDataTransaksi'
+      Width=641
+      Height=433
+      Bordered=true
+      UIPart=$UIPARTS['uipTransaksi']
+      Controls={
+        *object:rtf::DBDateEdit<
+          Name='tgl_transaksi'
+          Top=20
+          Left=10
+          ControlCaption='tgl transaksi'
+        >, *object:rtf::DBEdit<
+          Name='keterangan'
+          Top=48
+          Left=10
+          ControlCaption='keterangan'
+        >
+      }
+      EqualCaptionWidth=160
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Transaksi'
+    >, object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='no_peserta'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=11
+        >, object:rtf::FieldUIElmtSetting<
+          Name='nama_lengkap'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >, object:rtf::FieldUIElmtSetting<
+          Name='alamat_jalan'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=200
+        >, object:rtf::FieldUIElmtSetting<
+          Name='alamat_rtrw'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=7
+        >, object:rtf::FieldUIElmtSetting<
+          Name='alamat_kelurahan'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >, object:rtf::FieldUIElmtSetting<
+          Name='alamat_kecamatan'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >, object:rtf::FieldUIElmtSetting<
+          Name='alamat_kota'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >, object:rtf::FieldUIElmtSetting<
+          Name='alamat_kode_pos'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >, object:rtf::FieldUIElmtSetting<
+          Name='alamat_telepon'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >, object:rtf::FieldUIElmtSetting<
+          Name='alamat_email'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+      }
+      Name='pPeserta'
+      Width=697
+      Height=433
+      Bordered=true
+      UIPart=$UIPARTS['uipPeserta']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='no_peserta'
+          Top=20
+          Left=10
+          Color=-16777192
+          ControlCaption='no peserta'
+        >, *object:rtf::DBEdit<
+          Name='nama_lengkap'
+          Top=48
+          Left=10
+          Color=-16777192
+          ControlCaption='nama lengkap'
+        >, *object:rtf::DBEdit<
+          Name='alamat_jalan'
+          Top=76
+          Left=10
+          Color=-16777192
+          ControlCaption='alamat jalan'
+        >, *object:rtf::DBEdit<
+          Name='alamat_rtrw'
+          Top=104
+          Left=10
+          Color=-16777192
+          ControlCaption='alamat rtrw'
+        >, *object:rtf::DBEdit<
+          Name='alamat_kelurahan'
+          Top=132
+          Left=10
+          Color=-16777192
+          ControlCaption='alamat kelurahan'
+        >, *object:rtf::DBEdit<
+          Name='alamat_kecamatan'
+          Top=160
+          Left=10
+          Color=-16777192
+          ControlCaption='alamat kecamatan'
+        >, *object:rtf::DBEdit<
+          Name='alamat_kota'
+          Top=188
+          Left=10
+          Color=-16777192
+          ControlCaption='alamat kota'
+        >, *object:rtf::DBEdit<
+          Name='alamat_kode_pos'
+          Top=216
+          Left=10
+          Color=-16777192
+          ControlCaption='alamat kode pos'
+        >, *object:rtf::DBEdit<
+          Name='alamat_telepon'
+          Top=244
+          Left=10
+          Color=-16777192
+          ControlCaption='alamat telepon'
+        >, *object:rtf::DBEdit<
+          Name='alamat_email'
+          Top=272
+          Left=10
+          Color=-16777192
+          ControlCaption='alamat email'
+        >
+      }
+      EqualCaptionWidth=160
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Peserta'
+    >, object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=800
+      Height=600
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['MultiPages']
+      InversedAlign=true
+    >, object:rtf::MultiPages<
+      Name='MultiPages'
+      Width=800
+      Height=559
+      Pages={
+        object:rtf::Page<
+          PageName='pageTransaksi'
+          PageTitle='Info Transaksi'
+          Container=$CONTAINERS['pDataTransaksi']
+        >, object:rtf::Page<
+          PageName='pagePeserta'
+          PageTitle='Info Peserta'
+          Container=$CONTAINERS['pPeserta']
+          Index=1
+        >
+      }
+    >
+  }
+  FormClassName='fIuranPeserta'
+>

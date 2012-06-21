@@ -1,0 +1,65 @@
+Setting Script Migrasi
+----------------------
+1. Jalankan script InisialisasiTabelTransaksi.py terlebih dahulu.  
+
+2. Ubah nilai variabel global sesuai dengan setting yang diinginkan. Variabel global yang ada mencakup v_IP_Server, v_TahunValid, v_KelipatanTransaksi,dll. Keterangan mengenai variabel tersebut ada di script. Baru dijalankan. Jika selesai, periksa file .log yang ada di direktori dafapp/dplk07
+
+3. 
+
+Setting Basisdata
+-----------------
+1. Cek tabel COUNTER. Bila hanya ada sedikit cabang yang terlist, jalankan Query berikut:
+
+  delete from COUNTER
+  
+  insert into COUNTER (ID_CODE, LAST_ID, IS_LOCKED, PARAM)
+  select 'NASABAHDPLK', 1, 0, branch_code
+  from BRANCHLOCATION
+
+2. Pastikan tidak ada value user_id di tabel USERAPP yang memakai tanda ''' (petik / apostroph). Bila menemui kasus tersebut, jalankan script contoh ini:
+
+  delete from USERGROUPAPP where user_id = 'MA''RUF761'
+  delete from USERAPP where user_id = 'MA''RUF761'
+ 
+3. Cek tabel PAKETINVESTASI, harusnya hanya ada paket A,B,C. Bila masih ada Paket D dan E, maka konversi yang dilakukan ialah 1) B - A 2) C - B 3) D & E - C 4) hapus paket D & E. Jalankan script update ini:
+
+  update TRANSAKSIDPLK
+  set TRANSAKSIDPLK.kode_paket_investasi = 'A'
+  where TRANSAKSIDPLK.kode_paket_investasi = 'B'
+  
+  update TRANSAKSIDPLK
+  set TRANSAKSIDPLK.kode_paket_investasi = 'B'
+  where TRANSAKSIDPLK.kode_paket_investasi = 'C'
+  
+  update TRANSAKSIDPLK
+  set TRANSAKSIDPLK.kode_paket_investasi = 'C'
+  where TRANSAKSIDPLK.kode_paket_investasi = 'D' or
+        TRANSAKSIDPLK.kode_paket_investasi = 'E'
+        
+Tapi sebelumnya, cek keterkaitannya dulu dengan yang ada di tabel REKENINGDPLK dan REGISTERNASABAHREKENING
+
+4. Cek tabel SUMBERDANA, sesuaikan isinya dengan Lebar F1. Konsultasikan mengenai konversi data lama (hasil import). Perhatika keterkaitannya dengan tabel REKENINGDPLK, REGISTERNASABAHREKENING. Contoh seperti script berikut:
+
+  update REKENINGDPLK
+  set REKENINGDPLK.sumber_dana = 'LAINNYA'
+  where REKENINGDPLK.sumber_dana like '%-%';
+  
+  update REGISTERNASABAHREKENING
+  set REGISTERNASABAHREKENING.sumber_dana = 'LAINNYA'
+  where REGISTERNASABAHREKENING.sumber_dana like '%-%';
+
+5. Perbaiki value isPesertaPengalihan di tabel NASABAHDPLK dan REGISTERNASBAHREKENING
+
+  update NASABAHDPLK
+  set nasabahdplk.ISPESERTAPENGALIHAN = 'F'
+  
+  update REGISTERNASABAHREKENING
+  set REGISTERNASABAHREKENING.ISPESERTAPENGALIHAN = 'F'
+  
+6. Perbaiki sebelumnya Nama DanaPensiun (NAMA_DPLK)yang Ada di Tabel PENGALIHAN_DARI_DPLK_LAIN dan PENGALIHAN_KE_DPLK_LAIN pada basisdata lama: Firebird/Interbase   
+
+Daftar Pertanyaan
+-----------------
+1. tgl_akseptasi wasiat ummat saat migrasi didapat dari mana?
+2. tahun yang invalid diset sebagai tahun berapa?
+3. tanggal_autodebet sebaiknya diset tanggal berapa?

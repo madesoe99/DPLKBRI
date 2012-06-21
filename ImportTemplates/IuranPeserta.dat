@@ -1,0 +1,16 @@
+__InfoTemplate()
+<s20,namaTemplate='Iuran Peserta' 
+s20,deskripsiTemplate='Impor massal transaksi iuran peserta' 
+s20,targetClass='IuranPeserta' 
+s20,processScript='AuthorizeTransaksi' 
+s20,processFunction='AuthorizeOperation' 
+>
+,
+__DeskripsiField()
+<s20,namaField='tgl_transaksi' 
+s20,tipeField='datetime' 
+s20,lookupClass='' 
+s20,lookupField='' 
+>
+<'no_peserta'  'string'  'RekeningDPLK'  'no_peserta' >
+<'branch_code'  'string'  'BranchLocation'  'branch_code' >..

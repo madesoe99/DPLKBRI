@@ -1,0 +1,150 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['DualSplit']
+  Caption='Penambahan Daerah Asal'
+  Left=50
+  Top=50
+  Width=350
+  Height=230
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnFormShow='FormShow'
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipDaerahAsal'
+      ClassTypeName='DaerahAsal'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='kode_propinsi'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='nama_propinsi'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='user_id'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='last_update'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='kode_propinsi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='nama_propinsi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          Hidden=false
+          ReadOnlyControl=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='last_update'
+          Hidden=false
+          ReadOnlyControl=true
+        >
+      }
+      Name='pData'
+      Width=240
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipDaerahAsal']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='kode_propinsi'
+          Top=20
+          Left=20
+          ControlCaption='Kode Propinsi'
+          CharCase=ecUpperCase
+        >, *object:rtf::DBEdit<
+          Name='nama_propinsi'
+          Top=48
+          Left=20
+          ControlCaption='Nama Propinsi'
+        >, *object:rtf::DBEdit<
+          Name='user_id'
+          Top=76
+          Left=20
+          Color=-16777192
+          ControlCaption='User ID'
+          ReadOnly=true
+        >, *object:rtf::DBDateEdit<
+          Name='last_update'
+          Top=104
+          Left=20
+          Color=-16777192
+          ControlCaption='Last Update'
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          DefaultAction=daProcessAllUI
+          ExitAction=eaQuitOK
+        >, object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=350
+      Height=230
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['pData']
+      InversedAlign=true
+    >
+  }
+>

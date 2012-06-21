@@ -1,0 +1,477 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit1']
+  Caption='Pembayaran Iuran Pendaftaran dan Iuran Pertama'
+  Left=50
+  Top=50
+  Width=800
+  Height=360
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx='FormOnSetDataEx'
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caView
+          DataMember='registernr_id'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='kode_cab_daftar'
+        >, object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['iuran_pst'#13#10,
+            'iuran_pk'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='registernr_id'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='kode_cab_daftar'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='iuran_pst'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='iuran_pk'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='uipRegisterNasabahRekening'
+      ClassTypeName='RegisterNasabahRekening'
+      DataBinding=bmMaster
+      CreateInstanceOnNew=true
+    >, object:rtf::PClassUI<
+      Name='uipIuranPendaftaran'
+      ClassTypeName='IuranPendaftaran'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >, object:rtf::PClassUI<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='UserIDOwner'
+          Hidden=true
+          ReadOnlyControl=false
+        >, object:rtf::FieldUIElmtSetting<
+          Name='TanggalPakai'
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='varchar'
+          DataLength=10
+        >, object:rtf::FieldUIElmtSetting<
+          Name='NeedUser'
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='integer'
+          DataLength=20
+          EnumeratedValues=['0=False'#13#10,
+            '1=True'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='FileSlipPendaftaran'
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='varchar'
+          DataLength=100
+        >, object:rtf::FieldUIElmtSetting<
+          Name='FileSlipIuran'
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='varchar'
+          DataLength=100
+        >
+      }
+      Name='uipParameterBatch'
+    >, object:rtf::PClassUI<
+      Name='uipIuranPeserta'
+      ClassTypeName='IuranPeserta'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='besar_biaya_daftar'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='keterangan'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='isCommitted'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='besar_biaya_daftar'
+          Hidden=false
+          ReadOnlyControl=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='isCommitted'
+          Hidden=true
+          ReadOnlyControl=false
+        >
+      }
+      Name='pIuranPendaftaran'
+      Width=401
+      Height=120
+      Bordered=true
+      UIPart=$UIPARTS['uipIuranPendaftaran']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='besar_biaya_daftar'
+          Top=30
+          Left=20
+          Color=12695295
+          ControlCaption='Besar Biaya Pendaftaran'
+        >, *object:rtf::DBEdit<
+          Name='keterangan'
+          Top=58
+          Left=20
+          ControlCaption='Keterangan'
+        >
+      }
+      EqualCaptionWidth=140
+      ControlLeftMargin=20
+      ControlTopMargin=30
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Iuran Pendaftaran'
+    >, object:rtf::Panel<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='mutasi_iuran_pst'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='keterangan'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='mutasi_iuran_pk'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='mutasi_iuran_pst'
+          Hidden=false
+          ReadOnlyControl=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='mutasi_iuran_pk'
+          Hidden=false
+          ReadOnlyControl=false
+        >, object:rtf::FieldUIElmtSetting<
+          Name='cbLangsungIuran'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='varchar'
+          DataLength=1
+          EnumeratedValues=['1=True'#13#10,
+            '0=False'#13#10]
+          GenerateCheckBoxForEnum=true
+        >
+      }
+      Name='pIuranPeserta'
+      Width=385
+      Height=145
+      Bordered=true
+      UIPart=$UIPARTS['uipIuranPeserta']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='mutasi_iuran_pst'
+          Top=58
+          Left=20
+          Enabled=false
+          Color=12695295
+          ControlCaption='Iuran Pertama Peserta'
+          LayoutOrder=2
+        >, *object:rtf::DBEdit<
+          Name='keterangan'
+          Top=114
+          Left=20
+          ControlCaption='Keterangan'
+          LayoutOrder=6
+        >, *object:rtf::DBEdit<
+          Name='mutasi_iuran_pk'
+          Top=86
+          Left=20
+          Enabled=false
+          Color=12695295
+          ControlCaption='Iuran Pemberi Kerja'
+          LayoutOrder=4
+        >, *object:rtf::DBCheckBox<
+          Name='cbLangsungIuran'
+          Top=30
+          Left=20
+          Width=293
+          Height=17
+          ControlCaption='Tandai untuk langsung membayar iuran'
+          ValueChecked='0'
+          ValueUnchecked='1'
+        >
+      }
+      EqualCaptionWidth=140
+      ControlLeftMargin=20
+      ControlTopMargin=30
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Iuran Pertama Peserta'
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=300
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          ControlCaption=''
+          Caption='&OK'
+          Default=true
+          OnClick='btnOKClick'
+        >, object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=800
+      Height=360
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['dualsplit2']
+      InversedAlign=true
+    >, object:rtf::DualSplit<
+      Name='dualsplit2'
+      Width=800
+      Height=319
+      Container1=$CONTAINERS['dualsplit4']
+      Container2=$CONTAINERS['dualsplit3']
+    >, object:rtf::DualSplit<
+      Name='dualsplit3'
+      Width=800
+      Height=157
+      Container1=$CONTAINERS['pIuranPendaftaran']
+      Container2=$CONTAINERS['pIuranPeserta']
+      SplitDirection=sdrSplitLeftRight
+    >, object:rtf::Panel<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caView
+          DataMember='no_referensi'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='no_peserta'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='nama_lengkap'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='no_rekening'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='no_referensi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='no_peserta'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='nama_lengkap'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='no_rekening'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='pDataNasabah'
+      Width=369
+      Height=153
+      Bordered=true
+      UIPart=$UIPARTS['uipRegisterNasabahRekening']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='no_referensi'
+          Top=30
+          Left=20
+          Color=-16777192
+          ControlCaption='Nomor Referensi'
+        >, *object:rtf::DBEdit<
+          Name='no_peserta'
+          Top=58
+          Left=20
+          Color=-16777192
+          ControlCaption='No Peserta'
+        >, *object:rtf::DBEdit<
+          Name='nama_lengkap'
+          Top=86
+          Left=20
+          Color=-16777192
+          ControlCaption='Nama Lengkap'
+        >, *object:rtf::DBEdit<
+          Name='no_rekening'
+          Top=114
+          Left=20
+          Color=-16777192
+          ControlCaption='Nomor Rekening'
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=20
+      ControlTopMargin=30
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Identitas Peserta'
+    >, object:rtf::Panel<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LBranchLocation'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='user_id'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='terminal_id'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='tgl_transaksi'
+        >
+      }
+      Elements={
+        *object:rtf::LinkUIElmtSetting<
+          Name='LBranchLocation'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='branch_code;BranchName'
+          Restrictions=''
+          OQLText=['SELECT FROM BranchLocation ('#13#10,
+            '  self,'#13#10,
+            '  branch_code,'#13#10,
+            '  BranchName'#13#10,
+            ') THEN ORDER BY branch_code;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LBranchLocation'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          Hidden=false
+          ReadOnlyControl=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='terminal_id'
+          Hidden=false
+          ReadOnlyControl=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tgl_transaksi'
+          Hidden=false
+          ReadOnlyControl=true
+        >
+      }
+      Name='pTrxRekInvDPLK'
+      Width=401
+      Height=137
+      Bordered=true
+      UIPart=$UIPARTS['uipIuranPendaftaran']
+      Controls={
+        *object:rtf::DBLookupEdit<
+          Name='LBranchLocation'
+          Top=30
+          Left=20
+          Width=100
+          Height=21
+          Enabled=false
+          ControlCaption='Kode Cabang'
+          LookupField='LBranchLocation.BranchName'
+          DisplayLookupField=true
+        >, *object:rtf::DBEdit<
+          Name='user_id'
+          Top=86
+          Left=20
+          Color=-2147483624
+          ControlCaption='User Penginput'
+          LayoutOrder=4
+          ReadOnly=true
+        >, *object:rtf::DBEdit<
+          Name='terminal_id'
+          Top=114
+          Left=20
+          Color=-2147483624
+          ControlCaption='Terminal Input'
+          LayoutOrder=5
+          ReadOnly=true
+        >, *object:rtf::DBDateEdit<
+          Name='tgl_transaksi'
+          Top=58
+          Left=20
+          Color=-2147483624
+          ControlCaption='Tanggal Transaksi'
+          LayoutOrder=3
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=20
+      ControlTopMargin=30
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Registrasi'
+    >, object:rtf::DualSplit<
+      Name='dualsplit4'
+      Width=240
+      Height=161
+      Container1=$CONTAINERS['pDataNasabah']
+      Container2=$CONTAINERS['pTrxRekInvDPLK']
+      SplitDirection=sdrSplitLeftRight
+    >
+  }
+  FormClassName='fRegistrationPayment'
+>

@@ -1,0 +1,58 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['qJenisReksadana']
+  Caption='Daftar Pihak Ketiga'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  Containers={object:rtf::Query<
+      Name='qJenisReksadana'
+      Width=800
+      Height=600
+      ContextMenuName='popupmenus/investasi/master/qJenisReksadana'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from JenisReksadana'#13#10,
+        '('#13#10,
+        '  kode_jns_reksadana,'#13#10,
+        '  jenis_reksadana,'#13#10,
+        '  keterangan,'#13#10,
+        '  self'#13#10,
+        ') then order by kode_jns_reksadana;']
+      DirectDisplay=true
+      WindowSize=20
+      Columns={object:rtf::QueryColumn<
+          FieldName='JenisReksadana.kode_jns_reksadana'
+          Width=100
+          Caption='Kode Jenis Reksadana'
+        >, object:rtf::QueryColumn<
+          FieldName='JenisReksadana.Jenis_Reksadana'
+          Width=100
+          Caption='Jenis Reksadana'
+        >, object:rtf::QueryColumn<
+          FieldName='JenisReksadana.keterangan'
+          Width=300
+          Caption='keterangan'
+        >}EnableColumns=true
+    >}>

@@ -1,0 +1,368 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['DualSplit']
+  Caption='Pemindahan Paket Investasi'
+  Left=320
+  Top=200
+  Width=673
+  Height=465
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnFormShow='FormShow'
+  OnBeginSetData='FormBeginSetData'
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipRegisterCIF'
+      ClassTypeName='RegisterPindahPaketInvestasi'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      AfterApplyRow='uipRegisterCIFApplyRow'
+    >, object:rtf::PClassUI<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caView
+          DataMember='no_rekening'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='no_peserta'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='no_rekening'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='no_peserta'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='uipMaster'
+      ClassTypeName='RekInvDPLK'
+      DataBinding=bmLink
+      Master=$UIPARTS['uipRegisterCIF']
+      LinkName='LRekeningDPLK'
+    >, object:rtf::PClassUI<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='TanggalPakai'
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='varchar'
+          DataLength=10
+        >
+      }
+      Name='uipParameter'
+    >, object:rtf::PClassUI<
+      Name='uipRekDPLK'
+      ClassTypeName='RekeningDPLK'
+      DataBinding=bmList
+      Master=$UIPARTS['uipMaster']
+      ListName='Ls_RekeningDPLK'
+      FillInDefaultValues=true
+      AlwaysPostToServer=true
+      InitWithDefaultValues=true
+      CreateInstanceOnNew=true
+      DeleteInstanceOnDel=true
+      SetMasterDetailRelationship=true
+    >, object:rtf::PClassUI<
+      Name='uipRegDetail'
+      ClassTypeName='RegPindahPaketDetil'
+      DataBinding=bmList
+      Master=$UIPARTS['uipRegisterCIF']
+      ListName='Ls_RegPindahPaketDetil'
+      FillInDefaultValues=true
+      AlwaysPostToServer=true
+      PostLinkValues=true
+      InitWithDefaultValues=true
+      CreateInstanceOnNew=true
+      DeleteInstanceOnDel=true
+      SetMasterDetailRelationship=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Name='pButton'
+      Width=400
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          OnClick='btnOKClick'
+        >, object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          OnClick='btnCancelClick'
+        >, object:rtf::Button<
+          Name='btnClose'
+          Layout=clNextSide
+          Top=8
+          Left=166
+          Visible=false
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=673
+      Height=465
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['dualsplit1']
+      InversedAlign=true
+    >, object:rtf::Grid<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['kode_paket_investasi'#13#10,
+            'pct_alokasi'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='kode_paket_investasi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='pct_alokasi'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='gPaketLama'
+      Width=335
+      Height=240
+      UIPart=$UIPARTS['uipRekDPLK']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Paket Investasi Existing'
+      Columns={
+        *object:rtf::GridColumn<
+          Name='kode_paket_investasi'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='kode_paket_investasi'
+          DisplayFormat=''
+          TitleCaption='Kode Paket Investasi'
+          Width=120
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='pct_alokasi'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='pct_alokasi'
+          DisplayFormat=''
+          ReadOnly=true
+        >
+      }
+      ReadOnly=true
+      RowSelect=true
+      SuppressHelpLine=true
+    >, object:rtf::Panel<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LNasabahDPLK'
+        >, object:rtf::MultiControlDef<
+          Action=caEdit
+          DataMembers=['no_referensi'#13#10,
+            'keterangan'#13#10,
+            'user_id'#13#10,
+            'terminal_id'#13#10]
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='registercif_id'
+        >
+      }
+      Elements={
+        *object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLK'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='no_peserta;nama_lengkap'
+          Restrictions=''
+          FieldBaseName='LNasabahDPLK'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='no_referensi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='terminal_id'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='registercif_id'
+          Hidden=true
+          ReadOnlyControl=false
+        >, object:rtf::FieldUIElmtSetting<
+          Name='mode'
+          Hidden=true
+          ReadOnlyControl=false
+        >
+      }
+      Name='pData'
+      Width=649
+      Height=185
+      Bordered=true
+      UIPart=$UIPARTS['uipRegisterCIF']
+      Controls={
+        *object:rtf::DBLookupEdit<
+          Name='LNasabahDPLK'
+          Top=20
+          Left=20
+          Width=120
+          Height=21
+          Enabled=false
+          ControlCaption='No Peserta'
+          LookupField='LNasabahDPLK.nama_lengkap'
+          DisplayLookupField=true
+        >, *object:rtf::DBEdit<
+          Name='no_referensi'
+          Top=48
+          Left=20
+          ControlCaption='no referensi'
+          LayoutOrder=2
+        >, *object:rtf::DBEdit<
+          Name='keterangan'
+          Top=76
+          Left=20
+          ControlCaption='keterangan'
+          LayoutOrder=3
+        >, *object:rtf::DBEdit<
+          Name='user_id'
+          Top=104
+          Left=20
+          ControlCaption='user id'
+          LayoutOrder=4
+        >, *object:rtf::DBEdit<
+          Name='terminal_id'
+          Top=132
+          Left=20
+          ControlCaption='terminal id'
+          LayoutOrder=5
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Grid<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caEdit
+          DataMembers=['LPaketInvestasi'#13#10,
+            'proporsi'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::LinkUIElmtSetting<
+          Name='LPaketInvestasi'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='kode_paket_investasi;nama_paket_investasi'
+          Restrictions=''
+          OQLText=['SELECT FROM PaketInvestasi ('#13#10,
+            '  kode_paket_investasi,'#13#10,
+            '  nama_paket_investasi,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY kode_paket_investasi;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LPaketInvestasi'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='proporsi'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='gPaketBaru'
+      Width=337
+      Height=238
+      UIPart=$UIPARTS['uipRegDetail']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Paket Investasi Baru'
+      Columns={
+        *object:rtf::GridColumn<
+          Name='LPaketInvestasi.kode_paket_investasi'
+          InputStyle=cisLookup
+          EnumeratedValues=''
+          FieldName='LPaketInvestasi.kode_paket_investasi'
+          DisplayFormat=''
+          TitleCaption='Kode Paket'
+          Width=60
+        >, *object:rtf::GridColumn<
+          Name='LPaketInvestasi.nama_paket_investasi'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='LPaketInvestasi.nama_paket_investasi'
+          DisplayFormat=''
+          TitleCaption='Nama Paket'
+          Width=140
+        >
+      }
+    >, object:rtf::DualSplit<
+      Name='dualsplit2'
+      Width=673
+      Height=238
+      Container1=$CONTAINERS['gPaketLama']
+      Container2=$CONTAINERS['gPaketBaru']
+      SplitDirection=sdrSplitLeftRight
+    >, object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=673
+      Height=424
+      Container1=$CONTAINERS['pData']
+      Container2=$CONTAINERS['dualsplit2']
+    >
+  }
+>

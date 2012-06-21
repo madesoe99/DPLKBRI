@@ -1,0 +1,33 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='1'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['DaftarUserGroup']
+  Caption='Daftar Kelompok Pengguna'
+  State=rsMaximized
+  Left=-1
+  Top=-1
+  Width=500
+  Height=450
+  Containers={
+    object:rtf::Query<
+      Name='DaftarUserGroup'
+      Width=240
+      Height=40
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      PClassName='UserGroup'
+      ContextMenuName='popupmenus/userman/pDaftarUserGroup'
+      OQLText='Select from UserGroup (group_id, GroupName, Description, Self) then order by group_id;'
+      DirectDisplay=true
+      WindowSize=20
+    >
+  }
+>

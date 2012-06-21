@@ -1,0 +1,236 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['pData']
+  Caption='Histori Ahli Waris'
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipHistoriAhliWaris'
+      ClassTypeName='HistoriAhliWaris'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      AfterApplyRow='uipHistoriAhliWarisApplyRow'
+    >
+    , object:rtf::PClassUI<
+      Name='uipHistoriAhliWarisDetail'
+      ClassTypeName='HistoriAhliWarisDetail'
+      DataBinding=bmList
+      Master=$UIPARTS['uipHistoriAhliWaris']
+      ListName='Ls_HistoriAhliWarisDetail'
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      DeleteInstanceOnDel=true
+      SetMasterDetailRelationship=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['no_referensi'#13#10,
+            'LNasabahDPLK'#13#10,
+            'keterangan'#13#10,
+            'user_id'#13#10,
+            'terminal_id'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLK'
+          ReadOnlyControl=true
+          DisplayFields='no_peserta;nama_lengkap'
+          Restrictions=''
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          ReadOnlyControl=true
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='terminal_id'
+          ReadOnlyControl=true
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='mode'
+          Hidden=true
+        >
+      }
+      Name='pData'
+      Width=400
+      Height=180
+      Bordered=true
+      UIPart=$UIPARTS['uipHistoriAhliWaris']
+      Controls={
+        *object:rtf::DBLookupEdit<
+          Name='LNasabahDPLK'
+          Enabled=false
+          Color=0
+          ControlCaption='nasabah dplk'
+          LookupField='LNasabahDPLK.nama_lengkap'
+          DisplayLookupField=true
+        >
+        , *object:rtf::DBEdit<
+          Name='user_id'
+          ReadOnly=true
+        >
+        , *object:rtf::DBEdit<
+          Name='terminal_id'
+          ReadOnly=true
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Grid<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['nomor_urut_prioritas'#13#10,
+            'nama_lengkap'#13#10,
+            'tanggal_lahir'#13#10,
+            'jenis_kelamin'#13#10,
+            'status_ahli_waris'#13#10,
+            'hubungan_keluarga'#13#10,
+            'keterangan'#13#10]
+        >
+      }
+      Elements={
+      }
+      Name='gDetails'
+      Width=240
+      Height=40
+      UIPart=$UIPARTS['uipHistoriAhliWarisDetail']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='&Rincian Ahli Waris'
+      Columns={
+        *object:rtf::GridColumn<
+          Name='nomor_urut_prioritas'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='nomor_urut_prioritas'
+          DisplayFormat=''
+          ReadOnly=true
+        >
+        , *object:rtf::GridColumn<
+          Name='nama_lengkap'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='nama_lengkap'
+          DisplayFormat=''
+          ReadOnly=true
+        >
+        , *object:rtf::GridColumn<
+          Name='tanggal_lahir'
+          InputStyle=cisDate
+          EnumeratedValues=''
+          FieldName='tanggal_lahir'
+          DisplayFormat=''
+          ReadOnly=true
+        >
+        , *object:rtf::GridColumn<
+          Name='jenis_kelamin'
+          InputStyle=cisEnumerated
+          EnumeratedValues=['P=Pria'#13#10,
+            'W=Wanita'#13#10]
+          FieldName='jenis_kelamin'
+          DisplayFormat=''
+          ReadOnly=true
+        >
+        , *object:rtf::GridColumn<
+          Name='status_ahli_waris'
+          InputStyle=cisEnumerated
+          EnumeratedValues=['A=Aktif'#13#10,
+            'N=Tidak Aktif'#13#10]
+          FieldName='status_ahli_waris'
+          DisplayFormat=''
+          ReadOnly=true
+        >
+        , *object:rtf::GridColumn<
+          Name='hubungan_keluarga'
+          InputStyle=cisEnumerated
+          EnumeratedValues=['0=Peserta'#13#10,
+            '1=Ayah'#13#10,
+            '2=Ibu'#13#10,
+            '3=Anak'#13#10,
+            '4=Kakak'#13#10,
+            '5=Adik'#13#10,
+            '6=Istri'#13#10,
+            '7=Suami'#13#10,
+            '8=Lain-lain'#13#10]
+          FieldName='hubungan_keluarga'
+          DisplayFormat=''
+          ReadOnly=true
+        >
+        , *object:rtf::GridColumn<
+          Name='keterangan'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='keterangan'
+          DisplayFormat=''
+          ReadOnly=true
+        >
+      }
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Bordered=true
+      Controls={
+        object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Tutup'
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::MultiSplit<
+      Name='MultiSplit'
+      Width=240
+      Height=100
+      Side1Containers={
+        $CONTAINERS['pData']
+      }
+      Side2Containers={
+        $CONTAINERS['pButton']
+      }
+      SpaceContainer=$CONTAINERS['gDetails']
+    >
+  }
+>

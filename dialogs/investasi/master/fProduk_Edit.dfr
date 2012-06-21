@@ -1,0 +1,149 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['MultiSplit']
+  Caption='Edit Produk'
+  Left=50
+  Top=50
+  Width=401
+  Height=305
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData='FormBeginProcessData'
+  OnEndProcessData=''
+  UIParts={object:rtf::PClassUI<
+      Name='uipProduk'
+      ClassTypeName='ProdukInvestasi'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >}Containers={object:rtf::Panel<
+      ControlDefs={object:rtf::ControlDef<
+          Action=caView
+          DataMember='kode_produk'
+        >, object:rtf::MultiControlDef<
+          Action=caEdit
+          DataMembers=['nama_produk'#13#10,
+            'deskripsi_produk'#13#10,
+            'LPihakKetiga'#13#10]
+        >}Elements={*object:rtf::LinkUIElmtSetting<
+          Name='LPihakKetiga'
+          DisplayFields='kode_pihak_ketiga;nama_pihak_ketiga'
+          Restrictions=''
+          FieldBaseName='LPihakKetiga'
+        >}Name='pData'
+      Width=401
+      Height=159
+      Bordered=true
+      UIPart=$UIPARTS['uipProduk']
+      Controls={*object:rtf::DBEdit<
+          Name='kode_produk'
+          Top=20
+          Left=20
+          Color=-2147483624
+          ControlCaption='Kode Produk'
+        >, *object:rtf::DBEdit<
+          Name='nama_produk'
+          Top=48
+          Left=20
+          Color=0
+          ControlCaption='Nama Produk'
+        >, *object:rtf::DBEdit<
+          Name='deskripsi_produk'
+          Top=76
+          Left=20
+          Color=0
+          ControlCaption='Deskripsi Produk'
+        >, *object:rtf::DBLookupEdit<
+          Name='LPihakKetiga'
+          Top=104
+          Left=20
+          ControlCaption='Pihak Ketiga'
+          LookupField='LPihakKetiga.nama_pihak_ketiga'
+          DisplayLookupField=true
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=55
+      Controls={object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=20
+          Color=0
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          DefaultAction=daProcessAllUI
+          ExitAction=eaQuitOK
+          OnClick='btnOKClick'
+        >, object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=99
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >}ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      ControlDefs={object:rtf::MultiControlDef<
+          Action=caEdit
+          DataMembers=['user_id'#13#10,
+            'last_update'#13#10]
+        >}Elements={}Name='pUser'
+      Width=401
+      Height=97
+      Bordered=true
+      UIPart=$UIPARTS['uipProduk']
+      Controls={*object:rtf::DBEdit<
+          Name='user_id'
+          Top=20
+          Left=20
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Inputer'
+        >, *object:rtf::DBDateEdit<
+          Name='last_update'
+          Top=48
+          Left=20
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Tanggal Update Terakhir'
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::MultiSplit<
+      Name='MultiSplit'
+      Width=401
+      Height=305
+      Side1Containers={$CONTAINERS['pData']
+      }Side2Containers={$CONTAINERS['pButton']
+      }SpaceContainer=$CONTAINERS['pUser']
+    >}>

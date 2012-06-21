@@ -1,0 +1,216 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['DualSplit']
+  Caption='Daftar Peserta DPLK'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  OnFormShow='FormShow'
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipNoData'
+    >
+  }
+  Containers={
+    object:rtf::Query<
+      Name='qNasabahDPLK'
+      Width=800
+      Height=559
+      ContextMenuName='popupmenus/transaction/qNasabahDPLK'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from NasabahDPLK'#13#10,
+        '['#13#10,
+        '  (1 = :display_all_cabang OR  LRekeningDPLK.kode_cab_daftar = :kode_cab_daftar)'#13#10,
+        ']'#13#10,
+        '('#13#10,
+        '  no_peserta,'#13#10,
+        '  nama_lengkap,'#13#10,
+        '  tempat_lahir,'#13#10,
+        '  tanggal_lahir,'#13#10,
+        '  LRekeningDPLK.status_dplk as Status_Peserta,'#13#10,
+        '  LRekeningDPLK.status_wasiat_ummat as Status_Wasiat_Ummat,'#13#10,
+        '  LRekeningDPLK.collectivity_wasiat_ummat as Kolektibilitas_Premi,'#13#10,
+        '  LRekeningDPLK.LBranchLocation.BranchName as Kantor_Cabang,'#13#10,
+        '  LDaerahAsal.kode_propinsi as kode_propinsi,'#13#10,
+        '  LDaerahAsal.nama_propinsi as nama_propinsi,'#13#10,
+        '  LKepemilikan.kode_pemilikan as kode_pemilikan,'#13#10,
+        '  LKepemilikan.keterangan as keterangan,'#13#10,
+        '  LJenisUsaha.kode_jenis_usaha as kode_jenis_usaha,'#13#10,
+        '  LJenisUsaha.nama_jenis_usaha as nama_jenis_usaha,'#13#10,
+        '  self'#13#10,
+        ') then order by no_peserta;']
+      WindowSize=20
+      Columns={
+        object:rtf::QueryColumn<
+          FieldName='NasabahDPLK.no_peserta'
+          Width=100
+          Caption='Nomor Peserta'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='NasabahDPLK.nama_lengkap'
+          Width=200
+          Caption='Nama Lengkap'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='NasabahDPLK.tempat_lahir'
+          Width=100
+          Caption='Tempat Lahir'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='NasabahDPLK.tanggal_lahir'
+          Width=75
+          Caption='Tanggal Lahir'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='NasabahDPLK.Status_Peserta'
+          Width=100
+          Caption='Status Peserta'
+          UseCustomColor=true
+          Color=12695295
+        >
+        , object:rtf::QueryColumn<
+          FieldName='NasabahDPLK.Status_Wasiat_Ummat'
+          Width=120
+          Caption='Status Wasiat Ummat'
+          UseCustomColor=true
+          Color=15128749
+        >
+        , object:rtf::QueryColumn<
+          FieldName='NasabahDPLK.Kolektibilitas_Premi'
+          Width=120
+          Caption='Kelancaran Kolektibilitas'
+          UseCustomColor=true
+          Color=12695295
+        >
+        , object:rtf::QueryColumn<
+          FieldName='NasabahDPLK.Kantor_Cabang'
+          Width=100
+          Caption='Kantor Cabang'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='NasabahDPLK.nama_propinsi'
+          Width=120
+          Caption='Daerah Asal'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='NasabahDPLK.kode_pemilikan'
+          Width=100
+          Caption='Kode Kepemilikan'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='NasabahDPLK.keterangan'
+          Width=200
+          Caption='Keterangan'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='NasabahDPLK.kode_jenis_usaha'
+          Width=100
+          Caption='Kode Jenis Usaha'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='NasabahDPLK.nama_jenis_usaha'
+          Width=150
+          Caption='Nama Jenis Usaha'
+        >
+      }
+      EnableColumns=true
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::LinkUIElmtSetting<
+          Name='LBranchLocation'
+          ClassTypeName='BranchLocation'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LBranchLocation.branch_code'
+              DataTypeName='VARCHAR'
+              DataLength=5
+              UsedAsKey=true
+              KeyOrDisplayName='branch_code'
+              FinalDisplayFieldName='branch_code'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LBranchLocation.branch_code'
+              DataTypeName='VARCHAR'
+              DataLength=5
+              UsedAsDisplay=true
+              KeyOrDisplayName='branch_code'
+              FinalDisplayFieldName='branch_code'
+            >
+            , object:rtf::FieldUIElmtSetting<
+              Name='LBranchLocation.BranchName'
+              DataTypeName='VARCHAR'
+              DataLength=50
+              UsedAsDisplay=true
+              KeyOrDisplayName='BranchName'
+              FinalDisplayFieldName='BranchName'
+            >
+          }
+          Restrictions=''
+          FieldBaseName='LBranchLocation'
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='NoLimitLocation'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=1
+        >
+      }
+      Name='pFilter'
+      Width=713
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipNoData']
+      Controls={
+        *object:rtf::DBLookupEdit<
+          Name='LBranchLocation'
+          Top=10
+          Left=10
+          ControlCaption='Kantor Cabang Pendaftaran'
+          LookupField='LBranchLocation.BranchName'
+          DisplayLookupField=true
+          OnAfterLookup='BranchLocationAfterLookup'
+          DirectInput=true
+        >
+        , object:rtf::CheckBox<
+          Name='cbDisplayAllCabang'
+          Layout=clAbsolute
+          Top=8
+          Left=400
+          Width=225
+          Height=17
+          Color=0
+          ControlCaption='Tampilkan seluruh data'
+          OnClick='cbDisplayAllCabangClick'
+        >
+      }
+      EqualCaptionWidth=150
+      ControlLeftMargin=10
+      ControlTopMargin=10
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=800
+      Height=600
+      Container1=$CONTAINERS['pFilter']
+      Container2=$CONTAINERS['qNasabahDPLK']
+    >
+  }
+>

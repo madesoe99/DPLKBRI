@@ -1,0 +1,94 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rpclass::TPClassUIDefList<
+  UIDefs={object:rpclass::TPClassUIDef<
+      Name='uipRegisterObligasi'
+      PClassName='RegisterObligasi'
+      LoadedFieldList='LSubJenisInv.kode_subjns_LRInvestasi;LSubJenisInv.kode_subjns_LRInvestasi;LSubJenisInv.deskripsi;nama_obligasi;LPihakKetiga.kode_pihak_ketiga;LPihakKetiga.kode_pihak_ketiga;LPihakKetiga.nama_pihak_ketiga;LRincianPaketInvestasi.kode_paket_investasi;LRincianPaketInvestasi.kode_jns_investasi;LRincianPaketInvestasi.kode_paket_investasi;LRincianPaketInvestasi.LPaketInvestasi.nama_paket_investasi;LRincianPaketInvestasi.kode_jns_investasi;LRincianPaketInvestasi.maks_proporsi;dpkPaket;nilaiMaksProporsi;dpkInvExisting;dpkTersedia;nominalGiro;nominal;harga_pari;harga_beli;nilai_wajar;harga_beli_acq;TaxOnCapitalGain;TaxOnAccruedInterest;LBroker.id;LBroker.broker_code;LBroker.broker_name;jenisKupon;tgl_buka;tgl_jatuh_tempo;jenis_obligasi;LCustodianBank.BankCode;LCustodianBank.BankCode;LCustodianBank.BankName;no_rekening;TreatmentObligasi;biaya;LAccrual.accrual_code;LAccrual.accrual_code;LAccrual.accrual_day;LPayingAgent.agent_code;LPayingAgent.agent_code;LPayingAgent.agent_name;ER;last_coupon_date;AccruedInterest;AccruedInterestOnTax;user_id;terminal_id;tanggal_register;id_registerinvestasi'
+      StoredFieldList='LSubJenisInv;nama_obligasi;LPihakKetiga;LRincianPaketInvestasi;dpkPaket;nilaiMaksProporsi;dpkInvExisting;dpkTersedia;nominalGiro;nominal;harga_pari;harga_beli;nilai_wajar;harga_beli_acq;TaxOnCapitalGain;TaxOnAccruedInterest;LBroker;jenisKupon;tgl_buka;tgl_jatuh_tempo;jenis_obligasi;LCustodianBank;no_rekening;TreatmentObligasi;biaya;LAccrual;LPayingAgent;ER;last_coupon_date;AccruedInterest;AccruedInterestOnTax;user_id;terminal_id;tanggal_register'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='harga_beli_val'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='nilai_wajar_val'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='maks_proporsi'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='LMasterGiro.acc_giro'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='LMasterGiro.no_giro'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >, object:rpclass::TCustomLoadedField<
+          Name='LMasterGiro.acc_giro'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='mode'
+          DataTypeName='varchar'
+          DataLength=20
+        >}CustomLoadedLinks={object:rpclass::TCustomLoadedLink<
+          Name='LSubJenisInv'
+          ClassTypeName='SubJnsTransLRInvestasi'
+          FieldNames='kode_subjns_LRInvestasi;kode_subjns_LRInvestasi;deskripsi'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LPihakKetiga'
+          ClassTypeName='PihakKetiga'
+          FieldNames='kode_pihak_ketiga;kode_pihak_ketiga;nama_pihak_ketiga'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LRincianPaketInvestasi'
+          ClassTypeName='RincianPaketInvestasi'
+          FieldNames='kode_paket_investasi;kode_jns_investasi;kode_paket_investasi;LPaketInvestasi.nama_paket_investasi;kode_jns_investasi;maks_proporsi'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LBroker'
+          ClassTypeName='BROKER'
+          FieldNames='id;broker_code;broker_name'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LCustodianBank'
+          ClassTypeName='CustodianBank'
+          FieldNames='BankCode;BankCode;BankName'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LAccrual'
+          ClassTypeName='ACCRUAL'
+          FieldNames='accrual_code;accrual_code;accrual_day'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LPayingAgent'
+          ClassTypeName='PAYINGAGENT'
+          FieldNames='agent_code;agent_code;agent_name'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LMasterGiro'
+          ClassTypeName='MasterGiro'
+          FieldNames='acc_giro;no_giro;acc_giro'
+        >}Mode=imSingleRow
+      CreateInstanceOnNew=true
+      OnSetData='uipRegisterObligasiSetData'
+      AfterApplyRow='uipRegisterObligasiApplyRow'
+    >, object:rpclass::TPClassUIDef<
+      Name='uipParameter'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='nowDate'
+          DataTypeName='varchar'
+          DataLength=10
+        >, object:rpclass::TCustomLoadedField<
+          Name='inv'
+          DataTypeName='varchar'
+          DataLength=1
+        >, object:rpclass::TCustomLoadedField<
+          Name='strInv'
+          DataTypeName='varchar'
+          DataLength=20
+        >}Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >}OnGeneralSetData='FormGeneralSetData'
+>

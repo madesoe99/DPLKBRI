@@ -1,0 +1,33 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipPaketInvestasi'
+      PClassName='PaketInvestasi'
+      LoadedFieldList='kode_paket_investasi;nama_paket_investasi;acc_giro;acc_iuran;acc_kedplklain;acc_manfaat;acc_pengembangan;acc_peralihan;no_giro;total_potensi_profit;total_srr;user_id;last_update'
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipRincianPaketInvestasi'
+      MasterUIName='uipPaketInvestasi'
+      ListName='Ls_RincianPaketInvestasi'
+      LoadedFieldList='LJenisInvestasi.kode_jns_investasi;LJenisInvestasi.kode_jns_investasi;LJenisInvestasi.nama_jns_investasi;maks_proporsi'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LJenisInvestasi'
+          ClassTypeName='JenisInvestasi'
+          FieldNames='kode_jns_investasi;kode_jns_investasi;nama_jns_investasi'
+        >
+      }
+      CreateInstanceOnNew=true
+      SetMasterDetailRelationship=true
+    >
+  }
+>

@@ -1,0 +1,91 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['qRegisterTransaksiInvestasi']
+  Caption='Daftar Register Transaksi Investasi'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  Containers={
+    object:rtf::Query<
+      Name='qRegisterTransaksiInvestasi'
+      Width=240
+      Height=40
+      ContextMenuName='popupmenus/investasi/transaksi/qRegisterTransaksiInvestasi'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from TransaksiInvestasi'#13#10,
+        '['#13#10,
+        '  isCommitted = ''F'''#13#10,
+        ']'#13#10,
+        '('#13#10,
+        '  tgl_transaksi,'#13#10,
+        '  LTransactionBatch.no_batch,'#13#10,
+        '  mutasi_debet,'#13#10,
+        '  mutasi_kredit,'#13#10,
+        '  kode_jenis_trinvestasi,'#13#10,
+        '  LJnsTransInvestasi.deskripsi as keterangan_trinvestasi,'#13#10,
+        '  tgl_sistem,'#13#10,
+        '  user_id,'#13#10,
+        '  terminal_id,'#13#10,
+        '  id_transaksiinvestasi as ID,'#13#10,
+        '  self'#13#10,
+        ') then order by ID;']
+      DirectDisplay=true
+      WindowSize=20
+      Columns={
+        object:rtf::QueryColumn<
+          FieldName='TransaksiInvestasi.tgl_transaksi'
+          Width=130
+          Caption='Tanggal Transaksi'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransaksiInvestasi.no_batch'
+          Width=130
+          Caption='Nomor Batch'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransaksiInvestasi.keterangan_trinvestasi'
+          Width=250
+          Caption='Keterangan'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransaksiInvestasi.mutasi_debet'
+          Width=100
+          Caption='Mutasi Debet'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransaksiInvestasi.mutasi_kredit'
+          Width=100
+          Caption='Mutasi Kredit'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransaksiInvestasi.tgl_sistem'
+          Width=130
+          Caption='Tanggal Sistem'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransaksiInvestasi.user_id'
+          Width=100
+          Caption='ID Pengguna'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransaksiInvestasi.terminal_id'
+          Width=100
+          Caption='ID Terminal'
+        >
+      }
+      EnableColumns=true
+    >
+  }
+>

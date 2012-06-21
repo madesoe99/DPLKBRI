@@ -1,0 +1,174 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['DualSplit']
+  Caption='Input untuk Riwayat Transaksi Peserta'
+  Left=300
+  Top=250
+  Width=600
+  Height=140
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipNoData'
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::LinkUIElmtSetting<
+          Name='LPeserta'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Nomor Peserta'
+          ClassTypeName='NasabahDPLK'
+          DisplayFields='no_peserta;nama_lengkap;alamat_jalan;alamat_jalan2;alamat_kota;alamat_telepon'
+          Restrictions=''
+          OQLText=['select from NasabahDPLK ['#13#10,
+            '  (is_deleted IS NULL OR is_deleted = 0)'#13#10,
+            ']'#13#10,
+            '(no_peserta,nama_lengkap,alamat_jalan,alamat_jalan2,'#13#10,
+            'alamat_kota,alamat_telepon,self)'#13#10,
+            'then order by no_peserta;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LPeserta'
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LRekInvDPLK'
+          Hidden=false
+          ReadOnlyControl=false
+          ClassTypeName='RekInvDPLK'
+          DisplayFields='no_rekening;no_peserta'
+          Restrictions='LPeserta|nasabah'
+          OQLText=['SELECT FROM RekInvDPLK ['#13#10,
+            '  (LNasabahDPLK = :nasabah)'#13#10,
+            '  AND (is_deleted IS NULL OR is_deleted = 0)'#13#10,
+            ']('#13#10,
+            '  self,'#13#10,
+            '  no_rekening,'#13#10,
+            '  no_peserta,'#13#10,
+            '  LNasabahDPLK.nama_lengkap'#13#10,
+            ') THEN ORDER BY no_rekening;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LRekInvDPLK'
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LRekeningDPLK'
+          Hidden=false
+          ReadOnlyControl=false
+          ClassTypeName='RekeningDPLK'
+          DisplayFields='nomor_rekening;no_rekening;kode_paket_investasi;LPaketInvestasi.nama_paket_investasi'
+          Restrictions='LRekInvDPLK|rekinvdplk'
+          OQLText=['SELECT FROM RekeningDPLK ['#13#10,
+            '  LRekInvDPLK = :rekinvdplk'#13#10,
+            '  AND (is_deleted IS NULL OR is_deleted = '''' OR is_deleted = ''F'')'#13#10,
+            ']('#13#10,
+            '  self,'#13#10,
+            '  nomor_rekening,'#13#10,
+            '  LPaketInvestasi.nama_paket_investasi AS nama_paket_investasi,'#13#10,
+            '  pct_alokasi,'#13#10,
+            '  kode_paket_investasi,'#13#10,
+            '  no_rekening'#13#10,
+            ') THEN ORDER BY nomor_rekening;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LRekeningDPLK'
+        >
+      }
+      Name='pData'
+      Width=569
+      Height=97
+      Bordered=true
+      UIPart=$UIPARTS['uipNoData']
+      Controls={
+        *object:rtf::DBLookupEdit<
+          Name='LPeserta'
+          Top=10
+          Left=20
+          Width=100
+          Height=21
+          ControlCaption='Nomor Peserta'
+          LookupField='LPeserta.nama_lengkap'
+          DisplayLookupField=true
+          DirectInput=true
+        >, *object:rtf::DBLookupEdit<
+          Name='LRekInvDPLK'
+          Top=38
+          Left=20
+          Width=100
+          Height=21
+          ControlCaption='Nomor Rekening'
+          LookupField='LRekInvDPLK.no_peserta'
+          DisplayLookupField=false
+        >, *object:rtf::DBLookupEdit<
+          Name='LRekeningDPLK'
+          Top=66
+          Left=20
+          Width=100
+          Height=21
+          ControlCaption='Paket Investasi'
+          FieldName='LRekeningDPLK.kode_paket_investasi'
+          LookupField='LRekeningDPLK.LPaketInvestasi.nama_paket_investasi'
+          DisplayLookupField=true
+          DisplayLookupColor=-16777192
+          DisplayLookupWidth=300
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=20
+      ControlTopMargin=10
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          ControlCaption=''
+          Caption='&OK'
+          Default=true
+          OnClick='btnOKClick'
+        >, object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=600
+      Height=140
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['pData']
+      InversedAlign=true
+    >
+  }
+>

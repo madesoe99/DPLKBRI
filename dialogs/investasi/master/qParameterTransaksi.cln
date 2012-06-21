@@ -1,0 +1,57 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['qParameterTransaksi']
+  Caption='Daftar Parameter Journal'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  Containers={object:rtf::Query<
+      Name='qParameterTransaksi'
+      Width=800
+      Height=600
+      ContextMenuName='popupmenus/investasi/master/qParameterTransaksi'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from ParameterTransaksi'#13#10,
+        '('#13#10,
+        '  kode_transaksi,'#13#10,
+        '  deskripsi,'#13#10,
+        '  journal_code,'#13#10,
+        '  SendToCIM,'#13#10,
+        '  SendToAcc,'#13#10,
+        '  self'#13#10,
+        ') then order by kode_transaksi;']
+      DirectDisplay=true
+      WindowSize=20
+      Columns={object:rtf::QueryColumn<
+          FieldName='ParameterTransaksi.kode_transaksi'
+          Width=80
+          Caption='Kode Transaksi'
+        >, object:rtf::QueryColumn<
+          FieldName='ParameterTransaksi.deskripsi'
+          Width=180
+          Caption='Deskripsi'
+        >, object:rtf::QueryColumn<
+          FieldName='ParameterTransaksi.journal_code'
+          Width=80
+          Caption='Kode Jurnal'
+        >, object:rtf::QueryColumn<
+          FieldName='ParameterTransaksi.SendToCIM'
+          Width=80
+          Caption='Flag Kirim CIM'
+        >, object:rtf::QueryColumn<
+          FieldName='ParameterTransaksi.SendToAcc'
+          Width=80
+          Caption='Flag Kirim Accounting'
+        >}EnableColumns=true
+    >}>

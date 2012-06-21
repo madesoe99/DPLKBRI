@@ -1,0 +1,82 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['qNasabahDPLKCorporate']
+  Caption='Daftar Peserta Korporat'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  Containers={
+    object:rtf::Query<
+      Name='qNasabahDPLKCorporate'
+      Width=800
+      Height=600
+      ContextMenuName='popupmenus/transaction/qNasabahDPLKCorporate'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from NasabahDPLKCorporate ['#13#10,
+        '  (is_deleted is null or is_deleted = 0)'#13#10,
+        '] ('#13#10,
+        '  kode_nasabah_corporate,'#13#10,
+        '  nama_perusahaan,'#13#10,
+        '  npwp as NPWP,'#13#10,
+        '  no_perjanjian,'#13#10,
+        '  kode_jenis_usaha,'#13#10,
+        '  LJenisUsaha.nama_jenis_usaha as nama_jenis_usaha,'#13#10,
+        '  kode_pemilikan,'#13#10,
+        '  LKepemilikan.keterangan as kepemilikan,'#13#10,
+        '  tgl_bayar_iuran,'#13#10,
+        '  keterangan,'#13#10,
+        '  user_id,'#13#10,
+        '  terminal_id,'#13#10,
+        '  self'#13#10,
+        ') then order by kode_nasabah_corporate;']
+      DirectDisplay=true
+      WindowSize=20
+      Columns={
+        object:rtf::QueryColumn<
+          FieldName='NasabahDPLKCorporate.kode_nasabah_corporate'
+          Width=150
+          Caption='Kode Korporat'
+          UseCustomColor=true
+          Color=15128749
+        >, object:rtf::QueryColumn<
+          FieldName='NasabahDPLKCorporate.nama_perusahaan'
+          Width=250
+          Caption='Nama Korporat'
+        >, object:rtf::QueryColumn<
+          FieldName='NasabahDPLKCorporate.NPWP'
+          Width=100
+          Caption='NPWP'
+        >, object:rtf::QueryColumn<
+          FieldName='NasabahDPLKCorporate.no_perjanjian'
+          Width=100
+          Caption='Nomor Perjanjian'
+        >, object:rtf::QueryColumn<
+          FieldName='NasabahDPLKCorporate.nama_jenis_usaha'
+          Width=150
+          Caption='Nama Jenis Usaha'
+        >, object:rtf::QueryColumn<
+          FieldName='NasabahDPLKCorporate.kepemilikan'
+          Width=100
+          Caption='Kepemilikan'
+        >, object:rtf::QueryColumn<
+          FieldName='NasabahDPLKCorporate.keterangan'
+          Width=300
+          Caption='Keterangan'
+        >
+      }
+      EnableColumns=true
+    >
+  }
+>

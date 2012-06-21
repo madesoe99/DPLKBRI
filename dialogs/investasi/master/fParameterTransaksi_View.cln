@@ -1,0 +1,147 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['MultiSplit']
+  Caption='Lihat Parameter Transaksi'
+  Left=50
+  Top=50
+  Width=433
+  Height=217
+  UIParts={object:rtf::PClassUI<
+      Name='uip'
+      ClassTypeName='ParameterTransaksi'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >}Containers={object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='kode_transaksi'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='deskripsi'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LParameterJournal'
+          RequiredOption=roAlwaysRequired
+          AccessOption=aoReadOnly
+          ClassTypeName='PARAMETERJOURNAL'
+          KeyFields={object:rtf::FieldUIElmtSetting<
+              Name='LParameterJournal.journal_code'
+              DataTypeName='VARCHAR'
+              DataLength=10
+              UsedAsKey=true
+              KeyOrDisplayName='journal_code'
+              FinalDisplayFieldName='journal_code'
+            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+              Name='LParameterJournal.journal_code'
+              DataTypeName='VARCHAR'
+              DataLength=10
+              UsedAsDisplay=true
+              KeyOrDisplayName='journal_code'
+              FinalDisplayFieldName='journal_code'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LParameterJournal.description'
+              DataTypeName='VARCHAR'
+              DataLength=100
+              UsedAsDisplay=true
+              KeyOrDisplayName='description'
+              FinalDisplayFieldName='description'
+            >}Restrictions=''
+          FieldBaseName='LParameterJournal'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='SendToCIM'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['F=false'#13#10,
+            'T=true'#13#10]
+          GenerateCheckBoxForEnum=true
+        >, object:rtf::FieldUIElmtSetting<
+          Name='SendToAcc'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['F=false'#13#10,
+            'T=true'#13#10]
+          GenerateCheckBoxForEnum=true
+        >}Name='pData'
+      Width=433
+      Height=175
+      Bordered=true
+      UIPart=$UIPARTS['uip']
+      Controls={*object:rtf::DBEdit<
+          Name='kode_transaksi'
+          Top=20
+          Left=20
+          Color=-2147483624
+          ControlCaption='kode transaksi'
+        >, *object:rtf::DBEdit<
+          Name='deskripsi'
+          Top=48
+          Left=20
+          Color=-2147483624
+          ControlCaption='deskripsi'
+        >, *object:rtf::DBLookupEdit<
+          Name='LParameterJournal'
+          Top=76
+          Left=20
+          Enabled=false
+          Color=0
+          ControlCaption='lparameterjournal'
+          LookupField='LParameterJournal.description'
+          DisplayLookupField=true
+        >, *object:rtf::DBCheckBox<
+          Name='SendToCIM'
+          Top=104
+          Left=20
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='kirim ke CIM'
+        >, *object:rtf::DBCheckBox<
+          Name='SendToAcc'
+          Top=132
+          Left=20
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='kirim ke Accounting'
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Controls={object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=20
+          Color=0
+          ControlCaption=''
+          Caption='&Tutup'
+          Default=true
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >}ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::MultiSplit<
+      Name='MultiSplit'
+      Width=433
+      Height=217
+      Side1Containers={$CONTAINERS['pData']
+      }Side2Containers={$CONTAINERS['pButton']
+      }>}>

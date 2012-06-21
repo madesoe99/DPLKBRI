@@ -1,0 +1,47 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipTransaksi'
+      PClassName='TransaksiPremiManual'
+      LoadedFieldList='tgl_transaksi;keterangan;mutasi_premi;isDebet;LTransactionBatch.ID_TransactionBatch;LTransactionBatch.ID_TransactionBatch;LTransactionBatch.no_batch'
+      StoredFieldList='tgl_transaksi;keterangan;mutasi_premi;isDebet;LTransactionBatch'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='TB_BranchCode'
+          DataTypeName='varchar'
+          DataLength=5
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LTransactionBatch'
+          ClassTypeName='TransactionBatch'
+          FieldNames='ID_TransactionBatch;ID_TransactionBatch;no_batch'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipParameter'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='PRESISI_ANGKA_FLOAT'
+          DataTypeName='double'
+          DataLength=5
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+  }
+  OnGeneralSetData='FormGeneralSetData'
+  OnGeneralProcessData='FormGeneralProcessData'
+>

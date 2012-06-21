@@ -1,0 +1,87 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{FF6521AE-DCB8-457C-933C-35D88DB5B672}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rmn::Menu<
+  MenuItems={
+    object:rmn::MenuItem<
+      Caption='&Peragaan...'
+      OnClick='ActionUser1Click'
+      AllowedGroups='Admin;Root'
+      StringTag='um03_view_user'
+    >
+    , object:rmn::MenuItem<
+      Caption='-'
+      AllowedGroups='Admin;Root'
+    >
+    , object:rmn::MenuItem<
+      Caption='&Buat Pengguna Baru...'
+      OnClick='TambahUserClick'
+      AllowedGroups='Root;Admin'
+    >
+    , object:rmn::MenuItem<
+      Caption='&Koreksi Pengguna...'
+      OnClick='ActionUser1Click'
+      AllowedGroups='Admin;Root'
+      StringTag='um02_edit_user'
+    >
+    , object:rmn::MenuItem<
+      Caption='&Hapus Pengguna...'
+      OnClick='DeleteUserClick'
+      AllowedGroups='Root;Admin'
+    >
+    , object:rmn::MenuItem<
+      Caption='-'
+      AllowedGroups='Root;Admin'
+    >
+    , object:rmn::MenuItem<
+      Caption='&Tambah Kelompok Pengguna...'
+      OnClick='ActionUser1Click'
+      AllowedGroups='Admin;Root'
+      StringTag='um12_add_usertogroup'
+    >
+    , object:rmn::MenuItem<
+      Caption='-'
+      AllowedGroups='Admin;Root'
+    >
+    , object:rmn::MenuItem<
+      Caption='Hapus& Password...'
+      OnClick='ClearPasswordClick'
+      AllowedGroups='Admin;Root'
+    >
+    , object:rmn::MenuItem<
+      Caption='&Daftar Hak Akses Menu...'
+      OnClick='HakAksesMenuClick'
+      AllowedGroups='Admin;Root'
+    >
+    , object:rmn::MenuItem<
+      Caption='-'
+      AllowedGroups='Admin;Root'
+    >
+    , object:rmn::MenuItem<
+      Caption='&Lock Pengguna...'
+      OnClick='LockUserClick'
+      AllowedGroups='Admin;Root'
+    >
+    , object:rmn::MenuItem<
+      Caption='Lock Semua Pengguna...'
+      OnClick='LockAllUserClick'
+      AllowedGroups='Admin;Root'
+    >
+    , object:rmn::MenuItem<
+      Caption='&UnLock Pengguna...'
+      OnClick='UnLockUserClick'
+      AllowedGroups='Root;Admin'
+    >
+    , object:rmn::MenuItem<
+      Caption='UnLock Semua Pengguna...'
+      OnClick='UnLockAllUserClick'
+      AllowedGroups='Admin;Root'
+    >
+  }
+  MenuType=mtPopupMenu
+  DenyThenAllow=true
+>

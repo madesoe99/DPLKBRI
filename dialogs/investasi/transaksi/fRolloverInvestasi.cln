@@ -1,0 +1,623 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['DualSplitUD']
+  Caption='Register Rollover Investasi'
+  Left=50
+  Top=50
+  Width=760
+  Height=410
+  OnFormShow='FormShow'
+  UIParts={object:rtf::PClassUI<
+      Name='uipRolloverDeposito'
+      ClassTypeName='RolloverDeposito'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      AfterApplyRow='uipRolloverDepositoApplyRow'
+    >, object:rtf::PClassUI<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='id_investasi'
+          AccessOption=aoReadOnly
+          DataTypeName='INTEGER'
+          DataLength=0
+        >}Name='uipDeposito'
+      ClassTypeName='Deposito'
+      DataBinding=bmLink
+      Master=$UIPARTS['uipRolloverDeposito']
+      LinkName='LDeposito'
+      OnSetData='uipDepositoSetData'
+    >, object:rtf::PClassUI<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='nowDate'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=10
+        >}Name='uipParameter'
+      CreateInstanceOnNew=true
+    >}Containers={object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='id_transaksiinvestasi'
+          AccessOption=aoReadOnly
+          Hidden=true
+          DataTypeName='INTEGER'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tgl_transaksi'
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='mutasi_debet'
+          AccessOption=aoReadOnly
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='lakukan_kapitalisir'
+          Hidden=true
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['F=false'#13#10,
+            'T=true'#13#10]
+          GenerateCheckBoxForEnum=true
+        >, object:rtf::FieldUIElmtSetting<
+          Name='no_bilyet'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=15
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LPihakKetiga'
+          ClassTypeName='PihakKetiga'
+          KeyFields={object:rtf::FieldUIElmtSetting<
+              Name='LPihakKetiga.kode_pihak_ketiga'
+              DataTypeName='VARCHAR'
+              DataLength=8
+              UsedAsKey=true
+              KeyOrDisplayName='kode_pihak_ketiga'
+              FinalDisplayFieldName='kode_pihak_ketiga'
+            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+              Name='LPihakKetiga.kode_pihak_ketiga'
+              DataTypeName='VARCHAR'
+              DataLength=8
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_pihak_ketiga'
+              FinalDisplayFieldName='kode_pihak_ketiga'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LPihakKetiga.nama_pihak_ketiga'
+              DataTypeName='VARCHAR'
+              DataLength=100
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_pihak_ketiga'
+              FinalDisplayFieldName='nama_pihak_ketiga'
+            >}Restrictions=''
+          FieldBaseName='LPihakKetiga'
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LPaketInvestasi'
+          Hidden=true
+          ClassTypeName='PaketInvestasi'
+          KeyFields={object:rtf::FieldUIElmtSetting<
+              Name='LPaketInvestasi.kode_paket_investasi'
+              DataTypeName='VARCHAR'
+              DataLength=2
+              UsedAsKey=true
+              KeyOrDisplayName='kode_paket_investasi'
+              FinalDisplayFieldName='kode_paket_investasi'
+            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+              Name='LPaketInvestasi.kode_paket_investasi'
+              DataTypeName='VARCHAR'
+              DataLength=2
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_paket_investasi'
+              FinalDisplayFieldName='kode_paket_investasi'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LPaketInvestasi.nama_paket_investasi'
+              DataTypeName='VARCHAR'
+              DataLength=30
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_paket_investasi'
+              FinalDisplayFieldName='nama_paket_investasi'
+            >}Restrictions=''
+          FieldBaseName='LPaketInvestasi'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='rollover_counter'
+          ControlCaption='kapitalisir counter'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='treatmentPokok'
+          ReadOnlyControl=true
+          DataTypeName='varchar'
+          DataLength=1
+          EnumeratedValues=['A=ARO'#13#10,
+            'K=Konfirmasi'#13#10,
+            'P=Pindah Buku'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='kapitalisir_rollover'
+          ReadOnlyControl=true
+          DataTypeName='varchar'
+          DataLength=1
+          EnumeratedValues=['F=Pindah Buku'#13#10,
+            'T=Kapitalisir'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='no_rekening'
+          ReadOnlyControl=true
+          DataTypeName='varchar'
+          DataLength=20
+        >}Name='pData'
+      Width=385
+      Height=297
+      UIPart=$UIPARTS['uipRolloverDeposito']
+      Controls={*object:rtf::DBDateEdit<
+          Name='tgl_transaksi'
+          Top=48
+          Left=20
+          Color=0
+          ControlCaption='tgl transaksi'
+          LayoutOrder=6
+        >, *object:rtf::DBEdit<
+          Name='mutasi_debet'
+          Top=188
+          Left=20
+          Visible=false
+          Color=-2147483624
+          ControlCaption='nilai kapitalisir'
+          LayoutOrder=12
+        >, *object:rtf::DBLookupEdit<
+          Name='LPihakKetiga'
+          Top=20
+          Left=20
+          Enabled=false
+          Color=0
+          ControlCaption='pihak ketiga'
+          LookupField='LPihakKetiga.nama_pihak_ketiga'
+          DisplayLookupField=true
+        >, *object:rtf::DBEdit<
+          Name='rollover_counter'
+          Top=76
+          Left=20
+          Color=-2147483624
+          ControlCaption='rollover counter'
+          LayoutOrder=7
+          ReadOnly=true
+        >, *object:rtf::DBComboBox<
+          Name='treatmentPokok'
+          Top=104
+          Left=20
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='pokok saat jatuh tempo'
+          LayoutOrder=8
+        >, *object:rtf::DBComboBox<
+          Name='kapitalisir_rollover'
+          Top=132
+          Left=20
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='bagi hasil'
+          LayoutOrder=9
+        >, *object:rtf::DBEdit<
+          Name='no_rekening'
+          Top=160
+          Left=20
+          Width=120
+          Height=21
+          Color=-2147483624
+          ControlCaption='no rekening'
+          LayoutOrder=10
+          ReadOnly=true
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='terminal_id'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=15
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tgl_otorisasi'
+          AccessOption=aoReadOnly
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='user_id_auth'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='terminal_id_auth'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=15
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tgl_sistem'
+          Hidden=true
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='mode'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=20
+        >}Name='pRegister'
+      Width=353
+      Height=249
+      UIPart=$UIPARTS['uipRolloverDeposito']
+      Controls={*object:rtf::DBEdit<
+          Name='user_id'
+          Top=20
+          Left=20
+          Color=-2147483624
+          ControlCaption='user id'
+        >, *object:rtf::DBEdit<
+          Name='terminal_id'
+          Top=48
+          Left=20
+          Color=-2147483624
+          ControlCaption='terminal id'
+        >, *object:rtf::DBDateEdit<
+          Name='tgl_otorisasi'
+          Top=76
+          Left=20
+          Visible=false
+          Color=-2147483624
+          ControlCaption='tgl otorisasi'
+        >, *object:rtf::DBEdit<
+          Name='user_id_auth'
+          Top=104
+          Left=20
+          Visible=false
+          Color=-2147483624
+          ControlCaption='user id auth'
+        >, *object:rtf::DBEdit<
+          Name='terminal_id_auth'
+          Top=132
+          Left=20
+          Visible=false
+          Color=-2147483624
+          ControlCaption='terminal id auth'
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='DualSplitLR'
+      Width=240
+      Height=96
+      Container1=$CONTAINERS['DualSplitLeft']
+      Container2=$CONTAINERS['DualSplitUDRight']
+      SplitDirection=sdrSplitLeftRight
+    >, object:rtf::DualSplit<
+      Name='DualSplitUD'
+      Width=240
+      Height=96
+      Container1=$CONTAINERS['panel1']
+      Container2=$CONTAINERS['DualSplitLR']
+      InversedAlign=true
+    >, object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='akum_nominal'
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='akum_LR'
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='akum_piutangLR'
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='rollover_counter'
+          Hidden=true
+          DataTypeName='INTEGER'
+          DataLength=0
+        >}Name='pAkum'
+      Width=353
+      Height=110
+      UIPart=$UIPARTS['uipDeposito']
+      Controls={*object:rtf::DBEdit<
+          Name='akum_nominal'
+          Top=20
+          Left=20
+          Color=-2147483624
+          ControlCaption='nominal akhir'
+          ReadOnly=true
+        >, *object:rtf::DBEdit<
+          Name='akum_LR'
+          Top=48
+          Left=20
+          Color=-2147483624
+          ControlCaption='akum. bagi hasil'
+          ReadOnly=true
+        >, *object:rtf::DBEdit<
+          Name='akum_piutangLR'
+          Top=76
+          Left=20
+          Color=-2147483624
+          ControlCaption='piutang bagi hasil'
+          ReadOnly=true
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='DualSplitUDRight'
+      Width=240
+      Height=96
+      Container1=$CONTAINERS['pAkum']
+      Container2=$CONTAINERS['pRegister']
+    >, object:rtf::Panel<
+      Elements={object:rtf::LinkUIElmtSetting<
+          Name='LDeposito'
+          RequiredOption=roAlwaysRequired
+          ClassTypeName='Deposito'
+          KeyFields={object:rtf::FieldUIElmtSetting<
+              Name='LDeposito.id_investasi'
+              DataTypeName='INTEGER'
+              DataLength=0
+              UsedAsKey=true
+              KeyOrDisplayName='id_investasi'
+              FinalDisplayFieldName='id_investasi'
+            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+              Name='LDeposito.no_bilyet'
+              DataTypeName='VARCHAR'
+              DataLength=15
+              UsedAsDisplay=true
+              KeyOrDisplayName='no_bilyet'
+              FinalDisplayFieldName='no_bilyet'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LDeposito.tgl_buka'
+              DataTypeName='TIMESTAMP'
+              DataLength=0
+              UsedAsDisplay=true
+              KeyOrDisplayName='tgl_buka'
+              FinalDisplayFieldName='tgl_buka'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LDeposito.id_investasi'
+              DataTypeName='INTEGER'
+              DataLength=0
+              UsedAsDisplay=true
+              KeyOrDisplayName='id_investasi'
+              FinalDisplayFieldName='id_investasi'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LDeposito.LPihakKetiga.nama_pihak_ketiga'
+              DataTypeName='VARCHAR'
+              DataLength=100
+              UsedAsDisplay=true
+              KeyOrDisplayName='LPihakKetiga.nama_pihak_ketiga'
+              FinalDisplayFieldName='nama_pihak_ketiga'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LDeposito.LRincianPaketInvestasi.LPaketInvestasi.Nama_paket_investasi'
+              DataTypeName='VARCHAR'
+              DataLength=30
+              UsedAsDisplay=true
+              KeyOrDisplayName='LRincianPaketInvestasi.LPaketInvestasi.Nama_paket_investasi'
+              FinalDisplayFieldName='nama_paket_investasi'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LDeposito.LRincianPaketInvestasi.LJenisInvestasi.nama_jns_investasi'
+              DataTypeName='VARCHAR'
+              DataLength=50
+              UsedAsDisplay=true
+              KeyOrDisplayName='LRincianPaketInvestasi.LJenisInvestasi.nama_jns_investasi'
+              FinalDisplayFieldName='nama_jns_investasi'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LDeposito.akum_nominal'
+              DataTypeName='DOUBLE'
+              DataLength=0
+              UsedAsDisplay=true
+              KeyOrDisplayName='akum_nominal'
+              FinalDisplayFieldName='akum_nominal'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LDeposito.akum_piutangLR'
+              DataTypeName='DOUBLE'
+              DataLength=0
+              UsedAsDisplay=true
+              KeyOrDisplayName='akum_piutangLR'
+              FinalDisplayFieldName='akum_piutangLR'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LDeposito.akum_LR'
+              DataTypeName='DOUBLE'
+              DataLength=0
+              UsedAsDisplay=true
+              KeyOrDisplayName='akum_LR'
+              FinalDisplayFieldName='akum_LR'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LDeposito.kode_pihak_ketiga'
+              DataTypeName='VARCHAR'
+              DataLength=8
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_pihak_ketiga'
+              FinalDisplayFieldName='kode_pihak_ketiga'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LDeposito.kode_paket_investasi'
+              DataTypeName='VARCHAR'
+              DataLength=2
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_paket_investasi'
+              FinalDisplayFieldName='kode_paket_investasi'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LDeposito.kode_jns_investasi'
+              DataTypeName='VARCHAR'
+              DataLength=3
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_jns_investasi'
+              FinalDisplayFieldName='kode_jns_investasi'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LDeposito.rollover_counter'
+              DataTypeName='INTEGER'
+              DataLength=0
+              UsedAsDisplay=true
+              KeyOrDisplayName='rollover_counter'
+              FinalDisplayFieldName='rollover_counter'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LDeposito.treatmentPokok'
+              DataTypeName='VARCHAR'
+              DataLength=1
+              UsedAsDisplay=true
+              KeyOrDisplayName='treatmentPokok'
+              FinalDisplayFieldName='treatmentPokok'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LDeposito.kapitalisir_rollover'
+              DataTypeName='VARCHAR'
+              DataLength=1
+              UsedAsDisplay=true
+              KeyOrDisplayName='kapitalisir_rollover'
+              FinalDisplayFieldName='kapitalisir_rollover'
+            >}Restrictions=''
+          OQLText=['select from Deposito'#13#10,
+            '['#13#10,
+            '  (kode_jns_investasi = ''A'')'#13#10,
+            '  and (status = ''T'')'#13#10,
+            ']'#13#10,
+            '('#13#10,
+            '  no_bilyet,'#13#10,
+            '  tgl_buka,'#13#10,
+            '  status$ as status,'#13#10,
+            '  kode_pihak_ketiga as Kode_Pihak_Ketiga,'#13#10,
+            '  LPihakKetiga.nama_pihak_ketiga as Nama_Pihak_Ketiga,'#13#10,
+            '  LRincianPaketInvestasi.LPaketInvestasi.kode_paket_investasi as Kode_Paket_Investasi,'#13#10,
+            '  LRincianPaketInvestasi.LPaketInvestasi.Nama_paket_investasi as Nama_Paket_Investasi,'#13#10,
+            '  LRincianPaketInvestasi.LJenisInvestasi.kode_jns_investasi as Kode_Jns_Investasi,'#13#10,
+            '  LRincianPaketInvestasi.LJenisInvestasi.nama_jns_investasi as Nama_Jns_Investasi,'#13#10,
+            '  nominal_pembukaan,'#13#10,
+            '  akum_nominal,'#13#10,
+            '  akum_piutangLR,'#13#10,
+            '  akum_LR,'#13#10,
+            '  rollover_counter,'#13#10,
+            '  treatmentPokok,'#13#10,
+            '  kapitalisir_rollover,'#13#10,
+            '  tgl_tutup,'#13#10,
+            '  tgl_otorisasi,'#13#10,
+            '  user_id,'#13#10,
+            '  user_id_auth,'#13#10,
+            '  terminal_id,'#13#10,
+            '  terminal_id_auth,'#13#10,
+            '  id_investasi,'#13#10,
+            '  self'#13#10,
+            ') then order by no_bilyet;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LDeposito'
+        >}Name='pSelector'
+      Width=385
+      Height=50
+      UIPart=$UIPARTS['uipRolloverDeposito']
+      Controls={*object:rtf::DBLookupEdit<
+          Name='LDeposito'
+          Top=20
+          Left=20
+          Width=110
+          Height=21
+          ControlCaption='deposito'
+          FieldName='LDeposito.no_bilyet'
+          DisplayFormat=''
+          LookupField='LDeposito.tgl_buka'
+          DisplayLookupField=true
+          OnAfterLookup='LDepositoAfterLookup'
+          DisplayLookupColor=-2147483624
+          DisplayLookupWidth=112
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='DualSplitLeft'
+      Width=400
+      Height=96
+      Container1=$CONTAINERS['pSelector']
+      Container2=$CONTAINERS['pData']
+    >, object:rtf::Panel<
+      Name='pPrint'
+      Width=113
+      Height=40
+      Controls={object:rtf::Button<
+          Name='btnPrint'
+          Layout=clNewLine
+          Top=8
+          Left=20
+          Visible=false
+          Color=0
+          ControlCaption=''
+          Caption='&Cetak'
+          OnClick='btnPrintClick'
+        >}ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Name='panel1'
+      Width=800
+      Height=40
+      Bordered=true
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      SubContainer=$CONTAINERS['dualsplit1']
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=400
+      Height=40
+      Controls={object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=20
+          Color=0
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          OnClick='btnOKClick'
+        >, object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=99
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          OnClick='btnCancelClick'
+        >, object:rtf::Button<
+          Name='btnClose'
+          Layout=clNextSide
+          Top=8
+          Left=178
+          Visible=false
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          ExitAction=eaQuitCancel
+        >}ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=700
+      Height=40
+      Container1=$CONTAINERS['pPrint']
+      Container2=$CONTAINERS['pButton']
+      SplitDirection=sdrSplitLeftRight
+      InversedAlign=true
+    >}>

@@ -1,0 +1,49 @@
+PackageDef()
+<s20,Name='TitipanPremi' 
+s20,Description='Impor massal Titipan Premi' 
+s20,Mode='NORMAL' 
+s20,LastModifiedUser='root' 
+d,LastModifiedTime='12/29/1899 00:00:00'
+>
+,
+SourceDef()
+<s20,Description='Template source untuk impor titipan premi' 
+s20,Type='MSEXCEL' 
+i,FirstDataRow=11
+s20,SheetName='Sheet1' 
+i,ControlColumn=1
+>
+,
+SourceFieldDefs()
+<s20,Name='NoPeserta' 
+s20,Type='STRING' 
+i,Length=0
+i,Index=2
+>
+<'Keterangan'  'STRING'  0 4>
+<'IDTransactionBatch'  'INTEGER'  0 1>
+<'MutasiPremi'  'FLOAT'  0 3>
+<'IsPindahBuku'  'STRING'  0 5>
+<'TipeRekeningPindahBuku'  'STRING'  0 6>
+<'RekeningPindahBuku'  'STRING'  0 7>
+<'ReferensiCoreBanking'  'STRING'  0 8>,
+TransformationDef()
+<s20,Description='Template target untuk impor Titipan Premi' 
+s20,TargetClassName='TitipanPremi' 
+s20,AfterApplyRowModule='importmassal.Transaksi' 
+s20,AfterApplyRowFunctionName='ProcessingImport' 
+>
+,
+TransItemDefs()
+<s20,Name='no_peserta' 
+s20,LookupClass='RekeningDPLK' 
+s20,LookupField='no_peserta' 
+s20,SourceFieldName='NoPeserta' 
+>
+<'ID_TransactionBatch'  'TransactionBatch'  'ID_TransactionBatch'  'IDTransactionBatch' >
+<'mutasi_premi'  ''  ''  'MutasiPremi' >
+<'keterangan'  ''  ''  'Keterangan' >
+<'isPindahBuku'  ''  ''  'IsPindahBuku' >
+<'Tipe_Rekening_Pindah_Buku'  ''  ''  'TipeRekeningPindahBuku' >
+<'Rekening_Pindah_Buku'  ''  ''  'RekeningPindahBuku' >
+<'Ref_CoreBanking'  ''  ''  'ReferensiCoreBanking' >..

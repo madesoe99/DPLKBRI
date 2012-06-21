@@ -1,0 +1,7 @@
+[menu]
+DenyThenAllow=0
+AllowedUsers=
+AllowedGroups='Admin;Root'
+MenuID=User Management
+MenuTitle=Manajemen Pengguna
+ImageIndex=2

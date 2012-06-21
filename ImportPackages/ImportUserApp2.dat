@@ -1,0 +1,43 @@
+PackageDef()
+<s20,Name='ImportUserApp2' 
+s20,Description='Import userapp secara massal separator (contoh)' 
+s20,Mode='NORMAL' 
+s20,LastModifiedUser='root' 
+d,LastModifiedTime='12/29/1899 00:00:00'
+>
+,
+SourceDef()
+<s20,Description='Import userapp massal' 
+s20,Type='SEPARATOR' 
+i,FirstDataRow=2
+s20,Separator=';' 
+>
+,
+SourceFieldDefs()
+<s20,Name='nomor' 
+s20,Type='INTEGER' 
+i,Length=3
+i,Index=1
+>
+<'userid'  'STRING'  20 2>
+<'nolimit'  'STRING'  1 3>
+<'desc'  'STRING'  50 4>
+<'username'  'STRING'  30 5>
+<'branch'  'STRING'  3 6>,
+TransformationDef()
+<s20,Description='-' 
+s20,TargetClassName='UserApp' 
+s20,AfterApplyRowModule='test.import.userman' 
+s20,AfterApplyRowFunctionName='userappfunc' 
+>
+,
+TransItemDefs()
+<s20,Name='user_id' 
+s20,LookupClass='' 
+s20,LookupField='' 
+s20,SourceFieldName='userid' 
+>
+<'NoLimitLocation'  ''  ''  'nolimit' >
+<'Description'  ''  ''  'desc' >
+<'UserName'  ''  ''  'username' >
+<'branch_code'  'BranchLocation'  'branch_code'  'branch' >..

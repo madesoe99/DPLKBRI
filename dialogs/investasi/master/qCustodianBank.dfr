@@ -1,0 +1,80 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['qCustodianBank']
+  Caption='Daftar Pihak Ketiga'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  Containers={object:rtf::Query<
+      Name='qCustodianBank'
+      Width=800
+      Height=600
+      ContextMenuName='popupmenus/investasi/master/qCustodianBank'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from CustodianBank'#13#10,
+        '('#13#10,
+        '  BankCode,'#13#10,
+        '  BankName,'#13#10,
+        '  Jenis $,'#13#10,
+        '  Kantor $,'#13#10,
+        '  alamat_bank,'#13#10,
+        ' no_telp,'#13#10,
+        ' no_fax,'#13#10,
+        '  self'#13#10,
+        ') then order by BankCode;']
+      DirectDisplay=true
+      WindowSize=20
+      Columns={object:rtf::QueryColumn<
+          FieldName='CustodianBank.BankCode'
+          Width=60
+          Caption='Kode Bank'
+        >, object:rtf::QueryColumn<
+          FieldName='CustodianBank.BankName'
+          Width=180
+          Caption='Nama Bank'
+        >, object:rtf::QueryColumn<
+          FieldName='CustodianBank.Jenis'
+          Width=40
+          Caption='Jenis'
+          Hidden=true
+        >, object:rtf::QueryColumn<
+          FieldName='CustodianBank.Alamat_bank'
+          Width=100
+          Caption='Alamat Bank'
+        >, object:rtf::QueryColumn<
+          FieldName='CustodianBank.Kantor'
+          Width=100
+          Caption='Kantor'
+          Hidden=true
+        >, object:rtf::QueryColumn<
+          FieldName='CustodianBank.no_Telp'
+          Width=80
+          Caption='Nomor Telepon'
+        >, object:rtf::QueryColumn<
+          FieldName='CustodianBank.No_Fax'
+          Width=80
+          Caption='Nomor Fax'
+        >}EnableColumns=true
+    >}>

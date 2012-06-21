@@ -1,0 +1,71 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipUserInfo'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='BranchCode'
+          DataTypeName='varchar'
+          DataLength=5
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='isBackOffice'
+          DataTypeName='integer'
+          DataLength=20
+        >
+      }
+      Mode=imSingleRow
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipFilter'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='code'
+          DataTypeName='integer'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LBranch.branch_code'
+          DataTypeName='VARCHAR'
+          DataLength=5
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LBranch.branch_code'
+          DataTypeName='VARCHAR'
+          DataLength=5
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LBranch.BranchName'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='AwalTanggal'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='AkhirTanggal'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LBranch'
+          ClassTypeName='BranchLocation'
+          FieldNames='branch_code;branch_code;BranchName'
+        >
+      }
+      Mode=imSingleRow
+    >
+  }
+  OnGeneralSetData='FormGeneralSetData'
+>

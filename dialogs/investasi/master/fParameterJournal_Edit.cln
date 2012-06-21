@@ -1,0 +1,148 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['MultiSplit']
+  Caption='Koreksi Parameter Journal'
+  Left=50
+  Top=50
+  Width=521
+  Height=361
+  UIParts={object:rtf::PClassUI<
+      Name='uip'
+      ClassTypeName='ParameterJournal'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >, object:rtf::PClassUI<
+      Name='uipList'
+      ClassTypeName='PARAMETERJOURNALITEM'
+      DataBinding=bmList
+      Master=$UIPARTS['uip']
+      ListName='Ls_PARAMETERJOURNALITEM'
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      DeleteInstanceOnDel=true
+      SetMasterDetailRelationship=true
+    >}Containers={object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='journal_code'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=10
+        >, object:rtf::FieldUIElmtSetting<
+          Name='description'
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >}Name='pData'
+      Width=377
+      Height=90
+      Bordered=true
+      UIPart=$UIPARTS['uip']
+      Controls={*object:rtf::DBEdit<
+          Name='journal_code'
+          Top=20
+          Left=20
+          Color=-2147483624
+          ControlCaption='Journal Code'
+        >, *object:rtf::DBEdit<
+          Name='description'
+          Top=48
+          Left=20
+          Color=0
+          ControlCaption='Description'
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=44
+      Controls={object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=20
+          Color=0
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          DefaultAction=daProcessAllUI
+          ExitAction=eaQuitOK
+          OnClick='btnOKClick'
+        >, object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=99
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >}ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::MultiSplit<
+      Name='MultiSplit'
+      Width=521
+      Height=361
+      Side1Containers={$CONTAINERS['pData']
+      }Side2Containers={$CONTAINERS['pButton']
+      }SpaceContainer=$CONTAINERS['grid1']
+    >, object:rtf::Grid<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='account_code'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='mnemonic_code'
+          DataTypeName='VARCHAR'
+          DataLength=3
+        >, object:rtf::FieldUIElmtSetting<
+          Name='description'
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >}Name='grid1'
+      Width=385
+      Height=225
+      UIPart=$UIPARTS['uipList']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Parameter Journal Item'
+      Columns={*object:rtf::GridColumn<
+          Name='account_code'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='account_code'
+          DisplayFormat=''
+          TitleCaption='Kode account'
+          Width=100
+        >, *object:rtf::GridColumn<
+          Name='mnemonic_code'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='mnemonic_code'
+          DisplayFormat=''
+          TitleCaption='Kode Mnemonic'
+          Width=80
+        >, *object:rtf::GridColumn<
+          Name='description'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='description'
+          DisplayFormat=''
+          TitleCaption='Keterangan'
+          Width=250
+        >}>}>

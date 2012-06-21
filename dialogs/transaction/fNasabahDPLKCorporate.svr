@@ -1,0 +1,46 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipNasabahDPLKCorporate'
+      PClassName='NasabahDPLKCorporate'
+      LoadedFieldList='user_id;terminal_id;auth_user_id;last_terminal_id;last_update;no_referensi;kode_nasabah_corporate;nama_perusahaan;NPWP;LJenisUsaha.kode_jenis_usaha;LJenisUsaha.kode_jenis_usaha;LJenisUsaha.nama_jenis_usaha;LJenisUsaha.risk_flag;LKepemilikan.kode_pemilikan;LKepemilikan.kode_pemilikan;LKepemilikan.keterangan;tgl_bayar_iuran;biaya_daftar_anggota;tgl_bergabung;LNasabahDPLKHolding.kode_nasabah_corporate;LNasabahDPLKHolding.kode_nasabah_corporate;LNasabahDPLKHolding.nama_perusahaan;LNegara.kode_negara;LNegara.kode_negara;LNegara.nama_negara;LNegara.risk_flag;alamat_kantor_jalan;alamat_kantor_kelurahan;alamat_kantor_kecamatan;alamat_kantor_kota;alamat_kantor_kode_pos;alamat_kantor_telepon;user_id;terminal_id;alamat_kantor_telepon2;alamat_kantor_fax;alamat_kantor_propinsi;no_perjanjian;keterangan;keterangan1;keterangan2;keterangan3;keterangan4'
+      StoredFieldList='user_id;terminal_id;auth_user_id;last_terminal_id;last_update;no_referensi;kode_nasabah_corporate;nama_perusahaan;NPWP;LJenisUsaha;LKepemilikan;tgl_bayar_iuran;biaya_daftar_anggota;alamat_kantor_jalan;alamat_kantor_kelurahan;alamat_kantor_kecamatan;alamat_kantor_kota;alamat_kantor_kode_pos;alamat_kantor_telepon;user_id;terminal_id;alamat_kantor_telepon2;alamat_kantor_fax;alamat_kantor_propinsi;no_perjanjian;keterangan;keterangan1;keterangan2;keterangan3;keterangan4'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='mode'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LJenisUsaha'
+          ClassTypeName='JenisUsaha'
+          FieldNames='kode_jenis_usaha;kode_jenis_usaha;nama_jenis_usaha;risk_flag'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LKepemilikan'
+          ClassTypeName='Kepemilikan'
+          FieldNames='kode_pemilikan;kode_pemilikan;keterangan'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLKHolding'
+          ClassTypeName='NasabahDPLKCorporate'
+          FieldNames='kode_nasabah_corporate;kode_nasabah_corporate;nama_perusahaan'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LNegara'
+          ClassTypeName='Negara'
+          FieldNames='kode_negara;kode_negara;nama_negara;risk_flag'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+      AfterApplyRow='uipNasabahDPLKCorporateApplyRow'
+    >
+  }
+>

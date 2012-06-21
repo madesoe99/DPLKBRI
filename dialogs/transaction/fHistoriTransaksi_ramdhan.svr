@@ -1,0 +1,34 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipNasabahDPLK'
+      PClassName='NasabahDPLK'
+      LoadedFieldList='no_peserta;nama_lengkap;tempat_lahir;tanggal_lahir;pekerjaan'
+      Mode=imSingleRow
+    >, object:rpclass::TPClassUIDef<
+      Name='uipRekeningDPLK'
+      MasterUIName='uipNasabahDPLK'
+      ListName='Ls_RekeningDPLK'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='tanggal_filter'
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='tanggal_filter_akhir'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+      }
+      SetMasterDetailRelationship=true
+    >
+  }
+  OnSetDataEx='setDataEx'
+>

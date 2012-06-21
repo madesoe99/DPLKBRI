@@ -1,0 +1,56 @@
+PackageDef()
+<s20,Name='ImportDeposito' 
+s20,Description='Import Data Deposito' 
+s20,Mode='NORMAL' 
+s20,LastModifiedUser='ade herman' 
+d,LastModifiedTime*
+>
+,
+SourceDef()
+<s20,Description='Import Data Deposito' 
+s20,Type='MSEXCEL' 
+i,FirstDataRow=11
+s20,SheetName='Sheet1' 
+i,ControlColumn=2
+>
+,
+SourceFieldDefs()
+<s20,Name='Id_Investasi' 
+s20,Type='INTEGER' 
+i,Length=0
+i,Index=1
+>
+<'Rekening_Deposito'  'STRING'  0 2>
+<'Nomor_Bilyet'  'STRING'  0 3>
+<'Nominal_Akumulasi'  'FLOAT'  0 4>
+<'akumulasi_LabaRugi'  'FLOAT'  0 5>
+<'status'  'STRING'  0 6>
+<'tanggal_buka'  'DATETIME'  0 7>
+<'tanggal_tutup'  'DATETIME'  0 8>
+<'Nominal_Awal'  'FLOAT'  0 9>
+<'KodePihakKetiga'  'STRING'  0 10>
+<'jangka_waktu'  'STRING'  0 11>
+<'tgl_Jatuh_Tempo'  'DATETIME'  0 12>
+<'ARO'  'STRING'  0 13>
+<'jenis_bagi_hasil'  'STRING'  0 14>
+<'Nisbah'  'FLOAT'  0 15>
+<'pokok_saat_jatuh_tempo'  'STRING'  0 16>
+<'JumlahOnCall'  'INTEGER'  0 17>
+<'rekening_bagi_hasil'  'STRING'  0 18>
+<'Proporsi_Paket_A'  'STRING'  0 19>
+<'Proporsi_Paket_B'  'STRING'  0 20>
+<'Proporsi_Paket_C'  'STRING'  0 21>,
+TransformationDef()
+<s20,Description='Import Data Deposito' 
+s20,TargetClassName='Deposito' 
+s20,AfterApplyRowModule='importmassal.Investasi' 
+s20,AfterApplyRowFunctionName='ProcessingImport' 
+>
+,
+TransItemDefs()
+<*s20,Name*
+s20,LookupClass*
+s20,LookupField*
+s20,SourceFieldName*
+>
+..

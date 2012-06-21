@@ -1,0 +1,138 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['qInvestasi']
+  Caption='Daftar Investasi'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  Containers={
+    object:rtf::Query<
+      Name='qInvestasi'
+      Width=240
+      Height=40
+      ContextMenuName='popupmenus/investasi/transaksi/qInvestasi'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from Investasi'#13#10,
+        '('#13#10,
+        '  no_bilyet,'#13#10,
+        '  status$ as status,'#13#10,
+        '  LPihakKetiga.nama_pihak_ketiga as Nama_Pihak_Ketiga,'#13#10,
+        '  LRincianPaketInvestasi.LPaketInvestasi.nama_paket_investasi as Nama_Paket_Investasi,'#13#10,
+        '  LRincianPaketInvestasi.LJenisInvestasi.nama_jns_investasi as Nama_Jns_Investasi,'#13#10,
+        '  nominal_pembukaan,'#13#10,
+        '  akum_nominal,'#13#10,
+        '  akum_piutangLR,'#13#10,
+        '  akum_LR,'#13#10,
+        '  tgl_buka,'#13#10,
+        '  tgl_tutup,'#13#10,
+        '  tgl_otorisasi,'#13#10,
+        '  user_id,'#13#10,
+        '  user_id_auth,'#13#10,
+        '  terminal_id,'#13#10,
+        '  terminal_id_auth,'#13#10,
+        '  id_investasi as ID,'#13#10,
+        '  self'#13#10,
+        ') then order by no_bilyet;']
+      DirectDisplay=true
+      Columns={
+        object:rtf::QueryColumn<
+          FieldName='Investasi.no_bilyet'
+          Width=100
+          Caption='Nomor Bilyet'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='Investasi.status'
+          Width=50
+          Caption='Status'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='Investasi.Nama_Pihak_Ketiga'
+          Caption='Nama Pihak Ketiga'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='Investasi.Nama_Paket_Investasi'
+          Caption='Nama Paket Investasi'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='Investasi.Nama_Jns_Investasi'
+          Caption='Nama Jenis Investasi'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='Investasi.nominal_pembukaan'
+          Caption='Nominal Pembukaan'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='Investasi.akum_nominal'
+          Caption='Akumulasi Nominal'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='Investasi.akum_piutangLR'
+          Caption='Akumulasi Piutang LR'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='Investasi.akum_LR'
+          Caption='Akumulasi LR'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='Investasi.tgl_buka'
+          Width=130
+          Caption='Tanggal Buka'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='Investasi.tgl_tutup'
+          Width=130
+          Caption='Tanggal Tutup'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='Investasi.tgl_otorisasi'
+          Width=130
+          Caption='Tanggal Otorisasi'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='Investasi.user_id'
+          Width=100
+          Caption='ID Pengguna'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='Investasi.user_id_auth'
+          Width=100
+          Caption='Pengotorisasi'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='Investasi.terminal_id'
+          Width=100
+          Caption='ID Terminal'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='Investasi.terminal_id_auth'
+          Width=100
+          Caption='Terminal Pengotor'
+        >
+      }
+      EnableColumns=true
+    >
+  }
+>

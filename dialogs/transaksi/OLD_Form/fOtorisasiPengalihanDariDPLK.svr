@@ -1,0 +1,45 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipTransaksi'
+      PClassName='PengalihanDariDPLKLain'
+      LoadedFieldList='kode_jenis_transaksi;user_id;terminal_id;tgl_sistem;user_id_auth;terminal_id_auth;tgl_otorisasi;isCommitted;tgl_transaksi;keterangan;no_dplk_lain;saldo_iuran_pk;saldo_iuran_pst;saldo_pengembangan;saldo_peralihan;no_peserta;ID_Transaksi;LTransactionBatch.ID_TransactionBatch;LTransactionBatch.ID_TransactionBatch;LTransactionBatch.no_batch;LTransactionBatch.branch_code;LLDP.kode_dp;LLDP.kode_dp;LLDP.nama_dp;LLDP.jenis_dp'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='TB_BranchCode'
+          DataTypeName='varchar'
+          DataLength=5
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LTransactionBatch'
+          ClassTypeName='TransactionBatch'
+          FieldNames='ID_TransactionBatch;ID_TransactionBatch;no_batch;branch_code'
+        >
+        , object:rpclass::TCustomLoadedLink<
+          Name='LLDP'
+          ClassTypeName='LDP'
+          FieldNames='kode_dp;kode_dp;nama_dp;jenis_dp'
+        >
+      }
+      Mode=imSingleRow
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipNasabah'
+      PClassName='NasabahDPLK'
+      LoadedFieldList='nama_lengkap;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos'
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+  }
+  OnGeneralProcessData='FormGeneralProcessData'
+  OnEndSetData='FormEndSetData'
+>

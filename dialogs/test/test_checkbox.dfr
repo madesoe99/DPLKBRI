@@ -1,0 +1,59 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['grid1']
+  Left=50
+  Top=50
+  Width=553
+  Height=433
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipart1'
+      MultiLine=true
+    >
+  }
+  Containers={
+    object:rtf::Grid<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='Pilih'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='varchar'
+          DataLength=1
+          EnumeratedValues=['F=False'#13#10,
+            'T=True'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='Menu'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='varchar'
+          DataLength=50
+        >
+      }
+      Name='grid1'
+      Width=553
+      Height=433
+      UIPart=$UIPARTS['uipart1']
+      Columns={
+
+      }
+    >
+  }
+>

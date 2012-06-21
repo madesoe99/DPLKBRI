@@ -1,0 +1,81 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipTransaksi'
+      PClassName='PengalihanDariDPLKLain'
+      LoadedFieldList='tgl_transaksi;LTransactionBatch.ID_TransactionBatch;LTransactionBatch.ID_TransactionBatch;LTransactionBatch.no_batch;saldo_iuran_pk;saldo_iuran_pst;saldo_pengembangan;saldo_peralihan;keterangan;LLDP.kode_dp;LLDP.kode_dp;LLDP.nama_dp'
+      StoredFieldList='tgl_transaksi;saldo_iuran_pk;saldo_iuran_pst;saldo_pengembangan;saldo_peralihan;keterangan;LLDP'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='TB_BranchCode'
+          DataTypeName='varchar'
+          DataLength=5
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LTransactionBatch'
+          ClassTypeName='TransactionBatch'
+          FieldNames='ID_TransactionBatch;ID_TransactionBatch;no_batch'
+        >
+        , object:rpclass::TCustomLoadedLink<
+          Name='LLDP'
+          ClassTypeName='LDP'
+          FieldNames='kode_dp;kode_dp;nama_dp'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipNasabah'
+      PClassName='NasabahDPLK'
+      LoadedFieldList='no_peserta;nama_lengkap;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;LRekeningDPLK.no_peserta;LRekeningDPLK.akum_dana_iuran_pk;LRekeningDPLK.akum_dana_iuran_pst;LRekeningDPLK.akum_dana_pengembangan;LRekeningDPLK.akum_dana_peralihan;LRekeningDPLK.LPaketInvestasi.kode_paket_investasi;LRekeningDPLK.LPaketInvestasi.nama_paket_investasi'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='DanaPk'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='DanaPst'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='DanaPengembangan'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='DanaPeralihan'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='PaketInvestasi'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LRekeningDPLK'
+          ClassTypeName='RekeningDPLK'
+          FieldNames='no_peserta;akum_dana_iuran_pk;akum_dana_iuran_pst;akum_dana_pengembangan;akum_dana_peralihan;LPaketInvestasi.kode_paket_investasi;LPaketInvestasi.nama_paket_investasi'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+  }
+  OnGeneralProcessData='FormGeneralProcessData'
+  OnEndSetData='FormEndSetData'
+>

@@ -1,0 +1,80 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{FF6521AE-DCB8-457C-933C-35D88DB5B672}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rmn::Menu<
+  MenuItems={
+    object:rmn::MenuItem<
+      Name='mnuNew'
+      Caption='Registrasi Peserta dan Rekening Baru...'
+      OnClick='mnuNewClick'
+      AllowedGroups='BOD'
+      StringTag='fRegistrasi_New'
+    >, object:rmn::MenuItem<
+      Name='mnuNewRekInv'
+      Caption='Registrasi Rekening Baru dari Peserta Terdaftar...'
+      OnClick='mnuNewClick'
+      AllowedGroups='BOD'
+      StringTag='fRegistrasi_New'
+      NumberTag=1
+    >, object:rmn::MenuItem<
+      Name='mnuEdit'
+      Caption='Koreksi Data Peserta'
+      MenuItems={
+        object:rmn::MenuItem<
+          Name='mnuEditAhliWaris'
+          Caption='Koreksi Ahli Waris...'
+          OnClick='displayWithDataSpecific'
+          AllowedGroups='BOD;CS;PIC'
+          StringTag='W'
+        >, object:rmn::MenuItem<
+          Name='mnuEditUbahAlamat'
+          Caption='Koreksi Alamat...'
+          OnClick='displayWithDataSpecific'
+          AllowedGroups='BOD;CS;PIC'
+          StringTag='A'
+        >, object:rmn::MenuItem<
+          Name='mnuEditDataAPUPPT'
+          Caption='Koreksi Data APU-PPT...'
+          OnClick='displayWithDataSpecific'
+          AllowedGroups='BOD;CS;PIC'
+          StringTag='Y'
+        >, object:rmn::MenuItem<
+          Name='mnuEditStatusKerja'
+          Caption='PHK dari / Pendaftaran ke Perusahaan...'
+          OnClick='displayWithDataSpecific'
+          StringTag='K'
+        >, object:rmn::MenuItem<
+          Caption='-'
+          AllowedGroups='BOD'
+        >, object:rmn::MenuItem<
+          Name='mnuEdit'
+          Caption='Koreksi Data Lain-lain...'
+          OnClick='displayWithDataSpecific'
+          AllowedGroups='BOD;CS;PIC'
+          StringTag='Z'
+        >
+      }
+      AllowedGroups='BOD;CS;PIC'
+    >, object:rmn::MenuItem<
+      Name='mnuView'
+      Caption='Lihat Detil Data Peserta'
+      OnClick='displayWithData'
+      AllowedGroups='MRKT;BOD;CC;CS;SPV'
+      StringTag='view'
+    >, object:rmn::MenuItem<
+      Caption='-'
+    >, object:rmn::MenuItem<
+      Name='mnuHistori'
+      Caption='Lihat Riwayat Perubahan CIF'
+      OnClick='mnuHistoriClick'
+      AllowedGroups='MRKT;BOD;SPV;CS;PIC'
+      StringTag='fHistoriNasabahRekening'
+    >
+  }
+  MenuType=mtPopupMenu
+  AllowedGroups='MRKT;BOD;CC;CS'
+>

@@ -1,0 +1,66 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rpclass::TPClassUIDefList<
+  UIDefs={object:rpclass::TPClassUIDef<
+      Name='uipInput'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='tanggal_registrasi'
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='no_peserta'
+          DataTypeName='varchar'
+          DataLength=11
+        >, object:rpclass::TCustomLoadedField<
+          Name='iuran_perbulan'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='premi_perbulan'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='manfaat_pensiun'
+          DataTypeName='double'
+          DataLength=20
+        >}Mode=imSingleRow
+    >, object:rpclass::TPClassUIDef<
+      Name='uipOutput'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='usia_masuk'
+          DataTypeName='varchar'
+          DataLength=2
+        >, object:rpclass::TCustomLoadedField<
+          Name='rate_premi'
+          DataTypeName='double'
+          DataLength=3
+        >, object:rpclass::TCustomLoadedField<
+          Name='premi_perbulan'
+          DataTypeName='double'
+          DataLength=10
+        >, object:rpclass::TCustomLoadedField<
+          Name='manfaat_pensiun'
+          DataTypeName='double'
+          DataLength=10
+        >, object:rpclass::TCustomLoadedField<
+          Name='saldo_awal'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='tingkat_investasi'
+          DataTypeName='double'
+          DataLength=10
+        >, object:rpclass::TCustomLoadedField<
+          Name='nama_peserta'
+          DataTypeName='varchar'
+          DataLength=30
+        >, object:rpclass::TCustomLoadedField<
+          Name='usia_pensiun'
+          DataTypeName='varchar'
+          DataLength=4
+        >}Mode=imSingleRow
+    >}>

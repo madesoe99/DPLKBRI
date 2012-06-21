@@ -1,0 +1,64 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rpclass::TPClassUIDefList<
+  UIDefs={object:rpclass::TPClassUIDef<
+      Name='uipNoData'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='LBranchLocation.branch_code'
+          DataTypeName='VARCHAR'
+          DataLength=5
+        >, object:rpclass::TCustomLoadedField<
+          Name='LBranchLocation.branch_code'
+          DataTypeName='VARCHAR'
+          DataLength=5
+        >, object:rpclass::TCustomLoadedField<
+          Name='LBranchLocation.BranchName'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >, object:rpclass::TCustomLoadedField<
+          Name='periode'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='tahun'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='tepi_atas'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='tepi_bawah'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='tepi_kiri'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='baris_per_halaman'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='dari_tanggal'
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='hingga_tanggal'
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='isNasabahCorporateIncl'
+          DataTypeName='integer'
+          DataLength=20
+        >}CustomLoadedLinks={object:rpclass::TCustomLoadedLink<
+          Name='LBranchLocation'
+          ClassTypeName='BranchLocation'
+          FieldNames='branch_code;branch_code;BranchName'
+        >}Mode=imSingleRow
+    >}OnSetDataEx='FormSetDataEx'
+>

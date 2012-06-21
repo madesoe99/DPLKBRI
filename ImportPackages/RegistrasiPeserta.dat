@@ -1,0 +1,135 @@
+PackageDef()
+<s20,Name='RegistrasiPeserta' 
+s20,Description='Impor massal Peserta DPLK' 
+s20,Mode='NORMAL' 
+s20,LastModifiedUser='yuniar' 
+d,LastModifiedTime='05/02/2008 18:54:22'
+>
+,
+SourceDef()
+<s20,Description='definisi template source file yang akan diimpor' 
+s20,Type='MSEXCEL' 
+i,FirstDataRow=21
+s20,SheetName='Sheet1' 
+i,ControlColumn=1
+>
+,
+SourceFieldDefs()
+<s20,Name='TanggalRegistrasi' 
+s20,Type='DATETIME' 
+i,Length=0
+i,Index=1
+>
+<'CabangPendaftaran'  'STRING'  0 2>
+<'StatusBiayaDaftar'  'STRING'  0 3>
+<'BesarBiayaDaftar'  'FLOAT'  0 4>
+<'NomorPeserta'  'STRING'  0 5>
+<'KodeKorporat'  'STRING'  0 6>
+<'NamaLengkap'  'STRING'  0 7>
+<'TempatLahir'  'STRING'  0 8>
+<'TanggalLahir'  'DATETIME'  0 9>
+<'NoIdentitasDiri'  'STRING'  0 10>
+<'JenisKelamin'  'STRING'  0 11>
+<'DaerahAsal'  'STRING'  0 12>
+<'KodeKelompok'  'STRING'  0 13>
+<'NPWP'  'STRING'  0 14>
+<'Pekerjaan'  'STRING'  0 15>
+<'NamaPerusahaan'  'STRING'  0 16>
+<'KodeJenisUsaha'  'STRING'  0 17>
+<'KodeKepemilikan'  'STRING'  0 18>
+<'AlamatJalan'  'STRING'  0 19>
+<'AlamatJalanLanjutan'  'STRING'  0 20>
+<'AlamatRTRW'  'STRING'  0 21>
+<'AlamatKelurahan'  'STRING'  0 22>
+<'AlamatKecamatan'  'STRING'  0 23>
+<'AlamatKota'  'STRING'  0 24>
+<'AlamatPropinsi'  'STRING'  0 25>
+<'AlamatKodePos'  'STRING'  0 26>
+<'AlamatTelepon1'  'STRING'  0 27>
+<'AlamatTelepon2'  'STRING'  0 28>
+<'AlamatEmail'  'STRING'  0 29>
+<'AlamatSuratJalan'  'STRING'  0 30>
+<'AlamatSuratJalanLanjutan'  'STRING'  0 31>
+<'AlamatSuratRTRW'  'STRING'  0 32>
+<'AlamatSuratKelurahan'  'STRING'  0 33>
+<'AlamatSuratKecamatan'  'STRING'  0 34>
+<'AlamatSuratKota'  'STRING'  0 35>
+<'AlamatSuratPropinsi'  'STRING'  0 36>
+<'AlamatSuratKodePos'  'STRING'  0 37>
+<'AlamatSuratTelepon1'  'STRING'  0 38>
+<'AlamatSuratTelepon2'  'STRING'  0 39>
+<'SumberDana'  'STRING'  0 40>
+<'PaketInvestasi'  'STRING'  0 41>
+<'UsiaPensiun'  'INTEGER'  0 42>
+<'KirimStatement'  'STRING'  0 43>
+<'NominalIuranPemberiKerja'  'FLOAT'  0 44>
+<'NominalIuranPeserta'  'FLOAT'  0 45>
+<'PesertaPengalihan'  'STRING'  0 46>
+<'KodeDPLain'  'STRING'  0 47>
+<'NomorReferensi'  'STRING'  0 48>
+<'Keterangan'  'STRING'  0 49>
+<'UserPenginput'  'STRING'  0 50>
+<'TerminalInput'  'STRING'  0 51>,
+TransformationDef()
+<s20,Description='Template destination file yang akan diimpor' 
+s20,TargetClassName='RegisterNasabahRekening' 
+s20,AfterApplyRowModule='importmassal.CIF' 
+s20,AfterApplyRowFunctionName='ProcessingImport' 
+>
+,
+TransItemDefs()
+<s20,Name='tanggal_register' 
+s20,LookupClass='' 
+s20,LookupField='' 
+s20,SourceFieldName='TanggalRegistrasi' 
+>
+<'kode_cab_daftar'  'BranchLocation'  'branch_code'  'CabangPendaftaran' >
+<'status_biaya_daftar'  ''  ''  'StatusBiayaDaftar' >
+<'besar_biaya_daftar'  ''  ''  'BesarBiayaDaftar' >
+<'no_peserta'  ''  ''  'NomorPeserta' >
+<'kode_nasabah_corporate'  ''  ''  'KodeKorporat' >
+<'nama_lengkap'  ''  ''  'NamaLengkap' >
+<'tempat_lahir'  ''  ''  'TempatLahir' >
+<'tanggal_lahir'  ''  ''  'TanggalLahir' >
+<'no_identitas_diri'  ''  ''  'NoIdentitasDiri' >
+<'jenis_kelamin'  ''  ''  'JenisKelamin' >
+<'kode_propinsi'  'DaerahAsal'  'kode_propinsi'  'DaerahAsal' >
+<'kode_kelompok'  ''  ''  'KodeKelompok' >
+<'npwp'  ''  ''  'NPWP' >
+<'pekerjaan'  ''  ''  'Pekerjaan' >
+<'nama_perusahaan'  ''  ''  'NamaPerusahaan' >
+<'kode_jenis_usaha'  'JenisUsaha'  'kode_jenis_usaha'  'KodeJenisUsaha' >
+<'kode_pemilikan'  'Kepemilikan'  'kode_pemilikan'  'KodeKepemilikan' >
+<'alamat_jalan'  ''  ''  'AlamatJalan' >
+<'alamat_jalan2'  ''  ''  'AlamatJalanLanjutan' >
+<'alamat_rtrw'  ''  ''  'AlamatRTRW' >
+<'alamat_kelurahan'  ''  ''  'AlamatKelurahan' >
+<'alamat_kecamatan'  ''  ''  'AlamatKecamatan' >
+<'alamat_kota'  ''  ''  'AlamatKota' >
+<'alamat_propinsi'  ''  ''  'AlamatPropinsi' >
+<'alamat_kode_pos'  ''  ''  'AlamatKodePos' >
+<'alamat_telepon'  ''  ''  'AlamatTelepon1' >
+<'alamat_telepon2'  ''  ''  'AlamatTelepon2' >
+<'alamat_email'  ''  ''  'AlamatEmail' >
+<'alamat_surat_jalan'  ''  ''  'AlamatSuratJalan' >
+<'alamat_surat_jalan2'  ''  ''  'AlamatSuratJalanLanjutan' >
+<'alamat_surat_rtrw'  ''  ''  'AlamatSuratRTRW' >
+<'alamat_surat_kelurahan'  ''  ''  'AlamatSuratKelurahan' >
+<'alamat_surat_kecamatan'  ''  ''  'AlamatSuratKecamatan' >
+<'alamat_surat_kota'  ''  ''  'AlamatSuratKota' >
+<'alamat_surat_propinsi'  ''  ''  'AlamatSuratPropinsi' >
+<'alamat_surat_kode_pos'  ''  ''  'AlamatSuratKodePos' >
+<'alamat_surat_telepon'  ''  ''  'AlamatSuratTelepon1' >
+<'alamat_surat_telepon2'  ''  ''  'AlamatSuratTelepon2' >
+<'sumber_dana'  'SumberDana'  'sumber_dana'  'SumberDana' >
+<'kode_paket_investasi'  'PaketInvestasi'  'kode_paket_investasi'  'PaketInvestasi' >
+<'usia_pensiun'  ''  ''  'UsiaPensiun' >
+<'kirim_statemen'  ''  ''  'KirimStatement' >
+<'iuran_pk'  ''  ''  'NominalIuranPemberiKerja' >
+<'iuran_pst'  ''  ''  'NominalIuranPeserta' >
+<'isPesertaPengalihan'  ''  ''  'PesertaPengalihan' >
+<'kode_dp'  ''  ''  'KodeDPLain' >
+<'no_referensi'  ''  ''  'NomorReferensi' >
+<'keterangan'  ''  ''  'Keterangan' >
+<'user_id'  ''  ''  'UserPenginput' >
+<'terminal_id'  ''  ''  'TerminalInput' >..

@@ -1,0 +1,214 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['pData']
+  Caption='Broadcast Pesan ke Seluruh Pengguna Online / Pengguna Tertentu'
+  Left=150
+  Top=150
+  Width=750
+  Height=400
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData='FormGeneralSetData'
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnFormShow='FormShow'
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipNoData'
+    >
+    , object:rtf::PClassUI<
+      Name='uipUserOnline'
+      MultiLine=true
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='isBroadcast'
+          ControlCaption='Broadcast ke semua pengguna online'
+          DataTypeName='integer'
+          DataLength=20
+          EnumeratedValues=['1=True'#13#10,
+            '0=False'#13#10]
+          GenerateCheckBoxForEnum=true
+        >
+      }
+      Name='pData'
+      Width=400
+      Height=110
+      Bordered=true
+      UIPart=$UIPARTS['uipNoData']
+      Controls={
+        *object:rtf::DBCheckBox<
+          Name='isBroadcast'
+          Width=200
+          Height=21
+          LayoutOrder=2
+          ValueChecked='1'
+          ValueUnchecked='0'
+        >
+        , object:rtf::Edit<
+          Name='IsiPesan'
+          Layout=clNewLine
+          Width=300
+          Height=63
+          Color=15128749
+          ControlCaption='Pesan yang akan dikirim'
+          LayoutOrder=1
+          MultiLine=true
+        >
+      }
+      EqualCaptionWidth=130
+      ControlLeftMargin=20
+      ControlTopMargin=10
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=300
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Color=0
+          ControlCaption=''
+          Caption='&Kirim Pesan'
+          Default=true
+          OnClick='btnOKClick'
+        >
+        , object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          LayoutOrder=3
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+        , object:rtf::Button<
+          Name='btnRefresh'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Perbarui'
+          OnClick='btnRefreshClick'
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Grid<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='LoginID'
+          ControlCaption='Login Pengguna'
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='NamaUser'
+          ControlCaption='Nama Pengguna'
+          DataTypeName='varchar'
+          DataLength=30
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='BranchCode'
+          ControlCaption='Kode Cabang'
+          DataTypeName='varchar'
+          DataLength=5
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='BranchName'
+          ControlCaption='Nama Cabang'
+          DataTypeName='varchar'
+          DataLength=50
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='SessionID'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=100
+        >
+      }
+      Name='gUserOnline'
+      Width=240
+      Height=40
+      UIPart=$UIPARTS['uipUserOnline']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Pengguna yang sedang online'
+      Columns={
+        *object:rtf::GridColumn<
+          Name='LoginID'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='LoginID'
+          DisplayFormat=''
+          TitleCaption='Login Pengguna'
+        >
+        , *object:rtf::GridColumn<
+          Name='NamaUser'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='NamaUser'
+          DisplayFormat=''
+          TitleCaption='Nama Pengguna'
+        >
+        , *object:rtf::GridColumn<
+          Name='BranchCode'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='BranchCode'
+          DisplayFormat=''
+          TitleCaption='Kode Cabang'
+        >
+        , *object:rtf::GridColumn<
+          Name='BranchName'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='BranchName'
+          DisplayFormat=''
+          TitleCaption='Nama Cabang'
+        >
+      }
+      ReadOnly=true
+      RowSelect=true
+      SuppressHelpLine=true
+    >
+    , object:rtf::MultiSplit<
+      Name='MultiSplit'
+      Width=240
+      Height=100
+      Side1Containers={
+        $CONTAINERS['pData']
+      }
+      Side2Containers={
+        $CONTAINERS['pButton']
+      }
+      SpaceContainer=$CONTAINERS['gUserOnline']
+    >
+  }
+>

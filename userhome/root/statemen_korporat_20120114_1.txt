@@ -1,0 +1,270 @@
+
+
+
+
+
+     DANA PENSIUN LEMBAGA KEUANGAN
+     PT. Bank Rakyat Indonesia, Tbk.
+
+     No. Peserta: 00099000027                              Usia Pensiun   : 55 [18 August 2040]
+     Nama       : MIA FAJARWATI                            Paket Investasi: A
+     Alamat     : PT. DUA EMPAT TUJUH SEGITIGA EMAS BUSSINNES PARK UNIT 4 DAN 5
+                  JL. PROF. DR. SATRIO KAV. 6
+                  RT/RW:  
+                   KOTA BEKASI 17111
+
+     Periode    : 1 January 2011 - 30 June 2011
+                  Saldo Akhir per 31 December 2010        :                  0
+                  Akumulasi Iuran peserta                 :         100,000.00
+                  Akumulasi Iuran Pemberi Kerja           :                  0
+                  Akumulasi Penarikan Tahun 2011          :                  0
+                  Hasil Investasi                         :             550.64
+                  Biaya Adm. dan Pengelolaan Dana         :           3,000.00
+                  Pengalihan Dari Dana Pensiun Lain       :                  0
+                  ------------------------------------------------------------
+                  Total Dana per 30 June 2011             :          97,550.64
+
+     ==============================================================================================
+       TANGGAL    MUTASI              TRANSAKSI                   NOMINAL             SALDO       
+     ----------------------------------------------------------------------------------------------
+      06/06/2011     C    Iuran                                      100,000.00         100,000.00
+      30/06/2011     C    Hasil Investasi  Deposito                      550.64         100,550.64
+      30/06/2011     D    Biaya Administrasi                           3,000.00          97,550.64
+     ----------------------------------------------------------------------------------------------
+                                                                    SALDO AKHIR          97,550.64
+     ==============================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     DANA PENSIUN LEMBAGA KEUANGAN
+     PT. Bank Rakyat Indonesia, Tbk.
+
+     No. Peserta: 00099000028                              Usia Pensiun   : 55 [5 June 2032]
+     Nama       : IRMA YOESWALAF                           Paket Investasi: A
+     Alamat     : PT. DUA EMPAT TUJUH SEGITIGA EMAS BUSSINNES PARK UNIT 4 DAN 5
+                  JL. PROF. DR. SATRIO KAV. 6
+                  RT/RW:  
+                   DEPOK BARU 
+
+     Periode    : 1 January 2011 - 30 June 2011
+                  Saldo Akhir per 31 December 2010        :                  0
+                  Akumulasi Iuran peserta                 :         100,000.00
+                  Akumulasi Iuran Pemberi Kerja           :                  0
+                  Akumulasi Penarikan Tahun 2011          :                  0
+                  Hasil Investasi                         :             550.64
+                  Biaya Adm. dan Pengelolaan Dana         :           3,000.00
+                  Pengalihan Dari Dana Pensiun Lain       :                  0
+                  ------------------------------------------------------------
+                  Total Dana per 30 June 2011             :          97,550.64
+
+     ==============================================================================================
+       TANGGAL    MUTASI              TRANSAKSI                   NOMINAL             SALDO       
+     ----------------------------------------------------------------------------------------------
+      06/06/2011     C    Iuran                                      100,000.00         100,000.00
+      30/06/2011     C    Hasil Investasi  Deposito                      550.64         100,550.64
+      30/06/2011     D    Biaya Administrasi                           3,000.00          97,550.64
+     ----------------------------------------------------------------------------------------------
+                                                                    SALDO AKHIR          97,550.64
+     ==============================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     DANA PENSIUN LEMBAGA KEUANGAN
+     PT. Bank Rakyat Indonesia, Tbk.
+
+     No. Peserta: 00099000033                              Usia Pensiun   : 55 [8 August 2041]
+     Nama       : FERRY PRANOLO                            Paket Investasi: A
+     Alamat     : PT. DUA EMPAT TUJUH SEGITIGA EMAS BUSINESS PARK UNIT NO. 4-5
+                  JL. PROF. DR. SATRIO KAV. 6
+                  RT/RW:  
+                   BANDUNG 
+
+     Periode    : 1 January 2011 - 30 June 2011
+                  Saldo Akhir per 31 December 2010        :                  0
+                  Akumulasi Iuran peserta                 :         100,000.00
+                  Akumulasi Iuran Pemberi Kerja           :                  0
+                  Akumulasi Penarikan Tahun 2011          :                  0
+                  Hasil Investasi                         :             550.64
+                  Biaya Adm. dan Pengelolaan Dana         :           3,000.00
+                  Pengalihan Dari Dana Pensiun Lain       :                  0
+                  ------------------------------------------------------------
+                  Total Dana per 30 June 2011             :          97,550.64
+
+     ==============================================================================================
+       TANGGAL    MUTASI              TRANSAKSI                   NOMINAL             SALDO       
+     ----------------------------------------------------------------------------------------------
+      06/06/2011     C    Iuran                                      100,000.00         100,000.00
+      30/06/2011     C    Hasil Investasi  Deposito                      550.64         100,550.64
+      30/06/2011     D    Biaya Administrasi                           3,000.00          97,550.64
+     ----------------------------------------------------------------------------------------------
+                                                                    SALDO AKHIR          97,550.64
+     ==============================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     DANA PENSIUN LEMBAGA KEUANGAN
+     PT. Bank Rakyat Indonesia, Tbk.
+
+     No. Peserta: 00099000034                              Usia Pensiun   : 55 [1 October 2030]
+     Nama       : SETIO ADI NUGROHO                        Paket Investasi: A
+     Alamat     : PT. DUA EMPAT TUJUH SEGITIGAEMAS BUSINESS PARK UNIT NO. 4-5
+                  JL. PROF. DR. SATRIO KAV. 6
+                  RT/RW:  
+                   JAKARTA UTARA 
+
+     Periode    : 1 January 2011 - 30 June 2011
+                  Saldo Akhir per 31 December 2010        :                  0
+                  Akumulasi Iuran peserta                 :                  0
+                  Akumulasi Iuran Pemberi Kerja           :                  0
+                  Akumulasi Penarikan Tahun 2011          :                  0
+                  Hasil Investasi                         :                  0
+                  Biaya Adm. dan Pengelolaan Dana         :                  0
+                  Pengalihan Dari Dana Pensiun Lain       :                  0
+                  ------------------------------------------------------------
+                  Total Dana per 30 June 2011             :                  0
+
+     ==============================================================================================
+       TANGGAL    MUTASI              TRANSAKSI                   NOMINAL             SALDO       
+     ----------------------------------------------------------------------------------------------
+      30/06/2011     C    Biaya Administrasi                                  0                  0
+     ----------------------------------------------------------------------------------------------
+                                                                    SALDO AKHIR                  0
+     ==============================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+====End of File. Ganti baris ini dengan tulisan teratas dari file lainnya jika ingin menyambungkan.====

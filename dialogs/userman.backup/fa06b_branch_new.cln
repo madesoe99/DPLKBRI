@@ -1,0 +1,160 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='1'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS
+  Caption='Registrasi Lokasi Cabang'
+  Left=100
+  Top=100
+  Width=400
+  Height=250
+  UIParts={object:rtf::PClassUI<
+      Name='BranchLocation'
+      ClassTypeName='BranchLocation'
+      DataBinding=bmMaster
+      FillInDefaultValues=true
+      InitWithDefaultValues=true
+      CreateInstanceOnNew=true
+      AfterApplyRow='BranchLocation_AfterApplyRow'
+    >}Containers={object:rtf::DualSplit<
+      Width=400
+      Height=250
+      Container1=$CONTAINERS['Buttonpanel']
+      Container2=$CONTAINERS['mpData']
+      InversedAlign=true
+    >, object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='branch_code'
+          ControlCaption='Kode Cabang'
+          DataTypeName='VARCHAR'
+          DataLength=5
+        >, object:rtf::FieldUIElmtSetting<
+          Name='BranchName'
+          ControlCaption='Nama Cabang'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >, object:rtf::FieldUIElmtSetting<
+          Name='BranchStatus'
+          ControlCaption='Status Cabang'
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['B=Branch'#13#10,
+            'S=Sub-branch'#13#10,
+            'K=Kantor-Kas'#13#10#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='Branch_Time_Zone'
+          ControlCaption='Zona Waktu'
+          DataTypeName='VARCHAR'
+          DataLength=4
+          EnumeratedValues=['B=Waktu Indonesia Barat'#13#10,
+            'T=Waktu Indonesia Timur'#13#10,
+            'TA=Waktu Indonesia Tengah'#13#10]
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LMasterBranch'
+          ControlCaption='Cabang Induk'
+          ClassTypeName='BranchLocation'
+          KeyFields={object:rtf::FieldUIElmtSetting<
+              Name='LMasterBranch.branch_code'
+              DataTypeName='VARCHAR'
+              DataLength=5
+              UsedAsKey=true
+              KeyOrDisplayName='branch_code'
+              FinalDisplayFieldName='branch_code'
+            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+              Name='LMasterBranch.branch_code'
+              DataTypeName='VARCHAR'
+              DataLength=5
+              UsedAsDisplay=true
+              KeyOrDisplayName='branch_code'
+              FinalDisplayFieldName='branch_code'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LMasterBranch.BranchName'
+              DataTypeName='VARCHAR'
+              DataLength=50
+              UsedAsDisplay=true
+              KeyOrDisplayName='BranchName'
+              FinalDisplayFieldName='BranchName'
+            >}Restrictions=''
+          OQLText='SELECT FROM BranchLocation [BranchStatus = ''B''] (branch_code, BranchName, self) THEN ORDER BY branch_code;'
+          LookupOption=loCustomOQL
+          FieldBaseName='LMasterBranch'
+        >}Name='mpData'
+      Width=305
+      Height=169
+      Bordered=true
+      UIPart=$UIPARTS['BranchLocation']
+      Controls={*object:rtf::DBEdit<
+          Name='branch_code'
+          Top=8
+          Left=8
+          Color=0
+          ControlCaption='Kode Cabang'
+        >, *object:rtf::DBEdit<
+          Name='BranchName'
+          Top=36
+          Left=8
+          Color=0
+          ControlCaption='Nama Cabang'
+        >, *object:rtf::DBComboBox<
+          Name='BranchStatus'
+          Top=64
+          Left=8
+          Color=0
+          ControlCaption='Status Cabang'
+        >, *object:rtf::DBComboBox<
+          Name='Branch_Time_Zone'
+          Top=120
+          Left=8
+          Width=150
+          Height=21
+          Color=15128749
+          ControlCaption='Zona Waktu'
+          LayoutOrder=5
+        >, *object:rtf::DBLookupEdit<
+          Name='LMasterBranch'
+          Top=92
+          Left=8
+          Color=0
+          ControlCaption='Cabang Induk'
+          LookupField='LMasterBranch.BranchName'
+          DisplayLookupField=true
+          DirectInput=true
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Name='Buttonpanel'
+      Width=240
+      Height=50
+      Controls={object:rtf::Button<
+          Name='bSave'
+          Layout=clNextSide
+          Top=8
+          Left=8
+          Color=0
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          DefaultAction=daProcessAllAndClear
+        >, object:rtf::Button<
+          Name='bCancel'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >}ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >}>

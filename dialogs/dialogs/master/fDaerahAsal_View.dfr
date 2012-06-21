@@ -1,0 +1,117 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['pData']
+  Caption='Lihat Detil Daerah Asal'
+  Left=50
+  Top=50
+  Width=350
+  Height=230
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipDaerahAsal'
+      ClassTypeName='DaerahAsal'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caView
+          DataMember='kode_propinsi'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='nama_propinsi'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='user_id'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='last_update'
+        >
+      }
+      Elements={
+      }
+      Name='pData'
+      Width=240
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipDaerahAsal']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='kode_propinsi'
+          ControlCaption='Kode Propinsi'
+        >
+        , *object:rtf::DBEdit<
+          Name='nama_propinsi'
+          ControlCaption='Nama Propinsi'
+        >
+        , *object:rtf::DBEdit<
+          Name='user_id'
+          ControlCaption='User ID'
+        >
+        , *object:rtf::DBDateEdit<
+          Name='last_update'
+          ControlCaption='Last Update'
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Tutup'
+          Default=true
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['pData']
+      InversedAlign=true
+    >
+  }
+>

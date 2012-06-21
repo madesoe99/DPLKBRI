@@ -1,0 +1,323 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit3']
+  Caption='Peragaan SRR Nasabah'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=681
+  Height=425
+  OnFormShow='FormShow'
+  UIParts={object:rtf::PClassUI<
+      Name='uipTransaksiDPLK'
+      ClassTypeName='TransaksiDPLK'
+      DataBinding=bmMaster
+    >, object:rtf::PClassUI<
+      Name='uipDataPeserta'
+    >, object:rtf::PClassUI<
+      Name='uipNasabah'
+      ClassTypeName='NasabahDPLK'
+      DataBinding=bmMaster
+    >}Containers={object:rtf::Panel<
+      Elements={object:rtf::LinkUIElmtSetting<
+          Name='LRekeningDPLK'
+          RequiredOption=roAlwaysRequired
+          ControlCaption='Nomor Peserta'
+          ClassTypeName='RekeningDPLK'
+          KeyFields={object:rtf::FieldUIElmtSetting<
+              Name='LRekeningDPLK.no_peserta'
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsKey=true
+              KeyOrDisplayName='no_peserta'
+              FinalDisplayFieldName='no_peserta'
+            >}DisplayedFields={}Restrictions=''
+          OQLText=['select from RekeningDPLK'#13#10,
+            '(no_peserta,'#13#10,
+            'LNasabahDPLK.nama_lengkap,'#13#10,
+            ' kode_paket_investasi,'#13#10,
+            ' kode_cab_daftar,'#13#10,
+            ' self'#13#10,
+            ')then order by no_peserta;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LRekeningDPLK'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='nama_lengkap'
+          ControlCaption='Nama Lengkap'
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tempat_lahir'
+          ControlCaption='Tempat Lahir'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tanggal_lahir'
+          ControlCaption='Tanggal Lahir'
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='no_identitas_diri'
+          ControlCaption='No Identitas'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='jenis_kelamin'
+          ControlCaption='Jenis Kelamin'
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['P=Pria'#13#10,
+            'W=Wanita'#13#10]
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LDaerahAsal'
+          RequiredOption=roAlwaysRequired
+          ControlCaption='Daerah Asal'
+          ClassTypeName='DaerahAsal'
+          KeyFields={object:rtf::FieldUIElmtSetting<
+              Name='LDaerahAsal.kode_propinsi'
+              DataTypeName='VARCHAR'
+              DataLength=8
+              UsedAsKey=true
+              KeyOrDisplayName='kode_propinsi'
+              FinalDisplayFieldName='kode_propinsi'
+            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+              Name='LDaerahAsal.kode_propinsi'
+              DataTypeName='VARCHAR'
+              DataLength=8
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_propinsi'
+              FinalDisplayFieldName='kode_propinsi'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LDaerahAsal.nama_propinsi'
+              DataTypeName='VARCHAR'
+              DataLength=30
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_propinsi'
+              FinalDisplayFieldName='nama_propinsi'
+            >}Restrictions=''
+          FieldBaseName='LDaerahAsal'
+        >}Name='pDataPeserta'
+      Width=339
+      Height=240
+      UIPart=$UIPARTS['uipNasabah']
+      Controls={*object:rtf::DBLookupEdit<
+          Name='LRekeningDPLK'
+          Top=8
+          Left=8
+          Width=153
+          Height=21
+          ControlCaption='Nomor Peserta'
+          DisplayLookupField=false
+          OnAfterLookup='AfterLookup_NoPeserta'
+          DirectInput=true
+        >, *object:rtf::DBEdit<
+          Name='nama_lengkap'
+          Top=36
+          Left=8
+          Color=0
+          ControlCaption='Nama Lengkap'
+        >, *object:rtf::DBEdit<
+          Name='tempat_lahir'
+          Top=64
+          Left=8
+          Color=0
+          ControlCaption='Tempat Lahir'
+        >, *object:rtf::DBDateEdit<
+          Name='tanggal_lahir'
+          Top=92
+          Left=8
+          Color=0
+          ControlCaption='Tanggal Lahir'
+        >, *object:rtf::DBEdit<
+          Name='no_identitas_diri'
+          Top=120
+          Left=8
+          Color=0
+          ControlCaption='No Identitas'
+        >, *object:rtf::DBComboBox<
+          Name='jenis_kelamin'
+          Top=148
+          Left=8
+          Color=0
+          ControlCaption='Jenis Kelamin'
+        >, *object:rtf::DBLookupEdit<
+          Name='LDaerahAsal'
+          Top=176
+          Left=8
+          ControlCaption='Daerah Asal'
+          LookupField='LDaerahAsal.nama_propinsi'
+          DisplayLookupField=true
+        >}EqualCaptionWidth=100
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='kode_paket'
+          ReadOnlyControl=true
+          ControlCaption='Paket Investasi'
+          DataTypeName='varchar'
+          DataLength=5
+        >, object:rtf::FieldUIElmtSetting<
+          Name='nama_paket'
+          ReadOnlyControl=true
+          ControlCaption='-'
+          DataTypeName='varchar'
+          DataLength=50
+        >, object:rtf::FieldUIElmtSetting<
+          Name='SRR_paket'
+          ReadOnlyControl=true
+          ControlCaption='SRR Paket'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='distribusi_inv'
+          ReadOnlyControl=true
+          ControlCaption='Distribusi Investasi'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='SRR_before'
+          ReadOnlyControl=true
+          ControlCaption='SRR Sebelumnya'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tgl_akhir_SRR'
+          ReadOnlyControl=true
+          ControlCaption='Tgl Akhir'
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='SRR_peserta'
+          ReadOnlyControl=true
+          ControlCaption='SRR Peserta'
+          DataTypeName='double'
+          DataLength=20
+        >}Name='pDataHasil'
+      Width=500
+      Height=240
+      UIPart=$UIPARTS['uipDataPeserta']
+      Controls={*object:rtf::DBEdit<
+          Name='kode_paket'
+          Top=8
+          Left=8
+          Color=-2147483624
+          ControlCaption='Paket Investasi'
+        >, *object:rtf::DBEdit<
+          Name='nama_paket'
+          Layout=clNextSide
+          Top=8
+          Left=161
+          Color=-2147483624
+          ControlCaption='-'
+        >, *object:rtf::DBEdit<
+          Name='SRR_paket'
+          Top=36
+          Left=8
+          Color=-2147483624
+          ControlCaption='SRR Paket'
+        >, *object:rtf::DBEdit<
+          Name='distribusi_inv'
+          Top=64
+          Left=8
+          Color=-2147483624
+          ControlCaption='Distribusi Investasi'
+        >, *object:rtf::DBEdit<
+          Name='SRR_before'
+          Top=92
+          Left=8
+          Color=-2147483624
+          ControlCaption='SRR Sebelumnya'
+        >, *object:rtf::DBDateEdit<
+          Name='tgl_akhir_SRR'
+          Top=120
+          Left=8
+          Color=-2147483624
+          ControlCaption='Tgl Akhir'
+        >, *object:rtf::DBEdit<
+          Name='SRR_peserta'
+          Top=148
+          Left=8
+          Color=-2147483624
+          ControlCaption='SRR Peserta'
+        >}EqualCaptionWidth=100
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='dualsplit3'
+      Width=681
+      Height=425
+      Container1=$CONTAINERS['pAction']
+      Container2=$CONTAINERS['dualsplit2']
+      InversedAlign=true
+    >, object:rtf::Panel<
+      Name='pAction'
+      Width=320
+      Height=40
+      Controls={object:rtf::Button<
+          Name='bCancel'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          Color=0
+          ControlCaption=''
+          Caption='&Tutup'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >}ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='dualsplit2'
+      Width=681
+      Height=384
+      Container1=$CONTAINERS['dualsplit1']
+      Container2=$CONTAINERS['qTransaksiDPLK']
+    >, object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=681
+      Height=219
+      Container1=$CONTAINERS['pDataPeserta']
+      Container2=$CONTAINERS['pDataHasil']
+      SplitDirection=sdrSplitLeftRight
+    >, object:rtf::Query<
+      Name='qTransaksiDPLK'
+      Width=681
+      Height=164
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from TransaksiDPLK'#13#10,
+        '['#13#10,
+        '  no_peserta = :no_peserta '#13#10,
+        '  and tgl_transaksi >= :tgl_transaksi_awal'#13#10,
+        '  and isCommitted = ''T'''#13#10,
+        ']'#13#10,
+        '('#13#10,
+        '  tgl_transaksi,'#13#10,
+        '  tgl_otorisasi,'#13#10,
+        '  LJenisTransaksiDPLK.nama_transaksi as nama_transaksi,'#13#10,
+        '  mutasi_iuran_pk as iuran_pemberi_kerja,'#13#10,
+        '  mutasi_iuran_pst as iuran_peserta,'#13#10,
+        '  mutasi_pengembangan as pengembangan,'#13#10,
+        '  mutasi_peralihan as peralihan,'#13#10,
+        '  keterangan,'#13#10,
+        '  ID_Transaksi as ID,'#13#10,
+        '  self'#13#10,
+        ') then order by ID;']
+    >}>

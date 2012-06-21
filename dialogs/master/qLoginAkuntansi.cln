@@ -1,0 +1,212 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['panelTitle']
+  Caption='Daftar Login Aplikasi Akuntansi'
+  Left=110
+  Top=120
+  Width=820
+  Height=520
+  OnFormShow='FormShow'
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipParameter'
+      ClassTypeName='Parameter'
+      DataBinding=bmMaster
+      MultiLine=true
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      BeforePost='GridBeforePost'
+      AfterNewRecord='GridAfterNewRecord'
+      BeforeDelete='GridBeforeDelete'
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Name='panelTitle'
+      Width=240
+      Height=40
+      Bordered=true
+      Controls={
+        object:rtf::Label<
+          Name='lbl'
+          Layout=clNewLine
+          Width=300
+          Height=25
+          Color=0
+          ControlCaption=''
+          Caption='Daftar Parameter Aplikasi'
+          FontSize=14
+          FontStyleBold=true
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Name='button_panel'
+      Width=600
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='bClose'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          LayoutOrder=2
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+        , object:rtf::Button<
+          Name='bSimpan'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          DefaultAction=daProcessAllUI
+          ExitAction=eaQuitOK
+        >
+        , object:rtf::Button<
+          Name='Button'
+          Layout=clNextSide
+          Visible=false
+          Enabled=false
+          Color=0
+          ControlCaption=''
+          DefaultAction=daShowDebugWindow
+        >
+      }
+      ControlLeftMargin=10
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplitAtas'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['panelTitle']
+      Container2=$CONTAINERS['gParameterAplikasi']
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['button_panel']
+      Container2=$CONTAINERS['DualSplitAtas']
+      InversedAlign=true
+    >
+    , object:rtf::Grid<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='Key_Parameter'
+          AccessOption=aoReadOnlyOnEdit
+          ReadOnlyControl=true
+          ControlCaption='Parameter Aplikasi'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='Numeric_Value'
+          ControlCaption='Nilai Angka'
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='Varchar_Value'
+          ControlCaption='Nilai Teks'
+          DataTypeName='VARCHAR'
+          DataLength=0
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='Description'
+          ReadOnlyControl=true
+          ControlCaption='Keterangan'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='ValueType'
+          ControlCaption='Tipe Parameter'
+          DataTypeName='integer'
+          DataLength=5
+          EnumeratedValues=['0=Angka'#13#10,
+            '1=Teks'#13#10]
+        >
+      }
+      Name='gParameterAplikasi'
+      Width=240
+      Height=40
+      UIPart=$UIPARTS['uipParameter']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Columns={
+        *object:rtf::GridColumn<
+          Name='Key_Parameter'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='Key_Parameter'
+          DisplayFormat=''
+          TitleCaption='Parameter Aplikasi'
+          ReadOnly=true
+        >
+        , *object:rtf::GridColumn<
+          Name='Numeric_Value'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          Index=3
+          FieldName='Numeric_Value'
+          DisplayFormat=''
+          TitleCaption='Nilai Angka'
+          Width=100
+        >
+        , *object:rtf::GridColumn<
+          Name='Varchar_Value'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          Index=4
+          FieldName='Varchar_Value'
+          DisplayFormat=''
+          TitleCaption='Nilai Teks'
+          Width=100
+        >
+        , *object:rtf::GridColumn<
+          Name='Description'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          Index=5
+          FieldName='Description'
+          DisplayFormat=''
+          TitleCaption='Keterangan'
+          ReadOnly=true
+        >
+        , *object:rtf::GridColumn<
+          Name='ValueType'
+          InputStyle=cisEnumerated
+          EnumeratedValues=['0=Angka'#13#10,
+            '1=Teks'#13#10]
+          OnAfterLookup='ValueTypeAfterLookup'
+          Index=2
+          FieldName='ValueType'
+          DisplayFormat=''
+          TitleCaption='Tipe Parameter'
+          Width=100
+        >
+      }
+    >
+  }
+>

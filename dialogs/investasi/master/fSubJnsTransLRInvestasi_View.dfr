@@ -1,0 +1,176 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['pData']
+  Caption='Lihat Sub Jenis Investasi'
+  Left=50
+  Top=50
+  Width=400
+  Height=310
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipSubJnsTransLRInvestasi'
+      ClassTypeName='SubJnsTransLRInvestasi'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caView
+          DataMember='kode_subjns_LRInvestasi'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='kategori'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='LJenisInvestasi'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='account_code'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='deskripsi'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='user_id'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='last_update'
+        >
+      }
+      Elements={
+        *object:rtf::LinkUIElmtSetting<
+          Name='LJenisInvestasi'
+          DisplayFields='kode_jns_investasi;nama_jns_investasi'
+          Restrictions=''
+          OQLText=['select from JenisInvestasi'#13#10,
+            '('#13#10,
+            '  kode_jns_Investasi as Kode_Jns_Investasi,'#13#10,
+            '  nama_jns_Investasi as Nama_Jns_Investasi,'#13#10,
+            '  expected_rate as Expected_Rate,'#13#10,
+            '  acc_biayainvest as Akun_Biaya_Investasi,'#13#10,
+            '  acc_investasi as Akun_Investasi,'#13#10,
+            '  acc_pendapatan as Akun_Pendapatan,'#13#10,
+            '  acc_piutangpendapatan as Akun_Piutang_Pendapatan,'#13#10,
+            '  user_id as ID_Pengguna,'#13#10,
+            '  last_update as Terakhir_Diperbarui,'#13#10,
+            '  self'#13#10,
+            ') then order by Kode_Jns_Investasi;']
+          LookupOption=loCustomOQL
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          ReadOnlyControl=true
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='last_update'
+          ReadOnlyControl=true
+        >
+      }
+      Name='pData'
+      Width=240
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipSubJnsTransLRInvestasi']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='kode_subjns_LRInvestasi'
+          ControlCaption='Kode Sub Jenis Investasi'
+        >
+        , *object:rtf::DBComboBox<
+          Name='kategori'
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Kategori'
+        >
+        , *object:rtf::DBLookupEdit<
+          Name='LJenisInvestasi'
+          Enabled=false
+          Color=0
+          ControlCaption='Jenis Investasi'
+          LookupField='LJenisInvestasi.nama_jns_investasi'
+          DisplayLookupField=true
+        >
+        , *object:rtf::DBEdit<
+          Name='account_code'
+          ControlCaption='Kode Akun'
+        >
+        , *object:rtf::DBEdit<
+          Name='deskripsi'
+          ControlCaption='Deskripsi'
+        >
+        , *object:rtf::DBEdit<
+          Name='user_id'
+          ControlCaption='ID Pengguna'
+          ReadOnly=true
+        >
+        , *object:rtf::DBDateEdit<
+          Name='last_update'
+          ControlCaption='Terakhir Diperbarui'
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Tutup'
+          Default=true
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['pData']
+      InversedAlign=true
+    >
+  }
+>

@@ -1,0 +1,130 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipTransPiutangInvestasi'
+      PClassName='TransPiutangInvestasi'
+      LoadedFieldList='id_transaksiinvestasi;tgl_transaksi;LTransactionBatch.ID_TransactionBatch;LTransactionBatch.ID_TransactionBatch;LTransactionBatch.no_batch;mutasi_kredit;kode_jns_investasi;user_id;terminal_id;tgl_otorisasi;user_id_auth;terminal_id_auth;tgl_sistem;LInvestasi.id_investasi;LInvestasi.no_bilyet;LInvestasi.tgl_buka;LInvestasi.id_investasi;LInvestasi.LPihakKetiga.nama_pihak_ketiga;LInvestasi.LRincianPaketInvestasi.LPaketInvestasi.Nama_paket_investasi;LInvestasi.LRincianPaketInvestasi.LJenisInvestasi.nama_jns_investasi;LInvestasi.akum_nominal;LInvestasi.akum_piutangLR;LInvestasi.akum_LR;LInvestasi.kode_pihak_ketiga;LInvestasi.kode_paket_investasi;LInvestasi.kode_jns_investasi'
+      StoredFieldList='tgl_transaksi;LTransactionBatch;kode_jns_investasi;tgl_sistem;LInvestasi'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='no_bilyet'
+          DataTypeName='varchar'
+          DataLength=15
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LPihakKetiga.kode_pihak_ketiga'
+          DataTypeName='VARCHAR'
+          DataLength=8
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LPihakKetiga.kode_pihak_ketiga'
+          DataTypeName='VARCHAR'
+          DataLength=8
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LPihakKetiga.nama_pihak_ketiga'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LPaketInvestasi.kode_paket_investasi'
+          DataTypeName='VARCHAR'
+          DataLength=2
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LPaketInvestasi.kode_paket_investasi'
+          DataTypeName='VARCHAR'
+          DataLength=2
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LPaketInvestasi.nama_paket_investasi'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LJenisInvestasi.kode_jns_investasi'
+          DataTypeName='VARCHAR'
+          DataLength=3
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LJenisInvestasi.kode_jns_investasi'
+          DataTypeName='VARCHAR'
+          DataLength=3
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LJenisInvestasi.nama_jns_investasi'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='mode'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LTransactionBatch'
+          ClassTypeName='TransactionBatch'
+          FieldNames='ID_TransactionBatch;ID_TransactionBatch;no_batch'
+        >
+        , object:rpclass::TCustomLoadedLink<
+          Name='LInvestasi'
+          ClassTypeName='Investasi'
+          FieldNames='id_investasi;no_bilyet;tgl_buka;id_investasi;LPihakKetiga.nama_pihak_ketiga;LRincianPaketInvestasi.LPaketInvestasi.Nama_paket_investasi;LRincianPaketInvestasi.LJenisInvestasi.nama_jns_investasi;akum_nominal;akum_piutangLR;akum_LR;kode_pihak_ketiga;kode_paket_investasi;kode_jns_investasi'
+        >
+        , object:rpclass::TCustomLoadedLink<
+          Name='LPihakKetiga'
+          ClassTypeName='PihakKetiga'
+          FieldNames='kode_pihak_ketiga;kode_pihak_ketiga;nama_pihak_ketiga'
+        >
+        , object:rpclass::TCustomLoadedLink<
+          Name='LPaketInvestasi'
+          ClassTypeName='PaketInvestasi'
+          FieldNames='kode_paket_investasi;kode_paket_investasi;nama_paket_investasi'
+        >
+        , object:rpclass::TCustomLoadedLink<
+          Name='LJenisInvestasi'
+          ClassTypeName='JenisInvestasi'
+          FieldNames='kode_jns_investasi;kode_jns_investasi;nama_jns_investasi'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+      AfterApplyRow='uipTransPiutangInvestasiApplyRow'
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipInvestasi'
+      MasterUIName='uipTransPiutangInvestasi'
+      LinkName='LInvestasi'
+      LoadedFieldList='id_investasi;akum_nominal;akum_piutangLR;akum_LR'
+      OnSetData='uipInvestasiSetData'
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipParameter'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='nowDate'
+          DataTypeName='varchar'
+          DataLength=10
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='inv'
+          DataTypeName='varchar'
+          DataLength=1
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+  }
+  OnGeneralSetData='FormGeneralSetData'
+  OnEndProcessData='FormEndProcessData'
+>

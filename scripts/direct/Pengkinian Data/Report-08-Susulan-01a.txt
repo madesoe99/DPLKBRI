@@ -1,0 +1,541 @@
+Python 2.3.2 (#49, Oct  2 2003, 20:02:00) [MSC v.1200 32 bit (Intel)] on win32
+Type "copyright", "credits" or "license()" for more information.
+
+    ****************************************************************
+    Personal firewall software may warn about the connection IDLE
+    makes to its subprocess using this computer's internal loopback
+    interface.  This connection is not visible on any external
+    interface and no data is sent to or received from the Internet.
+    ****************************************************************
+    
+IDLE 1.0      ==== No Subprocess ====
+>>> 
+No Peserta              [0]: 51100003575 
+Nama Lengkap            [1]: WALEH EDHIE SUJANTO 
+Alamat telepon2         [2]: 428265 
+Tanggal Registrasi      [3]: 05/30/2000 0:00 
+Tempat Lahir            [4]: PEKALONGAN 
+Tanggal Lahir           [5]: 01/17/1953 0:00 
+Alamat Jalan            [6]: JL.SLAMET NO.78 PEKALONGAN 
+Alamat rt/rw            [7]: 06/08 
+Alamat kelurahan        [8]: BENDAN 
+Alamat kecamatan        [9]: PEKALONGAN BARAT 
+Alamat kota            [10]: PKL 
+Alamat kode pos        [11]: 51119 
+Alamat telepon         [12]: 428265 
+Pekerjaan              [13]: PENSIUN 
+Nama perusahaan        [14]: PT.KAI (PERSERO) 
+Alamat kantor jalan    [15]: JL.DIPONEGORO NO.86CEPU 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]:  
+Alamat kantor propinsi [20]:  
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL.SLAMET NO.78 PEKALONGAN 
+Alamat surat rt/rw     [23]: 06/08 
+Alamat surat kelurahan [24]: BENDAN 
+Alamat surat kecamatan [25]: PEKALONGAN BARAT 
+Alamat surat kota      [26]: PKL 
+Alamat surat propinsi  [27]: JATENG 
+Alamat surat kode pos  [28]: 51119 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 51100003576 
+Nama Lengkap            [1]: SITI FATIMAH 
+Alamat telepon2         [2]: 428265 
+Tanggal Registrasi      [3]: 05/30/2000 0:00 
+Tempat Lahir            [4]: PEKALONGAN 
+Tanggal Lahir           [5]: 12/19/1952 0:00 
+Alamat Jalan            [6]: JL.SLAMET NO.78 PEKALONGAN 
+Alamat rt/rw            [7]: 06/08 
+Alamat kelurahan        [8]: BENDAN 
+Alamat kecamatan        [9]: PEKALONGAN BARAT 
+Alamat kota            [10]: PKL 
+Alamat kode pos        [11]: 51119 
+Alamat telepon         [12]: 428265 
+Pekerjaan              [13]: PENSIUN 
+Nama perusahaan        [14]: DINAS PERINDUSTRIAN PKL 
+Alamat kantor jalan    [15]: JL.MAJAPAHIT NO.3PEKALONGAN 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]:  
+Alamat kantor propinsi [20]:  
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL.SLAMET NO.78 PEKALONGAN 
+Alamat surat rt/rw     [23]: 06/08 
+Alamat surat kelurahan [24]: BENDAN 
+Alamat surat kecamatan [25]: PEKALONGAN BARAT 
+Alamat surat kota      [26]: PKL 
+Alamat surat propinsi  [27]: JATENG 
+Alamat surat kode pos  [28]: 51119 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 51100003698 
+Nama Lengkap            [1]: SRI WINARNO HUDIYONO 
+Alamat telepon2         [2]: 429467 
+Tanggal Registrasi      [3]: 06/13/2000 0:00 
+Tempat Lahir            [4]: PEKALONGAN 
+Tanggal Lahir           [5]: 09/02/1962 0:00 
+Alamat Jalan            [6]: JL.PERMATA NO.22 PEKALONGAN 
+Alamat rt/rw            [7]: 03/08 
+Alamat kelurahan        [8]: PODOSUGIH 
+Alamat kecamatan        [9]: PEKALONGAN BARAT 
+Alamat kota            [10]: PKL 
+Alamat kode pos        [11]: 51111 
+Alamat telepon         [12]: 429467 
+Pekerjaan              [13]: GURU 
+Nama perusahaan        [14]: SD KRAMATSARI 
+Alamat kantor jalan    [15]: KRAMATSARI III    
+Alamat kantor kode pos [16]: 51118 
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: PKL 
+Alamat kantor propinsi [20]: JATENG 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL.PERMATA NO.22 PEKALONGAN 
+Alamat surat rt/rw     [23]: 03/08 
+Alamat surat kelurahan [24]: PODOSUGIH 
+Alamat surat kecamatan [25]: PEKALONGAN BARAT 
+Alamat surat kota      [26]: PKL 
+Alamat surat propinsi  [27]: JATENG 
+Alamat surat kode pos  [28]: 51111 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 51100004626 
+Nama Lengkap            [1]: AMIROH 
+Alamat telepon2         [2]: 426390 
+Tanggal Registrasi      [3]: 08/10/2000 0:00 
+Tempat Lahir            [4]: PEKALONGAN 
+Tanggal Lahir           [5]: 12/19/1962 0:00 
+Alamat Jalan            [6]: KRAPYAK LOR JL.JLAMPRANG NO.273 PEKALONG 
+Alamat rt/rw            [7]: 01/06 
+Alamat kelurahan        [8]: KRAPYAKLOR 
+Alamat kecamatan        [9]: PEKALONGAN UTARA 
+Alamat kota            [10]: PKL 
+Alamat kode pos        [11]: 51149 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: IBU RUMAH TANGG 
+Nama perusahaan        [14]: - 
+Alamat kantor jalan    [15]: -- 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: - 
+Alamat kantor propinsi [20]: - 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL.JLAMPRANG NO.273 
+Alamat surat rt/rw     [23]: 01/06 
+Alamat surat kelurahan [24]: KRAPYAKLOR 
+Alamat surat kecamatan [25]: PKL UTARA 
+Alamat surat kota      [26]: PKL 
+Alamat surat propinsi  [27]: JATENG 
+Alamat surat kode pos  [28]: 51149 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 51100004760 
+Nama Lengkap            [1]: NUR ROKHID ZAIN,DRS 
+Alamat telepon2         [2]: 426390 
+Tanggal Registrasi      [3]: 08/22/2000 0:00 
+Tempat Lahir            [4]: KENDAL 
+Tanggal Lahir           [5]: 05/10/1958 0:00 
+Alamat Jalan            [6]: JL.JLAMPRANG NO.273 B KRAPYAK LOR 
+Alamat rt/rw            [7]: 01/06 
+Alamat kelurahan        [8]: KRAPYAK LOR 
+Alamat kecamatan        [9]: PEKALONGAN UTARA 
+Alamat kota            [10]: EKALONGAN 
+Alamat kode pos        [11]: 51125 
+Alamat telepon         [12]: 426390 
+Pekerjaan              [13]: PNS 
+Nama perusahaan        [14]: KEMENTRIAN AGAMA 
+Alamat kantor jalan    [15]: JL PERINTIS KEMERDEKAAN 14 
+Alamat kantor kode pos [16]: 51215 
+Alamat kantor kelurahan[17]: BATANG 
+Alamat kantor kecamatan[18]: BATANG 
+Alamat kantor kota     [19]: BATANG 
+Alamat kantor propinsi [20]: JATENG 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL.JLAMPRANG NO.273 
+Alamat surat rt/rw     [23]: 01/06 
+Alamat surat kelurahan [24]: KRAPYAKLOR 
+Alamat surat kecamatan [25]: PKL UTARA 
+Alamat surat kota      [26]: PKL 
+Alamat surat propinsi  [27]: JATENG 
+Alamat surat kode pos  [28]: 51149 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 51100005110 
+Nama Lengkap            [1]: MOCH HIDAYATUR ROKHMAN 
+Alamat telepon2         [2]: 413713 
+Tanggal Registrasi      [3]: 09/21/2000 0:00 
+Tempat Lahir            [4]: PEKALONGAN 
+Tanggal Lahir           [5]: 06/30/1972 0:00 
+Alamat Jalan            [6]: JL.HAYAM WURUK PESINDON I PEKALONGAN 
+Alamat rt/rw            [7]: 05/02 
+Alamat kelurahan        [8]: KERGON 
+Alamat kecamatan        [9]: PEKALONGAN BARAT 
+Alamat kota            [10]: PEKL 
+Alamat kode pos        [11]: 51113 
+Alamat telepon         [12]: 413713 
+Pekerjaan              [13]: SWASTA 
+Nama perusahaan        [14]: BMT BAHTERA GROUP 
+Alamat kantor jalan    [15]: JL DR SOETOMO MEGA GROSIR MM BLOK A.10 
+Alamat kantor kode pos [16]: 51129 
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]: PKL SELATAN 
+Alamat kantor kota     [19]: PEKL 
+Alamat kantor propinsi [20]: JATENG 
+Alamat kantor telepon  [21]: 423134 
+Alamat surat jalan     [22]: JL.HAYAM WURUK PESINDON I PEKALONGAN 
+Alamat surat rt/rw     [23]: 05/02 
+Alamat surat kelurahan [24]: KERGON 
+Alamat surat kecamatan [25]: PEKALONGAN BARAT 
+Alamat surat kota      [26]: PEKL 
+Alamat surat propinsi  [27]: JATENG 
+Alamat surat kode pos  [28]: 51113 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 51100005681 
+Nama Lengkap            [1]: ROSA NORITA 
+Alamat telepon2         [2]: 426307 
+Tanggal Registrasi      [3]: 11/29/2000 0:00 
+Tempat Lahir            [4]: PEKALONGAN 
+Tanggal Lahir           [5]: 04/18/1974 0:00 
+Alamat Jalan            [6]: BANJIRAN GG.3 NO.19 RT.05 KEL.BANJIRAN K 
+Alamat rt/rw            [7]: 05/01 
+Alamat kelurahan        [8]: BANJIRAN  
+Alamat kecamatan        [9]: WARUNGASEM 
+Alamat kota            [10]: BATANG 
+Alamat kode pos        [11]: 51252 
+Alamat telepon         [12]: 4417607 
+Pekerjaan              [13]: SWASTA 
+Nama perusahaan        [14]: BMT BAHTERA GROUP 
+Alamat kantor jalan    [15]: JL DR SOETOMO MEGA GROSIR MM BLOK A.10 
+Alamat kantor kode pos [16]: 51129 
+Alamat kantor kelurahan[17]: SOKO 
+Alamat kantor kecamatan[18]: PKL TIMUR 
+Alamat kantor kota     [19]: PKL 
+Alamat kantor propinsi [20]: JATENG 
+Alamat kantor telepon  [21]: 423134 
+Alamat surat jalan     [22]: BANJIRAN GG.3 NO.19 RT.05 KEL.BANJIRAN K 
+Alamat surat rt/rw     [23]: 05/01 
+Alamat surat kelurahan [24]: BANJIRAN  
+Alamat surat kecamatan [25]: WARUNGASEM 
+Alamat surat kota      [26]: BATANG 
+Alamat surat propinsi  [27]: JATENG 
+Alamat surat kode pos  [28]: 51252 
+NPWP                   [29]:  
+Email                  [30]: rosa_norita@yahoo.co.id
+ 
+###----------End --------------#
+No Peserta              [0]: 51100005747 
+Nama Lengkap            [1]: BUDI HARDYANSYAH, SE 
+Alamat telepon2         [2]: 423134 
+Tanggal Registrasi      [3]: 12/14/2000 0:00 
+Tempat Lahir            [4]: BATANG 
+Tanggal Lahir           [5]: 05/09/1971 0:00 
+Alamat Jalan            [6]: JL MAWAR RAYA A / 6 
+Alamat rt/rw            [7]: 07/04 
+Alamat kelurahan        [8]: TANJUNG 
+Alamat kecamatan        [9]: TIRTO 
+Alamat kota            [10]: PEKALONGAN 
+Alamat kode pos        [11]: 51151 
+Alamat telepon         [12]: 433020 
+Pekerjaan              [13]: KARY BMT BAHTER 
+Nama perusahaan        [14]: BMT BAHTERA 
+Alamat kantor jalan    [15]: JL DR SOETOMO MEGA GROSIR MM BLOK A.10 
+Alamat kantor kode pos [16]: 51129 
+Alamat kantor kelurahan[17]: SOKO 
+Alamat kantor kecamatan[18]: PKL SELATAN 
+Alamat kantor kota     [19]: PEKL 
+Alamat kantor propinsi [20]: JATENG 
+Alamat kantor telepon  [21]: 423134 
+Alamat surat jalan     [22]: JL MAWAR RAYA A / 6 
+Alamat surat rt/rw     [23]: 07/04 
+Alamat surat kelurahan [24]: TANJUNG 
+Alamat surat kecamatan [25]: TIRTO 
+Alamat surat kota      [26]: PEKALONGAN 
+Alamat surat propinsi  [27]: JATENG 
+Alamat surat kode pos  [28]: 51151 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 51100005764 
+Nama Lengkap            [1]: IBNU HAJAR 
+Alamat telepon2         [2]: 410291 
+Tanggal Registrasi      [3]: 12/19/2000 0:00 
+Tempat Lahir            [4]: PEKALONGAN 
+Tanggal Lahir           [5]: 07/24/1976 0:00 
+Alamat Jalan            [6]: GTA JL.MAWAR 3/22 
+Alamat rt/rw            [7]: 007/004 
+Alamat kelurahan        [8]: TIRTO 
+Alamat kecamatan        [9]: TIRTO 
+Alamat kota            [10]: PEKALONGAN 
+Alamat kode pos        [11]: 51151 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: SWASTA 
+Nama perusahaan        [14]: BMI 
+Alamat kantor jalan    [15]: JL.HAYAM WURUK 9PEKALONGAN 
+Alamat kantor kode pos [16]: 51126 
+Alamat kantor kelurahan[17]: SAMPANGAN 
+Alamat kantor kecamatan[18]: PKL TIMUR 
+Alamat kantor kota     [19]: PKL 
+Alamat kantor propinsi [20]: JATENG 
+Alamat kantor telepon  [21]: 411222 
+Alamat surat jalan     [22]: GTA JL.MAWAR 3/22 
+Alamat surat rt/rw     [23]: 007/004 
+Alamat surat kelurahan [24]: TIRTO 
+Alamat surat kecamatan [25]: TIRTO 
+Alamat surat kota      [26]: PEKALONGAN 
+Alamat surat propinsi  [27]:  
+Alamat surat kode pos  [28]: 51151 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 51100005975 
+Nama Lengkap            [1]: ANGGAR WIDIYATMOKO,IR 
+Alamat telepon2         [2]: 812270454 
+Tanggal Registrasi      [3]: 01/19/2001 0:00 
+Tempat Lahir            [4]: KAB.SEMARANG 
+Tanggal Lahir           [5]: 02/23/1971 0:00 
+Alamat Jalan            [6]: GROBOG KULON KECAMATAN PANGKAH 
+Alamat rt/rw            [7]: 021/006 
+Alamat kelurahan        [8]: GROBOG KULON 
+Alamat kecamatan        [9]: PANGKAH 
+Alamat kota            [10]: TEGAL 
+Alamat kode pos        [11]: 52471 
+Alamat telepon         [12]: 283443985 
+Pekerjaan              [13]: KARY PERHUTANI 
+Nama perusahaan        [14]: BALIK 
+Alamat kantor jalan    [15]: JL PROGO PEKALONGAN 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: PKL 
+Alamat kantor propinsi [20]: JATENG 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: GROBOG KULON KECAMATAN PANGKAH 
+Alamat surat rt/rw     [23]: 021/006 
+Alamat surat kelurahan [24]: GROBOG KULON 
+Alamat surat kecamatan [25]: PANGKAH 
+Alamat surat kota      [26]: TEGAL 
+Alamat surat propinsi  [27]: JATENG 
+Alamat surat kode pos  [28]: 52471 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 51100006181 
+Nama Lengkap            [1]: NUR BUDIARTI,SH 
+Alamat telepon2         [2]: 424661 
+Tanggal Registrasi      [3]: 03/06/2001 0:00 
+Tempat Lahir            [4]: SEMARANG 
+Tanggal Lahir           [5]: 09/24/1969 0:00 
+Alamat Jalan            [6]: JL KEMUNING A.II/9 RT.01/ TANJUNG TIRTO 
+Alamat rt/rw            [7]: 01/07 
+Alamat kelurahan        [8]: TANJUNG 
+Alamat kecamatan        [9]: TIRTO 
+Alamat kota            [10]: PKL 
+Alamat kode pos        [11]: 51151 
+Alamat telepon         [12]: 8156955027 
+Pekerjaan              [13]: PNS 
+Nama perusahaan        [14]: BAG. KEUANGAN PEMDA KAB 
+Alamat kantor jalan    [15]: KAB PKL 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]:  
+Alamat kantor propinsi [20]: PKL 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL KEMUNING A.II/9 RT.01/ TANJUNG TIRTO 
+Alamat surat rt/rw     [23]: 01/07 
+Alamat surat kelurahan [24]: TANJUNG 
+Alamat surat kecamatan [25]: TIRTO 
+Alamat surat kota      [26]: PKL 
+Alamat surat propinsi  [27]: JATENG 
+Alamat surat kode pos  [28]: 51151 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 51100006231 
+Nama Lengkap            [1]: MOH.ISRO'I, SAG 
+Alamat telepon2         [2]: 812554577 
+Tanggal Registrasi      [3]: 03/13/2001 0:00 
+Tempat Lahir            [4]: PEKALONGAN 
+Tanggal Lahir           [5]: 03/13/1973 0:00 
+Alamat Jalan            [6]: JL.TRAPESIUM III/7 
+Alamat rt/rw            [7]: 005/013 
+Alamat kelurahan        [8]: KRAPYAK LOR 
+Alamat kecamatan        [9]: PKL UTARA 
+Alamat kota            [10]: PEKALONGAN 
+Alamat kode pos        [11]: 51149 
+Alamat telepon         [12]: 7931991 
+Pekerjaan              [13]: KARY SWASTA 
+Nama perusahaan        [14]: BMT BAHTERA GROUP 
+Alamat kantor jalan    [15]: JL DR SOETOMO MEGA GROSIR MM BLOK A.10 
+Alamat kantor kode pos [16]: 51129 
+Alamat kantor kelurahan[17]: SOKO 
+Alamat kantor kecamatan[18]: PKL SELATAN 
+Alamat kantor kota     [19]: PEKL 
+Alamat kantor propinsi [20]: JATENG 
+Alamat kantor telepon  [21]: 423134 
+Alamat surat jalan     [22]: JL.TRAPESIUM III/7 
+Alamat surat rt/rw     [23]: 005/013 
+Alamat surat kelurahan [24]: KRAPYAK LOR 
+Alamat surat kecamatan [25]: PKL UTARA 
+Alamat surat kota      [26]: PEKALONGAN 
+Alamat surat propinsi  [27]: JATENG 
+Alamat surat kode pos  [28]: 51149 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 51100006440 
+Nama Lengkap            [1]: GIENAENI 
+Alamat telepon2         [2]: 785235 
+Tanggal Registrasi      [3]: 04/18/2001 0:00 
+Tempat Lahir            [4]: PEKALONGAN 
+Tanggal Lahir           [5]: 08/09/1950 0:00 
+Alamat Jalan            [6]: JL.RAYA KEDUNGWUNI 173 KEDUNGWUNI PEKALO 
+Alamat rt/rw            [7]: 000/000 
+Alamat kelurahan        [8]: KEDUNGWUNI 
+Alamat kecamatan        [9]: KEDUNGWUNI 
+Alamat kota            [10]: PKL 
+Alamat kode pos        [11]: 51173 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: IBU RUMAH TANGGA 
+Nama perusahaan        [14]: - 
+Alamat kantor jalan    [15]: - 
+Alamat kantor kode pos [16]: - 
+Alamat kantor kelurahan[17]: - 
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: - 
+Alamat kantor propinsi [20]: - 
+Alamat kantor telepon  [21]: - 
+Alamat surat jalan     [22]: GEMBONG BARAT  
+Alamat surat rt/rw     [23]: 002/013 
+Alamat surat kelurahan [24]: KEDUNGWUNI BARAT 
+Alamat surat kecamatan [25]: KEDUNGWUNI 
+Alamat surat kota      [26]: PEKALONGAN 
+Alamat surat propinsi  [27]: JATENG 
+Alamat surat kode pos  [28]: 51173 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 51100006528 
+Nama Lengkap            [1]: ABDUL NASSER ARIEF WIBOWO 
+Alamat telepon2         [2]: 413617 
+Tanggal Registrasi      [3]: 04/30/2001 0:00 
+Tempat Lahir            [4]: JAKARTA 
+Tanggal Lahir           [5]: 05/07/1967 0:00 
+Alamat Jalan            [6]: JL.RAYA PRINGLANGU NO.191 PEKALONGAN 
+Alamat rt/rw            [7]: 10/03 
+Alamat kelurahan        [8]: PRINGLANGU 
+Alamat kecamatan        [9]: PKL BARAT 
+Alamat kota            [10]: PKL 
+Alamat kode pos        [11]: 51111 
+Alamat telepon         [12]: 413617 
+Pekerjaan              [13]: WIRASWASTA 
+Nama perusahaan        [14]: - 
+Alamat kantor jalan    [15]: - 
+Alamat kantor kode pos [16]: - 
+Alamat kantor kelurahan[17]: - 
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: - 
+Alamat kantor propinsi [20]: PKL 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL BINAGRIYA RAYA NO.62 
+Alamat surat rt/rw     [23]: 003/007 
+Alamat surat kelurahan [24]: MEDONO 
+Alamat surat kecamatan [25]: PKL BARAT 
+Alamat surat kota      [26]: PEKALONGAN 
+Alamat surat propinsi  [27]: JATENG 
+Alamat surat kode pos  [28]: 51111 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 51100007086 
+Nama Lengkap            [1]: WASIS KAMAL 
+Alamat telepon2         [2]: 785505 
+Tanggal Registrasi      [3]: 07/23/2001 0:00 
+Tempat Lahir            [4]: PEKALONGAN 
+Tanggal Lahir           [5]: 03/12/1974 0:00 
+Alamat Jalan            [6]: DS. AMBOKEMBANG GG 6 NO.456 
+Alamat rt/rw            [7]: 14 /07 
+Alamat kelurahan        [8]: KEDUNGWUNI 
+Alamat kecamatan        [9]: KEDUNGWUNI 
+Alamat kota            [10]: PKL 
+Alamat kode pos        [11]: 51173 
+Alamat telepon         [12]: 85869082871 
+Pekerjaan              [13]: WIRASWASTA 
+Nama perusahaan        [14]: - 
+Alamat kantor jalan    [15]: - - 
+Alamat kantor kode pos [16]: - 
+Alamat kantor kelurahan[17]: - - 
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: PKL 
+Alamat kantor propinsi [20]: JATENG 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: DS. AMBOKEMBANG GG 6 NO.456 
+Alamat surat rt/rw     [23]: 14 /07 
+Alamat surat kelurahan [24]: KEDUNGWUNI 
+Alamat surat kecamatan [25]: KEDUNGWUNI 
+Alamat surat kota      [26]: PKL 
+Alamat surat propinsi  [27]: JATENG 
+Alamat surat kode pos  [28]: 51173 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 51100007343 
+Nama Lengkap            [1]: ANIS LINUWIH WICAKSONO 
+Alamat telepon2         [2]: 816692950 
+Tanggal Registrasi      [3]: 07/30/2001 0:00 
+Tempat Lahir            [4]: PEKALONGAN 
+Tanggal Lahir           [5]: 07/19/1982 0:00 
+Alamat Jalan            [6]: PERTIGAAN KALIGUA BUMIAYU DS TARABAN PAG 
+Alamat rt/rw            [7]: 02/01 
+Alamat kelurahan        [8]: PAGUYANGAN 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: BREBES 
+Alamat kode pos        [11]: 52276 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: MAHASISWA 
+Nama perusahaan        [14]: - 
+Alamat kantor jalan    [15]: - - 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: BREBES 
+Alamat kantor propinsi [20]: JATENG 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: PERTIGAAN KALIGUA BUMIAYU DS TARABAN PAG 
+Alamat surat rt/rw     [23]: 02/01 
+Alamat surat kelurahan [24]: PAGUYANGAN 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: BREBES 
+Alamat surat propinsi  [27]: JATENG 
+Alamat surat kode pos  [28]: 52276 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+>>> 

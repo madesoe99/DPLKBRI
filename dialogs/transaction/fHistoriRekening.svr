@@ -1,0 +1,54 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipRekInvDPLK'
+      PClassName='RekInvDPLK'
+      LoadedFieldList='no_rekening;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;LBranchLocation.branch_code;LBranchLocation.branch_code;LBranchLocation.BranchName;LSumberDana.sumber_dana;LSumberDana.sumber_dana;LSumberDana.keterangan'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLK'
+          ClassTypeName='NasabahDPLK'
+          FieldNames='no_peserta;no_peserta;nama_lengkap'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LBranchLocation'
+          ClassTypeName='BranchLocation'
+          FieldNames='branch_code;branch_code;BranchName'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LSumberDana'
+          ClassTypeName='SumberDana'
+          FieldNames='sumber_dana;sumber_dana;keterangan'
+        >
+      }
+      Mode=imSingleRow
+    >, object:rpclass::TPClassUIDef<
+      Name='uipLs_HistoriIuran'
+      MasterUIName='uipRekInvDPLK'
+      ListName='Ls_HistoriIuran'
+      LoadedFieldList='tanggal_histori;no_referensi;iuran_pst;iuran_pk;user_id;terminal_id;auth_user_id'
+    >, object:rpclass::TPClassUIDef<
+      Name='uipLs_HistAsuransi'
+      MasterUIName='uipRekInvDPLK'
+      ListName='Ls_HistAsuransi'
+      LoadedFieldList='tanggal_histori;no_referensi;no_polis;besar_premi;manfaat_asuransi;tunggakan_premi;alasan_berhenti;keterangan;tgl_akseptasi;tgl_berakhir;user_id;terminal_id;auth_user_id'
+    >, object:rpclass::TPClassUIDef<
+      Name='uipLs_HistoriAnuitas'
+      MasterUIName='uipRekInvDPLK'
+      ListName='Ls_HistoriAnuitas'
+      LoadedFieldList='tanggal_histori;no_referensi;no_polis_anuitas;tgl_pembelian_anuitas;nama_asuransi;user_id;terminal_id;auth_user_id'
+    >, object:rpclass::TPClassUIDef<
+      Name='uipLs_HistoriPindahPaketInvestasi'
+      MasterUIName='uipRekInvDPLK'
+      ListName='Ls_HistoriPindahPaketInvestasi'
+      LoadedFieldList='tanggal_histori;no_referensi;user_id;terminal_id;auth_user_id'
+    >
+  }
+  OnEndSetData='FormEndSetData'
+  OnSetDataEx='setDataEx'
+>

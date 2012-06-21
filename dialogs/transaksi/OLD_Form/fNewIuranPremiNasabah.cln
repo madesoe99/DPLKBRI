@@ -1,0 +1,748 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['DualSplit']
+  Caption='Pembayaran Iuran Peserta'
+  State=rsMaximized
+  Left=100
+  Top=75
+  Width=800
+  Height=600
+  OnFormShow='FormShow'
+  UIParts={object:rtf::PClassUI<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='HiddenIDIuranPeserta'
+          Hidden=true
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='HiddenIDTitipanPremi'
+          Hidden=true
+          DataTypeName='integer'
+          DataLength=20
+        >}Name='uipTransaksi'
+      ClassTypeName='IuranPeserta'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >, object:rtf::PClassUI<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='BranchCode'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=5
+        >, object:rtf::FieldUIElmtSetting<
+          Name='UserIDOwner'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='isTeller'
+          Hidden=true
+          DataTypeName='integer'
+          DataLength=20
+          EnumeratedValues=['0=False'#13#10,
+            '1=True'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='TanggalPakai'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=10
+        >}Name='uipUserInfo'
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >, object:rtf::PClassUI<
+      Name='uipNasabah'
+      ClassTypeName='NasabahDPLK'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+    >, object:rtf::PClassUI<
+      Name='uipRekeningWU'
+      ClassTypeName='RekeningWasiatUmmat'
+      DataBinding=bmMaster
+      CreateInstanceOnNew=true
+    >, object:rtf::PClassUI<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='isBatchPremiExist'
+          Hidden=true
+          DataTypeName='integer'
+          DataLength=20
+        >}Name='uipBatchDefined'
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >, object:rtf::PClassUI<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='PRESISI_ANGKA_FLOAT'
+          Hidden=true
+          DataTypeName='double'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='FileSlipIuran'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=100
+        >, object:rtf::FieldUIElmtSetting<
+          Name='FileSlipPremi'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=100
+        >}Name='uipParameter'
+      CreateInstanceOnNew=true
+    >}Containers={object:rtf::Panel<
+      Name='pButton'
+      Width=300
+      Height=40
+      Controls={object:rtf::Button<
+          Name='bSimpan'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          Color=0
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          OnClick='bSimpanClick'
+        >, object:rtf::Button<
+          Name='bCancel'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >}ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Elements={object:rtf::LinkUIElmtSetting<
+          Name='LTransactionBatch'
+          RequiredOption=roAlwaysRequired
+          ControlCaption='Batch Transaksi'
+          ClassTypeName='TransactionBatch'
+          KeyFields={object:rtf::FieldUIElmtSetting<
+              Name='LTransactionBatch.ID_TransactionBatch'
+              DataTypeName='INTEGER'
+              DataLength=0
+              UsedAsKey=true
+              KeyOrDisplayName='ID_TransactionBatch'
+              FinalDisplayFieldName='ID_TransactionBatch'
+            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+              Name='LTransactionBatch.ID_TransactionBatch'
+              DataTypeName='INTEGER'
+              DataLength=0
+              UsedAsDisplay=true
+              KeyOrDisplayName='ID_TransactionBatch'
+              FinalDisplayFieldName='ID_TransactionBatch'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LTransactionBatch.no_batch'
+              DataTypeName='VARCHAR'
+              DataLength=32
+              UsedAsDisplay=true
+              KeyOrDisplayName='no_batch'
+              FinalDisplayFieldName='no_batch'
+            >}Restrictions=''
+          FieldBaseName='LTransactionBatch'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tgl_transaksi'
+          ControlCaption='Tanggal Transaksi'
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          ControlCaption='Keterangan'
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >, object:rtf::FieldUIElmtSetting<
+          Name='titipan_premi'
+          ControlCaption='Titipan Premi'
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='catatan_bayar_iuran'
+          ControlCaption='Catatan Bayar Iuran'
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >, object:rtf::FieldUIElmtSetting<
+          Name='IuranPeserta'
+          ControlCaption='Iuran Peserta'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='TB_BranchCode'
+          ReadOnlyControl=true
+          ControlCaption='Cabang Batch Transaksi'
+          DataTypeName='varchar'
+          DataLength=5
+        >, object:rtf::LinkUIElmtSetting<
+          Name='TB_Premi'
+          ControlCaption='Batch Premi'
+          ClassTypeName='TransactionBatch'
+          KeyFields={object:rtf::FieldUIElmtSetting<
+              Name='TB_Premi.ID_TransactionBatch'
+              DataTypeName='INTEGER'
+              DataLength=0
+              UsedAsKey=true
+              KeyOrDisplayName='ID_TransactionBatch'
+              FinalDisplayFieldName='ID_TransactionBatch'
+            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+              Name='TB_Premi.ID_TransactionBatch'
+              DataTypeName='INTEGER'
+              DataLength=0
+              UsedAsDisplay=true
+              KeyOrDisplayName='ID_TransactionBatch'
+              FinalDisplayFieldName='ID_TransactionBatch'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='TB_Premi.no_batch'
+              DataTypeName='VARCHAR'
+              DataLength=32
+              UsedAsDisplay=true
+              KeyOrDisplayName='no_batch'
+              FinalDisplayFieldName='no_batch'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='TB_Premi.tgl_used'
+              DataTypeName='TIMESTAMP'
+              DataLength=0
+              UsedAsDisplay=true
+              KeyOrDisplayName='tgl_used'
+              FinalDisplayFieldName='tgl_used'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='TB_Premi.batch_type'
+              DataTypeName='VARCHAR'
+              DataLength=1
+              UsedAsDisplay=true
+              KeyOrDisplayName='batch_type'
+              FinalDisplayFieldName='batch_type'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='TB_Premi.branch_code'
+              DataTypeName='VARCHAR'
+              DataLength=5
+              UsedAsDisplay=true
+              KeyOrDisplayName='branch_code'
+              FinalDisplayFieldName='branch_code'
+            >}Restrictions=['uipUserInfo.BranchCode|BranchCode'#13#10,
+            'uipUserInfo.isTeller|isTeller'#13#10,
+            'uipUserInfo.UserIDOwner|UserIDOwner'#13#10,
+            'uipUserInfo.TanggalPakai|TanggalPakai']
+          OQLText=['select from TransactionBatch '#13#10,
+            '[(0 = :isTeller or branch_code = :BranchCode) and '#13#10,
+            '(0 = :isTeller or user_id_owner = :UserIDOwner) and '#13#10,
+            'batch_type = ''P'' and batch_status = ''O'' and '#13#10,
+            'tgl_used = :TanggalPakai] '#13#10,
+            '(no_batch, tgl_create, tgl_used, batch_type$, batch_sub_type$,'#13#10,
+            'branch_code, ID_TransactionBatch, self)'#13#10,
+            'then order by no_batch;']
+          LookupOption=loCustomOQL
+          FieldBaseName='TB_Premi'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='IuranPemberiKerja'
+          ControlCaption='Nominal Iuran Pemberi Kerja'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='IuranTambahan'
+          ControlCaption='Nominal Iuran Tambahan'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='isOnlyTitipanPremi'
+          ControlCaption='Hanya membayar Titipan Premi'
+          DataTypeName='integer'
+          DataLength=20
+          EnumeratedValues=['0=False'#13#10,
+            '1=True'#13#10]
+          GenerateCheckBoxForEnum=true
+        >}Name='pDataTransaksi'
+      Width=400
+      Height=400
+      Bordered=true
+      UIPart=$UIPARTS['uipTransaksi']
+      Controls={*object:rtf::DBLookupEdit<
+          Name='LTransactionBatch'
+          Top=20
+          Left=10
+          ControlCaption='Batch Transaksi'
+          LookupField='LTransactionBatch.no_batch'
+          DisplayLookupField=true
+        >, *object:rtf::DBDateEdit<
+          Name='tgl_transaksi'
+          Top=76
+          Left=10
+          Color=0
+          ControlCaption='Tanggal Transaksi'
+          LayoutOrder=3
+        >, *object:rtf::DBEdit<
+          Name='keterangan'
+          Top=132
+          Left=10
+          Color=0
+          ControlCaption='Keterangan'
+          LayoutOrder=5
+        >, *object:rtf::DBEdit<
+          Name='titipan_premi'
+          Top=300
+          Left=10
+          Color=12695295
+          ControlCaption='Titipan Premi'
+          LayoutOrder=11
+          FieldName='titipan_premi'
+          DisplayFormat=',0.00'
+        >, *object:rtf::DBEdit<
+          Name='catatan_bayar_iuran'
+          Top=244
+          Left=10
+          Color=0
+          ControlCaption='Catatan Bayar Iuran'
+          LayoutOrder=8
+        >, *object:rtf::DBEdit<
+          Name='IuranPeserta'
+          Top=188
+          Left=10
+          Color=12695295
+          ControlCaption='Nominal Iuran Peserta'
+          LayoutOrder=7
+          FieldName='IuranPeserta'
+          DisplayFormat=',0.00'
+        >, *object:rtf::DBEdit<
+          Name='TB_BranchCode'
+          Top=48
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Cabang Batch Transaksi'
+          ReadOnly=true
+        >, *object:rtf::DBLookupEdit<
+          Name='TB_Premi'
+          Top=104
+          Left=10
+          ControlCaption='Batch Premi'
+          LayoutOrder=4
+          LookupField='TB_Premi.no_batch'
+          DisplayLookupField=true
+        >, *object:rtf::DBEdit<
+          Name='IuranPemberiKerja'
+          Top=160
+          Left=10
+          Color=12695295
+          ControlCaption='Nominal Iuran Pemberi Kerja'
+          LayoutOrder=6
+        >, *object:rtf::DBEdit<
+          Name='IuranTambahan'
+          Top=216
+          Left=10
+          Color=12695295
+          ControlCaption='Nominal Iuran Tambahan'
+          LayoutOrder=8
+        >, *object:rtf::DBCheckBox<
+          Name='isOnlyTitipanPremi'
+          Top=272
+          Left=10
+          Color=0
+          ControlCaption='Hanya bayar Premi'
+          LayoutOrder=10
+          ValueChecked='1'
+          ValueUnchecked='0'
+          OnClick='isOnlyTitipanPremiClick'
+        >}EqualCaptionWidth=140
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Transaksi'
+    >, object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=800
+      Height=600
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['MultiPages']
+      InversedAlign=true
+    >, object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='no_peserta'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=11
+        >, object:rtf::FieldUIElmtSetting<
+          Name='nama_lengkap'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >, object:rtf::FieldUIElmtSetting<
+          Name='alamat_jalan'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=200
+        >, object:rtf::FieldUIElmtSetting<
+          Name='alamat_rtrw'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=7
+        >, object:rtf::FieldUIElmtSetting<
+          Name='alamat_kelurahan'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >, object:rtf::FieldUIElmtSetting<
+          Name='alamat_kecamatan'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >, object:rtf::FieldUIElmtSetting<
+          Name='alamat_kota'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >, object:rtf::FieldUIElmtSetting<
+          Name='alamat_kode_pos'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >, object:rtf::FieldUIElmtSetting<
+          Name='IuranPk'
+          ReadOnlyControl=true
+          ControlCaption='iuran pemberi kerja'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='IuranPeserta'
+          ReadOnlyControl=true
+          ControlCaption='iuran peserta'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='isWasiatUmmat'
+          ReadOnlyControl=true
+          ControlCaption='status kepesertaan wasiat umat'
+          DataTypeName='varchar'
+          DataLength=1
+          EnumeratedValues=['F=False'#13#10,
+            'T=True'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='KolektibilitasPremi'
+          ReadOnlyControl=true
+          ControlCaption='status kolektibilitas premi'
+          DataTypeName='varchar'
+          DataLength=1
+          EnumeratedValues=['T=Lancar'#13#10,
+            'F=Tidak Lancar'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='KewajibanWasiatUmmat'
+          ReadOnlyControl=true
+          ControlCaption='kewajiban premi wasiat ummat'
+          DataTypeName='double'
+          DataLength=20
+        >}Name='pNasabah'
+      Width=400
+      Height=420
+      Bordered=true
+      UIPart=$UIPARTS['uipNasabah']
+      Controls={*object:rtf::DBEdit<
+          Name='no_peserta'
+          Top=20
+          Left=10
+          Color=-2147483624
+          ControlCaption='no peserta'
+        >, *object:rtf::DBEdit<
+          Name='nama_lengkap'
+          Top=48
+          Left=10
+          Color=-2147483624
+          ControlCaption='nama lengkap'
+        >, *object:rtf::DBEdit<
+          Name='alamat_jalan'
+          Top=76
+          Left=10
+          Color=-2147483624
+          ControlCaption='alamat jalan'
+        >, *object:rtf::DBEdit<
+          Name='alamat_rtrw'
+          Top=104
+          Left=10
+          Color=-2147483624
+          ControlCaption='alamat rtrw'
+        >, *object:rtf::DBEdit<
+          Name='alamat_kelurahan'
+          Top=132
+          Left=10
+          Color=-2147483624
+          ControlCaption='alamat kelurahan'
+        >, *object:rtf::DBEdit<
+          Name='alamat_kecamatan'
+          Top=160
+          Left=10
+          Color=-2147483624
+          ControlCaption='alamat kecamatan'
+        >, *object:rtf::DBEdit<
+          Name='alamat_kota'
+          Top=188
+          Left=10
+          Color=-2147483624
+          ControlCaption='alamat kota'
+        >, *object:rtf::DBEdit<
+          Name='alamat_kode_pos'
+          Top=216
+          Left=10
+          Color=-2147483624
+          ControlCaption='alamat kode pos'
+        >, *object:rtf::DBEdit<
+          Name='IuranPk'
+          Top=244
+          Left=10
+          Color=9498256
+          ControlCaption='iuran pemberi kerja'
+          LayoutOrder=10
+          FieldName='IuranPk'
+          DisplayFormat=',0.00'
+          ReadOnly=true
+        >, *object:rtf::DBEdit<
+          Name='IuranPeserta'
+          Top=272
+          Left=10
+          Color=9498256
+          ControlCaption='iuran peserta'
+          LayoutOrder=11
+          FieldName='IuranPeserta'
+          DisplayFormat=',0.00'
+          ReadOnly=true
+        >, *object:rtf::DBComboBox<
+          Name='isWasiatUmmat'
+          Top=300
+          Left=10
+          Enabled=false
+          Color=15128749
+          ControlCaption='status kepesertaan wasiat umat'
+          LayoutOrder=12
+        >, *object:rtf::DBComboBox<
+          Name='KolektibilitasPremi'
+          Top=328
+          Left=10
+          Enabled=false
+          Color=12695295
+          ControlCaption='status kolektibilitas premi'
+          LayoutOrder=13
+        >, *object:rtf::DBEdit<
+          Name='KewajibanWasiatUmmat'
+          Top=356
+          Left=10
+          Color=12695295
+          ControlCaption='kewajiban premi wasiat ummat'
+          LayoutOrder=14
+          FieldName='KewajibanWasiatUmmat'
+          DisplayFormat=',0.00'
+          ReadOnly=true
+        >}EqualCaptionWidth=160
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Nasabah'
+    >, object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='no_polis'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tgl_akseptasi'
+          AccessOption=aoReadOnly
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tgl_berakhir'
+          AccessOption=aoReadOnly
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='besar_premi'
+          AccessOption=aoReadOnly
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >}Name='pRekeningWU'
+      Width=409
+      Height=417
+      Bordered=true
+      UIPart=$UIPARTS['uipRekeningWU']
+      Controls={*object:rtf::DBEdit<
+          Name='no_polis'
+          Top=20
+          Left=10
+          Color=-2147483624
+          ControlCaption='no polis'
+        >, *object:rtf::DBDateEdit<
+          Name='tgl_akseptasi'
+          Top=48
+          Left=10
+          Color=-2147483624
+          ControlCaption='tgl akseptasi'
+        >, *object:rtf::DBDateEdit<
+          Name='tgl_berakhir'
+          Top=76
+          Left=10
+          Color=-2147483624
+          ControlCaption='tgl berakhir'
+        >, *object:rtf::DBEdit<
+          Name='besar_premi'
+          Top=104
+          Left=10
+          Color=9498256
+          ControlCaption='besar premi'
+        >}EqualCaptionWidth=130
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Rekening Wasiat Ummat'
+    >, object:rtf::DualSplit<
+      Name='DualSplitV2'
+      Width=792
+      Height=531
+      Container1=$CONTAINERS['pNasabah']
+      Container2=$CONTAINERS['pRekeningWU']
+      SplitDirection=sdrSplitLeftRight
+    >, object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='isPindahBuku'
+          ControlCaption='Transaksi Pindah Buku'
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['F=false'#13#10,
+            'T=true'#13#10]
+          GenerateCheckBoxForEnum=true
+        >, object:rtf::FieldUIElmtSetting<
+          Name='Rekening_Pindah_Buku'
+          ControlCaption='Nomor Rekening'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='Tipe_Rekening_Pindah_Buku'
+          ReadOnlyControl=true
+          ControlCaption='Tipe Rekening'
+          DataTypeName='VARCHAR'
+          DataLength=2
+          EnumeratedValues=['10=Tabungan'#13#10,
+            '20=Giro'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='NamaPemilikRekening'
+          ReadOnlyControl=true
+          ControlCaption='Nama Pemilik Rekening'
+          DataTypeName='varchar'
+          DataLength=50
+        >, object:rtf::FieldUIElmtSetting<
+          Name='IDNumber'
+          ReadOnlyControl=true
+          ControlCaption='Nomor KTP'
+          DataTypeName='varchar'
+          DataLength=30
+        >, object:rtf::FieldUIElmtSetting<
+          Name='BranchCode'
+          ReadOnlyControl=true
+          ControlCaption='Kantor Cabang'
+          DataTypeName='varchar'
+          DataLength=5
+        >, object:rtf::FieldUIElmtSetting<
+          Name='CurrencyCode'
+          ReadOnlyControl=true
+          ControlCaption='Mata Uang'
+          DataTypeName='varchar'
+          DataLength=20
+        >}Name='pPindahBuku'
+      Width=385
+      Height=401
+      Bordered=true
+      UIPart=$UIPARTS['uipTransaksi']
+      Controls={*object:rtf::DBCheckBox<
+          Name='isPindahBuku'
+          Top=20
+          Left=10
+          Width=130
+          Height=21
+          Color=0
+          ControlCaption='&Transaksi Pindah Buku'
+          OnClick='isPindahBukuClick'
+        >, *object:rtf::DBEdit<
+          Name='Rekening_Pindah_Buku'
+          Top=48
+          Left=10
+          Color=12695295
+          ControlCaption='Nomor Rekening'
+        >, *object:rtf::DBComboBox<
+          Name='Tipe_Rekening_Pindah_Buku'
+          Top=76
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Tipe Rekening'
+        >, *object:rtf::DBEdit<
+          Name='NamaPemilikRekening'
+          Top=104
+          Left=10
+          Color=-2147483624
+          ControlCaption='Nama Pemilik Rekening'
+          ReadOnly=true
+        >, *object:rtf::DBEdit<
+          Name='IDNumber'
+          Top=132
+          Left=10
+          Color=-2147483624
+          ControlCaption='Nomor KTP'
+          ReadOnly=true
+        >, *object:rtf::DBEdit<
+          Name='BranchCode'
+          Top=160
+          Left=10
+          Color=-2147483624
+          ControlCaption='Kantor Cabang'
+          ReadOnly=true
+        >, *object:rtf::DBEdit<
+          Name='CurrencyCode'
+          Top=188
+          Left=10
+          Color=-2147483624
+          ControlCaption='Mata Uang'
+        >, object:rtf::Button<
+          Name='bCekRekening'
+          Layout=clNewLine
+          Top=216
+          Left=10
+          Color=0
+          ControlCaption=''
+          Caption='&Cek Rekening'
+          OnClick='bCekRekeningClick'
+        >}EqualCaptionWidth=140
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Transaksi Pindah Buku'
+    >, object:rtf::DualSplit<
+      Name='DualSplitV1'
+      Width=792
+      Height=531
+      Container1=$CONTAINERS['pDataTransaksi']
+      Container2=$CONTAINERS['pPindahBuku']
+      SplitDirection=sdrSplitLeftRight
+    >, object:rtf::MultiPages<
+      Name='MultiPages'
+      Width=800
+      Height=559
+      Pages={object:rtf::Page<
+          PageName='pageTransaksi'
+          PageTitle='Info Transaksi'
+          Container=$CONTAINERS['DualSplitV1']
+        >, object:rtf::Page<
+          PageName='pageNasabah'
+          PageTitle='Info Nasabah'
+          Container=$CONTAINERS['DualSplitV2']
+          Index=1
+        >}>}>

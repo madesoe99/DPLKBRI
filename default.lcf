@@ -1,0 +1,13 @@
+; LIBRARY CONFIGURATION FILE
+; EASY DAF(tm) 2.0 component-oriented framework
+
+[liblist]
+BlobRegister=BlobRegister.dll
+UserMgmt=UserMgmt.dll
+
+[classlist]
+BRANCHLOCATION=UserMgmt
+USERAPP=UserMgmt
+USERGROUP=UserMgmt
+USERGROUPAPP=UserMgmt
+BLOBREGISTRATION=BlobRegister

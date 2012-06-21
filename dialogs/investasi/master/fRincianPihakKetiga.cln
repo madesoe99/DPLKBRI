@@ -1,0 +1,247 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['MultiSplit']
+  Caption='Lihat Pihak Ketiga'
+  Left=50
+  Top=50
+  Width=617
+  Height=310
+  UIParts={object:rtf::PClassUI<
+      Name='uipPihakKetiga'
+      ClassTypeName='PihakKetiga'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      OnSetData='OnSetData_uipPihakKetiga'
+    >, object:rtf::PClassUI<
+      Name='uipRincianPK'
+      ClassTypeName='RincianPihakKetiga'
+      DataBinding=bmMaster
+      MultiLine=true
+    >}Containers={object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='kode_pihak_ketiga'
+          AccessOption=aoReadOnly
+          ControlCaption='Kode Pihak Ketiga'
+          DataTypeName='VARCHAR'
+          DataLength=8
+        >, object:rtf::FieldUIElmtSetting<
+          Name='nama_pihak_ketiga'
+          AccessOption=aoReadOnly
+          ControlCaption='Nama Pihak Ketiga'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >, object:rtf::FieldUIElmtSetting<
+          Name='alamat_pihak_ketiga'
+          AccessOption=aoReadOnly
+          ControlCaption='Alamat Pihak Ketiga'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >, object:rtf::FieldUIElmtSetting<
+          Name='self_investment'
+          AccessOption=aoReadOnly
+          ControlCaption='Pihak Terkait'
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['F=false'#13#10,
+            'T=true'#13#10]
+          GenerateCheckBoxForEnum=true
+        >}Name='pData'
+      Width=240
+      Height=140
+      Bordered=true
+      UIPart=$UIPARTS['uipPihakKetiga']
+      Controls={*object:rtf::DBEdit<
+          Name='kode_pihak_ketiga'
+          Top=20
+          Left=20
+          Color=-2147483624
+          ControlCaption='Kode Pihak Ketiga'
+        >, *object:rtf::DBEdit<
+          Name='nama_pihak_ketiga'
+          Top=48
+          Left=20
+          Color=-2147483624
+          ControlCaption='Nama Pihak Ketiga'
+        >, *object:rtf::DBEdit<
+          Name='alamat_pihak_ketiga'
+          Top=76
+          Left=20
+          Color=-2147483624
+          ControlCaption='Alamat Pihak Ketiga'
+        >, *object:rtf::DBCheckBox<
+          Name='self_investment'
+          Top=104
+          Left=20
+          Color=0
+          ControlCaption='Pihak Terkait'
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Controls={object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=99
+          Color=0
+          ControlCaption=''
+          LayoutOrder=2
+          Caption='&Tutup'
+          Default=true
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >, object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=20
+          Color=0
+          ControlCaption='&Simpan'
+          LayoutOrder=1
+          Caption='&Simpan'
+          Default=true
+          OnClick='OnClick_OK'
+        >}ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::MultiSplit<
+      Name='MultiSplit'
+      Width=617
+      Height=310
+      Side1Containers={$CONTAINERS['pData']
+      }Side2Containers={$CONTAINERS['pButton']
+      }SpaceContainer=$CONTAINERS['gRincianPK']
+    >, object:rtf::Grid<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='kode_jns_investasi'
+          AccessOption=aoReadOnly
+          ControlCaption='Jenis Investasi'
+          DataTypeName='VARCHAR'
+          DataLength=3
+        >, object:rtf::FieldUIElmtSetting<
+          Name='acc_investasi'
+          ControlCaption='Kode Akun Investasi'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='acc_pendapatan'
+          ControlCaption='Kode Akun Pendapatan'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='acc_piut_pendapatan'
+          ControlCaption='Kode Akun Piutang Pendpt'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='acc_beban'
+          ControlCaption='Kode Akun Beban'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='kode_pihak_ketiga'
+          AccessOption=aoReadOnlyOnEdit
+          Hidden=true
+          DataTypeName='VARCHAR'
+          DataLength=8
+        >, object:rtf::FieldUIElmtSetting<
+          Name='acc_penjualan'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >}Name='gRincianPK'
+      Width=617
+      Height=128
+      UIPart=$UIPARTS['uipRincianPK']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Columns={*object:rtf::GridColumn<
+          Name='kode_jns_investasi'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='kode_jns_investasi'
+          DisplayFormat=''
+          TitleCaption='Jenis Investasi'
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='acc_investasi'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='acc_investasi'
+          DisplayFormat=''
+          TitleCaption='Kode Akun Investasi'
+        >, *object:rtf::GridColumn<
+          Name='acc_pendapatan'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='acc_pendapatan'
+          DisplayFormat=''
+          TitleCaption='Kode Akun Pendapatan'
+        >, *object:rtf::GridColumn<
+          Name='acc_piut_pendapatan'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='acc_piut_pendapatan'
+          DisplayFormat=''
+          TitleCaption='Kode Akun Piutang Pendpt'
+        >, *object:rtf::GridColumn<
+          Name='acc_beban'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='acc_beban'
+          DisplayFormat=''
+          TitleCaption='Kode Akun Beban'
+        >}>, object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          ReadOnlyControl=true
+          ControlCaption='ID Pengguna'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='last_update'
+          ReadOnlyControl=true
+          ControlCaption='Terakhir Diperbarui'
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >}Name='pUser'
+      Width=240
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipPihakKetiga']
+      Controls={*object:rtf::DBEdit<
+          Name='user_id'
+          Top=20
+          Left=20
+          Color=-2147483624
+          ControlCaption='ID Pengguna'
+          ReadOnly=true
+        >, *object:rtf::DBDateEdit<
+          Name='last_update'
+          Top=48
+          Left=20
+          Color=-2147483624
+          ControlCaption='Terakhir Diperbarui'
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >}>

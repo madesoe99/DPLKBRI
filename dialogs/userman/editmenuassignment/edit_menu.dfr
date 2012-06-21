@@ -1,0 +1,256 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='1'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['split']
+  Caption='Edit menu assignment'
+  State=rsMaximized
+  Left=100
+  Top=200
+  Width=400
+  Height=400
+  OnGeneralSetData='FormGeneralSetData'
+  AfterProcessServerData='FormAfterProcessServerData'
+  UIParts={
+    object:rtf::PClassUI<
+      Name='menuitems'
+      MultiLine=true
+      FillInDefaultValues=true
+      InitWithDefaultValues=true
+    >
+    , object:rtf::PClassUI<
+      Name='allowedusers'
+      MultiLine=true
+      Master=$UIPARTS['menuitems']
+      AlwaysPostToServer=true
+    >
+    , object:rtf::PClassUI<
+      Name='allowedgroups'
+      MultiLine=true
+      Master=$UIPARTS['menuitems']
+      AlwaysPostToServer=true
+    >
+    , object:rtf::PClassUI<
+      Name='menu_id'
+      AlwaysPostToServer=true
+    >
+  }
+  Containers={
+    object:rtf::DualSplit<
+      Name='split'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['button_panel']
+      Container2=$CONTAINERS['data_panel']
+      InversedAlign=true
+    >
+    , object:rtf::DualSplit<
+      Name='data_panel'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['mp_usersgroups']
+      Container2=$CONTAINERS['items_panel']
+      DynamicSplit=true
+      InversedAlign=true
+    >
+    , object:rtf::Grid<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='item_number'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='item_caption'
+          AccessOption=aoReadOnly
+          Hidden=true
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='item_caption_mod'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='parent_item'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >
+      }
+      Name='items_panel'
+      Width=240
+      Height=100
+      Bordered=true
+      UIPart=$UIPARTS['menuitems']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Columns={
+        *object:rtf::GridColumn<
+          Name='item_number'
+          ReadOnly=true
+        >
+        , *object:rtf::GridColumn<
+          Name='item_caption_mod'
+          ReadOnly=true
+        >
+        , *object:rtf::GridColumn<
+          Name='parent_item'
+          ReadOnly=true
+        >
+      }
+    >
+    , object:rtf::MultiPages<
+      Name='mp_usersgroups'
+      Width=240
+      Height=250
+      Pages={
+        object:rtf::Page<
+          PageName='page1'
+          PageTitle='Allowed users'
+          Container=$CONTAINERS['ds_users']
+        >
+        , object:rtf::Page<
+          PageName='page2'
+          PageTitle='Allowed groups'
+          Container=$CONTAINERS['ds_groups']
+          Index=1
+        >
+      }
+      TabStyle=tsrFlatButtons
+    >
+    , object:rtf::DualSplit<
+      Name='ds_users'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['dbn_users']
+      Container2=$CONTAINERS['panel_users']
+      InversedAlign=true
+    >
+    , object:rtf::DBNavigator<
+      Name='dbn_users'
+      Width=240
+      Height=40
+      UIPart=$UIPARTS['allowedusers']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Grid<
+      Elements={
+        object:rtf::LinkUIElmtSetting<
+          Name='user'
+          ClassTypeName='UserApp'
+          DisplayFields='user_id;UserName;Description'
+          Restrictions=''
+          OQLText='SELECT FROM UserApp (user_id, UserName, Description, Self) then order by user_id;'
+          LookupOption=loCustomOQL
+        >
+      }
+      Name='panel_users'
+      Width=240
+      Height=40
+      UIPart=$UIPARTS['allowedusers']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Columns={
+      }
+    >
+    , object:rtf::DualSplit<
+      Name='ds_groups'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['dbn_groups']
+      Container2=$CONTAINERS['panel_groups']
+      InversedAlign=true
+    >
+    , object:rtf::DBNavigator<
+      Name='dbn_groups'
+      Width=240
+      Height=40
+      UIPart=$UIPARTS['allowedgroups']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Grid<
+      Elements={
+        object:rtf::LinkUIElmtSetting<
+          Name='group'
+          ClassTypeName='UserGroup'
+          DisplayFields='group_id;GroupName;Description'
+          Restrictions=''
+          OQLText='SELECT FROM UserGroup (group_id, GroupName, Description, Self) then order by group_id;'
+          LookupOption=loCustomOQL
+        >
+      }
+      Name='panel_groups'
+      Width=240
+      Height=40
+      UIPart=$UIPARTS['allowedgroups']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Columns={
+      }
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='menu_id'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=100
+        >
+      }
+      Name='button_panel'
+      Width=300
+      Height=50
+      UIPart=$UIPARTS['menu_id']
+      Controls={
+        object:rtf::Button<
+          Name='bSave'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Save'
+          Default=true
+          OnClick='bSave_Click'
+        >
+        , object:rtf::Button<
+          Name='bCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='Quit'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+  }
+>

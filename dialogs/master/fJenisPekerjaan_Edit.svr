@@ -1,0 +1,34 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipJenisPekerjaan'
+      PClassName='JenisPekerjaan'
+      LoadedFieldList='kode_jenis_pekerjaan;nama_jenis_pekerjaan;user_id;last_update;risk_flag'
+      StoredFieldList='nama_jenis_pekerjaan;user_id;last_update;risk_flag'
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >, object:rpclass::TPClassUIDef<
+      Name='uipJPDetail'
+      MasterUIName='uipJenisPekerjaan'
+      ListName='Ls_JenisPekerjaanDetail'
+      LoadedFieldList='LJenisJabatan.kode_jenis_jabatan;LJenisJabatan.kode_jenis_jabatan;LJenisJabatan.nama_jenis_jabatan;LJenisJabatan.risk_flag;risk_flag'
+      StoredFieldList='LJenisJabatan;risk_flag'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LJenisJabatan'
+          ClassTypeName='JenisJabatan'
+          FieldNames='kode_jenis_jabatan;kode_jenis_jabatan;nama_jenis_jabatan;risk_flag'
+        >
+      }
+      CreateInstanceOnNew=true
+      SetMasterDetailRelationship=true
+    >
+  }
+>

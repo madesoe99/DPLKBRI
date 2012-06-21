@@ -1,0 +1,290 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['multipages1']
+  Left=50
+  Top=50
+  Width=800
+  Height=400
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx='FormSetDataEx'
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={object:rtf::PClassUI<
+      Name='uipSaham'
+      ClassTypeName='Saham'
+      DataBinding=bmMaster
+    >, object:rtf::PClassUI<
+      Name='uipHistNABSaham'
+      ClassTypeName='HistNABSAHAM'
+      DataBinding=bmList
+      Master=$UIPARTS['uipSaham']
+      ListName='Ls_HistNABSaham'
+      SetMasterDetailRelationship=true
+    >}Containers={object:rtf::MultiPages<
+      Name='multipages1'
+      Width=320
+      Height=320
+      Pages={object:rtf::Page<
+          PageTitle='D&ata Saham'
+          Container=$CONTAINERS['DualSplit']
+        >, object:rtf::Page<
+          PageTitle='Ri&wayat Perubahan NAB'
+          Container=$CONTAINERS['gHistNABSaham']
+          Index=1
+        >}>, object:rtf::Panel<
+      ControlDefs={object:rtf::ControlDef<
+          Action=caView
+          DataMember='id_investasi'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='nama_Saham'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='LPihakKetiga'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='LRincianPaketInvestasi'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='tgl_buka'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='tgl_tutup'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='nominal_pembukaan'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='akum_nominal'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='akum_LR'
+        >}Elements={*object:rtf::LinkUIElmtSetting<
+          Name='LPihakKetiga'
+          DisplayFields='kode_pihak_ketiga;nama_pihak_ketiga'
+          Restrictions=''
+          OQLText=['select from PihakKetiga'#13#10,
+            '('#13#10,
+            '  kode_pihak_ketiga,'#13#10,
+            '  nama_pihak_ketiga,'#13#10,
+            '  alamat_pihak_ketiga,'#13#10,
+            '  self_investment,'#13#10,
+            '  last_update,'#13#10,
+            '  user_id,'#13#10,
+            '  self'#13#10,
+            ') then order by kode_pihak_ketiga;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LPihakKetiga'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LRincianPaketInvestasi'
+          DisplayFields='kode_paket_investasi'
+          Restrictions=''
+          OQLText=['select from RincianPaketInvestasi'#13#10,
+            '['#13#10,
+            '  LPaketInvestasi = :LPaketInvestasi'#13#10,
+            ']'#13#10,
+            '('#13#10,
+            '  kode_jns_investasi,'#13#10,
+            '  LJenisInvestasi.nama_jns_investasi as nama_jns_investasi,'#13#10,
+            '  maks_proporsi,'#13#10,
+            '  self'#13#10,
+            ') then order by kode_jns_investasi;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LRincianPaketInvestasi'
+        >}Name='pData'
+      Width=380
+      Height=40
+      UIPart=$UIPARTS['uipSaham']
+      Controls={*object:rtf::DBEdit<
+          Name='id_investasi'
+          Top=10
+          Left=20
+          Color=-2147483624
+          ControlCaption='ID'
+        >, *object:rtf::DBEdit<
+          Name='nama_Saham'
+          Top=38
+          Left=20
+          Color=-2147483624
+          ControlCaption='nama Saham'
+        >, *object:rtf::DBLookupEdit<
+          Name='LPihakKetiga'
+          Top=66
+          Left=20
+          Enabled=false
+          Color=0
+          ControlCaption='pihak ketiga'
+          LookupField='LPihakKetiga.nama_pihak_ketiga'
+          DisplayLookupField=true
+        >, *object:rtf::DBLookupEdit<
+          Name='LRincianPaketInvestasi'
+          Top=94
+          Left=20
+          Width=120
+          Height=21
+          Enabled=false
+          Color=0
+          ControlCaption='manajer investasi'
+          LookupField='LRincianPaketInvestasi.kode_paket_investasi'
+          DisplayLookupField=false
+        >, *object:rtf::DBDateEdit<
+          Name='tgl_buka'
+          Top=122
+          Left=20
+          Color=-2147483624
+          ControlCaption='tgl buka'
+        >, *object:rtf::DBDateEdit<
+          Name='tgl_tutup'
+          Top=150
+          Left=20
+          Color=-2147483624
+          ControlCaption='tgl tutup'
+        >, *object:rtf::DBEdit<
+          Name='nominal_pembukaan'
+          Top=178
+          Left=20
+          Color=-2147483624
+          ControlCaption='investasi awal'
+        >, *object:rtf::DBEdit<
+          Name='akum_nominal'
+          Top=234
+          Left=20
+          Color=-2147483624
+          ControlCaption='nominal investasi'
+        >, *object:rtf::DBEdit<
+          Name='akum_LR'
+          Top=206
+          Left=20
+          Color=-2147483624
+          ControlCaption='akum. return'
+          LayoutOrder=7
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=10
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      ControlDefs={object:rtf::ControlDef<
+          Action=caView
+          DataMember='LCustodianBank'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='NAB_awal'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='NAB'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='unit_penyertaan'
+        >}Elements={*object:rtf::LinkUIElmtSetting<
+          Name='LCustodianBank'
+          DisplayFields='BankCode;BankName'
+          Restrictions=''
+          OQLText=['select from CustodianBank'#13#10,
+            '('#13#10,
+            '  BankCode,'#13#10,
+            '  BankName,'#13#10,
+            '  self'#13#10,
+            ') then order by BankCode;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LCustodianBank'
+        >}Name='pDataRight'
+      Width=345
+      Height=145
+      UIPart=$UIPARTS['uipSaham']
+      Controls={*object:rtf::DBLookupEdit<
+          Name='LCustodianBank'
+          Top=20
+          Left=20
+          Visible=false
+          Enabled=false
+          Color=0
+          ControlCaption='custodian bank'
+          LookupField='LCustodianBank.BankName'
+          DisplayLookupField=true
+        >, *object:rtf::DBEdit<
+          Name='NAB_awal'
+          Top=48
+          Left=20
+          Color=-2147483624
+          ControlCaption='NAB pembelian'
+          FieldName='NAB_awal'
+          DisplayFormat='#,##0.00'
+        >, *object:rtf::DBEdit<
+          Name='NAB'
+          Top=76
+          Left=20
+          Color=-2147483624
+          ControlCaption='NAB'
+          FieldName='NAB'
+          DisplayFormat='#,##0.00'
+        >, *object:rtf::DBEdit<
+          Name='unit_penyertaan'
+          Top=104
+          Left=20
+          Color=-2147483624
+          ControlCaption='unit penyertaan'
+          FieldName='unit_penyertaan'
+          DisplayFormat='#,##0.#####'
+        >}EqualCaptionWidth=100
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=792
+      Height=372
+      Container1=$CONTAINERS['pData']
+      Container2=$CONTAINERS['pDataRight']
+      SplitDirection=sdrSplitLeftRight
+    >, object:rtf::Grid<
+      ControlDefs={object:rtf::ControlDef<
+          Action=caView
+          DataMember='tgl_penetapan'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='NAB'
+        >}Elements={}Name='gHistNABSaham'
+      Width=240
+      Height=240
+      UIPart=$UIPARTS['uipHistNABSaham']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Columns={*object:rtf::GridColumn<
+          Name='tgl_penetapan'
+          InputStyle=cisDate
+          EnumeratedValues=''
+          FieldName='tgl_penetapan'
+          DisplayFormat=''
+          TitleCaption='tgl penetapan'
+          Width=120
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='NAB'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='NAB'
+          DisplayFormat='#,##0.00'
+          Width=100
+          ReadOnly=true
+        >}ReadOnly=true
+    >}FormClassName='fSahamInfo'
+>

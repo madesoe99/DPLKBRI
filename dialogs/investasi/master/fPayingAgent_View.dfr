@@ -1,0 +1,112 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['MultiSplit']
+  Caption='Lihat Paying Agent'
+  Left=50
+  Top=50
+  Width=380
+  Height=310
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={object:rtf::PClassUI<
+      Name='uip'
+      ClassTypeName='PayingAgent'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >}Containers={object:rtf::Panel<
+      ControlDefs={object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['agent_code'#13#10,
+            'agent_name'#13#10,
+            'agent_address'#13#10,
+            'agent_phone'#13#10]
+        >}Elements={}Name='pData'
+      Width=240
+      Height=177
+      Bordered=true
+      UIPart=$UIPARTS['uip']
+      Controls={*object:rtf::DBEdit<
+          Name='agent_code'
+          Top=20
+          Left=20
+          Color=-2147483624
+          ControlCaption='Agent Code'
+        >, *object:rtf::DBEdit<
+          Name='agent_name'
+          Top=48
+          Left=20
+          Color=-2147483624
+          ControlCaption='Agent Name'
+        >, *object:rtf::DBEdit<
+          Name='agent_address'
+          Top=76
+          Left=20
+          Color=-2147483624
+          ControlCaption='Agent Address'
+        >, *object:rtf::DBEdit<
+          Name='agent_phone'
+          Top=104
+          Left=20
+          Color=-2147483624
+          ControlCaption='Agent Phone'
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Controls={object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=20
+          Color=0
+          ControlCaption=''
+          Caption='&Tutup'
+          Default=true
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >}ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Name='pUser'
+      Width=240
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uip']
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::MultiSplit<
+      Name='MultiSplit'
+      Width=380
+      Height=310
+      Side1Containers={$CONTAINERS['pData']
+      }Side2Containers={$CONTAINERS['pButton']
+      }SpaceContainer=$CONTAINERS['pUser']
+    >}>

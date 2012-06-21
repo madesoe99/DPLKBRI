@@ -1,0 +1,1 @@
+UPDATE PengambilanManfaat SET saldo_peralihan_1th = 0.0;

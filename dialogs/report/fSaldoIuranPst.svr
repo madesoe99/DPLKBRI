@@ -1,0 +1,59 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipNoData'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='LNasabahDPLK_awal.no_peserta'
+          DataTypeName='VARCHAR'
+          DataLength=11
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LNasabahDPLK_awal.no_peserta'
+          DataTypeName='VARCHAR'
+          DataLength=11
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LNasabahDPLK_awal.nama_lengkap'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LNasabahDPLK_akhir.no_peserta'
+          DataTypeName='VARCHAR'
+          DataLength=11
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LNasabahDPLK_akhir.no_peserta'
+          DataTypeName='VARCHAR'
+          DataLength=11
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LNasabahDPLK_akhir.nama_lengkap'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLK_awal'
+          ClassTypeName='NasabahDPLK'
+          FieldNames='no_peserta;no_peserta;nama_lengkap'
+        >
+        , object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLK_akhir'
+          ClassTypeName='NasabahDPLK'
+          FieldNames='no_peserta;no_peserta;nama_lengkap'
+        >
+      }
+      Mode=imSingleRow
+    >
+  }
+>

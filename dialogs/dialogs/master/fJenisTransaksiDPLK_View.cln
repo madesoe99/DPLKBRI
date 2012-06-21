@@ -1,0 +1,133 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['pData']
+  Caption='Lihat Detil Jenis Transaksi DPLK'
+  Left=50
+  Top=50
+  Width=380
+  Height=250
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipJenisTransaksiDPLK'
+      ClassTypeName='JenisTransaksiDPLK'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='kode_jenis_transaksi'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['A=Pendaftaran'#13#10,
+            'B=Pembayaran Premi'#13#10,
+            'C=Biaya Pengelolaan Dana'#13#10,
+            'D=Biaya Administrasi Tahunan'#13#10,
+            'E=Penarikan Dana'#13#10,
+            'F=Pengubahan Jenis Investasi'#13#10,
+            'G=Bagi Hasil'#13#10,
+            'H=Pengalihan ke DPLK Lain'#13#10,
+            'I=Pengalihan dari DPLK Lain'#13#10,
+            'J=Pengambilan Manfaat'#13#10,
+            'K=Iuran Peserta'#13#10,
+            'X=Biaya Transaksi'#13#10,
+            'Z=Pajak'#13#10,
+            'M=Transaksi DPLK Manual'#13#10,
+            'V=Penarikan Dana 30%'#13#10,
+            'W=Penarikan Dana PHK'#13#10]
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='nama_transaksi'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='last_update'
+          AccessOption=aoReadOnly
+          ReadOnlyControl=true
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >
+      }
+      Name='pData'
+      Width=240
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipJenisTransaksiDPLK']
+      Controls={
+        *object:rtf::DBComboBox<
+          Name='kode_jenis_transaksi'
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Kode Jenis Transaksi'
+        >
+        , *object:rtf::DBEdit<
+          Name='nama_transaksi'
+          ControlCaption='Nama Transaksi'
+        >
+        , *object:rtf::DBEdit<
+          Name='user_id'
+          ControlCaption='User ID'
+          ReadOnly=true
+        >
+        , *object:rtf::DBDateEdit<
+          Name='last_update'
+          ControlCaption='Last Update'
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Tutup'
+          Default=true
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['pData']
+      InversedAlign=true
+    >
+  }
+>

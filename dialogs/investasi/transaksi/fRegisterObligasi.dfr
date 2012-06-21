@@ -1,0 +1,697 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['DualSplit']
+  Caption='Buka investasi FIX Baru'
+  Left=50
+  Top=50
+  Width=913
+  Height=535
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData='FormGeneralSetData'
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnFormShow='FormShow'
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={object:rtf::PClassUI<
+      Name='uipRegisterObligasi'
+      ClassTypeName='RegisterObligasi'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      OnSetData='uipRegisterObligasiSetData'
+      AfterApplyRow='uipRegisterObligasiApplyRow'
+    >, object:rtf::PClassUI<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='nowDate'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=10
+        >, object:rtf::FieldUIElmtSetting<
+          Name='inv'
+          DataTypeName='varchar'
+          DataLength=1
+        >, object:rtf::FieldUIElmtSetting<
+          Name='strInv'
+        >}Name='uipParameter'
+      CreateInstanceOnNew=true
+    >}Containers={object:rtf::Panel<
+      ControlDefs={object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LSubJenisInv'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='nama_obligasi'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LPihakKetiga'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LRincianPaketInvestasi'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='dpkPaket'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='nilaiMaksProporsi'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='dpkInvExisting'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='dpkTersedia'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='nominalGiro'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='nominal'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='harga_pari'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='harga_beli'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='nilai_wajar'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='harga_beli_acq'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='TaxOnCapitalGain'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='TaxOnAccruedInterest'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LBroker'
+        >}Elements={*object:rtf::LinkUIElmtSetting<
+          Name='LSubJenisInv'
+          ControlCaption='Security Type'
+          DisplayFields='kode_subjns_LRInvestasi;deskripsi'
+          Restrictions=''
+          OQLText=['select from SubJnsTransLRInvestasi'#13#10,
+            '[kode_jns_investasi = ''O'']'#13#10,
+            '(kode_subjns_LRInvestasi,'#13#10,
+            'deskripsi,'#13#10,
+            'self);']
+          LookupOption=loCustomOQL
+          FieldBaseName='LSubJenisInv'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LPihakKetiga'
+          DisplayFields='kode_pihak_ketiga;nama_pihak_ketiga'
+          Restrictions=''
+          OQLText=['select from PihakKetiga'#13#10,
+            '('#13#10,
+            '  kode_pihak_ketiga,'#13#10,
+            '  nama_pihak_ketiga,'#13#10,
+            '  alamat_pihak_ketiga,'#13#10,
+            '  self_investment,'#13#10,
+            '  last_update,'#13#10,
+            '  user_id,'#13#10,
+            '  self'#13#10,
+            ') then order by kode_pihak_ketiga;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LPihakKetiga'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LRincianPaketInvestasi'
+          DisplayFields='kode_paket_investasi;LPaketInvestasi.nama_paket_investasi;kode_jns_investasi;maks_proporsi'
+          Restrictions=''
+          OQLText=['select from RincianPaketInvestasi'#13#10,
+            '['#13#10,
+            '  kode_jns_investasi = ''O'''#13#10,
+            '  and LPaketInvestasi.isAktif = ''T'''#13#10,
+            ']'#13#10,
+            '('#13#10,
+            '  kode_paket_investasi,'#13#10,
+            '  LPaketInvestasi.nama_paket_investasi as nama_paket_investasi,'#13#10,
+            '  maks_proporsi,'#13#10,
+            '  kode_jns_investasi,'#13#10,
+            '  self'#13#10,
+            ') then order by kode_paket_investasi;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LRincianPaketInvestasi'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='dpkPaket'
+          ReadOnlyControl=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='nilaiMaksProporsi'
+          ReadOnlyControl=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='dpkInvExisting'
+          ReadOnlyControl=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='dpkTersedia'
+          ReadOnlyControl=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='nominalGiro'
+          ReadOnlyControl=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='nominal'
+          Hidden=true
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LBroker'
+          DisplayFields='broker_code;broker_name'
+          Restrictions=''
+          FieldBaseName='LBroker'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='harga_beli_val'
+          ReadOnlyControl=true
+          DataTypeName='double'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='nilai_wajar_val'
+          ReadOnlyControl=true
+          DataTypeName='double'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='maks_proporsi'
+          ReadOnlyControl=true
+          DataTypeName='double'
+          DataLength=20
+        >}Name='pData'
+      Width=433
+      Height=489
+      UIPart=$UIPARTS['uipRegisterObligasi']
+      Controls={*object:rtf::DBLookupEdit<
+          Name='LSubJenisInv'
+          Top=20
+          Left=20
+          ControlCaption='Security Type'
+          LookupField='LSubJenisInv.deskripsi'
+          DisplayLookupField=true
+        >, *object:rtf::DBEdit<
+          Name='nama_obligasi'
+          Top=48
+          Left=20
+          Color=0
+          ControlCaption='Nama Investasi'
+        >, *object:rtf::DBLookupEdit<
+          Name='LPihakKetiga'
+          Top=76
+          Left=20
+          ControlCaption='Issuer'
+          LayoutOrder=3
+          LookupField='LPihakKetiga.nama_pihak_ketiga'
+          DisplayLookupField=true
+          DirectInput=true
+        >, *object:rtf::DBLookupEdit<
+          Name='LRincianPaketInvestasi'
+          Top=132
+          Left=20
+          Width=120
+          Height=21
+          ControlCaption='paket investasi'
+          LayoutOrder=4
+          LookupField='LRincianPaketInvestasi.LPaketInvestasi.nama_paket_investasi'
+          DisplayLookupField=false
+          OnAfterLookup='LRincianPaketInvestasiAfterLookup'
+        >, *object:rtf::DBEdit<
+          Name='dpkPaket'
+          Top=188
+          Left=20
+          Color=-2147483624
+          ControlCaption='nominal paket'
+          LayoutOrder=5
+          FieldName='dpkPaket'
+          DisplayFormat='#,##0.00'
+          ReadOnly=true
+        >, *object:rtf::DBEdit<
+          Name='nilaiMaksProporsi'
+          Top=216
+          Left=20
+          Color=-2147483624
+          ControlCaption='nilai maks. proporsi'
+          LayoutOrder=6
+          FieldName='nilaiMaksProporsi'
+          DisplayFormat='#,##0.00'
+          ReadOnly=true
+        >, *object:rtf::DBEdit<
+          Name='dpkInvExisting'
+          Top=244
+          Left=20
+          Color=-2147483624
+          ControlCaption='Investasi fix existing'
+          LayoutOrder=8
+          FieldName='dpkInvExisting'
+          DisplayFormat='#,##0.00'
+          ReadOnly=true
+        >, *object:rtf::DBEdit<
+          Name='dpkTersedia'
+          Top=272
+          Left=20
+          Color=-2147483624
+          ControlCaption='dana idle'
+          LayoutOrder=9
+          FieldName='dpkTersedia'
+          DisplayFormat='#,##0.00'
+          ReadOnly=true
+        >, *object:rtf::DBEdit<
+          Name='nominalGiro'
+          Top=300
+          Left=20
+          Color=-2147483624
+          ControlCaption='nominal giro'
+          LayoutOrder=10
+          FieldName='nominalGiro'
+          DisplayFormat='#,##0.00'
+          ReadOnly=true
+        >, *object:rtf::DBEdit<
+          Name='harga_pari'
+          Top=328
+          Left=20
+          Color=0
+          ControlCaption='Nilai Pari'
+          LayoutOrder=11
+          FieldName='harga_pari'
+          DisplayFormat='#,##0.00'
+          OnExit='harga_pariExit'
+        >, *object:rtf::DBEdit<
+          Name='harga_beli'
+          Top=356
+          Left=20
+          Color=0
+          ControlCaption='harga beli (%)'
+          LayoutOrder=12
+          FieldName='harga_beli'
+          DisplayFormat='0.##'
+          OnExit='harga_beliExit'
+        >, *object:rtf::DBEdit<
+          Name='nilai_wajar'
+          Top=384
+          Left=20
+          Visible=false
+          Color=0
+          ControlCaption='nilai wajar (%)'
+          LayoutOrder=14
+          FieldName='nilai_wajar'
+          DisplayFormat='0.##'
+          OnExit='nilai_wajarExit'
+        >, *object:rtf::DBEdit<
+          Name='harga_beli_acq'
+          Top=412
+          Left=20
+          Color=0
+          ControlCaption='harga beli acq (%)'
+          LayoutOrder=16
+        >, *object:rtf::DBEdit<
+          Name='TaxOnCapitalGain'
+          Top=440
+          Left=20
+          Color=0
+          ControlCaption='tax on capital gain'
+          LayoutOrder=17
+        >, *object:rtf::DBEdit<
+          Name='TaxOnAccruedInterest'
+          Top=468
+          Left=20
+          Color=0
+          ControlCaption='tax on accrued interest'
+          LayoutOrder=18
+        >, *object:rtf::DBLookupEdit<
+          Name='LBroker'
+          Top=104
+          Left=20
+          ControlCaption='Broker'
+          LookupField='LBroker.broker_name'
+          DisplayLookupField=true
+        >, *object:rtf::DBEdit<
+          Name='harga_beli_val'
+          Layout=clNextSide
+          Top=356
+          Left=268
+          Color=-2147483624
+          ControlCaption=' '
+          LayoutOrder=13
+          FieldName='harga_beli_val'
+          DisplayFormat='#,##0.00'
+          ReadOnly=true
+        >, *object:rtf::DBEdit<
+          Name='nilai_wajar_val'
+          Layout=clNextSide
+          Top=384
+          Left=268
+          Visible=false
+          Color=-2147483624
+          ControlCaption=' '
+          LayoutOrder=15
+          FieldName='nilai_wajar_val'
+          DisplayFormat='#,##0.00'
+          ReadOnly=true
+        >, *object:rtf::DBEdit<
+          Name='maks_proporsi'
+          Top=160
+          Left=20
+          Color=-2147483624
+          ControlCaption='maks. proporsi'
+          LayoutOrder=5
+          FieldName='maks_proporsi'
+          DisplayFormat='0.##'
+          ReadOnly=true
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      ControlDefs={object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='jenisKupon'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='tgl_buka'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='tgl_jatuh_tempo'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='jenis_obligasi'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LCustodianBank'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='no_rekening'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='TreatmentObligasi'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='biaya'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LAccrual'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LPayingAgent'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='ER'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='last_coupon_date'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='AccruedInterest'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='AccruedInterestOnTax'
+        >}Elements={*object:rtf::LinkUIElmtSetting<
+          Name='LCustodianBank'
+          DisplayFields='BankCode;BankName'
+          Restrictions=''
+          OQLText=['select from CustodianBank'#13#10,
+            '('#13#10,
+            '  BankCode,'#13#10,
+            '  BankName,'#13#10,
+            '  self'#13#10,
+            ') then order by BankCode;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LCustodianBank'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LAccrual'
+          ControlCaption='Accrual'
+          DisplayFields='accrual_code;accrual_day'
+          Restrictions=''
+          FieldBaseName='LAccrual'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LPayingAgent'
+          ControlCaption='Payment Bank'
+          DisplayFields='agent_code;agent_name'
+          Restrictions=''
+          FieldBaseName='LPayingAgent'
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LMasterGiro'
+          ControlCaption='no rekening'
+          ClassTypeName='MasterGiro'
+          DisplayFields='no_giro;acc_giro'
+          Restrictions=''
+          FieldBaseName='LMasterGiro'
+        >}Name='pDataRight'
+      Width=489
+      Height=417
+      UIPart=$UIPARTS['uipRegisterObligasi']
+      Controls={*object:rtf::DBComboBox<
+          Name='jenisKupon'
+          Top=76
+          Left=20
+          Color=0
+          ControlCaption='kupon'
+          LayoutOrder=3
+        >, *object:rtf::DBDateEdit<
+          Name='tgl_buka'
+          Top=104
+          Left=20
+          Color=0
+          ControlCaption='tgl pembelian'
+          LayoutOrder=4
+        >, *object:rtf::DBDateEdit<
+          Name='tgl_jatuh_tempo'
+          Top=132
+          Left=20
+          Color=0
+          ControlCaption='tgl jatuh tempo'
+          LayoutOrder=5
+        >, *object:rtf::DBComboBox<
+          Name='jenis_obligasi'
+          Top=48
+          Left=20
+          Color=0
+          ControlCaption='Jenis Obligasi'
+          LayoutOrder=2
+        >, *object:rtf::DBLookupEdit<
+          Name='LCustodianBank'
+          Top=328
+          Left=20
+          ControlCaption='custodian bank'
+          LayoutOrder=12
+          LookupField='LCustodianBank.BankName'
+          DisplayLookupField=true
+          DirectInput=true
+        >, *object:rtf::DBEdit<
+          Name='no_rekening'
+          Top=356
+          Left=20
+          Visible=false
+          Enabled=false
+          Color=0
+          ControlCaption='no rekening pencairan'
+          LayoutOrder=13
+        >, *object:rtf::DBComboBox<
+          Name='TreatmentObligasi'
+          Top=20
+          Left=20
+          Color=0
+          ControlCaption='Treatment Obligasi'
+        >, *object:rtf::DBEdit<
+          Name='biaya'
+          Layout=clNextSide
+          Top=160
+          Left=308
+          Width=50
+          Height=21
+          Visible=false
+          Color=0
+          ControlCaption='-'
+          LayoutOrder=6
+        >, *object:rtf::DBLookupEdit<
+          Name='LAccrual'
+          Top=300
+          Left=20
+          ControlCaption='Accrual'
+          LayoutOrder=11
+          LookupField='LAccrual.accrual_day'
+          DisplayLookupField=true
+        >, *object:rtf::DBLookupEdit<
+          Name='LPayingAgent'
+          Top=272
+          Left=20
+          ControlCaption='Payment Bank'
+          LayoutOrder=10
+          LookupField='LPayingAgent.agent_name'
+          DisplayLookupField=true
+        >, *object:rtf::DBEdit<
+          Name='ER'
+          Top=188
+          Left=20
+          Color=0
+          ControlCaption='Interest rate'
+          LayoutOrder=7
+        >, *object:rtf::DBDateEdit<
+          Name='last_coupon_date'
+          Top=160
+          Left=20
+          Color=0
+          ControlCaption='tgl pembayaran kupon terakhir'
+          LayoutOrder=6
+        >, *object:rtf::DBEdit<
+          Name='AccruedInterest'
+          Top=216
+          Left=20
+          Color=0
+          ControlCaption='Accrued Interest'
+          LayoutOrder=8
+        >, *object:rtf::DBEdit<
+          Name='AccruedInterestOnTax'
+          Top=244
+          Left=20
+          Color=0
+          ControlCaption='Accrued Interest On Tax'
+          LayoutOrder=9
+        >, *object:rtf::DBLookupEdit<
+          Name='LMasterGiro'
+          Layout=clAbsolute
+          Top=385
+          Left=20
+          Width=180
+          Height=21
+          ControlCaption='no rekening'
+          LayoutOrder=8
+          CaptionWidth=160
+          LookupField='LMasterGiro.acc_giro'
+          DisplayLookupField=false
+          OnAfterLookup='OnAfterLookup_Rek'
+        >}EqualCaptionWidth=160
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=400
+      Height=40
+      Bordered=true
+      Controls={object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=20
+          Color=0
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          OnClick='btnOKClick'
+        >, object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=99
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          OnClick='btnCancelClick'
+        >, object:rtf::Button<
+          Name='btnClose'
+          Layout=clNextSide
+          Top=8
+          Left=178
+          Visible=false
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          ExitAction=eaQuitCancel
+        >, object:rtf::Button<
+          Name='btnPrint'
+          Layout=clAbsolute
+          Top=8
+          Left=256
+          Width=113
+          Height=25
+          Visible=false
+          Color=0
+          ControlCaption=''
+          Caption='&Cetak Ulang Advis'
+          OnClick='btnPrintClick'
+        >}ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      ControlDefs={object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='user_id'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='terminal_id'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='tanggal_register'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='id_registerinvestasi'
+        >}Elements={*object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          ReadOnlyControl=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='terminal_id'
+          ReadOnlyControl=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tanggal_register'
+          Hidden=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='id_registerinvestasi'
+          Hidden=true
+        >, object:rtf::FieldUIElmtSetting<
+          Name='mode'
+          Hidden=true
+        >}Name='pRegister'
+      Width=345
+      Height=145
+      UIPart=$UIPARTS['uipRegisterObligasi']
+      Controls={*object:rtf::DBEdit<
+          Name='user_id'
+          Top=10
+          Left=20
+          Color=-2147483624
+          ControlCaption='user id'
+          ReadOnly=true
+        >, *object:rtf::DBEdit<
+          Name='terminal_id'
+          Top=38
+          Left=20
+          Color=-2147483624
+          ControlCaption='terminal id'
+          ReadOnly=true
+        >}EqualCaptionWidth=160
+      ControlLeftMargin=20
+      ControlTopMargin=10
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=913
+      Height=535
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['DualSplitTop']
+      InversedAlign=true
+    >, object:rtf::DualSplit<
+      Name='DualSplitTop'
+      Width=913
+      Height=494
+      Container1=$CONTAINERS['pData']
+      Container2=$CONTAINERS['DualSplitRight']
+      SplitDirection=sdrSplitLeftRight
+    >, object:rtf::DualSplit<
+      Name='DualSplitRight'
+      Width=479
+      Height=494
+      Container1=$CONTAINERS['pDataRight']
+      Container2=$CONTAINERS['pRegister']
+    >}>

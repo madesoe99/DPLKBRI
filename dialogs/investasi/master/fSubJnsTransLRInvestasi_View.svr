@@ -1,0 +1,25 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipSubJnsTransLRInvestasi'
+      PClassName='SubJnsTransLRInvestasi'
+      LoadedFieldList='kode_subjns_LRInvestasi;kategori;LJenisInvestasi.kode_jns_investasi;LJenisInvestasi.kode_jns_investasi;LJenisInvestasi.nama_jns_investasi;account_code;deskripsi;user_id;last_update'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LJenisInvestasi'
+          ClassTypeName='JenisInvestasi'
+          FieldNames='kode_jns_investasi;kode_jns_investasi;nama_jns_investasi'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+  }
+>

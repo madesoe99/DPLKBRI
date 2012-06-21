@@ -1,0 +1,12 @@
+30100003840; pajak lama = 0; tambahan pajak = 54777.24
+30100014393; pajak lama = 0; tambahan pajak = 59517.0
+30100014394; pajak lama = 0; tambahan pajak = 65149.5
+30100014406; pajak lama = 0; tambahan pajak = 143834.4
+30100014423; pajak lama = 0; tambahan pajak = 67005.75
+30100022599; pajak lama = 0; tambahan pajak = 81128.45
+30100022723; pajak lama = 0; tambahan pajak = 104968.0
+30500023910; pajak lama = 0; tambahan pajak = 67097.45
+30700010866; pajak lama = 0; tambahan pajak = 59760.0
+51100005764; pajak lama = 0; tambahan pajak = 31360.26
+80100006203; pajak lama = 0; tambahan pajak = 80730.0
+81100014451; pajak lama = 0; tambahan pajak = 49500.0

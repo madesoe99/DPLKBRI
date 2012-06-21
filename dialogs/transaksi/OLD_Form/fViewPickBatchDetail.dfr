@@ -1,0 +1,191 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['pFilter']
+  Caption='Lihat Detil Batch Transaksi'
+  Left=100
+  Top=100
+  Width=800
+  Height=550
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx='FormSetDataEx'
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipTransactionBatch'
+      ClassTypeName='TransactionBatch'
+      DataBinding=bmMaster
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['no_batch'#13#10,
+            'batch_type'#13#10,
+            'batch_sub_type'#13#10,
+            'tgl_create'#13#10,
+            'batch_status'#13#10]
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='ID_TransactionBatch'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='tgl_used'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='branch_code'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='no_batch'
+          ControlCaption='Nomor Batch'
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='batch_type'
+          ControlCaption='Tipe Batch'
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='batch_sub_type'
+          ControlCaption='Sub Tipe Batch'
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='tgl_create'
+          ControlCaption='Tanggal Pembuatan'
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='batch_status'
+          ControlCaption='Status Batch'
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='ID_TransactionBatch'
+          Hidden=true
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='branch_code'
+          Hidden=true
+        >
+      }
+      Name='pFilter'
+      Width=240
+      Height=180
+      Bordered=true
+      UIPart=$UIPARTS['uipTransactionBatch']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='no_batch'
+          Enabled=false
+          Color=-2147483624
+        >
+        , *object:rtf::DBComboBox<
+          Name='batch_type'
+          Enabled=false
+          Color=15128749
+        >
+        , *object:rtf::DBComboBox<
+          Name='batch_sub_type'
+          Enabled=false
+          Color=-2147483624
+        >
+        , *object:rtf::DBDateEdit<
+          Name='tgl_create'
+          Enabled=false
+          Color=-2147483624
+        >
+        , *object:rtf::DBComboBox<
+          Name='batch_status'
+          Enabled=false
+          Color=15128749
+          LayoutOrder=6
+        >
+        , *object:rtf::DBDateEdit<
+          Name='tgl_used'
+          Enabled=false
+          Color=15128749
+          ControlCaption='Tanggal Pakai'
+          LayoutOrder=5
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=10
+      ControlTopMargin=10
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=300
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='bCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Tutup'
+          Default=true
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+        , object:rtf::Button<
+          Name='Button'
+          Layout=clNextSide
+          Visible=false
+          Color=0
+          ControlCaption=''
+          DefaultAction=daShowDebugWindow
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::MultiSplit<
+      Name='MultiSplit'
+      Width=240
+      Height=100
+      Side1Containers={
+        $CONTAINERS['pFilter']
+      }
+      Side2Containers={
+        $CONTAINERS['pButton']
+      }
+      SpaceContainer=$CONTAINERS['qTransaksi']
+    >
+    , object:rtf::Query<
+      Name='qTransaksi'
+      Width=240
+      Height=40
+      ContextMenuName='popupmenus/transaksi/pViewPickTransaksi'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      WindowSize=20
+    >
+  }
+  FormClassName='fViewPickBatchDetail'
+>

@@ -1,0 +1,108 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['qRegistrasiCorp']
+  Caption='Daftar Register Peserta Korporat Baru'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  Containers={
+    object:rtf::Query<
+      Name='qRegistrasiCorp'
+      Width=800
+      Height=600
+      ContextMenuName='popupmenus/transaction/qRegistrasiCorp'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from RegEditNasabahDPLKCorporate'#13#10,
+        '('#13#10,
+        '  no_referensi,'#13#10,
+        '  operation_code,'#13#10,
+        '  kode_nasabah_corporate,'#13#10,
+        '  nama_perusahaan,'#13#10,
+        '  npwp as NPWP,'#13#10,
+        '  no_perjanjian,'#13#10,
+        '  kode_jenis_usaha,'#13#10,
+        '  LJenisUsaha.nama_jenis_usaha as nama_jenis_usaha,'#13#10,
+        '  kode_pemilikan,'#13#10,
+        '  LKepemilikan.keterangan as kepemilikan,'#13#10,
+        '  tgl_bayar_iuran,'#13#10,
+        '  keterangan,'#13#10,
+        '  kode_holding,'#13#10,
+        '  user_id,'#13#10,
+        '  terminal_id,'#13#10,
+        '  regeditndplkcorp_id as ID,'#13#10,
+        '  self'#13#10,
+        ') then order by ID;']
+      DirectDisplay=true
+      WindowSize=20
+      Columns={
+        object:rtf::QueryColumn<
+          FieldName='RegEditNasabahDPLKCorporate.no_referensi'
+          Width=100
+          Caption='Nomor Referensi'
+        >, object:rtf::QueryColumn<
+          FieldName='RegEditNasabahDPLKCorporate.nama_perusahaan'
+          Width=140
+          Caption='Nama Korporat'
+        >, object:rtf::QueryColumn<
+          FieldName='RegEditNasabahDPLKCorporate.kode_holding'
+          Width=80
+          Caption='Kode Holding'
+        >, object:rtf::QueryColumn<
+          FieldName='RegEditNasabahDPLKCorporate.kode_nasabah_corporate'
+          Width=80
+          Caption='Kode Peserta Korporat'
+          UseCustomColor=true
+          Color=15128749
+        >, object:rtf::QueryColumn<
+          FieldName='RegEditNasabahDPLKCorporate.NPWP'
+          Width=100
+          Caption='NPWP'
+        >, object:rtf::QueryColumn<
+          FieldName='RegEditNasabahDPLKCorporate.no_perjanjian'
+          Width=100
+          Caption='Nomor Perjanjian'
+        >, object:rtf::QueryColumn<
+          FieldName='RegEditNasabahDPLKCorporate.nama_jenis_usaha'
+          Width=140
+          Caption='Nama Jenis Usaha'
+        >, object:rtf::QueryColumn<
+          FieldName='RegEditNasabahDPLKCorporate.kepemilikan'
+          Width=100
+          Caption='Kepemilikan'
+        >, object:rtf::QueryColumn<
+          FieldName='RegEditNasabahDPLKCorporate.keterangan'
+          Width=300
+          Caption='Keterangan'
+        >, object:rtf::QueryColumn<
+          FieldName='RegEditNasabahDPLKCorporate.operation_code'
+          Width=100
+          Caption='Status Data'
+        >
+      }
+      EnableColumns=true
+    >
+  }
+>

@@ -1,0 +1,257 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['MultiSplit']
+  Caption='Lihat Detil Batch Transaksi'
+  Left=100
+  Top=100
+  Width=800
+  Height=550
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnFormShow='FormShow'
+  OnBeginSetData=''
+  OnEndSetData='FormEndSetData'
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipTransactionBatch'
+      ClassTypeName='TransactionBatch'
+      DataBinding=bmMaster
+      CreateInstanceOnNew=true
+    >
+    , object:rtf::PClassUI<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='UserIDOwner'
+          Hidden=true
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='BranchCode'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=5
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='isTeller'
+          Hidden=true
+          DataTypeName='integer'
+          DataLength=20
+          EnumeratedValues=['0=False'#13#10,
+            '1=True'#13#10]
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='isBackOffice'
+          Hidden=true
+          DataTypeName='integer'
+          DataLength=20
+          EnumeratedValues=['0=False'#13#10,
+            '1=True'#13#10]
+        >
+      }
+      Name='uipUserInfo'
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['no_batch'#13#10,
+            'batch_type'#13#10,
+            'batch_sub_type'#13#10,
+            'tgl_create'#13#10,
+            'batch_status'#13#10]
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='ID_TransactionBatch'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='tgl_used'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='branch_code'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='no_batch'
+          ControlCaption='Nomor Batch'
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='batch_type'
+          ControlCaption='Tipe Batch'
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='batch_sub_type'
+          ControlCaption='Sub Tipe Batch'
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='tgl_create'
+          ControlCaption='Tanggal Pembuatan'
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='batch_status'
+          ControlCaption='Status Batch'
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='ID_TransactionBatch'
+          Hidden=true
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='branch_code'
+          Hidden=true
+        >
+      }
+      Name='pFilter'
+      Width=240
+      Height=180
+      Bordered=true
+      UIPart=$UIPARTS['uipTransactionBatch']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='no_batch'
+          Top=10
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Nomor Batch'
+        >
+        , *object:rtf::DBComboBox<
+          Name='batch_type'
+          Top=38
+          Left=10
+          Enabled=false
+          Color=15128749
+          ControlCaption='Tipe Batch'
+        >
+        , *object:rtf::DBComboBox<
+          Name='batch_sub_type'
+          Top=66
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Sub Tipe Batch'
+        >
+        , *object:rtf::DBDateEdit<
+          Name='tgl_create'
+          Top=94
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Tanggal Pembuatan'
+        >
+        , *object:rtf::DBComboBox<
+          Name='batch_status'
+          Top=150
+          Left=10
+          Enabled=false
+          Color=15128749
+          ControlCaption='Status Batch'
+          LayoutOrder=6
+        >
+        , *object:rtf::DBDateEdit<
+          Name='tgl_used'
+          Top=122
+          Left=10
+          Enabled=false
+          Color=15128749
+          ControlCaption='Tanggal Pakai'
+          LayoutOrder=5
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=10
+      ControlTopMargin=10
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=300
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='bCancel'
+          Layout=clNextSide
+          Top=8
+          Left=8
+          Color=0
+          ControlCaption=''
+          Caption='&Tutup'
+          Default=true
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+        , object:rtf::Button<
+          Name='Button'
+          Layout=clNextSide
+          Top=8
+          Left=181
+          Visible=false
+          Color=0
+          ControlCaption=''
+          LayoutOrder=3
+          DefaultAction=daShowDebugWindow
+        >
+        , object:rtf::Button<
+          Name='bPrint'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          Width=90
+          Height=25
+          Color=0
+          ControlCaption=''
+          Caption='&Cetak Transaksi'
+          OnClick='bPrintClick'
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::MultiSplit<
+      Name='MultiSplit'
+      Width=800
+      Height=550
+      Side1Containers={
+        $CONTAINERS['pFilter']
+      }
+      Side2Containers={
+        $CONTAINERS['pButton']
+      }
+      SpaceContainer=$CONTAINERS['qTransaksi']
+    >
+    , object:rtf::Query<
+      Name='qTransaksi'
+      Width=800
+      Height=328
+      ContextMenuName='popupmenus/transaksi/pViewTransaksi'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      WindowSize=20
+    >
+  }
+>

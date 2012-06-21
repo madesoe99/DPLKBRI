@@ -1,0 +1,99 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit2']
+  Left=50
+  Top=50
+  Width=320
+  Height=170
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={object:rtf::PClassUI<
+      Name='uipNoData'
+    >}Containers={object:rtf::DualSplit<
+      Name='dualsplit2'
+      Width=320
+      Height=170
+      Container1=$CONTAINERS['pbutton']
+      Container2=$CONTAINERS['pdata']
+      InversedAlign=true
+    >, object:rtf::Panel<
+      Name='pbutton'
+      Width=240
+      Height=70
+      Bordered=true
+      UIPart=$UIPARTS['uipNoData']
+      Controls={object:rtf::Button<
+          Name='btnOk'
+          Layout=clAbsolute
+          Top=8
+          Left=16
+          Color=0
+          ControlCaption=''
+          Caption='&Ok'
+          OnClick='btnOKClick'
+        >, object:rtf::Button<
+          Name='btnCancel'
+          Layout=clAbsolute
+          Top=8
+          Left=96
+          Color=0
+          ControlCaption=''
+          Caption='&Cancel'
+          ExitAction=eaQuitCancel
+        >}ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='tanggal_awal'
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tanggal_akhir'
+          DataTypeName='timestamp'
+          DataLength=20
+        >}Name='pdata'
+      Width=305
+      Height=121
+      Bordered=true
+      UIPart=$UIPARTS['uipNoData']
+      Controls={*object:rtf::DBDateEdit<
+          Name='tanggal_awal'
+          Top=20
+          Left=20
+          Color=0
+          ControlCaption='dari tanggal'
+        >, *object:rtf::DBDateEdit<
+          Name='tanggal_akhir'
+          Top=48
+          Left=20
+          Color=0
+          ControlCaption='hingga tanggal'
+        >}EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Laporan Histori Hasil Investasi'
+    >, object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=320
+      Height=170
+    >}>

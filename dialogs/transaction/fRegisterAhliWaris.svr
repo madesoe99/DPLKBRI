@@ -1,0 +1,55 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipMaster'
+      PClassName='NasabahDPLK'
+      LoadedFieldList='no_peserta;nama_lengkap'
+      Mode=imSingleRow
+    >, object:rpclass::TPClassUIDef<
+      Name='uipAhliWaris'
+      MasterUIName='uipMaster'
+      ListName='Ls_AhliWaris'
+      LoadedFieldList='nama_lengkap;tanggal_lahir;jenis_kelamin;status_ahli_waris;keterangan;nomor_urut_prioritas;hubungan_keluarga'
+      SetMasterDetailRelationship=true
+    >, object:rpclass::TPClassUIDef<
+      Name='uipRegisterCIF'
+      PClassName='RegisterAhliWaris'
+      LoadedFieldList='no_referensi;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;keterangan;user_id;terminal_id;registercif_id'
+      StoredFieldList='no_referensi;LNasabahDPLK;keterangan;user_id;terminal_id'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='mode'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLK'
+          ClassTypeName='NasabahDPLK'
+          FieldNames='no_peserta;no_peserta;nama_lengkap'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+      AfterApplyRow='uipRegisterCIFApplyRow'
+    >, object:rpclass::TPClassUIDef<
+      Name='uipRegisterAhliWarisDetail'
+      MasterUIName='uipRegisterCIF'
+      ListName='Ls_RegisterAhliWarisDetail'
+      LoadedFieldList='nomor_urut_prioritas;nama_lengkap;tanggal_lahir;jenis_kelamin;status_ahli_waris;hubungan_keluarga;keterangan'
+      StoredFieldList='nomor_urut_prioritas;nama_lengkap;tanggal_lahir;jenis_kelamin;status_ahli_waris;hubungan_keluarga;keterangan'
+      CreateInstanceOnNew=true
+      DeleteOnDel=true
+      SetMasterDetailRelationship=true
+    >
+  }
+  OnEndSetData='FormEndSetData'
+>

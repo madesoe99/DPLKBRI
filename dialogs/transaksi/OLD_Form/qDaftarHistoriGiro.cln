@@ -1,0 +1,206 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['MultiSplit']
+  Caption='Daftar Riwayat Transaksi Giro DPLK di Core Banking'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  UIParts={
+    object:rtf::PClassUI<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='JournalNo'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=15
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='isViewAllBatch'
+          Hidden=true
+          DataTypeName='integer'
+          DataLength=20
+          EnumeratedValues=['0=No'#13#10,
+            '1=Yes'#13#10]
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='BatchType'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=1
+          EnumeratedValues=['R=Registration'#13#10,
+            'T=Transaction'#13#10,
+            'P=Premi'#13#10,
+            'I=Investment'#13#10]
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='AccountLinkType'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=1
+          EnumeratedValues=['S=Single'#13#10,
+            'C=Custom'#13#10]
+        >
+      }
+      Name='uipFilter'
+    >
+  }
+  Containers={
+    object:rtf::Query<
+      Name='qHistoriGiroHarian'
+      Width=800
+      Height=518
+      ContextMenuName='popupmenus/transaksi/pDaftarHistoriGiroHarian'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      WindowSize=20
+      Columns={
+        object:rtf::QueryColumn<
+          FieldName='HistoriGiroHarian.Nomor_Giro_DPLK'
+          Width=100
+          Caption='Nomor Giro DPLK'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='HistoriGiroHarian.Kode_Akun_Giro'
+          Width=100
+          Caption='Kode Akun Giro'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='HistoriGiroHarian.Tanggal_Riwayat'
+          Width=120
+          Caption='Tanggal Riwayat'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='HistoriGiroHarian.Total_Nominal'
+          Width=120
+          Caption='Total Nominal'
+          UseCustomColor=true
+          Color=9498256
+        >
+        , object:rtf::QueryColumn<
+          FieldName='HistoriGiroHarian.ID_Keterhubungan_Acc'
+          Width=150
+          Caption='ID Keterhubungan Akuntansi'
+          UseCustomColor=true
+          Color=12695295
+        >
+        , object:rtf::QueryColumn<
+          FieldName='HistoriGiroHarian.Status_Rekonsolidasi'
+          Width=150
+          Caption='Status Rekonsoliasi'
+          UseCustomColor=true
+          Color=15128749
+        >
+        , object:rtf::QueryColumn<
+          FieldName='HistoriGiroHarian.Status_Pembuatan_Transaksi'
+          Width=150
+          Caption='Status Pemrosesan Transaksi'
+          UseCustomColor=true
+          Color=15128749
+        >
+      }
+      EnableColumns=true
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='AwalTanggal'
+          ControlCaption='Mulai Tanggal'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='AkhirTanggal'
+          ControlCaption='Hingga Tanggal'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+      }
+      Name='pFilter'
+      Width=700
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipFilter']
+      Controls={
+        *object:rtf::DBDateEdit<
+          Name='AwalTanggal'
+          Top=10
+          Left=10
+          Color=0
+          ControlCaption='Mulai Tanggal'
+        >
+        , *object:rtf::DBDateEdit<
+          Name='AkhirTanggal'
+          Layout=clNextSide
+          Top=10
+          Left=225
+          Color=0
+          ControlCaption='Hingga Tanggal'
+        >
+        , object:rtf::Button<
+          Name='bTampilkan'
+          Layout=clNextSide
+          Top=10
+          Left=439
+          Color=0
+          ControlCaption=''
+          Caption='&Tampilkan'
+          Default=true
+          OnClick='bTampilkanClick'
+        >
+      }
+      EqualCaptionWidth=75
+      ControlLeftMargin=10
+      ControlTopMargin=10
+      DefaultControlHeight=21
+      HorizontalControlGap=10
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=600
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='bCancel'
+          Layout=clNextSide
+          Top=8
+          Left=8
+          Color=0
+          ControlCaption=''
+          Caption='T&utup'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::MultiSplit<
+      Name='MultiSplit'
+      Width=800
+      Height=600
+      Side1Containers={
+        $CONTAINERS['pFilter']
+      }
+      Side2Containers={
+        $CONTAINERS['pButton']
+      }
+      SpaceContainer=$CONTAINERS['qHistoriGiroHarian']
+    >
+  }
+  FormClassName='qDaftarHistoriGiro'
+>

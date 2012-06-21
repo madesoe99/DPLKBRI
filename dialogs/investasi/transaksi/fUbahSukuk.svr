@@ -1,0 +1,48 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rpclass::TPClassUIDefList<
+  UIDefs={object:rpclass::TPClassUIDef<
+      Name='uipObligasi'
+      PClassName='Obligasi'
+      LoadedFieldList='no_bilyet;id_investasi;nama_obligasi;nominal_pembukaan;harga_pari;TreatmentObligasi;user_id_auth;last_update;RateSekarang;tgl_settlement'
+      StoredFieldList='no_bilyet;TreatmentObligasi;user_id_auth;last_update;RateSekarang;tgl_settlement'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='UbahStat'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='ModeOto'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='CreateMode'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='TreatmentObligasiOld'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='LMasterGiro.acc_giro'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='LMasterGiro.no_giro'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >, object:rpclass::TCustomLoadedField<
+          Name='LMasterGiro.acc_giro'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >}CustomLoadedLinks={object:rpclass::TCustomLoadedLink<
+          Name='LMasterGiro'
+          ClassTypeName='MasterGiro'
+          FieldNames='acc_giro;no_giro;acc_giro'
+        >}Mode=imSingleRow
+      OnSetData='uipObligasiSetData'
+    >}OnBeginProcessData='OnBeginProcessData'
+>

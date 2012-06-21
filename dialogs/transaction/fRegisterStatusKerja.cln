@@ -1,0 +1,384 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['DualSplit']
+  Caption='Pendaftaran Ke Peserta Korporat'
+  Left=300
+  Top=150
+  Width=500
+  Height=340
+  OnFormShow='FormShow'
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipRegisterCIF'
+      ClassTypeName='RegisterUbahStatusKerja'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      AfterApplyRow='uipRegisterCIFApplyRow'
+    >, object:rtf::PClassUI<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='no_peserta'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=11
+        >, object:rtf::FieldUIElmtSetting<
+          Name='nama_lengkap'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLKCorporate'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          ClassTypeName='NasabahDPLKCorporate'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLKCorporate.kode_nasabah_corporate'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsKey=true
+              KeyOrDisplayName='kode_nasabah_corporate'
+              FinalDisplayFieldName='kode_nasabah_corporate'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLKCorporate.kode_nasabah_corporate'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_nasabah_corporate'
+              FinalDisplayFieldName='kode_nasabah_corporate'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLKCorporate.nama_perusahaan'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=100
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_perusahaan'
+              FinalDisplayFieldName='nama_perusahaan'
+            >
+          }
+          Restrictions=''
+          FieldBaseName='LNasabahDPLKCorporate'
+        >
+      }
+      Name='uipMaster'
+      ClassTypeName='NasabahDPLK'
+      DataBinding=bmMaster
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Name='pButton'
+      Width=400
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          OnClick='btnOKClick'
+        >, object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          ControlCaption=''
+          Caption='&Batal'
+          OnClick='btnCancelClick'
+        >, object:rtf::Button<
+          Name='btnClose'
+          Layout=clNextSide
+          Top=8
+          Left=166
+          Visible=false
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=240
+      Height=96
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['dualsplit1']
+      InversedAlign=true
+    >, object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='jenis_transaksi'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['R=Daftar'#13#10,
+            'O=Keluar'#13#10]
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLKCorporate'
+          Hidden=false
+          ReadOnlyControl=false
+          ClassTypeName='NasabahDPLKCorporate'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLKCorporate.kode_nasabah_corporate'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsKey=true
+              KeyOrDisplayName='kode_nasabah_corporate'
+              FinalDisplayFieldName='kode_nasabah_corporate'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLKCorporate.kode_nasabah_corporate'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_nasabah_corporate'
+              FinalDisplayFieldName='kode_nasabah_corporate'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLKCorporate.nama_perusahaan'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=100
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_perusahaan'
+              FinalDisplayFieldName='nama_perusahaan'
+            >
+          }
+          Restrictions=''
+          OQLText=['SELECT FROM NasabahDPLKCorporate ['#13#10,
+            '  (is_deleted IS NULL OR is_deleted = 0)'#13#10,
+            ']('#13#10,
+            '  self,'#13#10,
+            '  kode_nasabah_corporate,'#13#10,
+            '  nama_perusahaan'#13#10,
+            ') THEN ORDER BY kode_nasabah_corporate;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LNasabahDPLKCorporate'
+        >
+      }
+      Name='pStatusKerja'
+      Width=481
+      Height=97
+      Bordered=true
+      UIPart=$UIPARTS['uipRegisterCIF']
+      Controls={
+        *object:rtf::DBComboBox<
+          Name='jenis_transaksi'
+          Top=30
+          Left=20
+          Enabled=false
+          ControlCaption='Jenis Transaksi'
+        >, *object:rtf::DBLookupEdit<
+          Name='LNasabahDPLKCorporate'
+          Top=58
+          Left=20
+          Width=100
+          Height=21
+          Color=12695295
+          ControlCaption='Peserta Korporat'
+          FieldName='LNasabahDPLKCorporate.kode_nasabah_corporate'
+          LookupField='LNasabahDPLKCorporate.nama_perusahaan'
+          DisplayLookupField=true
+          DisplayLookupColor=-16777192
+          DisplayLookupWidth=200
+          DirectInput=true
+          AlternateKeyValueSrc='LNasabahDPLKCorporate.kode_nasabah_corporate'
+          AlternateKeyName='kode_nasabah_corporate'
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=20
+      ControlTopMargin=30
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Status Kerja'
+    >, object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='no_referensi'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLK'
+          RequiredOption=roAlwaysRequired
+          Hidden=false
+          ReadOnlyControl=true
+          ClassTypeName='NasabahDPLK'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLK.no_peserta'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsKey=true
+              KeyOrDisplayName='no_peserta'
+              FinalDisplayFieldName='no_peserta'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLK.no_peserta'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsDisplay=true
+              KeyOrDisplayName='no_peserta'
+              FinalDisplayFieldName='no_peserta'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLK.nama_lengkap'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=100
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_lengkap'
+              FinalDisplayFieldName='nama_lengkap'
+            >
+          }
+          Restrictions=''
+          FieldBaseName='LNasabahDPLK'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >, object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          Hidden=false
+          ReadOnlyControl=true
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='terminal_id'
+          Hidden=false
+          ReadOnlyControl=true
+          DataTypeName='VARCHAR'
+          DataLength=15
+        >, object:rtf::FieldUIElmtSetting<
+          Name='jenis_transaksi'
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['R=Daftar'#13#10,
+            'O=Keluar'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='registercif_id'
+          AccessOption=aoReadOnly
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='INTEGER'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='mode'
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='varchar'
+          DataLength=20
+        >
+      }
+      Name='pData'
+      Width=481
+      Height=185
+      Bordered=true
+      UIPart=$UIPARTS['uipRegisterCIF']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='no_referensi'
+          Top=30
+          Left=20
+          Color=12695295
+          ControlCaption='Nomor Referensi'
+        >, *object:rtf::DBLookupEdit<
+          Name='LNasabahDPLK'
+          Top=58
+          Left=20
+          Width=100
+          Height=21
+          Enabled=false
+          ControlCaption='Peserta DPLK'
+          LookupField='LNasabahDPLK.nama_lengkap'
+          DisplayLookupField=true
+        >, *object:rtf::DBEdit<
+          Name='keterangan'
+          Top=86
+          Left=20
+          Width=180
+          Height=21
+          ControlCaption='Keterangan'
+        >, *object:rtf::DBEdit<
+          Name='user_id'
+          Top=114
+          Left=20
+          Width=135
+          Height=21
+          Color=-2147483624
+          ControlCaption='User Penginput'
+          ReadOnly=true
+        >, *object:rtf::DBEdit<
+          Name='terminal_id'
+          Top=142
+          Left=20
+          Color=-2147483624
+          ControlCaption='Terminal Input'
+          ReadOnly=true
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=20
+      ControlTopMargin=30
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Register'
+    >, object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=240
+      Height=96
+      Container1=$CONTAINERS['pData']
+      Container2=$CONTAINERS['pStatusKerja']
+    >
+  }
+>

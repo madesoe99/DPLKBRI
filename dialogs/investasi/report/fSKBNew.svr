@@ -1,0 +1,59 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rpclass::TPClassUIDefList<
+  UIDefs={object:rpclass::TPClassUIDef<
+      Name='uipNoData'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='is_all_lampiran'
+          DataTypeName='varchar'
+          DataLength=1
+        >, object:rpclass::TCustomLoadedField<
+          Name='Lampiran'
+          DataTypeName='varchar'
+          DataLength=1
+        >, object:rpclass::TCustomLoadedField<
+          Name='Semester'
+          DataTypeName='varchar'
+          DataLength=1
+        >, object:rpclass::TCustomLoadedField<
+          Name='Periode'
+          DataTypeName='varchar'
+          DataLength=1
+        >, object:rpclass::TCustomLoadedField<
+          Name='Tahun'
+          DataTypeName='varchar'
+          DataLength=5
+        >, object:rpclass::TCustomLoadedField<
+          Name='is_all_pihak_ketiga'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='pihak_ketiga.kode_pihak_ketiga'
+          DataTypeName='VARCHAR'
+          DataLength=8
+        >, object:rpclass::TCustomLoadedField<
+          Name='pihak_ketiga.kode_pihak_ketiga'
+          DataTypeName='VARCHAR'
+          DataLength=8
+        >, object:rpclass::TCustomLoadedField<
+          Name='pihak_ketiga.nama_pihak_ketiga'
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >, object:rpclass::TCustomLoadedField<
+          Name='pihak_ketiga.NPWP'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='pihak_ketiga.alamat_pihak_ketiga'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >}CustomLoadedLinks={object:rpclass::TCustomLoadedLink<
+          Name='pihak_ketiga'
+          ClassTypeName='PihakKetiga'
+          FieldNames='kode_pihak_ketiga;kode_pihak_ketiga;nama_pihak_ketiga;NPWP;alamat_pihak_ketiga'
+        >}Mode=imSingleRow
+    >}>

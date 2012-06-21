@@ -1,0 +1,36 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipart'
+      PClassName='WorkingUnit'
+      LoadedFieldList='departmentCode;LBranch.branch_code;LBranch.branch_code;LBranch.BranchName;LHandlerUser.user_id;LHandlerUser.user_id;LHandlerUser.UserName;LSupervisor.user_id;LSupervisor.user_id;LSupervisor.UserName'
+      StoredFieldList='LBranch;LHandlerUser;LSupervisor'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LBranch'
+          ClassTypeName='BranchLocation'
+          FieldNames='branch_code;branch_code;BranchName'
+        >
+        , object:rpclass::TCustomLoadedLink<
+          Name='LHandlerUser'
+          ClassTypeName='UserApp'
+          FieldNames='user_id;user_id;UserName'
+        >
+        , object:rpclass::TCustomLoadedLink<
+          Name='LSupervisor'
+          ClassTypeName='UserApp'
+          FieldNames='user_id;user_id;UserName'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+  }
+>

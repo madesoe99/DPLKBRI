@@ -1,0 +1,139 @@
+/** REVERSE BAGI HASIL DAN HITUNG SRR **/
+/** SKRIP INI HANYA DIGUNAKAN UNTUK REVERSE HITUNG SRR DAN BAGI HASIL SAMPAI 31 MARET 2008 **/
+/** DISARANKAN UNTUK: **/
+/** 1. MENSIMULASIKAN SKRIP INI DI SERVER LOKAL **/
+/** 2. MENJALANKAN SKRIP INI PER BAGIAN, TIDAK SEKALIGUS **/
+/** 3. JIKA MENJALANKAN DI SERVER PUSAT, BACKUP TERLEBIH DAHULU DAN LAKUKAN TIDAK DI JAM SIBUK **/
+/** PELAJARI SELURUH SKRIP TERLEBIH DAHULU SEBELUM MENJALANKANNYA **/
+
+/** I. MENGAMBIL DATA-DATA UNTUK DIBANDINGKAN DENGAN PROSES REVERSE **/
+
+/*
+-- RV1. HITUNG JUMLAH TRANSAKSI BAGI HASIL YANG TERJADI
+select count(*)
+from TransaksiDPLK
+where kode_jenis_transaksi = 'G'
+  and isCommitted = 'T'
+  and tgl_transaksi > '2008-03-31'
+  and tgl_transaksi < '2008-04-01';
+-- CATAT JUMLAHNYA UNTUK DICOCOKAN DENGAN DATA YANG DIUPDATE DAN DIHAPUS
+*/
+
+/*
+-- RV2. HITUNG JUMLAH PESERTA YANG MENDAPATKAN TRANSAKSI BAGI HASIL
+select count(*)
+from RekeningDPLK
+where no_peserta in
+	(select no_peserta
+	from TransaksiDPLK
+	where kode_jenis_transaksi = 'G'
+	  and isCommitted = 'T'
+	  and tgl_transaksi > '2008-03-31'
+	  and tgl_transaksi < '2008-04-01');
+-- CATAT JUMLAHNYA UNTUK DICOCOKAN DENGAN DATA YANG DIUPDATE DAN DIHAPUS
+*/
+
+/*
+-- RV3. AKUM_DANA_PENGEMBANGAN SEMUA PESERTA SEBELUM REVERSE
+select no_peserta, akum_dana_pengembangan
+from RekeningDPLK;
+-- SIMPAN HASILNYA KE FILE EXCEL UNTUK DIBANDINGKAN
+*/
+
+/*
+-- RV4. MUTASI_PENGEMBANGAN TRANSAKSI BAGI HASIL
+select r.no_peserta, isnull(mutasi_pengembangan, 0.0)
+from 
+  (select no_peserta
+  from RekeningDPLK) r 
+left outer join 
+  (select no_peserta, mutasi_pengembangan
+  from TransaksiDPLK
+  where kode_jenis_transaksi = 'G'
+    and isCommitted = 'T'
+    and tgl_transaksi > '2008-03-31'
+    and tgl_transaksi < '2008-04-01') t on r.no_peserta = t.no_peserta;
+-- SIMPAN HASILNYA KE FILE EXCEL UNTUK DIBANDINGKAN
+*/
+
+/** II. PROSES REVERSE **/
+
+/*
+-- RV5. UPDATE REKENING DPLK SEHINGGA SEPERTI POSISI SEMULA
+update RekeningDPLK
+set akum_dana_pengembangan = akum_dana_pengembangan - isnull(mutasi_pengembangan, 0.0)
+from RekeningDPLK r, TransaksiDPLK t
+where r.no_peserta = t.no_peserta
+  and kode_jenis_transaksi = 'G'
+  and isCommitted = 'T'
+  and tgl_transaksi > '2008-03-31'
+  and tgl_transaksi < '2008-04-01';
+-- JUMLAH YANG TERUPDATE HARUSNYA SAMA DENGAN HASIL RV2
+*/
+
+/*
+-- RV6. AKUM_DANA_PENGEMBANGAN SEMUA PESERTA SESUDAH REVERSE
+select no_peserta, akum_dana_pengembangan
+from RekeningDPLK;
+-- SIMPAN HASILNYA KE FILE EXCEL UNTUK DIBANDINGKAN DENGAN RV3 DAN RV4
+-- SEHARUSNYA: AKUM_DANA_PENGEMBANGAN DARI RV3 - MUTASI_PENGEMBANGAN RV4 = AKUM_DANA_PENGEMBANGAN RV6
+*/
+
+/* 
+-- RV7. HAPUS TRANSAKSI BAGI HASIL AKHIR MARET 2008
+delete from TransaksiBagiHasil
+from TransaksiBagiHasil b, TransaksiDPLK t
+where t.id_transaksi = b.id_transaksi
+  and kode_jenis_transaksi = 'G'
+  and isCommitted = 'T'
+  and tgl_transaksi > '2008-03-31'
+  and tgl_transaksi < '2008-04-01';
+-- JUMLAH YANG TERHAPUS HARUSNYA SAMA DENGAN HASIL RV1
+*/
+
+/*
+-- RV8. HAPUS TRANSAKSI DPLK BAGI HASIL AKHIR MARET 2008
+delete from TransaksiDPLK
+where kode_jenis_transaksi = 'G'
+  and isCommitted = 'T'
+  and tgl_transaksi > '2008-03-31'
+  and tgl_transaksi < '2008-04-01';
+-- JUMLAH YANG TERHAPUS HARUSNYA SAMA DENGAN HASIL RV1
+*/
+
+/*
+-- RV9. HAPUS BAGI HASIL
+delete from BagiHasil
+where idbghasil >= 291;
+*/
+
+/*
+-- RV10. HAPUS SRRCALCBAGIHASIL
+delete from SRRCalcBagiHasil
+where idbghasil >= 291;
+*/
+
+/*
+-- RV11. HAPUS SRRCALCRINCIAN
+delete from SRRCalcRincian;
+*/
+
+/*
+-- RV12. HAPUS SRRCALC
+delete from SRRCalc;
+*/
+
+/*
+-- RV13. HAPUS HISTORISRR
+delete from HistoriSRR;
+*/
+
+/*
+-- RV14. UPDATE PARAMETER
+update Parameter
+set Numeric_Value = 0.0,
+  Varchar_Value = null
+where Key_Parameter = 'BATAS_TGL_TUTUP_BATCH';
+*/
+
+/** SELESAI, SILAKAN PERIKSA KEBENARAN DATA **/

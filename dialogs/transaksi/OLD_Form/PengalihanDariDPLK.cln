@@ -1,0 +1,391 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['DualSplitUtama']
+  Caption='Pengalihan Dana dari DPLK Lain'
+  Left=100
+  Top=100
+  Width=800
+  Height=540
+  OnFormShow='FormShow'
+  UIParts={object:rtf::PClassUI<
+      Name='uipTransaksi'
+      ClassTypeName='PengalihanDariDPLKLain'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >, object:rtf::PClassUI<
+      Name='uipNasabah'
+      ClassTypeName='NasabahDPLK'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >}Containers={object:rtf::Panel<
+      Name='pButton'
+      Width=300
+      Height=40
+      Controls={object:rtf::Button<
+          Name='bSimpan'
+          Layout=clNextSide
+          Top=8
+          Left=8
+          Color=0
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          OnClick='bSimpanClick'
+        >, object:rtf::Button<
+          Name='bCancel'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >, object:rtf::Button<
+          Name='Button'
+          Layout=clNextSide
+          Top=8
+          Left=166
+          Visible=false
+          Color=0
+          ControlCaption=''
+          DefaultAction=daShowDebugWindow
+        >}ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='no_peserta'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=11
+        >, object:rtf::FieldUIElmtSetting<
+          Name='nama_lengkap'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >, object:rtf::FieldUIElmtSetting<
+          Name='alamat_jalan'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=200
+        >, object:rtf::FieldUIElmtSetting<
+          Name='alamat_rtrw'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=7
+        >, object:rtf::FieldUIElmtSetting<
+          Name='alamat_kelurahan'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >, object:rtf::FieldUIElmtSetting<
+          Name='alamat_kecamatan'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >, object:rtf::FieldUIElmtSetting<
+          Name='alamat_kota'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >, object:rtf::FieldUIElmtSetting<
+          Name='alamat_kode_pos'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >}Name='pNasabah'
+      Width=400
+      Height=489
+      Bordered=true
+      UIPart=$UIPARTS['uipNasabah']
+      Controls={*object:rtf::DBEdit<
+          Name='no_peserta'
+          Top=20
+          Left=10
+          Enabled=false
+          Color=15128749
+          ControlCaption='no peserta'
+        >, *object:rtf::DBEdit<
+          Name='nama_lengkap'
+          Top=48
+          Left=10
+          Enabled=false
+          Color=15128749
+          ControlCaption='nama lengkap'
+        >, *object:rtf::DBEdit<
+          Name='alamat_jalan'
+          Top=76
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='alamat jalan'
+        >, *object:rtf::DBEdit<
+          Name='alamat_rtrw'
+          Top=104
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='alamat rtrw'
+        >, *object:rtf::DBEdit<
+          Name='alamat_kelurahan'
+          Top=132
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='alamat kelurahan'
+        >, *object:rtf::DBEdit<
+          Name='alamat_kecamatan'
+          Top=160
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='alamat kecamatan'
+        >, *object:rtf::DBEdit<
+          Name='alamat_kota'
+          Top=188
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='alamat kota'
+        >, *object:rtf::DBEdit<
+          Name='alamat_kode_pos'
+          Top=216
+          Left=10
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='alamat kode pos'
+        >}EqualCaptionWidth=130
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Nasabah'
+    >, object:rtf::DualSplit<
+      Name='DualSplitUtama'
+      Width=240
+      Height=96
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['DualSplitV']
+      InversedAlign=true
+    >, object:rtf::DualSplit<
+      Name='DualSplitV'
+      Width=240
+      Height=96
+      Container1=$CONTAINERS['pNasabah']
+      Container2=$CONTAINERS['pTransaksi']
+      SplitDirection=sdrSplitLeftRight
+      InversedAlign=true
+    >, object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='tgl_transaksi'
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='no_dplk_lain'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LTransactionBatch'
+          RequiredOption=roAlwaysRequired
+          ControlCaption='Batch Transaksi'
+          ClassTypeName='TransactionBatch'
+          KeyFields={object:rtf::FieldUIElmtSetting<
+              Name='LTransactionBatch.ID_TransactionBatch'
+              DataTypeName='INTEGER'
+              DataLength=0
+              UsedAsKey=true
+              KeyOrDisplayName='ID_TransactionBatch'
+              FinalDisplayFieldName='ID_TransactionBatch'
+            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+              Name='LTransactionBatch.ID_TransactionBatch'
+              DataTypeName='INTEGER'
+              DataLength=0
+              UsedAsDisplay=true
+              KeyOrDisplayName='ID_TransactionBatch'
+              FinalDisplayFieldName='ID_TransactionBatch'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LTransactionBatch.no_batch'
+              DataTypeName='VARCHAR'
+              DataLength=32
+              UsedAsDisplay=true
+              KeyOrDisplayName='no_batch'
+              FinalDisplayFieldName='no_batch'
+            >}Restrictions=''
+          FieldBaseName='LTransactionBatch'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='saldo_iuran_pk'
+          ControlCaption='Saldo Iuran Pemberi Kerja'
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='saldo_iuran_pst'
+          ControlCaption='Saldo Iuran Peserta'
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='saldo_pengembangan'
+          ControlCaption='Saldo Pengembangan'
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='saldo_peralihan'
+          ControlCaption='Saldo Peralihan'
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          ControlCaption='Keterangan'
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LLDP'
+          RequiredOption=roAlwaysRequired
+          ControlCaption='DPLK Lain'
+          ClassTypeName='LDP'
+          KeyFields={object:rtf::FieldUIElmtSetting<
+              Name='LLDP.kode_dp'
+              DataTypeName='VARCHAR'
+              DataLength=50
+              UsedAsKey=true
+              KeyOrDisplayName='kode_dp'
+              FinalDisplayFieldName='kode_dp'
+            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+              Name='LLDP.kode_dp'
+              DataTypeName='VARCHAR'
+              DataLength=50
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_dp'
+              FinalDisplayFieldName='kode_dp'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LLDP.nama_dp'
+              DataTypeName='VARCHAR'
+              DataLength=50
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_dp'
+              FinalDisplayFieldName='nama_dp'
+            >}Restrictions=''
+          OQLText=['select from LDP'#13#10,
+            '[jenis_dp = ''B''] '#13#10,
+            '(kode_dp,'#13#10,
+            'nama_dp,'#13#10,
+            'alamat_dp,'#13#10,
+            'self)'#13#10,
+            'then order by kode_dp;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LLDP'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='TB_BranchCode'
+          ReadOnlyControl=true
+          ControlCaption='Cabang Batch Transaksi'
+          DataTypeName='varchar'
+          DataLength=5
+        >}Name='pTransaksi'
+      Width=409
+      Height=572
+      Bordered=true
+      UIPart=$UIPARTS['uipTransaksi']
+      Controls={*object:rtf::DBDateEdit<
+          Name='tgl_transaksi'
+          Top=20
+          Left=10
+          Color=0
+          ControlCaption='Tanggal Transaksi'
+        >, *object:rtf::DBEdit<
+          Name='no_dplk_lain'
+          Top=160
+          Left=10
+          Color=15128749
+          ControlCaption='Nomor DPLK Lain'
+          LayoutOrder=6
+        >, *object:rtf::DBLookupEdit<
+          Name='LTransactionBatch'
+          Top=48
+          Left=10
+          ControlCaption='Batch Transaksi'
+          FieldName='LTransactionBatch.ID_TransactionBatch'
+          DisplayFormat=''
+          LookupField='LTransactionBatch.no_batch'
+          DisplayLookupField=true
+          DisplayLookupColor=-2147483624
+          DisplayLookupWidth=125
+        >, *object:rtf::DBEdit<
+          Name='saldo_iuran_pk'
+          Top=188
+          Left=10
+          Color=12695295
+          ControlCaption='Saldo Iuran Pemberi Kerja'
+          LayoutOrder=7
+          FieldName='saldo_iuran_pk'
+          DisplayFormat=',0.00'
+        >, *object:rtf::DBEdit<
+          Name='saldo_iuran_pst'
+          Top=216
+          Left=10
+          Color=12695295
+          ControlCaption='Saldo Iuran Peserta'
+          LayoutOrder=8
+          FieldName='saldo_iuran_pst'
+          DisplayFormat=',0.00'
+        >, *object:rtf::DBEdit<
+          Name='saldo_pengembangan'
+          Top=244
+          Left=10
+          Color=12695295
+          ControlCaption='Saldo Pengembangan'
+          LayoutOrder=9
+          FieldName='saldo_pengembangan'
+          DisplayFormat=',0.00'
+        >, *object:rtf::DBEdit<
+          Name='saldo_peralihan'
+          Top=272
+          Left=10
+          Color=12695295
+          ControlCaption='Saldo PSL'
+          LayoutOrder=10
+          FieldName='saldo_peralihan'
+          DisplayFormat=',0.00'
+        >, *object:rtf::DBEdit<
+          Name='keterangan'
+          Top=104
+          Left=10
+          Color=0
+          ControlCaption='Keterangan'
+          LayoutOrder=4
+        >, *object:rtf::DBLookupEdit<
+          Name='LLDP'
+          Top=132
+          Left=10
+          Color=15128749
+          ControlCaption='DPLK Lain'
+          LayoutOrder=5
+          FieldName='LLDP.kode_dp'
+          DisplayFormat=''
+          LookupField='LLDP.nama_dp'
+          DisplayLookupField=true
+          DisplayLookupColor=-2147483624
+          DisplayLookupWidth=125
+        >, *object:rtf::DBEdit<
+          Name='TB_BranchCode'
+          Top=76
+          Left=10
+          Color=-2147483624
+          ControlCaption='Cabang Batch Transaksi'
+        >}EqualCaptionWidth=130
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Transaksi Pengalihan'
+    >}>

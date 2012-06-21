@@ -1,0 +1,96 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rpclass::TPClassUIDefList<
+  UIDefs={object:rpclass::TPClassUIDef<
+      Name='uipPendapatanObligasi'
+      PClassName='PendapatanObligasi'
+      LoadedFieldList='id_transaksiinvestasi;tgl_transaksi;nominal;no_rekening;user_id;terminal_id;tgl_otorisasi;user_id_auth;terminal_id_auth;tgl_sistem;LObligasi.id_investasi;LObligasi.nama_obligasi;LObligasi.tgl_buka;LObligasi.id_investasi;LObligasi.LPihakKetiga.nama_pihak_ketiga;LObligasi.LRincianPaketInvestasi.LPaketInvestasi.Nama_paket_investasi;LObligasi.LRincianPaketInvestasi.LJenisInvestasi.nama_jns_investasi;LObligasi.akum_nominal;LObligasi.akum_piutangLR;LObligasi.akum_LR;LObligasi.kode_pihak_ketiga;LObligasi.kode_paket_investasi;LObligasi.kode_jns_investasi;LObligasi.no_rekening'
+      StoredFieldList='tgl_transaksi;nominal;no_rekening;tgl_sistem;LObligasi'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='nama_obligasi'
+          DataTypeName='varchar'
+          DataLength=15
+        >, object:rpclass::TCustomLoadedField<
+          Name='LPihakKetiga.kode_pihak_ketiga'
+          DataTypeName='VARCHAR'
+          DataLength=8
+        >, object:rpclass::TCustomLoadedField<
+          Name='LPihakKetiga.kode_pihak_ketiga'
+          DataTypeName='VARCHAR'
+          DataLength=8
+        >, object:rpclass::TCustomLoadedField<
+          Name='LPihakKetiga.nama_pihak_ketiga'
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >, object:rpclass::TCustomLoadedField<
+          Name='LPaketInvestasi.kode_paket_investasi'
+          DataTypeName='VARCHAR'
+          DataLength=2
+        >, object:rpclass::TCustomLoadedField<
+          Name='LPaketInvestasi.kode_paket_investasi'
+          DataTypeName='VARCHAR'
+          DataLength=2
+        >, object:rpclass::TCustomLoadedField<
+          Name='LPaketInvestasi.nama_paket_investasi'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >, object:rpclass::TCustomLoadedField<
+          Name='LMasterGiro.acc_giro'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='LMasterGiro.no_giro'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >, object:rpclass::TCustomLoadedField<
+          Name='LMasterGiro.acc_giro'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='mode'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='nomrek_pendapatan'
+          DataTypeName='varchar'
+          DataLength=20
+        >}CustomLoadedLinks={object:rpclass::TCustomLoadedLink<
+          Name='LObligasi'
+          ClassTypeName='Obligasi'
+          FieldNames='id_investasi;nama_obligasi;tgl_buka;id_investasi;LPihakKetiga.nama_pihak_ketiga;LRincianPaketInvestasi.LPaketInvestasi.Nama_paket_investasi;LRincianPaketInvestasi.LJenisInvestasi.nama_jns_investasi;akum_nominal;akum_piutangLR;akum_LR;kode_pihak_ketiga;kode_paket_investasi;kode_jns_investasi;no_rekening'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LPihakKetiga'
+          ClassTypeName='PihakKetiga'
+          FieldNames='kode_pihak_ketiga;kode_pihak_ketiga;nama_pihak_ketiga'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LPaketInvestasi'
+          ClassTypeName='PaketInvestasi'
+          FieldNames='kode_paket_investasi;kode_paket_investasi;nama_paket_investasi'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LMasterGiro'
+          ClassTypeName='MasterGiro'
+          FieldNames='acc_giro;no_giro;acc_giro'
+        >}Mode=imSingleRow
+      CreateInstanceOnNew=true
+      AfterApplyRow='uipPendapatanObligasiApplyRow'
+    >, object:rpclass::TPClassUIDef<
+      Name='uipObligasi'
+      MasterUIName='uipPendapatanObligasi'
+      LinkName='LObligasi'
+      LoadedFieldList='id_investasi;akum_nominal;tgl_jatuh_tempo;no_rekening'
+      OnSetData='uipObligasiSetData'
+    >, object:rpclass::TPClassUIDef<
+      Name='uipParameter'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='nowDate'
+          DataTypeName='varchar'
+          DataLength=10
+        >}Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >}OnGeneralSetData='FormGeneralSetData'
+  OnEndProcessData='FormEndProcessData'
+>

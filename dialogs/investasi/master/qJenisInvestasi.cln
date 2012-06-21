@@ -1,0 +1,84 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['qJenisInvestasi']
+  Caption='Daftar Jenis Investasi'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  Containers={
+    object:rtf::Query<
+      Name='qJenisInvestasi'
+      Width=240
+      Height=40
+      ContextMenuName='popupmenus/investasi/master/qJenisInvestasi'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from JenisInvestasi'#13#10,
+        '('#13#10,
+        '  kode_jns_Investasi as Kode_Jns_Investasi,'#13#10,
+        '  nama_jns_Investasi as Nama_Jns_Investasi,'#13#10,
+        '  expected_rate as Expected_Rate,'#13#10,
+        '  acc_biayainvest as Acc_BiayaInvest,'#13#10,
+        '  acc_investasi as Acc_Investasi,'#13#10,
+        '  acc_pendapatan as Acc_Pendapatan,'#13#10,
+        '  acc_piutangpendapatan as Acc_PiutangPendapatan,'#13#10,
+        '  acc_potensi_profit as Acc_Potensi_Profit,'#13#13#10,
+        '  user_id,'#13#10,
+        '  last_update,'#13#10,
+        '  self'#13#10,
+        ') then order by Kode_Jns_Investasi;']
+      DirectDisplay=true
+      WindowSize=20
+      Columns={
+        object:rtf::QueryColumn<
+          FieldName='JenisInvestasi.Kode_Jns_Investasi'
+          Caption='Kode Jenis Investasi'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='JenisInvestasi.Nama_Jns_Investasi'
+          Caption='Nama Jenis Investasi'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='JenisInvestasi.Expected_Rate'
+          Caption='Expected Rate'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='JenisInvestasi.Acc_BiayaInvest'
+          Caption='Akun Biaya Investasi'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='JenisInvestasi.Acc_Investasi'
+          Caption='Akun Investasi'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='JenisInvestasi.Acc_Pendapatan'
+          Caption='Akun Pendapatan'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='JenisInvestasi.Acc_PiutangPendapatan'
+          Caption='Akun Piutang Pendapatan'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='JenisInvestasi.user_id'
+          Caption='ID Pengguna'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='JenisInvestasi.last_update'
+          Caption='Terakhir Diperbarui'
+        >
+      }
+      EnableColumns=true
+    >
+  }
+>

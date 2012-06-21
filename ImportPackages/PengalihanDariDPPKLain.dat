@@ -1,0 +1,45 @@
+PackageDef()
+<s20,Name='PengalihanDariDPPKLain' 
+s20,Description='Pengalihan dari DPPK lain ke DPLK Muamala' 
+s20,Mode='NORMAL' 
+s20,LastModifiedUser='ade herman' 
+d,LastModifiedTime*
+>
+,
+SourceDef()
+<s20,Description='definisi template pengalihan dari dppk lain' 
+s20,Type='MSEXCEL' 
+i,FirstDataRow=8
+s20,SheetName='Sheet1' 
+i,ControlColumn=1
+>
+,
+SourceFieldDefs()
+<s20,Name='IDTransactionBatch' 
+s20,Type='INTEGER' 
+i,Length=0
+i,Index=1
+>
+<'NoPeserta'  'STRING'  0 2>
+<'KodeDP'  'STRING'  0 3>
+<'NomorDiDPPKLain'  'STRING'  0 4>
+<'MutasiPeralihan'  'FLOAT'  0 5>
+<'Keterangan'  'STRING'  0 6>,
+TransformationDef()
+<s20,Description='Template destination file yang akan diimpor' 
+s20,TargetClassName='PengalihanDariDPLKLain' 
+s20,AfterApplyRowModule='importmassal.Transaksi' 
+s20,AfterApplyRowFunctionName='ImportPengalihanDPPK' 
+>
+,
+TransItemDefs()
+<s20,Name='ID_TransactionBatch' 
+s20,LookupClass='TransactionBatch' 
+s20,LookupField='ID_TransactionBatch' 
+s20,SourceFieldName='IDTransactionBatch' 
+>
+<'no_peserta'  'RekeningDPLK'  'no_peserta'  'NoPeserta' >
+<'kode_dp'  'LDP'  'kode_dp'  'KodeDP' >
+<'no_dplk_lain'  ''  ''  'NomorDiDPPKLain' >
+<'saldo_peralihan'  ''  ''  'MutasiPeralihan' >
+<'keterangan'  ''  ''  'Keterangan' >..

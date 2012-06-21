@@ -1,0 +1,46 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['qRegEditNasabahRekening']
+  Caption='Daftar Koreksi Data Umum Peserta/Rekening'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  Containers={
+    object:rtf::Query<
+      Name='qRegEditNasabahRekening'
+      Width=240
+      Height=40
+      ContextMenuName='popupmenus/transaction/qRegEditNasabahRekening'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from RegEditNasabahRekening'#13#10,
+        '('#13#10,
+        '  no_referensi,'#13#10,
+        '  no_peserta,'#13#10,
+        '  nama_lengkap,'#13#10,
+        '  tempat_lahir,'#13#10,
+        '  tanggal_lahir,'#13#10,
+        '  pekerjaan,'#13#10,
+        '  nama_perusahaan,'#13#10,
+        '  user_id,'#13#10,
+        '  terminal_id,'#13#10,
+        '  tanggal_register,'#13#10,
+        '  registercif_id as ID,'#13#10,
+        '  self'#13#10,
+        ') then order by ID;']
+      DirectDisplay=true
+      WindowSize=20
+    >
+  }
+>

@@ -1,0 +1,282 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='1'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['split']
+  Caption='Buat Pengguna Baru'
+  Left=100
+  Top=100
+  Width=400
+  Height=300
+  UIParts={
+    object:rtf::PClassUI<
+      Name='UserApp'
+      ClassTypeName='UserApp'
+      DataBinding=bmMaster
+      FillInDefaultValues=true
+      InitWithDefaultValues=true
+      CreateInstanceOnNew=true
+      AfterApplyRow='UserApp_AfterApplyRow'
+    >
+    , object:rtf::PClassUI<
+      Name='UserGroupApp'
+      ClassTypeName='UserGroupApp'
+      DataBinding=bmList
+      Master=$UIPARTS['UserApp']
+      ListName='Ls_UserGroupApp'
+      CreateInstanceOnNew=true
+      AfterNewRow='UserGroupApp_AfterNewRow'
+    >
+  }
+  Containers={
+    object:rtf::DualSplit<
+      Name='split'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['panel_Button']
+      Container2=$CONTAINERS['mp_data']
+      InversedAlign=true
+    >
+    , object:rtf::MultiPages<
+      Name='mp_data'
+      Width=240
+      Height=100
+      Pages={
+        object:rtf::Page<
+          PageName='user_1'
+          PageTitle='Pengguna'
+          Container=$CONTAINERS['user_1']
+        >
+        , object:rtf::Page<
+          PageName='user_2'
+          PageTitle='Kelompok Pengguna'
+          Container=$CONTAINERS['user_2']
+          Index=1
+        >
+      }
+      TabStyle=tsrFlatButtons
+    >
+    , object:rtf::DualSplit<
+      Name='user_2'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['nav_usertogroup']
+      Container2=$CONTAINERS['data_usertogroup']
+      InversedAlign=true
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          ControlCaption='ID Pengguna'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='UserName'
+          ControlCaption='Nama Pengguna'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='Description'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='NoLimitLocation'
+          ControlCaption='Bisa Lihat Data Cabang Lain'
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['F=False'#13#10,
+            'T=True'#13#10]
+          GenerateCheckBoxForEnum=true
+        >
+        , object:rtf::LinkUIElmtSetting<
+          Name='LBranchLocation'
+          RequiredOption=roAlwaysRequired
+          ControlCaption='Cabang Pengguna'
+          ClassTypeName='BranchLocation'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LBranchLocation.branch_code'
+              DataTypeName='VARCHAR'
+              DataLength=5
+              UsedAsKey=true
+              KeyOrDisplayName='branch_code'
+              FinalDisplayFieldName='branch_code'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LBranchLocation.branch_code'
+              DataTypeName='VARCHAR'
+              DataLength=5
+              UsedAsDisplay=true
+              KeyOrDisplayName='branch_code'
+              FinalDisplayFieldName='branch_code'
+            >
+            , object:rtf::FieldUIElmtSetting<
+              Name='LBranchLocation.BranchName'
+              DataTypeName='VARCHAR'
+              DataLength=50
+              UsedAsDisplay=true
+              KeyOrDisplayName='BranchName'
+              FinalDisplayFieldName='BranchName'
+            >
+          }
+          Restrictions=''
+          OQLText='SELECT FROM BranchLocation (branch_code, BranchName, self) THEN ORDER BY branch_code;'
+          LookupOption=loCustomOQL
+        >
+      }
+      Name='user_1'
+      Width=240
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['UserApp']
+      Controls={
+        *object:rtf::DBCheckBox<
+          Name='NoLimitLocation'
+          Width=200
+          Height=21
+        >
+        , *object:rtf::DBLookupEdit<
+          Name='LBranchLocation'
+          LookupField='LBranchLocation.BranchName'
+          DisplayLookupField=true
+          DirectInput=true
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Grid<
+      Elements={
+        object:rtf::LinkUIElmtSetting<
+          Name='LUserGroup'
+          RequiredOption=roAlwaysRequired
+          ClassTypeName='UserGroup'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LUserGroup.group_id'
+              DataTypeName='VARCHAR'
+              DataLength=8
+              UsedAsKey=true
+              KeyOrDisplayName='group_id'
+              FinalDisplayFieldName='group_id'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LUserGroup.group_id'
+              DataTypeName='VARCHAR'
+              DataLength=8
+              UsedAsDisplay=true
+              KeyOrDisplayName='group_id'
+              FinalDisplayFieldName='group_id'
+            >
+            , object:rtf::FieldUIElmtSetting<
+              Name='LUserGroup.GroupName'
+              DataTypeName='VARCHAR'
+              DataLength=30
+              UsedAsDisplay=true
+              KeyOrDisplayName='GroupName'
+              FinalDisplayFieldName='GroupName'
+            >
+          }
+          Restrictions=''
+          OQLText='SELECT FROM UserGroup (group_id, GroupName, self) THEN ORDER BY group_id;'
+          LookupOption=loCustomOQL
+        >
+      }
+      Name='data_usertogroup'
+      Width=240
+      Height=250
+      Bordered=true
+      UIPart=$UIPARTS['UserGroupApp']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Columns={
+        *object:rtf::GridColumn<
+          Name='LUserGroup.group_id'
+          InputStyle=cisLookup
+          EnumeratedValues=''
+          FieldName='LUserGroup.group_id'
+          DisplayFormat=''
+          TitleCaption='ID Kelompok Pengguna'
+        >
+        , *object:rtf::GridColumn<
+          Name='LUserGroup.GroupName'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='LUserGroup.GroupName'
+          DisplayFormat=''
+          TitleCaption='Kelompok Pengguna'
+        >
+      }
+    >
+    , object:rtf::DBNavigator<
+      Name='nav_usertogroup'
+      Width=240
+      Height=10
+      UIPart=$UIPARTS['UserGroupApp']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      VFirst=false
+      VPrior=false
+      VNext=false
+      VLast=false
+      VInsert=true
+      VDelete=true
+      VEdit=true
+      VPost=true
+      VCancel=true
+      VRefresh=false
+    >
+    , object:rtf::Panel<
+      Name='panel_Button'
+      Width=240
+      Height=50
+      Controls={
+        object:rtf::Button<
+          Name='bSave'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          DefaultAction=daProcessAllAndClear
+        >
+        , object:rtf::Button<
+          Name='bCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='Cancel'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+  }
+>

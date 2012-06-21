@@ -1,0 +1,4 @@
+/* Altering table for class RegisterPindahPaketInvestasi */
+
+ALTER TABLE REGISTERPINDAHPAKETINVESTASI
+  ADD ID_TRANSACTIONBATCH INTEGER;

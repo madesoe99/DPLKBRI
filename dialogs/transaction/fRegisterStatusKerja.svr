@@ -1,0 +1,51 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipRegisterCIF'
+      PClassName='RegisterUbahStatusKerja'
+      LoadedFieldList='jenis_transaksi;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.nama_perusahaan;no_referensi;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;keterangan;user_id;terminal_id;jenis_transaksi;registercif_id'
+      StoredFieldList='jenis_transaksi;LNasabahDPLKCorporate;no_referensi;LNasabahDPLK;keterangan;user_id;terminal_id;jenis_transaksi'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='mode'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLKCorporate'
+          ClassTypeName='NasabahDPLKCorporate'
+          FieldNames='kode_nasabah_corporate;kode_nasabah_corporate;nama_perusahaan'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLK'
+          ClassTypeName='NasabahDPLK'
+          FieldNames='no_peserta;no_peserta;nama_lengkap'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+      AfterApplyRow='uipRegisterCIFApplyRow'
+    >, object:rpclass::TPClassUIDef<
+      Name='uipMaster'
+      PClassName='NasabahDPLK'
+      LoadedFieldList='no_peserta;nama_lengkap;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.nama_perusahaan'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLKCorporate'
+          ClassTypeName='NasabahDPLKCorporate'
+          FieldNames='kode_nasabah_corporate;kode_nasabah_corporate;nama_perusahaan'
+        >
+      }
+      Mode=imSingleRow
+    >
+  }
+  OnEndSetData='FormEndSetData'
+>

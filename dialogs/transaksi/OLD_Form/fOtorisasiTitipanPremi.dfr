@@ -1,0 +1,339 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['pInfoOtoriasasi']
+  Caption='Otorisasi Titipan Premi'
+  Left=50
+  Top=50
+  Width=700
+  Height=520
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData='FormGeneralProcessData'
+  OnProcessRawData=''
+  OnFormShow='FormShow'
+  OnBeginSetData=''
+  OnEndSetData='FormEndSetData'
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipTransaksi'
+      ClassTypeName='TitipanPremi'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+    >
+    , object:rtf::PClassUI<
+      Name='uipNasabah'
+      ClassTypeName='NasabahDPLK'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+    , object:rtf::PClassUI<
+      Name='uipRekeningWU'
+      ClassTypeName='RekeningWasiatUmmat'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['user_id'#13#10,
+            'terminal_id'#13#10,
+            'tgl_sistem'#13#10,
+            'user_id_auth'#13#10,
+            'terminal_id_auth'#13#10,
+            'tgl_otorisasi'#13#10]
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='isCommitted'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='isCommitted'
+          Hidden=true
+        >
+      }
+      Name='pInfoOtoriasasi'
+      Width=700
+      Height=80
+      Bordered=true
+      UIPart=$UIPARTS['uipTransaksi']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='terminal_id'
+          Layout=clNextSide
+          ControlCaption='terminal id        '
+        >
+        , *object:rtf::DBDateEdit<
+          Name='tgl_sistem'
+          Layout=clNextSide
+          ControlCaption='tgl sistem   '
+        >
+        , *object:rtf::DBEdit<
+          Name='terminal_id_auth'
+          Layout=clNextSide
+        >
+        , *object:rtf::DBDateEdit<
+          Name='tgl_otorisasi'
+          Layout=clNextSide
+        >
+      }
+      EqualCaptionWidth=74
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=7
+      RowControlGap=7
+      Caption='Data Otorisasi'
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=500
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='bApprove'
+          Layout=clNewLine
+          Color=0
+          ControlCaption=''
+          Caption='&Setujui'
+          Default=true
+          DefaultAction=daProcessAllAndClear
+          ExitAction=eaQuitOK
+        >
+        , object:rtf::Button<
+          Name='bReject'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Tolak'
+          ExitAction=eaQuitOK
+          OnClick='bRejectClick'
+        >
+        , object:rtf::Button<
+          Name='bCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+        , object:rtf::Button<
+          Name='bSkip'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          LayoutOrder=5
+          Caption='&Lewati'
+        >
+        , object:rtf::Button<
+          Name='bNext'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          LayoutOrder=4
+          Caption='Beri&kutnya'
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::MultiSplit<
+      Name='MultiSplit'
+      Width=240
+      Height=100
+      Side1Containers={
+        $CONTAINERS['pInfoOtoriasasi']
+      }
+      Side2Containers={
+        $CONTAINERS['pButton']
+      }
+      SpaceContainer=$CONTAINERS['DualSplit']
+    >
+    , object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['tgl_transaksi'#13#10,
+            'keterangan'#13#10,
+            'no_peserta'#13#10,
+            'mutasi_premi'#13#10]
+        >
+        , object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='ID_Transaksi'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='LTransactionBatch'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='ID_Transaksi'
+          Hidden=true
+        >
+        , *object:rtf::LinkUIElmtSetting<
+          Name='LTransactionBatch'
+          ControlCaption='batch transaksi'
+          DisplayFields='ID_TransactionBatch;no_batch;branch_code'
+          Restrictions=''
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='TB_BranchCode'
+          ReadOnlyControl=true
+          ControlCaption='cabang batch transaksi'
+          DataTypeName='varchar'
+          DataLength=5
+        >
+      }
+      Name='pDataTransaksi'
+      Width=350
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipTransaksi']
+      Controls={
+        *object:rtf::DBDateEdit<
+          Name='tgl_transaksi'
+          LayoutOrder=3
+        >
+        , *object:rtf::DBEdit<
+          Name='keterangan'
+          LayoutOrder=4
+        >
+        , *object:rtf::DBEdit<
+          Name='no_peserta'
+          Color=15128749
+          LayoutOrder=5
+        >
+        , *object:rtf::DBEdit<
+          Name='mutasi_premi'
+          Color=12695295
+          LayoutOrder=6
+        >
+        , *object:rtf::DBLookupEdit<
+          Name='LTransactionBatch'
+          Enabled=false
+          Color=0
+          FieldName='LTransactionBatch.ID_TransactionBatch'
+          DisplayFormat=''
+          LookupField='LTransactionBatch.no_batch'
+          DisplayLookupField=true
+          DisplayLookupColor=-2147483624
+          DisplayLookupWidth=125
+        >
+        , *object:rtf::DBEdit<
+          Name='TB_BranchCode'
+          ReadOnly=true
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Transaksi'
+    >
+    , object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['nama_lengkap'#13#10,
+            'alamat_jalan'#13#10,
+            'alamat_rtrw'#13#10,
+            'alamat_kelurahan'#13#10,
+            'alamat_kecamatan'#13#10,
+            'alamat_kota'#13#10,
+            'alamat_kode_pos'#13#10]
+        >
+      }
+      Elements={
+      }
+      Name='pNasabah'
+      Width=240
+      Height=230
+      Bordered=true
+      UIPart=$UIPARTS['uipNasabah']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='nama_lengkap'
+          Color=15128749
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Nasabah'
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['pDataTransaksi']
+      Container2=$CONTAINERS['DualSplitV']
+      SplitDirection=sdrSplitLeftRight
+    >
+    , object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['no_polis'#13#10,
+            'tgl_akseptasi'#13#10,
+            'tgl_berakhir'#13#10,
+            'besar_premi'#13#10]
+        >
+      }
+      Elements={
+      }
+      Name='pRekeningWU'
+      Width=240
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipRekeningWU']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='besar_premi'
+          Color=9498256
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Rekening Wasiat Ummat'
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplitV'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['pNasabah']
+      Container2=$CONTAINERS['pRekeningWU']
+    >
+  }
+>

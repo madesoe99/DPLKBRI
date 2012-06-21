@@ -1,0 +1,24 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rpclass::TPClassUIDefList<
+  UIDefs={object:rpclass::TPClassUIDef<
+      Name='uipDeposito'
+      PClassName='Deposito'
+      LoadedFieldList='no_bilyet;LPihakKetiga.kode_pihak_ketiga;LPihakKetiga.kode_pihak_ketiga;LPihakKetiga.nama_pihak_ketiga;tgl_buka;tgl_tutup;nominal_pembukaan;akum_nominal;akum_LR;akum_piutangLR;Rekening_Deposito;equivalent_rate;jenisJatuhTempo;jmlHariOnCall;tgl_jatuh_tempo;treatmentPokok;no_rekening;kapitalisir_rollover;rollover_counter'
+      CustomLoadedLinks={object:rpclass::TCustomLoadedLink<
+          Name='LPihakKetiga'
+          ClassTypeName='PihakKetiga'
+          FieldNames='kode_pihak_ketiga;kode_pihak_ketiga;nama_pihak_ketiga'
+        >}Mode=imSingleRow
+    >, object:rpclass::TPClassUIDef<
+      Name='uipRicianDeposito'
+      MasterUIName='uipDeposito'
+      ListName='Ls_RincianDeposito'
+      LoadedFieldList='kode_paket_investasi;nominal'
+      SetMasterDetailRelationship=true
+    >}OnSetDataEx='FormSetDataEx'
+>

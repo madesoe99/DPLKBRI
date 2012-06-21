@@ -1,0 +1,183 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['pInfoOtoriasasi']
+  Caption='Otorisasi'
+  Left=50
+  Top=50
+  Width=700
+  Height=600
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipInfoOtorisasi'
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='userID'
+          ReadOnlyControl=true
+          ControlCaption='ID User'
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='authUserID'
+          ReadOnlyControl=true
+          ControlCaption='ID User Pengotorisasi'
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='terminalID'
+          ReadOnlyControl=true
+          ControlCaption='ID Terminal'
+          DataTypeName='varchar'
+          DataLength=15
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='authTerminalID'
+          ReadOnlyControl=true
+          ControlCaption='ID Terminal Pengotorisasi'
+          DataTypeName='varchar'
+          DataLength=15
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='systemTime'
+          ReadOnlyControl=true
+          ControlCaption='Waktu Sistem'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='authSystemTime'
+          ReadOnlyControl=true
+          ControlCaption='Waktu Sistem Pengotorisasi'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+      }
+      Name='pInfoOtoriasasi'
+      Width=700
+      Height=190
+      Bordered=true
+      UIPart=$UIPARTS['uipInfoOtorisasi']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='userID'
+          ReadOnly=true
+        >
+        , *object:rtf::DBEdit<
+          Name='authUserID'
+          LayoutOrder=4
+          ReadOnly=true
+        >
+        , *object:rtf::DBEdit<
+          Name='terminalID'
+          LayoutOrder=2
+          ReadOnly=true
+        >
+        , *object:rtf::DBEdit<
+          Name='authTerminalID'
+          LayoutOrder=5
+          ReadOnly=true
+        >
+        , *object:rtf::DBDateEdit<
+          Name='systemTime'
+          LayoutOrder=3
+        >
+        , *object:rtf::DBDateEdit<
+          Name='authSystemTime'
+          LayoutOrder=6
+        >
+      }
+      EqualCaptionWidth=140
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Otorisasi'
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=500
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='bApprove'
+          Layout=clNewLine
+          Color=0
+          ControlCaption=''
+          Caption='&Setujui'
+          Default=true
+        >
+        , object:rtf::Button<
+          Name='bReject'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Tolak'
+        >
+        , object:rtf::Button<
+          Name='bCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+        , object:rtf::Button<
+          Name='bSkip'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Lewati'
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::MultiSplit<
+      Name='MultiSplit'
+      Width=240
+      Height=100
+      Side1Containers={
+        $CONTAINERS['pInfoOtoriasasi']
+      }
+      Side2Containers={
+        $CONTAINERS['pButton']
+      }
+      SpaceContainer=$CONTAINERS['pDataTransaksi']
+    >
+    , object:rtf::Panel<
+      Name='pDataTransaksi'
+      Width=240
+      Height=40
+      Bordered=true
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Transaksi'
+    >
+  }
+>

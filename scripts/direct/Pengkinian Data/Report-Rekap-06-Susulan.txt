@@ -1,0 +1,1333 @@
+Python 2.3.2 (#49, Oct  2 2003, 20:02:00) [MSC v.1200 32 bit (Intel)] on win32
+Type "copyright", "credits" or "license()" for more information.
+
+    ****************************************************************
+    Personal firewall software may warn about the connection IDLE
+    makes to its subprocess using this computer's internal loopback
+    interface.  This connection is not visible on any external
+    interface and no data is sent to or received from the Internet.
+    ****************************************************************
+    
+IDLE 1.0      ==== No Subprocess ====
+>>> 
+No Peserta              [0]: 13100014652 
+Nama Lengkap            [1]: RASMADI 
+Alamat telepon2         [2]: 0231245507 
+Tanggal Registrasi      [3]: 06/07/2004 0:00 
+Tempat Lahir            [4]: KAB.CIREBON 
+Tanggal Lahir           [5]: 12/23/1975 0:00 
+Alamat Jalan            [6]: BLOK KR JAMBE KIDUL  
+Alamat rt/rw            [7]: 010/005 
+Alamat kelurahan        [8]: PEKANTINGAN 
+Alamat kecamatan        [9]: KLANGENAN 
+Alamat kota            [10]: CIREBON 
+Alamat kode pos        [11]: 45156 
+Alamat telepon         [12]: 08882274533 
+Pekerjaan              [13]: PNS 
+Nama perusahaan        [14]: POLRI 
+Alamat kantor jalan    [15]: JL. DIPONEGORO NO. 15 
+Alamat kantor kode pos [16]: 45121 
+Alamat kantor kelurahan[17]: KEJAKSAN 
+Alamat kantor kecamatan[18]: KEJAKSAN 
+Alamat kantor kota     [19]: CIREBON 
+Alamat kantor propinsi [20]: JAWA BARAT 
+Alamat kantor telepon  [21]: 0231245507 
+Alamat surat jalan     [22]: BLOK KR JAMBE KIDUL  
+Alamat surat rt/rw     [23]: 010/005 
+Alamat surat kelurahan [24]: PEKANTINGAN 
+Alamat surat kecamatan [25]: KLANGENAN 
+Alamat surat kota      [26]: CIREBON 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 45156 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 13100014775 
+Nama Lengkap            [1]: DUDUNG ABDUL BARRY 
+Alamat telepon2         [2]: 081320524120 
+Tanggal Registrasi      [3]: 06/18/2004 0:00 
+Tempat Lahir            [4]: KUNINGAN 
+Tanggal Lahir           [5]: 09/11/1967 0:00 
+Alamat Jalan            [6]: JL.GN MERBABU DIX NO.130  
+Alamat rt/rw            [7]: 006/008 
+Alamat kelurahan        [8]: LARANGAN 
+Alamat kecamatan        [9]: HARJAMUKTI 
+Alamat kota            [10]: CIREBON 
+Alamat kode pos        [11]: 45141 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: PEGAWAI NEGERI 
+Nama perusahaan        [14]: DINAS KESEHATAN 
+Alamat kantor jalan    [15]: JL. KESAMBI NO. 52 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]: KESAMBI 
+Alamat kantor kecamatan[18]: KESAMBI 
+Alamat kantor kota     [19]: CIREBON 
+Alamat kantor propinsi [20]: JAWA BARAT 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL.GN MERBABU DIX NO.130  
+Alamat surat rt/rw     [23]: 006/008 
+Alamat surat kelurahan [24]: LARANGAN 
+Alamat surat kecamatan [25]: HARJAMUKTI 
+Alamat surat kota      [26]: CIREBON 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 45141 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 13100017089 
+Nama Lengkap            [1]: RUDI SANTOSO 
+Alamat telepon2         [2]: 08122200679 
+Tanggal Registrasi      [3]: 02/04/2005 0:00 
+Tempat Lahir            [4]: CIREBON 
+Tanggal Lahir           [5]: 03/10/1971 0:00 
+Alamat Jalan            [6]: BLOK WERINGIN  
+Alamat rt/rw            [7]: 004/005 
+Alamat kelurahan        [8]: KEMLAKA GEDE 
+Alamat kecamatan        [9]: KEDAWUNG 
+Alamat kota            [10]: CIREBON 
+Alamat kode pos        [11]: 45153 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: PEGAWAI NEGERI 
+Nama perusahaan        [14]: BIRO PUSAT STAT 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]:  
+Alamat kantor propinsi [20]:  
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: BLOK WERINGIN  
+Alamat surat rt/rw     [23]: 004/005 
+Alamat surat kelurahan [24]: KEMLAKA GEDE 
+Alamat surat kecamatan [25]: KEDAWUNG 
+Alamat surat kota      [26]: CIREBON 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 45153 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 13100017577 
+Nama Lengkap            [1]: NURSYAMSIAH 
+Alamat telepon2         [2]: 08121438884 
+Tanggal Registrasi      [3]: 03/22/2005 0:00 
+Tempat Lahir            [4]: CIREBON 
+Tanggal Lahir           [5]: 06/26/1976 0:00 
+Alamat Jalan            [6]: BLOK KHOLWAT  
+Alamat rt/rw            [7]: 002/002 
+Alamat kelurahan        [8]: KALISAPU 
+Alamat kecamatan        [9]: GUNUNGJATI 
+Alamat kota            [10]: CIREBON 
+Alamat kode pos        [11]: 45151 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: PEGAWAI SWASTA 
+Nama perusahaan        [14]: RS. PERTAMINA  
+Alamat kantor jalan    [15]: JL. PATRA RAYA KLAYAN 
+Alamat kantor kode pos [16]: 45151 
+Alamat kantor kelurahan[17]: KLAYAN 
+Alamat kantor kecamatan[18]: GUNUNGJATI 
+Alamat kantor kota     [19]: CIREBON 
+Alamat kantor propinsi [20]: JAWA BARAT 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: BLOK KHOLWAT  
+Alamat surat rt/rw     [23]: 002/002 
+Alamat surat kelurahan [24]: KALISAPU 
+Alamat surat kecamatan [25]: GUNUNGJATI 
+Alamat surat kota      [26]: CIREBON 
+Alamat surat propinsi  [27]: 45151 
+Alamat surat kode pos  [28]: 45554 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 13100017578 
+Nama Lengkap            [1]: ARIFUDIN 
+Alamat telepon2         [2]: 08121438884 
+Tanggal Registrasi      [3]: 03/22/2005 0:00 
+Tempat Lahir            [4]: KUNINGAN 
+Tanggal Lahir           [5]: 04/12/1978 0:00 
+Alamat Jalan            [6]: BLOK KHOLWAT  
+Alamat rt/rw            [7]: 002/002 
+Alamat kelurahan        [8]: KALISAPU 
+Alamat kecamatan        [9]: GUNUNGJATI 
+Alamat kota            [10]: CIREBON 
+Alamat kode pos        [11]: 45151 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: PEGAWAI SWASTA 
+Nama perusahaan        [14]: R.S PERTAMINA  
+Alamat kantor jalan    [15]: JL. PATRA RAYA KLAYAN 
+Alamat kantor kode pos [16]: 45151 
+Alamat kantor kelurahan[17]: KLAYAN 
+Alamat kantor kecamatan[18]: GUNUNGJATI 
+Alamat kantor kota     [19]: CIREBON 
+Alamat kantor propinsi [20]: JAWA BARAT 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: BLOK KHOLWAT  
+Alamat surat rt/rw     [23]: 002/002 
+Alamat surat kelurahan [24]: KALISAPU 
+Alamat surat kecamatan [25]: GUNUNGJATI 
+Alamat surat kota      [26]: CIREBON 
+Alamat surat propinsi  [27]: 45151 
+Alamat surat kode pos  [28]: 45554 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 13100020388 
+Nama Lengkap            [1]: SUPARNO 
+Alamat telepon2         [2]: 08121401363 
+Tanggal Registrasi      [3]: 10/27/2005 0:00 
+Tempat Lahir            [4]: CIREBON 
+Tanggal Lahir           [5]: 06/15/1972 0:00 
+Alamat Jalan            [6]: BLOK III JEMARAS KIDUL 
+Alamat rt/rw            [7]: 001/003 
+Alamat kelurahan        [8]: JEMARAS KIDUL 
+Alamat kecamatan        [9]: KLANGENAN 
+Alamat kota            [10]: CIREBON 
+Alamat kode pos        [11]: 45156 
+Alamat telepon         [12]: 0231342143 
+Pekerjaan              [13]: SWASTA 
+Nama perusahaan        [14]: PT.ASURANSI TAKAFUL 
+Alamat kantor jalan    [15]: JL. MAMPANG PRAPATAN RAYA NO.100 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]:  
+Alamat kantor propinsi [20]: JAKARTA SELATAN 
+Alamat kantor telepon  [21]: 0217991234 
+Alamat surat jalan     [22]: BLOK III 
+Alamat surat rt/rw     [23]: 001/003 
+Alamat surat kelurahan [24]: JEMARAS 
+Alamat surat kecamatan [25]: KLANGENAN 
+Alamat surat kota      [26]: CIREBON 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 45156 
+NPWP                   [29]: 67.718.651.2-426000 
+Email                  [30]: suparno@takaful.com
+ 
+###----------End --------------#
+No Peserta              [0]: 13100020802 
+Nama Lengkap            [1]: ALIA KURNIATI 
+Alamat telepon2         [2]: 0231484350 
+Tanggal Registrasi      [3]: 12/06/2005 0:00 
+Tempat Lahir            [4]: JAKARTA 
+Tanggal Lahir           [5]: 04/24/1977 0:00 
+Alamat Jalan            [6]: JL.CIREMAI GIRI BLOK T2 NO. 15 
+Alamat rt/rw            [7]: 002/017 
+Alamat kelurahan        [8]: KECAPI 
+Alamat kecamatan        [9]: HARJAMUKTI 
+Alamat kota            [10]: CIREBON 
+Alamat kode pos        [11]: 45142 
+Alamat telepon         [12]:  
+Pekerjaan              [13]:  
+Nama perusahaan        [14]:  
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]:  
+Alamat kantor propinsi [20]:  
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL.CIREMAI GIRI BLOK T2 NO. 15 
+Alamat surat rt/rw     [23]: 002/017 
+Alamat surat kelurahan [24]: KECAPI 
+Alamat surat kecamatan [25]: HARJAMUKTI 
+Alamat surat kota      [26]: CIREBON 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 45142 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 13100022417 
+Nama Lengkap            [1]: AHMAD FAUZI,S.SI 
+Alamat telepon2         [2]: 0231-204227 
+Tanggal Registrasi      [3]: 03/23/2006 0:00 
+Tempat Lahir            [4]: CIREBON 
+Tanggal Lahir           [5]: 03/23/1976 0:00 
+Alamat Jalan            [6]: DS CIREBON GIRANG 
+Alamat rt/rw            [7]: 002/001 
+Alamat kelurahan        [8]: CIREBON GIRANG 
+Alamat kecamatan        [9]: TALUN 
+Alamat kota            [10]: CIREBON 
+Alamat kode pos        [11]: 45171 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: PEGAWAI SWASTA 
+Nama perusahaan        [14]: BANK ARTHA GRAHA INT'L 
+Alamat kantor jalan    [15]: JL. KARTINI NO.03 BANK ARTHA GRAHA 
+Alamat kantor kode pos [16]: 45121 
+Alamat kantor kelurahan[17]: KEJAKSAN 
+Alamat kantor kecamatan[18]: KEJAKSAN 
+Alamat kantor kota     [19]: CIREBON 
+Alamat kantor propinsi [20]: JAWA BARAT 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL. KARTINI NO.03 BANK ARTHA GRAHA 
+Alamat surat rt/rw     [23]: 004/004 
+Alamat surat kelurahan [24]: KEJAKSAN 
+Alamat surat kecamatan [25]: KEJAKSAN 
+Alamat surat kota      [26]: CIREBON 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 45123 
+NPWP                   [29]: 48.261.559.8-426.000 
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 13100023131 
+Nama Lengkap            [1]: SENTOSA 
+Alamat telepon2         [2]: 0231487824 
+Tanggal Registrasi      [3]: 05/02/2006 0:00 
+Tempat Lahir            [4]: CIREBON 
+Tanggal Lahir           [5]: 02/03/1961 0:00 
+Alamat Jalan            [6]: BTN KALIJAGA PERMAI TIMUR JL.NANAS NO.31  
+Alamat rt/rw            [7]: 003/012 
+Alamat kelurahan        [8]: KALIJAGA 
+Alamat kecamatan        [9]: HARJAMUKTI 
+Alamat kota            [10]: CIREBON 
+Alamat kode pos        [11]: 45144 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: PEGAWAI SWASTA 
+Nama perusahaan        [14]: BMI CRB 
+Alamat kantor jalan    [15]: JL. SILIWANGI NO. 60 
+Alamat kantor kode pos [16]: 45121 
+Alamat kantor kelurahan[17]: KEJAKSAN 
+Alamat kantor kecamatan[18]: KEJAKSAN 
+Alamat kantor kota     [19]: CIREBON 
+Alamat kantor propinsi [20]: JAWA BARAT 
+Alamat kantor telepon  [21]: 0231200828 
+Alamat surat jalan     [22]: BTN KALIJAGA PERMAI TIMUR JL.NANAS NO.31  
+Alamat surat rt/rw     [23]: 003/012 
+Alamat surat kelurahan [24]: KALIJAGA 
+Alamat surat kecamatan [25]: HARJAMUKTI 
+Alamat surat kota      [26]: CIREBON 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 45144 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 13100028020 
+Nama Lengkap            [1]: JUHANA 
+Alamat telepon2         [2]: 0888222992 
+Tanggal Registrasi      [3]: 04/16/2007 0:00 
+Tempat Lahir            [4]: CIAMIS 
+Tanggal Lahir           [5]: 04/11/1974 0:00 
+Alamat Jalan            [6]: JL.EYANG WERI NO.68  
+Alamat rt/rw            [7]: 001/003 
+Alamat kelurahan        [8]: AWIRARANGAN 
+Alamat kecamatan        [9]: KUNINGAN 
+Alamat kota            [10]: KUNINGAN 
+Alamat kode pos        [11]: 45512 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: WIRASWASTA 
+Nama perusahaan        [14]: - 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]:  
+Alamat kantor propinsi [20]:  
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL.EYANG WERI NO.68  
+Alamat surat rt/rw     [23]: 001/003 
+Alamat surat kelurahan [24]: AWIRARANGAN 
+Alamat surat kecamatan [25]: KUNINGAN 
+Alamat surat kota      [26]: KUNINGAN 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 45512 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 13100028864 
+Nama Lengkap            [1]: SUSANTO 
+Alamat telepon2         [2]: 0231244939 
+Tanggal Registrasi      [3]: 07/05/2007 0:00 
+Tempat Lahir            [4]: MAGETAN 
+Tanggal Lahir           [5]: 12/25/1978 0:00 
+Alamat Jalan            [6]: JL.DR.WAHIDIN GG.SUKARUKUN NO. 7  
+Alamat rt/rw            [7]: 002/008 
+Alamat kelurahan        [8]: SUKAPURA 
+Alamat kecamatan        [9]: KEJAKSAN 
+Alamat kota            [10]: CIREBON 
+Alamat kode pos        [11]: 45122 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: WIRASWASTA 
+Nama perusahaan        [14]:  
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]:  
+Alamat kantor propinsi [20]:  
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL.DR.WAHIDIN GG.SUKARUKUN 7  
+Alamat surat rt/rw     [23]: 002/008 
+Alamat surat kelurahan [24]: SUKAPURA 
+Alamat surat kecamatan [25]: KEJAKSAN 
+Alamat surat kota      [26]: CIREBON 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 45122 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 13100031011 
+Nama Lengkap            [1]: BUDI HARNOWO, H. 
+Alamat telepon2         [2]: 0234274871 
+Tanggal Registrasi      [3]: 03/26/2008 0:00 
+Tempat Lahir            [4]: CIMAHI 
+Tanggal Lahir           [5]: 11/11/1955 0:00 
+Alamat Jalan            [6]: GRIYA ASRI II NO.76 A  
+Alamat rt/rw            [7]: 034/011 
+Alamat kelurahan        [8]: PEKANDANGAN 
+Alamat kecamatan        [9]: INDRAMAYU 
+Alamat kota            [10]: INDRAMAYU 
+Alamat kode pos        [11]:  
+Alamat telepon         [12]:  
+Pekerjaan              [13]: BUMN 
+Nama perusahaan        [14]: PERTAMINA 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]:  
+Alamat kantor propinsi [20]:  
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: GRIYA ASRI II NO.76 A  
+Alamat surat rt/rw     [23]:  
+Alamat surat kelurahan [24]: PEKANDANGAN 
+Alamat surat kecamatan [25]: PEKANDANGAN 
+Alamat surat kota      [26]: INDRAMAYU 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]:  
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 13100031862 
+Nama Lengkap            [1]: RUDI O'ANG RAMDANI 
+Alamat telepon2         [2]: 0232613808 
+Tanggal Registrasi      [3]: 08/06/2008 0:00 
+Tempat Lahir            [4]: KUNINGAN 
+Tanggal Lahir           [5]: 09/19/1979 0:00 
+Alamat Jalan            [6]: PONPES HUSNUL KHOTIMAH 
+Alamat rt/rw            [7]: 005/001 
+Alamat kelurahan        [8]: MANISKIDUL 
+Alamat kecamatan        [9]: JALAKSANA 
+Alamat kota            [10]: KUNINGAN 
+Alamat kode pos        [11]: 45554 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: PEGAWAI SWASTA 
+Nama perusahaan        [14]: PON PES HUSNUL KHOTIMAH 
+Alamat kantor jalan    [15]: DUSUN SATU  
+Alamat kantor kode pos [16]: 45554 
+Alamat kantor kelurahan[17]: MANISKIDUL 
+Alamat kantor kecamatan[18]: JALAKSANA 
+Alamat kantor kota     [19]: KUNINGAN 
+Alamat kantor propinsi [20]: JAWA BARAT 
+Alamat kantor telepon  [21]: 0232613808 
+Alamat surat jalan     [22]: DUSUN I 
+Alamat surat rt/rw     [23]: 005/001 
+Alamat surat kelurahan [24]: MANISKIDUL  
+Alamat surat kecamatan [25]: JALAKSANA 
+Alamat surat kota      [26]: KUNINGAN 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 45554 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 13100031863 
+Nama Lengkap            [1]: RUDI O'ANG RAMDANI 
+Alamat telepon2         [2]: 0232613808 
+Tanggal Registrasi      [3]: 08/06/2008 0:00 
+Tempat Lahir            [4]: KUNINGAN 
+Tanggal Lahir           [5]: 09/19/1979 0:00 
+Alamat Jalan            [6]: PONPES HUSNUL KHOTIMAH 
+Alamat rt/rw            [7]: 005/001 
+Alamat kelurahan        [8]: MANISKIDUL 
+Alamat kecamatan        [9]: JALAKSANA 
+Alamat kota            [10]: KUNINGAN 
+Alamat kode pos        [11]: 45554 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: PEGAWAI SWASTA 
+Nama perusahaan        [14]: PON PES HUSNUL KHOTIMAH 
+Alamat kantor jalan    [15]: DUSUN SATU  
+Alamat kantor kode pos [16]: 45554 
+Alamat kantor kelurahan[17]: MANISKIDUL 
+Alamat kantor kecamatan[18]: JALAKSANA 
+Alamat kantor kota     [19]: KUNINGAN 
+Alamat kantor propinsi [20]: JAWA BARAT 
+Alamat kantor telepon  [21]: 0232613808 
+Alamat surat jalan     [22]: DUSUN I 
+Alamat surat rt/rw     [23]: 005/001 
+Alamat surat kelurahan [24]: MANISKIDUL  
+Alamat surat kecamatan [25]: JALAKSANA 
+Alamat surat kota      [26]: KUNINGAN 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 45554 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 13100031864 
+Nama Lengkap            [1]: RUDI O'ANG RAMDANI 
+Alamat telepon2         [2]: 0232613808 
+Tanggal Registrasi      [3]: 08/06/2008 0:00 
+Tempat Lahir            [4]: KUNINGAN 
+Tanggal Lahir           [5]: 09/19/1979 0:00 
+Alamat Jalan            [6]: PONPES HUSNUL KHOTIMAH 
+Alamat rt/rw            [7]: 005/001 
+Alamat kelurahan        [8]: MANISKIDUL 
+Alamat kecamatan        [9]: JALAKSANA 
+Alamat kota            [10]: KUNINGAN 
+Alamat kode pos        [11]: 45554 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: PEGAWAI SWASTA 
+Nama perusahaan        [14]: PON PES HUSNUL KHOTIMAH 
+Alamat kantor jalan    [15]: DUSUN SATU  
+Alamat kantor kode pos [16]: 45554 
+Alamat kantor kelurahan[17]: MANISKIDUL 
+Alamat kantor kecamatan[18]: JALAKSANA 
+Alamat kantor kota     [19]: KUNINGAN 
+Alamat kantor propinsi [20]: JAWA BARAT 
+Alamat kantor telepon  [21]: 0232613808 
+Alamat surat jalan     [22]: DUSUN I 
+Alamat surat rt/rw     [23]: 005/001 
+Alamat surat kelurahan [24]: MANISKIDUL  
+Alamat surat kecamatan [25]: JALAKSANA 
+Alamat surat kota      [26]: KUNINGAN 
+Alamat surat propinsi  [27]: JAWA BARAT 
+Alamat surat kode pos  [28]: 45554 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 42100013146 
+Nama Lengkap            [1]: NANI FITRIA,S.AG 
+Alamat telepon2         [2]: 40404 
+Tanggal Registrasi      [3]: 01/26/2004 0:00 
+Tempat Lahir            [4]: PADANG 
+Tanggal Lahir           [5]: 01/09/1969 0:00 
+Alamat Jalan            [6]: JL.CIMANUK NO.4 
+Alamat rt/rw            [7]: 002/001 
+Alamat kelurahan        [8]: ALAI PARAK KOPI 
+Alamat kecamatan        [9]: PADANG UTARA 
+Alamat kota            [10]: PADANG 
+Alamat kode pos        [11]: 25138 
+Alamat telepon         [12]: GURU KONTRAK 
+Pekerjaan              [13]: SD N 13 SITEBA 
+Nama perusahaan        [14]: JL.CIMANUK NO.4 RT 002 RW 001 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]: PADANG 
+Alamat kantor kota     [19]: SUMBAR 
+Alamat kantor propinsi [20]:  
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL. CIMANUK NO. 4 
+Alamat surat rt/rw     [23]: 002/001 
+Alamat surat kelurahan [24]: ALAI PARAK KOPI 
+Alamat surat kecamatan [25]: PADANG UTARA 
+Alamat surat kota      [26]: PADANG 
+Alamat surat propinsi  [27]: SUMATERA BARAT 
+Alamat surat kode pos  [28]: 25139 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 42100013147 
+Nama Lengkap            [1]: BUDAYA RUSJDI 
+Alamat telepon2         [2]: 52038 
+Tanggal Registrasi      [3]: 01/26/2004 0:00 
+Tempat Lahir            [4]: JAMBI 
+Tanggal Lahir           [5]: 06/29/1973 0:00 
+Alamat Jalan            [6]: JL.JAMBI NO.14 
+Alamat rt/rw            [7]: 000/000 
+Alamat kelurahan        [8]: ... 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: PADANG 
+Alamat kode pos        [11]: 25134 
+Alamat telepon         [12]: SWASTA 
+Pekerjaan              [13]: .... 
+Nama perusahaan        [14]: JALAN JAMBI NO.14 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]: PADANG 
+Alamat kantor kota     [19]: SUMBAR 
+Alamat kantor propinsi [20]:  
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: jl. Jambi no. 14 ulak karang astratek padang 
+Alamat surat rt/rw     [23]: 003/005 
+Alamat surat kelurahan [24]: ulak karang selatan 
+Alamat surat kecamatan [25]: padang utara 
+Alamat surat kota      [26]: padang 
+Alamat surat propinsi  [27]: sumbar 
+Alamat surat kode pos  [28]: 25134 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 42100015206 
+Nama Lengkap            [1]: MUSLIM SA'ID,SE 
+Alamat telepon2         [2]: 24794 
+Tanggal Registrasi      [3]: 07/29/2004 0:00 
+Tempat Lahir            [4]: LINTAU 
+Tanggal Lahir           [5]: 06/26/1969 0:00 
+Alamat Jalan            [6]: JL.VETERAN DALAM NO.28 C  
+Alamat rt/rw            [7]: 004/111 
+Alamat kelurahan        [8]: PD.PASIR KEC.PD.BRT 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: PADANG 
+Alamat kode pos        [11]: 25000 
+Alamat telepon         [12]: PEG.SWASTA 
+Pekerjaan              [13]: MATAHARI DEP.STORE 
+Nama perusahaan        [14]: JL.VETERAN DALAM NO.28 C RT/RW.04/111 PD.PASIR 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]: PADANG 
+Alamat kantor kota     [19]: SUMBAR 
+Alamat kantor propinsi [20]:  
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: KOMP. MONANG INDAH BLOK H/ 10 
+Alamat surat rt/rw     [23]: 003/006 
+Alamat surat kelurahan [24]: LUBUK BUAYA 
+Alamat surat kecamatan [25]: KOTO TANGAH 
+Alamat surat kota      [26]: PADANG 
+Alamat surat propinsi  [27]: SUMBAR 
+Alamat surat kode pos  [28]: 25173 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 42100016621 
+Nama Lengkap            [1]: ERNIWATI ABDULL 
+Alamat telepon2         [2]: 777457 
+Tanggal Registrasi      [3]: 12/07/2004 0:00 
+Tempat Lahir            [4]: SULIKI PAYAKUMB 
+Tanggal Lahir           [5]: 04/28/1951 0:00 
+Alamat Jalan            [6]: PUSKESMAS PAUH JL.IRIGASI KOMP. PUKESMAS PAUH 
+Alamat rt/rw            [7]: 001/001 
+Alamat kelurahan        [8]: CUPAK TANGAH 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: PADANG 
+Alamat kode pos        [11]: 25162 
+Alamat telepon         [12]: PNS 
+Pekerjaan              [13]: PUSKESMAS PAUH 
+Nama perusahaan        [14]: JL.BANDES KAMPU RT/RW 013/002 K 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]: PADANG' 
+Alamat kantor kota     [19]: SUMBAR 
+Alamat kantor propinsi [20]: SUMBAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: PUSKESMAS PAUH JL IRIGASI 
+Alamat surat rt/rw     [23]: 000/000 
+Alamat surat kelurahan [24]: CUPAK TANGAH 
+Alamat surat kecamatan [25]: PAUH 
+Alamat surat kota      [26]: PADANG 
+Alamat surat propinsi  [27]: SUMBAR 
+Alamat surat kode pos  [28]: 25162 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 42100017062 
+Nama Lengkap            [1]: EVI JUNAIDI 
+Alamat telepon2         [2]: 442158 
+Tanggal Registrasi      [3]: 02/02/2005 0:00 
+Tempat Lahir            [4]: BATU SANGKAR 
+Tanggal Lahir           [5]: 06/13/1976 0:00 
+Alamat Jalan            [6]: BADAN PUSAT STA JL.KHATIB SULAI 
+Alamat rt/rw            [7]: 000/000 
+Alamat kelurahan        [8]: - 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: PADANG 
+Alamat kode pos        [11]: 25135 
+Alamat telepon         [12]: PEGAWAI NEGERI 
+Pekerjaan              [13]: BADAN PUSAT STA 
+Nama perusahaan        [14]: JL.SUMATERA BLO RT/RW.1/V U.K.U 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]: PADANG 
+Alamat kantor kota     [19]: SUMBAR 
+Alamat kantor propinsi [20]: SUMBAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL.KHATIB SULAIMAN NO.48 PADANG 
+Alamat surat rt/rw     [23]: 000/0000 
+Alamat surat kelurahan [24]:  
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: PADANG 
+Alamat surat propinsi  [27]: SUMBAR 
+Alamat surat kode pos  [28]: 25135 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 42100017375 
+Nama Lengkap            [1]: TONI ERISTON 
+Alamat telepon2         [2]: 075130768 
+Tanggal Registrasi      [3]: 03/02/2005 0:00 
+Tempat Lahir            [4]: GANTING 
+Tanggal Lahir           [5]: 06/03/1981 0:00 
+Alamat Jalan            [6]: JL.MERAK NO.9  
+Alamat rt/rw            [7]: 003/001 
+Alamat kelurahan        [8]: ANDALAS 
+Alamat kecamatan        [9]: PADANG TIMUR 
+Alamat kota            [10]: PADANG 
+Alamat kode pos        [11]: 25127 
+Alamat telepon         [12]: KARYAWAN SWASTA 
+Pekerjaan              [13]: BMT TAQWA MUHAM 
+Nama perusahaan        [14]: JL.MERAK NO.9 RT/RW.03/01 AND 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]: PADANG 
+Alamat kantor kota     [19]: SUMBAR 
+Alamat kantor propinsi [20]: SUMBAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL. MERAK NO. 9 
+Alamat surat rt/rw     [23]: 003/001 
+Alamat surat kelurahan [24]: ANDALAS 
+Alamat surat kecamatan [25]:  PADANG TIMUR 
+Alamat surat kota      [26]: PADANG 
+Alamat surat propinsi  [27]: SUMATERA BARAT 
+Alamat surat kode pos  [28]: 25127 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 42100017492 
+Nama Lengkap            [1]: EDI SASMITA 
+Alamat telepon2         [2]: 0751482284 
+Tanggal Registrasi      [3]: 03/09/2005 0:00 
+Tempat Lahir            [4]: KEDIRI 
+Tanggal Lahir           [5]: 09/17/1964 0:00 
+Alamat Jalan            [6]: KOMP.MUTIARA PU  
+Alamat rt/rw            [7]: 02 /09 
+Alamat kelurahan        [8]: BTK.GANTING 
+Alamat kecamatan        [9]: KOTO TANGAH 
+Alamat kota            [10]: PADANG 
+Alamat kode pos        [11]: 25172 
+Alamat telepon         [12]: PEGAWAI SWASTA 
+Pekerjaan              [13]: BALIK 
+Nama perusahaan        [14]: KOMP.MUTIARA PU RT/RW.02/IX 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]: PADANG 
+Alamat kantor kota     [19]: SUMBAR 
+Alamat kantor propinsi [20]: SUMBAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: KOMP. MUTIARA PUTIH C NO. 1 
+Alamat surat rt/rw     [23]: 002/009 
+Alamat surat kelurahan [24]: BTK. GANTING 
+Alamat surat kecamatan [25]: KOTO TANGAH 
+Alamat surat kota      [26]: PADANG 
+Alamat surat propinsi  [27]: SUMATERA BARAT 
+Alamat surat kode pos  [28]: 25172 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 42100017569 
+Nama Lengkap            [1]: ENDRI NOVEL 
+Alamat telepon2         [2]: 0751442268 
+Tanggal Registrasi      [3]: 03/21/2005 0:00 
+Tempat Lahir            [4]: PADANG 
+Tanggal Lahir           [5]: 11/13/1976 0:00 
+Alamat Jalan            [6]: JL.CINDUMATO  
+Alamat rt/rw            [7]: 02 /05 
+Alamat kelurahan        [8]: GN.PANGILUN 
+Alamat kecamatan        [9]: PADANG UTARA 
+Alamat kota            [10]: PADANG 
+Alamat kode pos        [11]: 25137 
+Alamat telepon         [12]: PEGAWAI SWASTA 
+Pekerjaan              [13]: MATAHARI DEPT.S 
+Nama perusahaan        [14]: JL.CINDUMATO RT/RW.02/V GN.P 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]: PADANG 
+Alamat kantor kota     [19]: SUMBAR 
+Alamat kantor propinsi [20]: SUMBAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL. CINDUMATO 
+Alamat surat rt/rw     [23]: 002/005 
+Alamat surat kelurahan [24]: GUNUNG PANGILUN  
+Alamat surat kecamatan [25]: PADANG UTARA 
+Alamat surat kota      [26]: PADANG 
+Alamat surat propinsi  [27]: SUMATERA BARAT 
+Alamat surat kode pos  [28]: 25137 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 42100017587 
+Nama Lengkap            [1]: IR.HASFI RAFIQ 
+Alamat telepon2         [2]: 0751202947 
+Tanggal Registrasi      [3]: 03/24/2005 0:00 
+Tempat Lahir            [4]: BALAI SELASA 
+Tanggal Lahir           [5]: 10/06/1970 0:00 
+Alamat Jalan            [6]: DEP.LITBANG PT.  
+Alamat rt/rw            [7]: 00 / 
+Alamat kelurahan        [8]: INDARUNG 
+Alamat kecamatan        [9]: LUBUK KILANGAN 
+Alamat kota            [10]: PADANG 
+Alamat kode pos        [11]: 25237 
+Alamat telepon         [12]: PEG.PT SEMEN PA 
+Pekerjaan              [13]: PT.SEMEN PADANG 
+Nama perusahaan        [14]: KOMP.BUKIT ATAS RT/RW.3/X LB.KI 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]: PADANG 
+Alamat kantor kota     [19]: SUMBAR 
+Alamat kantor propinsi [20]: SUMBAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: KOMP. BUKIT ATAS  
+Alamat surat rt/rw     [23]: 003/010 
+Alamat surat kelurahan [24]: INDARUNG 
+Alamat surat kecamatan [25]: LUBUK KILANGAN 
+Alamat surat kota      [26]: PADANG 
+Alamat surat propinsi  [27]: SUMATERA BARAT 
+Alamat surat kode pos  [28]: 25237 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 42100017593 
+Nama Lengkap            [1]: YUDI SATRIAWAN 
+Alamat telepon2         [2]: 08153505391 
+Tanggal Registrasi      [3]: 03/24/2005 0:00 
+Tempat Lahir            [4]: PADANG 
+Tanggal Lahir           [5]: 04/27/1974 0:00 
+Alamat Jalan            [6]: KOMP.DARMA FANDA JL FANDA V NO.13 
+Alamat rt/rw            [7]: 000/000 
+Alamat kelurahan        [8]: KOTO LALANG 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: PADANG 
+Alamat kode pos        [11]: 25225 
+Alamat telepon         [12]: PEGAWAI SWASTA 
+Pekerjaan              [13]: YPA ADZKIA PADA 
+Nama perusahaan        [14]: JL.PADANG INDAR RT/RW.02/01 CEN 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]: PADANG 
+Alamat kantor kota     [19]: SUMBAR 
+Alamat kantor propinsi [20]: SUMBAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL. PADANG INDARUNG NO. 13 
+Alamat surat rt/rw     [23]: 002/001 
+Alamat surat kelurahan [24]: CANGKEH NAN XX 
+Alamat surat kecamatan [25]: LUBUK BEGALUNG 
+Alamat surat kota      [26]: PADANG 
+Alamat surat propinsi  [27]: SUMATERA BARAT 
+Alamat surat kode pos  [28]: 25225 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 42100018100 
+Nama Lengkap            [1]: MIRA RIZKI,SP 
+Alamat telepon2         [2]: 075158863 
+Tanggal Registrasi      [3]: 05/04/2005 0:00 
+Tempat Lahir            [4]: PADANG 
+Tanggal Lahir           [5]: 12/12/1978 0:00 
+Alamat Jalan            [6]: JL.TEKNOLOGI IX SR.GADANG NANGG 
+Alamat rt/rw            [7]: 01 /01 
+Alamat kelurahan        [8]: SR.GADANG 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: PADANG 
+Alamat kode pos        [11]: 25146 
+Alamat telepon         [12]: PEGAWAI SWASTA 
+Pekerjaan              [13]: BALIK 
+Nama perusahaan        [14]: JL.TEKNOLOGI IX RT/RW.01/I SR.G 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]: PADANG 
+Alamat kantor kota     [19]: SUMBAR 
+Alamat kantor propinsi [20]: SUMBAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL.TEKNOLOGI IX 
+Alamat surat rt/rw     [23]: 001/001 
+Alamat surat kelurahan [24]: SURAU GADANG 
+Alamat surat kecamatan [25]: NANGGALO 
+Alamat surat kota      [26]: PADANG 
+Alamat surat propinsi  [27]: SUMATERA BARAT 
+Alamat surat kode pos  [28]: 25000 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 42100020465 
+Nama Lengkap            [1]: DESTIA SARI 
+Alamat telepon2         [2]: 7058988 
+Tanggal Registrasi      [3]: 11/14/2005 0:00 
+Tempat Lahir            [4]: PADANG 
+Tanggal Lahir           [5]: 11/17/1976 0:00 
+Alamat Jalan            [6]: JL.TANAH DATAR SR.GADANG NANGG 
+Alamat rt/rw            [7]: 02 /08 
+Alamat kelurahan        [8]: SR.GADANG 
+Alamat kecamatan        [9]:  
+Alamat kota            [10]: PADANG 
+Alamat kode pos        [11]: 25000 
+Alamat telepon         [12]: PNS 
+Pekerjaan              [13]: BALIK 
+Nama perusahaan        [14]: JL.TANAH DATAR SITEBA PADANG 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]: PADANG 
+Alamat kantor kota     [19]: SUMBAR 
+Alamat kantor propinsi [20]: SUMBAR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL.TANAH DATAR 
+Alamat surat rt/rw     [23]: 002/008 
+Alamat surat kelurahan [24]: SURAU GADANG 
+Alamat surat kecamatan [25]: NANGGALO 
+Alamat surat kota      [26]: PADANG 
+Alamat surat propinsi  [27]: SUMATERA BARAT 
+Alamat surat kode pos  [28]: 25146 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 42199000003 
+Nama Lengkap            [1]: FATRIDHA YANSEN 
+Alamat telepon2         [2]: 085274629948 
+Tanggal Registrasi      [3]: 07/30/2009 8:37 
+Tempat Lahir            [4]: PARIAMAN 
+Tanggal Lahir           [5]: 01/04/1987 0:00 
+Alamat Jalan            [6]: KAMPUNG GADANG PADUSUNAN 
+Alamat rt/rw            [7]: 000/000 
+Alamat kelurahan        [8]: KAMPUNG GADANG PADUSUNAN 
+Alamat kecamatan        [9]: PARIAMAN UTARA 
+Alamat kota            [10]: PARIAMAN 
+Alamat kode pos        [11]: 25223 
+Alamat telepon         [12]: PEGAWAI SWASTA 
+Pekerjaan              [13]: PT. Bank Rakyat Indonesia. TBK 
+Nama perusahaan        [14]: PT. Bank Rakyat Indonesia, TBK 
+Alamat kantor jalan    [15]: JL. RASUNA SAID NO. 108 
+Alamat kantor kode pos [16]: 25114 
+Alamat kantor kelurahan[17]: RIMBO KALUANG 
+Alamat kantor kecamatan[18]: PADANG BARAT 
+Alamat kantor kota     [19]: PADANG 
+Alamat kantor propinsi [20]: SUMBAR 
+Alamat kantor telepon  [21]: 7054106 
+Alamat surat jalan     [22]: KAMPUNG GADANG PADUSUNAN 
+Alamat surat rt/rw     [23]: 000/000 
+Alamat surat kelurahan [24]: KAMPUNG GADANG PADUSUNAN 
+Alamat surat kecamatan [25]: PADANG BARAT 
+Alamat surat kota      [26]: PADANG 
+Alamat surat propinsi  [27]: SUMATERA BARAT 
+Alamat surat kode pos  [28]:  
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 50100001174 
+Nama Lengkap            [1]: ABDUL RASYID CHALIK 
+Alamat telepon2         [2]: 024-8446150 
+Tanggal Registrasi      [3]: 08/24/1998 0:00 
+Tempat Lahir            [4]: MEDAN 
+Tanggal Lahir           [5]: 04/29/1966 0:00 
+Alamat Jalan            [6]: JL.KSATRIAN D4 
+Alamat rt/rw            [7]: 007/007 
+Alamat kelurahan        [8]: JATINGALEH 
+Alamat kecamatan        [9]: CANDI SARI 
+Alamat kota            [10]: SEMARANG 
+Alamat kode pos        [11]: 50254 
+Alamat telepon         [12]: 081326723851 
+Pekerjaan              [13]: SURVEYOR AUDITOR 
+Nama perusahaan        [14]: LLOYD'S REGISTER 
+Alamat kantor jalan    [15]: JL.ALEXANDRA ROAD 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]:  
+Alamat kantor kecamatan[18]:  
+Alamat kantor kota     [19]: KUALA LUM 
+Alamat kantor propinsi [20]:  
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL.KSATRIAN D4 
+Alamat surat rt/rw     [23]: 007/007 
+Alamat surat kelurahan [24]: JATINGALEH 
+Alamat surat kecamatan [25]: CANDI SARI 
+Alamat surat kota      [26]: SEMARANG 
+Alamat surat propinsi  [27]:  
+Alamat surat kode pos  [28]: 50254 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 50100010552 
+Nama Lengkap            [1]: HANUNG WIDIANTO 
+Alamat telepon2         [2]: 0246700655 
+Tanggal Registrasi      [3]: 02/03/2003 0:00 
+Tempat Lahir            [4]: SEMARANG 
+Tanggal Lahir           [5]: 02/11/1972 0:00 
+Alamat Jalan            [6]: JL.PARANG BARIS I/09 
+Alamat rt/rw            [7]: 001/015 
+Alamat kelurahan        [8]: TLOGOSARI KULON 
+Alamat kecamatan        [9]: PEDURUNGAN 
+Alamat kota            [10]: SEMARANG 
+Alamat kode pos        [11]: 50196 
+Alamat telepon         [12]: 0816-841464/024-70949434 
+Pekerjaan              [13]: SWASTA 
+Nama perusahaan        [14]: PT ARSITEK ARUPADATU 
+Alamat kantor jalan    [15]: JL.PARANG BARIS I/09 
+Alamat kantor kode pos [16]: JL. MUGAS BARAT NO.44 RT.004/005 
+Alamat kantor kelurahan[17]: MUGASARI 
+Alamat kantor kecamatan[18]: PT TUNAS MUDA PERKASA 
+Alamat kantor kota     [19]: SEMARANG 
+Alamat kantor propinsi [20]: JATENG 
+Alamat kantor telepon  [21]: 024-70329559 
+Alamat surat jalan     [22]: JL.PARANG BARIS I/09 
+Alamat surat rt/rw     [23]: 001/015 
+Alamat surat kelurahan [24]: TLOGOSARI KULON 
+Alamat surat kecamatan [25]: PEDURUNGAN 
+Alamat surat kota      [26]: SEMARANG 
+Alamat surat propinsi  [27]:  
+Alamat surat kode pos  [28]: 50196 
+NPWP                   [29]:  
+Email                  [30]: 
+ 
+###----------End --------------#
+No Peserta              [0]: 50199000100 
+Nama Lengkap            [1]: DADANG WIDARSO 
+Alamat telepon2         [2]: 081325220149 
+Tanggal Registrasi      [3]: 06/22/2009 16:15 
+Tempat Lahir            [4]: BANYUMAS 
+Tanggal Lahir           [5]: 04/11/1980 0:00 
+Alamat Jalan            [6]: SINAR WJAYA 654 
+Alamat rt/rw            [7]: 10/06 
+Alamat kelurahan        [8]: KEDUNGMUNDU 
+Alamat kecamatan        [9]: TEMBALANG 
+Alamat kota            [10]: SEMARANG 
+Alamat kode pos        [11]: 50273 
+Alamat telepon         [12]:  
+Pekerjaan              [13]: PNS 
+Nama perusahaan        [14]: KANTOR PERPUSTAKAAN &ARSIP 
+Alamat kantor jalan    [15]: JL.PEMUDA NO.175 
+Alamat kantor kode pos [16]:  
+Alamat kantor kelurahan[17]: SEMARANG 
+Alamat kantor kecamatan[18]: SEMARANG 
+Alamat kantor kota     [19]: SEMARANG 
+Alamat kantor propinsi [20]: JATENG 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: KANTOR PERPUSTAKAAN&ARSIP KOTA SEMARANG 
+Alamat surat rt/rw     [23]: JL.PEMUDA NO.175 
+Alamat surat kelurahan [24]: SEMARANG 
+Alamat surat kecamatan [25]: SEMARANG 
+Alamat surat kota      [26]: SEMARANG 
+Alamat surat propinsi  [27]: JATENG 
+Alamat surat kode pos  [28]:  
+NPWP                   [29]: 79,756,154,5-517,000 
+Email                  [30]: DANGWEOK@GMAIL.COM
+ 
+###----------End --------------#
+No Peserta              [0]: 54100013527 
+Nama Lengkap            [1]: SITI MAKMUROH NH 
+Alamat telepon2         [2]: 0282697150 
+Tanggal Registrasi      [3]: 03/01/2004 0:00 
+Tempat Lahir            [4]: SUKOHARJO 
+Tanggal Lahir           [5]: 11/27/1972 0:00 
+Alamat Jalan            [6]: JL.RAYA TUGU BARAT NO.4  
+Alamat rt/rw            [7]: 04 /02 
+Alamat kelurahan        [8]: SAMPANG 
+Alamat kecamatan        [9]: SAMPANG 
+Alamat kota            [10]: CILACAP 
+Alamat kode pos        [11]: 53273 
+Alamat telepon         [12]: 0282697150 
+Pekerjaan              [13]: SWASTA 
+Nama perusahaan        [14]: TOKO ANDA 
+Alamat kantor jalan    [15]: JL.RAYA TUGU BARAT NO.4 
+Alamat kantor kode pos [16]: 53273 
+Alamat kantor kelurahan[17]: SAMPANG 
+Alamat kantor kecamatan[18]: SAMPANG 
+Alamat kantor kota     [19]: CILACAP 
+Alamat kantor propinsi [20]: JATENG 
+Alamat kantor telepon  [21]: 0282697150 
+Alamat surat jalan     [22]: JL.RAYA TUGU BARAT NO.4  
+Alamat surat rt/rw     [23]: 004 /002 
+Alamat surat kelurahan [24]: SAMPANG 
+Alamat surat kecamatan [25]: SAMPANG 
+Alamat surat kota      [26]: CILACAP 
+Alamat surat propinsi  [27]: JATENG 
+Alamat surat kode pos  [28]: 53273 
+NPWP                   [29]: - 
+Email                  [30]: -
+ 
+###----------End --------------#
+No Peserta              [0]: 74100015004 
+Nama Lengkap            [1]: BAMBANG CATUR HERI C 
+Alamat telepon2         [2]: 035-4680305 
+Tanggal Registrasi      [3]: 07/12/2004 0:00 
+Tempat Lahir            [4]: MOJOKERTO 
+Tanggal Lahir           [5]: 06/21/1976 0:00 
+Alamat Jalan            [6]: BEBE'AN 
+Alamat rt/rw            [7]: 004/012 
+Alamat kelurahan        [8]: MODOPURO 
+Alamat kecamatan        [9]: MOJOSARI 
+Alamat kota            [10]: MOJOKERTO 
+Alamat kode pos        [11]: 61382 
+Alamat telepon         [12]: 0321-592067 
+Pekerjaan              [13]: KARYAWAN SWASTA 
+Nama perusahaan        [14]: PT. LUXINDO RAYA 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]: - 
+Alamat kantor kelurahan[17]: - 
+Alamat kantor kecamatan[18]: - 
+Alamat kantor kota     [19]: KEDIRI 
+Alamat kantor propinsi [20]: JAWA TENGAH 
+Alamat kantor telepon  [21]: 0321592067 
+Alamat surat jalan     [22]: BEBE'AN 
+Alamat surat rt/rw     [23]: 004/012 
+Alamat surat kelurahan [24]: MODOPURO 
+Alamat surat kecamatan [25]: MOJOSARI 
+Alamat surat kota      [26]: MOJOKERTO 
+Alamat surat propinsi  [27]: JATIM 
+Alamat surat kode pos  [28]: 61382 
+NPWP                   [29]: - 
+Email                  [30]: -
+ 
+###----------End --------------#
+No Peserta              [0]: 74100018055 
+Nama Lengkap            [1]: M.MIFTAHUL MUHITH LMA 
+Alamat telepon2         [2]: 0852351376 
+Tanggal Registrasi      [3]: 04/28/2005 0:00 
+Tempat Lahir            [4]: KEDIRI 
+Tanggal Lahir           [5]: 11/24/1979 0:00 
+Alamat Jalan            [6]: JL.KYAI SYAFI'I  
+Alamat rt/rw            [7]: 017/003 
+Alamat kelurahan        [8]: KENCONG 
+Alamat kecamatan        [9]: - 
+Alamat kota            [10]: KEDIRI 
+Alamat kode pos        [11]: 64293 
+Alamat telepon         [12]: - 
+Pekerjaan              [13]: SWASTA 
+Nama perusahaan        [14]: KSU ROUDLOTUSSA 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]: - 
+Alamat kantor kelurahan[17]: - 
+Alamat kantor kecamatan[18]: - 
+Alamat kantor kota     [19]: KEDIRI 
+Alamat kantor propinsi [20]: JAWA TIMUR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL.KYAI SYAFI'I  
+Alamat surat rt/rw     [23]: 017/003 
+Alamat surat kelurahan [24]: KENCONG 
+Alamat surat kecamatan [25]: - 
+Alamat surat kota      [26]: KEDIRI 
+Alamat surat propinsi  [27]: JATIM 
+Alamat surat kode pos  [28]: 64293 
+NPWP                   [29]: - 
+Email                  [30]: -
+ 
+###----------End --------------#
+No Peserta              [0]: 74100018473 
+Nama Lengkap            [1]: HABIB SAFI'I 
+Alamat telepon2         [2]: 0354696770 
+Tanggal Registrasi      [3]: 06/08/2005 0:00 
+Tempat Lahir            [4]: NGANJUK 
+Tanggal Lahir           [5]: 12/07/1982 0:00 
+Alamat Jalan            [6]: DSN DLOPO 
+Alamat rt/rw            [7]: 003/002 
+Alamat kelurahan        [8]: KARANGREJO 
+Alamat kecamatan        [9]: GAMPENGREJO 
+Alamat kota            [10]: KEDIRI 
+Alamat kode pos        [11]: 64121 
+Alamat telepon         [12]: 0354-685856 
+Pekerjaan              [13]: SWASTA 
+Nama perusahaan        [14]: TERRA COMPUTER 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]: - 
+Alamat kantor kelurahan[17]: - 
+Alamat kantor kecamatan[18]: - 
+Alamat kantor kota     [19]: KEDIRI 
+Alamat kantor propinsi [20]: JAWA TIMUR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: DSN DLOPO 
+Alamat surat rt/rw     [23]: 003/002 
+Alamat surat kelurahan [24]: KARANGREJO 
+Alamat surat kecamatan [25]: GAMPENGREJO 
+Alamat surat kota      [26]: KEDIRI 
+Alamat surat propinsi  [27]: JATIM 
+Alamat surat kode pos  [28]: 64121 
+NPWP                   [29]: - 
+Email                  [30]: -
+ 
+###----------End --------------#
+No Peserta              [0]: 74100019692 
+Nama Lengkap            [1]: NISA NUR DINI 
+Alamat telepon2         [2]: 0355335600 
+Tanggal Registrasi      [3]: 09/09/2005 0:00 
+Tempat Lahir            [4]: TULUNGAGUNG 
+Tanggal Lahir           [5]: 06/30/1978 0:00 
+Alamat Jalan            [6]: DSN BANCA'AN 
+Alamat rt/rw            [7]: 003/003 
+Alamat kelurahan        [8]: MOJOSARI 
+Alamat kecamatan        [9]: KAUMAN 
+Alamat kota            [10]: TL.AGUNG 
+Alamat kode pos        [11]: 66261 
+Alamat telepon         [12]: - 
+Pekerjaan              [13]: PEGAWAI SWASTA 
+Nama perusahaan        [14]: L.P.I.AL-AZHAAR 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]: - 
+Alamat kantor kelurahan[17]: - 
+Alamat kantor kecamatan[18]: - 
+Alamat kantor kota     [19]: TL.AGUNG 
+Alamat kantor propinsi [20]: JAWA TIMUR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: DSN BANCA'AN 
+Alamat surat rt/rw     [23]: 003/003 
+Alamat surat kelurahan [24]: MOJOSARI 
+Alamat surat kecamatan [25]: KAUMAN 
+Alamat surat kota      [26]: TL.AGUNG 
+Alamat surat propinsi  [27]: JATIM 
+Alamat surat kode pos  [28]: 66261 
+NPWP                   [29]: - 
+Email                  [30]: -
+ 
+###----------End --------------#
+No Peserta              [0]: 74100020570 
+Nama Lengkap            [1]: MOHAMMAD MA'SUM 
+Alamat telepon2         [2]: 0355395433 
+Tanggal Registrasi      [3]: 11/23/2005 0:00 
+Tempat Lahir            [4]: TULUNGAGUNG 
+Tanggal Lahir           [5]: 06/13/1971 0:00 
+Alamat Jalan            [6]: JL.STASIUN NO.1 KEC.NGUNUT 
+Alamat rt/rw            [7]: 01 /02 
+Alamat kelurahan        [8]: NGUNUT 
+Alamat kecamatan        [9]: NGUNUT 
+Alamat kota            [10]: TL.AGUNG 
+Alamat kode pos        [11]: 66292 
+Alamat telepon         [12]: 0355-331870 
+Pekerjaan              [13]: KARYAWAN SWASTA 
+Nama perusahaan        [14]: LPI AL AZHAAR 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]: - 
+Alamat kantor kelurahan[17]: - 
+Alamat kantor kecamatan[18]: - 
+Alamat kantor kota     [19]: TL.AGUNG 
+Alamat kantor propinsi [20]: JAWA TIMUR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL.STASIUN NO.1 KEC.NGUNUT 
+Alamat surat rt/rw     [23]: 01 /02 
+Alamat surat kelurahan [24]: NGUNUT 
+Alamat surat kecamatan [25]:  
+Alamat surat kota      [26]: TL.AGUNG 
+Alamat surat propinsi  [27]: JATIM 
+Alamat surat kode pos  [28]: 66292 
+NPWP                   [29]: - 
+Email                  [30]: -
+ 
+###----------End --------------#
+No Peserta              [0]: 74100022572 
+Nama Lengkap            [1]: SITI MU'ALIFAH 
+Alamat telepon2         [2]: 0354773939 
+Tanggal Registrasi      [3]: 04/07/2006 0:00 
+Tempat Lahir            [4]: MALANG 
+Tanggal Lahir           [5]: 02/02/1972 0:00 
+Alamat Jalan            [6]: JL. KH A DAHLAN NO.39 MOJOROTO - KEDIRI 
+Alamat rt/rw            [7]: 080/3 
+Alamat kelurahan        [8]: MOJOROTO 
+Alamat kecamatan        [9]: MOJOROTO 
+Alamat kota            [10]: KEDIRI 
+Alamat kode pos        [11]: 64112 
+Alamat telepon         [12]: 0354-773939 
+Pekerjaan              [13]: SWASTA 
+Nama perusahaan        [14]: PA. MUHAMMADYAH KEDIRI 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]: - 
+Alamat kantor kelurahan[17]: - 
+Alamat kantor kecamatan[18]: - 
+Alamat kantor kota     [19]: KEDIRI 
+Alamat kantor propinsi [20]: JAWA TIMUR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: JL. KH A DAHLAN NO.39 MOJOROTO - KEDIRI 
+Alamat surat rt/rw     [23]: 080/3 
+Alamat surat kelurahan [24]: MOJOROTO 
+Alamat surat kecamatan [25]: MOJOROTO 
+Alamat surat kota      [26]: KEDIRI 
+Alamat surat propinsi  [27]: JATIM 
+Alamat surat kode pos  [28]: 64112 
+NPWP                   [29]: - 
+Email                  [30]: -
+ 
+###----------End --------------#
+No Peserta              [0]: 74100027894 
+Nama Lengkap            [1]: MUHAMAD MIFTAHUL MUHITH 
+Alamat telepon2         [2]: 7029432 
+Tanggal Registrasi      [3]: 04/04/2007 0:00 
+Tempat Lahir            [4]: KEDIRI 
+Tanggal Lahir           [5]: 12/29/2079 0:00 
+Alamat Jalan            [6]: DSN KENCONG BARAT KENCONG KDR JL.KYAI SYAFI'I KENCONG KEDIRI 
+Alamat rt/rw            [7]: 017/003 
+Alamat kelurahan        [8]: KENCONG 
+Alamat kecamatan        [9]: KENCONG 
+Alamat kota            [10]: KEDIRI 
+Alamat kode pos        [11]: 64293 
+Alamat telepon         [12]: 0354-7029432 
+Pekerjaan              [13]: SWASTA 
+Nama perusahaan        [14]: PONPES KENCONG KEDIRI 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]: - 
+Alamat kantor kelurahan[17]: - 
+Alamat kantor kecamatan[18]: - 
+Alamat kantor kota     [19]: KEDIRI 
+Alamat kantor propinsi [20]: JAWA TIMUR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: DSN KENCONG BARAT KENCONG KDR JL.KYAI SYAFI'I KENCONG KEDIRI 
+Alamat surat rt/rw     [23]: 017/003 
+Alamat surat kelurahan [24]: KENCONG 
+Alamat surat kecamatan [25]: KENCONG 
+Alamat surat kota      [26]: KEDIRI 
+Alamat surat propinsi  [27]: JATIM 
+Alamat surat kode pos  [28]: 64293 
+NPWP                   [29]: - 
+Email                  [30]: -
+ 
+###----------End --------------#
+No Peserta              [0]: 74100030092 
+Nama Lengkap            [1]: MIFTAHUL MA'WA 
+Alamat telepon2         [2]: 0354394892 
+Tanggal Registrasi      [3]: 11/26/2007 0:00 
+Tempat Lahir            [4]: KEDIRI 
+Tanggal Lahir           [5]: 03/07/1974 0:00 
+Alamat Jalan            [6]: TUNGLUR PARE KEDIRI  
+Alamat rt/rw            [7]: 002/003 
+Alamat kelurahan        [8]: TUNGLUR PARE 
+Alamat kecamatan        [9]: PARE 
+Alamat kota            [10]: KEDIRI 
+Alamat kode pos        [11]: 64222 
+Alamat telepon         [12]: 0354-394892 
+Pekerjaan              [13]: DOKTER 
+Nama perusahaan        [14]: RSUD PARE 
+Alamat kantor jalan    [15]:  
+Alamat kantor kode pos [16]: - 
+Alamat kantor kelurahan[17]: - 
+Alamat kantor kecamatan[18]: PARE 
+Alamat kantor kota     [19]: KEDIRI 
+Alamat kantor propinsi [20]: JAWA TIMUR 
+Alamat kantor telepon  [21]:  
+Alamat surat jalan     [22]: TUNGLUR 
+Alamat surat rt/rw     [23]: 002/003 
+Alamat surat kelurahan [24]: TUNGLUR 
+Alamat surat kecamatan [25]: PARE 
+Alamat surat kota      [26]: KEDIRI 
+Alamat surat propinsi  [27]: JATIM 
+Alamat surat kode pos  [28]: 64222 
+NPWP                   [29]: - 
+Email                  [30]: -
+ 
+###----------End --------------#
+>>> 

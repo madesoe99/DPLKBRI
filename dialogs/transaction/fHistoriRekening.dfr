@@ -1,0 +1,725 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit1']
+  Caption='Riwayat Perubahan CIF Rekening Peserta'
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData='FormEndSetData'
+  OnSetDataEx='setDataEx'
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipRekInvDPLK'
+      ClassTypeName='RekInvDPLK'
+      DataBinding=bmMaster
+    >, object:rtf::PClassUI<
+      Name='uipLs_HistoriIuran'
+      ClassTypeName='HistoriIuran'
+      DataBinding=bmList
+      Master=$UIPARTS['uipRekInvDPLK']
+      ListName='Ls_HistoriIuran'
+    >, object:rtf::PClassUI<
+      Name='uipLs_HistAsuransi'
+      ClassTypeName='HistAsuransi'
+      DataBinding=bmList
+      Master=$UIPARTS['uipRekInvDPLK']
+      ListName='Ls_HistAsuransi'
+    >, object:rtf::PClassUI<
+      Name='uipLs_HistoriAnuitas'
+      ClassTypeName='HistoriAnuitas'
+      DataBinding=bmList
+      Master=$UIPARTS['uipRekInvDPLK']
+      ListName='Ls_HistoriAnuitas'
+    >, object:rtf::PClassUI<
+      Name='uipLs_HistoriPindahPaketInvestasi'
+      ClassTypeName='HistoriPindahPaketInvestasi'
+      DataBinding=bmList
+      Master=$UIPARTS['uipRekInvDPLK']
+      ListName='Ls_HistoriPindahPaketInvestasi'
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caView
+          DataMember='no_rekening'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='LNasabahDPLK'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='LBranchLocation'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='LSumberDana'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='no_rekening'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLK'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='no_peserta;nama_lengkap'
+          Restrictions=''
+          OQLText=['SELECT FROM NasabahDPLK('#13#10,
+            '  self,'#13#10,
+            '  no_peserta,'#13#10,
+            '  nama_lengkap'#13#10,
+            ') THEN ORDER BY no_peserta;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LNasabahDPLK'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LBranchLocation'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='branch_code;BranchName'
+          Restrictions=''
+          OQLText=['SELECT FROM BranchLocation('#13#10,
+            '  self,'#13#10,
+            '  branch_code,'#13#10,
+            '  BranchName'#13#10,
+            ')  THEN ORDER BY branch_code;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LBranchLocation'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LSumberDana'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='sumber_dana;keterangan'
+          Restrictions=''
+          OQLText=['SELECT FROM SumberDana ('#13#10,
+            '  self,'#13#10,
+            '  sumber_dana,'#13#10,
+            '  keterangan'#13#10,
+            ') THEN ORDER BY sumber_dana;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LSumberDana'
+        >
+      }
+      Name='pRekInvDPLK'
+      Width=729
+      Height=161
+      UIPart=$UIPARTS['uipRekInvDPLK']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='no_rekening'
+          Top=30
+          Left=8
+          Color=-16777192
+          ControlCaption='Nomor Rekening'
+        >, *object:rtf::DBLookupEdit<
+          Name='LNasabahDPLK'
+          Top=58
+          Left=8
+          Width=100
+          Height=21
+          Enabled=false
+          ControlCaption='Nasabah DPLK'
+          LookupField='LNasabahDPLK.nama_lengkap'
+          DisplayLookupField=true
+          DisableLookup=true
+        >, *object:rtf::DBLookupEdit<
+          Name='LBranchLocation'
+          Top=86
+          Left=8
+          Width=100
+          Height=21
+          Enabled=false
+          ControlCaption='Cabang'
+          LookupField='LBranchLocation.BranchName'
+          DisplayLookupField=true
+          DisableLookup=true
+        >, *object:rtf::DBLookupEdit<
+          Name='LSumberDana'
+          Top=114
+          Left=8
+          Width=100
+          Height=21
+          Enabled=false
+          ControlCaption='Sumber Dana'
+          LookupField='LSumberDana.keterangan'
+          DisplayLookupField=true
+          DisableLookup=true
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=8
+      ControlTopMargin=30
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Rekening Peserta'
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=320
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='bClose'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          ControlCaption=''
+          Caption='&Tutup'
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=800
+      Height=600
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['dualsplit2']
+      InversedAlign=true
+    >, object:rtf::DualSplit<
+      Name='dualsplit2'
+      Width=800
+      Height=559
+      Container1=$CONTAINERS['dualsplit3']
+      Container2=$CONTAINERS['multipages1']
+    >, object:rtf::DualSplit<
+      Name='dualsplit3'
+      Width=240
+      Height=153
+      Container1=$CONTAINERS['pRekInvDPLK']
+    >, object:rtf::MultiPages<
+      Name='multipages1'
+      Width=800
+      Height=405
+      Pages={
+        object:rtf::Page<
+          PageTitle='Histori &Iuran'
+          Container=$CONTAINERS['gHistoriIuran']
+        >, object:rtf::Page<
+          PageTitle='Histori A&suransi'
+          Container=$CONTAINERS['gHistAsuransi']
+          Index=1
+        >, object:rtf::Page<
+          PageTitle='Histori A&nuitas'
+          Container=$CONTAINERS['gHistoriAnuitas']
+          Index=2
+        >, object:rtf::Page<
+          PageTitle='Histori Pindah &Paket Investasi'
+          Container=$CONTAINERS['gHistoriPindahPaketInvestasi']
+          Index=3
+        >
+      }
+    >, object:rtf::Grid<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['tanggal_histori'#13#10,
+            'no_referensi'#13#10,
+            'iuran_pst'#13#10,
+            'iuran_pk'#13#10,
+            'user_id'#13#10,
+            'terminal_id'#13#10,
+            'auth_user_id'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='tanggal_histori'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='no_referensi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='iuran_pst'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='iuran_pk'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='terminal_id'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='auth_user_id'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='gHistoriIuran'
+      Width=792
+      Height=377
+      UIPart=$UIPARTS['uipLs_HistoriIuran']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Columns={
+        *object:rtf::GridColumn<
+          Name='tanggal_histori'
+          InputStyle=cisDate
+          EnumeratedValues=''
+          FieldName='tanggal_histori'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='no_referensi'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='no_referensi'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='iuran_pst'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='iuran_pst'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='iuran_pk'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='iuran_pk'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='user_id'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='user_id'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='terminal_id'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='terminal_id'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='auth_user_id'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='auth_user_id'
+          DisplayFormat=''
+          ReadOnly=true
+        >
+      }
+      ReadOnly=true
+      RowSelect=true
+      SuppressHelpLine=true
+    >, object:rtf::Grid<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['tanggal_histori'#13#10,
+            'no_referensi'#13#10,
+            'no_polis'#13#10,
+            'besar_premi'#13#10,
+            'manfaat_asuransi'#13#10,
+            'tunggakan_premi'#13#10,
+            'alasan_berhenti'#13#10,
+            'keterangan'#13#10,
+            'tgl_akseptasi'#13#10,
+            'tgl_berakhir'#13#10,
+            'user_id'#13#10,
+            'terminal_id'#13#10,
+            'auth_user_id'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='tanggal_histori'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='no_referensi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='no_polis'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='besar_premi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='manfaat_asuransi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tunggakan_premi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alasan_berhenti'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tgl_akseptasi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tgl_berakhir'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='terminal_id'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='auth_user_id'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='gHistAsuransi'
+      Width=240
+      Height=240
+      UIPart=$UIPARTS['uipLs_HistAsuransi']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Columns={
+        *object:rtf::GridColumn<
+          Name='tanggal_histori'
+          InputStyle=cisDate
+          EnumeratedValues=''
+          FieldName='tanggal_histori'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='no_referensi'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='no_referensi'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='no_polis'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='no_polis'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='besar_premi'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='besar_premi'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='manfaat_asuransi'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='manfaat_asuransi'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='tunggakan_premi'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='tunggakan_premi'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='alasan_berhenti'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='alasan_berhenti'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='keterangan'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='keterangan'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='tgl_akseptasi'
+          InputStyle=cisDate
+          EnumeratedValues=''
+          FieldName='tgl_akseptasi'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='tgl_berakhir'
+          InputStyle=cisDate
+          EnumeratedValues=''
+          FieldName='tgl_berakhir'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='user_id'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='user_id'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='terminal_id'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='terminal_id'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='auth_user_id'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='auth_user_id'
+          DisplayFormat=''
+          ReadOnly=true
+        >
+      }
+      ReadOnly=true
+      RowSelect=true
+      SuppressHelpLine=true
+    >, object:rtf::Grid<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['tanggal_histori'#13#10,
+            'no_referensi'#13#10,
+            'no_polis_anuitas'#13#10,
+            'tgl_pembelian_anuitas'#13#10,
+            'nama_asuransi'#13#10,
+            'user_id'#13#10,
+            'terminal_id'#13#10,
+            'auth_user_id'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='tanggal_histori'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='no_referensi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='no_polis_anuitas'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tgl_pembelian_anuitas'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='nama_asuransi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='terminal_id'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='auth_user_id'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='gHistoriAnuitas'
+      Width=240
+      Height=240
+      UIPart=$UIPARTS['uipLs_HistoriAnuitas']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Columns={
+        *object:rtf::GridColumn<
+          Name='tanggal_histori'
+          InputStyle=cisDate
+          EnumeratedValues=''
+          FieldName='tanggal_histori'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='no_referensi'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='no_referensi'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='no_polis_anuitas'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='no_polis_anuitas'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='tgl_pembelian_anuitas'
+          InputStyle=cisDate
+          EnumeratedValues=''
+          FieldName='tgl_pembelian_anuitas'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='nama_asuransi'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='nama_asuransi'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='user_id'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='user_id'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='terminal_id'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='terminal_id'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='auth_user_id'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='auth_user_id'
+          DisplayFormat=''
+          ReadOnly=true
+        >
+      }
+      ReadOnly=true
+      RowSelect=true
+      SuppressHelpLine=true
+    >, object:rtf::Grid<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['tanggal_histori'#13#10,
+            'no_referensi'#13#10,
+            'user_id'#13#10,
+            'terminal_id'#13#10,
+            'auth_user_id'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='tanggal_histori'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='no_referensi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='terminal_id'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='auth_user_id'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='gHistoriPindahPaketInvestasi'
+      Width=240
+      Height=240
+      UIPart=$UIPARTS['uipLs_HistoriPindahPaketInvestasi']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Columns={
+        *object:rtf::GridColumn<
+          Name='tanggal_histori'
+          InputStyle=cisDate
+          EnumeratedValues=''
+          FieldName='tanggal_histori'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='no_referensi'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='no_referensi'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='user_id'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='user_id'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='terminal_id'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='terminal_id'
+          DisplayFormat=''
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='auth_user_id'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='auth_user_id'
+          DisplayFormat=''
+          ReadOnly=true
+        >
+      }
+    >
+  }
+  FormClassName='fHistoriRekening'
+>

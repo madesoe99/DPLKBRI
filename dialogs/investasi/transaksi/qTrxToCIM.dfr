@@ -1,0 +1,82 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['qTrxToCIM']
+  Caption='Daftar Pengiriman Transaksi Ke CIM'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  Containers={object:rtf::Query<
+      Name='qTrxToCIM'
+      Width=800
+      Height=600
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from TrxToCIM'#13#10,
+        '('#13#10,
+        '  IDTransaksiDPLK,'#13#10,
+        '  JenisTransaksi,'#13#10,
+        '  TanggalTransaksi,'#13#10,
+        '  SecurityType,'#13#10,
+        '  SecurityCode,'#13#10,
+        '  NoTrxCIM,'#13#10,
+        '  CIM_SendStatus,'#13#10,
+        '  CIM_SendDate,'#13#10,
+        '  self'#13#10,
+        ') then order by desc IDTransaksiDPLK;']
+      DirectDisplay=true
+      WindowSize=20
+      Columns={object:rtf::QueryColumn<
+          FieldName='TrxToCIM.IDTransaksiDPLK'
+          Width=80
+          Caption='ID Trx DPLK'
+        >, object:rtf::QueryColumn<
+          FieldName='TrxToCIM.JenisTransaksi'
+          Width=80
+          Caption='Jenis Transaksi'
+        >, object:rtf::QueryColumn<
+          FieldName='TrxToCIM.TanggalTransaksi'
+          Width=100
+          Caption='Tanggal Transaksi'
+        >, object:rtf::QueryColumn<
+          FieldName='TrxToCIM.SecurityType'
+          Width=100
+          Caption='Security Type'
+        >, object:rtf::QueryColumn<
+          FieldName='TrxToCIM.SecurityCode'
+          Width=100
+          Caption='Security Code'
+        >, object:rtf::QueryColumn<
+          FieldName='TrxToCIM.NoTrxCIM'
+          Width=100
+          Caption='No Trx CIM'
+        >, object:rtf::QueryColumn<
+          FieldName='TrxToCIM.CIM_SendStatus'
+          Width=100
+          Caption='Flag Kirim Ke CIM'
+        >, object:rtf::QueryColumn<
+          FieldName='TrxToCIM.CIM_SendDate'
+          Width=120
+          Caption='Tgl Kirim Ke CIM'
+        >}EnableColumns=true
+    >}>

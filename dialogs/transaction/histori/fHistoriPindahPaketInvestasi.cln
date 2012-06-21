@@ -1,0 +1,259 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['pData']
+  Caption='Pindah Paket Investasi'
+  Left=50
+  Top=50
+  Width=400
+  Height=320
+  OnFormShow='FormShow'
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipHistoriPindahPaketInvestasi'
+      ClassTypeName='HistoriPindahPaketInvestasi'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      AfterApplyRow='uipHistoriPindahPaketInvestasiApplyRow'
+    >
+    , object:rtf::PClassUI<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='no_peserta'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=11
+        >
+        , object:rtf::LinkUIElmtSetting<
+          Name='LPaketInvestasi'
+          RequiredOption=roAlwaysRequired
+          AccessOption=aoReadOnly
+          ClassTypeName='PaketInvestasi'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LPaketInvestasi.kode_paket_investasi'
+              DataTypeName='VARCHAR'
+              DataLength=2
+              UsedAsKey=true
+              KeyOrDisplayName='kode_paket_investasi'
+              FinalDisplayFieldName='kode_paket_investasi'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LPaketInvestasi.kode_paket_investasi'
+              DataTypeName='VARCHAR'
+              DataLength=2
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_paket_investasi'
+              FinalDisplayFieldName='kode_paket_investasi'
+            >
+            , object:rtf::FieldUIElmtSetting<
+              Name='LPaketInvestasi.nama_paket_investasi'
+              DataTypeName='VARCHAR'
+              DataLength=30
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_paket_investasi'
+              FinalDisplayFieldName='nama_paket_investasi'
+            >
+          }
+          Restrictions=''
+        >
+      }
+      Name='uipMaster'
+      ClassTypeName='RekeningDPLK'
+      DataBinding=bmMaster
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='no_referensi'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >
+        , object:rtf::LinkUIElmtSetting<
+          Name='LPaketInvestasi'
+          RequiredOption=roAlwaysRequired
+          ClassTypeName='PaketInvestasi'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LPaketInvestasi.kode_paket_investasi'
+              DataTypeName='VARCHAR'
+              DataLength=2
+              UsedAsKey=true
+              KeyOrDisplayName='kode_paket_investasi'
+              FinalDisplayFieldName='kode_paket_investasi'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LPaketInvestasi.kode_paket_investasi'
+              DataTypeName='VARCHAR'
+              DataLength=2
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_paket_investasi'
+              FinalDisplayFieldName='kode_paket_investasi'
+            >
+            , object:rtf::FieldUIElmtSetting<
+              Name='LPaketInvestasi.nama_paket_investasi'
+              DataTypeName='VARCHAR'
+              DataLength=30
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_paket_investasi'
+              FinalDisplayFieldName='nama_paket_investasi'
+            >
+          }
+          Restrictions=''
+          OQLText=['select from PaketInvestasi'#13#10,
+            '('#13#10,
+            '  kode_paket_investasi,'#13#10,
+            '  nama_paket_investasi,'#13#10,
+            '  no_giro,'#13#10,
+            '  self'#13#10,
+            ') then order by kode_paket_investasi;']
+          LookupOption=loCustomOQL
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          ReadOnlyControl=true
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='terminal_id'
+          ReadOnlyControl=true
+          DataTypeName='VARCHAR'
+          DataLength=15
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='mode'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=20
+        >
+        , object:rtf::LinkUIElmtSetting<
+          Name='LPaketInvestasi_lama'
+          ClassTypeName='PaketInvestasi'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LPaketInvestasi_lama.kode_paket_investasi'
+              DataTypeName='VARCHAR'
+              DataLength=2
+              UsedAsKey=true
+              KeyOrDisplayName='kode_paket_investasi'
+              FinalDisplayFieldName='kode_paket_investasi'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LPaketInvestasi_lama.kode_paket_investasi'
+              DataTypeName='VARCHAR'
+              DataLength=2
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_paket_investasi'
+              FinalDisplayFieldName='kode_paket_investasi'
+            >
+            , object:rtf::FieldUIElmtSetting<
+              Name='LPaketInvestasi_lama.nama_paket_investasi'
+              DataTypeName='VARCHAR'
+              DataLength=30
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_paket_investasi'
+              FinalDisplayFieldName='nama_paket_investasi'
+            >
+          }
+          Restrictions=''
+          OQLText=['select from PaketInvestasi'#13#10,
+            '('#13#10,
+            '  kode_paket_investasi,'#13#10,
+            '  nama_paket_investasi,'#13#10,
+            '  no_giro,'#13#10,
+            '  self'#13#10,
+            ') then order by kode_paket_investasi;']
+          LookupOption=loCustomOQL
+        >
+      }
+      Name='pData'
+      Width=400
+      Height=180
+      Bordered=true
+      UIPart=$UIPARTS['uipHistoriPindahPaketInvestasi']
+      Controls={
+        *object:rtf::DBLookupEdit<
+          Name='LPaketInvestasi'
+          ControlCaption='paket investasi baru'
+          LookupField='LPaketInvestasi.nama_paket_investasi'
+          DisplayLookupField=true
+        >
+        , *object:rtf::DBEdit<
+          Name='user_id'
+          ReadOnly=true
+        >
+        , *object:rtf::DBEdit<
+          Name='terminal_id'
+          ReadOnly=true
+        >
+        , *object:rtf::DBLookupEdit<
+          Name='LPaketInvestasi_lama'
+          Enabled=false
+          Color=0
+          ControlCaption='paket investasi lama'
+          LayoutOrder=2
+          LookupField='LPaketInvestasi_lama.nama_paket_investasi'
+          DisplayLookupField=true
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Bordered=true
+      Controls={
+        object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Color=0
+          ControlCaption=''
+          Caption='&OK'
+          OnClick='btnOKClick'
+        >
+        , object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Cancel'
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['pData']
+      InversedAlign=true
+    >
+  }
+>

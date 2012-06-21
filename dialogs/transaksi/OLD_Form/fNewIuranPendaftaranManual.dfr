@@ -1,0 +1,218 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['pDataTransaksi']
+  Caption='Input Iuran Pendaftaran Manual'
+  Left=100
+  Top=100
+  Width=800
+  Height=500
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData='FormGeneralProcessData'
+  OnProcessRawData=''
+  OnFormShow='FormShow'
+  OnBeginSetData='FormBeginSetData'
+  OnEndSetData='FormEndSetData'
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipTransaksi'
+      ClassTypeName='IuranPendaftaran'
+      DataBinding=bmMaster
+      CreateInstanceOnNew=true
+    >
+    , object:rtf::PClassUI<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='PRESISI_ANGKA_FLOAT'
+          Hidden=true
+          DataTypeName='double'
+          DataLength=5
+        >
+      }
+      Name='uipParameter'
+      CreateInstanceOnNew=true
+    >
+    , object:rtf::PClassUI<
+      Name='uipNasabah'
+      ClassTypeName='NasabahDPLK'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Name='pButton'
+      Width=300
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='bSimpan'
+          Layout=clNewLine
+          Color=0
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          OnClick='bSimpanClick'
+        >
+        , object:rtf::Button<
+          Name='bCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caEdit
+          DataMembers=['tgl_transaksi'#13#10,
+            'keterangan'#13#10,
+            'besar_biaya_daftar'#13#10]
+        >
+        , object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LTransactionBatch'
+        >
+      }
+      Elements={
+        *object:rtf::LinkUIElmtSetting<
+          Name='LTransactionBatch'
+          ControlCaption='Batch Transaksi'
+          DisplayFields='ID_TransactionBatch;no_batch'
+          Restrictions=''
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='TB_BranchCode'
+          ReadOnlyControl=true
+          ControlCaption='Cabang Batch Transaksi'
+          DataTypeName='varchar'
+          DataLength=5
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='DefaultIuranPendaftaran'
+          ReadOnlyControl=true
+          ControlCaption='default iuran pendaftaran'
+          DataTypeName='double'
+          DataLength=20
+        >
+      }
+      Name='pDataTransaksi'
+      Width=400
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipTransaksi']
+      Controls={
+        *object:rtf::DBDateEdit<
+          Name='tgl_transaksi'
+          ControlCaption='Tanggal Transaksi'
+          LayoutOrder=3
+        >
+        , *object:rtf::DBEdit<
+          Name='keterangan'
+          ControlCaption='Keterangan'
+          LayoutOrder=6
+        >
+        , *object:rtf::DBEdit<
+          Name='besar_biaya_daftar'
+          Color=12695295
+          ControlCaption='Besar Biaya Daftar'
+          LayoutOrder=5
+        >
+        , *object:rtf::DBLookupEdit<
+          Name='LTransactionBatch'
+          LookupField='LTransactionBatch.no_batch'
+          DisplayLookupField=true
+        >
+        , *object:rtf::DBEdit<
+          Name='TB_BranchCode'
+          Enabled=false
+          Color=-2147483624
+          ReadOnly=true
+        >
+        , *object:rtf::DBEdit<
+          Name='DefaultIuranPendaftaran'
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Default Iuran Pendaftaran'
+          LayoutOrder=4
+          ReadOnly=true
+        >
+      }
+      EqualCaptionWidth=130
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Transaksi'
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['DualSplitH']
+      InversedAlign=true
+    >
+    , object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['no_peserta'#13#10,
+            'nama_lengkap'#13#10,
+            'alamat_jalan'#13#10,
+            'alamat_rtrw'#13#10,
+            'alamat_kelurahan'#13#10,
+            'alamat_kecamatan'#13#10,
+            'alamat_kota'#13#10,
+            'alamat_kode_pos'#13#10]
+        >
+      }
+      Elements={
+      }
+      Name='pNasabah'
+      Width=240
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipNasabah']
+      Controls={
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Nasabah'
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplitH'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['pDataTransaksi']
+      Container2=$CONTAINERS['pNasabah']
+      SplitDirection=sdrSplitLeftRight
+    >
+  }
+>

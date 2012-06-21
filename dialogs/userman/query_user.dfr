@@ -1,0 +1,46 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='1'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['UserApp']
+  Caption='User List'
+  State=rsMaximized
+  Left=-1
+  Top=-1
+  Width=500
+  Height=450
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  Containers={
+    object:rtf::Query<
+      Name='UserApp'
+      Width=500
+      Height=450
+      ContextMenuName='popupmenus/userman/pDaftarUser'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      PClassName='UserApp'
+      OQLText=['Select from UserApp (user_id as UserID, UserName, '#13,
+        'Description, LBranchLocation.branch_code as BranchCode, '#13,
+        'LBranchLocation.BranchName, Self) then order by UserID;']
+      DirectDisplay=true
+      WindowSize=20
+    >
+  }
+>

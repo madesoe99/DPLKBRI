@@ -1,0 +1,26 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='UserApp'
+      PClassName='UserApp'
+      LoadedFieldList='user_id;UserName;Description;NoLimitLocation;LBranchLocation.branch_code;LBranchLocation.branch_code;LBranchLocation.BranchName'
+      StoredFieldList='UserName;Description;NoLimitLocation;LBranchLocation'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LBranchLocation'
+          ClassTypeName='BranchLocation'
+          FieldNames='branch_code;branch_code;BranchName'
+        >
+      }
+      Mode=imSingleRow
+      AfterApplyRow='UserApp_AfterApplyRow'
+    >
+  }
+>

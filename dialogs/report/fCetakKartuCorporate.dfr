@@ -1,0 +1,127 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit1']
+  Left=50
+  Top=50
+  Width=400
+  Height=165
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipNoData'
+    >
+  }
+  Containers={
+    object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=400
+      Height=165
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['pData']
+      InversedAlign=true
+    >
+    , object:rtf::DualSplit<
+      Name='dualsplit2'
+      Width=400
+      Height=165
+      InversedAlign=true
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLKCorporate'
+          ControlCaption='Corporate'
+          ClassTypeName='NasabahDPLKCorporate'
+          DisplayFields='kode_nasabah_corporate;nama_perusahaan'
+          Restrictions=''
+          OQLText=['select from NasabahDPLKCorporate'#13#10,
+            '('#13#10,
+            '  kode_nasabah_corporate,'#13#10,
+            '  nama_perusahaan,'#13#10,
+            '  alamat_kantor_jalan,'#13#10,
+            '  alamat_kantor_kota,'#13#10,
+            '  self'#13#10,
+            ') then order by kode_nasabah_corporate;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LNasabahDPLkCorporate'
+        >
+      }
+      Name='pData'
+      Width=380
+      Height=100
+      Bordered=true
+      UIPart=$UIPARTS['uipNoData']
+      Controls={
+        *object:rtf::DBLookupEdit<
+          Name='LNasabahDPLKCorporate'
+          Top=30
+          Left=20
+          ControlCaption='Corporate'
+          FieldName='LNasabahDPLKCorporate.kode_nasabah_corporate'
+          DisplayFormat=''
+          LookupField='LNasabahDPLkCorporate.nama_perusahaan'
+          DisplayLookupField=true
+          DisplayLookupColor=-2147483624
+          DisplayLookupWidth=150
+          AlternateKeyValueSrc='LNasabahDPLKCorporate.kode_nasabah_corporate'
+          AlternateKeyName='kode_nasabah_corporate'
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=20
+      ControlTopMargin=30
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=200
+      Height=60
+      Bordered=true
+      Controls={
+        object:rtf::Button<
+          Name='btnOK'
+          Layout=clAbsolute
+          Top=16
+          Left=8
+          Color=0
+          ControlCaption=''
+          Caption='&OK'
+          OnClick='btnOKClick'
+        >
+        , object:rtf::Button<
+          Name='btnCancel'
+          Layout=clAbsolute
+          Top=16
+          Left=96
+          Color=0
+          ControlCaption=''
+          Caption='&Cancel'
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+  }
+>

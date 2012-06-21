@@ -1,0 +1,79 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipParameter'
+      PClassName='Parameter'
+      Mode=imMultiRow
+      CreateInstanceOnNew=true
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipLogin'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='isConnected'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='ServerName'
+          DataTypeName='varchar'
+          DataLength=30
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='AppName'
+          DataTypeName='varchar'
+          DataLength=50
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='AppNameAsli'
+          DataTypeName='varchar'
+          DataLength=50
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipGiro'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='GiroPremi'
+          DataTypeName='varchar'
+          DataLength=30
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='GiroPendaftaran'
+          DataTypeName='varchar'
+          DataLength=30
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='GiroReturnInvestasi'
+          DataTypeName='varchar'
+          DataLength=30
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipCBLoginGroups'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='GroupID'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+      }
+      Mode=imSingleRow
+    >
+  }
+  OnGeneralSetData='FormGeneralSetData'
+  OnGeneralProcessData='FormGeneralProcessData'
+>

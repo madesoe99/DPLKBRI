@@ -1,0 +1,94 @@
+; THIS FILE CONTAINS GLOBAL VARIABLES USED IN APPLICATION
+; WRITTEN IN INI-STYLE FORM
+
+[COMPANYINFO]
+Name=%DPLK Bank Rakyat Indonesia %
+Address1=%Customer Company Address%
+Address2=%Customer Company Address2%
+
+[COMMONREPORT]
+periode='12/30/1899'-'12/30/1899'
+Tanggal=Jatuh Tempo Sampai Tanggal 31-Des-2000
+
+[AUTHORITY]
+DEFPASSWD=dplk
+
+[MESSAGING]
+LoginMessageTextFile=login.message
+WarningCoreBankingTextFile=warning.message
+
+[TIMEZONE]
+UseTimeZone=T
+TimeZoneServer=B
+AwalJamKerja=8
+AwalMenitKerja=0
+AkhirJamKerja=21
+AkhirMenitKerja=0
+SelisihMenitBaratTimur=120
+SelisihMenitBaratTengah=60
+SelisihMenitTengahTimur=60
+
+[LOGINAKUNTANSI]
+UserID=sys_DPLK07
+Password=<*õ_W
+ServerName=tcp://127.0.0.1
+AppName=accounting_v1
+Session_Name=accounting_v1Session
+
+[LOGINCOREBANKING]
+; jika perlu untuk Login core Banking, set NeedLoginCoreBanking=T
+; jika tidak set NeedLoginCoreBanking=F
+NeedLoginCoreBanking=T
+ServerName=tcp://193.1.1.14
+AppName=kiblat
+AppNameAsli=kiblat.interface
+UserGroups=ADMIN;TELLER;BOD
+HostCoreBanking=10.55.60.4
+PortCoreBanking=4190
+
+[GIROCOREBANKING]
+GiroPremi=3010044315
+GiroPendaftaran=3010024115
+GiroReturnInvestasi=3110000415
+GiroPenampungan=3010024015
+
+[SETTINGAKUNTANSI]
+; keterangan BranchCode: 001 - Pusat, 002 - Internal DPLK, 003 - Takaful
+BranchCodeTransaksi=001
+BranchCodePremi=003
+DefaultCurrency=Rupiah
+
+[PAJAKTARIKDANA]
+; parameter untuk batas dan persentase pajak penarikan dana (30% / PHK)
+Batas1=50000000
+Batas2=250000000
+Batas3=500000000
+Batas4=1000000000
+Batas5=0
+PersenBatas1=5
+PersenBatas2=15
+PersenBatas3=25
+PersenBatas4=30
+PersenBatas5=0
+
+[PAJAKAMBILMANFAAT]
+; parameter untuk batas dan persentase pajak pengambilan manfaat
+Batas1=50000000
+Batas2=1000000000
+Batas3=0
+Batas4=0
+Batas5=0
+PersenBatas1=0
+PersenBatas2=5
+PersenBatas3=0
+PersenBatas4=0
+PersenBatas5=0
+
+[IMPORTMASSAL]
+; T = true, F = false
+; jika NeedLogging=T, setiap data yang error akan di log di direktori ./log
+; sebaliknya (NeedLogging=F), error akan di-raise  
+NeedLogging=T
+
+[BIAYATRANSAKSI]
+UrutanPosDanaBiaya=[('akum_pmb_tmb','mutasi_pmb_tmb'),('akum_pmb_pst','mutasi_pmb_pst'),('akum_pmb_pk','mutasi_pmb_pk'),('akum_pmb_psl','mutasi_pmb_psl'),('akum_iuran_tmb','mutasi_iuran_tmb'),('akum_iuran_pst','mutasi_iuran_pst'),('akum_iuran_pk','mutasi_iuran_pk'),('akum_psl','mutasi_psl')]

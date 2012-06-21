@@ -1,0 +1,129 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['DSMain']
+  Caption='Nomor Rekening Pencairan'
+  Left=50
+  Top=50
+  Width=400
+  Height=110
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipNoData'
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::LinkUIElmtSetting<
+          Name='LMasterGiro'
+          ClassTypeName='MasterGiro'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LMasterGiro.acc_giro'
+              DataTypeName='VARCHAR'
+              DataLength=20
+              UsedAsKey=true
+              KeyOrDisplayName='acc_giro'
+              FinalDisplayFieldName='acc_giro'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LMasterGiro.no_giro'
+              DataTypeName='VARCHAR'
+              DataLength=30
+              UsedAsDisplay=true
+              KeyOrDisplayName='no_giro'
+              FinalDisplayFieldName='no_giro'
+            >
+            , object:rtf::FieldUIElmtSetting<
+              Name='LMasterGiro.acc_giro'
+              DataTypeName='VARCHAR'
+              DataLength=20
+              UsedAsDisplay=true
+              KeyOrDisplayName='acc_giro'
+              FinalDisplayFieldName='acc_giro'
+            >
+          }
+          Restrictions=''
+          OQLText=['select from MasterGiro'#13#10,
+            '('#13#10,
+            '  no_giro,'#13#10,
+            '  acc_giro,'#13#10,
+            '  acc_histori_giro,'#13#10,
+            '  self'#13#10,
+            ') then order by no_giro;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LMasterGiro'
+        >
+      }
+      Name='pData'
+      Width=385
+      Height=240
+      Bordered=true
+      UIPart=$UIPARTS['uipNoData']
+      Controls={
+        *object:rtf::DBLookupEdit<
+          Name='LMasterGiro'
+          Top=20
+          Left=20
+          Width=150
+          Height=21
+          ControlCaption='Nomor Rekening Pencairan'
+          LookupField='LMasterGiro.acc_giro'
+          DisplayLookupField=false
+        >
+      }
+      EqualCaptionWidth=140
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=320
+      Height=40
+      Bordered=true
+      Controls={
+        object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Color=0
+          ControlCaption=''
+          Caption='&OK'
+          ExitAction=eaQuitOK
+        >
+        , object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::DualSplit<
+      Name='DSMain'
+      Width=240
+      Height=120
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['pData']
+      InversedAlign=true
+    >
+  }
+  FormClassName='fInputNomorRekening'
+>

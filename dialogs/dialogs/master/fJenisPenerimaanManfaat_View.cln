@@ -1,0 +1,123 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['pData']
+  Caption='Lihat Detil Jenis Penerimaan Manfaat'
+  Left=50
+  Top=50
+  Width=350
+  Height=230
+  OnFormShow='FormShow'
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipJenisPenerimaanManfaat'
+      ClassTypeName='JenisPenerimaanManfaat'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='kode_jns_manfaat'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['B=Pensiun Biasa'#13#10,
+            'D=Pensiun Dipercepat'#13#10,
+            'C=Pensiun Cacat'#13#10,
+            'J=Pensiun Janda / Anak'#13#10]
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='nama_jns_manfaat'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          AccessOption=aoReadOnly
+          ReadOnlyControl=true
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='last_update'
+          AccessOption=aoReadOnly
+          ReadOnlyControl=true
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >
+      }
+      Name='pData'
+      Width=240
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipJenisPenerimaanManfaat']
+      Controls={
+        *object:rtf::DBComboBox<
+          Name='kode_jns_manfaat'
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Kode Jns Manfaat'
+        >
+        , *object:rtf::DBEdit<
+          Name='nama_jns_manfaat'
+          ControlCaption='Nama Jns Manfaat'
+        >
+        , *object:rtf::DBEdit<
+          Name='user_id'
+          ControlCaption='User ID'
+          ReadOnly=true
+        >
+        , *object:rtf::DBDateEdit<
+          Name='last_update'
+          ControlCaption='Last Update'
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Tutup'
+          Default=true
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['pData']
+      InversedAlign=true
+    >
+  }
+>

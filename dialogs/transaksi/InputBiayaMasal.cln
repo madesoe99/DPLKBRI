@@ -1,0 +1,122 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['dsMain']
+  Caption='Input untuk Biaya'
+  Left=300
+  Top=250
+  Width=400
+  Height=180
+  OnFormShow='FormShow'
+  UIParts={
+    object:rtf::PClassUI<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='Code'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='UserAdmin'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='ModifiedTanggalHitung'
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='varchar'
+          DataLength=10
+        >
+      }
+      Name='uipInput'
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='TanggalHitung'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Tanggal Penghitungan'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+      }
+      Name='pInput'
+      Width=240
+      Height=80
+      Bordered=true
+      UIPart=$UIPARTS['uipInput']
+      Controls={
+        *object:rtf::DBDateEdit<
+          Name='TanggalHitung'
+          Top=10
+          Left=20
+          ControlCaption='Tanggal Penghitungan'
+          LayoutOrder=1
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=10
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=375
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='bOK'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          ControlCaption='&OK'
+          Caption='&OK'
+          Default=true
+          OnClick='bOKClick'
+        >, object:rtf::Button<
+          Name='bCancel'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          DefaultAction=daClear
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='dsMain'
+      Width=240
+      Height=96
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['dsInput']
+      InversedAlign=true
+    >, object:rtf::DualSplit<
+      Name='dsInput'
+      Width=240
+      Height=96
+      Container2=$CONTAINERS['pInput']
+      InversedAlign=true
+    >
+  }
+>

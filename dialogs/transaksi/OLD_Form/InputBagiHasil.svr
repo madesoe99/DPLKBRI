@@ -1,0 +1,84 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rpclass::TPClassUIDefList<
+  UIDefs={object:rpclass::TPClassUIDef<
+      Name='uipInput'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='PRESISI_ANGKA_FLOAT'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='Today'
+          DataTypeName='varchar'
+          DataLength=10
+        >, object:rpclass::TCustomLoadedField<
+          Name='SRRCalc.ID_SRRCalc'
+          DataTypeName='INTEGER'
+        >, object:rpclass::TCustomLoadedField<
+          Name='SRRCalc.ID_SRRCalc'
+          DataTypeName='INTEGER'
+        >, object:rpclass::TCustomLoadedField<
+          Name='SRRCalc.tgl_create'
+          DataTypeName='TIMESTAMP'
+        >, object:rpclass::TCustomLoadedField<
+          Name='SRRCalc.tgl_akhir_hitung'
+          DataTypeName='TIMESTAMP'
+        >, object:rpclass::TCustomLoadedField<
+          Name='BatchTransaksi.ID_TransactionBatch'
+          DataTypeName='INTEGER'
+        >, object:rpclass::TCustomLoadedField<
+          Name='BatchTransaksi.ID_TransactionBatch'
+          DataTypeName='INTEGER'
+        >, object:rpclass::TCustomLoadedField<
+          Name='BatchTransaksi.no_batch'
+          DataTypeName='VARCHAR'
+          DataLength=32
+        >, object:rpclass::TCustomLoadedField<
+          Name='tgl_akhir_hitung'
+          DataTypeName='varchar'
+          DataLength=10
+        >}CustomLoadedLinks={object:rpclass::TCustomLoadedLink<
+          Name='SRRCalc'
+          ClassTypeName='SRRCalc'
+          FieldNames='ID_SRRCalc;ID_SRRCalc;tgl_create;tgl_akhir_hitung'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='BatchTransaksi'
+          ClassTypeName='TransactionBatch'
+          FieldNames='ID_TransactionBatch;ID_TransactionBatch;no_batch'
+        >}Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >, object:rpclass::TPClassUIDef<
+      Name='uipPaketInvestasi'
+      PClassName='RincianPaketInvestasi'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='kode_paket_investasi'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='nama_paket_investasi'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='nama_jns_investasi'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='maks_proporsi'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='NominalProfit'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='kode_jns_investasi'
+          DataTypeName='varchar'
+          DataLength=20
+        >}Mode=imMultiRow
+      CreateInstanceOnNew=true
+    >}OnGeneralSetData='FormGeneralSetData'
+>

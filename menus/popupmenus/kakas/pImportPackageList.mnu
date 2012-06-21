@@ -1,0 +1,54 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{FF6521AE-DCB8-457C-933C-35D88DB5B672}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rmn::Menu<
+  MenuItems={
+    object:rmn::MenuItem<
+      Name='new'
+      Caption='Buat Template Baru'
+      MenuItems={
+        object:rmn::MenuItem<
+          Name='newMSExcel'
+          Caption='MS Excel 1997-2003...'
+          OnClick='newClick'
+          StringTag='fMSExcelPackage'
+        >
+        , object:rmn::MenuItem<
+          Name='newFixedLength'
+          Caption='Teks dengan panjang tetap...'
+          OnClick='newClick'
+          StringTag='fFixedLengthPackage'
+        >
+        , object:rmn::MenuItem<
+          Name='newSeparator'
+          Caption='Teks dengan separator...'
+          OnClick='newClick'
+          StringTag='fSeparatorPackage'
+        >
+      }
+    >
+    , object:rmn::MenuItem<
+      Name='edit'
+      Caption='Koreksi Template...'
+      OnClick='editClick'
+    >
+    , object:rmn::MenuItem<
+      Name='view'
+      Caption='Lihat Template...'
+      OnClick='viewClick'
+    >
+    , object:rmn::MenuItem<
+      Caption='-'
+    >
+    , object:rmn::MenuItem<
+      Name='delete'
+      Caption='Hapus Template'
+      OnClick='deleteClick'
+    >
+  }
+  MenuType=mtPopupMenu
+>

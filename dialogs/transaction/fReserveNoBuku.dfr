@@ -1,0 +1,177 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit1']
+  Left=50
+  Top=50
+  Width=457
+  Height=235
+  Position=1
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipInput'
+      FillInDefaultValues=true
+      AlwaysPostToServer=true
+      InitWithDefaultValues=true
+    >, object:rtf::PClassUI<
+      Name='uipOutput'
+      NeverPostToServer=true
+    >
+  }
+  Containers={
+    object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=457
+      Height=235
+      Container1=$CONTAINERS['panel1']
+      Container2=$CONTAINERS['dualsplit3']
+    >, object:rtf::Panel<
+      Name='panel1'
+      Width=377
+      Height=69
+      Controls={
+        object:rtf::Label<
+          Name='label1'
+          Layout=clAbsolute
+          Top=15
+          Left=8
+          Width=26
+          Height=17
+          ControlCaption=''
+          Caption='Pencatatan Nomor Buku DPLK'
+          AutoSize=true
+          FontName='Tahoma'
+          FontColor=-2147483640
+          FontSize=14
+          FontStyleBold=true
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Elements={
+        object:rtf::LinkUIElmtSetting<
+          Name='cabang'
+          RequiredOption=roAlwaysRequired
+          Hidden=false
+          ReadOnlyControl=false
+          ClassTypeName='BranchLocation'
+          DisplayFields='branch_code;BranchName'
+          Restrictions=''
+          OQLText=['SELECT FROM BranchLocation ('#13#10,
+            '  self,'#13#10,
+            '  branch_code,'#13#10,
+            '  BranchName'#13#10,
+            ') THEN ORDER BY branch_code;']
+          LookupOption=loCustomOQL
+          FieldBaseName='cabang'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='no_awal'
+          Hidden=false
+          ReadOnlyControl=false
+        >, object:rtf::FieldUIElmtSetting<
+          Name='no_akhir'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='pnlInput'
+      Width=385
+      Height=121
+      Bordered=true
+      UIPart=$UIPARTS['uipInput']
+      Controls={
+        *object:rtf::DBLookupEdit<
+          Name='cabang'
+          Top=20
+          Left=8
+          ControlCaption='Kode Cabang'
+          LookupField='cabang.BranchName'
+          DisplayLookupField=true
+          DirectInput=true
+        >, *object:rtf::DBEdit<
+          Name='no_awal'
+          Top=48
+          Left=8
+          Width=140
+          Height=21
+          Color=-2147483624
+          ControlCaption='No Awal Buku'
+          MaxLength=6
+        >, *object:rtf::DBEdit<
+          Name='no_akhir'
+          Top=76
+          Left=8
+          Width=140
+          Height=21
+          Color=-2147483624
+          ControlCaption='No Akhir Buku'
+          MaxLength=6
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=8
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Input Kode Cabang'
+    >, object:rtf::DualSplit<
+      Name='dualsplit3'
+      Width=457
+      Height=165
+      Container1=$CONTAINERS['pnlInput']
+      Container2=$CONTAINERS['panel3']
+    >, object:rtf::Panel<
+      Name='panel3'
+      Width=320
+      Height=42
+      Controls={
+        object:rtf::Button<
+          Name='bReserve'
+          Layout=clAbsolute
+          Top=8
+          Left=8
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          OnClick='bSimpanClick'
+        >, object:rtf::Button<
+          Name='button2'
+          Layout=clAbsolute
+          Top=8
+          Left=88
+          ControlCaption=''
+          Caption='&Selesai'
+          Cancel=true
+          ExitAction=eaQuitOK
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+  }
+  FormClassName='frmReserveCustID'
+>

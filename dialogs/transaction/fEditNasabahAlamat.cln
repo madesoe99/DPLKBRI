@@ -1,0 +1,332 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['pDataLeft']
+  Caption='Register Ubah Alamat'
+  Left=50
+  Top=50
+  Width=800
+  Height=620
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipRegisterUbahAlamat'
+      ClassTypeName='RegisterUbahAlamat'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='no_referensi'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='alamat_jalan'
+          DataTypeName='VARCHAR'
+          DataLength=60
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='alamat_rtrw'
+          DataTypeName='VARCHAR'
+          DataLength=7
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='alamat_kelurahan'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='alamat_kecamatan'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='alamat_kota'
+          DataTypeName='VARCHAR'
+          DataLength=15
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='alamat_kode_pos'
+          DataTypeName='VARCHAR'
+          DataLength=6
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='alamat_telepon'
+          DataTypeName='VARCHAR'
+          DataLength=12
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_jalan'
+          DataTypeName='VARCHAR'
+          DataLength=60
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_kelurahan'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_kecamatan'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_rtrw'
+          DataTypeName='VARCHAR'
+          DataLength=7
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_kota'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_propinsi'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_kode_pos'
+          DataTypeName='VARCHAR'
+          DataLength=5
+        >
+      }
+      Name='pDataLeft'
+      Width=400
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipRegisterUbahAlamat']
+      Controls={
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='alamat_kantor_jalan'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='alamat_kantor_kode_pos'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='alamat_kantor_kelurahan'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='alamat_kantor_kecamatan'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='alamat_kantor_kota'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='alamat_kantor_propinsi'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='alamat_kantor_telepon'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='kirim_statemen'
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['N=Tidak dikirim'#13#10,
+            'R=Rumah'#13#10,
+            'K=Kantor'#13#10]
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          ReadOnlyControl=true
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='tanggal_register'
+          Hidden=true
+          ReadOnlyControl=true
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='terminal_id'
+          ReadOnlyControl=true
+          DataTypeName='VARCHAR'
+          DataLength=15
+        >
+      }
+      Name='pDataRight'
+      Width=240
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipRegisterUbahAlamat']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='user_id'
+          ReadOnly=true
+        >
+        , *object:rtf::DBEdit<
+          Name='terminal_id'
+          ReadOnly=true
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Bordered=true
+      Controls={
+        object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Color=0
+          ControlCaption=''
+          Caption='&OK'
+          DefaultAction=daProcessAllUI
+          ExitAction=eaQuitOK
+        >
+        , object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Cancel'
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLK'
+          RequiredOption=roAlwaysRequired
+          Hidden=true
+          ClassTypeName='NasabahDPLK'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLK.no_peserta'
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsKey=true
+              KeyOrDisplayName='no_peserta'
+              FinalDisplayFieldName='no_peserta'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLK.no_peserta'
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsDisplay=true
+              KeyOrDisplayName='no_peserta'
+              FinalDisplayFieldName='no_peserta'
+            >
+            , object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLK.nama_lengkap'
+              DataTypeName='VARCHAR'
+              DataLength=30
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_lengkap'
+              FinalDisplayFieldName='nama_lengkap'
+            >
+          }
+          Restrictions=''
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='no_peserta'
+          DataTypeName='varchar'
+          DataLength=11
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='nama_lengkap'
+          DataTypeName='varchar'
+          DataLength=30
+        >
+      }
+      Name='pDataAbove'
+      Width=400
+      Height=90
+      Bordered=true
+      UIPart=$UIPARTS['uipRegisterUbahAlamat']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='no_peserta'
+          Color=-2147483624
+          ReadOnly=true
+        >
+        , *object:rtf::DBEdit<
+          Name='nama_lengkap'
+          Color=-2147483624
+          ReadOnly=true
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['pDataLeft']
+      Container2=$CONTAINERS['pDataRight']
+      SplitDirection=sdrSplitLeftRight
+    >
+    , object:rtf::MultiSplit<
+      Name='MultiSplit'
+      Width=240
+      Height=100
+      Side1Containers={
+        $CONTAINERS['pDataAbove']
+      }
+      Side2Containers={
+        $CONTAINERS['pButton']
+      }
+      SpaceContainer=$CONTAINERS['DualSplit']
+    >
+  }
+>

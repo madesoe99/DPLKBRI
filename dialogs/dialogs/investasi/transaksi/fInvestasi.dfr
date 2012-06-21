@@ -1,0 +1,540 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['pData']
+  Caption='Detil Investasi'
+  Left=50
+  Top=50
+  Width=760
+  Height=650
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnFormShow='FormShow'
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipInvestasi'
+      ClassTypeName='Investasi'
+      DataBinding=bmMaster
+      OnSetData='uipInvestasiSetData'
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caView
+          DataMember='id_investasi'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='no_bilyet'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='LPihakKetiga'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='LRincianPaketInvestasi'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='tgl_buka'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='tgl_tutup'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='nominal_pembukaan'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='akum_nominal'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='akum_piutangLR'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='akum_LR'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='id_investasi'
+          Hidden=true
+        >
+        , *object:rtf::LinkUIElmtSetting<
+          Name='LPihakKetiga'
+          DisplayFields='kode_pihak_ketiga;nama_pihak_ketiga'
+          Restrictions=''
+          OQLText=['select from PihakKetiga'#13#10,
+            '('#13#10,
+            '  kode_pihak_ketiga,'#13#10,
+            '  nama_pihak_ketiga,'#13#10,
+            '  alamat_pihak_ketiga,'#13#10,
+            '  self_investment,'#13#10,
+            '  last_update,'#13#10,
+            '  user_id,'#13#10,
+            '  self'#13#10,
+            ') then order by kode_pihak_ketiga;']
+          LookupOption=loCustomOQL
+        >
+        , *object:rtf::LinkUIElmtSetting<
+          Name='LRincianPaketInvestasi'
+          DisplayFields='kode_jns_investasi;LJenisInvestasi.nama_jns_investasi'
+          Restrictions=''
+          OQLText=['select from RincianPaketInvestasi'#13#10,
+            '['#13#10,
+            '  LPaketInvestasi = :LPaketInvestasi'#13#10,
+            ']'#13#10,
+            '('#13#10,
+            '  kode_jns_investasi,'#13#10,
+            '  LJenisInvestasi.nama_jns_investasi as nama_jns_investasi,'#13#10,
+            '  maks_proporsi,'#13#10,
+            '  self'#13#10,
+            ') then order by kode_jns_investasi;']
+          LookupOption=loCustomOQL
+        >
+        , object:rtf::LinkUIElmtSetting<
+          Name='LPaketInvestasi'
+          ClassTypeName='PaketInvestasi'
+          DisplayFields='kode_paket_investasi;nama_paket_investasi'
+          Restrictions=''
+          OQLText=['select from PaketInvestasi'#13#10,
+            '('#13#10,
+            '  kode_paket_investasi,'#13#10,
+            '  nama_paket_investasi,'#13#10,
+            '  no_giro,'#13#10,
+            '  self'#13#10,
+            ') then order by kode_paket_investasi;']
+          LookupOption=loCustomOQL
+        >
+      }
+      Name='pData'
+      Width=380
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipInvestasi']
+      Controls={
+        *object:rtf::DBLookupEdit<
+          Name='LPihakKetiga'
+          Enabled=false
+          Color=0
+          ControlCaption='pihak ketiga'
+          LookupField='LPihakKetiga.nama_pihak_ketiga'
+          DisplayLookupField=true
+        >
+        , *object:rtf::DBLookupEdit<
+          Name='LRincianPaketInvestasi'
+          Enabled=false
+          Color=0
+          ControlCaption='jenis investasi'
+          LookupField='LRincianPaketInvestasi.LJenisInvestasi.nama_jns_investasi'
+          DisplayLookupField=true
+        >
+        , *object:rtf::DBLookupEdit<
+          Name='LPaketInvestasi'
+          Enabled=false
+          Color=0
+          ControlCaption='paket investasi'
+          LayoutOrder=2
+          LookupField='LPaketInvestasi.nama_paket_investasi'
+          DisplayLookupField=true
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Tutup'
+          Default=true
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caView
+          DataMember='rollover_counter'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='status'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='tgl_otorisasi'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='user_id'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='user_id_auth'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='terminal_id'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='terminal_id_auth'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='status'
+          GenerateCheckBoxForEnum=true
+        >
+      }
+      Name='pRegister'
+      Width=240
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipInvestasi']
+      Controls={
+        *object:rtf::DBCheckBox<
+          Name='status'
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='aktif'
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Query<
+      Name='qTransPiutangInvestasi'
+      Width=240
+      Height=40
+      ContextMenuName='popupmenus/investasi/transaksi/qTransPiut_fInvestasi'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from TransPiutangInvestasi'#13#10,
+        '['#13#10,
+        '  isCommitted = ''T'''#13#10,
+        '  and id_investasi = :id_investasi'#13#10,
+        ']'#13#10,
+        '('#13#10,
+        '  tgl_transaksi,'#13#10,
+        '  LTransactionBatch.no_batch,'#13#10,
+        '  mutasi_debet,'#13#10,
+        '  mutasi_kredit,'#13#10,
+        '  kode_jenis_trinvestasi,'#13#10,
+        '  LJnsTransInvestasi.deskripsi as jenis_trinvestasi,'#13#10,
+        '  tgl_sistem,'#13#10,
+        '  user_id,'#13#10,
+        '  terminal_id,'#13#10,
+        '  id_transaksiinvestasi as ID,'#13#10,
+        '  self'#13#10,
+        ') then order by ID;'#13#10]
+      Columns={
+        object:rtf::QueryColumn<
+          FieldName='TransPiutangInvestasi.tgl_transaksi'
+          Width=130
+          Caption='tgl transaksi'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransPiutangInvestasi.tgl_sistem'
+          Width=130
+          Caption='tgl sistem'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransPiutangInvestasi.jenis_trinvestasi'
+          Width=240
+          Caption='jenis transaksi investasi'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransPiutangInvestasi.no_batch'
+          Width=100
+          Caption='no batch'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransPiutangInvestasi.mutasi_debet'
+          Width=100
+          Caption='mutasi debet'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransPiutangInvestasi.mutasi_kredit'
+          Width=100
+          Caption='mutasi kredit'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransPiutangInvestasi.user_id'
+          Width=100
+          Caption='user id'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransPiutangInvestasi.terminal_id'
+          Width=100
+          Caption='terminal id'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransPiutangInvestasi.ID'
+          Width=50
+          Caption='ID'
+        >
+      }
+      EnableColumns=true
+    >
+    , object:rtf::MultiPages<
+      Name='MultiPages'
+      Width=240
+      Height=100
+      Pages={
+        object:rtf::Page<
+          PageTitle='Piutang &Investasi'
+          Container=$CONTAINERS['qTransPiutangInvestasi']
+        >
+        , object:rtf::Page<
+          PageTitle='Piutang L&aba-Rugi Investasi'
+          Container=$CONTAINERS['qTransPiutangLRInvestasi']
+          Index=1
+        >
+        , object:rtf::Page<
+          PageTitle='Laba-R&ugi Investasi'
+          Container=$CONTAINERS['qTransLRInvestasi']
+          Index=2
+        >
+      }
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplitLR'
+      Width=240
+      Height=310
+      Container1=$CONTAINERS['pData']
+      Container2=$CONTAINERS['pRegister']
+      SplitDirection=sdrSplitLeftRight
+    >
+    , object:rtf::MultiSplit<
+      Name='MultiSplit'
+      Width=240
+      Height=100
+      Side1Containers={
+        $CONTAINERS['DualSplitLR']
+      }
+      Side2Containers={
+        $CONTAINERS['pButton']
+      }
+      SpaceContainer=$CONTAINERS['MultiPages']
+    >
+    , object:rtf::Query<
+      Name='qTransPiutangLRInvestasi'
+      Width=240
+      Height=40
+      ContextMenuName='popupmenus/investasi/transaksi/qTransPiutLR_fInvestasi'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from TransPiutangLRInvestasi'#13#10,
+        '['#13#10,
+        '  isCommitted = ''T'''#13#10,
+        '  and id_investasi = :id_investasi'#13#10,
+        ']'#13#10,
+        '('#13#10,
+        '  tgl_transaksi,'#13#10,
+        '  LTransactionBatch.no_batch,'#13#10,
+        '  mutasi_debet,'#13#10,
+        '  mutasi_kredit,'#13#10,
+        '  kode_jenis_trinvestasi,'#13#10,
+        '  LJnsTransInvestasi.deskripsi as jenis_trinvestasi,'#13#10,
+        '  tgl_sistem,'#13#10,
+        '  user_id,'#13#10,
+        '  terminal_id,'#13#10,
+        '  id_transaksiinvestasi as ID,'#13#10,
+        '  id_transaksiinvestasi_piutinv as ID_PiutangInv,'#13#10,
+        '  id_transaksiinvestasi_lrinv as ID_LRInv,'#13#10,
+        '  self'#13#10,
+        ') then order by ID;']
+      Columns={
+        object:rtf::QueryColumn<
+          FieldName='TransPiutangLRInvestasi.tgl_transaksi'
+          Width=130
+          Caption='tgl transaksi'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransPiutangLRInvestasi.tgl_sistem'
+          Width=130
+          Caption='tgl sistem'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransPiutangLRInvestasi.jenis_trinvestasi'
+          Width=240
+          Caption='jenis transaksi investasi'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransPiutangLRInvestasi.no_batch'
+          Width=100
+          Caption='no batch'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransPiutangLRInvestasi.mutasi_debet'
+          Width=100
+          Caption='mutasi debet'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransPiutangLRInvestasi.mutasi_kredit'
+          Width=100
+          Caption='mutasi kredit'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransPiutangLRInvestasi.user_id'
+          Width=100
+          Caption='user id'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransPiutangLRInvestasi.terminal_id'
+          Width=100
+          Caption='terminal id'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransPiutangLRInvestasi.ID'
+          Width=50
+          Caption='ID'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransPiutangLRInvestasi.ID_PiutangInv'
+          Width=50
+          Caption='ID_Piut'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransPiutangLRInvestasi.ID_LRInv'
+          Width=50
+          Caption='ID_LR'
+        >
+      }
+      EnableColumns=true
+    >
+    , object:rtf::Query<
+      Name='qTransLRInvestasi'
+      Width=240
+      Height=40
+      ContextMenuName='popupmenus/investasi/transaksi/qTransLR_fInvestasi'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from TransLRInvestasi'#13#10,
+        '['#13#10,
+        '  isCommitted = ''T'''#13#10,
+        '  and id_investasi = :id_investasi'#13#10,
+        ']'#13#10,
+        '('#13#10,
+        '  tgl_transaksi,'#13#10,
+        '  LTransactionBatch.no_batch,'#13#10,
+        '  mutasi_debet,'#13#10,
+        '  mutasi_kredit,'#13#10,
+        '  kode_jenis_trinvestasi,'#13#10,
+        '  LJnsTransInvestasi.deskripsi as jenis_trinvestasi,'#13#10,
+        '  LSubJnsTransLRInvestasi.kode_subjns_LRInvestasi as subjenis_trinvestasi,'#13#10,
+        '  tgl_sistem,'#13#10,
+        '  user_id,'#13#10,
+        '  terminal_id,'#13#10,
+        '  id_transaksiinvestasi as ID,'#13#10,
+        '  self'#13#10,
+        ') then order by ID;']
+      Columns={
+        object:rtf::QueryColumn<
+          FieldName='TransLRInvestasi.tgl_transaksi'
+          Width=130
+          Caption='tgl transaksi'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransLRInvestasi.tgl_sistem'
+          Width=130
+          Caption='tgl sistem'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransLRInvestasi.jenis_trinvestasi'
+          Width=240
+          Caption='jenis transaksi investasi'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransLRInvestasi.subjenis_trinvestasi'
+          Width=240
+          Caption='sub jenis tr. investasi'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransLRInvestasi.no_batch'
+          Width=100
+          Caption='no batch'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransLRInvestasi.mutasi_debet'
+          Width=100
+          Caption='mutasi debet'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransLRInvestasi.mutasi_kredit'
+          Width=100
+          Caption='mutasi kredit'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransLRInvestasi.user_id'
+          Width=100
+          Caption='user id'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransLRInvestasi.terminal_id'
+          Width=100
+          Caption='terminal id'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransLRInvestasi.ID'
+          Width=50
+          Caption='ID'
+        >
+      }
+      EnableColumns=true
+    >
+  }
+>

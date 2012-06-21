@@ -1,0 +1,172 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['DualSplit']
+  Caption='Daftar Akseptasi Asuransi'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  OnFormShow='FormShow'
+  UIParts={
+    object:rtf::PClassUI<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='isAdmin'
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='integer'
+          DataLength=20
+        >
+      }
+      Name='uipNoData'
+    >
+  }
+  Containers={
+    object:rtf::Query<
+      Name='qRegisterCIF'
+      Width=800
+      Height=559
+      ContextMenuName='popupmenus/transaction/qRegisterWasiatUmmat'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from RegisterCIF'#13#10,
+        '['#13#10,
+        '  (kode_jenis_registercif = ''U'')'#13#10,
+        '  and (1 = :isAdmin or LUserApp.branch_code = :branch_code)'#13#10,
+        ']'#13#10,
+        '('#13#10,
+        '  no_referensi,'#13#10,
+        '  LUserApp.branch_code,'#13#10,
+        '  no_peserta,'#13#10,
+        '  LNasabahDPLK.nama_lengkap as nama_lengkap,'#13#10,
+        '  keterangan,'#13#10,
+        '  user_id,'#13#10,
+        '  terminal_id,'#13#10,
+        '  tanggal_register,'#13#10,
+        '  registercif_id as ID,'#13#10,
+        '  self'#13#10,
+        ') then order by no_referensi;']
+      DirectDisplay=true
+      WindowSize=20
+      Columns={
+        object:rtf::QueryColumn<
+          FieldName='RegisterCIF.no_referensi'
+          Width=100
+          Caption='Nomor Referensi'
+        >, object:rtf::QueryColumn<
+          FieldName='RegisterCIF.branch_code'
+          Width=75
+          Caption='Kantor Cabang'
+          UseCustomColor=true
+          Color=15128749
+        >, object:rtf::QueryColumn<
+          FieldName='RegisterCIF.tanggal_register'
+          Width=120
+          Caption='Tanggal Register'
+        >, object:rtf::QueryColumn<
+          FieldName='RegisterCIF.no_peserta'
+          Width=100
+          Caption='Nomor Peserta'
+        >, object:rtf::QueryColumn<
+          FieldName='RegisterCIF.nama_lengkap'
+          Width=200
+          Caption='Nama Lengkap'
+        >, object:rtf::QueryColumn<
+          FieldName='RegisterCIF.keterangan'
+          Width=300
+          Caption='Keterangan'
+        >
+      }
+      EnableColumns=true
+    >, object:rtf::Panel<
+      Elements={
+        object:rtf::LinkUIElmtSetting<
+          Name='LBranchLocation'
+          Hidden=false
+          ReadOnlyControl=false
+          ClassTypeName='BranchLocation'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LBranchLocation.branch_code'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=5
+              UsedAsKey=true
+              KeyOrDisplayName='branch_code'
+              FinalDisplayFieldName='branch_code'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LBranchLocation.branch_code'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=5
+              UsedAsDisplay=true
+              KeyOrDisplayName='branch_code'
+              FinalDisplayFieldName='branch_code'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LBranchLocation.BranchName'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=50
+              UsedAsDisplay=true
+              KeyOrDisplayName='BranchName'
+              FinalDisplayFieldName='BranchName'
+            >
+          }
+          Restrictions=''
+          FieldBaseName='LBranchLocation'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='NoLimitLocation'
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='varchar'
+          DataLength=1
+        >
+      }
+      Name='pFilter'
+      Width=240
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipNoData']
+      Controls={
+        *object:rtf::DBLookupEdit<
+          Name='LBranchLocation'
+          Top=10
+          Left=10
+          ControlCaption='Kantor Cabang Pendaftaran'
+          LookupField='LBranchLocation.BranchName'
+          DisplayLookupField=true
+          OnAfterLookup='BranchLocationAfterLookup'
+          DirectInput=true
+        >
+      }
+      EqualCaptionWidth=150
+      ControlLeftMargin=10
+      ControlTopMargin=10
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=240
+      Height=96
+      Container1=$CONTAINERS['pFilter']
+      Container2=$CONTAINERS['qRegisterCIF']
+    >
+  }
+>

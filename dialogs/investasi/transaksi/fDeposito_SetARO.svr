@@ -1,0 +1,116 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rpclass::TPClassUIDefList<
+  UIDefs={object:rpclass::TPClassUIDef<
+      Name='uipDeposito'
+      PClassName='Deposito'
+      LoadedFieldList='id_investasi;no_bilyet;LPihakKetiga.kode_pihak_ketiga;LPihakKetiga.kode_pihak_ketiga;LPihakKetiga.nama_pihak_ketiga;LRincianPaketInvestasi.kode_paket_investasi;LRincianPaketInvestasi.kode_jns_investasi;LRincianPaketInvestasi.kode_paket_investasi;LRincianPaketInvestasi.LPaketInvestasi.nama_paket_investasi;LRincianPaketInvestasi.kode_jns_investasi;tgl_buka;tgl_jatuh_tempo;nominal_pembukaan;equivalent_rate;treatmentPokok;kapitalisir_rollover;no_rekening;Rekening_Deposito;jenisJatuhTempo;jmlHariOnCall;user_id;terminal_id'
+      StoredFieldList='no_bilyet;equivalent_rate;treatmentPokok;kapitalisir_rollover;no_rekening;Rekening_Deposito;jenisJatuhTempo;jmlHariOnCall'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='IsCommited'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='ModeOto'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='CreateMode'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='ChangeMode'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='LMasterGiro.acc_giro'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='LMasterGiro.no_giro'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >, object:rpclass::TCustomLoadedField<
+          Name='LMasterGiro.acc_giro'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >}CustomLoadedLinks={object:rpclass::TCustomLoadedLink<
+          Name='LPihakKetiga'
+          ClassTypeName='PihakKetiga'
+          FieldNames='kode_pihak_ketiga;kode_pihak_ketiga;nama_pihak_ketiga'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LRincianPaketInvestasi'
+          ClassTypeName='RincianPaketInvestasi'
+          FieldNames='kode_paket_investasi;kode_jns_investasi;kode_paket_investasi;LPaketInvestasi.nama_paket_investasi;kode_jns_investasi'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LMasterGiro'
+          ClassTypeName='MasterGiro'
+          FieldNames='acc_giro;no_giro;acc_giro'
+        >}Mode=imSingleRow
+      CreateInstanceOnNew=true
+      OnSetData='uipDepositoSetData'
+    >, object:rpclass::TPClassUIDef<
+      Name='uipParameter'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='nowDate'
+          DataTypeName='varchar'
+          DataLength=10
+        >, object:rpclass::TCustomLoadedField<
+          Name='inv'
+          DataTypeName='varchar'
+          DataLength=1
+        >, object:rpclass::TCustomLoadedField<
+          Name='strInv'
+          DataTypeName='varchar'
+          DataLength=20
+        >}Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >, object:rpclass::TPClassUIDef<
+      Name='uipDepo_Awal'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='no_bilyet'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='kapitalisir_rollover'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='Nisbah'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='Rekening_Deposito'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='no_rekening'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='treatmentPokok'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='tgl_buka'
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='jenisJatuhTempo'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='jmlHariOnCall'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='equivalent_rate'
+          DataTypeName='double'
+          DataLength=20
+        >}Mode=imSingleRow
+    >}OnBeginProcessData='OnBeginProcessData'
+>

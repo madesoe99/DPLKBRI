@@ -1,0 +1,58 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rpclass::TPClassUIDefList<
+  UIDefs={object:rpclass::TPClassUIDef<
+      Name='uipTransaksiDPLK'
+      PClassName='TransaksiDPLK'
+      Mode=imSingleRow
+    >, object:rpclass::TPClassUIDef<
+      Name='uipDataPeserta'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='kode_paket'
+          DataTypeName='varchar'
+          DataLength=5
+        >, object:rpclass::TCustomLoadedField<
+          Name='nama_paket'
+          DataTypeName='varchar'
+          DataLength=50
+        >, object:rpclass::TCustomLoadedField<
+          Name='SRR_paket'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='distribusi_inv'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='SRR_before'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='tgl_akhir_SRR'
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='SRR_peserta'
+          DataTypeName='double'
+          DataLength=20
+        >}Mode=imSingleRow
+    >, object:rpclass::TPClassUIDef<
+      Name='uipNasabah'
+      PClassName='NasabahDPLK'
+      LoadedFieldList='LRekeningDPLK.no_peserta;nama_lengkap;tempat_lahir;tanggal_lahir;no_identitas_diri;jenis_kelamin;LDaerahAsal.kode_propinsi;LDaerahAsal.kode_propinsi;LDaerahAsal.nama_propinsi'
+      StoredFieldList='LRekeningDPLK;nama_lengkap;tempat_lahir;tanggal_lahir;no_identitas_diri;jenis_kelamin;LDaerahAsal'
+      CustomLoadedLinks={object:rpclass::TCustomLoadedLink<
+          Name='LRekeningDPLK'
+          ClassTypeName='RekeningDPLK'
+          FieldNames='no_peserta'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LDaerahAsal'
+          ClassTypeName='DaerahAsal'
+          FieldNames='kode_propinsi;kode_propinsi;nama_propinsi'
+        >}Mode=imSingleRow
+    >}OnGeneralSetData='FormGeneralSetData'
+>

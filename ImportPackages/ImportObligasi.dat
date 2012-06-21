@@ -1,0 +1,53 @@
+PackageDef()
+<s20,Name='ImportObligasi' 
+s20,Description='Import Data Obligasi' 
+s20,Mode='NORMAL' 
+s20,LastModifiedUser='ade herman' 
+d,LastModifiedTime*
+>
+,
+SourceDef()
+<s20,Description='Import Data Obligasi' 
+s20,Type='MSEXCEL' 
+i,FirstDataRow=11
+s20,SheetName='Sheet1' 
+i,ControlColumn=2
+>
+,
+SourceFieldDefs()
+<s20,Name='Id_Investasi' 
+s20,Type='INTEGER' 
+i,Length=0
+i,Index=1
+>
+<'NamaSukuk'  'STRING'  0 2>
+<'Nominal_Akumulasi'  'FLOAT'  0 3>
+<'akumulasi_LabaRugi'  'FLOAT'  0 4>
+<'status'  'STRING'  0 5>
+<'tanggal_buka'  'DATETIME'  0 6>
+<'tanggal_tutup'  'DATETIME'  0 7>
+<'Nominal_Awal'  'FLOAT'  0 8>
+<'KodeEmiten'  'STRING'  0 9>
+<'TreatmentSukuk'  'STRING'  0 10>
+<'harga_beli'  'FLOAT'  0 11>
+<'jenis_sukuk'  'STRING'  0 12>
+<'jeniskupon'  'INTEGER'  0 13>
+<'tgl_jatuh_tempo'  'DATETIME'  0 14>
+<'jenisakad'  'STRING'  0 15>
+<'PersenAkadIjarah'  'FLOAT'  0 16>
+<'KodeBank'  'STRING'  0 17>
+<'NoRekening'  'STRING'  0 18>,
+TransformationDef()
+<s20,Description='Import Data Obligasi' 
+s20,TargetClassName='Obligasi' 
+s20,AfterApplyRowModule='importmassal.Investasi' 
+s20,AfterApplyRowFunctionName='ProcessingImport' 
+>
+,
+TransItemDefs()
+<*s20,Name*
+s20,LookupClass*
+s20,LookupField*
+s20,SourceFieldName*
+>
+..

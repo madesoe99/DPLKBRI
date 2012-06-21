@@ -1,0 +1,121 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['qKirimPeserta']
+  Caption='Daftar Pengiriman Data Peserta ke Core Banking'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=320
+  Height=240
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnFormShow='FormShow'
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipFilter'
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Query<
+      Name='qKirimPeserta'
+      Width=240
+      Height=40
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      WindowSize=20
+      Columns={
+        object:rtf::QueryColumn<
+          FieldName='HistoriKirimPeserta.Tanggal_Terdaftar'
+          Width=150
+          Caption='Tanggal Peserta Terdaftar'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='HistoriKirimPeserta.Jumlah_Peserta'
+          Width=120
+          Caption='Jumlah Peserta Terkirim'
+          UseCustomColor=true
+          Color=15128749
+        >
+        , object:rtf::QueryColumn<
+          FieldName='HistoriKirimPeserta.Tanggal_Kirim'
+          Width=150
+          Caption='Tanggal Kirim Core Banking'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='HistoriKirimPeserta.User_ID'
+          Width=120
+          Caption='User Pengirim'
+        >
+      }
+      EnableColumns=true
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='AwalTanggal'
+          ControlCaption='Mulai Tanggal'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='AkhirTanggal'
+          ControlCaption='Hingga Tanggal'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+      }
+      Name='pFilter'
+      Width=700
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipFilter']
+      Controls={
+        *object:rtf::DBDateEdit<
+          Name='AkhirTanggal'
+          Layout=clNextSide
+        >
+        , object:rtf::Button<
+          Name='bTampilkan'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Tampilkan'
+          Default=true
+          OnClick='bTampilkanClick'
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=10
+      ControlTopMargin=10
+      DefaultControlHeight=21
+      HorizontalControlGap=7
+      RowControlGap=7
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['pFilter']
+      Container2=$CONTAINERS['qKirimPeserta']
+    >
+  }
+>

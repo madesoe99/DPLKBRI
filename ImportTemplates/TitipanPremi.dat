@@ -1,0 +1,16 @@
+__InfoTemplate()
+<s20,namaTemplate='Titipan Premi' 
+s20,deskripsiTemplate='Impor untuk titipan premi peserta DPLK' 
+s20,targetClass='TitipanPremi' 
+s20,processScript='AuthorizeTransaksi' 
+s20,processFunction='AuthorizeOperation' 
+>
+,
+__DeskripsiField()
+<s20,namaField='tgl_transaksi' 
+s20,tipeField='datetime' 
+s20,lookupClass='' 
+s20,lookupField='' 
+>
+<'no_peserta'  'string'  'RekeningDPLK'  'no_peserta' >
+<'mutasi_premi'  'float'  ''  '' >..

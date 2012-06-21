@@ -1,0 +1,69 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipNasabahDPLK'
+      PClassName='NasabahDPLK'
+      LoadedFieldList='no_peserta;nama_lengkap;tempat_lahir;tanggal_lahir;LDaerahAsal.kode_propinsi;LDaerahAsal.kode_propinsi;LDaerahAsal.nama_propinsi;LKepemilikan.kode_pemilikan;LKepemilikan.kode_pemilikan;LJenisUsaha.kode_jenis_usaha;LJenisUsaha.kode_jenis_usaha;LJenisUsaha.nama_jenis_usaha;pekerjaan'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LDaerahAsal'
+          ClassTypeName='DaerahAsal'
+          FieldNames='kode_propinsi;kode_propinsi;nama_propinsi'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LKepemilikan'
+          ClassTypeName='Kepemilikan'
+          FieldNames='kode_pemilikan;kode_pemilikan'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LJenisUsaha'
+          ClassTypeName='JenisUsaha'
+          FieldNames='kode_jenis_usaha;kode_jenis_usaha;nama_jenis_usaha'
+        >
+      }
+      Mode=imSingleRow
+    >, object:rpclass::TPClassUIDef<
+      Name='uipRekInvDPLK'
+      MasterUIName='uipNasabahDPLK'
+      ListName='Ls_RekeningDPLK'
+      SetMasterDetailRelationship=true
+    >, object:rpclass::TPClassUIDef<
+      Name='uipHistoriAhliWaris'
+      MasterUIName='uipNasabahDPLK'
+      ListName='Ls_HistoriAhliWaris'
+      LoadedFieldList='no_referensi;tanggal_histori;keterangan'
+      SetMasterDetailRelationship=true
+    >, object:rpclass::TPClassUIDef<
+      Name='uipHistoriUbahAlamat'
+      MasterUIName='uipNasabahDPLK'
+      ListName='Ls_HistoriAlamat'
+      LoadedFieldList='no_referensi;tanggal_histori;alamat_jalan;alamat_kota;alamat_surat_jalan;alamat_surat_kota;kirim_statemen;keterangan;alamat_jalan2;alamat_surat_jalan2'
+      SetMasterDetailRelationship=true
+    >, object:rpclass::TPClassUIDef<
+      Name='uipHistoriUbahStatusKerja'
+      MasterUIName='uipNasabahDPLK'
+      ListName='Ls_HistoriUbahStatusKerja'
+      LoadedFieldList='jenis_transaksi;no_referensi;tanggal_histori;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.nama_perusahaan;keterangan'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLKCorporate'
+          ClassTypeName='NasabahDPLKCorporate'
+          FieldNames='kode_nasabah_corporate;kode_nasabah_corporate;nama_perusahaan'
+        >
+      }
+      SetMasterDetailRelationship=true
+    >, object:rpclass::TPClassUIDef<
+      Name='uipHistoriAhliWarisDetail'
+      MasterUIName='uipHistoriAhliWaris'
+      ListName='Ls_HistoriAhliWarisDetail'
+      LoadedFieldList='nomor_urut_prioritas;nama_lengkap;tanggal_lahir;jenis_kelamin;status_ahli_waris;hubungan_keluarga;keterangan'
+      SetMasterDetailRelationship=true
+    >
+  }
+  OnEndSetData='FormEndSetData'
+>

@@ -1,0 +1,157 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit1']
+  Left=50
+  Top=50
+  Width=420
+  Height=170
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipNoData'
+    >
+  }
+  Containers={
+    object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=420
+      Height=170
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['pData']
+      InversedAlign=true
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=180
+      Height=60
+      Controls={
+        object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          Color=0
+          ControlCaption=''
+          Caption='&OK'
+          OnClick='btnOKClick'
+        >
+        , object:rtf::Button<
+          Name='btnCancel'
+          Layout=clAbsolute
+          Top=8
+          Left=96
+          Color=0
+          ControlCaption=''
+          Caption='&Cancel'
+          ExitAction=eaQuitOK
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLKCorporate'
+          ControlCaption='Corporate'
+          ClassTypeName='NasabahDPLKCorporate'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLKCorporate.kode_nasabah_corporate'
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsKey=true
+              KeyOrDisplayName='kode_nasabah_corporate'
+              FinalDisplayFieldName='kode_nasabah_corporate'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLKCorporate.kode_nasabah_corporate'
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_nasabah_corporate'
+              FinalDisplayFieldName='kode_nasabah_corporate'
+            >
+            , object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLKCorporate.nama_perusahaan'
+              DataTypeName='VARCHAR'
+              DataLength=100
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_perusahaan'
+              FinalDisplayFieldName='nama_perusahaan'
+            >
+          }
+          Restrictions=''
+          OQLText=['select from NasabahDPLKCorporate'#13#10,
+            '('#13#10,
+            '  kode_nasabah_corporate,'#13#10,
+            '  nama_perusahaan,'#13#10,
+            '  alamat_kantor_jalan,'#13#10,
+            '  alamat_kantor_kota,'#13#10,
+            '  self'#13#10,
+            ') then order by kode_nasabah_corporate;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LNasabahDPLKCorporate'
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='tanggal_awal'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='tanggal_akhir'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+      }
+      Name='pData'
+      Width=400
+      Height=121
+      UIPart=$UIPARTS['uipNoData']
+      Controls={
+        *object:rtf::DBLookupEdit<
+          Name='LNasabahDPLKCorporate'
+          Top=20
+          Left=20
+          ControlCaption='Corporate'
+          LookupField='LNasabahDPLKCorporate.nama_perusahaan'
+          DisplayLookupField=true
+          DirectInput=true
+          AlternateKeyValueSrc='LNasabahDPLKCorporate.kode_nasabah_corporate'
+          AlternateKeyName='kode_nasabah_corporate'
+        >
+        , *object:rtf::DBDateEdit<
+          Name='tanggal_awal'
+          Top=48
+          Left=20
+          Color=0
+          ControlCaption='dari tanggal'
+        >
+        , *object:rtf::DBDateEdit<
+          Name='tanggal_akhir'
+          Top=76
+          Left=20
+          Color=0
+          ControlCaption='hingga tanggal'
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Laporan Peserta Corporate'
+    >
+  }
+>

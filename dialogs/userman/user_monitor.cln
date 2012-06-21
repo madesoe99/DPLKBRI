@@ -1,0 +1,65 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit1']
+  Caption='User monitoring'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=585
+  Height=409
+  Containers={object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=585
+      Height=409
+      Container1=$CONTAINERS['panel1']
+      Container2=$CONTAINERS['qLogins']
+    >, object:rtf::Query<
+      Name='qLogins'
+      Width=585
+      Height=367
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from userlogin'#13#10,
+        '('#13#10,
+        '  self,'#13#10,
+        '  user_id,'#13#10,
+        '  terminal_ip,'#13#10,
+        '  login_time,'#13#10,
+        '  login_id'#13#10,
+        ') then order by user_id;']
+      DirectDisplay=true
+    >, object:rtf::Panel<
+      Name='panel1'
+      Width=320
+      Height=41
+      Controls={object:rtf::Button<
+          Name='bKick'
+          Layout=clAbsolute
+          Top=8
+          Left=8
+          ControlCaption=''
+          Caption='kick user'
+          OnClick='bKickClick'
+        >, object:rtf::Button<
+          Name='bKickAll'
+          Layout=clAbsolute
+          Top=8
+          Left=88
+          ControlCaption=''
+          Caption='kick all users'
+          OnClick='bKickAllClick'
+        >}ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >}FormClassName='frmUserMonitor'
+>

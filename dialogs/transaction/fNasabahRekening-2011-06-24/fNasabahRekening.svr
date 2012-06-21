@@ -1,0 +1,124 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipNasabahDPLK'
+      PClassName='NasabahDPLK'
+      LoadedFieldList='no_peserta;nama_lengkap;tempat_lahir;tanggal_lahir;LDaerahAsal.kode_propinsi;LDaerahAsal.kode_propinsi;LDaerahAsal.nama_propinsi;LRekeningDPLK.no_peserta;LRekeningDPLK.status_wasiat_ummat;LRekeningDPLK.status_autodebet;LRekeningDPLK.status_anuitas;LRekeningDPLK.STATUS_DPLK;LRekeningDPLK.LBranchLocation.branchname;jenis_kelamin;LKelompok.kode_kelompok;LKelompok.kode_kelompok;LKelompok.nama_kelompok;no_identitas_diri;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_jalan2;alamat_telepon2;alamat_propinsi;alamat_email;alamat_surat_jalan;alamat_surat_kelurahan;alamat_surat_kecamatan;alamat_surat_rtrw;alamat_surat_kota;alamat_surat_propinsi;alamat_surat_kode_pos;alamat_surat_jalan2;alamat_surat_telepon;alamat_surat_telepon2;no_referensi;keterangan;user_id;auth_user_id;terminal_id;last_terminal_id;tgl_registrasi;last_update;isPesertaPengalihan;LLDPLain.kode_dp;LLDPLain.kode_dp;LLDPLain.nama_dp;nama_perusahaan;alamat_kantor_jalan;alamat_kantor_kode_pos;alamat_kantor_kelurahan;alamat_kantor_kecamatan;alamat_kantor_kota;alamat_kantor_propinsi;alamat_kantor_telepon;alamat_kantor_telepon2;NPWP;pekerjaan;nama_perusahaan;LJenisUsaha.kode_jenis_usaha;LJenisUsaha.kode_jenis_usaha;LJenisUsaha.nama_jenis_usaha;LKepemilikan.kode_pemilikan;LKepemilikan.kode_pemilikan;LKepemilikan.keterangan;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.nama_perusahaan'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='mode'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LDaerahAsal'
+          ClassTypeName='DaerahAsal'
+          FieldNames='kode_propinsi;kode_propinsi;nama_propinsi'
+        >
+        , object:rpclass::TCustomLoadedLink<
+          Name='LRekeningDPLK'
+          ClassTypeName='RekeningDPLK'
+          FieldNames='no_peserta;status_wasiat_ummat;status_autodebet;status_anuitas;STATUS_DPLK;LBranchLocation.branchname'
+        >
+        , object:rpclass::TCustomLoadedLink<
+          Name='LKelompok'
+          ClassTypeName='Kelompok'
+          FieldNames='kode_kelompok;kode_kelompok;nama_kelompok'
+        >
+        , object:rpclass::TCustomLoadedLink<
+          Name='LLDPLain'
+          ClassTypeName='LDP'
+          FieldNames='kode_dp;kode_dp;nama_dp'
+        >
+        , object:rpclass::TCustomLoadedLink<
+          Name='LJenisUsaha'
+          ClassTypeName='JenisUsaha'
+          FieldNames='kode_jenis_usaha;kode_jenis_usaha;nama_jenis_usaha'
+        >
+        , object:rpclass::TCustomLoadedLink<
+          Name='LKepemilikan'
+          ClassTypeName='Kepemilikan'
+          FieldNames='kode_pemilikan;kode_pemilikan;keterangan'
+        >
+        , object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLKCorporate'
+          ClassTypeName='NasabahDPLKCorporate'
+          FieldNames='kode_nasabah_corporate;kode_nasabah_corporate;nama_perusahaan'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipAhliWaris'
+      MasterUIName='uipNasabahDPLK'
+      ListName='Ls_AhliWaris'
+      LoadedFieldList='nomor_urut_prioritas;nama_lengkap;tanggal_lahir;jenis_kelamin;status_ahli_waris;hubungan_keluarga;keterangan'
+      CreateInstanceOnNew=true
+      SetMasterDetailRelationship=true
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipRekeningDPLK'
+      MasterUIName='uipNasabahDPLK'
+      ListName='Ls_RekeningDPLK'
+      LoadedFieldList='collectivity_wasiat_ummat;kewajiban_wasiat_ummat;iuran_pk;iuran_pst;akum_dana_iuran_pk;akum_dana_iuran_pst;akum_dana_pengembangan;akum_dana_peralihan;nilai_bayar_anuitas;SRR_AKHIR;sumber_dana;LPaketInvestasi.kode_paket_investasi;LPaketInvestasi.kode_paket_investasi;LPaketInvestasi.nama_paket_investasi;STATUS_BIAYA_DAFTAR;status_autodebet;status_anuitas;status_wasiat_ummat;kirim_statemen;usia_pensiun;tgl_pensiun;tgl_pensiun_dipercepat;tgl_srr_akhir;TGL_TUTUP'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='saldo_total'
+          DataTypeName='double'
+          DataLength=20
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LPaketInvestasi'
+          ClassTypeName='PaketInvestasi'
+          FieldNames='kode_paket_investasi;kode_paket_investasi;nama_paket_investasi'
+        >
+      }
+      CreateInstanceOnNew=true
+      SetMasterDetailRelationship=true
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipRekeningWU'
+      PClassName='RekeningWasiatUmmat'
+      LoadedFieldList='no_polis;tgl_akseptasi;tgl_berakhir;besar_premi;manfaat_asuransi'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='KolektibilitasPremi'
+          DataTypeName='varchar'
+          DataLength=1
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='TunggakanPremi'
+          DataTypeName='double'
+          DataLength=20
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipRekeningAD'
+      PClassName='RekeningAutoDebet'
+      LoadedFieldList='no_rekening;nama_rekening;tanggal_autodebet'
+      Mode=imSingleRow
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipRekeningA'
+      PClassName='RekeningAnuitas'
+      LoadedFieldList='no_rekening;nama_asuransi;no_polis_anuitas;tgl_pembelian_anuitas'
+      Mode=imSingleRow
+    >
+  }
+  OnEndSetData='FormEndSetData'
+>

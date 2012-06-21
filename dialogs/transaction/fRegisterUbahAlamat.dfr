@@ -1,0 +1,691 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['MultiSplit']
+  Caption='Perubahan Alamat Peserta'
+  Left=100
+  Top=50
+  Width=800
+  Height=560
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnFormShow='FormShow'
+  OnBeginSetData=''
+  OnEndSetData='FormEndSetData'
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipRegisterCIF'
+      ClassTypeName='RegisterUbahAlamat'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      AfterApplyRow='uipRegisterCIFApplyRow'
+    >, object:rtf::PClassUI<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['no_peserta'#13#10,
+            'nama_lengkap'#13#10,
+            'alamat_jalan'#13#10,
+            'alamat_rtrw'#13#10,
+            'alamat_kelurahan'#13#10,
+            'alamat_kecamatan'#13#10,
+            'alamat_kota'#13#10,
+            'alamat_kode_pos'#13#10,
+            'alamat_telepon'#13#10,
+            'alamat_surat_jalan'#13#10,
+            'alamat_surat_rtrw'#13#10,
+            'alamat_surat_kelurahan'#13#10,
+            'alamat_surat_kecamatan'#13#10,
+            'alamat_surat_kota'#13#10,
+            'alamat_surat_propinsi'#13#10,
+            'alamat_surat_kode_pos'#13#10,
+            'alamat_kantor_jalan'#13#10,
+            'alamat_kantor_kelurahan'#13#10,
+            'alamat_kantor_kecamatan'#13#10,
+            'alamat_kantor_kota'#13#10,
+            'alamat_kantor_propinsi'#13#10,
+            'alamat_kantor_kode_pos'#13#10,
+            'alamat_kantor_telepon'#13#10]
+        >, object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['alamat_jalan2'#13#10,
+            'alamat_telepon2'#13#10,
+            'alamat_kantor_telepon2'#13#10]
+        >, object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['alamat_propinsi'#13#10,
+            'alamat_surat_jalan2'#13#10,
+            'alamat_surat_telepon'#13#10,
+            'alamat_surat_telepon2'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='no_peserta'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='nama_lengkap'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_jalan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_rtrw'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kelurahan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kecamatan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kota'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kode_pos'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_telepon'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_jalan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_rtrw'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_kelurahan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_kecamatan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_kota'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_propinsi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_kode_pos'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kantor_jalan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kantor_kelurahan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kantor_kecamatan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kantor_kota'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kantor_propinsi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kantor_kode_pos'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kantor_telepon'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_jalan2'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_telepon2'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kantor_telepon2'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_propinsi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_jalan2'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_telepon'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_telepon2'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='uipMaster'
+      ClassTypeName='NasabahDPLK'
+      DataBinding=bmMaster
+    >, object:rtf::PClassUI<
+      Name='uipDataLama'
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Name='pButton'
+      Width=400
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          OnClick='btnOKClick'
+        >, object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          OnClick='btnCancelClick'
+        >, object:rtf::Button<
+          Name='btnClose'
+          Layout=clNextSide
+          Top=8
+          Left=166
+          Visible=false
+          ControlCaption=''
+          Caption='&Batal'
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='DualSplitAlamat'
+      Width=240
+      Height=96
+      Container1=$CONTAINERS['pAlamat']
+      Container2=$CONTAINERS['pAlamatSurat']
+      SplitDirection=sdrSplitLeftRight
+    >, object:rtf::MultiSplit<
+      Name='MultiSplit'
+      Width=800
+      Height=560
+      Side1Containers={
+        $CONTAINERS['pData']
+
+      }
+      Side2Containers={
+        $CONTAINERS['pButton']
+
+      }
+      SpaceContainer=$CONTAINERS['DualSplitAlamat']
+    >, object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caEdit
+          DataMembers=['no_referensi'#13#10,
+            'LNasabahDPLK'#13#10,
+            'keterangan'#13#10,
+            'user_id'#13#10,
+            'terminal_id'#13#10]
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='registercif_id'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='no_referensi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLK'
+          Hidden=false
+          ReadOnlyControl=true
+          DisplayFields='no_peserta;nama_lengkap;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_kantor_jalan;alamat_kantor_kode_pos;alamat_kantor_kelurahan;alamat_kantor_kecamatan;alamat_kantor_kota;alamat_kantor_propinsi;alamat_kantor_telepon;alamat_surat_jalan;alamat_surat_kelurahan;alamat_surat_kecamatan;alamat_surat_rtrw;alamat_surat_kota;alamat_surat_propinsi;alamat_surat_kode_pos'
+          Restrictions=''
+          FieldBaseName='LNasabahDPLK'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          Hidden=false
+          ReadOnlyControl=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='terminal_id'
+          Hidden=false
+          ReadOnlyControl=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='registercif_id'
+          Hidden=true
+          ReadOnlyControl=false
+        >, object:rtf::FieldUIElmtSetting<
+          Name='mode'
+          Hidden=true
+          ReadOnlyControl=false
+        >, object:rtf::FieldUIElmtSetting<
+          Name='nasabah_korporat'
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='integer'
+          DataLength=20
+        >
+      }
+      Name='pData'
+      Width=793
+      Height=185
+      Bordered=true
+      UIPart=$UIPARTS['uipRegisterCIF']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='no_referensi'
+          Top=30
+          Left=20
+          Color=12695295
+          ControlCaption='Nomor Referensi'
+        >, *object:rtf::DBLookupEdit<
+          Name='LNasabahDPLK'
+          Top=58
+          Left=20
+          Width=100
+          Height=21
+          Enabled=false
+          ControlCaption='Peserta DPLK'
+          LookupField='LNasabahDPLK.nama_lengkap'
+          DisplayLookupField=true
+        >, *object:rtf::DBEdit<
+          Name='keterangan'
+          Top=86
+          Left=20
+          ControlCaption='Keterangan'
+        >, *object:rtf::DBEdit<
+          Name='user_id'
+          Top=114
+          Left=20
+          Color=-2147483624
+          ControlCaption='User Penginput'
+          ReadOnly=true
+        >, *object:rtf::DBEdit<
+          Name='terminal_id'
+          Top=142
+          Left=20
+          Color=-2147483624
+          ControlCaption='Terminal Input'
+          ReadOnly=true
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=20
+      ControlTopMargin=30
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Register'
+    >, object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caEdit
+          DataMembers=['alamat_jalan'#13#10,
+            'alamat_rtrw'#13#10,
+            'alamat_kelurahan'#13#10,
+            'alamat_kecamatan'#13#10,
+            'alamat_kota'#13#10,
+            'alamat_kode_pos'#13#10,
+            'alamat_telepon'#13#10]
+        >, object:rtf::MultiControlDef<
+          Action=caEdit
+          DataMembers=['alamat_jalan2'#13#10,
+            'alamat_telepon2'#13#10]
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='alamat_propinsi'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='alamat_jalan'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='jalan'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_rtrw'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='rt rw'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kelurahan'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='kelurahan'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kecamatan'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='kecamatan'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kota'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='kota'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kode_pos'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='kode pos'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_telepon'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='telepon 1'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_jalan2'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='jalan (lanjutan)'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_telepon2'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='telepon 2'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_propinsi'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='pAlamat'
+      Width=400
+      Height=345
+      Bordered=true
+      UIPart=$UIPARTS['uipRegisterCIF']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='alamat_jalan'
+          Top=30
+          Left=20
+          Color=12695295
+          ControlCaption='Jalan'
+          CharCase=ecUpperCase
+        >, *object:rtf::DBEdit<
+          Name='alamat_rtrw'
+          Top=86
+          Left=20
+          Color=12695295
+          ControlCaption='RT RW'
+          LayoutOrder=3
+        >, *object:rtf::DBEdit<
+          Name='alamat_kelurahan'
+          Top=114
+          Left=20
+          ControlCaption='Kelurahan'
+          LayoutOrder=4
+          CharCase=ecUpperCase
+        >, *object:rtf::DBEdit<
+          Name='alamat_kecamatan'
+          Top=142
+          Left=20
+          ControlCaption='Kecamatan'
+          LayoutOrder=5
+          CharCase=ecUpperCase
+        >, *object:rtf::DBEdit<
+          Name='alamat_kota'
+          Top=170
+          Left=20
+          Color=12695295
+          ControlCaption='Kota'
+          LayoutOrder=6
+          CharCase=ecUpperCase
+        >, *object:rtf::DBEdit<
+          Name='alamat_kode_pos'
+          Top=226
+          Left=20
+          Color=12695295
+          ControlCaption='Kode Pos'
+          LayoutOrder=8
+        >, *object:rtf::DBEdit<
+          Name='alamat_telepon'
+          Top=254
+          Left=20
+          Color=12695295
+          ControlCaption='Telp. Rumah'
+          LayoutOrder=9
+        >, *object:rtf::DBEdit<
+          Name='alamat_jalan2'
+          Top=58
+          Left=20
+          ControlCaption=''
+          LayoutOrder=2
+          CharCase=ecUpperCase
+        >, *object:rtf::DBEdit<
+          Name='alamat_telepon2'
+          Top=282
+          Left=20
+          Color=12695295
+          ControlCaption='Handphone'
+          LayoutOrder=10
+        >, *object:rtf::DBEdit<
+          Name='alamat_propinsi'
+          Top=198
+          Left=20
+          Color=12695295
+          ControlCaption='Provinsi'
+          LayoutOrder=7
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=30
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Alamat Tempat Tinggal Baru'
+    >, object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caEdit
+          DataMembers=['alamat_surat_jalan'#13#10,
+            'alamat_surat_rtrw'#13#10,
+            'alamat_surat_kelurahan'#13#10,
+            'alamat_surat_kecamatan'#13#10,
+            'alamat_surat_kota'#13#10,
+            'alamat_surat_propinsi'#13#10,
+            'alamat_surat_kode_pos'#13#10]
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='alamat_surat_jalan2'
+        >, object:rtf::MultiControlDef<
+          Action=caEdit
+          DataMembers=['alamat_surat_telepon'#13#10,
+            'alamat_surat_telepon2'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_jalan'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='jalan'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_rtrw'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='rt rw'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_kelurahan'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='kelurahan'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_kecamatan'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='kecamatan'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_kota'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='kota'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_propinsi'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='propinsi'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_kode_pos'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='kode pos'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_jalan2'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='jalan (lanjutan)'
+          DataTypeName='varchar'
+          DataLength=200
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_telepon'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='telepon 1'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_telepon2'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='telepon 2'
+        >
+      }
+      Name='pAlamatSurat'
+      Width=400
+      Height=300
+      Bordered=true
+      UIPart=$UIPARTS['uipRegisterCIF']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='alamat_surat_jalan'
+          Top=30
+          Left=20
+          Color=12695295
+          ControlCaption='Jalan'
+          CharCase=ecUpperCase
+        >, *object:rtf::DBEdit<
+          Name='alamat_surat_rtrw'
+          Top=86
+          Left=20
+          Color=12695295
+          ControlCaption='RT RW'
+          LayoutOrder=3
+          CharCase=ecUpperCase
+        >, *object:rtf::DBEdit<
+          Name='alamat_surat_kelurahan'
+          Top=114
+          Left=20
+          ControlCaption='Kelurahan'
+          LayoutOrder=4
+          CharCase=ecUpperCase
+        >, *object:rtf::DBEdit<
+          Name='alamat_surat_kecamatan'
+          Top=142
+          Left=20
+          ControlCaption='Kecamatan'
+          LayoutOrder=5
+          CharCase=ecUpperCase
+        >, *object:rtf::DBEdit<
+          Name='alamat_surat_kota'
+          Top=170
+          Left=20
+          Color=12695295
+          ControlCaption='Kota'
+          LayoutOrder=6
+          CharCase=ecUpperCase
+        >, *object:rtf::DBEdit<
+          Name='alamat_surat_propinsi'
+          Top=198
+          Left=20
+          Color=12695295
+          ControlCaption='Provinsi'
+          LayoutOrder=7
+          CharCase=ecUpperCase
+        >, *object:rtf::DBEdit<
+          Name='alamat_surat_kode_pos'
+          Top=226
+          Left=20
+          Color=12695295
+          ControlCaption='Kode Pos'
+          LayoutOrder=8
+          CharCase=ecUpperCase
+        >, *object:rtf::DBEdit<
+          Name='alamat_surat_jalan2'
+          Top=58
+          Left=20
+          ControlCaption=''
+        >, *object:rtf::DBEdit<
+          Name='alamat_surat_telepon'
+          Top=254
+          Left=20
+          Color=12695295
+          ControlCaption='Telp. Rumah'
+          LayoutOrder=9
+        >, *object:rtf::DBEdit<
+          Name='alamat_surat_telepon2'
+          Top=282
+          Left=20
+          Color=12695295
+          ControlCaption='Handphone'
+          LayoutOrder=10
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=30
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Alamat Surat Baru'
+    >
+  }
+>

@@ -1,0 +1,239 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['DualSplit']
+  Caption='Daftar Transaksi DPLK Belum Terotorisasi'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=320
+  Height=240
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData='FormGeneralSetData'
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnFormShow='FormShow'
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='BranchCode'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=5
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='isBackOffice'
+          Hidden=true
+          DataTypeName='integer'
+          DataLength=20
+          EnumeratedValues=['0=False'#13#10,
+            '1=True'#13#10]
+        >
+      }
+      Name='uipUserInfo'
+    >
+    , object:rtf::PClassUI<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='code'
+          Hidden=true
+          DataTypeName='integer'
+          DataLength=20
+        >
+      }
+      Name='uipFilter'
+    >
+  }
+  Containers={
+    object:rtf::Query<
+      Name='qTransaksi'
+      Width=320
+      Height=164
+      ContextMenuName='popupmenus/transaksi/pDaftarTransaksiDPLK'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      WindowSize=20
+      Columns={
+        object:rtf::QueryColumn<
+          FieldName='TransaksiDPLK.Flag_Pilih'
+          Caption='Flag Pilih'
+          UseCustomColor=true
+          Color=15128749
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransaksiDPLK.Tanggal_Transaksi'
+          Width=70
+          Caption='Tgl Transaksi'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransaksiDPLK.nobatch'
+          Width=160
+          Caption='Nomor Batch Transaksi'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransaksiDPLK.Nomor_Peserta'
+          Width=80
+          Caption='Nomor Peserta'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransaksiDPLK.Kode_Jenis_Transaksi'
+          Width=130
+          Caption='Kode Jenis Transaksi'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransaksiDPLK.Kode_Cabang'
+          Width=100
+          Caption='Kode Cabang'
+          Hidden=true
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransaksiDPLK.Status_Otorisasi'
+          Width=100
+          Caption='Status Otorisasi'
+          UseCustomColor=true
+          Color=15128749
+          Hidden=true
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransaksiDPLK.Tanggal_Otorisasi'
+          Width=110
+          Caption='Tanggal Otorisasi'
+          Hidden=true
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransaksiDPLK.Total_Dana'
+          Width=100
+          Caption='Total Dana'
+          UseCustomColor=true
+          Color=15128749
+          Hidden=true
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransaksiDPLK.mutasi_iuran_pk'
+          Width=90
+          Caption='Mutasi Iuran PK'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransaksiDPLK.mutasi_iuran_pst'
+          Width=90
+          Caption='Mutasi Iuran Pst.'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransaksiDPLK.mutasi_pengembangan'
+          Width=90
+          Caption='Mutasi Pengemb.'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransaksiDPLK.mutasi_peralihan'
+          Width=90
+          Caption='Mutasi Peralihan'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='TransaksiDPLK.Keterangan'
+          Width=320
+          Caption='Keterangan'
+        >
+      }
+      EnableColumns=true
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::LinkUIElmtSetting<
+          Name='LBranch'
+          ControlCaption='Kode dan Nama Cabang'
+          ClassTypeName='BranchLocation'
+          DisplayFields='branch_code;BranchName'
+          Restrictions=''
+          OQLText=['select from BranchLocation'#13#10,
+            '(branch_code, BranchName, self)'#13#10,
+            'then order by branch_code;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LBranch'
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='AwalTanggal'
+          ControlCaption='Mulai Tanggal'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='AkhirTanggal'
+          ControlCaption='Hingga Tanggal'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+      }
+      Name='pFilter'
+      Width=700
+      Height=75
+      Bordered=true
+      UIPart=$UIPARTS['uipFilter']
+      Controls={
+        *object:rtf::DBLookupEdit<
+          Name='LBranch'
+          Top=10
+          Left=10
+          ControlCaption='Kode dan Nama Cabang'
+          LookupField='LBranch.BranchName'
+          DisplayLookupField=true
+          DirectInput=true
+        >
+        , *object:rtf::DBDateEdit<
+          Name='AwalTanggal'
+          Top=38
+          Left=10
+          Color=0
+          ControlCaption='Mulai Tanggal'
+        >
+        , *object:rtf::DBDateEdit<
+          Name='AkhirTanggal'
+          Layout=clNextSide
+          Top=38
+          Left=264
+          Color=0
+          ControlCaption='Hingga Tanggal'
+        >
+        , object:rtf::Button<
+          Name='bTampilkan'
+          Layout=clNextSide
+          Top=38
+          Left=472
+          Color=0
+          ControlCaption=''
+          Caption='&Tampilkan'
+          Default=true
+          OnClick='bTampilkanClick'
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=10
+      ControlTopMargin=10
+      DefaultControlHeight=21
+      HorizontalControlGap=7
+      RowControlGap=7
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=320
+      Height=240
+      Container1=$CONTAINERS['pFilter']
+      Container2=$CONTAINERS['qTransaksi']
+    >
+  }
+>

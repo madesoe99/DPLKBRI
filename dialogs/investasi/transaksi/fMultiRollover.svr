@@ -1,0 +1,96 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipRolloverDeposito'
+      PClassName='RolloverDeposito'
+      LoadedFieldList='lakukan_kapitalisir'
+      StoredFieldList='LDeposito;tgl_transaksi;tgl_sistem;ID_TransactionBatch;lakukan_kapitalisir'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='proses'
+          DataTypeName='varchar'
+          DataLength=1
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LDeposito'
+          ClassTypeName='Deposito'
+          FieldNames='id_investasi;no_bilyet;kode_paket_investasi;kode_pihak_ketiga;akum_nominal;akum_piutangLR;akum_LR;rollover_counter;kapitalisir_rollover;treatmentPokok;nisbah;tgl_jatuh_tempo;jenisJatuhTempo'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+      AfterApplyRow='uipRolloverDepositoApplyRow'
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipNoData'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='dateFrom'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='dateUntil'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='dateUntil_tmrw'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='isDisplay'
+          DataTypeName='integer'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LTransactionBatch.ID_TransactionBatch'
+          DataTypeName='INTEGER'
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LTransactionBatch.ID_TransactionBatch'
+          DataTypeName='INTEGER'
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LTransactionBatch.no_batch'
+          DataTypeName='VARCHAR'
+          DataLength=32
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='nowDate'
+          DataTypeName='varchar'
+          DataLength=10
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='user_id'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='terminal_id'
+          DataTypeName='varchar'
+          DataLength=15
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LTransactionBatch'
+          ClassTypeName='TransactionBatch'
+          FieldNames='ID_TransactionBatch;ID_TransactionBatch;no_batch'
+        >
+      }
+      Mode=imSingleRow
+    >
+  }
+  OnGeneralSetData='FormGeneralSetData'
+>

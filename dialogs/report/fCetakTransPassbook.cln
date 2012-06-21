@@ -1,0 +1,136 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit1']
+  Caption='Cetak Transaksi yang Belum Dicetak'
+  Left=50
+  Top=50
+  Width=401
+  Height=177
+  OnShow='OnShow'
+  UIParts={object:rtf::PClassUI<
+      Name='uipNodata'
+    >}Containers={object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=401
+      Height=177
+      Container1=$CONTAINERS['panel1']
+      Container2=$CONTAINERS['panel2']
+    >, object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='No_Peserta'
+          ControlCaption='No Peserta'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='Nama'
+          ReadOnlyControl=true
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='BarisMulai'
+          ControlCaption='Dimulai pada baris'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='TglCetakTerakhir'
+          Hidden=true
+          DataTypeName='timestamp'
+          DataLength=20
+        >}Name='panel1'
+      Width=385
+      Height=130
+      Bordered=true
+      UIPart=$UIPARTS['uipNodata']
+      Controls={*object:rtf::DBEdit<
+          Name='No_Peserta'
+          Top=8
+          Left=8
+          Color=0
+          ControlCaption='No Peserta'
+          OnExit='NoRekExit'
+        >, *object:rtf::DBEdit<
+          Name='Nama'
+          Top=36
+          Left=8
+          Color=-2147483624
+          ControlCaption='Nama'
+          CaptionWidth=100
+          ReadOnly=true
+        >, *object:rtf::DBEdit<
+          Name='BarisMulai'
+          Top=64
+          Left=8
+          Width=41
+          Height=21
+          Color=0
+          ControlCaption='Dimulai pada baris'
+          CaptionWidth=100
+        >, object:rtf::Label<
+          Name='label1'
+          Layout=clAbsolute
+          Top=65
+          Left=160
+          Width=121
+          Height=17
+          Color=0
+          ControlCaption=''
+          Caption='( Ubah jika diperlukan )'
+          AutoSize=true
+          FontName='Tahoma'
+          FontColor=16711680
+          FontSize=8
+          FontStyleItalic=true
+        >}EqualCaptionWidth=100
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Name='panel2'
+      Width=320
+      Height=41
+      Bordered=true
+      Controls={object:rtf::Button<
+          Name='btnPeragaan'
+          Layout=clNextSide
+          Top=8
+          Left=166
+          Visible=false
+          Color=0
+          ControlCaption=''
+          LayoutOrder=3
+          Caption='&Peragaan'
+          OnClick='btnOKClick'
+        >, object:rtf::Button<
+          Name='btnBatal'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          Color=0
+          ControlCaption=''
+          LayoutOrder=2
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >, object:rtf::Button<
+          Name='btnCetak'
+          Layout=clNextSide
+          Top=8
+          Left=8
+          Color=0
+          ControlCaption=''
+          Caption='&Cetak'
+          OnClick='btnOKClick'
+        >}ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >}FormClassName='fCetakTransPassbook'
+>

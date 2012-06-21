@@ -1,0 +1,330 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit1']
+  Caption='Daftar Transaksi'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  OnClose='Form_OnClose'
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipFilter'
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Name='pButton'
+      Width=320
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='bOtorisasi'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          ControlCaption=''
+          LayoutOrder=2
+          Caption='&Otorisasi'
+          OnClick='bOtorisasi_Click'
+        >, object:rtf::Button<
+          Name='bView'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          ControlCaption=''
+          LayoutOrder=1
+          Caption='&Lihat Detil'
+          OnClick='bView_Click'
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=800
+      Height=600
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['dualsplit2']
+      InversedAlign=true
+    >, object:rtf::DualSplit<
+      Name='dualsplit2'
+      Width=800
+      Height=559
+      Container1=$CONTAINERS['pFilter']
+      Container2=$CONTAINERS['qTransaksi']
+    >, object:rtf::Query<
+      Name='qTransaksi'
+      Width=800
+      Height=398
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Columns={
+        object:rtf::QueryColumn<
+          FieldName='TransaksiDPLK.tgl_transaksi'
+          Width=120
+          Caption='Tanggal Transaksi'
+        >, object:rtf::QueryColumn<
+          FieldName='TransaksiDPLK.branch_code'
+          Width=100
+          Caption='Kode Cabang'
+        >, object:rtf::QueryColumn<
+          FieldName='TransaksiDPLK.isCommitted'
+          Width=100
+          Caption='Status Otorisasi'
+        >, object:rtf::QueryColumn<
+          FieldName='TransaksiDPLK.ID_Transaksi'
+          Width=100
+          Caption='Id Transaksi'
+        >, object:rtf::QueryColumn<
+          FieldName='TransaksiDPLK.kode_jenis_transaksi'
+          Width=100
+          Caption='Kode Transaksi'
+          Hidden=true
+        >, object:rtf::QueryColumn<
+          FieldName='TransaksiDPLK.nama_transaksi'
+          Width=120
+          Caption='Nama Transaksi'
+        >, object:rtf::QueryColumn<
+          FieldName='TransaksiDPLK.no_rekening'
+          Width=100
+          Caption='Nomor Rekening'
+        >, object:rtf::QueryColumn<
+          FieldName='TransaksiDPLK.keterangan'
+          Width=500
+          Caption='Keterangan'
+        >
+      }
+      EnableColumns=true
+    >, object:rtf::Panel<
+      Elements={
+        object:rtf::LinkUIElmtSetting<
+          Name='LCabang'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Kode dan Nama Cabang'
+          ClassTypeName='BranchLocation'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LCabang.branch_code'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=5
+              UsedAsKey=true
+              KeyOrDisplayName='branch_code'
+              FinalDisplayFieldName='branch_code'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LCabang.branch_code'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=5
+              UsedAsDisplay=true
+              KeyOrDisplayName='branch_code'
+              FinalDisplayFieldName='branch_code'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LCabang.BranchName'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=50
+              UsedAsDisplay=true
+              KeyOrDisplayName='BranchName'
+              FinalDisplayFieldName='BranchName'
+            >
+          }
+          Restrictions=''
+          OQLText=['select from BranchLocation'#13#10,
+            '(branch_code, BranchName, self)'#13#10,
+            'then order by branch_code;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LCabang'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='cbAllCabang'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Semua Cabang'
+          DataTypeName='integer'
+          DataLength=20
+          EnumeratedValues=['1=True'#13#10,
+            '0=False'#13#10]
+          GenerateCheckBoxForEnum=true
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LJenisTransaksi'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Jenis Transaksi'
+          ClassTypeName='JenisTransaksiDPLK'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LJenisTransaksi.kode_jenis_transaksi'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=1
+              UsedAsKey=true
+              KeyOrDisplayName='kode_jenis_transaksi'
+              FinalDisplayFieldName='kode_jenis_transaksi'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LJenisTransaksi.kode_jenis_transaksi'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=1
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_jenis_transaksi'
+              FinalDisplayFieldName='kode_jenis_transaksi'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LJenisTransaksi.nama_transaksi'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=30
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_transaksi'
+              FinalDisplayFieldName='nama_transaksi'
+            >
+          }
+          Restrictions=''
+          OQLText=['select from JenisTransaksiDPLK'#13#10,
+            '(kode_jenis_transaksi, nama_transaksi, self)'#13#10,
+            'then order by kode_jenis_transaksi;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LJenisTransaksi'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='cbAllTransaksi'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Semua Jenis Transaksi'
+          DataTypeName='integer'
+          DataLength=20
+          EnumeratedValues=['1=True'#13#10,
+            '0=False'#13#10]
+          GenerateCheckBoxForEnum=true
+        >, object:rtf::FieldUIElmtSetting<
+          Name='eAwalTanggal'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Mulai Tanggal'
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='eHinggaTanggal'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Hingga Tanggal'
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='cbStatusOtorisasi'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Status Otorisasi Transaksi'
+          DataTypeName='varchar'
+          DataLength=1
+          EnumeratedValues=['A=Semua'#13#10,
+            'T=Sudah'#13#10,
+            'F=Belum'#13#10]
+        >
+      }
+      Name='pFilter'
+      Width=705
+      Height=160
+      Bordered=true
+      UIPart=$UIPARTS['uipFilter']
+      Controls={
+        *object:rtf::DBLookupEdit<
+          Name='LCabang'
+          Top=8
+          Left=8
+          ControlCaption='Kode dan Nama Cabang'
+          LookupField='LCabang.BranchName'
+          DisplayLookupField=true
+          DirectInput=true
+        >, *object:rtf::DBCheckBox<
+          Name='cbAllCabang'
+          Layout=clNextSide
+          Top=8
+          Left=398
+          Width=150
+          Height=21
+          ControlCaption='Semua Cabang'
+          ValueChecked='1'
+          ValueUnchecked='0'
+          OnClick='cbAllCabangClick'
+        >, *object:rtf::DBLookupEdit<
+          Name='LJenisTransaksi'
+          Top=36
+          Left=8
+          ControlCaption='Jenis Transaksi'
+          LookupField='LJenisTransaksi.nama_transaksi'
+          DisplayLookupField=true
+          DirectInput=true
+        >, *object:rtf::DBCheckBox<
+          Name='cbAllTransaksi'
+          Layout=clNextSide
+          Top=36
+          Left=398
+          Width=150
+          Height=21
+          ControlCaption='Semua Jenis Transaksi'
+          ValueChecked='1'
+          ValueUnchecked='0'
+          OnClick='cbAllTransaksiClick'
+        >, *object:rtf::DBDateEdit<
+          Name='eAwalTanggal'
+          Top=64
+          Left=8
+          ControlCaption='Mulai Tanggal'
+        >, *object:rtf::DBDateEdit<
+          Name='eHinggaTanggal'
+          Layout=clNextSide
+          Top=64
+          Left=296
+          ControlCaption='Hingga Tanggal'
+        >, *object:rtf::DBComboBox<
+          Name='cbStatusOtorisasi'
+          Top=92
+          Left=8
+          ControlCaption='Status Otorisasi Transaksi'
+        >, object:rtf::Button<
+          Name='bTampilkan'
+          Layout=clNewLine
+          Top=120
+          Left=8
+          ControlCaption=''
+          Caption='&Tampilkan'
+          Default=true
+          OnClick='bTampilkanClick_Client'
+        >
+      }
+      EqualCaptionWidth=160
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+  }
+  FormClassName='fSelectTransaksi'
+>

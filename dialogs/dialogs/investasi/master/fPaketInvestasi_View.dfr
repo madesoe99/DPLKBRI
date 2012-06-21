@@ -1,0 +1,322 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['pMaster']
+  Caption='Lihat Paket Investasi'
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipPaketInvestasi'
+      ClassTypeName='PaketInvestasi'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+    , object:rtf::PClassUI<
+      Name='uipRincianPaketInvestasi'
+      ClassTypeName='RincianPaketInvestasi'
+      DataBinding=bmList
+      Master=$UIPARTS['uipPaketInvestasi']
+      ListName='Ls_RincianPaketInvestasi'
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      SetMasterDetailRelationship=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caView
+          DataMember='kode_paket_investasi'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='nama_paket_investasi'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='acc_giro'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='acc_iuran'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='acc_kedplklain'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='acc_manfaat'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='acc_pengembangan'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='acc_peralihan'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='acc_giro'
+          ControlCaption='Kode Akun Giro'
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='acc_iuran'
+          Hidden=true
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='acc_kedplklain'
+          Hidden=true
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='acc_manfaat'
+          Hidden=true
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='acc_pengembangan'
+          Hidden=true
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='acc_peralihan'
+          Hidden=true
+        >
+      }
+      Name='pMaster'
+      Width=400
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipPaketInvestasi']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='kode_paket_investasi'
+          ControlCaption='Kode Paket Investasi'
+        >
+        , *object:rtf::DBEdit<
+          Name='nama_paket_investasi'
+          ControlCaption='Nama Paket Investasi'
+        >
+        , *object:rtf::DBEdit<
+          Name='acc_giro'
+          ControlCaption='Kode Akun Giro'
+        >
+      }
+      EqualCaptionWidth=150
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Grid<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caView
+          DataMember='LJenisInvestasi'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='maks_proporsi'
+        >
+      }
+      Elements={
+        *object:rtf::LinkUIElmtSetting<
+          Name='LJenisInvestasi'
+          DisplayFields='kode_jns_investasi;nama_jns_investasi'
+          Restrictions=''
+          OQLText=['select from JenisInvestasi'#13#10,
+            '('#13#10,
+            '  kode_jns_investasi as Kode_Jns_investasi,'#13#10,
+            '  nama_jns_investasi as Nama_jns_investasi,'#13#10,
+            '  expected_rate as Expected_Rate,'#13#10,
+            '  acc_biayainvest as Acc_BiayaInvest,'#13#10,
+            '  acc_investasi as Acc_Investasi,'#13#10,
+            '  acc_pendapatan as Acc_Pendapatan,'#13#10,
+            '  acc_piutangpendapatan as Acc_PiutangPendapatan,'#13#10,
+            '  acc_potensi_profit as Acc_Potensi_Profit,'#13#10,
+            '  user_id as User_ID,'#13#10,
+            '  last_update as Last_Update,'#13#10,
+            '  self'#13#10,
+            ') then order by Kode_Jns_investasi;']
+          LookupOption=loCustomOQL
+        >
+      }
+      Name='gDetails'
+      Width=240
+      Height=40
+      UIPart=$UIPARTS['uipRincianPaketInvestasi']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Rincian Paket Investasi'
+      Columns={
+        *object:rtf::GridColumn<
+          Name='LJenisInvestasi.kode_jns_investasi'
+          InputStyle=cisLookup
+          EnumeratedValues=''
+          FieldName='LJenisInvestasi.kode_jns_investasi'
+          DisplayFormat=''
+          TitleCaption='Kode Jenis Investasi'
+          Width=120
+          ReadOnly=true
+        >
+        , *object:rtf::GridColumn<
+          Name='LJenisInvestasi.nama_jns_investasi'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='LJenisInvestasi.nama_jns_investasi'
+          DisplayFormat=''
+          TitleCaption='Nama Jenis Investasi'
+          Width=150
+          ReadOnly=true
+        >
+        , *object:rtf::GridColumn<
+          Name='maks_proporsi'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='maks_proporsi'
+          DisplayFormat='0.###'
+          TitleCaption='Maksimal Proporsi'
+          Width=150
+          ReadOnly=true
+        >
+      }
+      ReadOnly=true
+      SuppressHelpLine=true
+    >
+    , object:rtf::MultiSplit<
+      Name='MultiSplit'
+      Width=240
+      Height=100
+      Side1Containers={
+        $CONTAINERS['DualSplit']
+      }
+      Side2Containers={
+        $CONTAINERS['pButton']
+      }
+      SpaceContainer=$CONTAINERS['gDetails']
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Tutup'
+          Default=true
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caView
+          DataMember='no_giro'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='total_potensi_profit'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='total_srr'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='user_id'
+        >
+        , object:rtf::ControlDef<
+          Action=caView
+          DataMember='last_update'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='total_potensi_profit'
+          Hidden=true
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='total_srr'
+          Hidden=true
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          ReadOnlyControl=true
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='last_update'
+          ReadOnlyControl=true
+        >
+      }
+      Name='pMasterRight'
+      Width=240
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipPaketInvestasi']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='no_giro'
+          ControlCaption='Nomor Giro'
+        >
+        , *object:rtf::DBEdit<
+          Name='user_id'
+          ControlCaption='ID Pengguna'
+          ReadOnly=true
+        >
+        , *object:rtf::DBDateEdit<
+          Name='last_update'
+          ControlCaption='Terakhir Diperbarui'
+        >
+      }
+      EqualCaptionWidth=150
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=240
+      Height=120
+      Container1=$CONTAINERS['pMaster']
+      Container2=$CONTAINERS['pMasterRight']
+      SplitDirection=sdrSplitLeftRight
+    >
+  }
+>

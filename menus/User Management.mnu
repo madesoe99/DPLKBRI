@@ -1,0 +1,68 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{FF6521AE-DCB8-457C-933C-35D88DB5B672}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rmn::Menu<
+  MenuItems={
+    object:rmn::MenuItem<
+      Caption='User &Management'
+      MenuItems={
+        object:rmn::MenuItem<
+          Name='UM001'
+          Caption='&User List'
+          OnClick='Action1Click'
+          AllowedGroups='ADM'
+          StringTag='query_user'
+        >, object:rmn::MenuItem<
+          Name='UM002'
+          Caption='User &Group List'
+          OnClick='Action1Click'
+          AllowedGroups='ADM'
+          StringTag='query_usergroup'
+        >, object:rmn::MenuItem<
+          Caption='Branch &Location'
+          OnClick='Action1Click'
+          AllowedGroups='ADM'
+          StringTag='query_branchlocation'
+        >, object:rmn::MenuItem<
+          Caption='-'
+        >, object:rmn::MenuItem<
+          Name='select_menu'
+          Caption='Register &Menu Authority'
+          OnClick='Action2Click'
+          AllowedGroups='ADM'
+          StringTag='menulist'
+        >, object:rmn::MenuItem<
+          Caption='-'
+        >, object:rmn::MenuItem<
+          Name='user_monitor'
+          Caption='User M&onitor'
+          OnClick='userMonitorClick'
+          AllowedGroups='ADM'
+          StringTag='userlist'
+        >
+      }
+      AllowedGroups='ADM'
+    >, object:rmn::MenuItem<
+      Caption='&Utilities'
+      MenuItems={
+        object:rmn::MenuItem<
+          Name='browse_appdir'
+          Caption='Browse Server Directory'
+          OnClick='browseDirClick'
+          AllowedGroups='ADM'
+        >, object:rmn::MenuItem<
+          Name='excel_import'
+          Caption='Excel import...'
+          OnClick='excelImportClick'
+          AllowedGroups='ADM'
+        >
+      }
+      AllowedGroups='ADM'
+    >
+  }
+  DenyThenAllow=true
+>

@@ -1,0 +1,150 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rpclass::TPClassUIDefList<
+  UIDefs={object:rpclass::TPClassUIDef<
+      Name='uipInput'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='Code'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='BatchType'
+          DataTypeName='varchar'
+          DataLength=1
+        >, object:rpclass::TCustomLoadedField<
+          Name='BatchSubType'
+          DataTypeName='varchar'
+          DataLength=1
+        >, object:rpclass::TCustomLoadedField<
+          Name='isNeedType'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='TanggalPakai'
+          DataTypeName='varchar'
+          DataLength=10
+        >, object:rpclass::TCustomLoadedField<
+          Name='isNotNeedTanggalPakai'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='isOpenOnly'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='AccountLinkType'
+          DataTypeName='varchar'
+          DataLength=1
+        >, object:rpclass::TCustomLoadedField<
+          Name='isManualTransaction'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='LTransactionBatch.ID_TransactionBatch'
+          DataTypeName='INTEGER'
+        >, object:rpclass::TCustomLoadedField<
+          Name='LTransactionBatch.ID_TransactionBatch'
+          DataTypeName='INTEGER'
+        >, object:rpclass::TCustomLoadedField<
+          Name='LTransactionBatch.no_batch'
+          DataTypeName='VARCHAR'
+          DataLength=32
+        >, object:rpclass::TCustomLoadedField<
+          Name='LTransactionBatch.batch_type'
+          DataTypeName='VARCHAR'
+          DataLength=1
+        >, object:rpclass::TCustomLoadedField<
+          Name='LTransactionBatch.batch_sub_type'
+          DataTypeName='VARCHAR'
+          DataLength=1
+        >, object:rpclass::TCustomLoadedField<
+          Name='LTransactionBatch.branch_code'
+          DataTypeName='VARCHAR'
+          DataLength=5
+        >, object:rpclass::TCustomLoadedField<
+          Name='LTransactionBatch.tgl_used'
+          DataTypeName='TIMESTAMP'
+        >, object:rpclass::TCustomLoadedField<
+          Name='LPeserta.no_peserta'
+          DataTypeName='VARCHAR'
+          DataLength=11
+        >, object:rpclass::TCustomLoadedField<
+          Name='LPeserta.no_peserta'
+          DataTypeName='VARCHAR'
+          DataLength=11
+        >, object:rpclass::TCustomLoadedField<
+          Name='LPeserta.nama_lengkap'
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >}CustomLoadedLinks={object:rpclass::TCustomLoadedLink<
+          Name='LTransactionBatch'
+          ClassTypeName='TransactionBatch'
+          FieldNames='ID_TransactionBatch;ID_TransactionBatch;no_batch;batch_type;batch_sub_type;branch_code;tgl_used'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LPeserta'
+          ClassTypeName='NasabahDPLK'
+          FieldNames='no_peserta;no_peserta;nama_lengkap'
+        >}Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >, object:rpclass::TPClassUIDef<
+      Name='uipUserInfo'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='isBackOffice'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='isTeller'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='UserIDOwner'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='isBackOfficeCabang'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='BranchCode'
+          DataTypeName='varchar'
+          DataLength=5
+        >}Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >, object:rpclass::TPClassUIDef<
+      Name='uipBatchDefined'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='ID_TransactionBatch'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='no_batch'
+          DataTypeName='varchar'
+          DataLength=32
+        >, object:rpclass::TCustomLoadedField<
+          Name='tgl_used'
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='branch_code'
+          DataTypeName='varchar'
+          DataLength=5
+        >, object:rpclass::TCustomLoadedField<
+          Name='batch_type'
+          DataTypeName='varchar'
+          DataLength=1
+        >}Mode=imMultiRow
+      CreateInstanceOnNew=true
+    >, object:rpclass::TPClassUIDef<
+      Name='uipSuperUser'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='UserID'
+          DataTypeName='varchar'
+          DataLength=20
+        >}Mode=imMultiRow
+      CreateInstanceOnNew=true
+    >}OnGeneralSetData='FormGeneralSetData'
+>

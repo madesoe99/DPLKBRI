@@ -1,0 +1,209 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit1']
+  Left=50
+  Top=50
+  Width=431
+  Height=315
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipNoData'
+    >
+  }
+  Containers={
+    object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=431
+      Height=315
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['pData']
+      InversedAlign=true
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='nama_lengkap'
+          ControlCaption='Nama Lengkap'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='iuran_bulanan'
+          ControlCaption='Iuran Bulanan'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='pengalihan_dana'
+          ControlCaption='Pengalihan Dana'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='kenaikan_iuran'
+          ControlCaption='Kenaikan Iuran Pertahun'
+          DataTypeName='integer'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='tanggal_lahir'
+          ControlCaption='Tanggal Lahir'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='tanggal_registrasi'
+          ControlCaption='Tanggal Registrasi DPLK '
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='paket_investasi'
+          ControlCaption='Paket Investasi'
+          DataTypeName='varchar'
+          DataLength=2
+        >
+      }
+      Name='pData'
+      Width=430
+      Height=260
+      Bordered=true
+      UIPart=$UIPARTS['uipNoData']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='nama_lengkap'
+          Top=40
+          Left=20
+          Color=0
+          ControlCaption='Nama Lengkap'
+        >
+        , *object:rtf::DBEdit<
+          Name='iuran_bulanan'
+          Top=68
+          Left=20
+          Color=0
+          ControlCaption='Iuran Bulanan'
+        >
+        , *object:rtf::DBEdit<
+          Name='pengalihan_dana'
+          Top=96
+          Left=20
+          Color=0
+          ControlCaption='Pengalihan Dana'
+        >
+        , *object:rtf::DBEdit<
+          Name='kenaikan_iuran'
+          Top=124
+          Left=20
+          Width=35
+          Height=21
+          Color=0
+          ControlCaption='Kenaikan Iuran Pertahun'
+        >
+        , *object:rtf::DBDateEdit<
+          Name='tanggal_lahir'
+          Top=152
+          Left=20
+          Width=100
+          Height=21
+          Color=0
+          ControlCaption='Tanggal Lahir'
+        >
+        , *object:rtf::DBDateEdit<
+          Name='tanggal_registrasi'
+          Top=180
+          Left=20
+          Width=100
+          Height=21
+          Color=0
+          ControlCaption='Tanggal Registrasi DPLK'
+        >
+        , *object:rtf::DBEdit<
+          Name='paket_investasi'
+          Top=208
+          Left=20
+          Color=0
+          ControlCaption='Paket Investasi'
+        >
+        , object:rtf::Label<
+          Name='label1'
+          Layout=clAbsolute
+          Top=211
+          Left=245
+          Width=26
+          Height=17
+          Color=0
+          ControlCaption=''
+          Caption='A.  B.  C.'
+          AutoSize=true
+          FontName='Tahoma'
+          FontColor=-2147483640
+          FontSize=8
+          FontStyleBold=true
+        >
+        , object:rtf::Label<
+          Name='label3'
+          Layout=clAbsolute
+          Top=128
+          Left=245
+          Width=26
+          Height=17
+          Color=0
+          ControlCaption=''
+          Caption='(%)'
+          AutoSize=true
+          FontName='Tahoma'
+          FontColor=-2147483640
+          FontSize=8
+          FontStyleBold=true
+        >
+      }
+      EqualCaptionWidth=180
+      ControlLeftMargin=20
+      ControlTopMargin=40
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='SIMULASI DPLK DGN USIA (45 - 60)'
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=190
+      Height=50
+      Bordered=true
+      Controls={
+        object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          Color=0
+          ControlCaption=''
+          Caption='&Proses'
+          OnClick='btnOKClick'
+        >
+        , object:rtf::Button<
+          Name='btnCancel'
+          Layout=clAbsolute
+          Top=8
+          Left=96
+          Color=0
+          ControlCaption=''
+          Caption='&Cancel'
+          ExitAction=eaQuitOK
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+  }
+>

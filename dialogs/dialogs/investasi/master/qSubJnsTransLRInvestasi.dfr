@@ -1,0 +1,85 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['qSubJnsTransLRInvestasi']
+  Caption='Daftar Sub Jenis Transaksi LR'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  Containers={
+    object:rtf::Query<
+      Name='qSubJnsTransLRInvestasi'
+      Width=240
+      Height=40
+      ContextMenuName='popupmenus/investasi/master/qSubJnsTransLRInvestasi'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from SubJnsTransLRInvestasi'#13#10,
+        '('#13#10,
+        '  kode_subjns_LRInvestasi,'#13#10,
+        '  kategori$ as kategori,'#13#10,
+        '  LJenisInvestasi.nama_jns_investasi as nama_jns_investasi,'#13#10,
+        '  account_code,'#13#10,
+        '  deskripsi,'#13#10,
+        '  user_id,'#13#10,
+        '  last_update,'#13#10,
+        '  self'#13#10,
+        ') then order by kode_subjns_LRInvestasi;']
+      DirectDisplay=true
+      Columns={
+        object:rtf::QueryColumn<
+          FieldName='SubJnsTransLRInvestasi.kode_subjns_LRInvestasi'
+          Caption='Kode Sub Jenis Investasi'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='SubJnsTransLRInvestasi.kategori'
+          Width=120
+          Caption='Kategori'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='SubJnsTransLRInvestasi.nama_jns_investasi'
+          Caption='Nama Jenis Investasi'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='SubJnsTransLRInvestasi.account_code'
+          Caption='Kode Akun'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='SubJnsTransLRInvestasi.deskripsi'
+          Width=200
+          Caption='Deskripsi'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='SubJnsTransLRInvestasi.user_id'
+          Caption='ID Pengguna'
+        >
+        , object:rtf::QueryColumn<
+          FieldName='SubJnsTransLRInvestasi.last_update'
+          Caption='Terakhir Diperbarui'
+        >
+      }
+      EnableColumns=true
+    >
+  }
+>

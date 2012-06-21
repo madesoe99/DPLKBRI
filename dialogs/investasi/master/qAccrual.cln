@@ -1,0 +1,46 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['qAccrual']
+  Caption='Daftar Accrual'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  Containers={object:rtf::Query<
+      Name='qAccrual'
+      Width=800
+      Height=600
+      ContextMenuName='popupmenus/investasi/master/qAccrual'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from Accrual'#13#10,
+        '('#13#10,
+        '  accrual_code,'#13#10,
+        '  accrual_day,'#13#10,
+        '  accrual_month,'#13#10,
+        '  self'#13#10,
+        ') then order by accrual_code;']
+      DirectDisplay=true
+      WindowSize=20
+      Columns={object:rtf::QueryColumn<
+          FieldName='Accrual.accrual_code'
+          Width=60
+          Caption='Kode Accrual'
+        >, object:rtf::QueryColumn<
+          FieldName='Accrual.accrual_day'
+          Width=180
+          Caption='Hari Accrual Setahun'
+        >, object:rtf::QueryColumn<
+          FieldName='Accrual.accrual_month'
+          Caption='Hari Accrual Sebulan'
+        >}EnableColumns=true
+    >}>

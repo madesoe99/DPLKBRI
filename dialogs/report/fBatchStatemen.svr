@@ -1,0 +1,139 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipNoData'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='tanggal_awal'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='tanggal_akhir'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='jumlah_baris'
+          DataTypeName='integer'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='margin_atas'
+          DataTypeName='integer'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='margin_bawah'
+          DataTypeName='integer'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='nama_file'
+          DataTypeName='varchar'
+          DataLength=64
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='batasi_cabang'
+          DataTypeName='integer'
+          DataLength=1
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LBranchLocation.branch_code'
+          DataTypeName='VARCHAR'
+          DataLength=5
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LBranchLocation.branch_code'
+          DataTypeName='VARCHAR'
+          DataLength=5
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LBranchLocation.BranchName'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='batasi_kelompok'
+          DataTypeName='integer'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LKelompok.kode_kelompok'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LKelompok.kode_kelompok'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LKelompok.nama_kelompok'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='batasi_perusahaan'
+          DataTypeName='integer'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LNasabahDPLKCorporate.kode_nasabah_corporate'
+          DataTypeName='VARCHAR'
+          DataLength=11
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LNasabahDPLKCorporate.kode_nasabah_corporate'
+          DataTypeName='VARCHAR'
+          DataLength=11
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LNasabahDPLKCorporate.nama_perusahaan'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='urutan_1'
+          DataTypeName='varchar'
+          DataLength=32
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='urutan_2'
+          DataTypeName='varchar'
+          DataLength=32
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='urutan_3'
+          DataTypeName='varchar'
+          DataLength=32
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LBranchLocation'
+          ClassTypeName='BranchLocation'
+          FieldNames='branch_code;branch_code;BranchName'
+        >
+        , object:rpclass::TCustomLoadedLink<
+          Name='LKelompok'
+          ClassTypeName='Kelompok'
+          FieldNames='kode_kelompok;kode_kelompok;nama_kelompok'
+        >
+        , object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLKCorporate'
+          ClassTypeName='NasabahDPLKCorporate'
+          FieldNames='kode_nasabah_corporate;kode_nasabah_corporate;nama_perusahaan'
+        >
+      }
+      Mode=imSingleRow
+    >
+  }
+>

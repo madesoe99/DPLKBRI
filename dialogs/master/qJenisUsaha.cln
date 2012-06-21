@@ -1,0 +1,40 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['qJenisUsaha']
+  Caption='Daftar Bidang Usaha'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  Containers={
+    object:rtf::Query<
+      Name='qJenisUsaha'
+      Width=800
+      Height=600
+      ContextMenuName='popupmenus/master/qJenisUsaha'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from JenisUsaha'#13#10,
+        '('#13#10,
+        '  self,'#13#10,
+        '  kode_jenis_usaha as Kode_Jenis_Usaha,'#13#10,
+        '  nama_jenis_usaha as Nama_Jenis_Usaha,'#13#10,
+        '  user_id as User_ID,'#13#10,
+        '  last_update as Last_Update,'#13#10,
+        '  risk_flag as Risk'#13#10,
+        ') then order by Kode_Jenis_Usaha;']
+      DirectDisplay=true
+      WindowSize=20
+    >
+  }
+>

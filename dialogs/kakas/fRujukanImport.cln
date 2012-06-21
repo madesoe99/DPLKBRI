@@ -1,0 +1,232 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['pFilter']
+  Caption='Rujukan (Template) Impor Data Massal'
+  Left=60
+  Top=75
+  Width=900
+  Height=600
+  OnFormShow='FormShow'
+  UIParts={
+    object:rtf::PClassUI<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='mode'
+          DataTypeName='varchar'
+          DataLength=10
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='isGridEdited'
+          DataTypeName='integer'
+          DataLength=20
+          EnumeratedValues=['0=False'#13#10,
+            '1=True'#13#10]
+        >
+      }
+      Name='uipTemplate'
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+    , object:rtf::PClassUI<
+      Name='uipDeskripsiField'
+      MultiLine=true
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      DeleteInstanceOnDel=true
+      AfterPost='GridAfterPost'
+      AfterDelete='GridAfterDelete'
+      ShadowBufferFields='NamaField'
+      UniqueShadowBufferFields='NamaField'
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='NamaTemplate'
+          ControlCaption='Nama Rujukan'
+          DataTypeName='varchar'
+          DataLength=100
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='DeskripsiTemplate'
+          ControlCaption='Deskripsi Rujukan'
+          DataTypeName='varchar'
+          DataLength=100
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='TargetImport'
+          ControlCaption='Target Impor'
+          DataTypeName='varchar'
+          DataLength=50
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='ScriptProses'
+          ControlCaption='Script Pemroses'
+          DataTypeName='varchar'
+          DataLength=100
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='FungsiProses'
+          ControlCaption='Fungsi Pemroses'
+          DataTypeName='varchar'
+          DataLength=100
+        >
+      }
+      Name='pFilter'
+      Width=240
+      Height=165
+      Bordered=true
+      UIPart=$UIPARTS['uipTemplate']
+      Controls={
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=10
+      ControlTopMargin=10
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=300
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='bSimpan'
+          Layout=clNewLine
+          Color=0
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          ExitAction=eaQuitOK
+          OnClick='bSimpanClick'
+        >
+        , object:rtf::Button<
+          Name='bCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+        , object:rtf::Button<
+          Name='Button'
+          Layout=clNextSide
+          Top=8
+          Left=0
+          Visible=false
+          Enabled=false
+          Color=0
+          ControlCaption=''
+          DefaultAction=daShowDebugWindow
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Grid<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='NamaField'
+          ControlCaption='Nama Kolom'
+          DataTypeName='varchar'
+          DataLength=50
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='TipeField'
+          ControlCaption='Tipe Kolom'
+          DataTypeName='varchar'
+          DataLength=8
+          EnumeratedValues=['integer=integer'#13#10,
+            'string=string'#13#10,
+            'float=float'#13#10,
+            'datetime=datetime'#13#10]
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='LookupClass'
+          ControlCaption='Class Pencocokan'
+          DataTypeName='varchar'
+          DataLength=50
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='LookupField'
+          ControlCaption='Kolom Pencocokan'
+          DataTypeName='varchar'
+          DataLength=50
+        >
+      }
+      Name='gDeskripsiField'
+      Width=240
+      Height=40
+      UIPart=$UIPARTS['uipDeskripsiField']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Deskripsi Field'
+      Columns={
+        *object:rtf::GridColumn<
+          Name='NamaField'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='NamaField'
+          DisplayFormat=''
+          TitleCaption='Nama Kolom'
+        >
+        , *object:rtf::GridColumn<
+          Name='TipeField'
+          InputStyle=cisEnumerated
+          EnumeratedValues=['integer=integer'#13#10,
+            'string=string'#13#10,
+            'float=float'#13#10,
+            'datetime=datetime'#13#10]
+          FieldName='TipeField'
+          DisplayFormat=''
+          TitleCaption='Tipe Kolom'
+        >
+        , *object:rtf::GridColumn<
+          Name='LookupClass'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='LookupClass'
+          DisplayFormat=''
+          TitleCaption='Class Pencocokan'
+          Width=200
+        >
+        , *object:rtf::GridColumn<
+          Name='LookupField'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='LookupField'
+          DisplayFormat=''
+          TitleCaption='Kolom Pencocokan'
+          Width=200
+        >
+      }
+    >
+    , object:rtf::MultiSplit<
+      Name='MultiSplit'
+      Width=240
+      Height=100
+      Side1Containers={
+        $CONTAINERS['pFilter']
+      }
+      Side2Containers={
+        $CONTAINERS['pButton']
+      }
+      SpaceContainer=$CONTAINERS['gDeskripsiField']
+    >
+  }
+>

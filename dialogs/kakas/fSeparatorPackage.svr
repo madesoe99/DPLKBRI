@@ -1,0 +1,153 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='PackageDef'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='Mode'
+          DataTypeName='varchar'
+          DataLength=8
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LastModifiedUser'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LastModifiedTime'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='Name'
+          DataTypeName='varchar'
+          DataLength=50
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='Description'
+          DataTypeName='varchar'
+          DataLength=50
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='SourceDef'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='Type'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='Description'
+          DataTypeName='varchar'
+          DataLength=50
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='FirstDataRow'
+          DataTypeName='integer'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='Separator'
+          DataTypeName='varchar'
+          DataLength=1
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='SourceFieldDefs'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='Name'
+          DataTypeName='varchar'
+          DataLength=25
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='Type'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='Length'
+          DataTypeName='integer'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='Index'
+          DataTypeName='integer'
+          DataLength=20
+        >
+      }
+      Mode=imMultiRow
+      CreateInstanceOnNew=true
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='TransformationDef'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='Description'
+          DataTypeName='varchar'
+          DataLength=50
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='TargetClassName'
+          DataTypeName='varchar'
+          DataLength=30
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='AfterApplyRowModule'
+          DataTypeName='varchar'
+          DataLength=30
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='AfterApplyRowFunctionName'
+          DataTypeName='varchar'
+          DataLength=30
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='TransItemDefs'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='Name'
+          DataTypeName='varchar'
+          DataLength=25
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LookupClass'
+          DataTypeName='varchar'
+          DataLength=25
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='LookupField'
+          DataTypeName='varchar'
+          DataLength=25
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='SourceFieldName'
+          DataTypeName='varchar'
+          DataLength=25
+        >
+      }
+      Mode=imMultiRow
+      CreateInstanceOnNew=true
+    >
+  }
+  OnGeneralProcessData='OnGeneralProcessData'
+  OnSetDataEx='FormSetDataEx'
+>

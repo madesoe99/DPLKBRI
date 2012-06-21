@@ -1,0 +1,282 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['DualSplit']
+  Caption='Lihat Detil Jenis Pekerjaan'
+  Left=50
+  Top=50
+  Width=380
+  Height=425
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipJenisPekerjaan'
+      ClassTypeName='JenisPekerjaan'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >, object:rtf::PClassUI<
+      Name='uipJPDetail'
+      ClassTypeName='JenisPekerjaanDetail'
+      DataBinding=bmList
+      Master=$UIPARTS['uipJenisPekerjaan']
+      ListName='Ls_JenisPekerjaanDetail'
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      SetMasterDetailRelationship=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='kode_jenis_pekerjaan'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=2
+        >, object:rtf::FieldUIElmtSetting<
+          Name='nama_jenis_pekerjaan'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >, object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=true
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='last_update'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=true
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='risk_flag'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['L=Low'#13#10,
+            'M=Moderate'#13#10,
+            'H=High'#13#10]
+        >
+      }
+      Name='pData'
+      Width=370
+      Height=177
+      Bordered=true
+      UIPart=$UIPARTS['uipJenisPekerjaan']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='kode_jenis_pekerjaan'
+          Top=20
+          Left=20
+          Color=-16777192
+          ControlCaption='Kode Jenis Pekerjaan'
+        >, *object:rtf::DBEdit<
+          Name='nama_jenis_pekerjaan'
+          Top=48
+          Left=20
+          Color=-16777192
+          ControlCaption='Nama Jenis Pekerjaan'
+        >, *object:rtf::DBEdit<
+          Name='user_id'
+          Top=76
+          Left=20
+          Color=-16777192
+          ControlCaption='User ID'
+          ReadOnly=true
+        >, *object:rtf::DBDateEdit<
+          Name='last_update'
+          Top=104
+          Left=20
+          Color=-16777192
+          ControlCaption='Last Update'
+        >, *object:rtf::DBComboBox<
+          Name='risk_flag'
+          Top=132
+          Left=20
+          Enabled=false
+          Color=-16777192
+          ControlCaption='Risk'
+        >
+      }
+      EqualCaptionWidth=130
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=240
+      Height=96
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['dualsplit1']
+      InversedAlign=true
+    >, object:rtf::Grid<
+      Elements={
+        object:rtf::LinkUIElmtSetting<
+          Name='LJenisJabatan'
+          RequiredOption=roAlwaysRequired
+          Hidden=false
+          ReadOnlyControl=false
+          ClassTypeName='JenisJabatan'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LJenisJabatan.kode_jenis_jabatan'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=2
+              UsedAsKey=true
+              KeyOrDisplayName='kode_jenis_jabatan'
+              FinalDisplayFieldName='kode_jenis_jabatan'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LJenisJabatan.kode_jenis_jabatan'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=2
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_jenis_jabatan'
+              FinalDisplayFieldName='kode_jenis_jabatan'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LJenisJabatan.nama_jenis_jabatan'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=30
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_jenis_jabatan'
+              FinalDisplayFieldName='nama_jenis_jabatan'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LJenisJabatan.risk_flag'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=1
+              UsedAsDisplay=true
+              KeyOrDisplayName='risk_flag'
+              FinalDisplayFieldName='risk_flag'
+            >
+          }
+          Restrictions=''
+          OQLText=['SELECT FROM JenisJabatan('#13#10,
+            '  kode_jenis_jabatan,'#13#10,
+            '  nama_jenis_jabatan,'#13#10,
+            '  risk_flag $,'#13#10,
+            '  self'#13#10,
+            ');']
+          LookupOption=loCustomOQL
+          FieldBaseName='LJenisJabatan'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='risk_flag'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['L=Low'#13#10,
+            'M=Moderate'#13#10,
+            'H=High'#13#10]
+        >
+      }
+      Name='gJPDetail'
+      Width=380
+      Height=206
+      UIPart=$UIPARTS['uipJPDetail']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Jabatan Pekerjaan'
+      Columns={
+        *object:rtf::GridColumn<
+          Name='LJenisJabatan.kode_jenis_jabatan'
+          InputStyle=cisLookup
+          EnumeratedValues=''
+          FieldName='LJenisJabatan.kode_jenis_jabatan'
+          DisplayFormat=''
+          TitleCaption='Kode'
+          Width=60
+        >, *object:rtf::GridColumn<
+          Name='LJenisJabatan.nama_jenis_jabatan'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='LJenisJabatan.nama_jenis_jabatan'
+          DisplayFormat=''
+          TitleCaption='Nama'
+          Width=180
+        >, *object:rtf::GridColumn<
+          Name='LJenisJabatan.risk_flag'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='LJenisJabatan.risk_flag'
+          DisplayFormat=''
+          TitleCaption='Risk'
+          Width=60
+          Hidden=true
+        >, *object:rtf::GridColumn<
+          Name='risk_flag'
+          InputStyle=cisEnumerated
+          EnumeratedValues=['L=Low'#13#10,
+            'M=Moderate'#13#10,
+            'H=High'#13#10]
+          FieldName='risk_flag'
+          DisplayFormat=''
+          TitleCaption='Risk'
+          Width=80
+          ReadOnly=true
+        >
+      }
+      ReadOnly=true
+      RowSelect=true
+      SuppressHelpLine=true
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=8
+          ControlCaption=''
+          Caption='&Tutup'
+          Default=true
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=240
+      Height=96
+      Container1=$CONTAINERS['pData']
+      Container2=$CONTAINERS['gJPDetail']
+    >
+  }
+>

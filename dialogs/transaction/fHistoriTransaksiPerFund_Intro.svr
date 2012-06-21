@@ -1,0 +1,93 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipNoData'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='LPeserta.no_peserta'
+          DataTypeName='VARCHAR'
+          DataLength=11
+        >, object:rpclass::TCustomLoadedField<
+          Name='LPeserta.no_peserta'
+          DataTypeName='VARCHAR'
+          DataLength=11
+        >, object:rpclass::TCustomLoadedField<
+          Name='LPeserta.nama_lengkap'
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >, object:rpclass::TCustomLoadedField<
+          Name='LPeserta.alamat_jalan'
+          DataTypeName='VARCHAR'
+          DataLength=200
+        >, object:rpclass::TCustomLoadedField<
+          Name='LPeserta.alamat_jalan2'
+          DataTypeName='VARCHAR'
+          DataLength=200
+        >, object:rpclass::TCustomLoadedField<
+          Name='LPeserta.alamat_kota'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >, object:rpclass::TCustomLoadedField<
+          Name='LPeserta.alamat_telepon'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >, object:rpclass::TCustomLoadedField<
+          Name='LRekInvDPLK.no_rekening'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='LRekInvDPLK.no_rekening'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='LRekInvDPLK.no_peserta'
+          DataTypeName='VARCHAR'
+          DataLength=11
+        >, object:rpclass::TCustomLoadedField<
+          Name='LRekeningDPLK.nomor_rekening'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='LRekeningDPLK.nomor_rekening'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='LRekeningDPLK.no_rekening'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='LRekeningDPLK.kode_paket_investasi'
+          DataTypeName='VARCHAR'
+          DataLength=2
+        >, object:rpclass::TCustomLoadedField<
+          Name='LRekeningDPLK.LPaketInvestasi.nama_paket_investasi'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LPeserta'
+          ClassTypeName='NasabahDPLK'
+          FieldNames='no_peserta;no_peserta;nama_lengkap;alamat_jalan;alamat_jalan2;alamat_kota;alamat_telepon'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LRekInvDPLK'
+          ClassTypeName='RekInvDPLK'
+          FieldNames='no_rekening;no_rekening;no_peserta'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LRekeningDPLK'
+          ClassTypeName='RekeningDPLK'
+          FieldNames='nomor_rekening;nomor_rekening;no_rekening;kode_paket_investasi;LPaketInvestasi.nama_paket_investasi'
+        >
+      }
+      Mode=imSingleRow
+    >
+  }
+>

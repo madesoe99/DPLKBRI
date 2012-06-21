@@ -1,0 +1,196 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['DualSplit']
+  Caption='Master Giro DPLK (Rujukan Konversi Riwayat Giro Unsettled ke Jurnal Akuntansi)'
+  Left=110
+  Top=120
+  Width=820
+  Height=520
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData='FormGeneralSetData'
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnFormShow='FormShow'
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipMasterGiro'
+      ClassTypeName='MasterGiro'
+      DataBinding=bmMaster
+      MultiLine=true
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      DeleteInstanceOnDel=true
+      BeforePost='GridBeforePost'
+      AfterNewRecord='GridAfterNewRecord'
+      BeforeDelete='GridBeforeDelete'
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Name='panelTitle'
+      Width=820
+      Height=40
+      Bordered=true
+      Controls={
+        object:rtf::Label<
+          Name='lbl'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          Width=820
+          Height=25
+          Color=0
+          ControlCaption=''
+          Caption='Master Keterhubungan Giro DPLK dan Accounting DPLK'
+          FontSize=14
+          FontStyleBold=true
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Name='button_panel'
+      Width=600
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='bClose'
+          Layout=clNextSide
+          Top=8
+          Left=89
+          Color=0
+          ControlCaption=''
+          LayoutOrder=2
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+        , object:rtf::Button<
+          Name='bSimpan'
+          Layout=clNextSide
+          Top=8
+          Left=10
+          Color=0
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          DefaultAction=daProcessAllUI
+          ExitAction=eaQuitOK
+        >
+        , object:rtf::Button<
+          Name='Button'
+          Layout=clNextSide
+          Top=8
+          Left=168
+          Visible=false
+          Enabled=false
+          Color=0
+          ControlCaption=''
+          DefaultAction=daShowDebugWindow
+        >
+      }
+      ControlLeftMargin=10
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplitAtas'
+      Width=820
+      Height=479
+      Container1=$CONTAINERS['panelTitle']
+      Container2=$CONTAINERS['gMasterGiro']
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=820
+      Height=520
+      Container1=$CONTAINERS['button_panel']
+      Container2=$CONTAINERS['DualSplitAtas']
+      InversedAlign=true
+    >
+    , object:rtf::Grid<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caEdit
+          DataMembers=['acc_giro'#13#10,
+            'no_giro'#13#10,
+            'acc_histori_giro'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='acc_giro'
+          ReadOnlyControl=true
+          ControlCaption='Kode Akun Giro Akuntansi'
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='no_giro'
+          ControlCaption='Nomor Giro Core Banking'
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='acc_histori_giro'
+          ControlCaption='Kode Akun Histori Giro Akuntansi'
+        >
+      }
+      Name='gMasterGiro'
+      Width=820
+      Height=438
+      UIPart=$UIPARTS['uipMasterGiro']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Columns={
+        *object:rtf::GridColumn<
+          Name='acc_giro'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='acc_giro'
+          DisplayFormat=''
+          TitleCaption='Kode Akun Giro Akuntansi'
+          Width=200
+          ReadOnly=true
+        >
+        , *object:rtf::GridColumn<
+          Name='no_giro'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='no_giro'
+          DisplayFormat=''
+          TitleCaption='Nomor Giro Core Banking'
+          Width=200
+        >
+        , *object:rtf::GridColumn<
+          Name='acc_histori_giro'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='acc_histori_giro'
+          DisplayFormat=''
+          TitleCaption='Kode Akun Histori Giro Akuntansi'
+          Width=200
+        >
+      }
+      RowSelect=true
+    >
+  }
+>

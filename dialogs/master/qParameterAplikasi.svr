@@ -1,0 +1,166 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipParameter'
+      PClassName='Parameter'
+      LoadedFieldList='Key_Parameter;Numeric_Value;Varchar_Value;Description'
+      StoredFieldList='Key_Parameter;Numeric_Value;Varchar_Value;Description'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='ValueType'
+          DataTypeName='integer'
+          DataLength=5
+        >
+      }
+      Mode=imMultiRow
+      CreateInstanceOnNew=true
+      DeleteOnDel=true
+    >, object:rpclass::TPClassUIDef<
+      Name='uipPajakTarikDana'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='Batas1'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='PersenBatas1'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='Batas2'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='PersenBatas2'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='Batas3'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='PersenBatas3'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='Batas4'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='PersenBatas4'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='Batas5'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='PersenBatas5'
+          DataTypeName='double'
+          DataLength=20
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >, object:rpclass::TPClassUIDef<
+      Name='uipPajakAmbilManfaat'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='Batas1'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='PersenBatas1'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='Batas2'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='PersenBatas2'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='Batas3'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='PersenBatas3'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='Batas4'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='PersenBatas4'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='Batas5'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='PersenBatas5'
+          DataTypeName='double'
+          DataLength=20
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >, object:rpclass::TPClassUIDef<
+      Name='uipTimeZone'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='isTimeZoneUsed'
+          DataTypeName='varchar'
+          DataLength=1
+        >, object:rpclass::TCustomLoadedField<
+          Name='TimeZoneServer'
+          DataTypeName='varchar'
+          DataLength=2
+        >, object:rpclass::TCustomLoadedField<
+          Name='SelisihMenitBaratTengah'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='SelisihMenitBaratTimur'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='SelisihMenitTengahTimur'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='AwalJamKerja'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='AwalMenitKerja'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='AkhirJamKerja'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='AkhirMenitKerja'
+          DataTypeName='integer'
+          DataLength=20
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+  }
+  OnGeneralSetData='FormGeneralSetData'
+  OnGeneralProcessData='FormGeneralProcessData'
+>

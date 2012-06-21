@@ -1,0 +1,481 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['DualSplit']
+  Caption='Pendaftaran Autodebet'
+  Left=100
+  Top=200
+  Width=800
+  Height=350
+  OnFormShow='FormShow'
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipRegisterCIF'
+      ClassTypeName='RegisterAutoDebet'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      AfterApplyRow='uipRegisterCIFApplyRow'
+    >
+    , object:rtf::PClassUI<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='no_peserta'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=11
+        >
+        , object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLK'
+          RequiredOption=roAlwaysRequired
+          AccessOption=aoReadOnly
+          ClassTypeName='NasabahDPLK'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLK.no_peserta'
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsKey=true
+              KeyOrDisplayName='no_peserta'
+              FinalDisplayFieldName='no_peserta'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLK.no_peserta'
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsDisplay=true
+              KeyOrDisplayName='no_peserta'
+              FinalDisplayFieldName='no_peserta'
+            >
+            , object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLK.nama_lengkap'
+              DataTypeName='VARCHAR'
+              DataLength=100
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_lengkap'
+              FinalDisplayFieldName='nama_lengkap'
+            >
+          }
+          Restrictions=''
+          FieldBaseName='LNasabahDPLK'
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='status_autodebet'
+          AccessOption=aoReadOnly
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['F=false'#13#10,
+            'T=true'#13#10]
+        >
+      }
+      Name='uipMaster'
+      ClassTypeName='RekeningDPLK'
+      DataBinding=bmMaster
+    >
+    , object:rtf::PClassUI<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='no_rekening'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='nama_rekening'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='tanggal_autodebet'
+          DataTypeName='INTEGER'
+          DataLength=0
+        >
+      }
+      Name='uipRekeningAutoDebet'
+      ClassTypeName='RekeningAutoDebet'
+      DataBinding=bmList
+      Master=$UIPARTS['uipMaster']
+      ListName='Ls_RekeningAutoDebet'
+      SetMasterDetailRelationship=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='no_referensi'
+          ControlCaption='Nomor Referensi'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+        , object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLK'
+          RequiredOption=roAlwaysRequired
+          ReadOnlyControl=true
+          ControlCaption='Peserta DPLK'
+          ClassTypeName='NasabahDPLK'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLK.no_peserta'
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsKey=true
+              KeyOrDisplayName='no_peserta'
+              FinalDisplayFieldName='no_peserta'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLK.no_peserta'
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsDisplay=true
+              KeyOrDisplayName='no_peserta'
+              FinalDisplayFieldName='no_peserta'
+            >
+            , object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLK.nama_lengkap'
+              DataTypeName='VARCHAR'
+              DataLength=100
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_lengkap'
+              FinalDisplayFieldName='nama_lengkap'
+            >
+          }
+          Restrictions=''
+          FieldBaseName='LNasabahDPLK'
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          ControlCaption='Keterangan'
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          ReadOnlyControl=true
+          ControlCaption='User Penginput'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='terminal_id'
+          ReadOnlyControl=true
+          ControlCaption='Terminal Input'
+          DataTypeName='VARCHAR'
+          DataLength=15
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='jenis_transaksi'
+          Hidden=true
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['R=Daftar'#13#10,
+            'O=Keluar'#13#10]
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='registercif_id'
+          AccessOption=aoReadOnly
+          Hidden=true
+          DataTypeName='INTEGER'
+          DataLength=0
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='mode'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=20
+        >
+      }
+      Name='pData'
+      Width=400
+      Height=180
+      Bordered=true
+      UIPart=$UIPARTS['uipRegisterCIF']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='no_referensi'
+          Top=30
+          Left=20
+          Color=12695295
+          ControlCaption='Nomor Referensi'
+        >
+        , *object:rtf::DBLookupEdit<
+          Name='LNasabahDPLK'
+          Top=58
+          Left=20
+          Width=100
+          Height=21
+          Enabled=false
+          Color=15128749
+          ControlCaption='Peserta DPLK'
+          LookupField='LNasabahDPLK.nama_lengkap'
+          DisplayLookupField=true
+        >
+        , *object:rtf::DBEdit<
+          Name='keterangan'
+          Top=86
+          Left=20
+          Color=0
+          ControlCaption='Keterangan'
+        >
+        , *object:rtf::DBEdit<
+          Name='user_id'
+          Top=114
+          Left=20
+          Color=-2147483624
+          ControlCaption='User Penginput'
+          ReadOnly=true
+        >
+        , *object:rtf::DBEdit<
+          Name='terminal_id'
+          Top=142
+          Left=20
+          Color=-2147483624
+          ControlCaption='Terminal Input'
+          ReadOnly=true
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=20
+      ControlTopMargin=30
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Register'
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=400
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          Color=0
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          OnClick='btnOKClick'
+        >
+        , object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          OnClick='btnCancelClick'
+        >
+        , object:rtf::Button<
+          Name='btnClose'
+          Layout=clNextSide
+          Top=8
+          Left=166
+          Visible=false
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=800
+      Height=350
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['DualSplitLR']
+      InversedAlign=true
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='no_rekening'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='nama_rekening'
+          ReadOnlyControl=true
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='tanggal_autodebet'
+          DataTypeName='INTEGER'
+          DataLength=0
+          EnumeratedValues=['1=1'#13#10,
+            '2=2'#13#10,
+            '3=3'#13#10,
+            '4=4'#13#10,
+            '5=5'#13#10,
+            '6=6'#13#10,
+            '7=7'#13#10,
+            '8=8'#13#10,
+            '9=9'#13#10,
+            '10=10'#13#10,
+            '11=11'#13#10,
+            '12=12'#13#10,
+            '13=13'#13#10,
+            '14=14'#13#10,
+            '15=15'#13#10,
+            '16=16'#13#10,
+            '17=17'#13#10,
+            '18=18'#13#10,
+            '19=19'#13#10,
+            '20=20'#13#10,
+            '21=21'#13#10,
+            '22=22'#13#10,
+            '23=23'#13#10,
+            '24=24'#13#10,
+            '25=25'#13#10,
+            '26=26'#13#10,
+            '27=27'#13#10,
+            '28=28'#13#10,
+            '29=29'#13#10,
+            '30=30'#13#10,
+            '31=31'#13#10]
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='TipeRekening'
+          ReadOnlyControl=true
+          ControlCaption='tipe rekening'
+          DataTypeName='varchar'
+          DataLength=2
+          EnumeratedValues=['10=Tabungan'#13#10,
+            '20=Giro'#13#10]
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='IDNumber'
+          ReadOnlyControl=true
+          ControlCaption='nomor ktp'
+          DataTypeName='varchar'
+          DataLength=30
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='BranchCode'
+          ReadOnlyControl=true
+          ControlCaption='kantor cabang'
+          DataTypeName='varchar'
+          DataLength=5
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='CurrencyCode'
+          ReadOnlyControl=true
+          ControlCaption='mata uang'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+      }
+      Name='pDataBaru'
+      Width=240
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipRegisterCIF']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='no_rekening'
+          Top=30
+          Left=20
+          Color=12695295
+          ControlCaption='Nomor Rekening'
+        >
+        , *object:rtf::DBEdit<
+          Name='nama_rekening'
+          Top=114
+          Left=20
+          Color=-2147483624
+          ControlCaption='Nama Rekening'
+          LayoutOrder=5
+          ReadOnly=true
+        >
+        , *object:rtf::DBComboBox<
+          Name='tanggal_autodebet'
+          Top=58
+          Left=20
+          Color=12695295
+          ControlCaption='Tanggal Autodebet'
+          LayoutOrder=2
+        >
+        , *object:rtf::DBComboBox<
+          Name='TipeRekening'
+          Top=86
+          Left=20
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Tipe Rekening'
+          LayoutOrder=3
+        >
+        , *object:rtf::DBEdit<
+          Name='IDNumber'
+          Top=142
+          Left=20
+          Color=-2147483624
+          ControlCaption='Nomor Identitas'
+          LayoutOrder=6
+          ReadOnly=true
+        >
+        , *object:rtf::DBEdit<
+          Name='BranchCode'
+          Top=170
+          Left=20
+          Color=-2147483624
+          ControlCaption='Kantor Cabang'
+          LayoutOrder=7
+          ReadOnly=true
+        >
+        , *object:rtf::DBEdit<
+          Name='CurrencyCode'
+          Top=198
+          Left=20
+          Color=-2147483624
+          ControlCaption='Mata Uang'
+          LayoutOrder=8
+          ReadOnly=true
+        >
+        , object:rtf::Button<
+          Name='bCekRekening'
+          Layout=clNewLine
+          Top=226
+          Left=20
+          Color=0
+          ControlCaption=''
+          LayoutOrder=9
+          Caption='&Cek Rekening'
+          OnClick='bCekRekeningClick'
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=30
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Auto Debet'
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplitLR'
+      Width=800
+      Height=309
+      Container1=$CONTAINERS['pData']
+      Container2=$CONTAINERS['pDataBaru']
+      SplitDirection=sdrSplitLeftRight
+    >
+  }
+>

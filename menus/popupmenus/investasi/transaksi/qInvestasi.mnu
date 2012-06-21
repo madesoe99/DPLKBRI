@@ -1,0 +1,84 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{FF6521AE-DCB8-457C-933C-35D88DB5B672}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rmn::Menu<
+  MenuItems={
+    object:rmn::MenuItem<
+      Name='mnuBuatInvBaru'
+      Caption='Buat Register Investasi Baru...'
+      OnClick='displayWithData'
+      StringTag='new'
+    >
+    , object:rmn::MenuItem<
+      Caption='-'
+    >
+    , object:rmn::MenuItem<
+      Name='mnuAlokInvTambahan'
+      Caption='Alokasi Investasi Tambahan...'
+      OnClick='mnuTransInvClick'
+      StringTag='fAlokInvTambahan'
+    >
+    , object:rmn::MenuItem<
+      Name='mnuTutupInvestasi'
+      Caption='Tutup Investasi...'
+      OnClick='mnuTransInvClick'
+      StringTag='fTutupInvestasi'
+    >
+    , object:rmn::MenuItem<
+      Name='mnuBiayaInvestasi'
+      Caption='Biaya Investasi...'
+      OnClick='mnuTransInvClick'
+      StringTag='fBiayaInvestasi'
+    >
+    , object:rmn::MenuItem<
+      Name='mnuPendapatanInvTunai'
+      Caption='Pendapatan Investasi secara Tunai...'
+      OnClick='mnuTransInvClick'
+      StringTag='fPendapatanInvestasiTunai'
+    >
+    , object:rmn::MenuItem<
+      Name='mnuPendapatanInvPiutang'
+      Caption='Pendapatan Investasi ke Piutang...'
+      OnClick='mnuTransInvClick'
+      StringTag='fPendapatanInvestasiPiutang'
+    >
+    , object:rmn::MenuItem<
+      Name='mnuRollover'
+      Caption='Kapitalisir Investasi...'
+      OnClick='mnuTransInvClick'
+      StringTag='fRolloverInvestasi'
+    >
+    , object:rmn::MenuItem<
+      Name='mnuInvestasiManual'
+      Caption='Investasi Manual...'
+      OnClick='mnuTransInvClick'
+      StringTag='fManInvestasi'
+    >
+    , object:rmn::MenuItem<
+      Name='mnuPiutangLRManual'
+      Caption='Piutang LR Investasi Manual...'
+      OnClick='mnuTransInvClick'
+      StringTag='fManPiutangLRInvestasi'
+    >
+    , object:rmn::MenuItem<
+      Name='mnuLRManual'
+      Caption='LR Investasi Manual...'
+      OnClick='mnuTransInvClick'
+      StringTag='fManLRInvestasi'
+    >
+    , object:rmn::MenuItem<
+      Caption='-'
+    >
+    , object:rmn::MenuItem<
+      Name='mnuView'
+      Caption='Lihat Detil Investasi...'
+      OnClick='displayWithData'
+      StringTag='view'
+    >
+  }
+  MenuType=mtPopupMenu
+>

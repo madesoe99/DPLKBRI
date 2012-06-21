@@ -1,0 +1,383 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['pData']
+  Caption='Batch Statemen'
+  Left=50
+  Top=50
+  Width=750
+  Height=430
+  OnFormShow='FormShow'
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipNoData'
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='tanggal_awal'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='tanggal_akhir'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='jumlah_baris'
+          DataTypeName='integer'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='margin_atas'
+          DataTypeName='integer'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='margin_bawah'
+          DataTypeName='integer'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='nama_file'
+          DataTypeName='varchar'
+          DataLength=64
+        >
+      }
+      Name='pData'
+      Width=400
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipNoData']
+      Controls={
+        *object:rtf::DBDateEdit<
+          Name='tanggal_awal'
+          ControlCaption='dari tanggal'
+        >
+        , *object:rtf::DBDateEdit<
+          Name='tanggal_akhir'
+          ControlCaption='hingga tanggal'
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=30
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Peng&aturan'
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Bordered=true
+      Controls={
+        object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Color=0
+          ControlCaption=''
+          Caption='&OK'
+          Default=true
+          OnClick='btnOKClick'
+        >
+        , object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['DualSplitLR']
+      InversedAlign=true
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='batasi_cabang'
+          DataTypeName='integer'
+          DataLength=1
+          EnumeratedValues=['0=False'#13#10,
+            '1=True'#13#10]
+          GenerateCheckBoxForEnum=true
+        >
+        , object:rtf::LinkUIElmtSetting<
+          Name='LBranchLocation'
+          ClassTypeName='BranchLocation'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LBranchLocation.branch_code'
+              DataTypeName='VARCHAR'
+              DataLength=5
+              UsedAsKey=true
+              KeyOrDisplayName='branch_code'
+              FinalDisplayFieldName='branch_code'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LBranchLocation.branch_code'
+              DataTypeName='VARCHAR'
+              DataLength=5
+              UsedAsDisplay=true
+              KeyOrDisplayName='branch_code'
+              FinalDisplayFieldName='branch_code'
+            >
+            , object:rtf::FieldUIElmtSetting<
+              Name='LBranchLocation.BranchName'
+              DataTypeName='VARCHAR'
+              DataLength=50
+              UsedAsDisplay=true
+              KeyOrDisplayName='BranchName'
+              FinalDisplayFieldName='BranchName'
+            >
+          }
+          Restrictions=''
+          OQLText=['select from BranchLocation'#13#10,
+            '('#13#10,
+            '  branch_code,'#13#10,
+            '  BranchName,'#13#10,
+            '  self'#13#10,
+            ') then order by branch_code;']
+          LookupOption=loCustomOQL
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='batasi_kelompok'
+          DataTypeName='integer'
+          DataLength=20
+          EnumeratedValues=['0=False'#13#10,
+            '1=True'#13#10]
+          GenerateCheckBoxForEnum=true
+        >
+        , object:rtf::LinkUIElmtSetting<
+          Name='LKelompok'
+          ClassTypeName='Kelompok'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LKelompok.kode_kelompok'
+              DataTypeName='VARCHAR'
+              DataLength=20
+              UsedAsKey=true
+              KeyOrDisplayName='kode_kelompok'
+              FinalDisplayFieldName='kode_kelompok'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LKelompok.kode_kelompok'
+              DataTypeName='VARCHAR'
+              DataLength=20
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_kelompok'
+              FinalDisplayFieldName='kode_kelompok'
+            >
+            , object:rtf::FieldUIElmtSetting<
+              Name='LKelompok.nama_kelompok'
+              DataTypeName='VARCHAR'
+              DataLength=50
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_kelompok'
+              FinalDisplayFieldName='nama_kelompok'
+            >
+          }
+          Restrictions=''
+          OQLText=['select from Kelompok'#13#10,
+            '('#13#10,
+            '  kode_kelompok,'#13#10,
+            '  nama_kelompok,'#13#10,
+            '  keterangan,'#13#10,
+            '  self'#13#10,
+            ') then order by kode_kelompok;']
+          LookupOption=loCustomOQL
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='batasi_perusahaan'
+          DataTypeName='integer'
+          DataLength=20
+          EnumeratedValues=['0=False'#13#10,
+            '1=True'#13#10]
+          GenerateCheckBoxForEnum=true
+        >
+        , object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLKCorporate'
+          ClassTypeName='NasabahDPLKCorporate'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLKCorporate.kode_nasabah_corporate'
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsKey=true
+              KeyOrDisplayName='kode_nasabah_corporate'
+              FinalDisplayFieldName='kode_nasabah_corporate'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLKCorporate.kode_nasabah_corporate'
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_nasabah_corporate'
+              FinalDisplayFieldName='kode_nasabah_corporate'
+            >
+            , object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLKCorporate.nama_perusahaan'
+              DataTypeName='VARCHAR'
+              DataLength=50
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_perusahaan'
+              FinalDisplayFieldName='nama_perusahaan'
+            >
+          }
+          Restrictions=''
+          OQLText=['select from NasabahDPLKCorporate'#13#10,
+            '('#13#10,
+            '  kode_nasabah_corporate,'#13#10,
+            '  nama_perusahaan,'#13#10,
+            '  LJenisUsaha.nama_jenis_usaha as nama_jenis_usaha,'#13#10,
+            '  LKepemilikan.keterangan as kepemilikan,'#13#10,
+            '  self'#13#10,
+            ') then order by kode_nasabah_corporate;']
+          LookupOption=loCustomOQL
+        >
+      }
+      Name='pFilter'
+      Width=400
+      Height=220
+      Bordered=true
+      UIPart=$UIPARTS['uipNoData']
+      Controls={
+        *object:rtf::DBCheckBox<
+          Name='batasi_cabang'
+          Width=100
+          Height=21
+          ValueChecked='1'
+          ValueUnchecked='0'
+          OnClick='batasi_cabangClick'
+        >
+        , *object:rtf::DBLookupEdit<
+          Name='LBranchLocation'
+          Width=72
+          Height=21
+          ControlCaption=''
+          LookupField='LBranchLocation.BranchName'
+          DisplayLookupField=true
+        >
+        , *object:rtf::DBCheckBox<
+          Name='batasi_kelompok'
+          ValueChecked='1'
+          ValueUnchecked='0'
+          OnClick='batasi_kelompokClick'
+        >
+        , *object:rtf::DBLookupEdit<
+          Name='LKelompok'
+          ControlCaption=''
+          LookupField='LKelompok.nama_kelompok'
+          DisplayLookupField=true
+        >
+        , *object:rtf::DBCheckBox<
+          Name='batasi_perusahaan'
+          ValueChecked='1'
+          ValueUnchecked='0'
+          OnClick='batasi_perusahaanClick'
+        >
+        , *object:rtf::DBLookupEdit<
+          Name='LNasabahDPLKCorporate'
+          ControlCaption=''
+          LookupField='LNasabahDPLKCorporate.nama_perusahaan'
+          DisplayLookupField=true
+        >
+      }
+      EqualCaptionWidth=10
+      ControlLeftMargin=20
+      ControlTopMargin=30
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Pemba&tasan'
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='urutan_1'
+          DataTypeName='varchar'
+          DataLength=32
+          EnumeratedValues=['N=--'#13#10,
+            'kode_cab_daftar=Cabang'#13#10,
+            'kode_kelompok=Kelompok'#13#10,
+            'kode_nasabah_corporate=Perusahaan'#13#10]
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='urutan_2'
+          DataTypeName='varchar'
+          DataLength=32
+          EnumeratedValues=['N=--'#13#10,
+            'kode_cab_daftar=Cabang'#13#10,
+            'kode_kelompok=Kelompok'#13#10,
+            'kode_nasabah_corporate=Perusahaan'#13#10]
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='urutan_3'
+          DataTypeName='varchar'
+          DataLength=32
+          EnumeratedValues=['N=--'#13#10,
+            'kode_cab_daftar=Cabang'#13#10,
+            'kode_kelompok=Kelompok'#13#10,
+            'kode_nasabah_corporate=Perusahaan'#13#10]
+        >
+      }
+      Name='pOrder'
+      Width=240
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipNoData']
+      Controls={
+      }
+      EqualCaptionWidth=80
+      ControlLeftMargin=20
+      ControlTopMargin=30
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Peng&urutan'
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplitLR'
+      Width=240
+      Height=200
+      Container1=$CONTAINERS['pData']
+      Container2=$CONTAINERS['DualSplitRight']
+      SplitDirection=sdrSplitLeftRight
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplitRight'
+      Width=240
+      Height=100
+      Container1=$CONTAINERS['pFilter']
+      Container2=$CONTAINERS['pOrder']
+    >
+  }
+>

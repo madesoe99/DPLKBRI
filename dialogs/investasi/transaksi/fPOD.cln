@@ -1,0 +1,133 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['DualSplit']
+  Caption='POD'
+  Left=50
+  Top=50
+  Width=380
+  Height=150
+  OnFormShow='FormShow'
+  UIParts={object:rtf::PClassUI<
+      Name='uipNoData'
+    >}Containers={object:rtf::Panel<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='nowDate'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=10
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LTransactionBatch'
+          ClassTypeName='TransactionBatch'
+          KeyFields={object:rtf::FieldUIElmtSetting<
+              Name='LTransactionBatch.ID_TransactionBatch'
+              DataTypeName='INTEGER'
+              DataLength=0
+              UsedAsKey=true
+              KeyOrDisplayName='ID_TransactionBatch'
+              FinalDisplayFieldName='ID_TransactionBatch'
+            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+              Name='LTransactionBatch.no_batch'
+              DataTypeName='VARCHAR'
+              DataLength=32
+              UsedAsDisplay=true
+              KeyOrDisplayName='no_batch'
+              FinalDisplayFieldName='no_batch'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LTransactionBatch.tgl_create'
+              DataTypeName='TIMESTAMP'
+              DataLength=0
+              UsedAsDisplay=true
+              KeyOrDisplayName='tgl_create'
+              FinalDisplayFieldName='tgl_create'
+            >}Restrictions='uipNoData.nowDate|nowDate'
+          OQLText=['select from TransactionBatch'#13#10,
+            '['#13#10,
+            '  batch_status = ''O'' '#13#10,
+            '  and batch_type = ''I'' '#13#10,
+            '  and batch_sub_type = ''M'''#13#10,
+            '  and tgl_used = :nowDate'#13#10,
+            ']'#13#10,
+            '('#13#10,
+            '  no_batch,'#13#10,
+            '  tgl_create,'#13#10,
+            '  account_link_type,'#13#10,
+            '  user_id_owner,'#13#10,
+            '  ID_TransactionBatch,'#13#10,
+            '  self'#13#10,
+            ') then order by no_batch;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LTransactionBatch'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='TglPOD'
+          ReadOnlyControl=true
+          ControlCaption='Tgl'
+          DataTypeName='timestamp'
+          DataLength=20
+        >}Name='pInfo'
+      Width=240
+      Height=40
+      Bordered=true
+      UIPart=$UIPARTS['uipNoData']
+      Controls={*object:rtf::DBLookupEdit<
+          Name='LTransactionBatch'
+          Top=20
+          Left=20
+          Visible=false
+          Color=0
+          ControlCaption='Transaction Batch'
+          LookupField='LTransactionBatch.tgl_create'
+          DisplayLookupField=true
+        >, *object:rtf::DBDateEdit<
+          Name='TglPOD'
+          Top=48
+          Left=20
+          Color=-2147483624
+          ControlCaption='Tgl'
+        >}EqualCaptionWidth=100
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=400
+      Height=40
+      Bordered=true
+      Controls={object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=20
+          Color=0
+          ControlCaption=''
+          Caption='&OK'
+          OnClick='btnOKClick'
+        >, object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=99
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          OnClick='btnCancelClick'
+        >}ControlLeftMargin=20
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=380
+      Height=150
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['pInfo']
+      InversedAlign=true
+    >}>

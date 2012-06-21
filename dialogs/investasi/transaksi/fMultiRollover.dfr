@@ -1,0 +1,422 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['pFilter']
+  Caption='Rollover Sekaligus'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData='FormGeneralSetData'
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipRolloverDeposito'
+      ClassTypeName='RolloverDeposito'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      AfterApplyRow='uipRolloverDepositoApplyRow'
+      AfterNewRecord='uipRolloverDepositoNewRecord'
+      BeforeDelete='uipRolloverDepositoBeforeDelete'
+    >
+    , object:rtf::PClassUI<
+      Name='uipNoData'
+      AlwaysPostToServer=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='dateFrom'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='dateUntil'
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='dateUntil_tmrw'
+          Hidden=true
+          DataTypeName='timestamp'
+          DataLength=20
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='isDisplay'
+          Hidden=true
+          DataTypeName='integer'
+          DataLength=20
+        >
+      }
+      Name='pFilter'
+      Width=800
+      Height=60
+      Bordered=true
+      UIPart=$UIPARTS['uipNoData']
+      Controls={
+        *object:rtf::DBDateEdit<
+          Name='dateFrom'
+          ControlCaption='Interval Tanggal Jatuh Tempo'
+        >
+        , *object:rtf::DBDateEdit<
+          Name='dateUntil'
+          Layout=clNextSide
+          ControlCaption='-'
+        >
+        , object:rtf::Button<
+          Name='btnLoad'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Load'
+          OnClick='btnLoadClick'
+        >
+      }
+      EqualCaptionWidth=150
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Grid<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caNew
+          DataMember='LDeposito'
+        >
+        , object:rtf::ControlDef<
+          Action=caNew
+          DataMember='tgl_transaksi'
+        >
+        , object:rtf::ControlDef<
+          Action=caNew
+          DataMember='tgl_sistem'
+        >
+        , object:rtf::ControlDef<
+          Action=caNew
+          DataMember='ID_TransactionBatch'
+        >
+        , object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='lakukan_kapitalisir'
+        >
+      }
+      Elements={
+        *object:rtf::LinkUIElmtSetting<
+          Name='LDeposito'
+          DisplayFields='no_bilyet;kode_paket_investasi;kode_pihak_ketiga;akum_nominal;akum_piutangLR;akum_LR;rollover_counter;kapitalisir_rollover;treatmentPokok;nisbah;tgl_jatuh_tempo;jenisJatuhTempo'
+          Restrictions=''
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='tgl_sistem'
+          Hidden=true
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='ID_TransactionBatch'
+          Hidden=true
+        >
+        , *object:rtf::FieldUIElmtSetting<
+          Name='lakukan_kapitalisir'
+          Hidden=true
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='proses'
+          DataTypeName='varchar'
+          DataLength=1
+          EnumeratedValues=['K=Kapitalisir & R/O'#13#10,
+            'R=Rollover'#13#10,
+            'N=Tidak Diproses'#13#10]
+        >
+      }
+      Name='gDetails'
+      Width=240
+      Height=40
+      ContextMenuName='popupmenus/investasi/transaksi/fMultiRollover'
+      UIPart=$UIPARTS['uipRolloverDeposito']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='&Daftar Deposito'
+      Columns={
+        *object:rtf::GridColumn<
+          Name='LDeposito.no_bilyet'
+          InputStyle=cisLookup
+          EnumeratedValues=''
+          FieldName='LDeposito.no_bilyet'
+          DisplayFormat=''
+          TitleCaption='No. Bilyet'
+          ReadOnly=true
+        >
+        , *object:rtf::GridColumn<
+          Name='LDeposito.kode_paket_investasi'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='LDeposito.kode_paket_investasi'
+          DisplayFormat=''
+          TitleCaption='Paket Inv.'
+          ReadOnly=true
+        >
+        , *object:rtf::GridColumn<
+          Name='LDeposito.kode_pihak_ketiga'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='LDeposito.kode_pihak_ketiga'
+          DisplayFormat=''
+          TitleCaption='Pihak Ketiga'
+          ReadOnly=true
+        >
+        , *object:rtf::GridColumn<
+          Name='LDeposito.akum_nominal'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='LDeposito.akum_nominal'
+          DisplayFormat='#,##0.00'
+          TitleCaption='Akum. Nominal'
+          Width=120
+          ReadOnly=true
+        >
+        , *object:rtf::GridColumn<
+          Name='LDeposito.akum_piutangLR'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='LDeposito.akum_piutangLR'
+          DisplayFormat='#,##0.00'
+          TitleCaption='Akum. Piutang LR'
+          Width=120
+          ReadOnly=true
+        >
+        , *object:rtf::GridColumn<
+          Name='LDeposito.akum_LR'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='LDeposito.akum_LR'
+          DisplayFormat='#,##0.00'
+          TitleCaption='Akum. LR'
+          Width=120
+          ReadOnly=true
+        >
+        , *object:rtf::GridColumn<
+          Name='LDeposito.rollover_counter'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='LDeposito.rollover_counter'
+          DisplayFormat=''
+          TitleCaption='R/O Counter'
+          Width=100
+          ReadOnly=true
+        >
+        , *object:rtf::GridColumn<
+          Name='LDeposito.kapitalisir_rollover'
+          InputStyle=cisNormal
+          EnumeratedValues=['T=Kapitalisir'#13#10,
+            'F=Tidak']
+          FieldName='LDeposito.kapitalisir_rollover'
+          DisplayFormat=''
+          TitleCaption='Kapitalisir R/O'
+          Width=100
+          ReadOnly=true
+        >
+        , *object:rtf::GridColumn<
+          Name='LDeposito.treatmentPokok'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='LDeposito.treatmentPokok'
+          DisplayFormat=''
+          TitleCaption='Treatment Pokok'
+          Width=50
+          Hidden=true
+        >
+        , *object:rtf::GridColumn<
+          Name='LDeposito.nisbah'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='LDeposito.nisbah'
+          DisplayFormat='0.00'
+          TitleCaption='Nisbah'
+          Width=120
+          Hidden=true
+          ReadOnly=true
+        >
+        , *object:rtf::GridColumn<
+          Name='LDeposito.tgl_jatuh_tempo'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='LDeposito.tgl_jatuh_tempo'
+          DisplayFormat=''
+          TitleCaption='Jatuh Tempo'
+          Width=100
+          Hidden=true
+          ReadOnly=true
+        >
+        , *object:rtf::GridColumn<
+          Name='LDeposito.jenisJatuhTempo'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='LDeposito.jenisJatuhTempo'
+          DisplayFormat=''
+          Width=100
+          Hidden=true
+        >
+        , *object:rtf::GridColumn<
+          Name='tgl_transaksi'
+          InputStyle=cisDate
+          EnumeratedValues=''
+          FieldName='tgl_transaksi'
+          DisplayFormat=''
+          TitleCaption='Tgl. Transaksi'
+          Hidden=true
+        >
+        , *object:rtf::GridColumn<
+          Name='proses'
+          InputStyle=cisEnumerated
+          EnumeratedValues=['K=Kapitalisir & R/O'#13#10,
+            'R=Rollover'#13#10,
+            'N=Tidak Diproses'#13#10]
+          FieldName='proses'
+          DisplayFormat=''
+          TitleCaption='Proses (double click)'
+          Width=120
+          ReadOnly=true
+        >
+      }
+      OnDoubleClick='gDetailsDoubleClick'
+    >
+    , object:rtf::MultiSplit<
+      Name='MultiSplit'
+      Width=240
+      Height=100
+      Side1Containers={
+        $CONTAINERS['DualSplit']
+      }
+      Side2Containers={
+        $CONTAINERS['pButton']
+      }
+      SpaceContainer=$CONTAINERS['gDetails']
+    >
+    , object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnProses'
+          Layout=clNewLine
+          Color=0
+          ControlCaption=''
+          Caption='&Proses'
+          OnClick='btnProsesClick'
+        >
+        , object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::Panel<
+      Elements={
+        object:rtf::LinkUIElmtSetting<
+          Name='LTransactionBatch'
+          ClassTypeName='TransactionBatch'
+          DisplayFields='ID_TransactionBatch;no_batch'
+          Restrictions='uipNoData.nowDate|nowDate'
+          OQLText=['select from TransactionBatch'#13#10,
+            '['#13#10,
+            '  batch_status = ''O'' '#13#10,
+            '  and batch_type = ''I'' '#13#10,
+            '  and batch_sub_type = ''M'''#13#10,
+            '  and tgl_used = :NowDate'#13#10,
+            ']'#13#10,
+            '('#13#10,
+            '  no_batch,'#13#10,
+            '  tgl_create,'#13#10,
+            '  account_link_type,'#13#10,
+            '  user_id_owner,'#13#10,
+            '  ID_TransactionBatch,'#13#10,
+            '  self'#13#10,
+            ') then order by no_batch;']
+          LookupOption=loCustomOQL
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='nowDate'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=10
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          ReadOnlyControl=true
+        >
+        , object:rtf::FieldUIElmtSetting<
+          Name='terminal_id'
+          ReadOnlyControl=true
+          DataTypeName='varchar'
+          DataLength=15
+        >
+      }
+      Name='pTransBatch'
+      Width=240
+      Height=120
+      Bordered=true
+      UIPart=$UIPARTS['uipNoData']
+      Controls={
+        *object:rtf::DBLookupEdit<
+          Name='LTransactionBatch'
+          ControlCaption='Transaction Batch'
+          LookupField='LTransactionBatch.no_batch'
+          DisplayLookupField=true
+        >
+        , *object:rtf::DBEdit<
+          Name='user_id'
+          ReadOnly=true
+        >
+        , *object:rtf::DBEdit<
+          Name='terminal_id'
+          ReadOnly=true
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+    , object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=240
+      Height=180
+      Container1=$CONTAINERS['pFilter']
+      Container2=$CONTAINERS['pTransBatch']
+    >
+  }
+>

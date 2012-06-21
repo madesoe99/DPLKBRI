@@ -1,0 +1,83 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rpclass::TPClassUIDefList<
+  UIDefs={object:rpclass::TPClassUIDef<
+      Name='menuitems'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='item_number'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='item_caption'
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >, object:rpclass::TCustomLoadedField<
+          Name='item_caption_mod'
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >, object:rpclass::TCustomLoadedField<
+          Name='parent_item'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >}Mode=imMultiRow
+    >, object:rpclass::TPClassUIDef<
+      Name='allowedusers'
+      MasterUIName='menuitems'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='user.user_id'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='user.user_id'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='user.UserName'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >, object:rpclass::TCustomLoadedField<
+          Name='user.Description'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >}CustomLoadedLinks={object:rpclass::TCustomLoadedLink<
+          Name='user'
+          ClassTypeName='UserApp'
+          FieldNames='user_id;user_id;UserName;Description'
+        >}Mode=imMultiRow
+    >, object:rpclass::TPClassUIDef<
+      Name='allowedgroups'
+      MasterUIName='menuitems'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='group.group_id'
+          DataTypeName='VARCHAR'
+          DataLength=8
+        >, object:rpclass::TCustomLoadedField<
+          Name='group.group_id'
+          DataTypeName='VARCHAR'
+          DataLength=8
+        >, object:rpclass::TCustomLoadedField<
+          Name='group.GroupName'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >, object:rpclass::TCustomLoadedField<
+          Name='group.Description'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >}CustomLoadedLinks={object:rpclass::TCustomLoadedLink<
+          Name='group'
+          ClassTypeName='UserGroup'
+          FieldNames='group_id;group_id;GroupName;Description'
+        >}Mode=imMultiRow
+    >, object:rpclass::TPClassUIDef<
+      Name='menu_id'
+      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+          Name='menu_id'
+          DataTypeName='varchar'
+          DataLength=100
+        >}Mode=imSingleRow
+    >}OnGeneralSetData='FormGeneralSetData'
+>

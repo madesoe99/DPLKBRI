@@ -1,0 +1,335 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['DualSplit']
+  Caption='Input Nomor Peserta dan atau Batch Transaksi'
+  Left=300
+  Top=250
+  Width=400
+  Height=140
+  OnFormShow='FormShow'
+  UIParts={object:rtf::PClassUI<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='Code'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='BatchType'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=1
+          EnumeratedValues=['R=Registration'#13#10,
+            'T=Transaction'#13#10,
+            'P=Premi'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='BatchSubType'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=1
+          EnumeratedValues=['M=Manual Input'#13#10,
+            'T=Teller Transaction'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='isNeedType'
+          Hidden=true
+          DataTypeName='integer'
+          DataLength=20
+          EnumeratedValues=['0=False'#13#10,
+            '1=True'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='TanggalPakai'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=10
+        >, object:rtf::FieldUIElmtSetting<
+          Name='isNotNeedTanggalPakai'
+          Hidden=true
+          DataTypeName='integer'
+          DataLength=20
+          EnumeratedValues=['0=False'#13#10,
+            '1=True'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='isOpenOnly'
+          Hidden=true
+          DataTypeName='integer'
+          DataLength=20
+          EnumeratedValues=['0=False'#13#10,
+            '1=True'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='AccountLinkType'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=1
+          EnumeratedValues=['C=Custom'#13#10,
+            'S=Single'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='isManualTransaction'
+          Hidden=true
+          DataTypeName='integer'
+          DataLength=20
+          EnumeratedValues=['0=False'#13#10,
+            '1=True'#13#10]
+        >}Name='uipInput'
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >, object:rtf::PClassUI<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='isBackOffice'
+          Hidden=true
+          DataTypeName='integer'
+          DataLength=20
+          EnumeratedValues=['0=False'#13#10,
+            '1=True'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='isTeller'
+          Hidden=true
+          DataTypeName='integer'
+          DataLength=20
+          EnumeratedValues=['0=False'#13#10,
+            '1=True'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='UserIDOwner'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='isBackOfficeCabang'
+          Hidden=true
+          DataTypeName='integer'
+          DataLength=20
+          EnumeratedValues=['0=False'#13#10,
+            '1=True'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='BranchCode'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=5
+        >}Name='uipUserInfo'
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >, object:rtf::PClassUI<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='ID_TransactionBatch'
+          Hidden=true
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='no_batch'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=32
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tgl_used'
+          Hidden=true
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='branch_code'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=5
+        >, object:rtf::FieldUIElmtSetting<
+          Name='batch_type'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=1
+          EnumeratedValues=['T=Transaction'#13#10,
+            'P=Premi'#13#10,
+            'R=Registration'#13#10]
+        >}Name='uipBatchDefined'
+      MultiLine=true
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >, object:rtf::PClassUI<
+      Elements={object:rtf::FieldUIElmtSetting<
+          Name='UserID'
+          Hidden=true
+          DataTypeName='varchar'
+          DataLength=20
+        >}Name='uipSuperUser'
+      MultiLine=true
+      CreateInstanceOnNew=true
+    >}Containers={object:rtf::Panel<
+      Elements={object:rtf::LinkUIElmtSetting<
+          Name='LTransactionBatch'
+          ControlCaption='Batch Transaksi'
+          ClassTypeName='TransactionBatch'
+          KeyFields={object:rtf::FieldUIElmtSetting<
+              Name='LTransactionBatch.ID_TransactionBatch'
+              DataTypeName='INTEGER'
+              DataLength=0
+              UsedAsKey=true
+              KeyOrDisplayName='ID_TransactionBatch'
+              FinalDisplayFieldName='ID_TransactionBatch'
+            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+              Name='LTransactionBatch.ID_TransactionBatch'
+              DataTypeName='INTEGER'
+              DataLength=0
+              UsedAsDisplay=true
+              KeyOrDisplayName='ID_TransactionBatch'
+              FinalDisplayFieldName='ID_TransactionBatch'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LTransactionBatch.no_batch'
+              DataTypeName='VARCHAR'
+              DataLength=32
+              UsedAsDisplay=true
+              KeyOrDisplayName='no_batch'
+              FinalDisplayFieldName='no_batch'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LTransactionBatch.batch_type'
+              DataTypeName='VARCHAR'
+              DataLength=1
+              UsedAsDisplay=true
+              KeyOrDisplayName='batch_type'
+              FinalDisplayFieldName='batch_type'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LTransactionBatch.batch_sub_type'
+              DataTypeName='VARCHAR'
+              DataLength=1
+              UsedAsDisplay=true
+              KeyOrDisplayName='batch_sub_type'
+              FinalDisplayFieldName='batch_sub_type'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LTransactionBatch.branch_code'
+              DataTypeName='VARCHAR'
+              DataLength=5
+              UsedAsDisplay=true
+              KeyOrDisplayName='branch_code'
+              FinalDisplayFieldName='branch_code'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LTransactionBatch.tgl_used'
+              DataTypeName='TIMESTAMP'
+              DataLength=0
+              UsedAsDisplay=true
+              KeyOrDisplayName='tgl_used'
+              FinalDisplayFieldName='tgl_used'
+            >}Restrictions=['uipUserInfo.isTeller|isTeller'#13#10,
+            'uipUserInfo.UserIDOwner|UserIDOwner'#13#10,
+            'uipUserInfo.BranchCode|BranchCode'#13#10,
+            'uipUserInfo.isBackOffice|isBackOffice'#13#10,
+            'uipUserInfo.isBackOfficeCabang|isBackOfficeCabang'#13#10,
+            'uipInput.isNeedType|isNeedType'#13#10,
+            'uipInput.BatchType|BatchType'#13#10,
+            'uipInput.BatchSubType|BatchSubType'#13#10,
+            'uipInput.isManualTransaction|isManualTransaction'#13#10,
+            'uipInput.AccountLinkType|AccountLinkType'#13#10,
+            'uipInput.isNotNeedTanggalPakai|isNotNeedTanggalPakai'#13#10,
+            'uipInput.isOpenOnly|isOpenOnly'#13#10,
+            'uipInput.TanggalPakai|TanggalPakai']
+          LookupOption=loCustomOQL
+          FieldBaseName='LTransactionBatch'
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LPeserta'
+          ControlCaption='Nomor Peserta'
+          ClassTypeName='NasabahDPLK'
+          KeyFields={object:rtf::FieldUIElmtSetting<
+              Name='LPeserta.no_peserta'
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsKey=true
+              KeyOrDisplayName='no_peserta'
+              FinalDisplayFieldName='no_peserta'
+            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+              Name='LPeserta.no_peserta'
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsDisplay=true
+              KeyOrDisplayName='no_peserta'
+              FinalDisplayFieldName='no_peserta'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LPeserta.nama_lengkap'
+              DataTypeName='VARCHAR'
+              DataLength=100
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_lengkap'
+              FinalDisplayFieldName='nama_lengkap'
+            >}Restrictions=''
+          OQLText=['select from NasabahDPLK'#13#10,
+            '(no_peserta,nama_lengkap,alamat_jalan,alamat_jalan2,'#13#10,
+            'alamat_kota,alamat_telepon,self)'#13#10,
+            'then order by no_peserta;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LPeserta'
+        >}Name='pInput'
+      Width=240
+      Height=80
+      Bordered=true
+      UIPart=$UIPARTS['uipInput']
+      Controls={*object:rtf::DBLookupEdit<
+          Name='LTransactionBatch'
+          Top=10
+          Left=20
+          Width=100
+          Height=21
+          Color=12695295
+          ControlCaption='Batch Transaksi'
+          LookupField='LTransactionBatch.no_batch'
+          DisplayLookupField=true
+          OnBeforeLookup='TB_BeforeLookup'
+        >, *object:rtf::DBLookupEdit<
+          Name='LPeserta'
+          Top=38
+          Left=20
+          Width=100
+          Height=21
+          Color=12695295
+          ControlCaption='Nomor Peserta'
+          LookupField='LPeserta.nama_lengkap'
+          DisplayLookupField=true
+          DirectInput=true
+        >}EqualCaptionWidth=100
+      ControlLeftMargin=20
+      ControlTopMargin=10
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=375
+      Height=40
+      Controls={object:rtf::Button<
+          Name='bOK'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          Color=0
+          ControlCaption='&OK'
+          Caption='&OK'
+          Default=true
+          OnClick='bOKClick'
+        >, object:rtf::Button<
+          Name='bCancel'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          Color=0
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          DefaultAction=daClear
+          ExitAction=eaQuitCancel
+        >, object:rtf::Button<
+          Name='Button'
+          Layout=clNextSide
+          Top=8
+          Left=166
+          Visible=false
+          Color=0
+          ControlCaption=''
+          DefaultAction=daShowDebugWindow
+        >}ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=400
+      Height=140
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['pInput']
+      InversedAlign=true
+    >}>

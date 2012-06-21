@@ -1,0 +1,198 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipTransaksi'
+      PClassName='PenarikanDanaPHK'
+      LoadedFieldList='tgl_transaksi;jenis_biaya;biaya_lain;jml_tarik;ktr_biaya_lain;LTransactionBatch.ID_TransactionBatch;LTransactionBatch.ID_TransactionBatch;LTransactionBatch.no_batch;keterangan'
+      StoredFieldList='tgl_transaksi;jenis_biaya;biaya_lain;jml_tarik;ktr_biaya_lain;LTransactionBatch;keterangan'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='HiddenIDTransaksi'
+          DataTypeName='integer'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='TB_BranchCode'
+          DataTypeName='varchar'
+          DataLength=5
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='BatasTarikMaks'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='BatasTarikMin'
+          DataTypeName='double'
+          DataLength=20
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LTransactionBatch'
+          ClassTypeName='TransactionBatch'
+          FieldNames='ID_TransactionBatch;ID_TransactionBatch;no_batch'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipNasabah'
+      PClassName='NasabahDPLK'
+      LoadedFieldList='no_peserta;nama_lengkap;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;NPWP;LRekeningDPLK.no_peserta;LRekeningDPLK.akum_dana_iuran_pk;LRekeningDPLK.akum_dana_iuran_pst;LRekeningDPLK.akum_dana_pengembangan;LRekeningDPLK.akum_dana_peralihan;LRekeningDPLK.LPaketInvestasi.kode_paket_investasi;LRekeningDPLK.LPaketInvestasi.nama_paket_investasi'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='DanaPk'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='DanaPst'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='DanaPengembangan'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='DanaPeralihan'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='PaketInvestasi'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LRekeningDPLK'
+          ClassTypeName='RekeningDPLK'
+          FieldNames='no_peserta;akum_dana_iuran_pk;akum_dana_iuran_pst;akum_dana_pengembangan;akum_dana_peralihan;LPaketInvestasi.kode_paket_investasi;LPaketInvestasi.nama_paket_investasi'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipUserInfo'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='isPrintAdvis'
+          DataTypeName='integer'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='HitungMode'
+          DataTypeName='integer'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='FileAdvis'
+          DataTypeName='varchar'
+          DataLength=100
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipParameter'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='BiayaTunai'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='BiayaSKN'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='BiayaRTGS'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='PRESISI_ANGKA_FLOAT'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='BiayaPindahBuku'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='PERSEN_DENDA_NPWP'
+          DataTypeName='double'
+          DataLength=20
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipHitung'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='jml_tarik'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='biaya_tarik'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='saldo_iuran_awal'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='saldo_iuran_akhir'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='pajak'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='jenis_biaya'
+          DataTypeName='varchar'
+          DataLength=1
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='biaya_lain'
+          DataTypeName='double'
+          DataLength=20
+        >
+        , object:rpclass::TCustomLoadedField<
+          Name='dana_diterima'
+          DataTypeName='double'
+          DataLength=20
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+  }
+  OnGeneralProcessData='FormGeneralProcessData'
+  OnEndSetData='FormEndSetData'
+  OnEndProcessData='FormEndProcessData'
+>

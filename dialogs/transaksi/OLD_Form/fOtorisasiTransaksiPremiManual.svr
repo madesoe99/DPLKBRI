@@ -1,0 +1,34 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipTransaksi'
+      PClassName='TransaksiPremiManual'
+      LoadedFieldList='user_id;terminal_id;tgl_sistem;user_id_auth;terminal_id_auth;tgl_otorisasi;isCommitted;tgl_transaksi;keterangan;isDebet;mutasi_premi;ID_Transaksi;LTransactionBatch.ID_TransactionBatch;LTransactionBatch.ID_TransactionBatch;LTransactionBatch.no_batch;LTransactionBatch.branch_code'
+      StoredFieldList='ID_Transaksi'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='TB_BranchCode'
+          DataTypeName='varchar'
+          DataLength=5
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LTransactionBatch'
+          ClassTypeName='TransactionBatch'
+          FieldNames='ID_TransactionBatch;ID_TransactionBatch;no_batch;branch_code'
+        >
+      }
+      Mode=imSingleRow
+    >
+  }
+  OnGeneralProcessData='FormGeneralProcessData'
+  OnEndSetData='FormEndSetData'
+>

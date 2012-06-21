@@ -1,0 +1,38 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{FF6521AE-DCB8-457C-933C-35D88DB5B672}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rmn::Menu<
+  MenuItems={
+    object:rmn::MenuItem<
+      Name='fRujukanImport'
+      Caption='Buat Rujukan Baru...'
+      OnClick='mnuNewClick'
+      StringTag='new'
+    >
+    , object:rmn::MenuItem<
+      Name='fRujukanImport'
+      Caption='Koreksi Rujukan...'
+      OnClick='displayWithData'
+      StringTag='edit'
+    >
+    , object:rmn::MenuItem<
+      Name='fRujukanImport'
+      Caption='Lihat Detil Rujukan...'
+      OnClick='displayWithData'
+      StringTag='view'
+    >
+    , object:rmn::MenuItem<
+      Caption='-'
+    >
+    , object:rmn::MenuItem<
+      Name='mnuDelete'
+      Caption='Hapus Rujukan Impor'
+      OnClick='mnuDeleteClick'
+    >
+  }
+  MenuType=mtPopupMenu
+>

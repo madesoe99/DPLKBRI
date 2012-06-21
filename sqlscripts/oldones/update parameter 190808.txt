@@ -1,0 +1,2 @@
+insert into Parameter (Key_Parameter, Numeric_Value, Description)
+values ('TOLERANSI_NILAI_PREMI', 0.00001, 'Toleransi nilai premi yang dibayarkan.');

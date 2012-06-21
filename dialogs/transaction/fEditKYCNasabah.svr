@@ -1,0 +1,132 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipRegisterCIF'
+      PClassName='RegEditKYCNasabah'
+      LoadedFieldList='tanggal_register;LNegara.kode_negara;LNegara.kode_negara;LNegara.nama_negara;LNegara.risk_flag;LJenisUsaha.kode_jenis_usaha;LJenisUsaha.kode_jenis_usaha;LJenisUsaha.nama_jenis_usaha;LJenisUsaha.risk_flag;LJenisPekerjaan.kode_jenis_pekerjaan;LJenisPekerjaan.kode_jenis_pekerjaan;LJenisPekerjaan.nama_jenis_pekerjaan;LJenisPekerjaan.risk_flag;LJenisPekerjaanDetail.jpd_id;LJenisPekerjaanDetail.kode_jenis_jabatan;LJenisPekerjaanDetail.LJenisJabatan.nama_jenis_jabatan;LJenisPekerjaanDetail.risk_flag;status_pep;keterangan_pep;status_risk_request;risk_flag_request;nama_orang_tua;LJenisPekerjaanOrtu.kode_jenis_pekerjaan;LJenisPekerjaanOrtu.kode_jenis_pekerjaan;LJenisPekerjaanOrtu.nama_jenis_pekerjaan;LJenisPekerjaanOrtu.risk_flag;LJenisPekerjaanDetailOrtu.jpd_id;LJenisPekerjaanDetailOrtu.kode_jenis_jabatan;LJenisPekerjaanDetailOrtu.LJenisJabatan.nama_jenis_jabatan;LJenisPekerjaanDetailOrtu.risk_flag;LJenisUsahaOrtu.kode_jenis_usaha;LJenisUsahaOrtu.kode_jenis_usaha;LJenisUsahaOrtu.nama_jenis_usaha;LJenisUsahaOrtu.risk_flag;nama_perusahaan_ortu;penghasilan_orang_tua;no_referensi;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;LNasabahDPLK.alamat_jalan;LNasabahDPLK.alamat_rtrw;LNasabahDPLK.alamat_kelurahan;LNasabahDPLK.alamat_kecamatan;LNasabahDPLK.alamat_kota;LNasabahDPLK.alamat_kode_pos;LNasabahDPLK.alamat_telepon;LNasabahDPLK.alamat_kantor_jalan;LNasabahDPLK.alamat_kantor_kode_pos;LNasabahDPLK.alamat_kantor_kelurahan;LNasabahDPLK.alamat_kantor_kecamatan;LNasabahDPLK.alamat_kantor_kota;LNasabahDPLK.alamat_kantor_propinsi;LNasabahDPLK.alamat_kantor_telepon;LNasabahDPLK.alamat_surat_jalan;LNasabahDPLK.alamat_surat_kelurahan;LNasabahDPLK.alamat_surat_kecamatan;LNasabahDPLK.alamat_surat_rtrw;LNasabahDPLK.alamat_surat_kota;LNasabahDPLK.alamat_surat_propinsi;LNasabahDPLK.alamat_surat_kode_pos;keterangan;user_id;terminal_id;registercif_id;ibu_kandung;beneficial_owner;penghasilan_tetap;penghasilan_tambahan'
+      StoredFieldList='tanggal_register;LNegara;LJenisUsaha;LJenisPekerjaan;LJenisPekerjaanDetail;status_pep;keterangan_pep;status_risk_request;risk_flag_request;nama_orang_tua;LJenisPekerjaanOrtu;LJenisPekerjaanDetailOrtu;LJenisUsahaOrtu;nama_perusahaan_ortu;penghasilan_orang_tua;no_referensi;LNasabahDPLK;keterangan;user_id;terminal_id;ibu_kandung;beneficial_owner;penghasilan_tetap;penghasilan_tambahan'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='RFNegara'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='RFJenisUsaha'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='RFJenisPekerjaan'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='RFJenisPekerjaanDetail'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='RF_JenisPekerjaanOrtu'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='RF_JPDOrtu'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='RF_JenisUsahaOrtu'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='mode'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='nasabah_korporat'
+          DataTypeName='integer'
+          DataLength=20
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LNegara'
+          ClassTypeName='Negara'
+          FieldNames='kode_negara;kode_negara;nama_negara;risk_flag'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LJenisUsaha'
+          ClassTypeName='JenisUsaha'
+          FieldNames='kode_jenis_usaha;kode_jenis_usaha;nama_jenis_usaha;risk_flag'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LJenisPekerjaan'
+          ClassTypeName='JenisPekerjaan'
+          FieldNames='kode_jenis_pekerjaan;kode_jenis_pekerjaan;nama_jenis_pekerjaan;risk_flag'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LJenisPekerjaanDetail'
+          ClassTypeName='JenisPekerjaanDetail'
+          FieldNames='jpd_id;kode_jenis_jabatan;LJenisJabatan.nama_jenis_jabatan;risk_flag'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LJenisPekerjaanOrtu'
+          ClassTypeName='JenisPekerjaan'
+          FieldNames='kode_jenis_pekerjaan;kode_jenis_pekerjaan;nama_jenis_pekerjaan;risk_flag'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LJenisPekerjaanDetailOrtu'
+          ClassTypeName='JenisPekerjaanDetail'
+          FieldNames='jpd_id;kode_jenis_jabatan;LJenisJabatan.nama_jenis_jabatan;risk_flag'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LJenisUsahaOrtu'
+          ClassTypeName='JenisUsaha'
+          FieldNames='kode_jenis_usaha;kode_jenis_usaha;nama_jenis_usaha;risk_flag'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLK'
+          ClassTypeName='NasabahDPLK'
+          FieldNames='no_peserta;no_peserta;nama_lengkap;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_kantor_jalan;alamat_kantor_kode_pos;alamat_kantor_kelurahan;alamat_kantor_kecamatan;alamat_kantor_kota;alamat_kantor_propinsi;alamat_kantor_telepon;alamat_surat_jalan;alamat_surat_kelurahan;alamat_surat_kecamatan;alamat_surat_rtrw;alamat_surat_kota;alamat_surat_propinsi;alamat_surat_kode_pos'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+      AfterApplyRow='uipRegisterCIFApplyRow'
+    >, object:rpclass::TPClassUIDef<
+      Name='uipMaster'
+      PClassName='NasabahDPLK'
+      LoadedFieldList='no_peserta;nama_lengkap;LJenisUsaha.kode_jenis_usaha;LJenisUsaha.kode_jenis_usaha;LJenisUsaha.nama_jenis_usaha;LJenisUsaha.risk_flag;ibu_kandung;penghasilan_tetap;penghasilan_tambahan;status_risk_request;risk_flag_request;status_pep;keterangan_pep;beneficial_owner;LNegara.kode_negara;LNegara.kode_negara;LNegara.nama_negara;LNegara.risk_flag;LJenisPekerjaan.kode_jenis_pekerjaan;LJenisPekerjaan.kode_jenis_pekerjaan;LJenisPekerjaan.nama_jenis_pekerjaan;LJenisPekerjaan.risk_flag;LJenisPekerjaanDetail.jpd_id;LJenisPekerjaanDetail.kode_jenis_jabatan;LJenisPekerjaanDetail.LJenisJabatan.nama_jenis_jabatan;LJenisPekerjaanDetail.risk_flag;nama_orang_tua;LJenisPekerjaanOrtu.kode_jenis_pekerjaan;LJenisPekerjaanOrtu.kode_jenis_pekerjaan;LJenisPekerjaanOrtu.nama_jenis_pekerjaan;LJenisPekerjaanOrtu.risk_flag;LJenisPekerjaanDetailOrtu.jpd_id;LJenisPekerjaanDetailOrtu.kode_jenis_jabatan;LJenisPekerjaanDetailOrtu.LJenisJabatan.nama_jenis_jabatan;LJenisPekerjaanDetailOrtu.risk_flag;LJenisUsahaOrtu.kode_jenis_usaha;LJenisUsahaOrtu.kode_jenis_usaha;LJenisUsahaOrtu.nama_jenis_usaha;LJenisUsahaOrtu.risk_flag;NAMA_PERUSAHAAN_ORTU;penghasilan_orang_tua;jpd_id;jpd_id_ortu'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LJenisUsaha'
+          ClassTypeName='JenisUsaha'
+          FieldNames='kode_jenis_usaha;kode_jenis_usaha;nama_jenis_usaha;risk_flag'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LNegara'
+          ClassTypeName='Negara'
+          FieldNames='kode_negara;kode_negara;nama_negara;risk_flag'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LJenisPekerjaan'
+          ClassTypeName='JenisPekerjaan'
+          FieldNames='kode_jenis_pekerjaan;kode_jenis_pekerjaan;nama_jenis_pekerjaan;risk_flag'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LJenisPekerjaanDetail'
+          ClassTypeName='JenisPekerjaanDetail'
+          FieldNames='jpd_id;kode_jenis_jabatan;LJenisJabatan.nama_jenis_jabatan;risk_flag'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LJenisPekerjaanOrtu'
+          ClassTypeName='JenisPekerjaan'
+          FieldNames='kode_jenis_pekerjaan;kode_jenis_pekerjaan;nama_jenis_pekerjaan;risk_flag'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LJenisPekerjaanDetailOrtu'
+          ClassTypeName='JenisPekerjaanDetail'
+          FieldNames='jpd_id;kode_jenis_jabatan;LJenisJabatan.nama_jenis_jabatan;risk_flag'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LJenisUsahaOrtu'
+          ClassTypeName='JenisUsaha'
+          FieldNames='kode_jenis_usaha;kode_jenis_usaha;nama_jenis_usaha;risk_flag'
+        >
+      }
+      Mode=imSingleRow
+    >
+  }
+  OnGeneralProcessData='FormOnGeneralProcessData'
+  OnEndSetData='FormEndSetData'
+>

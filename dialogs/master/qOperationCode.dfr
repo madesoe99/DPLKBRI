@@ -1,0 +1,51 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['qOperationCode']
+  Caption='Daftar Operation Code'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  Containers={
+    object:rtf::Query<
+      Name='qOperationCode'
+      Width=240
+      Height=40
+      ContextMenuName='popupmenus/master/qOperationCode'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from OperationCode'#13#10,
+        '('#13#10,
+        '  operation_code as Operation_Code,'#13#10,
+        '  operation_name as Operation_Name,'#13#10,
+        '  keterangan as Keterangan,'#13#10,
+        '  user_id as User_ID,'#13#10,
+        '  last_update as Last_Update,'#13#10,
+        '  self'#13#10,
+        ') then order by Operation_Code;']
+      DirectDisplay=true
+      WindowSize=20
+    >
+  }
+>

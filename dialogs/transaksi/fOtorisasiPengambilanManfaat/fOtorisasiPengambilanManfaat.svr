@@ -1,0 +1,50 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipTransaksi'
+      PClassName='PengambilanManfaat'
+      LoadedFieldList='user_id;terminal_id;tgl_sistem;user_id_auth;terminal_id_auth;tgl_otorisasi;isCommitted;tgl_transaksi;keterangan;no_peserta;Ljenis_penerimaan_manfaat.kode_jns_manfaat;Ljenis_penerimaan_manfaat.kode_jns_manfaat;Ljenis_penerimaan_manfaat.nama_jns_manfaat;ID_Transaksi;LTransactionBatch.ID_TransactionBatch;LTransactionBatch.ID_TransactionBatch;LTransactionBatch.no_batch;LTransactionBatch.branch_code;LAhliWaris.ahliwaris_id;LAhliWaris.ahliwaris_id;LAhliWaris.nama_lengkap;nama_anuitas;saldo_iuran_pst;saldo_pengembangan;saldo_peralihan;saldo_jml_dana;biaya_pencairan;biaya_pengelolaan;biaya_administrasi;saldo_manfaat;pajak;saldo_iuran_pk;manfaat_stlh_pajak;manfaat_tunai;manfaat_anuitas;jenis_biaya;biaya_lain;manfaat_tunai_diterima'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='TB_BranchCode'
+          DataTypeName='varchar'
+          DataLength=5
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='Ljenis_penerimaan_manfaat'
+          ClassTypeName='JenisPenerimaanManfaat'
+          FieldNames='kode_jns_manfaat;kode_jns_manfaat;nama_jns_manfaat'
+        >
+        , object:rpclass::TCustomLoadedLink<
+          Name='LTransactionBatch'
+          ClassTypeName='TransactionBatch'
+          FieldNames='ID_TransactionBatch;ID_TransactionBatch;no_batch;branch_code'
+        >
+        , object:rpclass::TCustomLoadedLink<
+          Name='LAhliWaris'
+          ClassTypeName='AhliWaris'
+          FieldNames='ahliwaris_id;ahliwaris_id;nama_lengkap'
+        >
+      }
+      Mode=imSingleRow
+    >
+    , object:rpclass::TPClassUIDef<
+      Name='uipNasabah'
+      PClassName='NasabahDPLK'
+      LoadedFieldList='nama_lengkap;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;tanggal_lahir;tgl_registrasi'
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+  }
+  OnGeneralProcessData='FormGeneralProcessData'
+  OnEndSetData='FormEndSetData'
+>

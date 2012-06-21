@@ -1,0 +1,110 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit1']
+  Left=50
+  Top=50
+  Width=420
+  Height=180
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={object:rtf::PClassUI<
+      Name='uipNoData'
+    >}Containers={object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=420
+      Height=180
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['pData']
+      InversedAlign=true
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=320
+      Height=45
+      Bordered=true
+      Controls={object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          Color=0
+          ControlCaption=''
+          Caption='&OK'
+          OnClick='btnOKClick'
+        >, object:rtf::Button<
+          Name='btnCancel'
+          Layout=clAbsolute
+          Top=8
+          Left=96
+          Color=0
+          ControlCaption=''
+          Caption='&Cancel'
+          ExitAction=eaQuitCancel
+        >}ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Elements={object:rtf::LinkUIElmtSetting<
+          Name='LBranchLocation'
+          Hidden=true
+          ClassTypeName='BranchLocation'
+          DisplayFields='branch_code;BranchName'
+          Restrictions=''
+          OQLText=['select from BranchLocation'#13#10,
+            '('#13#10,
+            '  branch_code,'#13#10,
+            '  BranchName,'#13#10,
+            '  self'#13#10,
+            ') then order by branch_code;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LBranchLocation'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tanggal_awal'
+          ControlCaption='tanggal_awal'
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tanggal_akhir'
+          ControlCaption='tanggal_akhir'
+          DataTypeName='timestamp'
+          DataLength=20
+        >}Name='pData'
+      Width=400
+      Height=130
+      Bordered=true
+      UIPart=$UIPARTS['uipNoData']
+      Controls={*object:rtf::DBDateEdit<
+          Name='tanggal_awal'
+          Top=20
+          Left=20
+          Color=0
+          ControlCaption='tanggal_awal'
+        >, *object:rtf::DBDateEdit<
+          Name='tanggal_akhir'
+          Top=48
+          Left=20
+          Color=0
+          ControlCaption='tanggal_akhir'
+        >}EqualCaptionWidth=110
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Laporan Performance Kantor Kas Perbulan'
+    >}>
