@@ -39,3 +39,5 @@ dev.cfg
 trackedtasks/
 *.7z
 *.zip
+*.mdf
+*.ldf
