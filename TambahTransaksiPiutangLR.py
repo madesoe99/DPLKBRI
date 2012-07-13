@@ -14,7 +14,7 @@ def StrToDate(strDate, format) :
   # Pemeriksaan Format Tanggal
   if format == 'YYYY-MM-DD' :
     if strDate[4] != '-' or strDate[7] != '-' :
-       raise 'ERROR','Format tanggal salah YYYY-MM-DD (untuk tanggal awal dan akhir)'
+       raise Exception, 'ERROR' + 'Format tanggal salah YYYY-MM-DD (untuk tanggal awal dan akhir)'
     d = int(strDate[8:])
     m = int(strDate[5:7])
     y = int(strDate[:4])
@@ -75,7 +75,7 @@ def MainFlow(config) :
       raise
 #main function
 if len(sys.argv) < 3:
-      raise 'argument error', 'TambahTransaksiPiutangLR.py <Config File>'
+      raise Exception, 'argument error' +  'TambahTransaksiPiutangLR.py <Config File>'
 #
 CONFIG_FILE = CONFIG_FOLDER + sys.argv[2]
 config = dafsys.OpenConfig(CONFIG_FILE)

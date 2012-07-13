@@ -195,7 +195,7 @@ def DAFScriptMain(config, parameter, returnpacket):
     #registrasi bukan oleh admin, cek status biaya pendaftaran
     byPassBiayaDaftar = 0
     if oRegisterNasabahRekening.STATUS_BIAYA_DAFTAR != 'T':
-      raise '\n\nPERINGATAN','Pembayaran Biaya Pendaftaran belum dilakukan.'
+      raise Exception, '\n\nPERINGATAN' + 'Pembayaran Biaya Pendaftaran belum dilakukan.'
 
   config.BeginTransaction()
   try:

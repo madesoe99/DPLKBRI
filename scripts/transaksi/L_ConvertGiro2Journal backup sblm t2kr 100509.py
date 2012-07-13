@@ -114,7 +114,7 @@ def Main(config, dtTglTransaksi):
     else:
       #ada error saat mengambil
       config.SendDebugMsg('cg2j_m133')
-      raise 'Error First GetHistoriGiro', \
+      raise Exception, 'Error First GetHistoriGiro' +  \
         str(ph.packet.GetDataset(0).GetRecord(0).ErrMessage)      
 
     config.SendDebugMsg('cg2j_m14')
@@ -151,7 +151,7 @@ def Main(config, dtTglTransaksi):
 
       else:
         #ada error saat mengambil
-        raise 'Error First GetHistoriGiro', \
+        raise Exception, 'Error First GetHistoriGiro' +  \
           str(ph.packet.GetDataset(0).GetRecord(0).ErrMessage)
           
       #inkremen progres level 2

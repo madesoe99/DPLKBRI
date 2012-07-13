@@ -22,7 +22,7 @@ def GetFormInfoByJnsTransCode(kode_jenis_trinvestasi):
   elif kode_jenis_trinvestasi == 'I':
     return ['fManLRInvestasi','TransLRInvestasi','uipTransLRInvestasi']
   else:
-    raise 'PERINGATAN','Kode jenis transaksi investasi tidak dikenali / belum terdefinisi.'
+    raise Exception, 'PERINGATAN' + 'Kode jenis transaksi investasi tidak dikenali / belum terdefinisi.'
 
 def mnuNewClick(sender, context):
   app = context.OwnerForm.ClientApplication

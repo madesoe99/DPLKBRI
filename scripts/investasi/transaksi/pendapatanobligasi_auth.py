@@ -1,8 +1,11 @@
-import sys
-sys.path.append('c:/dafapp/dplk07/script_modules')
-import moduleapi,TransactInv
+import com.ihsan.util.modman as modman
+
+#moduleapi = modman.getModule(config, 'moduleapi')
+#TransactInv = modman.getModule(config, 'TransactInv')
 
 def CreateTransPiutangLRInvestasi(config, oPendapatanObligasi):
+  moduleapi = modman.getModule(config, 'moduleapi')
+  
   oTransPiutangLRInvestasi = config.CreatePObject('TransPiutangLRInvestasi')
   
   oTransPiutangLRInvestasi.LInvestasi = oPendapatanObligasi.LObligasi
@@ -57,6 +60,7 @@ def DAFScriptMain(config, parameter, returnpacket):
     #oObligasi.akum_piutangLR += oPendapatanObligasi.nominal
     oObligasi.akum_LR += oPendapatanObligasi.nominal
     oObligasi.last_update = config.Now()
+    TransactInv = modman.getModule(config, 'TransactInv')
     TransactInv.CreateRincianBagiHasil(config, oObligasi, oPendapatanObligasi.nominal)
     config.Commit()
   except:
@@ -64,4 +68,3 @@ def DAFScriptMain(config, parameter, returnpacket):
     raise
 
   return 1
-

@@ -196,7 +196,7 @@ def DAFScriptMain(config, parameter, returnpacket):
     #registrasi bukan oleh admin, cek status biaya pendaftaran
     byPassBiayaDaftar = 0
     if oRegisterNasabahRekening.STATUS_BIAYA_DAFTAR != 'T':
-      raise '\n\nPERINGATAN','Pembayaran Biaya Pendaftaran belum dilakukan.'
+      raise Exception, '\n\nPERINGATAN' + 'Pembayaran Biaya Pendaftaran belum dilakukan.'
 
   config.BeginTransaction()
   try:
@@ -255,7 +255,7 @@ def KirimPesertaKeCoreBanking(config, no_peserta, nama_lengkap, kode_paket, kode
       try:
         rph = config.AppObject.rexecscript(sessionID, 'remote/KirimPesertaDPLK', param, 1)
         if rph.FirstRecord.IsErr:
-          raise '\nError kirim peserta ke CoreBanking',str(rph.FirstRecord.ErrMessage)
+          raise Exception, '\nError kirim peserta ke CoreBanking' + str(rph.FirstRecord.ErrMessage)
       except:
         raise
 
@@ -293,6 +293,6 @@ def CekPesertaSdhTersimpan(config, no_peserta, sessionID):
       recStatus = rph.Packet.GetDatasetByName('status').GetRecord(0)
       if recStatus.IsErr:
         msg = str(recStatus.ErrMessage)
-        raise '\nError Cek Peserta: ', msg
+        raise Exception, '\nError Cek Peserta: ' +  msg
   except:
     raise

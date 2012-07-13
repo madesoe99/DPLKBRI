@@ -176,7 +176,7 @@ def CreatingResultSet(config, dtTglTransaksi):
         pass          
       else:
         #No Giro tidak terdefinisi
-        raise 'Error Giro','Nomor Giro %s tidak terdefinisi' % (rSQL.NO_GIRO)               
+        raise Exception, 'Error Giro' + 'Nomor Giro %s tidak terdefinisi' % (rSQL.NO_GIRO)               
 
       #update nilai lastID_HISTORIGIROHARIAN
       lastNoGiro = rSQL.NO_GIRO

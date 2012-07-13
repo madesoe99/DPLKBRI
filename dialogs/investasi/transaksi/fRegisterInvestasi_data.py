@@ -44,10 +44,10 @@ def uipRegisterInvestasiApplyRow(uipRegisterInvestasi, oRegisterInvestasi):
   config = uipRegisterInvestasi.UIDefList.Config
 
   if oRegisterInvestasi.no_bilyet in [None, '']:
-    raise 'Kesalahan Register Investasi','Nomor bilyet tidak terdefinisi.'
+    raise Exception, 'Kesalahan Register Investasi' + 'Nomor bilyet tidak terdefinisi.'
 
   if oRegisterInvestasi.nominal <= 0.0:
-    raise 'Kesalahan Register Investasi','Nilai nominal harus lebih besar dari nol.'
+    raise Exception, 'Kesalahan Register Investasi' + 'Nilai nominal harus lebih besar dari nol.'
 
   oRegisterInvestasi.user_id = config.SecurityContext.userid
   oRegisterInvestasi.terminal_id = config.SecurityContext.GetSessionInfo()[1]

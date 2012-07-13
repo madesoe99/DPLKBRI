@@ -12,7 +12,7 @@ def ConstructReportHeader(config, no_peserta, dari_tanggal, hingga_tanggal, oFil
   #cek apakah peserta ikutan wasiat ummat
   if oNasabahDPLK.LRekeningDPLK.status_wasiat_ummat == 'F':
     #bukan peserta wasiat ummat
-    raise '\n\nPERINGATAN','Peserta tidak ikut kepesertaan Wasiat Ummat!'
+    raise Exception, '\n\nPERINGATAN' + 'Peserta tidak ikut kepesertaan Wasiat Ummat!'
 
   #ambil data peserta
   alamat = '%s %s RTRW: %s' % (oNasabahDPLK.alamat_jalan, oNasabahDPLK.alamat_jalan2,\

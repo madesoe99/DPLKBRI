@@ -23,6 +23,21 @@ object:rpclass::TPClassUIDefList<
       CreateInstanceOnNew=true
       DeleteOnDel=true
     >, object:rpclass::TPClassUIDef<
+      Name='uipParameterKorporat'
+      PClassName='MasterParameter'
+      LoadedFieldList='Key_Parameter;Numeric_Value;Varchar_Value;Description'
+      StoredFieldList='Key_Parameter;Numeric_Value;Varchar_Value;Description'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='ValueType'
+          DataTypeName='integer'
+          DataLength=5
+        >
+      }
+      Mode=imMultiRow
+      CreateInstanceOnNew=true
+      DeleteOnDel=true
+    >, object:rpclass::TPClassUIDef<
       Name='uipPajakTarikDana'
       CustomLoadedFields={
         object:rpclass::TCustomLoadedField<

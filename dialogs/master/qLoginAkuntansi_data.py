@@ -54,6 +54,6 @@ def FormGeneralProcessData(uideflist, data):
           #tipe teks
           oP.Varchar_Value = rec.Varchar_Value
   except:
-    raise '\nProses Error','\nPenyimpanan hasil perubahan Parameter Aplikasi gagal!'
+    raise Exception, '\nProses Error' + '\nPenyimpanan hasil perubahan Parameter Aplikasi gagal!'
 
   return 0

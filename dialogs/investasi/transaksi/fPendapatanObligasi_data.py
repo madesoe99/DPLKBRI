@@ -68,7 +68,7 @@ def uipPendapatanObligasiApplyRow(uipPendapatanObligasi, oPendapatanObligasi):
   config = uipPendapatanObligasi.UIDefList.Config
 
   if oPendapatanObligasi.nominal < moduleapi.zero_approx:
-    raise 'Kesalahan Pendapatan','Nilai pendapatan harus lebih dari nol.'
+    raise Exception, 'Kesalahan Pendapatan' + 'Nilai pendapatan harus lebih dari nol.'
 
   oPendapatanObligasi.mutasi_kredit = oPendapatanObligasi.nominal
   oPendapatanObligasi.mutasi_debet = 0.0
@@ -78,7 +78,7 @@ def uipPendapatanObligasiApplyRow(uipPendapatanObligasi, oPendapatanObligasi):
   yt,mt,dt = oPendapatanObligasi.tgl_transaksi[:3]
 # ditutup atas permintaan user (sigit) 25 Maret 2011
 #   if ((mt - mb) % oObl.jenisKupon) != 0 :
-#     raise 'PERINGATAN','Pendapatan sukuk harusnya sesuai periode kuponnya'
+#     raise Exception, 'PERINGATAN' + 'Pendapatan sukuk harusnya sesuai periode kuponnya'
 
   oPendapatanObligasi.kode_jns_investasi = oObl.kode_jns_investasi#oPendapatanObligasi.LObligasi.kode_jns_investasi
   oPendapatanObligasi.kode_jenis_trinvestasi = 'K'

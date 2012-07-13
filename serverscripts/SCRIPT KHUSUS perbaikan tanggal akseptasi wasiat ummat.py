@@ -57,7 +57,7 @@ def Sinkronisasi(config, con):
       q.Next()
     
   else:
-    raise 'ERROR','Gagal memproses Sinkronisasi Tanggal Akseptasi Wasiat Ummat!'
+    raise Exception, 'ERROR' + 'Gagal memproses Sinkronisasi Tanggal Akseptasi Wasiat Ummat!'
 
   return 1
 

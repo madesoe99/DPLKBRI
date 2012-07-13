@@ -13,7 +13,7 @@ def FormShow(form, parameter):
   pData.GetControlByName('ProsesHasilSaham').Visible = 1
   if uipReksa.Mode == 'mnuOtoNAB' :
     if OtoStatus :
-      raise '\nPERINGATAN','Data belum mengalami perubahan apapun'
+      raise Exception, '\nPERINGATAN' + 'Data belum mengalami perubahan apapun'
     form.SetAllControlsReadOnly()
     pButton.GetControlByName('btnClose').Visible = 1
     pButton.GetControlByName('btnOK').Caption = '&Otorisasi'
@@ -32,7 +32,7 @@ def FormShow(form, parameter):
     pButton.GetControlByName('btnCancel').Cancel = 1
     if uipReksa.Mode == 'mnuKoreksiNAB' :
       if not OtoStatus :
-        raise '\nPERINGATAN','Perubahan Data belum di otorisasi'
+        raise Exception, '\nPERINGATAN' + 'Perubahan Data belum di otorisasi'
       if uipReksa.NABSubs == 0.0 : #disertai Update Subscribe
         uipReksa.jenis_perubahan = 0
         pData.GetControlByName('NomSubscribe').visible = 1

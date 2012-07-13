@@ -16,7 +16,7 @@ def DAFScriptMain(config, parameter, returnpacket):
     oDeposito.user_id = config.SecurityContext.UserID
     oDeposito.terminal_id = config.SecurityContext.InitIP
   else :
-    raise '\nPERINGATAN','Deposito sudah memiliki transaksi, tidak bisa di batalkan'
+    raise Exception, '\nPERINGATAN: Deposito sudah memiliki transaksi, tidak bisa di batalkan'
   
   return 1
 

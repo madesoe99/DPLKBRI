@@ -23,7 +23,7 @@ def _fixupPeralihanDPLK(config):
       WHERE id_transaksi = %d " % (id_transaksi) 
     )
     if iRes < 0:
-      raise 'DB Error', config.GetDBConnErrorInfo()
+      raise Exception, 'DB Error' +  config.GetDBConnErrorInfo()
     oRekening = config.CreatePObjImplProxy("rekeningdplk")
     oRekening.key = no_peserta
     oRekening.akum_dana_iuran_pst = oRekening.akum_dana_iuran_pst - mutasi_iuran_pst

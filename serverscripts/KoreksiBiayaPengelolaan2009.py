@@ -19,7 +19,7 @@ def DoKoreksi(config):
     config.Commit()
   except:
     config.Rollback()
-    raise 'Error', str(sys.exc_info()[1])
+    raise Exception, 'Error' +  str(sys.exc_info()[1])
 
 def CreateTransaksi(config, val):
   o = config.CreatePObject('TransaksiDPLKManual')

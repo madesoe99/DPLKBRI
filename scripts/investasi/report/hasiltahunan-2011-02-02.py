@@ -254,7 +254,7 @@ def WriteContentRow(config, strJenis, strSQLStartDate, strSQLEndDate, oFile, lsJ
     strJenis = enumJenisRow[noUrut]
     res = resSQLNone(config)
   else:
-    raise 'Laporan Error', 'Jenis investasi "%s" tidak dikenali' % (str(strJenis))
+    raise Exception, 'Laporan Error' +  'Jenis investasi "%s" tidak dikenali' % (str(strJenis))
 
   while not res.Eof:
     if res.clsfTransaksiInvestasi == 'B':

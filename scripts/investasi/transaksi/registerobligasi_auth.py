@@ -1,6 +1,7 @@
-import sys
-sys.path.append('c:/dafapp/dplk07/script_modules')
-import moduleapi,TransactInv
+import com.ihsan.util.modman as modman
+
+#moduleapi = modman.getModule(config, 'moduleapi')
+#TransactInv = modman.getModule(config, 'TransactInv')
 
 def CreateRincianObligasi(config, oObligasi):
   # buat satu objek rincianobligasi
@@ -15,6 +16,8 @@ def CreateRincianObligasi(config, oObligasi):
 
 
 def CreateObligasi(config, oRegisterObligasi):
+  moduleapi = modman.getModule(config, 'moduleapi')
+  
   oObligasi = config.CreatePObject('Obligasi')
   oObligasi.nama_obligasi = oRegisterObligasi.nama_obligasi
   oObligasi.kode_pihak_ketiga = oRegisterObligasi.kode_pihak_ketiga
@@ -71,6 +74,8 @@ def CreateObligasi(config, oRegisterObligasi):
   return oObligasi
 
 def CreateTransPiutangInvestasi(config, oObligasi, oRegisterObligasi):
+  moduleapi = modman.getModule(config, 'moduleapi')
+  
   oBeliObligasi = config.CreatePObject('BeliObligasi')
   oBeliObligasi.LInvestasi = oObligasi
   oBeliObligasi.nama_investasi = oObligasi.nama_obligasi
@@ -113,6 +118,7 @@ def CreatePendapatanObligasi(config, oObligasi, oRegisterObligasi, profObl):
     oPendapatanObligasi.mutasi_kredit = 0.0
 
   oPendapatanObligasi.isCommitted = 'T'
+  moduleapi = modman.getModule(config, 'moduleapi')
   oPendapatanObligasi.tgl_transaksi = moduleapi.DateTimeTupleToFloat(config, oObligasi.tgl_buka)
   oPendapatanObligasi.tgl_sistem = config.Now()
   oPendapatanObligasi.tgl_otorisasi = config.Now()
@@ -144,8 +150,10 @@ def DAFScriptMain(config, parameter, returnpacket):
     # pendapatan obligasi
     nominal = oRegisterObligasi.harga_beli * oRegisterObligasi.harga_pari / 100.0
     profObl = oRegisterObligasi.harga_pari - nominal
+    moduleapi = modman.getModule(config, 'moduleapi')
     if not moduleapi.IsApproxZero(profObl):
       #CreatePendapatanObligasi(config, oObligasi, oRegisterObligasi, profObl)
+      TransactInv = modman.getModule(config, 'TransactInv')
       TransactInv.CreateSPI(config, oObligasi.nama_obligasi, oObligasi, oTransPiutang, profObl,'O')
       TransactInv.CreatePNI(config, oObligasi.nama_obligasi, oObligasi, oTransPiutang, profObl,'O')
     #if oRegisterObligasi.biaya > 0.0:
@@ -159,4 +167,3 @@ def DAFScriptMain(config, parameter, returnpacket):
     raise
 
   return 1
-

@@ -28,7 +28,7 @@ def DAFScriptMain(config, parameter, returnpacket):
       oReksadana = oInvestasi.CastAs('Reksadana')
       oTransLRInvestasi.nama_investasi = oReksadana.nama_reksadana
     else:
-      raise 'Kesalahan Otorisasi','Kode jenis investasi \'%s\' tidak dikenali.' % (str(oInvestasi.kode_jns_investasi))
+      raise Exception, 'Kesalahan Otorisasi' + 'Kode jenis investasi \'%s\' tidak dikenali.' % (str(oInvestasi.kode_jns_investasi))
 
     oInvestasi.akum_LR += oTransLRInvestasi.mutasi_kredit - oTransLRInvestasi.mutasi_debet
     oInvestasi.last_update = config.Now()

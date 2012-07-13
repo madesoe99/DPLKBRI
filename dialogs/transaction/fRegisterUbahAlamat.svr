@@ -10,8 +10,8 @@ object:rpclass::TPClassUIDefList<
     object:rpclass::TPClassUIDef<
       Name='uipRegisterCIF'
       PClassName='RegisterUbahAlamat'
-      LoadedFieldList='no_referensi;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;LNasabahDPLK.alamat_jalan;LNasabahDPLK.alamat_rtrw;LNasabahDPLK.alamat_kelurahan;LNasabahDPLK.alamat_kecamatan;LNasabahDPLK.alamat_kota;LNasabahDPLK.alamat_kode_pos;LNasabahDPLK.alamat_telepon;LNasabahDPLK.alamat_kantor_jalan;LNasabahDPLK.alamat_kantor_kode_pos;LNasabahDPLK.alamat_kantor_kelurahan;LNasabahDPLK.alamat_kantor_kecamatan;LNasabahDPLK.alamat_kantor_kota;LNasabahDPLK.alamat_kantor_propinsi;LNasabahDPLK.alamat_kantor_telepon;LNasabahDPLK.alamat_surat_jalan;LNasabahDPLK.alamat_surat_kelurahan;LNasabahDPLK.alamat_surat_kecamatan;LNasabahDPLK.alamat_surat_rtrw;LNasabahDPLK.alamat_surat_kota;LNasabahDPLK.alamat_surat_propinsi;LNasabahDPLK.alamat_surat_kode_pos;keterangan;user_id;terminal_id;registercif_id;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_jalan2;alamat_telepon2;alamat_propinsi;alamat_surat_jalan;alamat_surat_rtrw;alamat_surat_kelurahan;alamat_surat_kecamatan;alamat_surat_kota;alamat_surat_propinsi;alamat_surat_kode_pos;alamat_surat_jalan2;alamat_surat_telepon;alamat_surat_telepon2'
-      StoredFieldList='no_referensi;LNasabahDPLK;keterangan;user_id;terminal_id;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_jalan2;alamat_telepon2;alamat_propinsi;alamat_surat_jalan;alamat_surat_rtrw;alamat_surat_kelurahan;alamat_surat_kecamatan;alamat_surat_kota;alamat_surat_propinsi;alamat_surat_kode_pos;alamat_surat_jalan2;alamat_surat_telepon;alamat_surat_telepon2'
+      LoadedFieldList='no_referensi;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;LNasabahDPLK.alamat_jalan;LNasabahDPLK.alamat_rtrw;LNasabahDPLK.alamat_kelurahan;LNasabahDPLK.alamat_kecamatan;LNasabahDPLK.alamat_kota;LNasabahDPLK.alamat_kode_pos;LNasabahDPLK.alamat_telepon;LNasabahDPLK.alamat_kantor_jalan;LNasabahDPLK.alamat_kantor_kode_pos;LNasabahDPLK.alamat_kantor_kelurahan;LNasabahDPLK.alamat_kantor_kecamatan;LNasabahDPLK.alamat_kantor_kota;LNasabahDPLK.alamat_kantor_propinsi;LNasabahDPLK.alamat_kantor_telepon;LNasabahDPLK.alamat_surat_jalan;LNasabahDPLK.alamat_surat_kelurahan;LNasabahDPLK.alamat_surat_kecamatan;LNasabahDPLK.alamat_surat_rtrw;LNasabahDPLK.alamat_surat_kota;LNasabahDPLK.alamat_surat_propinsi;LNasabahDPLK.alamat_surat_kode_pos;keterangan;user_id;terminal_id;registercif_id;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_jalan2;alamat_telepon2;alamat_propinsi;LATPropinsi.kode_propinsi;LATPropinsi.kode_propinsi;LATPropinsi.nama_propinsi;LATKota.kode_kota;LATKota.kode_kota;LATKota.nama_kota;LATKecamatan.kode_kecamatan;LATKecamatan.kode_kecamatan;LATKecamatan.nama_kecamatan;alamat_surat_jalan;alamat_surat_rtrw;alamat_surat_kelurahan;alamat_surat_kecamatan;alamat_surat_kota;alamat_surat_propinsi;alamat_surat_kode_pos;alamat_surat_jalan2;alamat_surat_telepon;alamat_surat_telepon2;LASPropinsi.kode_propinsi;LASPropinsi.kode_propinsi;LASPropinsi.nama_propinsi;LASKota.kode_kota;LASKota.kode_kota;LASKota.nama_kota;LASKecamatan.kode_kecamatan;LASKecamatan.kode_kecamatan;LASKecamatan.nama_kecamatan'
+      StoredFieldList='no_referensi;LNasabahDPLK;keterangan;user_id;terminal_id;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_jalan2;alamat_telepon2;alamat_propinsi;LATPropinsi;LATKota;LATKecamatan;alamat_surat_jalan;alamat_surat_rtrw;alamat_surat_kelurahan;alamat_surat_kecamatan;alamat_surat_kota;alamat_surat_propinsi;alamat_surat_kode_pos;alamat_surat_jalan2;alamat_surat_telepon;alamat_surat_telepon2;LASPropinsi;LASKota;LASKecamatan'
       CustomLoadedFields={
         object:rpclass::TCustomLoadedField<
           Name='mode'
@@ -28,6 +28,30 @@ object:rpclass::TPClassUIDefList<
           Name='LNasabahDPLK'
           ClassTypeName='NasabahDPLK'
           FieldNames='no_peserta;no_peserta;nama_lengkap;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_kantor_jalan;alamat_kantor_kode_pos;alamat_kantor_kelurahan;alamat_kantor_kecamatan;alamat_kantor_kota;alamat_kantor_propinsi;alamat_kantor_telepon;alamat_surat_jalan;alamat_surat_kelurahan;alamat_surat_kecamatan;alamat_surat_rtrw;alamat_surat_kota;alamat_surat_propinsi;alamat_surat_kode_pos'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LATPropinsi'
+          ClassTypeName='DaerahAsal'
+          FieldNames='kode_propinsi;kode_propinsi;nama_propinsi'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LATKota'
+          ClassTypeName='DaerahKota'
+          FieldNames='kode_kota;kode_kota;nama_kota'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LATKecamatan'
+          ClassTypeName='DaerahKecamatan'
+          FieldNames='kode_kecamatan;kode_kecamatan;nama_kecamatan'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LASPropinsi'
+          ClassTypeName='DaerahAsal'
+          FieldNames='kode_propinsi;kode_propinsi;nama_propinsi'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LASKota'
+          ClassTypeName='DaerahKota'
+          FieldNames='kode_kota;kode_kota;nama_kota'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LASKecamatan'
+          ClassTypeName='DaerahKecamatan'
+          FieldNames='kode_kecamatan;kode_kecamatan;nama_kecamatan'
         >
       }
       Mode=imSingleRow
@@ -36,7 +60,46 @@ object:rpclass::TPClassUIDefList<
     >, object:rpclass::TPClassUIDef<
       Name='uipMaster'
       PClassName='NasabahDPLK'
-      LoadedFieldList='no_peserta;nama_lengkap;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_surat_jalan;alamat_surat_rtrw;alamat_surat_kelurahan;alamat_surat_kecamatan;alamat_surat_kota;alamat_surat_propinsi;alamat_surat_kode_pos;alamat_kantor_jalan;alamat_kantor_kelurahan;alamat_kantor_kecamatan;alamat_kantor_kota;alamat_kantor_propinsi;alamat_kantor_kode_pos;alamat_kantor_telepon;alamat_jalan2;alamat_telepon2;alamat_kantor_telepon2;alamat_propinsi;alamat_surat_jalan2;alamat_surat_telepon;alamat_surat_telepon2'
+      LoadedFieldList='no_peserta;nama_lengkap;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_surat_jalan;alamat_surat_rtrw;alamat_surat_kelurahan;alamat_surat_kecamatan;alamat_surat_kota;alamat_surat_propinsi;alamat_surat_kode_pos;alamat_kantor_jalan;alamat_kantor_kelurahan;alamat_kantor_kecamatan;alamat_kantor_kota;alamat_kantor_propinsi;alamat_kantor_kode_pos;alamat_kantor_telepon;alamat_jalan2;alamat_telepon2;alamat_kantor_telepon2;alamat_propinsi;alamat_surat_jalan2;alamat_surat_telepon;alamat_surat_telepon2;LATPropinsi.kode_propinsi;LATPropinsi.kode_propinsi;LATPropinsi.nama_propinsi;LATKota.kode_kota;LATKota.kode_kota;LATKota.nama_kota;LATKecamatan.kode_kecamatan;LATKecamatan.kode_kecamatan;LATKecamatan.nama_kecamatan;LASPropinsi.kode_propinsi;LASPropinsi.kode_propinsi;LASPropinsi.nama_propinsi;LASKota.kode_kota;LASKota.kode_kota;LASKota.nama_kota;LASKecamatan.kode_kecamatan;LASKecamatan.kode_kecamatan;LASKecamatan.nama_kecamatan;LAKPropinsi.kode_propinsi;LAKPropinsi.kode_propinsi;LAKPropinsi.nama_propinsi;LAKKota.kode_kota;LAKKota.kode_kota;LAKKota.nama_kota;LAKKecamatan.kode_kecamatan;LAKKecamatan.kode_kecamatan;LAKKecamatan.nama_kecamatan'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LATPropinsi'
+          ClassTypeName='DaerahAsal'
+          FieldNames='kode_propinsi;kode_propinsi;nama_propinsi'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LATKota'
+          ClassTypeName='DaerahKota'
+          FieldNames='kode_kota;kode_kota;nama_kota'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LATKecamatan'
+          ClassTypeName='DaerahKecamatan'
+          FieldNames='kode_kecamatan;kode_kecamatan;nama_kecamatan'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LASPropinsi'
+          ClassTypeName='DaerahAsal'
+          FieldNames='kode_propinsi;kode_propinsi;nama_propinsi'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LASKota'
+          ClassTypeName='DaerahKota'
+          FieldNames='kode_kota;kode_kota;nama_kota'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LASKecamatan'
+          ClassTypeName='DaerahKecamatan'
+          FieldNames='kode_kecamatan;kode_kecamatan;nama_kecamatan'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LAKPropinsi'
+          ClassTypeName='DaerahAsal'
+          FieldNames='kode_propinsi;kode_propinsi;nama_propinsi'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LAKKota'
+          ClassTypeName='DaerahKota'
+          FieldNames='kode_kota;kode_kota;nama_kota'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LAKKecamatan'
+          ClassTypeName='DaerahKecamatan'
+          FieldNames='kode_kecamatan;kode_kecamatan;nama_kecamatan'
+        >
+      }
       Mode=imSingleRow
     >, object:rpclass::TPClassUIDef<
       Name='uipDataLama'

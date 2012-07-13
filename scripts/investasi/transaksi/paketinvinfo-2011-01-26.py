@@ -1,7 +1,6 @@
-import sys
-sys.path.append('c:/dafapp/dplk07/script_modules')
+import com.ihsan.util.modman as modman
 
-import transaksiapi
+#transaksiapi = modman.getModule(config, 'transaksiapi')
 
 #def resSQLAkumRek(config, kode_paket_investasi):
 #  strSQL = \
@@ -31,9 +30,8 @@ def resSQLAkumRek(config, kode_paket_investasi):
     ' GROUP BY R.KODE_PAKET_INVESTASI '\
     ' ORDER BY R.KODE_PAKET_INVESTASI ;'\
     % (kode_paket_investasi)
-  config.SendDebugMsg('dpkPaket='+strSQL)
+
   return config.CreateSQL(strSQL).RawResult
-  
 
 def resSQLAkumNominal(config, kode_paket_investasi):
   #jika satu investasi hanya dari satu paket
@@ -141,6 +139,7 @@ def getPaket(config, kode_paket_investasi):
   oPaketInvestasi.Key = kode_paket_investasi
 
   #ambil info untuk rlogin dan kirimkan paketnya
+  transaksiapi = modman.getModule(config, 'transaksiapi')
   ServerName, AppName, Session_Name, UserID, Password = transaksiapi.GetLoginAkuntansi(config)
 
   #if not appObject.lookuprsession(Session_Name):

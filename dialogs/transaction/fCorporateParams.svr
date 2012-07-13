@@ -1,0 +1,36 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipNasabahDPLKCorporate'
+      PClassName='NasabahDPLKCorporate'
+      LoadedFieldList='kode_nasabah_corporate;nama_perusahaan;no_referensi'
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+      AfterApplyRow='uipNasabahDPLKCorporateApplyRow'
+    >, object:rpclass::TPClassUIDef<
+      Name='uipCorpParams'
+      MasterUIName='uipNasabahDPLKCorporate'
+      ListName='Ls_NASABAHCORPPARAMS'
+      LoadedFieldList='LMasterParameter.Key_Parameter;LMasterParameter.Key_Parameter;LMasterParameter.Numeric_Value;LMasterParameter.Varchar_Value;LMasterParameter.Description;NUMERIC_VALUE;VARCHAR_VALUE;DESCRIPTION'
+      StoredFieldList='LMasterParameter;NUMERIC_VALUE;VARCHAR_VALUE;DESCRIPTION'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LMasterParameter'
+          ClassTypeName='MasterParameter'
+          FieldNames='Key_Parameter;Key_Parameter;Numeric_Value;Varchar_Value;Description'
+        >
+      }
+      CreateInstanceOnNew=true
+      DeleteOnDel=true
+      SetMasterDetailRelationship=true
+    >
+  }
+  OnSetDataEx='FormOnSetDataEx'
+>

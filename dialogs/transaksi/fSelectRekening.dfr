@@ -90,12 +90,14 @@ object:rtf::Form<
           Top=8
           Left=8
           ControlCaption='Nomor Rekening'
+          OnExit='bCariRekeningPeserta'
           CharCase=ecUpperCase
         >, *object:rtf::DBEdit<
           Name='eNamaPeserta'
           Top=36
           Left=8
           ControlCaption='Nama Peserta'
+          OnExit='bCariRekeningPeserta'
           CharCase=ecUpperCase
         >, object:rtf::Button<
           Name='bCari'
@@ -127,6 +129,7 @@ object:rtf::Form<
       PacketMessaging=true
       HideSearchPanel=true
       ServerMethodID='execQrySELECT'
+      OnDoubleClick='bPilihClick'
     >
   }
   FormClassName='fSelectRekening'

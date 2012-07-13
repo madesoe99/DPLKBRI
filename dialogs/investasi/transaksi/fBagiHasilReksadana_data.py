@@ -71,10 +71,10 @@ def uipBagiHasilReksadanaApplyRow(uipBagiHasilReksadana, oBagiHasilReksadana):
   config = uipBagiHasilReksadana.UIDefList.Config
 
   if oBagiHasilReksadana.NAB > oBagiHasilReksadana.LReksadana.NAB:
-    raise 'Kesalahan Bagi Hasil Reksadana','Nilai NAB baru tidak boleh lebih dari nilai sebelumnya.'
+    raise Exception, 'Kesalahan Bagi Hasil Reksadana' + 'Nilai NAB baru tidak boleh lebih dari nilai sebelumnya.'
 
   #if oBagiHasilReksadana.nominal_jual > oBagiHasilReksadana.LReksadana.nominal_jual:
-  #  raise 'Kesalahan Bagi Hasil Reksadana','Nilai nominal jual baru tidak boleh lebih dari nilai sebelumnya.'
+  #  raise Exception, 'Kesalahan Bagi Hasil Reksadana' + 'Nilai nominal jual baru tidak boleh lebih dari nilai sebelumnya.'
 
   if oBagiHasilReksadana.nominal_bagi_hasil >= 0.0:
     # bagi hasil (pendapatan reksadana)

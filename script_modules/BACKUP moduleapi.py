@@ -590,7 +590,7 @@ def TransCostOpr(config, oRekeningDPLK, oTransaksiDPLK, costval):
     oTransaksiDPLK.mutasi_peralihan = -red
   
   if costval > zero_approx:
-    #raise 'Error','Dana tidak mencukupi untuk membayar Biaya Administrasi'
+    #raise Exception, 'Error' + 'Dana tidak mencukupi untuk membayar Biaya Administrasi'
     config.SendDebugMsg('Dana peserta %s tidak mencukupi untuk membayar \
       Biaya Administrasi, masih terutang Rp %0.2f' % (oRekeningDPLK.no_peserta, costval))
 
@@ -628,7 +628,7 @@ def GetSingleRPI(config, kode_paket_investasi):
   resSQL = config.CreateSQL(strSQL).RawResult
 
   if resSQL.Eof:
-    raise '\nKesalahan GetSingleRPI','Rincian paket investasi tidak ditemukan!'
+    raise Exception, '\nKesalahan GetSingleRPI' + 'Rincian paket investasi tidak ditemukan!'
 
   kode_jns_investasi = resSQL.kode_jns_investasi
   resSQL.Next()
@@ -734,7 +734,7 @@ def GetAccGiroBagiHasil(config):
 
   oGLI = GetGLInterface(config, GR_BGHASIL)
   if oGLI.IsNull:
-    raise 'Kesalahan Kode GL Interface','\'%s\' tidak ditemukan.' % (GR_BGHASIL)
+    raise Exception, 'Kesalahan Kode GL Interface' + '\'%s\' tidak ditemukan.' % (GR_BGHASIL)
 
   return oGLI.account_code
 
@@ -758,7 +758,7 @@ def CheckNoBilyetAvl(config, no_bilyet):
   resSQL = config.CreateSQL(strSQL).RawResult
   resSQL.First()
   if not resSQL.Eof:
-    raise 'Kesalahan No. Bilyet', 'No. Bilyet \'%s\' sudah ada.' % (no_bilyet)
+    raise Exception, 'Kesalahan No. Bilyet' +  'No. Bilyet \'%s\' sudah ada.' % (no_bilyet)
 
 def AdvanceJatuhTempo(config, oDeposito):
   oDeposito.tgl_jatuh_tempo = HitungJatuhTempo(config, oDeposito.tgl_jatuh_tempo, oDeposito.jenisJatuhTempo, oDeposito.jmlHariOnCall)

@@ -1,0 +1,318 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['dsUtama']
+  Caption='Daftar Issuer Investasi MM'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=600
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnFormShow='FormShow'
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipNoData'
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='date_ltd'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='integer'
+          DataLength=20
+          EnumeratedValues=['0=0'#13#10,
+            '1=1'#13#10]
+          GenerateCheckBoxForEnum=true
+        >, object:rtf::FieldUIElmtSetting<
+          Name='dateFrom'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='dateUntil'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='dateUntil_tmrw'
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='timestamp'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='status'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='varchar'
+          DataLength=1
+          EnumeratedValues=['A=Aktif (T)'#13#10,
+            'T=Tutup (F)'#13#10,
+            'S=Semua'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='isDisplay'
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='integer'
+          DataLength=20
+        >
+      }
+      Name='pFilter'
+      Width=500
+      Height=120
+      Bordered=true
+      UIPart=$UIPARTS['uipNoData']
+      Controls={
+        *object:rtf::DBCheckBox<
+          Name='date_ltd'
+          Top=20
+          Left=20
+          ControlCaption='Batasi Tanggal Buka'
+          ValueChecked='1'
+          ValueUnchecked='0'
+          OnClick='date_ltdClick'
+        >, *object:rtf::DBDateEdit<
+          Name='dateFrom'
+          Layout=clNextSide
+          Top=20
+          Left=145
+          Visible=false
+          ControlCaption=' '
+        >, *object:rtf::DBDateEdit<
+          Name='dateUntil'
+          Layout=clNextSide
+          Top=20
+          Left=276
+          Visible=false
+          ControlCaption=' -'
+        >, *object:rtf::DBComboBox<
+          Name='status'
+          Top=48
+          Left=20
+          ControlCaption='Status Aktif                        '
+        >, object:rtf::Button<
+          Name='btnShow'
+          Layout=clNewLine
+          Top=76
+          Left=20
+          ControlCaption=''
+          Caption='T&ampilkan'
+          OnClick='btnShowClick'
+        >
+      }
+      ControlLeftMargin=20
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Query<
+      Name='qDeposito'
+      Width=800
+      Height=238
+      ContextMenuName='popupmenus/investasi/transaksi/qDeposito'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from Deposito'#13#10,
+        '['#13#10,
+        '  ('#13#10,
+        '    ((tgl_buka >= :dateFrom)'#13#10,
+        '    and (tgl_buka < :dateUntil_tmrw) and (1 = :date_ltd))'#13#10,
+        '  or'#13#10,
+        '    (0 = :date_ltd)'#13#10,
+        '  )'#13#10,
+        '  and ('#13#10,
+        '    ((status = :status) and (1 = :status_ltd))'#13#10,
+        '  or'#13#10,
+        '    (0 = :status_ltd)'#13#10,
+        '  )'#13#10,
+        '  and kode_pihak_ketiga = :pihak_ketiga'#13#10,
+        ']'#13#10,
+        '('#13#10,
+        '  no_bilyet,'#13#10,
+        '  status,'#13#10,
+        '  kode_pihak_ketiga as Pihak_Ketiga,'#13#10,
+        '  LPihakKetiga.kode_induk as kode_induk,'#13#10,
+        '  nominal_pembukaan,'#13#10,
+        '  akum_nominal,'#13#10,
+        '  akum_piutangLR,'#13#10,
+        '  akum_LR,'#13#10,
+        '  tgl_buka,'#13#10,
+        '  tgl_jatuh_tempo,'#13#10,
+        '  tgl_tutup,'#13#10,
+        '  tgl_otorisasi,'#13#10,
+        '  user_id,'#13#10,
+        '  user_id_auth,'#13#10,
+        '  terminal_id,'#13#10,
+        '  terminal_id_auth,'#13#10,
+        '  id_investasi as ID,'#13#10,
+        '  jmlHariOnCall,'#13#10,
+        '  jenisJatuhTempo $,'#13#10,
+        '  Rekening_Deposito,'#13#10,
+        '  self'#13#10,
+        ') then order by desc tgl_buka;']
+      WindowSize=20
+      Columns={
+        object:rtf::QueryColumn<
+          FieldName='Deposito.no_bilyet'
+          Width=100
+          Caption='Nomor Bilyet'
+        >, object:rtf::QueryColumn<
+          FieldName='Deposito.Rekening_Deposito'
+          Width=100
+          Caption='No Rek Deposito'
+        >, object:rtf::QueryColumn<
+          FieldName='Deposito.no_rekening'
+          Caption='Rekening Pencairan'
+          Hidden=true
+        >, object:rtf::QueryColumn<
+          FieldName='Deposito.status'
+          Width=50
+          Caption='Status'
+        >, object:rtf::QueryColumn<
+          FieldName='Deposito.Pihak_Ketiga'
+          Caption='Bank Issuer'
+        >, object:rtf::QueryColumn<
+          FieldName='Deposito.kode_induk'
+          Caption='Grup Issuer'
+        >, object:rtf::QueryColumn<
+          FieldName='Deposito.Paket_Investasi'
+          Caption='Paket Inv.'
+          Hidden=true
+        >, object:rtf::QueryColumn<
+          FieldName='Deposito.nominal_pembukaan'
+          Width=100
+          Caption='Nominal Buka'
+        >, object:rtf::QueryColumn<
+          FieldName='Deposito.akum_nominal'
+          Width=100
+          Caption='Nominal Akhir'
+        >, object:rtf::QueryColumn<
+          FieldName='Deposito.akum_LR'
+          Width=100
+          Caption='Akum. Bunga'
+        >, object:rtf::QueryColumn<
+          FieldName='Deposito.akum_piutangLR'
+          Width=100
+          Caption='Piutang Bunga'
+          Hidden=true
+        >, object:rtf::QueryColumn<
+          FieldName='Deposito.jenisJatuhTempo'
+          Width=70
+          Caption='Jenis Deposito'
+        >, object:rtf::QueryColumn<
+          FieldName='Deposito.jmlHariOnCall'
+          Width=55
+          Caption='Hari OnCall'
+        >, object:rtf::QueryColumn<
+          FieldName='Deposito.tgl_buka'
+          Width=130
+          Caption='Tanggal Buka'
+        >, object:rtf::QueryColumn<
+          FieldName='Deposito.tgl_jatuh_tempo'
+          Width=100
+          Caption='Jatuh Tempo'
+        >, object:rtf::QueryColumn<
+          FieldName='Deposito.tgl_tutup'
+          Width=130
+          Caption='Tanggal Tutup'
+        >, object:rtf::QueryColumn<
+          FieldName='Deposito.tgl_otorisasi'
+          Width=130
+          Caption='Tanggal Otorisasi'
+        >, object:rtf::QueryColumn<
+          FieldName='Deposito.user_id'
+          Width=100
+          Caption='User Transaksi'
+        >, object:rtf::QueryColumn<
+          FieldName='Deposito.user_id_auth'
+          Width=100
+          Caption='User Otorisasi'
+        >, object:rtf::QueryColumn<
+          FieldName='Deposito.terminal_id'
+          Width=100
+          Caption='Terminal Transaksi'
+        >, object:rtf::QueryColumn<
+          FieldName='Deposito.terminal_id_auth'
+          Width=100
+          Caption='Terminal Otorisasi'
+        >
+      }
+      EnableColumns=true
+    >, object:rtf::DualSplit<
+      Name='dsSekunder'
+      Width=240
+      Height=96
+      Container1=$CONTAINERS['pFilter']
+      Container2=$CONTAINERS['qDeposito']
+    >, object:rtf::Query<
+      Name='qIssuerDeposito'
+      Width=240
+      Height=240
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      OQLText=['select from Deposito'#13#10,
+        '('#13#10,
+        '  kode_pihak_ketiga as pihak_ketiga,'#13#10,
+        '  LPihakKetiga.nama_pihak_ketiga,'#13#10,
+        '  LPihakKetiga.kode_induk as kode_induk,'#13#10,
+        '  LPihakKetiga.LInduk.nama_pihak_ketiga as nama_induk,'#13#10,
+        '  self'#13#10,
+        ') then order by pihak_ketiga;']
+      DirectDisplay=true
+      WindowSize=8
+      Columns={
+        object:rtf::QueryColumn<
+          FieldName='Deposito.pihak_ketiga'
+          Width=75
+          Caption='Bank Issuer'
+        >, object:rtf::QueryColumn<
+          FieldName='Deposito.nama_pihak_ketiga'
+          Width=200
+          Caption='Nama Bank Issuer'
+        >, object:rtf::QueryColumn<
+          FieldName='Deposito.kode_induk'
+          Width=75
+          Caption='Grup Issuer'
+        >, object:rtf::QueryColumn<
+          FieldName='Deposito.nama_induk'
+          Width=200
+          Caption='Nama Grup Issuer'
+        >
+      }
+      EnableColumns=true
+      OnDoubleClick='btnShowClick'
+    >, object:rtf::DualSplit<
+      Name='dsUtama'
+      Width=240
+      Height=96
+      Container1=$CONTAINERS['qIssuerDeposito']
+      Container2=$CONTAINERS['dsSekunder']
+    >
+  }
+>

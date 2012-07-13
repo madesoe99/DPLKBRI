@@ -8,10 +8,10 @@ document <
 object:rtf::Form<
   MainContainer=$CONTAINERS['DualSplit']
   Caption='Koreksi Iuran Peserta / Pemberi Kerja'
-  Left=100
-  Top=200
-  Width=800
-  Height=280
+  Left=30
+  Top=30
+  Width=460
+  Height=460
   BeforeDeleteRow=''
   BeforeResultSent=''
   OnGeneralSetData=''
@@ -26,6 +26,19 @@ object:rtf::Form<
   OnEndProcessData=''
   UIParts={
     object:rtf::PClassUI<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caView
+          DataMember='registercif_id'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='registercif_id'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
       Name='uipRegisterCIF'
       ClassTypeName='RegisterIuran'
       DataBinding=bmMaster
@@ -46,6 +59,12 @@ object:rtf::Form<
         >, object:rtf::ControlDef<
           Action=caView
           DataMember='keterangan'
+        >, object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['sistem_pembayaran_iuran'#13#10,
+            'tgl_penarikan_iuran'#13#10,
+            'REKSUMBER_NO'#13#10,
+            'REKSUMBER_NAMA'#13#10]
         >
       }
       Elements={
@@ -57,8 +76,14 @@ object:rtf::Form<
           Name='LNasabahDPLK'
           Hidden=false
           ReadOnlyControl=false
-          DisplayFields='nama_lengkap'
+          DisplayFields='no_peserta;nama_lengkap'
           Restrictions=''
+          OQLText=['SELECT FROM NasabahDPLK ('#13#10,
+            '  no_peserta,'#13#10,
+            '  nama_lengkap,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY no_peserta;']
+          LookupOption=loCustomOQL
           FieldBaseName='LNasabahDPLK'
         >, *object:rtf::FieldUIElmtSetting<
           Name='iuran_pst'
@@ -74,6 +99,22 @@ object:rtf::Form<
           ReadOnlyControl=false
         >, *object:rtf::FieldUIElmtSetting<
           Name='keterangan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='sistem_pembayaran_iuran'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tgl_penarikan_iuran'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='REKSUMBER_NO'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='REKSUMBER_NAMA'
           Hidden=false
           ReadOnlyControl=false
         >
@@ -184,21 +225,21 @@ object:rtf::Form<
         >
       }
       Name='pData'
-      Width=400
-      Height=217
+      Width=433
+      Height=209
       Bordered=true
       UIPart=$UIPARTS['uipRegisterCIF']
       Controls={
         *object:rtf::DBEdit<
           Name='no_referensi'
-          Top=86
+          Top=80
           Left=20
           Color=12695295
           ControlCaption='Nomor Referensi'
           LayoutOrder=15
         >, *object:rtf::DBLookupEdit<
           Name='LNasabahDPLK'
-          Top=30
+          Top=24
           Left=20
           Width=100
           Height=21
@@ -210,7 +251,7 @@ object:rtf::Form<
           DisplayLookupField=true
         >, *object:rtf::DBEdit<
           Name='keterangan'
-          Top=114
+          Top=108
           Left=20
           Width=180
           Height=21
@@ -218,7 +259,7 @@ object:rtf::Form<
           LayoutOrder=20
         >, *object:rtf::DBEdit<
           Name='user_id'
-          Top=142
+          Top=136
           Left=20
           Width=135
           Height=21
@@ -228,7 +269,7 @@ object:rtf::Form<
           ReadOnly=true
         >, *object:rtf::DBEdit<
           Name='terminal_id'
-          Top=170
+          Top=164
           Left=20
           Color=-16777192
           ControlCaption='Terminal Input'
@@ -236,7 +277,7 @@ object:rtf::Form<
           ReadOnly=true
         >, *object:rtf::DBLookupEdit<
           Name='LRekeningDPLK'
-          Top=58
+          Top=52
           Left=20
           Width=100
           Height=21
@@ -250,7 +291,7 @@ object:rtf::Form<
       }
       EqualCaptionWidth=100
       ControlLeftMargin=20
-      ControlTopMargin=30
+      ControlTopMargin=24
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
@@ -296,66 +337,41 @@ object:rtf::Form<
       RowControlGap=7
     >, object:rtf::DualSplit<
       Name='DualSplit'
-      Width=800
-      Height=280
+      Width=460
+      Height=460
       Container1=$CONTAINERS['pButton']
       Container2=$CONTAINERS['DualSplitLR']
       InversedAlign=true
-    >, object:rtf::Panel<
-      Elements={
-        object:rtf::FieldUIElmtSetting<
-          Name='iuran_pst_lama'
-          Hidden=false
-          ReadOnlyControl=false
-          ControlCaption='iuran peserta lama'
-          DataTypeName='double'
-          DataLength=20
-        >, object:rtf::FieldUIElmtSetting<
-          Name='iuran_pk_lama'
-          Hidden=false
-          ReadOnlyControl=false
-          ControlCaption='iuran pemberi kerja lama'
-          DataTypeName='double'
-          DataLength=20
-        >
-      }
-      Name='pDataLama'
-      Width=385
-      Height=105
-      Bordered=true
-      UIPart=$UIPARTS['uipRegisterCIF']
-      Controls={
-        *object:rtf::DBEdit<
-          Name='iuran_pst_lama'
-          Top=30
-          Left=20
-          Color=9498256
-          ControlCaption='Iuran Peserta Lama'
-        >, *object:rtf::DBEdit<
-          Name='iuran_pk_lama'
-          Top=58
-          Left=20
-          Color=9498256
-          ControlCaption='Iuran Pemberi Kerja Lama'
-        >
-      }
-      EqualCaptionWidth=130
-      ControlLeftMargin=20
-      ControlTopMargin=30
-      DefaultControlHeight=21
-      HorizontalControlGap=4
-      RowControlGap=7
-      Caption='Data Iuran Lama'
+    >, object:rtf::DualSplit<
+      Name='DualSplitLR'
+      Width=460
+      Height=419
+      Container1=$CONTAINERS['pData']
+      Container2=$CONTAINERS['pDataBaru']
     >, object:rtf::Panel<
       ControlDefs={
-        object:rtf::MultiControlDef<
+        object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='sistem_pembayaran_iuran'
+        >, object:rtf::MultiControlDef<
           Action=caEdit
           DataMembers=['iuran_pst'#13#10,
             'iuran_pk'#13#10]
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='tgl_penarikan_iuran'
+        >, object:rtf::MultiControlDef<
+          Action=caEdit
+          DataMembers=['REKSUMBER_NO'#13#10,
+            'REKSUMBER_NAMA'#13#10]
         >
       }
       Elements={
         *object:rtf::FieldUIElmtSetting<
+          Name='sistem_pembayaran_iuran'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
           Name='iuran_pst'
           Hidden=false
           ReadOnlyControl=false
@@ -365,48 +381,96 @@ object:rtf::Form<
           Hidden=false
           ReadOnlyControl=false
           ControlCaption='iuran pemberi kerja baru'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tgl_penarikan_iuran'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='INTEGER'
+          EnumeratedValues=['1=1'#13#10,
+            '2=2'#13#10,
+            '3=3'#13#10,
+            '4=4'#13#10,
+            '5=5'#13#10,
+            '6=6'#13#10,
+            '7=7'#13#10,
+            '8=8'#13#10,
+            '9=9'#13#10,
+            '10=10'#13#10,
+            '11=11'#13#10,
+            '12=12'#13#10,
+            '13=13'#13#10,
+            '14=14'#13#10,
+            '15=15'#13#10,
+            '16=16'#13#10,
+            '17=17'#13#10,
+            '18=18'#13#10,
+            '19=19'#13#10,
+            '20=20'#13#10,
+            '21=21'#13#10,
+            '22=22'#13#10,
+            '23=23'#13#10,
+            '24=24'#13#10,
+            '25=25'#13#10,
+            '26=26'#13#10,
+            '27=27'#13#10,
+            '28=28'#13#10]
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='REKSUMBER_NO'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='REKSUMBER_NAMA'
+          Hidden=false
+          ReadOnlyControl=false
         >
       }
       Name='pDataBaru'
-      Width=385
-      Height=121
+      Width=417
+      Height=201
       Bordered=true
       UIPart=$UIPARTS['uipRegisterCIF']
       Controls={
-        *object:rtf::DBEdit<
+        *object:rtf::DBComboBox<
+          Name='sistem_pembayaran_iuran'
+          Top=24
+          Left=20
+          ControlCaption='Sistem Pembayaran Iuran'
+        >, *object:rtf::DBEdit<
           Name='iuran_pst'
-          Top=30
+          Top=52
           Left=20
           Color=12695295
-          ControlCaption='Iuran Peserta Baru'
+          ControlCaption='Iuran Rutin Peserta'
         >, *object:rtf::DBEdit<
           Name='iuran_pk'
-          Top=58
+          Top=80
           Left=20
           Color=12695295
-          ControlCaption='Iuran Pemberi Kerja Lama'
+          ControlCaption='Iuran Pemberi Kerja'
+        >, *object:rtf::DBComboBox<
+          Name='tgl_penarikan_iuran'
+          Top=108
+          Left=20
+          ControlCaption='Tgl. Penarikan Iuran Rutin'
+        >, *object:rtf::DBEdit<
+          Name='REKSUMBER_NO'
+          Top=136
+          Left=20
+          ControlCaption='No. Akun Rekening Sumber'
+        >, *object:rtf::DBEdit<
+          Name='REKSUMBER_NAMA'
+          Top=164
+          Left=20
+          ControlCaption='Nama Pemilik Rekening Sumber'
         >
       }
-      EqualCaptionWidth=130
+      EqualCaptionWidth=160
       ControlLeftMargin=20
-      ControlTopMargin=30
+      ControlTopMargin=24
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
-      Caption='Data Iuran Baru'
-    >, object:rtf::DualSplit<
-      Name='DualSplitLR'
-      Width=800
-      Height=239
-      Container1=$CONTAINERS['pData']
-      Container2=$CONTAINERS['DualSplitLamaBaru']
-      SplitDirection=sdrSplitLeftRight
-    >, object:rtf::DualSplit<
-      Name='DualSplitLamaBaru'
-      Width=399
-      Height=239
-      Container1=$CONTAINERS['pDataLama']
-      Container2=$CONTAINERS['pDataBaru']
+      Caption='Data Iuran Dikoreksi'
     >
   }
 >

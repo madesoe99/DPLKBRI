@@ -120,6 +120,7 @@ object:rtf::Form<
         >
       }
       EnableColumns=true
+      OnDoubleClick='bView_Click'
     >, object:rtf::Panel<
       Elements={
         object:rtf::LinkUIElmtSetting<

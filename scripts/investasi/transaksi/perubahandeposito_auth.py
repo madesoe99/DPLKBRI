@@ -1,9 +1,10 @@
-import sys
-sys.path.append('c:/dafapp/dplk07/script_modules')
-import moduleapi
+import com.ihsan.util.modman as modman
+
+#moduleapi = modman.getModule(config, 'moduleapi')
 
 def OtorisasiPerubahanDeposito(config, oDepo, oHist):
-    
+  moduleapi = modman.getModule(config, 'moduleapi')
+  
   oHist.UserOtorisasi = config.SecurityContext.UserID
   oHist.TglOtorisasi = config.Now()
   oHist.TerminalOto = config.SecurityContext.InitIP
@@ -15,7 +16,7 @@ def OtorisasiPerubahanDeposito(config, oDepo, oHist):
     oHist.TreatmentPokokAwal = ''
   else :
     if oDepo.no_bilyet != oHist.NoBilyetPerb :
-      moduleapi.CheckNoBilyetAvl(config,oHist.NoBilyetPerb) 
+      moduleapi.CheckNoBilyetAvl(config,oHist.NoBilyetPerb)
 
     config.SendDebugMsg('ER : '+str(oHist.ER_Perb))
     oDepo.no_bilyet = oHist.NoBilyetPerb
@@ -39,8 +40,6 @@ def BatalkanPerubahanDeposito(config, oDepo, oHist) :
   
   oHist.Delete()
 
-
-
 def DAFScriptMain(config, parameter, returnpacket):
   # config: ISysConfig object
   # parameter: TPClassUIDataPacket
@@ -54,7 +53,7 @@ def DAFScriptMain(config, parameter, returnpacket):
             % recDepo.id_investasi
   rSQL = config.CreateSQL(strSQL).RawResult
   if rSQL.Eof :
-    raise '\PERINGATAN','Perubahan belum dilakukan'
+    raise Exception, '\PERINGATAN: Perubahan belum dilakukan'
   Id_hist = rSQL.Id_HistPerubahan 
   
     
@@ -66,7 +65,7 @@ def DAFScriptMain(config, parameter, returnpacket):
     oDepo = config.CreatePObjImplProxy('Deposito')
     oDepo.Key = recDepo.id_Investasi  
     if oDepo.IsNull :
-      raise 'PERINGATAN','Investasi tidak ditemukan'
+      raise Exception, 'PERINGATAN: Investasi tidak ditemukan'
     
     if modeOto :
        OtorisasiPerubahanDeposito(config, oDepo, oHist)
@@ -77,6 +76,4 @@ def DAFScriptMain(config, parameter, returnpacket):
     config.Rollback()
     raise
 
-
   return 1
-

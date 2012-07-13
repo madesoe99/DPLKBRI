@@ -83,29 +83,29 @@ def uipRegisterNasabahRekeningApplyRow(sender, oData):
   rec = sender.ActiveRecord
   
   if rec.alamat_telepon in ['', None]:
-    raise '\nPERINGATAN',\
+    raise Exception, '\nPERINGATAN' + \
       '\nPada saat mengisi taAlamat Tempat Tinggal,'\
       '\nTelepon 1 & Telepon 2 (Rumah/Hp) Mohon diisi dahulu.'
 
   if rec.no_referensi in ['', None]:
-    raise '\nPERINGATAN',\
+    raise Exception, '\nPERINGATAN' + \
       '\nNomor Referensi belum terdefinisi! Mohon isi dahulu.'
 
   if len(rec.no_referensi) <> 8:
-    raise '\nPERINGATAN',\
+    raise Exception, '\nPERINGATAN' + \
       '\nNomor Referensi Di isi dengan NIK Karyawan.'
 
   if rec.jenis_kelamin in ['', None]:
-    raise '\nPERINGATAN',\
+    raise Exception, '\nPERINGATAN' + \
       '\nJenis Kelamin belum terdefinisi! Mohon isi dahulu.'
 
   if rec.usia_pensiun in [None,''] or \
     (rec.usia_pensiun < 45 or rec.usia_pensiun > 65):
-    raise '\nPERINGATAN',\
+    raise Exception, '\nPERINGATAN' + \
       '\nUsia Pensiun tidak valid! Usia Pensiun yang diperbolehkan antara 45 - 65 tahun.'
       
   if rec.kode_jenis_usaha in [None,'']:
-    raise '\nPERINGATAN',\
+    raise Exception, '\nPERINGATAN' + \
       '\nKode Jenis Usaha Belum dipilih.'
 
   #cek usia sekarang peserta dan keikutsertaan wasiat ummat
@@ -117,22 +117,22 @@ def uipRegisterNasabahRekeningApplyRow(sender, oData):
   
   
   #if rec.wasiat_ummat == 'T' and usiaPeserta > 55.0:
-  #  raise '\nPERINGATAN',\
+  #  raise Exception, '\nPERINGATAN' + \
   #    '\nStatus Wasiat Ummat tidak valid! Usia peserta Wasiat '\
   #    'Ummat hanya diperbolehkan dibawah usia 55 tahun.'
 
   if rec.nasabah_korporat:
     if oData.LNasabahDPLKCorporate.IsNull:
-      raise '\nPERINGATAN',\
+      raise Exception, '\nPERINGATAN' + \
         '\nData Perusahaan belum terdefinisi! Mohon isi dahulu.'
 
   if oData.auto_debet == 'T':
     if (oData.no_rek_autodebet == '') or (oData.no_rek_autodebet == None):
-      raise '\nPERINGATAN',\
+      raise Exception, '\nPERINGATAN' + \
         '\nNomor Rekening Auto Debet belum terdefinisi! Mohon isi dahulu.'
 
     if (oData.tanggal_autodebet < 1) or (oData.tanggal_autodebet > 31):
-      raise '\nPERINGATAN',\
+      raise Exception, '\nPERINGATAN' + \
         'Tanggal Auto Debet belum valid! Mohon isi dahulu.'
 
 

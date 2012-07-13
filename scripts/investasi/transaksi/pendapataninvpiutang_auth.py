@@ -1,8 +1,10 @@
-import sys
-sys.path.append('c:/dafapp/dplk07/script_modules')
-import moduleapi
+import com.ihsan.util.modman as modman
+
+#moduleapi = modman.getModule(config, 'moduleapi')
 
 def CreateTransPiutangLRInvestasi(config, oTransLRInvestasi):
+  moduleapi = modman.getModule(config, 'moduleapi')
+  
   oTransPiutangLRInvestasi = config.CreatePObject('TransPiutangLRInvestasi')
   oTransPiutangLRInvestasi.LInvestasi = oTransLRInvestasi.LInvestasi
   oTransPiutangLRInvestasi.LTransactionBatch = oTransLRInvestasi.LTransactionBatch

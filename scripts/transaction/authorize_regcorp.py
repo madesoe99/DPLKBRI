@@ -41,8 +41,11 @@ def CreateNasabahDPLKCorporate(config, oRegEditNasabahDPLKCorporate):
   oNasabahDPLKCorporate.alamat_kantor_jalan = oRegEditNasabahDPLKCorporate.alamat_kantor_jalan
   oNasabahDPLKCorporate.alamat_kantor_kelurahan = oRegEditNasabahDPLKCorporate.alamat_kantor_kelurahan
   oNasabahDPLKCorporate.alamat_kantor_kecamatan = oRegEditNasabahDPLKCorporate.alamat_kantor_kecamatan
-  oNasabahDPLKCorporate.alamat_kantor_kota = oRegEditNasabahDPLKCorporate.alamat_kantor_kota
-  oNasabahDPLKCorporate.alamat_kantor_propinsi = oRegEditNasabahDPLKCorporate.alamat_kantor_propinsi
+  #oNasabahDPLKCorporate.alamat_kantor_kota = oRegEditNasabahDPLKCorporate.alamat_kantor_kota
+  #oNasabahDPLKCorporate.alamat_kantor_propinsi = oRegEditNasabahDPLKCorporate.alamat_kantor_propinsi
+  oNasabahDPLKCorporate.LAKPropinsi = oRegEditNasabahDPLKCorporate.LAKPropinsi
+  oNasabahDPLKCorporate.LAKKota = oRegEditNasabahDPLKCorporate.LAKKota
+  oNasabahDPLKCorporate.LAKKecamatan = oRegEditNasabahDPLKCorporate.LAKKecamatan
   oNasabahDPLKCorporate.alamat_kantor_kode_pos = oRegEditNasabahDPLKCorporate.alamat_kantor_kode_pos
   oNasabahDPLKCorporate.alamat_kantor_telepon = oRegEditNasabahDPLKCorporate.alamat_kantor_telepon
   oNasabahDPLKCorporate.alamat_kantor_telepon2 = oRegEditNasabahDPLKCorporate.alamat_kantor_telepon2
@@ -53,6 +56,7 @@ def CreateNasabahDPLKCorporate(config, oRegEditNasabahDPLKCorporate):
   oNasabahDPLKCorporate.keterangan3 = oRegEditNasabahDPLKCorporate.keterangan3
   oNasabahDPLKCorporate.keterangan4 = oRegEditNasabahDPLKCorporate.keterangan4
   oNasabahDPLKCorporate.tgl_bergabung =  moduleapi.DateTimeTupleToFloat(config, oRegEditNasabahDPLKCorporate.tgl_bergabung)
+  oNasabahDPLKCorporate.tanggal_register =  moduleapi.DateTimeTupleToFloat(config, oRegEditNasabahDPLKCorporate.tanggal_register)
   oNasabahDPLKCorporate.kode_holding = oRegEditNasabahDPLKCorporate.kode_holding 
   oNasabahDPLKCorporate.kode_negara = oRegEditNasabahDPLKCorporate.kode_negara 
   oNasabahDPLKCorporate.user_id = oRegEditNasabahDPLKCorporate.user_id
@@ -62,6 +66,26 @@ def CreateNasabahDPLKCorporate(config, oRegEditNasabahDPLKCorporate):
   oNasabahDPLKCorporate.last_update = config.ModDateTime.Now()
   oNasabahDPLKCorporate.isCommitted = 'T'
   oNasabahDPLKCorporate.operation_code = 'F'
+  oNasabahDPLKCorporate.REFR_ACCNO = oRegEditNasabahDPLKCorporate.REFR_ACCNO
+  oNasabahDPLKCorporate.REFR_NAMA = oRegEditNasabahDPLKCorporate.REFR_NAMA
+  oNasabahDPLKCorporate.REFR_UKER = oRegEditNasabahDPLKCorporate.REFR_UKER
+
+  if oRegEditNasabahDPLKCorporate.operation_code == 'N':
+    sSQL = """SELECT *
+      FROM   MASTERPARAMETER
+      WHERE  PARAM_TYPE = 'C'
+      ORDER BY KEY_PARAMETER ASC
+      """
+        
+    rSQL = config.CreateSQL(sSQL).RawResult
+    while not rSQL.Eof:
+      oNCParams = config.CreatePObject('NASABAHCORPPARAMS')
+      oNCParams.LNasabahDPLKCorporate = oNasabahDPLKCorporate
+      oNCParams.KEY_PARAMETER = rSQL.KEY_PARAMETER
+      oNCParams.NUMERIC_VALUE = rSQL.NUMERIC_VALUE
+      oNCParams.VARCHAR_VALUE = rSQL.VARCHAR_VALUE
+      oNCParams.DESCRIPTION = rSQL.DESCRIPTION
+      rSQL.Next()
 
   return oNasabahDPLKCorporate
 

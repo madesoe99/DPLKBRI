@@ -60,7 +60,7 @@ def FormBeginSetData(uideflist, auiname, apobjconst):
       allowTransaction = CekUserTimeZone.CekAllowTransaction(config, \
         config.SecurityContext.userid)
       if not allowTransaction:
-        raise '\nPERINGATAN!','\n\nWaktu resmi aktivitas banking telah selesai. '\
+        raise Exception, '\nPERINGATAN!' + '\n\nWaktu resmi aktivitas banking telah selesai. '\
           'Tidak diperbolehkan melakukan transaksi.\nHubungi Administrator jika '\
           'masih ada transaksi yang akan dilakukan.'
 
@@ -73,7 +73,7 @@ def FormBeginSetData(uideflist, auiname, apobjconst):
       oCBB.SetKey('Tahun',y)
 
       if oCBB.IsNull:
-        raise '\nPERINGATAN!','\n\nBatch Core Banking Aplikasi DPLK untuk hari ini '\
+        raise Exception, '\nPERINGATAN!' + '\n\nBatch Core Banking Aplikasi DPLK untuk hari ini '\
           'belum dibuat. Mohon buat sendiri terlebih dahulu.'
 
   except:

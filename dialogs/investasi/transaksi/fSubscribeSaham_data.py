@@ -73,7 +73,7 @@ def uipSubscribeSahamApplyRow(uipSubscribeSaham, oSubscribeSaham):
 
   oSubscribeSaham.mutasi_debet = oSubscribeSaham.nilai_subscribe
   if oSubscribeSaham.mutasi_debet <= 0.0:
-    raise 'Kesalahan Subscribe Saham Tambahan','Nilai alokasi tambahan harus lebih dari nol.'
+    raise Exception, 'Kesalahan Subscribe Saham Tambahan' + 'Nilai alokasi tambahan harus lebih dari nol.'
 
   oSubscribeSaham.mutasi_kredit = 0.0
   # nilai kode_jns_investasi diisi lagi jika belum ada

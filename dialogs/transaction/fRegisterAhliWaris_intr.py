@@ -66,7 +66,7 @@ def RAWBeforePost(uipRegisterAhliWarisDetail):
   if uipRegisterAhliWarisDetail.tanggal_lahir != None and \
     uipRegisterAhliWarisDetail.tanggal_lahir[:3] > \
     app.ModDateTime.DecodeDate(app.ModDateTime.Now())[:3]:
-    raise 'Pesan Kesalahan','Tanggal lahir ahli waris tidak boleh melebihi tanggal hari ini!'
+    raise Exception,'\n\nPesan Kesalahan\nTanggal lahir ahli waris tidak boleh melebihi tanggal hari ini!'
 
 def btnOKClick(sender):
   form = sender.OwnerForm

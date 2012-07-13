@@ -1,6 +1,7 @@
-import sys
-sys.path.append('c:/dafapp/dplk/script_modules')
-import moduleapi, TransactInv
+import com.ihsan.util.modman as modman
+
+#moduleapi = modman.getModule(config, 'moduleapi')
+#TransactInv = modman.getModule(config, 'TransactInv')
 
 def SetRedemptSaham(config, oRedemptSaham):
   oSaham = oRedemptSaham.LSaham
@@ -28,6 +29,7 @@ def CreatePendapatanSaham(config, oRedemptSaham):
   oPendapatanSaham.LSaham = oSaham
   oPendapatanSaham.LTransactionBatch = oRedemptSaham.LTransactionBatch
   oPendapatanSaham.kode_jns_investasi = oRedemptSaham.kode_jns_investasi
+  moduleapi = modman.getModule(config, 'moduleapi')
   oPendapatanSaham.tgl_transaksi = moduleapi.DateTimeTupleToFloat(config, oRedemptSaham.tgl_transaksi)
   oPendapatanSaham.nominal = oRedemptSaham.profit
   oPendapatanSaham.no_rekening = oRedemptSaham.no_rekening
@@ -44,6 +46,7 @@ def CreatePendapatanSaham(config, oRedemptSaham):
 
   oPendapatanSaham.isCommitted = 'T'
   oPendapatanSaham.nama_investasi = oSaham.nama_Saham
+  moduleapi = modman.getModule(config, 'moduleapi')
   oPendapatanSaham.tgl_sistem = moduleapi.DateTimeTupleToFloat(config, oRedemptSaham.tgl_sistem)
   oPendapatanSaham.tgl_otorisasi = moduleapi.DateTimeTupleToFloat(config, oRedemptSaham.tgl_otorisasi)
   oPendapatanSaham.user_id = oRedemptSaham.user_id
@@ -55,7 +58,9 @@ def CreatePendapatanSaham(config, oRedemptSaham):
   oSaham.akum_LR += oRedemptSaham.profit
   oSaham.akum_piutangLR -= oRedemptSaham.profit
 
+  TransactInv = modman.getModule(config, 'TransactInv')
   TransactInv.CreateRincianBagiHasil(config, oSaham, oRedemptSaham.profit)
+  
   return oPendapatanSaham
 
 # biaya redemption
@@ -67,6 +72,7 @@ def CreateBiayaRedemption(config, oRedemptionSaham):
   oTransLRInvestasi.kode_jns_investasi = oRedemptionSaham.kode_jns_investasi
   oTransLRInvestasi.kode_jenis_trinvestasi = 'D' # biaya Saham
   oTransLRInvestasi.kode_subjns_LRInvestasi = 'C-RDM' # biaya redemption Saham
+  moduleapi = modman.getModule(config, 'moduleapi')
   oTransLRInvestasi.tgl_transaksi = moduleapi.DateTimeTupleToFloat(config, oRedemptionSaham.tgl_transaksi)
   oTransLRInvestasi.mutasi_debet = oRedemptionSaham.biaya_redempt
   oTransLRInvestasi.mutasi_kredit = 0.0
@@ -98,6 +104,7 @@ def DAFScriptMain(config, parameter, returnpacket):
   # returnpacket: TPClassUIDataPacket (undefined structure)
 
   id = parameter.FirstRecord.id
+  TransactInv = modman.getModule(config, 'TransactInv')
 
   oRedemptSaham = config.CreatePObjImplProxy('RedemptSaham')
   oRedemptSaham.Key = id
@@ -108,18 +115,19 @@ def DAFScriptMain(config, parameter, returnpacket):
     y,m,d = oRedemptSaham.tgl_transaksi[:3]
     tgltrans = config.ModDateTime.EncodeDate(y,m,d)
     if TransactInv.CheckUpdateNAB(config, tgltrans, oSaham) :
-      raise 'PERINGATAN', 'Transaksi NAB sudah dilakukan tgl ini'
+      raise Exception, 'PERINGATAN: Transaksi NAB sudah dilakukan tgl ini'
     
     oHR = TransactInv.GetLastHistSaham(config, oSaham)
     if oHR.NAB_Transaksi == 0.0 and oHR.isCommitted == 'T' :
-      raise 'PERINGATAN','Subscribe dan Redemption tidak boleh dilakukan bersamaan, batalkan transaksi'
+      raise Exception, 'PERINGATAN: Subscribe dan Redemption tidak boleh dilakukan bersamaan, batalkan transaksi'
     oRR = TransactInv.GetLastRedemt(config, oSaham)
     if not oRR.IsNull :
       if oRR.NAB == 0.0 and oRR.isCommitted == 'T' :
-        raise 'PERINGATAN','Redemption tidak boleh dua kali dalam satu transaksi dilakukan bersamaan'
+        raise Exception, 'PERINGATAN: Redemption tidak boleh dua kali dalam satu transaksi dilakukan bersamaan'
      
     SetRedemptSaham(config, oRedemptSaham)
 
+    moduleapi = modman.getModule(config, 'moduleapi')
     if not moduleapi.IsApproxZero(oRedemptSaham.nilai_redempt):
       pass#CreatePendapatanSaham(config, oRedemptSaham)
 
@@ -154,4 +162,3 @@ def DAFScriptMain(config, parameter, returnpacket):
     raise
 
   return 1
-

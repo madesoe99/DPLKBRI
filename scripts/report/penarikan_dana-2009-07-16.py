@@ -118,7 +118,7 @@ def ConstructReportValues(config, strSQL, oFile):
       strBiayaNormal = '-'
       strBiayaPHK = moduleapi.FormatFloatStd(config, biayaPHK, '-')
     else:
-      raise 'Kesalahan Kode Jenis Transaksi', '\nKode jenis transaksi \'%s\' tidak dikenali sebagai transaksi penarikan dana.' % (str(resSQL.kode_jenis_transaksi))
+      raise Exception, 'Kesalahan Kode Jenis Transaksi' +  '\nKode jenis transaksi \'%s\' tidak dikenali sebagai transaksi penarikan dana.' % (str(resSQL.kode_jenis_transaksi))
 
     saldo_iuran_awal = oPenarikan.saldo_iuran_awal or 0.0
     jml_tarik = oPenarikan.jml_tarik or 0.0

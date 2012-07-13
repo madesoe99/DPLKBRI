@@ -12,4 +12,4 @@ def DAFScriptMain(config, parameter, returnpacket):
     config.Commit()
   except:
     config.Rollback()
-    raise '',str(sys.exc_info()[1])
+    raise Exception, str(sys.exc_info()[1])

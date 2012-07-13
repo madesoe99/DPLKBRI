@@ -1,6 +1,6 @@
-import sys
-sys.path.append('c:/dafapp/dplk07/script_modules')
-import moduleapi
+import com.ihsan.util.modman as modman
+
+#moduleapi = modman.getModule(config, 'moduleapi')
 
 def CreateRincianDeposito(config, oRegisterDeposito, oDeposito):
   oRincianDeposito = config.CreatePObject('RincianDeposito')
@@ -38,6 +38,7 @@ def CreateDeposito(config, oRegisterDeposito):
   oDeposito.kode_pihak_ketiga = oRegisterDeposito.kode_pihak_ketiga
   oDeposito.kode_paket_investasi = oRegisterDeposito.kode_paket_investasi
   oDeposito.kode_jns_investasi = oRegisterDeposito.kode_jns_investasi
+  moduleapi = modman.getModule(config, 'moduleapi')
   oDeposito.tgl_buka = oDeposito.tgl_settlement = moduleapi.DateTimeTupleToFloat(config, oRegisterDeposito.tgl_buka)
   oDeposito.nominal_pembukaan = oRegisterDeposito.nominal
   oDeposito.akum_nominal = oRegisterDeposito.nominal
@@ -48,6 +49,7 @@ def CreateDeposito(config, oRegisterDeposito):
 
   oDeposito.jenisJatuhTempo = oRegisterDeposito.jenisJatuhTempo
   oDeposito.jmlHariOnCall = oRegisterDeposito.jmlHariOnCall
+  moduleapi = modman.getModule(config, 'moduleapi')
   oDeposito.tgl_jatuh_tempo = moduleapi.DateTimeTupleToFloat(config, oRegisterDeposito.tgl_jatuh_tempo)
   oDeposito.equivalent_rate = oRegisterDeposito.equivalent_rate
   oDeposito.treatmentPokok = oRegisterDeposito.treatmentPokok
@@ -78,6 +80,7 @@ def CreateTransPiutangInvestasi(config, oDeposito, oRegisterDeposito):
   oTransPiutangInvestasi.LInvestasi = oDeposito
   oTransPiutangInvestasi.kode_jns_investasi = 'D' # deposito
   oTransPiutangInvestasi.kode_jenis_trinvestasi = 'A' # buat investasi baru
+  moduleapi = modman.getModule(config, 'moduleapi')
   oTransPiutangInvestasi.tgl_transaksi = moduleapi.DateTimeTupleToFloat(config, oDeposito.tgl_buka)
   oTransPiutangInvestasi.mutasi_debet = oDeposito.akum_nominal
   oTransPiutangInvestasi.mutasi_kredit = 0.0
@@ -111,6 +114,7 @@ def CreateBiayaBuka(config, oDeposito, oRegisterDeposito):
   oTransLRInvestasi.kode_jns_investasi = 'D'
   oTransLRInvestasi.kode_jenis_trinvestasi = 'D' # biaya deposito
   oTransLRInvestasi.kode_subjns_LRInvestasi = 'A-OPEN' # biaya pembukaan deposito
+  moduleapi = modman.getModule(config, 'moduleapi')
   oTransLRInvestasi.tgl_transaksi = moduleapi.DateTimeTupleToFloat(config, oDeposito.tgl_buka)
   oTransLRInvestasi.mutasi_debet = oRegisterDeposito.biaya
   oTransLRInvestasi.mutasi_kredit = 0.0
@@ -139,13 +143,13 @@ def InsertRegisterAuthorized(config, id_register, id_deposito):
           % (id_register, id_register, id_deposito, id_register) 
   i = config.ExecSQL(sSQL)
   if i < 0:
-    raise 'insert register authorized error', str(sys.exc_info()[1])
+    raise Exception, 'insert register authorized error ' + str(sys.exc_info()[1])
 
 def runSQL(config, sSQL):
   print 'SQL:> \n', sSQL
   t1 = time.clock()
   if config.ExecSQL(sSQL) < 0:
-    raise 'runSQL', config.GetDBConnErrorInfo()
+    raise Exception, 'runSQL: ' + config.GetDBConnErrorInfo()
   t2 = time.clock()
   
   print '>>... %.8f seconds\n' % (t2-t1)
@@ -160,6 +164,7 @@ def DAFScriptMain(config, parameter, returnpacket):
   oRegisterDeposito = config.CreatePObjImplProxy('RegisterDeposito')
   oRegisterDeposito.Key = id
   if oRegisterDeposito.no_bilyet not in ('',None) :
+    moduleapi = modman.getModule(config, 'moduleapi')
     moduleapi.CheckNoBilyetAvl(config, oRegisterDeposito.no_bilyet)
 
   config.BeginTransaction()

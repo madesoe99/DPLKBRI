@@ -18,7 +18,7 @@ def ProcessOpen(config, id_batch):
   if dtTglPakaiBatch <= dtTglBatchMaks:
     #tanggal pakai batch lebih dulu daripada batas tgl maksimal batch
     #pembukaan kembali batch tidak diperbolehkan
-    raise '\nPERINGATAN','Batch dengan Tanggal Pakai lebih awal dari tanggal terakhir ' \
+    raise Exception, '\nPERINGATAN' + 'Batch dengan Tanggal Pakai lebih awal dari tanggal terakhir ' \
       'Bagi Hasil yakni %s,\ntidak diperbolehkan untuk dibuka kembali.' \
       % (oP.Varchar_Value) 
    

@@ -1,6 +1,6 @@
-import sys
-sys.path.append('c:/dafapp/dplk07/script_modules/')
-import moduleapi
+import com.ihsan.util.modman as modman
+
+#moduleapi = modman.getModule(config, 'moduleapi')
 
 def DAFScriptMain(config, parameter, returnpacket):
   # config: ISysConfig object
@@ -8,6 +8,7 @@ def DAFScriptMain(config, parameter, returnpacket):
   # returnpacket: TPClassUIDataPacket (undefined structure)
 
   kode_paket_investasi = parameter.FirstRecord.kode_paket_investasi
+  moduleapi = modman.getModule(config, 'moduleapi')
   kode_jns_investasi = moduleapi.GetSingleRPI(config, kode_paket_investasi)
   if kode_jns_investasi == None:
     returnpacket.CreateValues(['kode_jns_investasi',''])
@@ -23,4 +24,3 @@ def DAFScriptMain(config, parameter, returnpacket):
   )
 
   return 1
-

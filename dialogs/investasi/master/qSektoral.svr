@@ -4,5 +4,6 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rpclass::TPClassUIDefList<
+>
+object:rpclass::TPClassUIDefList<
 >

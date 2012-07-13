@@ -267,7 +267,7 @@ def ProcessingImport(config, obj, data):
 #         obj.saldo_pengembangan + obj.saldo_peralihan
 #     else:
 #       #error, jenis_dp tidak terdefinisi
-#       raise 'Kesalahan Jenis DP','Jenis DP %s tidak terdefinisi.' % (jenis_dp)
+#       raise Exception, 'Kesalahan Jenis DP' + 'Jenis DP %s tidak terdefinisi.' % (jenis_dp)
 # 
 #       #kakasapi.Logging(config, className, \
 #       #  'Jenis DP %s tidak terdefinisi.' % (jenis_dp))
@@ -282,7 +282,7 @@ def ProcessingImport(config, obj, data):
 
 def ImportPengalihanDPLK(config, obj, data):
   if obj.LLDP.jenis_dp != 'B':
-    raise 'Kesalahan Kode DP','Kode DP %s bukan Lembaga Dana Pensiun yang termasuk DPLK.' % (obj.kode_dp)
+    raise Exception, 'Kesalahan Kode DP' + 'Kode DP %s bukan Lembaga Dana Pensiun yang termasuk DPLK.' % (obj.kode_dp)
 
   #transaksi pengalihan dari DPLK lain
   obj.saldo_iuran_pk = 0.0
@@ -296,7 +296,7 @@ def ImportPengalihanDPLK(config, obj, data):
 
 def ImportPengalihanDPPK(config, obj, data):
   if obj.LLDP.jenis_dp != 'A':
-    raise 'Kesalahan Kode DP','Kode DP %s bukan Lembaga Dana Pensiun yang termasuk DPPK.' % (obj.kode_dp)
+    raise Exception, 'Kesalahan Kode DP' + 'Kode DP %s bukan Lembaga Dana Pensiun yang termasuk DPPK.' % (obj.kode_dp)
 
   # DPPK
   obj.kode_jenis_transaksi = 'O'
@@ -310,7 +310,7 @@ def ImportPengalihanDPPK(config, obj, data):
 
 def ImportPengalihanDPK(config, obj, data):
   if obj.LLDP.jenis_dp != 'C':
-    raise 'Kesalahan Kode DP','Kode DP %s bukan Lembaga Dana Pensiun yang termasuk DPK.' % (obj.kode_dp)
+    raise Exception, 'Kesalahan Kode DP' + 'Kode DP %s bukan Lembaga Dana Pensiun yang termasuk DPK.' % (obj.kode_dp)
 
   # DPPK
   obj.kode_jenis_transaksi = 'P'

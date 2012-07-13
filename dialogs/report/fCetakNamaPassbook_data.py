@@ -14,13 +14,13 @@ def getDataNasabah(config,No_Peserta):
   Rekening.key = No_Peserta
   
   if Rekening.isnull:
-     raise "\nPERINGATAN","Rekening DPLK Tidak Ditemukan"
+     raise Exception, "\nPERINGATAN" + "Rekening DPLK Tidak Ditemukan"
      
   if Rekening.has_passbook <> 'T':
-     raise "\nPERINGATAN","Rekening Tidak Memiliki Layanan Passbook"
+     raise Exception, "\nPERINGATAN" + "Rekening Tidak Memiliki Layanan Passbook"
      
   if Rekening.status_dplk == 'N':
-     raise "\nPERINGATAN","Rekening Sudah Non Aktif"
+     raise Exception, "\nPERINGATAN" + "Rekening Sudah Non Aktif"
 
 
   # Cari objek nasabah

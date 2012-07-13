@@ -47,7 +47,7 @@ def DAFScriptMain(config, parameter, returnpacket):
 	try:
 	    dh = AuthorizeTransaksi.AuthorizeOperation(config, tab, rSQL.ID_Transaksi, 'A')
 	except:
-	    raise '\nProses Error', str(sys.exc_info()[1])
+	    raise Exception, '\nProses Error' +  str(sys.exc_info()[1])
 		
 	rSQL.Next()
 	

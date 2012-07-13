@@ -44,6 +44,6 @@ def FormGeneralProcessData(uideflist, data):
         o.no_giro = rec.no_giro
         o.acc_histori_giro = rec.acc_histori_giro
   except:
-    raise '\nProses Error','\nPenyimpanan hasil perubahan Master Giro gagal!'
+    raise Exception, '\nProses Error' + '\nPenyimpanan hasil perubahan Master Giro gagal!'
 
   return 0

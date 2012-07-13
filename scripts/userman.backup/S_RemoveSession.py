@@ -17,7 +17,7 @@ def DAFScriptMain(config, parameter, returnpacket):
     current_session = userid +'_'+ config.SecurityContext.sessionid
 
     if session == current_session:
-      raise NameError, 'Cannot remove current session'
+      raise Exception, NameError +  'Cannot remove current session'
 
     useractive = config.CreatePObjImplProxy('UserApp')
     useractive.Key = userid
@@ -29,7 +29,7 @@ def DAFScriptMain(config, parameter, returnpacket):
 
     if IsSuperUser == 0:
       if (useractive.NoLimitLocation <> 'T') and (useractive.branch_code <> usersession.branch_code):
-        raise NameError, 'Cannot remove user session from different branch'
+        raise Exception, NameError +  'Cannot remove user session from different branch'
 
     if os.access(sessionpath, os.F_OK) == 1:
       os.remove(sessionpath)

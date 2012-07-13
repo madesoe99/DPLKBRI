@@ -20,7 +20,7 @@ def btnShowClick(sender):
   qRegisterTransaksiObligasi = form.GetPanelByName('qRegisterTransaksiObligasi')
 
   if uipNoData.dateFrom > uipNoData.dateUntil:
-    #raise 'Kesalahan Interval Tanggal','Tanggal awal tidak boleh lebih dari tanggal akhir.'
+    #raise Exception, 'Kesalahan Interval Tanggal' + 'Tanggal awal tidak boleh lebih dari tanggal akhir.'
     app.ShowMessage('Tanggal awal tidak boleh lebih dari tanggal akhir.')
     return
 

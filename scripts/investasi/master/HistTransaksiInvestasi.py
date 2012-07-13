@@ -99,4 +99,4 @@ def GetHistoriTransaksi(config, parameters, returns):
     #Peran = config.SecurityContext.GetUserInfo()[7]
     #if countH != 0 and Peran.find('ALLOWEDUSER') == -1:
     #   if (countTD + countH) > 100 and (Tanggal_Akhir - Tanggal_Awal) > 3 :
-    #      raise 'PERINGATAN','Data terlalu banyak tidak dapat diambil, kurangi range tanggal'
+    #      raise Exception, 'PERINGATAN','Data terlalu banyak tidak dapat diambil +  kurangi range tanggal'

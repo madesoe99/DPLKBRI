@@ -165,7 +165,7 @@ def Main(config, idSRRCalc, idBatch, dataset):
   config.SendDebugMsg('bhm2')
   if not rSQLCek.Eof:
     #terdapat peserta yang Non Aktif
-    raise '\nPERINGATAN','Dalam hasil Perhitungan SRR yang dipakai untuk Bagi Hasil,'\
+    raise Exception, '\nPERINGATAN','Dalam hasil Perhitungan SRR yang dipakai untuk Bagi Hasil + '\
       'terdapat peserta yang SEKARANG telah berstatus NON AKTIF. Hal ini menyebabkan proses'\
       'Bagi Hasil menjadi tidak valid. Untuk itu, 1) hapus semua hasil perhitungan SRR.'\
       '2) Selanjutnya, lakukan perhitungan ulang SRR.'

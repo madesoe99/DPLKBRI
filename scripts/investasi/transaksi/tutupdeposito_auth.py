@@ -1,6 +1,7 @@
-import sys
-sys.path.append('c:/dafapp/dplk07/script_modules')
-import moduleapi,TransactInv
+import com.ihsan.util.modman as modman
+
+#moduleapi = modman.getModule(config, 'moduleapi')
+#TransactInv = modman.getModule(config, 'TransactInv')
 
 def SetTransPiutangInvestasi(config, oTransPiutangInvestasi):
   oTransPiutangInvestasi.isCommitted = 'T'
@@ -15,6 +16,7 @@ def CreateTransPiutangLRInvestasi(config, oTransPiutangInvestasi):
   oTransPiutangLRInvestasi.LTransactionBatch = oTransPiutangInvestasi.LTransactionBatch
   oTransPiutangLRInvestasi.kode_jns_investasi = oTransPiutangInvestasi.kode_jns_investasi
   oTransPiutangLRInvestasi.kode_jenis_trinvestasi = 'C' # tutup investasi
+  moduleapi = modman.getModule(config, 'moduleapi')
   oTransPiutangLRInvestasi.tgl_transaksi = moduleapi.DateTimeTupleToFloat(config, oTransPiutangInvestasi.tgl_transaksi)
   oTransPiutangLRInvestasi.mutasi_debet = 0.0
   oTransPiutangLRInvestasi.mutasi_kredit = oTransPiutangInvestasi.LInvestasi.akum_piutangLR
@@ -40,6 +42,7 @@ def CreatePenaltiTutup(config, oTutupDeposito):
   oTransLRInvestasi.kode_jns_investasi = oTutupDeposito.kode_jns_investasi
   oTransLRInvestasi.kode_jenis_trinvestasi = 'D' # biaya
   oTransLRInvestasi.kode_subjns_LRInvestasi = 'A-PEN' # penalti penutupan deposito
+  moduleapi = modman.getModule(config, 'moduleapi')
   oTransLRInvestasi.tgl_transaksi = moduleapi.DateTimeTupleToFloat(config, oTutupDeposito.tgl_transaksi)
   oTransLRInvestasi.mutasi_debet = oTutupDeposito.penalti
   oTransLRInvestasi.mutasi_kredit = 0.0
@@ -62,8 +65,10 @@ def CloseInvestasi(config, oTransPiutangInvestasi):
   oInvestasi = oTransPiutangInvestasi.LInvestasi
 
   oInvestasi.status = 'F'
+  moduleapi = modman.getModule(config, 'moduleapi')
   oInvestasi.tgl_tutup = moduleapi.DateTimeTupleToFloat(config, oTransPiutangInvestasi.tgl_transaksi)
   #oInvestasi.akum_nominal = 0.0
+  TransactInv = modman.getModule(config, 'TransactInv')
   TransactInv.CreateRincianBagiHasil(config, oInvestasi, oInvestasi.akum_LR, True)
   oInvestasi.akum_piutangLR = 0.0
   oInvestasi.last_update = config.Now()
@@ -97,4 +102,3 @@ def DAFScriptMain(config, parameter, returnpacket):
     raise
 
   return 1
-

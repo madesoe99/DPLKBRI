@@ -1,0 +1,116 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit1']
+  Caption='Import Data'
+  Left=100
+  Top=50
+  Width=600
+  Height=180
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipTrxSession'
+    >
+  }
+  Containers={
+    object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=600
+      Height=180
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['pFormUpload']
+      InversedAlign=true
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=329
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='proses'
+          Layout=clNextSide
+          Top=8
+          Left=8
+          ControlCaption=''
+          Caption='Mulai &Import!'
+          OnClick='UploadClick'
+        >, object:rtf::Button<
+          Name='bCancel'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          ControlCaption=''
+          Caption='Batal/&Tutup'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='upload_type'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='varchar'
+          DataLength=20
+          EnumeratedValues=['P=Import data peserta'#13#10,
+            'K=Import data koreksi peserta'#13#10,
+            'W=Import ahli waris'#13#10,
+            'I=Import iuran peserta'#13#10,
+            'A=Import premi asuransi'#13#10,
+            'R=Import biaya pendaftaran peserta'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='filename'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='varchar'
+          DataLength=100
+        >
+      }
+      Name='pFormUpload'
+      Width=577
+      Height=129
+      Bordered=true
+      UIPart=$UIPARTS['uipTrxSession']
+      Controls={
+        *object:rtf::DBComboBox<
+          Name='upload_type'
+          Top=30
+          Left=20
+          Width=200
+          Height=21
+          ControlCaption='Jenis Upload'
+        >, *object:rtf::DBEdit<
+          Name='filename'
+          Top=58
+          Left=20
+          ControlCaption='Nama File'
+        >, object:rtf::Button<
+          Name='button'
+          Layout=clNextSide
+          Top=58
+          Left=328
+          ControlCaption=''
+          Caption='B&rowse'
+          OnClick='BrowseClick'
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=20
+      ControlTopMargin=30
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+  }
+  FormClassName='fUploadCorporate'
+>

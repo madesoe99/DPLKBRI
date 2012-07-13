@@ -63,7 +63,7 @@ def uipTransLRInvestasiApplyRow(uipTransLRInvestasi, oTransLRInvestasi):
   config = uipTransLRInvestasi.UIDefList.Config
 
   if oTransLRInvestasi.mutasi_debet <= 0.0:
-    raise 'Kesalahan Biaya Investasi','Nilai biaya investasi harus lebih dari nol.'
+    raise Exception, 'Kesalahan Biaya Investasi' + 'Nilai biaya investasi harus lebih dari nol.'
 
   oTransLRInvestasi.mutasi_kredit = 0.0
   oTransLRInvestasi.kode_jenis_trinvestasi = 'D'

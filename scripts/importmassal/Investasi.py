@@ -155,7 +155,7 @@ def InsertDeposito (config,oD, data) :
     config.SendDebugMsg('InsertDeposito')
     oD.Rekening_Deposito = data.GetFieldByName('Rekening_Deposito')
     if oD.Rekening_Deposito.find('e')!= -1 and oD.Rekening_Deposito.find('+') != -1:
-      raise '','Data Rekening Deposito dan no bilyet harus berupa teks' 
+      raise Exception, '' + 'Data Rekening Deposito dan no bilyet harus berupa teks' 
     
     oD.no_bilyet = data.GetFieldByName('Nomor_Bilyet')
     if oD.no_bilyet == 'None' :
@@ -170,7 +170,7 @@ def InsertDeposito (config,oD, data) :
     oD.nominal_pembukaan = data.GetFieldByName('Nominal_Awal')
     config.SendDebugMsg('InsertDeposito3')
     if len(data.GetFieldByName('KodePihakKetiga')) > 8 :
-      raise '','Isilah kode pihak ketiga sesuai kode di master pihak ketiga'
+      raise Exception, '' + 'Isilah kode pihak ketiga sesuai kode di master pihak ketiga'
     oD.kode_pihak_ketiga = data.GetFieldByName('KodePihakKetiga')
     config.SendDebugMsg('InsertDeposito4')
     oD.jenisJatuhTempo = data.GetFieldByName('jangka_waktu')
@@ -186,7 +186,7 @@ def InsertDeposito (config,oD, data) :
     oD.treatmentPokok = data.GetFieldByName('pokok_saat_jatuh_tempo')
     oD.jmlHariOnCall = data.GetFieldByName('JumlahOnCall')
     if data.GetFieldByName('rekening_bagi_hasil').find('.') != -1 :
-      raise '','Data Rekening bagi hasil harus berupa teks' 
+      raise Exception, '' + 'Data Rekening bagi hasil harus berupa teks' 
     
     oD.no_rekening = data.GetFieldByName('rekening_bagi_hasil')
     if oD.no_rekening == 'None' :
@@ -252,7 +252,7 @@ def InsertDeposito (config,oD, data) :
       PC = 0.0
       
     if PA + PB + PC != 100 :
-       raise 'ERROR','Proporsi total harus 100%'
+       raise Exception, 'ERROR' + 'Proporsi total harus 100%'
     
     if PA != 0.0 :
       oRD = config.CreatePObject('RincianDeposito')
@@ -287,7 +287,7 @@ def InsertObligasi(config,oO,data) :
     oO.tgl_tutup = data.GetFieldByName('tanggal_tutup')
     oO.nominal_pembukaan = data.GetFieldByName('Nominal_Awal')
     if len(data.GetFieldByName('KodeEmiten')) > 8 :
-      raise '','Isilah kode Emiten sesuai kode master pihak ketiga'
+      raise Exception, '' + 'Isilah kode Emiten sesuai kode master pihak ketiga'
     oO.kode_pihak_ketiga = data.GetFieldByName('KodeEmiten')
     oO.TreatmentObligasi = data.GetFieldByName('TreatmentSukuk')[:1]
     oO.tgl_jatuh_tempo = data.GetFieldByName('tgl_jatuh_tempo')
@@ -298,7 +298,7 @@ def InsertObligasi(config,oO,data) :
     if oO.BankCode == 'None' :
       oO.BankCode = None
     if data.GetFieldByName('NoRekening').find('.') != -1 :
-      raise '','Data Rekening bagi hasil harus berupa teks'
+      raise Exception, '' + 'Data Rekening bagi hasil harus berupa teks'
     oO.no_rekening = data.GetFieldByName('NoRekening')
     if oO.no_rekening == 'None' :
       oO.no_rekening = None
@@ -381,7 +381,7 @@ def InsertReksadana(config,oR, data) :
     oR.nama_reksadana = data.GetFieldByName('NamaReksadana')
     config.SendDebugMsg('oR.nama_reksadana='+oR.nama_reksadana)
     if len(data.GetFieldByName('ManajerInvestasi')) > 8 :
-      raise '','input kode Manajer Investasi seperti di master Pihak Ketiga'
+      raise Exception, '' + 'input kode Manajer Investasi seperti di master Pihak Ketiga'
     oR.kode_pihak_ketiga = data.GetFieldByName('ManajerInvestasi')
     config.SendDebugMsg('InsertReksadana1')
     oR.kode_jns_reksadana = data.GetFieldByName('JenisReksadana')

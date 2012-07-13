@@ -1,3 +1,5 @@
+import sys
+
 class fSelectRekening:
   def __init__(self, formObj, parentForm, nextForm, addCaption):
     # nextForm akan dipanggil setelah rekening dipilih
@@ -39,16 +41,25 @@ class fSelectRekening:
   #--
   
   def bPilihClick(self, button):
-    app = self.FormObject.ClientApplication
+    formObj = self.FormObject; app = formObj.ClientApplication
+    
     group_id, form_id = self.NextForm.split('/')
     form = app.FindForm(form_id)
-    if form == None:
-      nomorRekening = self.qNomorRekening.GetFieldValue('no_rekening')
-      nomorPeserta = self.qNomorRekening.GetFieldValue('no_peserta') 
-      ph = app.CreateValues(["no_rekening", nomorRekening], ["no_peserta", nomorPeserta])
-      f = app.CreateForm(group_id+'/'+form_id, form_id, 0, ph, None)
-      form = f.FormContainer
-    form.Show()    
+    try:
+      if form == None:
+        nomorRekening = self.qNomorRekening.GetFieldValue('no_rekening')
+        nomorPeserta = self.qNomorRekening.GetFieldValue('no_peserta')
+        ph = app.CreateValues(["no_rekening", nomorRekening], ["no_peserta", nomorPeserta])
+        f = app.CreateForm(group_id+'/'+form_id, form_id, 0, ph, None)
+        form = f.FormContainer
+      form.Show()
+    except:
+       splitMsg = str(sys.exc_info()[1]).split('ID:')
+       if len(splitMsg) > 1:
+         showMsg = splitMsg[1]
+       else:
+         showMsg = splitMsg[0]
+       formObj.ShowMessage(showMsg)
   #--
   
   def Form_OnClose(self, formObj):

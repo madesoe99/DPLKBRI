@@ -12,7 +12,7 @@ def doDelete(config, parameter, returnpacket) :
   Obj = config.AccessPObject(parameter.FirstRecord.key)
   
   if Obj.IsNull :
-    raise 'WARNING','Data not found'
+    raise Exception, 'WARNING' + 'Data not found'
   
   config.BeginTransaction()
   try :

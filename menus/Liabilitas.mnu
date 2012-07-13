@@ -13,10 +13,24 @@ object:rmn::Menu<
       MenuItems={
         object:rmn::MenuItem<
           Name='mnuDaerahAsal'
-          Caption='Daerah Asal'
+          Caption='Daftar Provinsi'
           OnClick='DisplayMasterQuery'
           AllowedGroups='Admin;MRKT;BOD;SPV'
           StringTag='qDaerahAsal'
+          ImageIndex=0
+        >, object:rmn::MenuItem<
+          Name='mnuDaerahKota'
+          Caption='Daftar Kota'
+          OnClick='DisplayMasterQuery'
+          AllowedGroups='Admin;MRKT;BOD;SPV'
+          StringTag='qDaerahKota'
+          ImageIndex=0
+        >, object:rmn::MenuItem<
+          Name='mnuDaerahKecamatan'
+          Caption='Daftar Kecamatan'
+          OnClick='DisplayMasterQuery'
+          AllowedGroups='Admin;MRKT;BOD;SPV'
+          StringTag='qDaerahKecamatan'
           ImageIndex=0
         >, object:rmn::MenuItem<
           Caption='-'
@@ -96,6 +110,13 @@ object:rmn::Menu<
           AllowedGroups='Admin;'
           StringTag='qSumberDana'
           ImageIndex=5
+        >, object:rmn::MenuItem<
+          Name='mnuTujuanBukaRekening'
+          Caption='Tujuan Buka Rekening'
+          OnClick='DisplayMasterQuery'
+          AllowedGroups='Admin;'
+          StringTag='qTujuanBukaRekening'
+          ImageIndex=6
         >, object:rmn::MenuItem<
           Caption='-'
           AllowedGroups='Admin;Root'
@@ -347,10 +368,15 @@ object:rmn::Menu<
           Caption='-'
         >, object:rmn::MenuItem<
           Name='transaksi/fSelectRekening'
-          Caption='Input Iuran Pendaftaran Manual'
+          Caption='Iuran Pendaftaran Manual'
           OnClick='mnuSelectRekening'
           AllowedGroups='BOD'
           StringTag='transaksi/fIuranPendaftaran'
+        >, object:rmn::MenuItem<
+          Name='transaksi/fSelectRekening'
+          Caption='Pembayaran Premi'
+          OnClick='mnuSelectRekening'
+          StringTag='transaksi/fPremiPeserta'
         >, object:rmn::MenuItem<
           Caption='-'
         >, object:rmn::MenuItem<
@@ -361,6 +387,11 @@ object:rmn::Menu<
         >, object:rmn::MenuItem<
           Caption='-'
           AllowedGroups='Admin;Root;BOD'
+        >, object:rmn::MenuItem<
+          Name='transaksi/fSelectRekening'
+          Caption='Pengembalian Dana'
+          OnClick='mnuSelectRekening'
+          StringTag='transaksi/fPengembalianDana'
         >, object:rmn::MenuItem<
           Caption='&Pengalihan Dana'
           MenuItems={
@@ -394,13 +425,13 @@ object:rmn::Menu<
           MenuItems={
             object:rmn::MenuItem<
               Name='transaksi/fSelectRekening'
-              Caption='Penarikan Dana &30%'
+              Caption='Penarikan Dana Sebagian'
               OnClick='mnuSelectRekening'
               AllowedGroups='BOD'
               StringTag='transaksi/fPenarikanDana30'
             >, object:rmn::MenuItem<
               Name='transaksi/fSelectRekening'
-              Caption='Penarikan Dana &PHK'
+              Caption='Penarikan Dana PHK'
               OnClick='mnuSelectRekening'
               AllowedGroups='BOD'
               StringTag='transaksi/fPenarikanDanaPHK'
@@ -409,7 +440,7 @@ object:rmn::Menu<
           AllowedGroups='Admin;BOD'
         >, object:rmn::MenuItem<
           Name='transaksi/fSelectRekening'
-          Caption='Pengambilan &Manfaat Pensiun...'
+          Caption='Pengambilan Manfaat Pensiun'
           OnClick='mnuSelectRekening'
           AllowedGroups='BOD'
           StringTag='transaksi/fPengambilanManfaatPensiun'
@@ -419,39 +450,35 @@ object:rmn::Menu<
           AllowedGroups='Admin;Root'
         >, object:rmn::MenuItem<
           Name='InputBiayaMasal'
-          Caption='Biaya Administrasi Pengelolaan Dana...'
+          Caption='Biaya Administrasi Pengelolaan Dana'
           OnClick='mnuShowModalWithData'
           AllowedGroups='Admin;Root'
           StringTag='transaksi'
           NumberTag=131
         >, object:rmn::MenuItem<
           Name='InputBiayaMasal'
-          Caption='Biaya Administrasi Tahunan...'
+          Caption='Biaya Administrasi Tahunan/Bulanan'
           OnClick='mnuShowModalWithData'
           AllowedGroups='Admin;Root'
           StringTag='transaksi'
           NumberTag=130
         >, object:rmn::MenuItem<
           Caption='-'
-          AllowedGroups='Admin;Root'
         >, object:rmn::MenuItem<
-          Name='fReconcileTransaksi'
-          Caption='Rekonsiliasi Transaksi DPLK - Riwayat Transaksi Giro DPLK...'
-          OnClick='ClassFormClick'
-          AllowedGroups='Admin;Root'
-          StringTag='transaksi'
-        >, object:rmn::MenuItem<
-          Name='fCreateTransaksiHistoriGiro'
-          Caption='Buat Transaksi DPLK untuk Riwayat Transaksi Giro DPLK...'
-          OnClick='ClassFormClick'
-          AllowedGroups='Admin;Root'
-          StringTag='transaksi'
-        >, object:rmn::MenuItem<
-          Name='fConvertHistoriGiro2Journal'
-          Caption='Konversi Riwayat Transaksi Giro DPLK...'
-          OnClick='ClassFormClick'
-          AllowedGroups='Admin;Root;BOD'
-          StringTag='transaksi'
+          Caption='Hasil Rekonsiliasi Transaksi Iuran Peserta'
+          MenuItems={
+            object:rmn::MenuItem<
+              Name='A'
+              Caption='Reconcile Auto Payment'
+              OnClick='showForm2'
+              StringTag='transaksi/fPRAutoPayment_Daftar'
+            >, object:rmn::MenuItem<
+              Name='E'
+              Caption='Reconcile E-Channel'
+              OnClick='showForm2'
+              StringTag='transaksi/fPRAutoPayment_Daftar'
+            >
+          }
         >
       }
       AllowedGroups='Admin;BOD;Root;MRKT;SPV;BOC'
@@ -920,30 +947,26 @@ object:rmn::Menu<
       Caption='&Kakas'
       MenuItems={
         object:rmn::MenuItem<
-          Name='fImportPackageList'
-          Caption='Daftar Paket Impor'
-          OnClick='mnuShowWithData'
+          Name='qUploadCorporate'
+          Caption='Daftar Paket Import'
+          OnClick='showForm'
           AllowedGroups='Admin;Root;BOC'
-          StringTag='kakas'
-          ImageIndex=29
+          StringTag='kakas/qUploadCorporate'
+          NumberTag=2
         >, object:rmn::MenuItem<
-          Name='executePackage'
-          Caption='Eksekusi Paket Impor...'
-          OnClick='executePackageClick'
+          Name='fUploadCorporate'
+          Caption='Import Data dari File'
+          OnClick='showForm'
           AllowedGroups='Admin;Root;BOC'
-          ImageIndex=30
+          StringTag='kakas/fUploadCorporate'
         >, object:rmn::MenuItem<
-          Name='UploadMassal'
-          Caption='Impor Iuran Massal'
-          OnClick='ClassFormClick'
-          AllowedGroups='Admin;Root;BOC'
-          StringTag='transaksi'
+          Caption='-'
         >, object:rmn::MenuItem<
-          Name='UploadPesertaMassal'
-          Caption='Impor Peserta Massal'
-          OnClick='ClassFormClick'
+          Name='fUploadCorporate_GenTemplate'
+          Caption='Generate File Template'
+          OnClick='showForm'
           AllowedGroups='Admin;Root;BOC'
-          StringTag='transaksi'
+          StringTag='kakas/fUploadCorporate_GenTemplate'
         >
       }
       AllowedGroups='Admin;Root;BOC'

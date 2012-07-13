@@ -93,7 +93,7 @@ def uipRolloverDepositoNewRecord(uipRolloverDeposito):
     uipRolloverDeposito.Delete()
 
 def uipRolloverDepositoBeforeDelete(uipRolloverDeposito):
-  raise 'Operasi Dibatalkan','Data tidak boleh dihapus dari daftar.'
+  raise Exception, 'Operasi Dibatalkan' + 'Data tidak boleh dihapus dari daftar.'
 
 def gDetailsDoubleClick(sender):
   form = sender.OwnerForm

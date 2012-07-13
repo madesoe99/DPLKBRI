@@ -256,10 +256,11 @@ object:rtf::Form<
           Index=1
         >
       }
+      TabStyle=tsrFlatButtons
     >, object:rtf::DualSplit<
       Name='dualsplit2'
       Width=792
-      Height=531
+      Height=528
       Container1=$CONTAINERS['pDataTransaksi']
       Container2=$CONTAINERS['pRekening']
       DynamicSplit=true

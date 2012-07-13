@@ -32,7 +32,7 @@ def DAFScriptMain(config, parameters, result):
 def runSQL(config, sSQL):
   i = config.ExecSQL(sSQL)
   if i == -9999:
-    raise 'SQL Error', config.GetDBConnErrorInfo()
+    raise Exception, 'SQL Error' +  config.GetDBConnErrorInfo()
   #--
 #-- 
 
@@ -45,11 +45,11 @@ def InquiryAccount(config, request):
     # cek peserta dplk
     statusPeserta = CekPesertaDPLK.CekNomorPeserta(config, vaNumber)
     if not statusPeserta:
-      raise 'Error Biller DPLK','Nomor peserta DPLK tidak ditemukan!'
+      raise Exception, 'Error Biller DPLK' + 'Nomor peserta DPLK tidak ditemukan!'
     elif statusPeserta == 2:
-      raise 'Error Biller DPLK','Peserta DPLK sudah tidak aktif!'
+      raise Exception, 'Error Biller DPLK' + 'Peserta DPLK sudah tidak aktif!'
     elif statusPeserta == 3:
-      raise 'Error Biller DPLK','Peserta DPLK berstatus suspend!'
+      raise Exception, 'Error Biller DPLK' + 'Peserta DPLK berstatus suspend!'
       
     # ambil objek rekening dplk
     oRekening = config.CreatePObjImplProxy('RekeningDPLK')
@@ -62,7 +62,7 @@ def InquiryAccount(config, request):
     elif PREFIX_BATCH[vaPrefix] == 'R':
       # registrasi, cek status biaya daftar peserta
       if oRekening.status_biaya_daftar == 'T':
-        raise 'Error Biller DPLK','Peserta DPLK sudah melunasi biaya pendaftaran!'
+        raise Exception, 'Error Biller DPLK' + 'Peserta DPLK sudah melunasi biaya pendaftaran!'
       
       # ambil biaya pendaftaran
       oParameter = config.CreatePObjImplProxy('Parameter')
@@ -71,7 +71,7 @@ def InquiryAccount(config, request):
     elif PREFIX_BATCH[vaPrefix] == 'P':
       # premi, perlu cek keanggotaan wasiat ummat
       if oRekening.status_wasiat_ummat != 'T':
-        raise 'Error Biller DPLK','Peserta DPLK tidak ikut Wasiat Ummat!'
+        raise Exception, 'Error Biller DPLK' + 'Peserta DPLK tidak ikut Wasiat Ummat!'
         
       # status ikut wasiat ummat, cek polis
       sSQL = "select besar_premi from RekeningWasiatUmmat where no_peserta = %s" \
@@ -80,13 +80,13 @@ def InquiryAccount(config, request):
       
       if rSQL.Eof:
         # data peserta Wasiat Ummat tidak ditemukan
-        raise 'Error Biller DPLK','Peserta termasuk peserta Wasiat Ummat, tetapi data ' \
+        raise Exception, 'Error Biller DPLK','Peserta termasuk peserta Wasiat Ummat +  tetapi data ' \
           'Rekening Wasiat Ummat peserta %s tidak ditemukan. Hubungi Pengelola DPLK!'
       else:
         amount = rSQL.besar_premi
     else:
       # transaksi tidak terdefinisi
-      raise 'Error Biller DPLK','Inquiry transaksi DPLK tidak terdefinisi!'
+      raise Exception, 'Error Biller DPLK' + 'Inquiry transaksi DPLK tidak terdefinisi!'
     
     # reply request 
     reply['nama_rekening'] = oRekening.LNasabahDPLK.nama_lengkap
@@ -139,7 +139,7 @@ def TransactionAccount(config, request):
       oTransaksi = PremiPeserta(config, request, oBatch)
     else:
       # transaksi tidak terdefinisi
-      raise 'Error Biller DPLK','Transaksi DPLK tidak terdefinisi!'
+      raise Exception, 'Error Biller DPLK' + 'Transaksi DPLK tidak terdefinisi!'
 
     config.Commit()
     status = 1

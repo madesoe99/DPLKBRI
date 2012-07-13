@@ -195,7 +195,7 @@ def RAWBeforePost(uipRegNRAhliWaris):
   if uipRegNRAhliWaris.tanggal_lahir != None and \
     uipRegNRAhliWaris.tanggal_lahir[:3] > \
     app.ModDateTime.DecodeDate(app.ModDateTime.Now())[:3]:
-    raise 'Pesan Kesalahan','Tanggal lahir ahli waris tidak boleh melebihi tanggal hari ini!'
+    raise Exception, 'Pesan Kesalahan' + 'Tanggal lahir ahli waris tidak boleh melebihi tanggal hari ini!'
 
 def UsiaPensiunExit(sender):
   app = sender.OwnerForm.ClientApplication

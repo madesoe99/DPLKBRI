@@ -73,7 +73,7 @@ def uipSubscribeReksadanaApplyRow(uipSubscribeReksadana, oSubscribeReksadana):
 
   oSubscribeReksadana.mutasi_debet = oSubscribeReksadana.nilai_subscribe
   if oSubscribeReksadana.mutasi_debet <= 0.0:
-    raise 'Kesalahan Subscribe Reksadana Tambahan','Nilai alokasi tambahan harus lebih dari nol.'
+    raise Exception, 'Kesalahan Subscribe Reksadana Tambahan' + 'Nilai alokasi tambahan harus lebih dari nol.'
 
   oSubscribeReksadana.mutasi_kredit = 0.0
   # nilai kode_jns_investasi diisi lagi jika belum ada

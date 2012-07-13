@@ -674,8 +674,8 @@ def FunctionMain(config, req) :
        strError = 'Jenis Transaksi Investasi \'%s\' Belum Terdefinisi' \
                 %(oTI.kode_jns_investasi+oTI.kode_jenis_trinvestasi)
        config.SendDebugMsg(strError)
-       raise 'PERINGATAN',strError
-                                 
+       raise Exception, 'PERINGATAN' + strError
+
     #oLsInvestasi.Next()
   
     config.SendDebugMsg('yes3')

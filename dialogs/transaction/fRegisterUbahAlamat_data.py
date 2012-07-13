@@ -52,7 +52,7 @@ def uipRegisterCIFApplyRow(sender, oData):
   #mode = sender.ActiveRecord.mode
 
   if oData.no_referensi in ['', None]:
-    raise '\n\nRegistrasi Error','Nomor referensi tidak terdefinisi!'
+    raise Exception, '\n\nRegistrasi Error' + 'Nomor referensi tidak terdefinisi!'
 
   oData.tanggal_register = config.Now()
 

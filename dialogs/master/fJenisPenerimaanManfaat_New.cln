@@ -6,7 +6,7 @@ document <
   MinorVersion='0'
 >
 object:rtf::Form<
-  MainContainer=$CONTAINERS['pData']
+  MainContainer=$CONTAINERS['DualSplit']
   Caption='Penambahan Jenis Penerimaan Manfaat'
   Left=50
   Top=50
@@ -28,26 +28,30 @@ object:rtf::Form<
         object:rtf::FieldUIElmtSetting<
           Name='kode_jns_manfaat'
           AccessOption=aoReadOnlyOnEdit
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='VARCHAR'
           DataLength=1
           EnumeratedValues=['B=Pensiun Biasa'#13#10,
             'D=Pensiun Dipercepat'#13#10,
             'C=Pensiun Cacat'#13#10,
-            'J=Pensiun Meninggal'#13#10]
-        >
-        , object:rtf::FieldUIElmtSetting<
+            'J=Pensiun Meninggal'#13#10,
+            'T=Pensiun Ditunda'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
           Name='nama_jns_manfaat'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='VARCHAR'
           DataLength=30
-        >
-        , object:rtf::FieldUIElmtSetting<
+        >, object:rtf::FieldUIElmtSetting<
           Name='user_id'
+          Hidden=false
           ReadOnlyControl=true
           DataTypeName='VARCHAR'
           DataLength=20
-        >
-        , object:rtf::FieldUIElmtSetting<
+        >, object:rtf::FieldUIElmtSetting<
           Name='last_update'
+          Hidden=false
           ReadOnlyControl=true
           DataTypeName='TIMESTAMP'
           DataLength=0
@@ -61,19 +65,26 @@ object:rtf::Form<
       Controls={
         *object:rtf::DBComboBox<
           Name='kode_jns_manfaat'
+          Top=20
+          Left=20
           ControlCaption='Kode Jns Manfaat'
-        >
-        , *object:rtf::DBEdit<
+        >, *object:rtf::DBEdit<
           Name='nama_jns_manfaat'
+          Top=48
+          Left=20
           ControlCaption='Nama Jns Manfaat'
-        >
-        , *object:rtf::DBEdit<
+        >, *object:rtf::DBEdit<
           Name='user_id'
+          Top=76
+          Left=20
+          Color=-16777192
           ControlCaption='User ID'
           ReadOnly=true
-        >
-        , *object:rtf::DBDateEdit<
+        >, *object:rtf::DBDateEdit<
           Name='last_update'
+          Top=104
+          Left=20
+          Color=-16777192
           ControlCaption='Last Update'
         >
       }
@@ -83,8 +94,7 @@ object:rtf::Form<
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
-    >
-    , object:rtf::Panel<
+    >, object:rtf::Panel<
       Name='pButton'
       Width=240
       Height=40
@@ -92,17 +102,18 @@ object:rtf::Form<
         object:rtf::Button<
           Name='btnOK'
           Layout=clNewLine
-          Color=0
+          Top=8
+          Left=8
           ControlCaption=''
           Caption='&Simpan'
           Default=true
           DefaultAction=daProcessAllUI
           ExitAction=eaQuitOK
-        >
-        , object:rtf::Button<
+        >, object:rtf::Button<
           Name='btnCancel'
           Layout=clNextSide
-          Color=0
+          Top=8
+          Left=87
           ControlCaption=''
           Caption='&Batal'
           Cancel=true
@@ -114,11 +125,10 @@ object:rtf::Form<
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
-    >
-    , object:rtf::DualSplit<
+    >, object:rtf::DualSplit<
       Name='DualSplit'
-      Width=240
-      Height=100
+      Width=350
+      Height=230
       Container1=$CONTAINERS['pButton']
       Container2=$CONTAINERS['pData']
       InversedAlign=true

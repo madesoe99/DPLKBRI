@@ -29,10 +29,10 @@ def getDataNasabah(config,No_Peserta):
   RekeningWU.key = resSQLId.rekeningwasiatummat_id
 
   if Rekening.isnull:
-     raise "\nPERINGATAN","Rekening DPLK Tidak Ditemukan"
+     raise Exception, "\nPERINGATAN" + "Rekening DPLK Tidak Ditemukan"
      
   if Rekening.has_passbook <> 'T':
-     raise "\nPERINGATAN","Rekening Tidak Memiliki Layanan Passbook"
+     raise Exception, "\nPERINGATAN" + "Rekening Tidak Memiliki Layanan Passbook"
 
   # Cari objek nasabah
   oNasabah = Rekening.LNasabahDPLK

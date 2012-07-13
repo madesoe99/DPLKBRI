@@ -38,7 +38,7 @@ class fCetakTransPassbook:
 
      rec = res.FirstRecord
      if rec.Is_Err :
-        raise 'PERINGATAN',rec.Err_Message
+        raise Exception, 'PERINGATAN' + rec.Err_Message
         
      self.uipNoData.Nama = rec.Nama
      self.uipNoData.BarisMulai = rec.BarisCetakTerakhir + 1
@@ -48,9 +48,9 @@ class fCetakTransPassbook:
      self.FormObject.CommitBuffer()
      if self.uipNoData.No_Peserta not in ('',None):
        if self.uipNoData.BarisMulai in ('',None):
-         raise '\nPERINGATAN','Baris Mulai Belum diinputkan'
+         raise Exception, '\nPERINGATAN' + 'Baris Mulai Belum diinputkan'
        if int(self.uipNoData.BarisMulai) > 34 :
-         raise '\nPERINGATAN','Baris Tidak Boleh Lebih dari 34'
+         raise Exception, '\nPERINGATAN' + 'Baris Tidak Boleh Lebih dari 34'
 
        No_Peserta = self.uipNoData.No_Peserta
      
@@ -67,12 +67,12 @@ class fCetakTransPassbook:
 
        ph = result.FirstRecord
        if ph.Is_Err:
-          raise "PERINGATAN",ph.Err_Message
+          raise Exception, "PERINGATAN" + ph.Err_Message
           
        self.PrintModule.doProcess(self.app,result.packet,stButton[sender.Name])
        if stButton[sender.Name] == 2:
           sender.ExitAction = 1
           
      else:
-       raise '\nPERINGATAN','Nomor Peserta Belum Diinputkan'
+       raise Exception, '\nPERINGATAN' + 'Nomor Peserta Belum Diinputkan'
 

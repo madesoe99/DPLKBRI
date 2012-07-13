@@ -1,10 +1,10 @@
 import com.ihsan.lib.remotequery as librq
                               
-sSQLBoth = "SELECT ri.no_rekening, ns.nama_lengkap, ns.no_peserta FROM RekInvDPLK ri, NasabahDPLK ns WHERE ri.no_peserta = ns.no_peserta AND ri.no_rekening='%(nomor_rekening)s' AND ns.nama_lengkap LIKE '%%%(nama_peserta)s%%' ORDER BY ri.no_rekening, ns.nama_lengkap"
+sSQLBoth = "SELECT ri.no_rekening, ns.nama_lengkap, ns.no_peserta FROM RekInvDPLK ri, NasabahDPLK ns WHERE ri.status_dplk = 'A' AND ri.no_peserta = ns.no_peserta AND ri.no_rekening='%(nomor_rekening)s' AND ns.nama_lengkap LIKE '%%%(nama_peserta)s%%' ORDER BY ri.no_rekening, ns.nama_lengkap"
 
-sSQLRekening = "SELECT ri.no_rekening, ns.nama_lengkap, ns.no_peserta FROM RekInvDPLK ri, NasabahDPLK ns WHERE ri.no_peserta = ns.no_peserta AND ri.no_rekening='%(nomor_rekening)s' ORDER BY ri.no_rekening, ns.nama_lengkap"
+sSQLRekening = "SELECT ri.no_rekening, ns.nama_lengkap, ns.no_peserta FROM RekInvDPLK ri, NasabahDPLK ns WHERE ri.status_dplk = 'A' AND ri.no_peserta = ns.no_peserta AND ri.no_rekening='%(nomor_rekening)s' ORDER BY ri.no_rekening, ns.nama_lengkap"
 
-sSQLPeserta = "SELECT ri.no_rekening, ns.nama_lengkap, ns.no_peserta FROM RekInvDPLK ri, NasabahDPLK ns WHERE ri.no_peserta = ns.no_peserta AND ns.nama_lengkap LIKE '%%%(nama_peserta)s%%' ORDER BY ri.no_rekening, ns.nama_lengkap"
+sSQLPeserta = "SELECT ri.no_rekening, ns.nama_lengkap, ns.no_peserta FROM RekInvDPLK ri, NasabahDPLK ns WHERE ri.status_dplk = 'A' AND ri.no_peserta = ns.no_peserta AND ns.nama_lengkap LIKE '%%%(nama_peserta)s%%' ORDER BY ri.no_rekening, ns.nama_lengkap"
 
 def execQrySELECT(config, params, returns): # dummy handler when users click refresh / top button
   rq = librq.RQResult()

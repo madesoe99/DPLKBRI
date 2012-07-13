@@ -182,7 +182,7 @@ def mnuSelectRekening(menu, app):
   next_form = menu.StringTag
   f = appObject.checkLoadedForm(form_id)
   if f == None:
-    f = app.CreateForm(group_id+'/'+form_id, form_id, 2, None, [next_form, menu.Caption])
+    f = app.CreateForm(group_id+'/'+form_id, form_id, 2, None, [next_form, menu.Caption.replace('&','')])
     form = f.FormContainer
     appObject.registerForm(form_id, f)
   else:
@@ -253,3 +253,21 @@ def executePackageClick(sender, context):
 def PickBatchClick(sender, context):
   oform = context.CreateForm('transaksi/fDaftarPickBatch','fDaftarPickBatch',0,None,None)
   oform.FormContainer.Show()
+
+def showForm(menuitem, app):
+  formname = menuitem.StringTag
+  
+  form = app.FindForm(formname)
+  if form == None:
+    form = app.CreateForm(formname, formname, menuitem.NumberTag, None, None)
+  
+  form.Show()
+
+def showForm2(menuitem, app):
+  jenis = menuitem.Name
+  formname = menuitem.StringTag
+  form = app.FindForm(formname)
+  if form == None:
+    form = app.CreateForm(formname, formname, menuitem.NumberTag, None, None)
+  
+  form.Show(jenis)

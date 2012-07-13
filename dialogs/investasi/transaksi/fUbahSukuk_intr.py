@@ -19,7 +19,7 @@ def FormShow(form, parameter):
   uip.CreateMode = parameter.FirstRecord.mode
   if uip.CreateMode == 'Oto' :
     if uip.UbahStat :
-      raise 'PERINGATAN','Data belum mengalami perubahan apapun'
+      raise Exception, 'PERINGATAN' + 'Data belum mengalami perubahan apapun'
     form.SetAllControlsReadOnly()
     pButton.GetControlByName('bClose').Visible = 1
     pButton.GetControlByName('bOK').Caption = '&Otorisasi'
@@ -29,7 +29,7 @@ def FormShow(form, parameter):
 
   else :
     if not uip.UbahStat :
-      raise '\nPERINGATAN','Perubahan belum di Otorisasi'
+      raise Exception, '\nPERINGATAN' + 'Perubahan belum di Otorisasi'
     pButton.GetControlByName('bCancel').Cancel = 1
     if uip.CreateMode == 'Settlement' :
       form.GetControlByName('pData.TreatmentObligasi').Visible = 0

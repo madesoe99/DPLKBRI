@@ -51,7 +51,7 @@ def FormBeginSetData(uideflist, uipMaster, key):
     '''if (config.Now() - dtTglRegistrasi) < minMasaKepesertaan:
       #masa kepesertaan belum mencukupi untuk boleh pindah paket
       #prosesi pindah paket tidak boleh dilanjutkan
-      raise '\nPERINGATAN!','Peserta belum mencapai masa kepesertaan minimum.'
+      raise Exception, '\nPERINGATAN!' + 'Peserta belum mencapai masa kepesertaan minimum.'
       keepGoingProcess = 0'''
 
     ## Tambahan By ade herman 2011-07-25
@@ -113,7 +113,7 @@ def FormBeginSetData(uideflist, uipMaster, key):
        # if dtTglTerakhir - dtTglSebelumnya < periodePindahPaket:
           #rentang masih kurang dari periode pindah paket yang dibolehkan
           #prosesi pindah paket tidak boleh dilanjutkan
-        #  raise '\nPERINGATAN!','Peserta sudah melakukan Pindah Paket Investasi '\
+        #  raise Exception, '\nPERINGATAN!' + 'Peserta sudah melakukan Pindah Paket Investasi '\
         #    'sebanyak %d dalam satu periode. Tidak diperkenankan untuk pindah paket '\
         #    'investasi lagi sampai periode baru berikutnya.' % (maksPindahPaket)
         #  keepGoingProcess = 0
@@ -121,7 +121,7 @@ def FormBeginSetData(uideflist, uipMaster, key):
         #maksimal pindah paket investasi hanya boleh 1 kali selama periode
         #cek rentang tanggal sekarang dengan tanggal histori terakhir pindah paket
        # if config.ModLibUtils.Now() - dtTglTerakhir < periodePindahPaket:
-       #   raise '\nPERINGATAN!','Peserta sudah melakukan Pindah Paket Investasi '\
+       #   raise Exception, '\nPERINGATAN!' + 'Peserta sudah melakukan Pindah Paket Investasi '\
        #     'sebanyak %d dalam satu periode. Tidak diperkenankan untuk pindah paket '\
        #     'investasi lagi sampai periode baru berikutnya.' % (maksPindahPaket)
        #   keepGoingProcess = 0

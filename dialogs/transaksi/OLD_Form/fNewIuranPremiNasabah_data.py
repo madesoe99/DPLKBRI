@@ -74,7 +74,7 @@ def FormEndSetData(uideflist, uiname, objdata):
 
     if rSQL.Eof:
       #data peserta Wasiat Ummat tidak ditemukan
-      raise '\nError','\nPeserta termasuk peserta Wasiat Ummat, tetapi data ' \
+      raise Exception, '\nError','\nPeserta termasuk peserta Wasiat Ummat +  tetapi data ' \
         'Rekening Wasiat Ummat \npeserta %s tidak ditemukan!' \
         % (recNasabah.no_peserta)
     else:
@@ -294,7 +294,7 @@ def FormGeneralProcessData(uideflist, data):
     #  o.ID_Transaksi, 'A')
     
   except:
-    raise '\nProses Error', str(sys.exc_info()[1])
+    raise Exception, '\nProses Error' +  str(sys.exc_info()[1])
 
   return 0
   

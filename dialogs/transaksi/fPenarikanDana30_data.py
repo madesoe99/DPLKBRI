@@ -41,11 +41,12 @@ def Form_OnSetDataEx(uideflist, parameterForm):
   transaksiAPI = modman.getModule(config, 'transaksiapi')
   transaksiAPI.CekRentangWaktuPenarikan(config, recParameterForm.no_rekening)
   transaksiAPI.CekSaldoIuranMin(config, recParameterForm.no_rekening)
-  #raise Exception,'sampai sini!'
 
   #set uideflist
   uideflist.SetData('uipPeserta','PObj:NasabahDPLK#no_peserta='+recParameterForm.no_peserta)
   uideflist.SetData('uipRekening','PObj:RekInvDPLK#no_rekening='+recParameterForm.no_rekening)
+  
+  #checking peserta individu atau peserta korporat
   
   uipTransaksi = uideflist.uipTransaksi
   uipPeserta = uideflist.uipPeserta
@@ -58,6 +59,8 @@ def Form_OnSetDataEx(uideflist, parameterForm):
   recPeserta = uipPeserta.Dataset.GetRecord(0)
   recRekening = uipRekening.Dataset.GetRecord(0)
   recParameter = uipParameter.Dataset.AddRecord()
+  
+  #cek parameter default atau parameter korporat
   
   #set parameter default
   oParameter = config.CreatePObjImplProxy('Parameter')
@@ -77,11 +80,15 @@ def Form_OnSetDataEx(uideflist, parameterForm):
   recParameter.MIN_JML_AKUM_IURAN_PST = oParameter.Numeric_Value
   oParameter.Key = 'PERSEN_DENDA_NPWP'
   recParameter.PERSEN_DENDA_NPWP = oParameter.Numeric_Value
-  oParameter.Key = 'PERSEN_BIAYA_TARIK_NORMAL'
-  recParameter.PERSEN_BIAYA_TARIK_NORMAL = oParameter.Numeric_Value
   oParameter.Key = 'MIN_BIAYA_TARIK'
   recParameter.MIN_BIAYA_TARIK = oParameter.Numeric_Value
+  oParameter.Key = 'MIN_JML_TARIK_NORMAL'
+  recParameter.MIN_JML_TARIK_NORMAL = oParameter.Numeric_Value
+  oParameter.Key = 'PERSEN_BIAYA_TARIK_NORMAL'
+  recParameter.PERSEN_BIAYA_TARIK_NORMAL = oParameter.Numeric_Value
 
+  recParameter.LABEL_MIN_JML_TARIK_NORMAL = config.FormatFloat(',0.00', recParameter.MIN_JML_TARIK_NORMAL)
+  
   recParameter.isHitungMode = 1
 
   #set field data rekening
@@ -90,6 +97,7 @@ def Form_OnSetDataEx(uideflist, parameterForm):
   
   #set field Data Transaksi
   recTransaksi.tgl_transaksi = config.ModLibUtils.Now()
+  recTransaksi.batas_tarik_normal = recParameter.PERSEN_PENARIKAN_NORMAL
   recTransaksi.jml_tarik = 0.0
   recTransaksi.jenis_biaya = 'S'
   recTransaksi.biaya_lain = recParameter.BiayaSKN

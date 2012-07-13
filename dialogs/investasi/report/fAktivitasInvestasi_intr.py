@@ -17,7 +17,7 @@ class fInvestasi:
       # reksadana
       caption = 'Peragaan Transaksi Investasi EQ'
     else:
-      raise 'Kesalahan Jenis Investasi','Jenis Investasi \'%s\' tidak dikenali' % str(kode_jns_investasi)
+      raise Exception, 'Kesalahan Jenis Investasi' + 'Jenis Investasi \'%s\' tidak dikenali' % str(kode_jns_investasi)
 
     form.Caption = caption
 
@@ -37,11 +37,11 @@ class fInvestasi:
   def bTampilkanClick(self, sender) :
       uipRek = self.uipInvestasi
       if uipRek.TglAwal == None:
-          raise 'PERINGATAN', 'Tanggal awal harus diisi!'
+          raise Exception, 'PERINGATAN' +  'Tanggal awal harus diisi!'
       if uipRek.TglAkhir == None:
-          raise 'PERINGATAN', 'Tanggal akhir harus diisi!'
+          raise Exception, 'PERINGATAN' +  'Tanggal akhir harus diisi!'
       if uipRek.TglAwal > uipRek.TglAkhir:
-          raise 'PERINGATAN', 'Tanggal awal tidak boleh lebih besar dari akhir!'
+          raise Exception, 'PERINGATAN' +  'Tanggal awal tidak boleh lebih besar dari akhir!'
 
       ph = self.app.ExecuteScript(
           'investasi/master/HistTransaksiInvestasi',

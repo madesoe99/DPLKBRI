@@ -56,6 +56,6 @@ class fCetakNamaPassbook:
        elif sender.Name =='btnCetak':
           oPrint.doProcess(self.app,result.packet,2)
      else:
-       raise '\nPERINGATAN','Nomor Peserta Belum Diinputkan'
+       raise Exception, '\nPERINGATAN' + 'Nomor Peserta Belum Diinputkan'
        
 

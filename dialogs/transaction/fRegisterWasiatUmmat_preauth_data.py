@@ -18,7 +18,7 @@ def FormEndSetData(uideflist, auiname, apobjconst):
     resSQL = config.CreateSQL(strSQL).RawResult
 
     if resSQL.RecordCount <= 0:
-      raise 'SQL Result Error','Rekening Wasiat Ummat tidak terdefinisi.'
+      raise Exception, 'SQL Result Error' + 'Rekening Wasiat Ummat tidak terdefinisi.'
 
     rec.no_polis = resSQL.no_polis
     rec.besar_premi = resSQL.besar_premi

@@ -71,10 +71,10 @@ def uipBagiHasilSahamApplyRow(uipBagiHasilSaham, oBagiHasilSaham):
   config = uipBagiHasilSaham.UIDefList.Config
 
   if oBagiHasilSaham.NAB > oBagiHasilSaham.LSaham.NAB:
-    raise 'Kesalahan Bagi Hasil Saham','Nilai NAB baru tidak boleh lebih dari nilai sebelumnya.'
+    raise Exception, 'Kesalahan Bagi Hasil Saham' + 'Nilai NAB baru tidak boleh lebih dari nilai sebelumnya.'
 
   #if oBagiHasilSaham.nominal_jual > oBagiHasilSaham.LSaham.nominal_jual:
-  #  raise 'Kesalahan Bagi Hasil Saham','Nilai nominal jual baru tidak boleh lebih dari nilai sebelumnya.'
+  #  raise Exception, 'Kesalahan Bagi Hasil Saham' + 'Nilai nominal jual baru tidak boleh lebih dari nilai sebelumnya.'
 
   if oBagiHasilSaham.nominal_bagi_hasil >= 0.0:
     # bagi hasil (pendapatan Saham)

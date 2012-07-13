@@ -47,7 +47,7 @@ def CekPesertaSdhTersimpan(config, rSQL, logger, sessionID):
       if recStatus.IsErr:
         msg = str(recStatus.ErrMessage)
         WriteErrorToLog(config, msg, logger)
-        raise '\nError Cek Peserta: ', msg
+        raise Exception, '\nError Cek Peserta: ' +  msg
 
       WritePesertaToLog(config, rph, logger)
 
@@ -61,7 +61,7 @@ def CekPesertaSdhTersimpan(config, rSQL, logger, sessionID):
 #       if recStatus.IsErr:
 #         msg = str(recStatus.ErrMessage)
 #         WriteErrorToLog(config, msg, logger)
-#         raise '\nError Cek Peserta: ', msg
+#         raise Exception, '\nError Cek Peserta: ' +  msg
 # 
 #       WritePesertaToLog(config, rph, logger)
 # 
@@ -146,7 +146,7 @@ def Main(config, dtTglTransaksi, tTglTransaksi):
         config.SendDebugMsg('sessionID '+ str(sessionID))
         rph = config.AppObject.rexecscript(sessionID, 'remote/KirimPesertaDPLK', param, 1)
         if rph.FirstRecord.IsErr:
-          raise '\nError kirim peserta ke CoreBanking',str(rph.FirstRecord.ErrMessage)
+          raise Exception, '\nError kirim peserta ke CoreBanking' + str(rph.FirstRecord.ErrMessage)
       except:
         raise
 

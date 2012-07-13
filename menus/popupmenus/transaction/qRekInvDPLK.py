@@ -77,14 +77,15 @@ def GetFormInfoByCIFCode(kode_jenis_registercif):
   elif kode_jenis_registercif == 'N':
     return ['fRegisterAnuitas','RekInvDPLK']
   elif kode_jenis_registercif == 'P':
-    return ['fRegisterPindahPaketInvestasi','RekInvDPLK']
+    return ['fRegisterPindahPaketInvestasiUnitized','RekInvDPLK']
   elif kode_jenis_registercif == 'U':
     return ['fRegisterWasiatUmmat','RekInvDPLK']
   elif kode_jenis_registercif == 'W':
     return ['fRegisterAhliWaris','NasabahDPLK']
-  elif kode_jenis_registercif == 'Z':
-    #return ['fEditNasabahRekening','NasabahDPLK']
-    raise Exception, '\n\nPERHATIAN!\nMohon maaf masih dalam tahap pengembangan'
+  elif kode_jenis_registercif == 'X':
+    return ['fEditRekInvDPLK','RekInvDPLK']
+  elif kode_jenis_registercif == 'S':
+    return ['fEditRekSumber','RekInvDPLK']
   else:
     raise Exception,'\n\nGetFormInfoByCIFCode Error\nKode jenis Register CIF tidak dikenali.'
 

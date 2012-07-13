@@ -39,7 +39,7 @@ def FormShow(form, parameter):
     
     dataCopy = ';'.join([
       'LNasabahDPLKHolding.kode_nasabah_corporate;LNasabahDPLKHolding.nama_perusahaan;kode_holding;',
-      'no_referensi;kode_nasabah_corporate;nama_perusahaan;ljenisusaha.nama_jenis_usaha;NPWP;',
+      'kode_nasabah_corporate;nama_perusahaan;ljenisusaha.nama_jenis_usaha;NPWP;',
       'ljenisusaha.kode_jenis_usaha;ljenisusaha.risk_flag;',
       'lkepemilikan.kode_pemilikan;lkepemilikan.keterangan;tgl_bergabung;',
       'tgl_bayar_iuran;biaya_daftar_anggota;',
@@ -47,7 +47,11 @@ def FormShow(form, parameter):
       'alamat_kantor_jalan;alamat_kantor_kelurahan;alamat_kantor_kecamatan;',
       'alamat_kantor_kota;alamat_kantor_propinsi;alamat_kantor_kode_pos;',
       'alamat_kantor_telepon;alamat_kantor_telepon2;alamat_kantor_fax;',
-      'no_perjanjian;keterangan;keterangan1;keterangan2;keterangan3;keterangan4'
+      'no_perjanjian;keterangan1;keterangan2;keterangan3;keterangan4;',
+      'REFR_ACCNO;REFR_NAMA;REFR_UKER;',
+      'LAKPropinsi.kode_propinsi;LAKPropinsi.nama_propinsi;',
+      'LAKKota.kode_kota;LAKKota.nama_kota;',
+      'LAKKecamatan.kode_kecamatan;LAKKecamatan.nama_kecamatan'
     ])
     uipNasabahDPLKCorporate.CopyAttributes(uipRegEditNasabahDPLKCorporate,dataCopy)
     form.GetControlByName('pDataLeft.kode_nasabah_corporate').ReadOnly = 1

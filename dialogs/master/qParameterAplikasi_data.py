@@ -2,16 +2,16 @@ import sys
 
 def FormGeneralSetData(uideflist, uiname, objdata):
   config = uideflist.Config
-  uip = uideflist.uipParameter
   
-  #dapetin dulu semua nama parameter
+  """get semua data parameter aplikasi"""
+  uipApp = uideflist.uipParameter
   sSQL = 'select Key_Parameter,Numeric_Value,Varchar_Value,Description from Parameter '\
     'order by Key_Parameter ASC'
   rSQL = config.CreateSQL(sSQL).RawResult
   
   rSQL.First()
   while not rSQL.Eof:
-    rec = uip.Dataset.AddRecord()
+    rec = uipApp.Dataset.AddRecord()
 
     #set grid Parameter Aplikasi
     rec.Key_Parameter = rSQL.Key_Parameter
@@ -22,6 +22,38 @@ def FormGeneralSetData(uideflist, uiname, objdata):
       rec.Varchar_Value = rSQL.Varchar_Value
       rec.ValueType = 0
     elif rSQL.Numeric_Value in [None,'']:
+      rec.Varchar_Value = rSQL.Varchar_Value
+      rec.ValueType = 1
+    else:
+      rec.Numeric_Value = rSQL.Numeric_Value
+      rec.ValueType = 0
+    
+    rSQL.Next()
+    
+  """get semua data parameter korporat"""  
+  uipKorporat = uideflist.uipParameterKorporat
+  sSQL = """
+    SELECT 
+      Key_Parameter,
+      Numeric_Value,
+      Varchar_Value,
+      Description 
+    FROM 
+      MasterParameter
+    WHERE 
+      Param_Type = 'C'
+    ORDER BY Key_Parameter ASC"""
+  rSQL = config.CreateSQL(sSQL).RawResult
+  
+  rSQL.First()
+  while not rSQL.Eof:
+    rec = uipKorporat.Dataset.AddRecord()
+
+    #set grid Parameter Korporat
+    rec.Key_Parameter = rSQL.Key_Parameter
+    rec.Description = rSQL.Description
+
+    if rSQL.Numeric_Value in [None,'']:
       rec.Varchar_Value = rSQL.Varchar_Value
       rec.ValueType = 1
     else:
@@ -76,10 +108,10 @@ def FormGeneralProcessData(uideflist, data):
   config = uideflist.Config
 
   try:
-    uip = data.uipParameter
-    for i in range(uip.RecordCount):
-      if uip.GetRecord(i).__SYSFLAG == 'M':
-        rec = uip.GetRecord(i)
+    uipApp = data.uipParameter
+    for i in range(uipApp.RecordCount):
+      if uipApp.GetRecord(i).__SYSFLAG == 'M':
+        rec = uipApp.GetRecord(i)
 
         #debug code
         config.SendDebugMsg(rec.Key_Parameter)
@@ -137,6 +169,6 @@ def FormGeneralProcessData(uideflist, data):
     config.SysVarIntf.SetIntSysVar('TIMEZONE','AkhirMenitKerja',recTZ.AkhirMenitKerja)
 
   except:
-    raise '\nProses Error','Penyimpanan hasil perubahan Parameter Aplikasi gagal!'
+    raise Exception, '\nProses Error' + 'Penyimpanan hasil perubahan Parameter Aplikasi gagal!'
 
   return 0

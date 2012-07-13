@@ -44,6 +44,6 @@ def FormGeneralProcessData(uideflist, data):
     o.terminal_id = config.SecurityContext.GetSessionInfo()[1]
     o.tgl_sistem = config.Now()
   except:
-    raise '\nProses Error', str(sys.exc_info()[1])
+    raise Exception, '\nProses Error' +  str(sys.exc_info()[1])
 
   return 0

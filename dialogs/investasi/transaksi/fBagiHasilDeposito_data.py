@@ -75,7 +75,7 @@ def uipBagiHasilDepositoApplyRow(uipBagiHasilDeposito, oBagiHasilDeposito):
   config = uipBagiHasilDeposito.UIDefList.Config
 
   if oBagiHasilDeposito.mutasi_kredit <= moduleapi.zero_approx:
-    raise 'Kesalahan Bagi Hasil Deposito','Nilai bagi hasil harus lebih dari nol.'
+    raise Exception, 'Kesalahan Bagi Hasil Deposito' + 'Nilai bagi hasil harus lebih dari nol.'
 
   oBagiHasilDeposito.nominal = oBagiHasilDeposito.mutasi_kredit
   oBagiHasilDeposito.mutasi_debet = 0.0

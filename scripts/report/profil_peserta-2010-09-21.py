@@ -48,7 +48,7 @@ def GetValuesFromKlasifikasi(config, klasifikasi):
       '  and r.status_dplk = \'A\' '\
       'group by k.kode_kelompok, k.nama_kelompok'
   else:
-    raise 'Kesalahan Klasifikasi','Klasifikasi tidak dikenal.'
+    raise Exception, 'Kesalahan Klasifikasi' + 'Klasifikasi tidak dikenal.'
 
   return [info, code, name, strSQL]  
 

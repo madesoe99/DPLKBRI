@@ -14,13 +14,13 @@ def GridAfterNewRecord(pclassui):
   #hapus setting readonly untuk acc_giro
   pclassui.OwnerForm.GetPanelByName('gMasterGiro').GetColumnByName('acc_giro').ReadOnly = 0
 
-  #raise 'PERINGATAN','\n\nTidak diperkenankan untuk menambah daftar Master Giro ini!'
+  #raise Exception, 'PERINGATAN' + '\n\nTidak diperkenankan untuk menambah daftar Master Giro ini!'
 
 def GridBeforeDelete(pclassui):
   pass
-  #raise 'PERINGATAN','\n\nTidak diperkenankan untuk menghapus daftar Master Giro ini!'
+  #raise Exception, 'PERINGATAN' + '\n\nTidak diperkenankan untuk menghapus daftar Master Giro ini!'
   
 def GridBeforePost(pclassui):
   pass
-  #raise 'PERINGATAN','\n\nTidak diperkenankan untuk mengubah daftar Master Giro ini!'
+  #raise Exception, 'PERINGATAN' + '\n\nTidak diperkenankan untuk mengubah daftar Master Giro ini!'
 

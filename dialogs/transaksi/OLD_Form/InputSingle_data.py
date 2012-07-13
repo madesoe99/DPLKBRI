@@ -98,7 +98,7 @@ def FormGeneralSetData(uideflist, uiname, objdata):
 
       if oCBB.IsNull:
         #tidak ada core banking batch
-        raise '\nPERINGATAN','Batch Core Banking Aplikasi DPLK untuk hari ini '\
+        raise Exception, '\nPERINGATAN' + 'Batch Core Banking Aplikasi DPLK untuk hari ini '\
           'belum dibuat. Mohon buat terlebih dahulu.'
 
     #set langsung batch transaksi(tanpa harus lookup)
@@ -113,7 +113,7 @@ def FormGeneralSetData(uideflist, uiname, objdata):
     
     if rSQL.Eof:
       #batch transaksi tidak ditemukan
-      raise '\nPERINGATAN','\n\nBatch DPLK untuk hari ini belum ada / tidak ditemukan! '\
+      raise Exception, '\nPERINGATAN' + '\n\nBatch DPLK untuk hari ini belum ada / tidak ditemukan! '\
         '\nHubungi Administrator agar membuatkan batch DPLK.'
     else:
       #batch transaksi ditemukan, simpan ketiganya (batch type 'RTP')

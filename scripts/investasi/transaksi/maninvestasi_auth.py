@@ -36,7 +36,7 @@ def DAFScriptMain(config, parameter, returnpacket):
       oReksadana.key = oInvestasi.id_Investasi
       oTransPiutangInvestasi.nama_investasi = oReksadana.nama_reksadana
     else:
-      raise 'Kesalahan Otorisasi','Kode jenis investasi \'%s\' tidak dikenali.' % (str(oInvestasi.kode_jns_investasi))
+      raise Exception, 'Kesalahan Otorisasi' + 'Kode jenis investasi \'%s\' tidak dikenali.' % (str(oInvestasi.kode_jns_investasi))
 
     nom = oTransPiutangInvestasi.mutasi_debet - oTransPiutangInvestasi.mutasi_kredit
     oInvestasi.akum_nominal += nom

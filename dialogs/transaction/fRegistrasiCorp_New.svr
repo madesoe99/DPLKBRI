@@ -10,8 +10,8 @@ object:rpclass::TPClassUIDefList<
     object:rpclass::TPClassUIDef<
       Name='uipRegEditNasabahDPLKCorporate'
       PClassName='RegEditNasabahDPLKCorporate'
-      LoadedFieldList='LNasabahDPLKHolding.kode_nasabah_corporate;LNasabahDPLKHolding.kode_nasabah_corporate;LNasabahDPLKHolding.nama_perusahaan;no_referensi;kode_nasabah_corporate;nama_perusahaan;NPWP;LJenisUsaha.kode_jenis_usaha;LJenisUsaha.kode_jenis_usaha;LJenisUsaha.nama_jenis_usaha;LJenisUsaha.risk_flag;LKepemilikan.kode_pemilikan;LKepemilikan.kode_pemilikan;LKepemilikan.keterangan;tgl_bayar_iuran;LNegara.kode_negara;LNegara.kode_negara;LNegara.nama_negara;LNegara.risk_flag;biaya_daftar_anggota;tgl_bergabung;tanggal_register;user_id;terminal_id;no_perjanjian;keterangan;keterangan1;keterangan2;keterangan3;keterangan4;alamat_kantor_jalan;alamat_kantor_kelurahan;alamat_kantor_kecamatan;alamat_kantor_kota;alamat_kantor_kode_pos;alamat_kantor_telepon;alamat_kantor_propinsi;alamat_kantor_telepon2;alamat_kantor_fax'
-      StoredFieldList='LNasabahDPLKHolding;no_referensi;kode_nasabah_corporate;nama_perusahaan;NPWP;LJenisUsaha;LKepemilikan;tgl_bayar_iuran;LNegara;biaya_daftar_anggota;tgl_bergabung;tanggal_register;user_id;terminal_id;no_perjanjian;keterangan;keterangan1;keterangan2;keterangan3;keterangan4;alamat_kantor_jalan;alamat_kantor_kelurahan;alamat_kantor_kecamatan;alamat_kantor_kota;alamat_kantor_kode_pos;alamat_kantor_telepon;alamat_kantor_propinsi;alamat_kantor_telepon2;alamat_kantor_fax'
+      LoadedFieldList='LNasabahDPLKHolding.kode_nasabah_corporate;LNasabahDPLKHolding.kode_nasabah_corporate;LNasabahDPLKHolding.nama_perusahaan;kode_nasabah_corporate;nama_perusahaan;NPWP;LJenisUsaha.kode_jenis_usaha;LJenisUsaha.kode_jenis_usaha;LJenisUsaha.nama_jenis_usaha;LJenisUsaha.risk_flag;LKepemilikan.kode_pemilikan;LKepemilikan.kode_pemilikan;LKepemilikan.keterangan;tgl_bayar_iuran;LNegara.kode_negara;LNegara.kode_negara;LNegara.nama_negara;LNegara.risk_flag;biaya_daftar_anggota;no_perjanjian;keterangan1;keterangan2;keterangan3;keterangan4;alamat_kantor_jalan;alamat_kantor_kelurahan;alamat_kantor_kota;alamat_kantor_propinsi;LAKPropinsi.kode_propinsi;LAKPropinsi.kode_propinsi;LAKPropinsi.nama_propinsi;LAKKota.kode_kota;LAKKota.kode_kota;LAKKota.nama_kota;LAKKecamatan.kode_kecamatan;LAKKecamatan.kode_kecamatan;LAKKecamatan.nama_kecamatan;alamat_kantor_kecamatan;alamat_kantor_kode_pos;alamat_kantor_telepon;alamat_kantor_telepon2;alamat_kantor_fax;no_referensi;keterangan;tgl_bergabung;tanggal_register;user_id;terminal_id;REFR_NAMA;REFR_ACCNO;REFR_UKER'
+      StoredFieldList='LNasabahDPLKHolding;kode_nasabah_corporate;nama_perusahaan;NPWP;LJenisUsaha;LKepemilikan;tgl_bayar_iuran;LNegara;biaya_daftar_anggota;no_perjanjian;keterangan1;keterangan2;keterangan3;keterangan4;alamat_kantor_jalan;alamat_kantor_kelurahan;alamat_kantor_kota;alamat_kantor_propinsi;LAKPropinsi;LAKKota;LAKKecamatan;alamat_kantor_kecamatan;alamat_kantor_kode_pos;alamat_kantor_telepon;alamat_kantor_telepon2;alamat_kantor_fax;no_referensi;keterangan;tgl_bergabung;tanggal_register;user_id;terminal_id;REFR_NAMA;REFR_ACCNO;REFR_UKER'
       CustomLoadedFields={
         object:rpclass::TCustomLoadedField<
           Name='mode'
@@ -44,6 +44,18 @@ object:rpclass::TPClassUIDefList<
           Name='LNegara'
           ClassTypeName='Negara'
           FieldNames='kode_negara;kode_negara;nama_negara;risk_flag'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LAKPropinsi'
+          ClassTypeName='DaerahAsal'
+          FieldNames='kode_propinsi;kode_propinsi;nama_propinsi'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LAKKota'
+          ClassTypeName='DaerahKota'
+          FieldNames='kode_kota;kode_kota;nama_kota'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LAKKecamatan'
+          ClassTypeName='DaerahKecamatan'
+          FieldNames='kode_kecamatan;kode_kecamatan;nama_kecamatan'
         >
       }
       Mode=imSingleRow

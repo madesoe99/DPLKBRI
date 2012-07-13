@@ -77,11 +77,11 @@ def uipRedemptionSahamApplyRow(uipRedemptionSaham, oRedemptionSaham):
   oSaham = oRedemptionSaham.LSaham
 
   if oRedemptionSaham.nilai_redempt <= 0 and oRedemptionSaham.unit_penyertaan == 0.0 :
-    pass#raise 'Kesalahan Redemption Saham','Nilai redemption harus lebih dari nol.'
+    pass#raise Exception, 'Kesalahan Redemption Saham' + 'Nilai redemption harus lebih dari nol.'
 
   #if (oRedemptionSaham.nilai_redempt - oSaham.unit_penyertaan * oSaham.NAB) > moduleapi.zero_approx:
   if (oRedemptionSaham.nilai_redempt - oSaham.akum_nominal) > moduleapi.zero_approx:
-    pass#raise 'Kesalahan Redemption Saham','\nNilai redemption tidak boleh lebih dari unit penyertaan dikali NAB sekarang.'
+    pass#raise Exception, 'Kesalahan Redemption Saham' + '\nNilai redemption tidak boleh lebih dari unit penyertaan dikali NAB sekarang.'
 
   #totPiutInv = oSaham.NAB_awal * oRedemptionSaham.unit_penyertaan
   totPiutInv = oRedemptionSaham.nilai_redempt
@@ -97,7 +97,7 @@ def uipRedemptionSahamApplyRow(uipRedemptionSaham, oRedemptionSaham):
   oRedemptionSaham.isCommitted = 'F'
 
   if oRedemptionSaham.no_rekening == '' :
-    raise 'PERINGATAN','Tujuan redempt harus diisi'
+    raise Exception, 'PERINGATAN' + 'Tujuan redempt harus diisi'
 
 
 def FormEndProcessData(uideflist, datapacket):

@@ -3,7 +3,7 @@ import sys, dafsys
 def RunSQL(config, sSQL):
   i = config.ExecSQL(sSQL)
   if i == -9999:
-    raise 'SQL Error', config.GetDBConnErrorInfo()
+    raise Exception, 'SQL Error' +  config.GetDBConnErrorInfo()
   
 def CreateResultSet(config):
   sSQL = "select * from transaksidplk a \

@@ -288,15 +288,15 @@ object:rtf::Form<
       Caption='Data Peserta'
     >, object:rtf::DualSplit<
       Name='dualsplit1'
-      Width=240
-      Height=96
+      Width=800
+      Height=600
       Container1=$CONTAINERS['pButton']
       Container2=$CONTAINERS['MultiPages']
       InversedAlign=true
     >, object:rtf::MultiPages<
       Name='MultiPages'
-      Width=320
-      Height=320
+      Width=800
+      Height=559
       Pages={
         object:rtf::Page<
           PageName='pageTransaksi'

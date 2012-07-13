@@ -1,0 +1,268 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['MultiSplit']
+  Caption='Daftar Parameter Korporat'
+  Left=100
+  Top=75
+  Width=800
+  Height=600
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx='FormOnSetDataEx'
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipNasabahDPLKCorporate'
+      ClassTypeName='NasabahDPLKCorporate'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      AfterApplyRow='uipNasabahDPLKCorporateApplyRow'
+    >, object:rtf::PClassUI<
+      Name='uipCorpParams'
+      ClassTypeName='NASABAHCORPPARAMS'
+      DataBinding=bmList
+      Master=$UIPARTS['uipNasabahDPLKCorporate']
+      ListName='Ls_NASABAHCORPPARAMS'
+      FillInDefaultValues=true
+      AlwaysPostToServer=true
+      InitWithDefaultValues=true
+      CreateInstanceOnNew=true
+      DeleteInstanceOnDel=true
+      SetMasterDetailRelationship=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          ControlCaption=''
+          LayoutOrder=2
+          Caption='&Batal'
+          Default=true
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >, object:rtf::Button<
+          Name='btnSubmit'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          ControlCaption=''
+          LayoutOrder=1
+          Caption='&Simpan'
+          OnClick='btnSubmitOnClick'
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Grid<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LMasterParameter'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='NUMERIC_VALUE'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='VARCHAR_VALUE'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='DESCRIPTION'
+        >
+      }
+      Elements={
+        *object:rtf::LinkUIElmtSetting<
+          Name='LMasterParameter'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='Key_Parameter;Numeric_Value;Varchar_Value;Description'
+          Restrictions=''
+          OQLText=['SELECT FROM MasterParameter ['#13#10,
+            '  param_type = ''C'''#13#10,
+            '] ('#13#10,
+            '  self,'#13#10,
+            '  Key_Parameter,'#13#10,
+            '  Numeric_Value,'#13#10,
+            '  Varchar_Value,'#13#10,
+            '  Description'#13#10,
+            ') THEN ORDER BY Key_Parameter;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LMasterParameter'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='NUMERIC_VALUE'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='VARCHAR_VALUE'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='DESCRIPTION'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='gDetails'
+      Width=240
+      Height=240
+      UIPart=$UIPARTS['uipCorpParams']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Daftar Parameter Korporat'
+      Columns={
+        *object:rtf::GridColumn<
+          Name='LMasterParameter.Key_Parameter'
+          InputStyle=cisLookup
+          EnumeratedValues=''
+          OnAfterLookup='LMasterParameter_Key_ParameterOnAfterLookup'
+          FieldName='LMasterParameter.Key_Parameter'
+          DisplayFormat=''
+          TitleCaption='Parameter Korporat'
+        >, *object:rtf::GridColumn<
+          Name='LMasterParameter.Numeric_Value'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='LMasterParameter.Numeric_Value'
+          DisplayFormat=''
+          Hidden=true
+        >, *object:rtf::GridColumn<
+          Name='LMasterParameter.Varchar_Value'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='LMasterParameter.Varchar_Value'
+          DisplayFormat=''
+          Hidden=true
+        >, *object:rtf::GridColumn<
+          Name='LMasterParameter.Description'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='LMasterParameter.Description'
+          DisplayFormat=''
+          Hidden=true
+        >, *object:rtf::GridColumn<
+          Name='NUMERIC_VALUE'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='NUMERIC_VALUE'
+          DisplayFormat=''
+          TitleCaption='Nilai Angka'
+        >, *object:rtf::GridColumn<
+          Name='VARCHAR_VALUE'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='VARCHAR_VALUE'
+          DisplayFormat=''
+          TitleCaption='Nilai Teks'
+        >, *object:rtf::GridColumn<
+          Name='DESCRIPTION'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='DESCRIPTION'
+          DisplayFormat=''
+          TitleCaption='Keterangan'
+        >
+      }
+    >, object:rtf::MultiSplit<
+      Name='MultiSplit'
+      Width=800
+      Height=600
+      Side1Containers={
+        $CONTAINERS['pDataLeft']
+
+      }
+      Side2Containers={
+        $CONTAINERS['pButton']
+
+      }
+      SpaceContainer=$CONTAINERS['gDetails']
+    >, object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['kode_nasabah_corporate'#13#10,
+            'nama_perusahaan'#13#10,
+            'no_referensi'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='kode_nasabah_corporate'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='kode peserta korporat'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='nama_perusahaan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='no_referensi'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='pDataLeft'
+      Width=400
+      Height=121
+      Bordered=true
+      UIPart=$UIPARTS['uipNasabahDPLKCorporate']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='kode_nasabah_corporate'
+          Top=30
+          Left=20
+          Color=-2147483624
+          ControlCaption='Kode Peserta Korporat'
+          CharCase=ecUpperCase
+        >, *object:rtf::DBEdit<
+          Name='nama_perusahaan'
+          Top=58
+          Left=20
+          Color=-2147483624
+          ControlCaption='Nama Perusahaan'
+          CharCase=ecUpperCase
+        >, *object:rtf::DBEdit<
+          Name='no_referensi'
+          Top=86
+          Left=20
+          Color=-2147483624
+          ControlCaption='Nomor Referensi'
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=30
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Identitas Peserta Korporat'
+    >
+  }
+  FormClassName='fCorporateParams'
+>

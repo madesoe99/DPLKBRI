@@ -11,6 +11,14 @@ def mnuNewClick(sender, context):
   #SetToCenterForm(context.OwnerForm, aform.FormObject)
   aform.Show(app.CreateValues(['mode','new']))
 
+def displayWithDataX(sender, context):
+  app = context.OwnerForm.ClientApplication
+  key = context.KeyObjConst
+  ph = app.CreateValues(['key', key])
+  
+  frm = app.CreateForm('transaction/fCorporateParams', 'fCorporateParams', 0, ph, None)
+  frm.Show()
+
 def displayWithData(sender, context):
   app = context.OwnerForm.ClientApplication
   key = context.KeyObjConst

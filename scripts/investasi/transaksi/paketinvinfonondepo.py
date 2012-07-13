@@ -1,7 +1,6 @@
-import sys
-sys.path.append('c:/dafapp/dplk07/script_modules')
+import com.ihsan.util.modman as modman
 
-import transaksiapi
+#transaksiapi = modman.getModule(config, 'transaksiapi')
 
 #def resSQLAkumRek(config, kode_paket_investasi):
 #  strSQL = \
@@ -142,6 +141,7 @@ def getPaket(config, kode_paket_investasi):
   oPaketInvestasi.Key = kode_paket_investasi
 
   #ambil info untuk rlogin dan kirimkan paketnya
+  transaksiapi = modman.getModule(config, 'transaksiapi')
   ServerName, AppName, Session_Name, UserID, Password = transaksiapi.GetLoginAkuntansi(config)
 
   #if not appObject.lookuprsession(Session_Name):
@@ -158,9 +158,9 @@ def getPaket(config, kode_paket_investasi):
       )
     )
 
-    config.SendDebugMsg('gngp_2')
+    #config.SendDebugMsg('gngp_2')
   finally:
-    config.SendDebugMsg('gngp_3')
+    #config.SendDebugMsg('gngp_3')
     appObject.rlogout(Session_Name)
 
   return rPH.FirstRecord.nominalGiro

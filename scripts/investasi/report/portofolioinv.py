@@ -171,7 +171,7 @@ def WriteContentRow(config, strJenis, strDateUntilTmrwSQL, strDateUntilTmrwPrevS
     resCurr = resSQLNone(config)
     resPrev = resSQLNone(config)
   else:
-    raise 'Laporan Error', 'Jenis investasi "%s" tidak dikenali' % (str(strJenis))
+    raise Exception, 'Laporan Error' +  'Jenis investasi "%s" tidak dikenali' % (str(strJenis))
     
   resCurr.First()
   while not resCurr.Eof:

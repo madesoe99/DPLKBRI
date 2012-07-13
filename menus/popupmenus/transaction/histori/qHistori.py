@@ -22,7 +22,7 @@ def GetFormInfoByCIFCode(kode_jenis_registercif):
   elif kode_jenis_registercif == 'Z':
     return ['fEditNasabahRekening','uipEditNasabahRekening']
   else:
-    raise 'GetFormInfoByCIFCode Error','Kode jenis Register CIF tidak dikenali.'
+    raise Exception, 'GetFormInfoByCIFCode Error' + 'Kode jenis Register CIF tidak dikenali.'
 
 def displayWithData(sender, context):
   form = context.OwnerForm

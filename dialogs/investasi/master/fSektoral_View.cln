@@ -4,41 +4,109 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rtf::Form<
+>
+object:rtf::Form<
   MainContainer=$CONTAINERS['MultiSplit']
   Caption='Peragaan Sektoral'
   Left=50
   Top=50
   Width=401
   Height=305
-  UIParts={object:rtf::PClassUI<
+  UIParts={
+    object:rtf::PClassUI<
       Name='uipSektoral'
       ClassTypeName='Sektoral'
       DataBinding=bmMaster
       AlwaysPostToServer=true
       CreateInstanceOnNew=true
-    >}Containers={object:rtf::Panel<
-      Elements={object:rtf::FieldUIElmtSetting<
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
           Name='kode_sektoral'
           AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='VARCHAR'
           DataLength=5
         >, object:rtf::FieldUIElmtSetting<
           Name='nama_sektoral'
           AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='VARCHAR'
           DataLength=50
         >, object:rtf::FieldUIElmtSetting<
           Name='deskripsi_sektoral'
           AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='VARCHAR'
           DataLength=100
-        >}Name='pData'
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LInduk'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Grup Sektoral'
+          ClassTypeName='SEKTORAL'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LInduk.kode_sektoral'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=5
+              UsedAsKey=true
+              KeyOrDisplayName='kode_sektoral'
+              FinalDisplayFieldName='kode_sektoral'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LInduk.kode_sektoral'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=5
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_sektoral'
+              FinalDisplayFieldName='kode_sektoral'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LInduk.nama_sektoral'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=50
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_sektoral'
+              FinalDisplayFieldName='nama_sektoral'
+            >
+          }
+          Restrictions=''
+          FieldBaseName='LInduk'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='is_level_detil'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Level Detil'
+          DataTypeName='varchar'
+          DataLength=1
+          EnumeratedValues=['F=false'#13#10,
+            'T=true'#13#10]
+          GenerateCheckBoxForEnum=true
+        >
+      }
+      Name='pData'
       Width=401
       Height=166
       Bordered=true
       UIPart=$UIPARTS['uipSektoral']
-      Controls={*object:rtf::DBEdit<
+      Controls={
+        *object:rtf::DBEdit<
           Name='kode_sektoral'
           Top=20
           Left=20
@@ -56,7 +124,25 @@ document <
           Left=20
           Color=-2147483624
           ControlCaption='Deskripsi Sektoral'
-        >}EqualCaptionWidth=120
+        >, *object:rtf::DBLookupEdit<
+          Name='LInduk'
+          Top=104
+          Left=20
+          Enabled=false
+          ControlCaption='Grup Sektoral'
+          LookupField='LInduk.nama_sektoral'
+          DisplayLookupField=true
+          DisableLookup=true
+        >, *object:rtf::DBCheckBox<
+          Name='is_level_detil'
+          Top=132
+          Left=20
+          Enabled=false
+          Color=-16777192
+          ControlCaption='Level Detil'
+        >
+      }
+      EqualCaptionWidth=120
       ControlLeftMargin=20
       ControlTopMargin=20
       DefaultControlHeight=21
@@ -66,37 +152,47 @@ document <
       Name='pButton'
       Width=240
       Height=55
-      Controls={object:rtf::Button<
+      Controls={
+        object:rtf::Button<
           Name='btnCancel'
           Layout=clAbsolute
           Top=16
           Left=20
-          Color=0
           ControlCaption=''
-          Caption='&Batal'
+          Caption='&Tutup'
           Default=true
           Cancel=true
           ExitAction=eaQuitCancel
-        >}ControlLeftMargin=20
+        >
+      }
+      ControlLeftMargin=20
       ControlTopMargin=8
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
     >, object:rtf::Panel<
-      Elements={object:rtf::FieldUIElmtSetting<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
           Name='user_id'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='VARCHAR'
           DataLength=20
         >, object:rtf::FieldUIElmtSetting<
           Name='last_update'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='TIMESTAMP'
           DataLength=0
-        >}Name='pUser'
+        >
+      }
+      Name='pUser'
       Width=401
       Height=97
       Bordered=true
       UIPart=$UIPARTS['uipSektoral']
-      Controls={*object:rtf::DBEdit<
+      Controls={
+        *object:rtf::DBEdit<
           Name='user_id'
           Top=20
           Left=20
@@ -110,7 +206,9 @@ document <
           Enabled=false
           Color=-2147483624
           ControlCaption='last update'
-        >}EqualCaptionWidth=120
+        >
+      }
+      EqualCaptionWidth=120
       ControlLeftMargin=20
       ControlTopMargin=20
       DefaultControlHeight=21
@@ -120,7 +218,15 @@ document <
       Name='MultiSplit'
       Width=320
       Height=320
-      Side1Containers={$CONTAINERS['pData']
-      }Side2Containers={$CONTAINERS['pButton']
-      }SpaceContainer=$CONTAINERS['pUser']
-    >}>
+      Side1Containers={
+        $CONTAINERS['pData']
+
+      }
+      Side2Containers={
+        $CONTAINERS['pButton']
+
+      }
+      SpaceContainer=$CONTAINERS['pUser']
+    >
+  }
+>

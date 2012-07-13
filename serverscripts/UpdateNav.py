@@ -43,7 +43,7 @@ def runSQL(config, sSQL):
   print 'SQL:> \n', sSQL
   t1 = time.clock()
   if config.ExecSQL(sSQL) < 0:
-    raise 'runSQL', config.GetDBConnErrorInfo()
+    raise Exception, 'runSQL' +  config.GetDBConnErrorInfo()
   t2 = time.clock()
   
   print '>>... %.8f seconds\n' % (t2-t1)

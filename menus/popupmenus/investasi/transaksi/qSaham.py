@@ -107,7 +107,7 @@ def mnuTransInvClick(sender, context):
 
   y,m,d = context.GetFieldValue('Saham.tgl_buka')[:3]
   if app.ModDateTime.EncodeDate(y,m,d) > app.ModDateTime.Now() :
-     raise 'PERINGATAN','Tanggal transaksi tidak boleh lebih kecil dari tanggal buka'
+     raise Exception, 'PERINGATAN' + 'Tanggal transaksi tidak boleh lebih kecil dari tanggal buka'
 
   aform = app.GetFormWithData('investasi/transaksi/'+formid,formid,0,key,uipart)
   SetToCenterForm(context.OwnerForm, aform.FormObject)

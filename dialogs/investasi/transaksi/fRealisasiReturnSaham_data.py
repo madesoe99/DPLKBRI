@@ -64,10 +64,10 @@ def uipRealisasiReturnApplyRow(uipRealisasiReturnSaham, oRealisasiReturn):
   config = uideflist.Config
   
   if oRealisasiReturn.NAB < moduleapi.zero_approx:
-    raise 'Kesalahan Realisasi Return Saham','\nNilai NAB baru harus lebih dari nol.'
+    raise Exception, 'Kesalahan Realisasi Return Saham' + '\nNilai NAB baru harus lebih dari nol.'
 
   #if oRealisasiReturn.nominal_jual > oRealisasiReturn.LSaham.nominal_jual:
-  #  raise 'Kesalahan Realisasi Return Saham','Nilai nominal jual baru tidak boleh lebih dari nilai sebelumnya.'
+  #  raise Exception, 'Kesalahan Realisasi Return Saham' + 'Nilai nominal jual baru tidak boleh lebih dari nilai sebelumnya.'
 
   oRealisasiReturn.unit_penyertaan = oRealisasiReturn.nominal_investasi / oRealisasiReturn.NAB
   oRealisasiReturn.profit = oRealisasiReturn.NAB * oRealisasiReturn.LSaham.unit_penyertaan - oRealisasiReturn.nominal_investasi

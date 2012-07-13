@@ -96,7 +96,7 @@ def RolloverMain(config, oDeposito, oBatch,  isKapitalisir, nom, tgl_transaksi):
   y,m,d = tgl_transaksi[:3]
   tt = config.ModDateTime.EncodeDate(y,m,d)
   if int(JT-10) > int(tt) and oDeposito.jenisJatuhTempo == 1:
-     raise '\nPERINGATAN','Deposito belum jatuh tempo'
+     raise Exception, '\nPERINGATAN' + 'Deposito belum jatuh tempo'
   
   oDeposito.rollover_counter += 1
   RolloverInvestasi(config, oTransPiutangInvestasi,tt)

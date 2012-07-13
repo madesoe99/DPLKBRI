@@ -39,7 +39,6 @@ object:rtf::Form<
         '  no_rekening,'#13#10,
         '  no_peserta,'#13#10,
         '  LNasabahDPLK.nama_lengkap as nama_lengkap,'#13#10,
-        '  LNasabahDPLK.tgl_registrasi as tgl_registrasi,'#13#10,
         '  tgl_cetak,'#13#10,
         '  tgl_kirim,'#13#10,
         '  LNasabahDPLK.LBranchLocation.branchname AS branchname'#13#10,
@@ -58,10 +57,6 @@ object:rtf::Form<
           FieldName='MasterKartuDPLK.nama_lengkap'
           Width=200
           Caption='Nama Lengkap'
-        >, object:rtf::QueryColumn<
-          FieldName='MasterKartuDPLK.tgl_registrasi'
-          Caption='Tanggal Registrasi'
-          Color=12695295
         >, object:rtf::QueryColumn<
           FieldName='MasterKartuDPLK.tgl_cetak'
           Width=75
@@ -116,6 +111,12 @@ object:rtf::Form<
             >
           }
           Restrictions=''
+          OQLText=['SELECT FROM BranchLocation ('#13#10,
+            '  branch_code,'#13#10,
+            '  BranchName,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY branch_code;']
+          LookupOption=loCustomOQL
           FieldBaseName='LBranchLocation'
         >, object:rtf::FieldUIElmtSetting<
           Name='NoLimitLocation'

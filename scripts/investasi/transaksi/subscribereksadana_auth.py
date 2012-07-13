@@ -1,7 +1,8 @@
-import sys
-sys.path.append('c:/dafapp/dplk07/script_modules')
-import moduleapi,TransactInv
-import transpiutanginv_auth
+import com.ihsan.util.modman as modman
+
+#moduleapi = modman.getModule(config, 'moduleapi')
+#TransactInv = modman.getModule(config, 'TransactInv')
+#transpiutanginv_auth = modman.getModule(config, 'transpiutanginv_auth')
 
 # biaya subscribe
 def CreateBiayaSubscribe(config, oSubscribeReksadana):
@@ -11,6 +12,7 @@ def CreateBiayaSubscribe(config, oSubscribeReksadana):
   oTransLRInvestasi.kode_jns_investasi = oSubscribeReksadana.kode_jns_investasi
   oTransLRInvestasi.kode_jenis_trinvestasi = 'D' # biaya reksadana
   oTransLRInvestasi.kode_subjns_LRInvestasi = 'C-SUB' # biaya subscribe reksadana
+  moduleapi = modman.getModule(config, 'moduleapi')
   oTransLRInvestasi.tgl_transaksi = moduleapi.DateTimeTupleToFloat(config, oSubscribeReksadana.tgl_transaksi)
   oTransLRInvestasi.mutasi_debet = oSubscribeReksadana.subscription_fee
   oTransLRInvestasi.mutasi_kredit = 0.0
@@ -45,12 +47,13 @@ def updUnitPenyertaan(config, id):
   y,m,d = oSubscribeReksadana.tgl_transaksi[:3]
   tgltrans = config.ModDateTime.EncodeDate(y,m,d)
 #   if TransactInv.CheckUpdateNAB(config, tgltrans, oReksadana) :
-#     raise 'PERINGATAN', 'Transaksi NAB sudah dilakukan tgl ini'
-    
+#     raise Exception, 'PERINGATAN' +  'Transaksi NAB sudah dilakukan tgl ini'
+  
+  TransactInv = modman.getModule(config, 'TransactInv')
   oRR = TransactInv.GetLastRedemt(config, oReksadana)
   if not oRR.IsNull :
     if oRR.NAB == 0.0 and oRR.isCommitted == 'T' :
-      raise 'PERINGATAN','Subscribe dan Redemption tidak boleh dilakukan bersamaan, batalkan transaksi'
+      raise Exception, 'PERINGATAN','Subscribe dan Redemption tidak boleh dilakukan bersamaan +  batalkan transaksi'
   
   oSubscribeReksadana.NAB_Awal = 0.0
   oSubscribeReksadana.NAB_Transaksi = oSubscribeReksadana.NAB_Awal
@@ -65,6 +68,7 @@ def updUnitPenyertaan(config, id):
   else :
     oSubscribeReksadana.unit_penyertaan = 0.0
   
+  TransactInv = modman.getModule(config, 'TransactInv')
   TransactInv.CreateRincianPokok(config, oReksadana, oSubscribeReksadana.nilai_subscribe)
   #if oSubscribeReksadana.subscription_fee > 0.0:
   #  CreateBiayaSubscribe(config, oSubscribeReksadana)
@@ -79,6 +83,7 @@ def DAFScriptMain(config, parameter, returnpacket):
   
   config.BeginTransaction()
   try:
+    transpiutanginv_auth = modman.getModule(config, 'transpiutanginv_auth')
     oTransPiutangInvestasi = transpiutanginv_auth.otorTransPiutangInvestasi(config, id)
     updUnitPenyertaan(config, id)
 

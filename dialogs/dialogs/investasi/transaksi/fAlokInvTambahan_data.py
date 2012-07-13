@@ -63,7 +63,7 @@ def uipTransPiutangInvestasiApplyRow(uipTransPiutangInvestasi, oTransPiutangInve
   config = uipTransPiutangInvestasi.UIDefList.Config
 
   if oTransPiutangInvestasi.mutasi_debet <= 0.0:
-    raise 'Kesalahan Alokasi Investasi Tambahan','Nilai alokasi tambahan harus lebih dari nol.'
+    raise Exception, 'Kesalahan Alokasi Investasi Tambahan' + 'Nilai alokasi tambahan harus lebih dari nol.'
 
   oTransPiutangInvestasi.mutasi_kredit = 0.0
   oTransPiutangInvestasi.kode_jenis_trinvestasi = 'A'

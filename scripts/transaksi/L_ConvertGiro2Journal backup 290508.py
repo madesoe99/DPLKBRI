@@ -94,7 +94,7 @@ def Main(config, dtTglTransaksi):
 
       else:
         #ada error saat mengambil
-        raise 'Error First GetHistoriGiro', \
+        raise Exception, 'Error First GetHistoriGiro' +  \
           str(ph.packet.GetDataset(0).GetRecord(0).ErrMessage)      
 
       isLastPage = ph.packet.GetDataset(0).GetRecord(0).IsLastPage
@@ -124,7 +124,7 @@ def Main(config, dtTglTransaksi):
 
         else:
           #ada error saat mengambil
-          raise 'Error First GetHistoriGiro', \
+          raise Exception, 'Error First GetHistoriGiro' +  \
             str(ph.packet.GetDataset(0).GetRecord(0).ErrMessage)
             
         #inkremen progres level 2

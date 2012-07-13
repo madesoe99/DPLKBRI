@@ -4,38 +4,23 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rmn::Menu<
-  MenuItems={object:rmn::MenuItem<
-      Name='mnuView'
-      Caption='Lihat Detil Data Peserta'
-      OnClick='displayWithData'
-      AllowedGroups='MRKT;BOD;CC;CS;SPV'
-      StringTag='view'
-    >, object:rmn::MenuItem<
-      Caption='-'
-    >, object:rmn::MenuItem<
-      Name='mnuHistori'
-      Caption='Lihat Riwayat Perubahan CIF'
-      OnClick='mnuHistoriClick'
-      AllowedGroups='MRKT;BOD;SPV'
-      StringTag='fHistoriNasabahRekening'
-    >, object:rmn::MenuItem<
-      Name='mnuHistoriTransaksi'
-      Caption='Lihat Riwayat Transaksi'
-      OnClick='mnuHistoriClick'
-      AllowedGroups='MRKT;BOD;SPV'
-      StringTag='fHistoriTransaksi'
-    >, object:rmn::MenuItem<
-      Caption='-'
-    >, object:rmn::MenuItem<
-      Caption='-'
-    >, object:rmn::MenuItem<
-      Caption='-'
-    >, object:rmn::MenuItem<
-      Name='mnuStatemen'
-      Caption='Statemen peserta...'
-      OnClick='mnuStatemenClick'
+>
+object:rmn::Menu<
+  MenuItems={
+    object:rmn::MenuItem<
+      Name='mnuNew'
+      Caption='Kartu baru...'
+      OnClick='showForm'
       AllowedGroups='BOD;MRKT;CC;CS'
-    >}MenuType=mtPopupMenu
+      StringTag='new'
+    >, object:rmn::MenuItem<
+      Name='mnuKoreksi'
+      Caption='Koreksi informasi kartu...'
+      OnClick='showForm'
+      AllowedGroups='BOD;MRKT;CC;CS'
+      StringTag='edit'
+    >
+  }
+  MenuType=mtPopupMenu
   AllowedGroups='MRKT;BOD;CC;CS'
 >

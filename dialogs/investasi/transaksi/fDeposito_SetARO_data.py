@@ -34,7 +34,7 @@ def uipDepositoSetData(uipDeposito):
   oDeposito = config.CreatePObjImplProxy('Deposito')
   oDeposito.Key = rec_inv.id_investasi
   if moduleapi.IsInvestasiTutup(config, oDeposito):
-    raise '\nPERINGATAN','Investasi sudah ditutup.'
+    raise Exception, '\nPERINGATAN' + 'Investasi sudah ditutup.'
 
 def OnBeginProcessData (uideflist, AData) :
   config = uideflist.Config
@@ -75,7 +75,7 @@ def OnBeginProcessData (uideflist, AData) :
   else : #ubah periode
     #Cek Jatuh Tempo
     if uDepo.tgl_jatuh_tempo >= int(config.Now()) + 10 :
-      raise 'PERINGATAN','Deposito belum jatuh tempo'
+      raise Exception, 'PERINGATAN' + 'Deposito belum jatuh tempo'
     #Ubah Data
     oHist.jenisJatuhTempoAwal = uAwal.jenisJatuhTempo
     oHist.jenisJatuhTempoPrb = uDepo.jenisJatuhTempo

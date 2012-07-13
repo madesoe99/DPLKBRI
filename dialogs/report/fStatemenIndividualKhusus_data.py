@@ -480,7 +480,7 @@ def CreateReport(config, parameter, returnpacket):
         sw.LoadFromFile(sFileName)
         sw.MIMEType = config.AppObject.GetMIMETypeFromExtension(sFileName)
      else:
-        raise '\nPERINGATAN',\
+        raise Exception, '\nPERINGATAN' + \
               '\nPeserta Adalah Kru Muamalat, Data Tidak Dapat Diakses !!!'\
               '\nGunakan www.dplkmuamalat.com, untuk melihat histori transaksi'\
 

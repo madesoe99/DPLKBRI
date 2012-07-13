@@ -27,8 +27,8 @@ object:rtf::Form<
   Containers={
     object:rtf::Query<
       Name='qSumberDana'
-      Width=240
-      Height=40
+      Width=800
+      Height=600
       ContextMenuName='popupmenus/master/qSumberDana'
       ControlLeftMargin=8
       ControlTopMargin=8

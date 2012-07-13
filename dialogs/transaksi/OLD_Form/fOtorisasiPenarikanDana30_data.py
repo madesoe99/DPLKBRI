@@ -50,7 +50,7 @@ def FormGeneralProcessData(uideflist, data):
       rec.ID_Transaksi, 'A')
 
   except:
-    raise '\nProses Error', str(sys.exc_info()[1])
+    raise Exception, '\nProses Error' +  str(sys.exc_info()[1])
 
   return 0
 

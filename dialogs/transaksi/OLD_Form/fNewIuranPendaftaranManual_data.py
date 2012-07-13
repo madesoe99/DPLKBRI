@@ -15,7 +15,7 @@ def FormBeginSetData(uideflist, uipNasabah, key):
     if oR.status_biaya_daftar == 'T':
       #peserta sudah membayar biaya/iuran pendaftaran
       keepGoingProcess = 0
-      raise '\nPeringatan','\nPeserta sudah membayar biaya/iuran pendaftaran.'
+      raise Exception, '\nPeringatan' + '\nPeserta sudah membayar biaya/iuran pendaftaran.'
   except:
     raise
     
@@ -68,6 +68,6 @@ def FormGeneralProcessData(uideflist, data):
     o.tgl_sistem = config.Now()
     
   except:
-    raise '\nProses Error', str(sys.exc_info()[1])
+    raise Exception, '\nProses Error' +  str(sys.exc_info()[1])
   
   return 0

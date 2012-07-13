@@ -16,7 +16,7 @@ def DAFScriptMain(config, parameter, returnpacket):
 
     if IsSuperUser == 0:
       if useractive.NoLimitLocation <> 'T':
-        raise NameError, 'Cannot remove all user session. Permission denied'
+        raise Exception, NameError +  'Cannot remove all user session. Permission denied'
 
     x = os.listdir(sessionpath)
     current_session = config.SecurityContext.userid

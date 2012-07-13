@@ -18,6 +18,10 @@ def DAFScriptMain(config, parameter, returnpacket):
     if oRegisterNasabahRekening.Ls_RegisterNasabahRekPaket.MemberCount != 0:
       oRegisterNasabahRekening.Ls_RegisterNasabahRekPaket.DeleteAllPObjs()
 
+    #cek bila ada data rekening sumber
+    if oRegisterNasabahRekening.Ls_RegisterNasabahRekSumber.MemberCount != 0:
+      oRegisterNasabahRekening.Ls_RegisterNasabahRekSumber.DeleteAllPObjs()
+
     #cek jika sudah membayar iuran pendaftaran
     if not oRegisterNasabahRekening.IsFieldNull('ID_Transaksi_IuranPendaftaran'):
       oRegisterNasabahRekening.LRegisterIuranPendaftaran.Delete()

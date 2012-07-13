@@ -1,6 +1,6 @@
-import sys
-sys.path.append('c:/dafapp/dplk07/script_modules')
-import moduleapi,TransactInv
+import com.ihsan.util.modman as modman
+
+#TransactInv = modman.getModule(config, 'TransactInv')
 
 def SetRealisasiReturn(config, oRealisasiReturn):
   # set nilai2 transaksi realisasi return
@@ -20,6 +20,7 @@ def SetReksadanaValues(config, oRealisasiReturn):
   oReksadana.unit_penyertaan = oRealisasiReturn.unit_penyertaan
   oReksadana.akum_LR += oRealisasiReturn.profit
 
+  TransactInv = modman.getModule(config, 'TransactInv')
   TransactInv.CreateRincianBagiHasil(config, oReksadana, oRealisasiReturn.profit)
 
 def CreateHistNABReksadana(config, oRealisasiReturn):

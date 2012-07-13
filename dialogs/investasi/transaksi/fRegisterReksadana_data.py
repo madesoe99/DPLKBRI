@@ -63,17 +63,17 @@ def uipRegisterReksadanaApplyRow(uipRegisterReksadana, oRegisterReksadana):
   config = uipRegisterReksadana.UIDefList.Config
 
   if oRegisterReksadana.nama_reksadana in [None, '']:
-    raise 'Kesalahan Register Reksadana','Nama reksadana tidak terdefinisi.'
+    raise Exception, 'Kesalahan Register Reksadana' + 'Nama reksadana tidak terdefinisi.'
 
   if oRegisterReksadana.nominal < 0.000001:
-    raise 'Kesalahan Register Reksadana','Nilai investasi harus lebih besar dari nol.'
+    raise Exception, 'Kesalahan Register Reksadana' + 'Nilai investasi harus lebih besar dari nol.'
   '''
   if oRegisterReksadana.nominal > min(oRegisterReksadana.dpkTersedia, oRegisterReksadana.nilaiMaksProporsi):
   #if oRegisterReksadana.nominal > min(oRegisterReksadana.dpkTersedia, oRegisterReksadana.nilaiMaksProporsi, oRegisterReksadana.nominalGiro):
-    raise 'Kesalahan Register Reksadana','\nDana paket investasi tidak tersedia.'
+    raise Exception, 'Kesalahan Register Reksadana' + '\nDana paket investasi tidak tersedia.'
   '''
   if oRegisterReksadana.NAB_awal <= 0.0:
-    pass#raise 'Kesalahan Register Reksadana','Nilai harga beli harus lebih besar dari nol.'
+    pass#raise Exception, 'Kesalahan Register Reksadana' + 'Nilai harga beli harus lebih besar dari nol.'
 
   oRegisterReksadana.NAB = oRegisterReksadana.NAB_awal
   oRegisterReksadana.user_id = config.SecurityContext.userid

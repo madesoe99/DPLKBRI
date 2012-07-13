@@ -4,37 +4,51 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rtf::Form<
+>
+object:rtf::Form<
   MainContainer=$CONTAINERS['MultiSplit']
-  Caption='Tambah Pihak Ketiga'
+  Caption='Tambah Pihak Ketiga (Issuer / MI / Emiten)'
   Left=50
   Top=50
   Width=380
-  Height=310
-  UIParts={object:rtf::PClassUI<
+  Height=350
+  UIParts={
+    object:rtf::PClassUI<
       Name='uipPihakKetiga'
       ClassTypeName='PihakKetiga'
       DataBinding=bmMaster
       AlwaysPostToServer=true
       CreateInstanceOnNew=true
-    >}Containers={object:rtf::Panel<
-      Elements={object:rtf::FieldUIElmtSetting<
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
           Name='kode_pihak_ketiga'
+          Hidden=false
+          ReadOnlyControl=false
           ControlCaption='Kode Pihak Ketiga'
           DataTypeName='VARCHAR'
           DataLength=8
         >, object:rtf::FieldUIElmtSetting<
           Name='nama_pihak_ketiga'
+          Hidden=false
+          ReadOnlyControl=false
           ControlCaption='Nama Pihak Ketiga'
           DataTypeName='VARCHAR'
           DataLength=100
         >, object:rtf::FieldUIElmtSetting<
           Name='alamat_pihak_ketiga'
+          Hidden=false
+          ReadOnlyControl=false
           ControlCaption='Alamat Pihak Ketiga'
           DataTypeName='VARCHAR'
           DataLength=50
         >, object:rtf::FieldUIElmtSetting<
           Name='self_investment'
+          Hidden=false
+          ReadOnlyControl=false
           ControlCaption='Pihak Terkait'
           DataTypeName='VARCHAR'
           DataLength=1
@@ -43,47 +57,124 @@ document <
           GenerateCheckBoxForEnum=true
         >, object:rtf::FieldUIElmtSetting<
           Name='NPWP'
-          ControlCaption=''
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='VARCHAR'
           DataLength=20
-        >}Name='pData'
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LInduk'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Grup Pihak Ketiga'
+          ClassTypeName='PihakKetiga'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LInduk.kode_pihak_ketiga'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=8
+              UsedAsKey=true
+              KeyOrDisplayName='kode_pihak_ketiga'
+              FinalDisplayFieldName='kode_pihak_ketiga'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LInduk.kode_pihak_ketiga'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=8
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_pihak_ketiga'
+              FinalDisplayFieldName='kode_pihak_ketiga'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LInduk.nama_pihak_ketiga'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=100
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_pihak_ketiga'
+              FinalDisplayFieldName='nama_pihak_ketiga'
+            >
+          }
+          Restrictions=''
+          OQLText=['select from PihakKetiga'#13#10,
+            '['#13#10,
+            'is_level_detil = ''F'''#13#10,
+            ']'#13#10,
+            '('#13#10,
+            'kode_pihak_ketiga'#13#10,
+            ',nama_pihak_ketiga'#13#10,
+            ',self'#13#10,
+            ')'#13#10,
+            'then order by kode_pihak_ketiga;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LInduk'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='is_level_detil'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Level Detil'
+          DataTypeName='varchar'
+          DataLength=1
+          EnumeratedValues=['F=false'#13#10,
+            'T=true'#13#10]
+          GenerateCheckBoxForEnum=true
+        >
+      }
+      Name='pData'
       Width=240
-      Height=166
+      Height=220
       Bordered=true
       UIPart=$UIPARTS['uipPihakKetiga']
-      Controls={*object:rtf::DBEdit<
+      Controls={
+        *object:rtf::DBEdit<
           Name='kode_pihak_ketiga'
           Top=20
           Left=20
-          Color=0
           ControlCaption='Kode Pihak Ketiga'
           CharCase=ecUpperCase
         >, *object:rtf::DBEdit<
           Name='nama_pihak_ketiga'
           Top=48
           Left=20
-          Color=0
           ControlCaption='Nama Pihak Ketiga'
         >, *object:rtf::DBEdit<
           Name='alamat_pihak_ketiga'
           Top=76
           Left=20
-          Color=0
           ControlCaption='Alamat Pihak Ketiga'
         >, *object:rtf::DBCheckBox<
           Name='self_investment'
           Top=132
           Left=20
-          Color=0
-          ControlCaption='Pihak Terkait'
+          Width=200
+          Height=21
+          ControlCaption='Pihak Terkait (Self Investment)'
           LayoutOrder=5
         >, *object:rtf::DBEdit<
           Name='NPWP'
           Top=104
           Left=20
-          Color=0
           ControlCaption='NPWP'
-        >}EqualCaptionWidth=120
+        >, *object:rtf::DBLookupEdit<
+          Name='LInduk'
+          Top=160
+          Left=20
+          ControlCaption='Grup Pihak Ketiga'
+          LookupField='LInduk.nama_pihak_ketiga'
+          DisplayLookupField=true
+        >, *object:rtf::DBCheckBox<
+          Name='is_level_detil'
+          Top=188
+          Left=20
+          ControlCaption='Level Detil'
+        >
+      }
+      EqualCaptionWidth=120
       ControlLeftMargin=20
       ControlTopMargin=20
       DefaultControlHeight=21
@@ -93,12 +184,12 @@ document <
       Name='pButton'
       Width=240
       Height=40
-      Controls={object:rtf::Button<
+      Controls={
+        object:rtf::Button<
           Name='btnOK'
           Layout=clNewLine
           Top=8
           Left=20
-          Color=0
           ControlCaption=''
           Caption='&Simpan'
           Default=true
@@ -108,35 +199,42 @@ document <
           Layout=clNextSide
           Top=8
           Left=99
-          Color=0
           ControlCaption=''
           Caption='&Batal'
           Cancel=true
           ExitAction=eaQuitCancel
-        >}ControlLeftMargin=20
+        >
+      }
+      ControlLeftMargin=20
       ControlTopMargin=8
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
     >, object:rtf::Panel<
-      Elements={object:rtf::FieldUIElmtSetting<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
           Name='user_id'
+          Hidden=false
           ReadOnlyControl=true
           ControlCaption='ID Pengguna'
           DataTypeName='VARCHAR'
           DataLength=20
         >, object:rtf::FieldUIElmtSetting<
           Name='last_update'
+          Hidden=false
           ReadOnlyControl=true
           ControlCaption='Terakhir Diperbarui'
           DataTypeName='TIMESTAMP'
           DataLength=0
-        >}Name='pUser'
+        >
+      }
+      Name='pUser'
       Width=240
       Height=40
       Bordered=true
       UIPart=$UIPARTS['uipPihakKetiga']
-      Controls={*object:rtf::DBEdit<
+      Controls={
+        *object:rtf::DBEdit<
           Name='user_id'
           Top=20
           Left=20
@@ -149,7 +247,9 @@ document <
           Left=20
           Color=-2147483624
           ControlCaption='Terakhir Diperbarui'
-        >}EqualCaptionWidth=120
+        >
+      }
+      EqualCaptionWidth=120
       ControlLeftMargin=20
       ControlTopMargin=20
       DefaultControlHeight=21
@@ -159,7 +259,15 @@ document <
       Name='MultiSplit'
       Width=320
       Height=320
-      Side1Containers={$CONTAINERS['pData']
-      }Side2Containers={$CONTAINERS['pButton']
-      }SpaceContainer=$CONTAINERS['pUser']
-    >}>
+      Side1Containers={
+        $CONTAINERS['pData']
+
+      }
+      Side2Containers={
+        $CONTAINERS['pButton']
+
+      }
+      SpaceContainer=$CONTAINERS['pUser']
+    >
+  }
+>

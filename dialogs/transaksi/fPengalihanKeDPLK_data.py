@@ -46,6 +46,8 @@ def Form_OnSetDataEx(uideflist, parameterForm):
   
   #set field Data Transaksi
   recTransaksi.tgl_transaksi = config.ModLibUtils.Now()
+  #alternatif: model tanggal transaksi tanpa NOW
+  #recTransaksi.tgl_transaksi = config.ModLibUtils.CutDate(config.ModLibUtils.Now())
   recTransaksi.jenis_biaya = 'S'
   recTransaksi.biaya_lain = recParameter.BiayaSKN
   

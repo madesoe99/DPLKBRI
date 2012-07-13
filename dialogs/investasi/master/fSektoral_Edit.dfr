@@ -4,9 +4,10 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rtf::Form<
+>
+object:rtf::Form<
   MainContainer=$CONTAINERS['MultiSplit']
-  Caption='Edit Sektor'
+  Caption='Koreksi Sektoral'
   Left=50
   Top=50
   Width=401
@@ -22,26 +23,82 @@ document <
   OnSetDataEx=''
   OnBeginProcessData='FormBeginProcessData'
   OnEndProcessData=''
-  UIParts={object:rtf::PClassUI<
+  UIParts={
+    object:rtf::PClassUI<
       Name='uipSektoral'
       ClassTypeName='Sektoral'
       DataBinding=bmMaster
       AlwaysPostToServer=true
       CreateInstanceOnNew=true
-    >}Containers={object:rtf::Panel<
-      ControlDefs={object:rtf::ControlDef<
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      ControlDefs={
+        object:rtf::ControlDef<
           Action=caView
           DataMember='kode_sektoral'
         >, object:rtf::MultiControlDef<
           Action=caEdit
           DataMembers=['nama_sektoral'#13#10,
             'deskripsi_sektoral'#13#10]
-        >}Elements={}Name='pData'
+        >, object:rtf::MultiControlDef<
+          Action=caEdit
+          DataMembers=['LInduk'#13#10,
+            'is_level_detil'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='kode_sektoral'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='nama_sektoral'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='deskripsi_sektoral'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LInduk'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Grup Sektoral'
+          DisplayFields='kode_sektoral;nama_sektoral'
+          Restrictions=''
+          OQLText=['select from Sektoral'#13#10,
+            '['#13#10,
+            '  is_level_detil = ''F'''#13#10,
+            ']'#13#10,
+            '('#13#10,
+            'kode_sektoral'#13#10,
+            ',nama_sektoral'#13#10,
+            ',self'#13#10,
+            ')'#13#10,
+            'then order by kode_sektoral;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LInduk'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='is_level_detil'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Level Detil'
+          DataTypeName='varchar'
+          DataLength=1
+          EnumeratedValues=['F=false'#13#10,
+            'T=true'#13#10]
+          GenerateCheckBoxForEnum=true
+        >
+      }
+      Name='pData'
       Width=401
       Height=166
       Bordered=true
       UIPart=$UIPARTS['uipSektoral']
-      Controls={*object:rtf::DBEdit<
+      Controls={
+        *object:rtf::DBEdit<
           Name='kode_sektoral'
           Top=20
           Left=20
@@ -51,15 +108,27 @@ document <
           Name='nama_sektoral'
           Top=48
           Left=20
-          Color=0
           ControlCaption='Nama Sektor'
         >, *object:rtf::DBEdit<
           Name='deskripsi_sektoral'
           Top=76
           Left=20
-          Color=0
           ControlCaption='Deskripsi Sektor'
-        >}EqualCaptionWidth=120
+        >, *object:rtf::DBLookupEdit<
+          Name='LInduk'
+          Top=104
+          Left=20
+          ControlCaption='Grup Sektoral'
+          LookupField='LInduk.nama_sektoral'
+          DisplayLookupField=true
+        >, *object:rtf::DBCheckBox<
+          Name='is_level_detil'
+          Top=132
+          Left=20
+          ControlCaption='Level Detil'
+        >
+      }
+      EqualCaptionWidth=120
       ControlLeftMargin=20
       ControlTopMargin=20
       DefaultControlHeight=21
@@ -69,12 +138,12 @@ document <
       Name='pButton'
       Width=240
       Height=55
-      Controls={object:rtf::Button<
+      Controls={
+        object:rtf::Button<
           Name='btnOK'
           Layout=clNewLine
           Top=8
           Left=20
-          Color=0
           ControlCaption=''
           Caption='&Simpan'
           Default=true
@@ -86,27 +155,43 @@ document <
           Layout=clNextSide
           Top=8
           Left=99
-          Color=0
           ControlCaption=''
           Caption='&Batal'
           Cancel=true
           ExitAction=eaQuitCancel
-        >}ControlLeftMargin=20
+        >
+      }
+      ControlLeftMargin=20
       ControlTopMargin=8
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
     >, object:rtf::Panel<
-      ControlDefs={object:rtf::MultiControlDef<
+      ControlDefs={
+        object:rtf::MultiControlDef<
           Action=caEdit
           DataMembers=['user_id'#13#10,
             'last_update'#13#10]
-        >}Elements={}Name='pUser'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='last_update'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='pUser'
       Width=401
       Height=97
       Bordered=true
       UIPart=$UIPARTS['uipSektoral']
-      Controls={*object:rtf::DBEdit<
+      Controls={
+        *object:rtf::DBEdit<
           Name='user_id'
           Top=20
           Left=20
@@ -120,7 +205,9 @@ document <
           Enabled=false
           Color=-2147483624
           ControlCaption='last update'
-        >}EqualCaptionWidth=120
+        >
+      }
+      EqualCaptionWidth=120
       ControlLeftMargin=20
       ControlTopMargin=20
       DefaultControlHeight=21
@@ -130,7 +217,15 @@ document <
       Name='MultiSplit'
       Width=320
       Height=320
-      Side1Containers={$CONTAINERS['pData']
-      }Side2Containers={$CONTAINERS['pButton']
-      }SpaceContainer=$CONTAINERS['pUser']
-    >}>
+      Side1Containers={
+        $CONTAINERS['pData']
+
+      }
+      Side2Containers={
+        $CONTAINERS['pButton']
+
+      }
+      SpaceContainer=$CONTAINERS['pUser']
+    >
+  }
+>

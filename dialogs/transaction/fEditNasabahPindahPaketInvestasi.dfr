@@ -6,7 +6,7 @@ document <
   MinorVersion='0'
 >
 object:rtf::Form<
-  MainContainer=$CONTAINERS['pData']
+  MainContainer=$CONTAINERS['MultiSplit']
   Caption='Register Pindah Paket Investasi'
   Left=50
   Top=50
@@ -20,6 +20,7 @@ object:rtf::Form<
   OnProcessRawData=''
   OnBeginSetData=''
   OnEndSetData=''
+  OnSetDataEx=''
   OnBeginProcessData=''
   OnEndProcessData=''
   UIParts={
@@ -37,7 +38,6 @@ object:rtf::Form<
         object:rtf::MultiControlDef<
           Action=caEdit
           DataMembers=['no_referensi'#13#10,
-            'LPaketInvestasi'#13#10,
             'keterangan'#13#10,
             'user_id'#13#10,
             'terminal_id'#13#10,
@@ -45,56 +45,57 @@ object:rtf::Form<
         >
       }
       Elements={
-        *object:rtf::LinkUIElmtSetting<
-          Name='LPaketInvestasi'
-          DisplayFields='kode_paket_investasi;nama_paket_investasi'
-          Restrictions=''
-          OQLText=['select from PaketInvestasi'#13#10,
-            '('#13#10,
-            '  kode_paket_investasi,'#13#10,
-            '  nama_paket_investasi,'#13#10,
-            '  total_srr,'#13#10,
-            '  total_potensi_profit,'#13#10,
-            '  total_hasil_pengembangan,'#13#10,
-            '  total_dana_alokasi,'#13#10,
-            '  total_dana_idle,'#13#10,
-            '  hasil_pengembangan_dibagikan,  '#13#10,
-            '  self'#13#10,
-            ') then order by kode_paket_investasi;']
-          LookupOption=loCustomOQL
-        >
-        , *object:rtf::FieldUIElmtSetting<
+        *object:rtf::FieldUIElmtSetting<
+          Name='no_referensi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
           Name='user_id'
+          Hidden=false
           ReadOnlyControl=true
-        >
-        , *object:rtf::FieldUIElmtSetting<
+        >, *object:rtf::FieldUIElmtSetting<
           Name='terminal_id'
+          Hidden=false
           ReadOnlyControl=true
-        >
-        , *object:rtf::FieldUIElmtSetting<
+        >, *object:rtf::FieldUIElmtSetting<
           Name='tanggal_register'
           Hidden=true
           ReadOnlyControl=true
         >
       }
       Name='pData'
-      Width=240
-      Height=40
+      Width=377
+      Height=177
       Bordered=true
       UIPart=$UIPARTS['uipRegisterPindahPaketInvestasi']
       Controls={
-        *object:rtf::DBLookupEdit<
-          Name='LPaketInvestasi'
-          ControlCaption='paket investasi'
-          LookupField='LPaketInvestasi.nama_paket_investasi'
-          DisplayLookupField=true
-        >
-        , *object:rtf::DBEdit<
+        *object:rtf::DBEdit<
+          Name='no_referensi'
+          Top=20
+          Left=20
+          ControlCaption='no referensi'
+        >, *object:rtf::DBEdit<
+          Name='keterangan'
+          Top=48
+          Left=20
+          ControlCaption='keterangan'
+        >, *object:rtf::DBEdit<
           Name='user_id'
+          Top=76
+          Left=20
+          Color=-16777192
+          ControlCaption='user id'
           ReadOnly=true
-        >
-        , *object:rtf::DBEdit<
+        >, *object:rtf::DBEdit<
           Name='terminal_id'
+          Top=104
+          Left=20
+          Color=-16777192
+          ControlCaption='terminal id'
           ReadOnly=true
         >
       }
@@ -104,8 +105,7 @@ object:rtf::Form<
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
-    >
-    , object:rtf::Panel<
+    >, object:rtf::Panel<
       Name='pButton'
       Width=240
       Height=40
@@ -114,16 +114,17 @@ object:rtf::Form<
         object:rtf::Button<
           Name='btnOK'
           Layout=clNewLine
-          Color=0
+          Top=8
+          Left=20
           ControlCaption=''
           Caption='&OK'
           DefaultAction=daProcessAllUI
           ExitAction=eaQuitOK
-        >
-        , object:rtf::Button<
+        >, object:rtf::Button<
           Name='btnCancel'
           Layout=clNextSide
-          Color=0
+          Top=8
+          Left=99
           ControlCaption=''
           Caption='&Cancel'
           ExitAction=eaQuitCancel
@@ -134,8 +135,7 @@ object:rtf::Form<
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
-    >
-    , object:rtf::Panel<
+    >, object:rtf::Panel<
       ControlDefs={
         object:rtf::ControlDef<
           Action=caEdit
@@ -146,16 +146,20 @@ object:rtf::Form<
         *object:rtf::LinkUIElmtSetting<
           Name='LRekeningDPLK'
           Hidden=true
+          ReadOnlyControl=false
           DisplayFields='no_peserta;LNasabahDPLK.nama_lengkap'
           Restrictions=''
-        >
-        , object:rtf::FieldUIElmtSetting<
+          FieldBaseName='LRekeningDPLK'
+        >, object:rtf::FieldUIElmtSetting<
           Name='no_peserta'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='varchar'
           DataLength=11
-        >
-        , object:rtf::FieldUIElmtSetting<
+        >, object:rtf::FieldUIElmtSetting<
           Name='nama_lengkap'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='varchar'
           DataLength=30
         >
@@ -168,12 +172,17 @@ object:rtf::Form<
       Controls={
         *object:rtf::DBEdit<
           Name='no_peserta'
+          Top=20
+          Left=20
           Color=-2147483624
+          ControlCaption='no peserta'
           ReadOnly=true
-        >
-        , *object:rtf::DBEdit<
+        >, *object:rtf::DBEdit<
           Name='nama_lengkap'
+          Top=48
+          Left=20
           Color=-2147483624
+          ControlCaption='nama lengkap'
           ReadOnly=true
         >
       }
@@ -183,16 +192,17 @@ object:rtf::Form<
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
-    >
-    , object:rtf::MultiSplit<
+    >, object:rtf::MultiSplit<
       Name='MultiSplit'
-      Width=240
-      Height=100
+      Width=400
+      Height=380
       Side1Containers={
         $CONTAINERS['pDataAbove']
+
       }
       Side2Containers={
         $CONTAINERS['pButton']
+
       }
       SpaceContainer=$CONTAINERS['pData']
     >

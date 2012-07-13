@@ -4,13 +4,24 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rpclass::TPClassUIDefList<
-  UIDefs={object:rpclass::TPClassUIDef<
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
       Name='uipPihakKetiga'
       PClassName='PihakKetiga'
-      LoadedFieldList='kode_pihak_ketiga;nama_pihak_ketiga;alamat_pihak_ketiga;self_investment;NPWP;user_id;last_update'
-      StoredFieldList='nama_pihak_ketiga;alamat_pihak_ketiga;self_investment;NPWP;user_id;last_update'
+      LoadedFieldList='kode_pihak_ketiga;nama_pihak_ketiga;alamat_pihak_ketiga;self_investment;NPWP;LInduk.kode_pihak_ketiga;LInduk.kode_pihak_ketiga;LInduk.nama_pihak_ketiga;is_level_detil;user_id;last_update'
+      StoredFieldList='nama_pihak_ketiga;alamat_pihak_ketiga;self_investment;NPWP;LInduk;is_level_detil;user_id;last_update'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LInduk'
+          ClassTypeName='PihakKetiga'
+          FieldNames='kode_pihak_ketiga;kode_pihak_ketiga;nama_pihak_ketiga'
+        >
+      }
       Mode=imSingleRow
       CreateInstanceOnNew=true
-    >}OnBeginProcessData='FormBeginProcessData'
+    >
+  }
+  OnBeginProcessData='FormBeginProcessData'
 >

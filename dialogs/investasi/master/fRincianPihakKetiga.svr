@@ -4,12 +4,21 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rpclass::TPClassUIDefList<
-  UIDefs={object:rpclass::TPClassUIDef<
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
       Name='uipPihakKetiga'
       PClassName='PihakKetiga'
-      LoadedFieldList='kode_pihak_ketiga;nama_pihak_ketiga;alamat_pihak_ketiga;self_investment;user_id;last_update'
+      LoadedFieldList='kode_pihak_ketiga;nama_pihak_ketiga;alamat_pihak_ketiga;self_investment;LInduk.kode_pihak_ketiga;LInduk.kode_pihak_ketiga;LInduk.nama_pihak_ketiga;is_level_detil;user_id;last_update'
       StoredFieldList='user_id;last_update'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LInduk'
+          ClassTypeName='PihakKetiga'
+          FieldNames='kode_pihak_ketiga;kode_pihak_ketiga;nama_pihak_ketiga'
+        >
+      }
       Mode=imSingleRow
       CreateInstanceOnNew=true
       OnSetData='OnSetData_uipPihakKetiga'
@@ -19,5 +28,8 @@ document <
       LoadedFieldList='kode_jns_investasi;acc_investasi;acc_pendapatan;acc_piut_pendapatan;acc_beban;kode_pihak_ketiga;acc_penjualan'
       StoredFieldList='acc_investasi;acc_pendapatan;acc_piut_pendapatan;acc_beban;kode_pihak_ketiga;acc_penjualan'
       Mode=imMultiRow
-    >}OnBeginProcessData='OnBeginProcessData'
+    >
+  }
+  OnEndSetData='Form_OnEndSetData'
+  OnBeginProcessData='OnBeginProcessData'
 >

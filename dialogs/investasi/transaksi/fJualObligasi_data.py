@@ -79,9 +79,9 @@ def uipJualObligasiApplyRow(uipJualObligasi, oJualObligasi):
   tgljt = config.ModDateTime.EncodeDate(y,m,d)
   if oObl.TreatmentObligasi == 'H' :
     if oJualObligasi.nominal_jual != oObl.harga_pari :
-      raise '\nPERINGATAN','Untuk HTM harus dijual 100% '
+      raise Exception, '\nPERINGATAN' + 'Untuk HTM harus dijual 100% '
     if tglt < (tgljt - 10) :
-      raise '\nPERINGATAN','Obligasi HTM tidak bisa dijual sebelum jatuh tempo'
+      raise Exception, '\nPERINGATAN' + 'Obligasi HTM tidak bisa dijual sebelum jatuh tempo'
   oJualObligasi.mutasi_debet = 0.0
   oJualObligasi.mutasi_kredit = oJualObligasi.nominal_jual#oJualObligasi.LObligasi.akum_nominal
   oJualObligasi.profit = oJualObligasi.nominal_jual - oObl.nominal_pembukaan

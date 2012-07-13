@@ -16,6 +16,9 @@ def DAFScriptMain(config, parameter, returnpacket):
     elif oRegisterCIF.kode_jenis_registercif == 'P':
       oRPPI = oRegisterCIF.CastAs('RegisterPindahPaketInvestasi')
       oRPPI.Ls_RegPindahPaketDetil.DeleteAllPObjs()
+    elif oRegisterCIF.kode_jenis_registercif == 'S':
+      oRERS = oRegisterCIF.CastAs('RegEditRekSumber')
+      oRERS.Ls_RegEditRekSumberDetail.DeleteAllPObjs()
 
     oRegisterCIF.Delete()
 

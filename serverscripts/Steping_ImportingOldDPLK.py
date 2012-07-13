@@ -143,7 +143,7 @@ def BranchLocation(config, con):
     print 'INFORMASI!\nMohon set TimeZone tiap Cabang secara manual '\
       '(semuanya masih diset TimeZone Waktu Indonesia Barat)'
   else:
-    raise 'ERROR','Gagal memproses tabel BranchLocation'
+    raise Exception, 'ERROR' + 'Gagal memproses tabel BranchLocation'
 
   return 1
   
@@ -157,7 +157,7 @@ def Counter(config, con):
                       select \'NASABAHDPLK\', 1, 0, branch_code from BRANCHLOCATION')
     print 'Tidak ada informasi tambahan'
   else:
-    raise 'ERROR','Gagal memproses tabel Counter'
+    raise Exception, 'ERROR' + 'Gagal memproses tabel Counter'
 
   return 1
 
@@ -196,7 +196,7 @@ def UserAppTeller(config, con):
       '\n 2) lakukan Security Data Validation'\
       '\n 3) cek kesesuaian Data Teller dengan lokasi Kantor Cabangnya saat ini'
   else:
-    raise 'ERROR','Gagal memproses tabel UserApp untuk Teller'
+    raise Exception, 'ERROR' + 'Gagal memproses tabel UserApp untuk Teller'
 
   return 1
 
@@ -227,7 +227,7 @@ def UserApp(config, con):
       '\n 3) cek kesesuaian User dengan kantor cabang user berasal secara manual'\
       '\n 4) lakukan Security Data Validation'
   except:
-    raise 'ERROR','Gagal memproses tabel UserApp'
+    raise Exception, 'ERROR' + 'Gagal memproses tabel UserApp'
 
   return 1
 #-------------------------------------------------------------------------------
@@ -250,7 +250,7 @@ def DaerahAsal(config, con):
       q.Next()
     
   else:
-    raise 'ERROR','Gagal memproses tabel DaerahAsal'
+    raise Exception, 'ERROR' + 'Gagal memproses tabel DaerahAsal'
 
   return 1
 
@@ -271,7 +271,7 @@ def JenisUsaha(config, con):
       q.Next()
     
   else:
-    raise 'ERROR','Gagal memproses tabel JenisUsaha'
+    raise Exception, 'ERROR' + 'Gagal memproses tabel JenisUsaha'
 
   return 1
 
@@ -323,7 +323,7 @@ def PihakKetiga(config, con):
     print 'INFORMASI!\nMohon cek Pihak Terkait (T/F) untuk tiap data Pihak Ketiga '\
       'yang telah diimpor di bagian Investasi->Master->Pihak Ketiga'
   else:
-    raise 'ERROR','Gagal memproses tabel PihakKetiga'
+    raise Exception, 'ERROR' + 'Gagal memproses tabel PihakKetiga'
 
   return 1
   
@@ -348,7 +348,7 @@ def SumberDana(config, con):
     print 'INFORMASI!\nMohon cek dan isi Sumber_Dana dan Keterangan untuk tiap data Sumber Dana '\
       'yang telah diimpor di bagian Liabilitas->Master->Sumber Dana'  
   else:
-    raise 'ERROR','Gagal memproses tabel SumberDana'
+    raise Exception, 'ERROR' + 'Gagal memproses tabel SumberDana'
 
   return 1
 
@@ -374,7 +374,7 @@ def KelompokNasabah(config, con):
     print 'INFORMASI!\nMohon cek dan isi Nama_Kelompok dan Keterangan untuk tiap data Kelompok '\
       'yang telah diimpor di bagian Liabilitas->Master->Kelompok'  
   else:
-    raise 'ERROR','Gagal memproses tabel Kelompok'
+    raise Exception, 'ERROR' + 'Gagal memproses tabel Kelompok'
 
   return 1
   
@@ -443,7 +443,7 @@ def LembagaDanaPensiun(config, con):
       '\n    kecuali ada keterangan tambahan yang tertera di Nama DP yang diimport'\
       '\n 3) lengkapi data untuk nama terang DP dan alamatnya'
   else:
-    raise 'ERROR','Gagal memproses tabel LembagaDanaPensiun'
+    raise Exception, 'ERROR' + 'Gagal memproses tabel LembagaDanaPensiun'
 
   return 1
 
@@ -509,7 +509,7 @@ def NasabahDPLK(config, con):
       '\n 2) ALAMAT SURAT (untuk kirim statement) peserta disamakan dengan data ALAMAT'\
       '\n 3) set KODE NASABAH CORPORATE bila peserta termasuk anggota peserta perusahaan tertentu'
   else:
-    raise 'ERROR','Gagal memproses tabel NasabahDPLK'
+    raise Exception, 'ERROR' + 'Gagal memproses tabel NasabahDPLK'
   
   return 1
   
@@ -694,7 +694,7 @@ def RekeningDPLK(config, con):
       '\n 4) peserta Wasiat Ummat DIASUMSIKAN TIDAK ADA TUNGGAKAN PREMI!'\
       '\n 5) tanggal akseptasi peserta Wasiat Ummat MASIH DIKOSONGKAN!'
   else:
-    raise 'ERROR','Gagal memproses tabel RekeningDPLK'
+    raise Exception, 'ERROR' + 'Gagal memproses tabel RekeningDPLK'
 
   return 1
 
@@ -732,7 +732,7 @@ def UbahAlamat(config, con):
     
     print 'INFORMASI!\nMohon cek data Histori Ubah Alamat yang baru saja diimpor'
   else:
-    raise 'ERROR','Gagal memproses tabel HistoriUbahAlamat'
+    raise Exception, 'ERROR' + 'Gagal memproses tabel HistoriUbahAlamat'
 
   return 1
 
@@ -761,7 +761,7 @@ def HistoriIuran(config, con):
     
     print 'INFORMASI!\nMohon cek data Histori Iuran yang baru saja diimpor'
   else:
-    raise 'ERROR','Gagal memproses tabel HistoriIuran'
+    raise Exception, 'ERROR' + 'Gagal memproses tabel HistoriIuran'
 
   return 1
 
@@ -825,7 +825,7 @@ def AhliWaris(config, con):
     print 'INFORMASI!\nMohon untuk (sebab data lama tidak memuat informasi tersebut):'\
       '\n 1) cek STATUS AHLI WARIS, diasumsikan semua masih aktif'
   else:
-    raise 'ERROR','Gagal memproses tabel AhliWaris'
+    raise Exception, 'ERROR' + 'Gagal memproses tabel AhliWaris'
 
   return 1
 
@@ -860,7 +860,7 @@ def BagiHasil(config, con):
     
     print 'INFORMASI!\ntidak ada info'
   else:
-    raise 'ERROR','Gagal memproses tabel BagiHasil'
+    raise Exception, 'ERROR' + 'Gagal memproses tabel BagiHasil'
   
   return 1
 
@@ -926,7 +926,7 @@ def Pendaftaran(config, con):
       '\n 1) cabang pendaftaran semua data diasumsikan dilakukan di 301 - Kantor Pusat Arthaloka'\
       '\n 2) nama operator yang NULL diasumsikan dilakukan oleh ADMIN'
   else:
-    raise 'ERROR','Gagal memproses tabel IuranPendaftaran'
+    raise Exception, 'ERROR' + 'Gagal memproses tabel IuranPendaftaran'
   
   return 1
   
@@ -1017,7 +1017,7 @@ def TransaksiPremi(config, con):
       '\n 2) semua transaksi bayar premi diasumsikan sebagai transaksi titipan premi'\
       '\n 3) nama operator yang NULL diasumsikan dilakukan oleh ADMIN'
   else:
-    raise 'ERROR','Gagal memproses tabel TitipanPremi (TransaksiPremi)'
+    raise Exception, 'ERROR' + 'Gagal memproses tabel TitipanPremi (TransaksiPremi)'
   
   return 1
   
@@ -1184,7 +1184,7 @@ def TransaksiDPLK(config, con):
       '\n 1) cabang tempat transaksi dilakukan semua data diasumsikan dilakukan di 301 - Kantor Pusat Arthaloka'\
       '\n 2) coba cek file c:/dafapp/*.log yang berisi transaksi bersifat anomali'
   else:
-    raise 'ERROR','Gagal memproses tabel TransaksiDPLK'
+    raise Exception, 'ERROR' + 'Gagal memproses tabel TransaksiDPLK'
   
   return 1
 

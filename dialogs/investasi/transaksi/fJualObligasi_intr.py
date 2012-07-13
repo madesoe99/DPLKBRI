@@ -129,7 +129,7 @@ def btnOKClick(sender):
   uipJualObligasi = form.GetUIPartByName('uipJualObligasi')
   uipObligasi = form.GetUIPartByName('uipObligasi')
   if uipJualObligasi.no_rekening in ('',None) or uipJualObligasi.pembeli in ('',None) :
-    raise 'PERINGATAN','Nama Pembeli dan no rekening pencairan HARUS DIISI'
+    raise Exception, 'PERINGATAN' + 'Nama Pembeli dan no rekening pencairan HARUS DIISI'
   if uipJualObligasi.mode == 'viewdoc':
     sender.ExitAction = 2
   else:

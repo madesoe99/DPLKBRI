@@ -1,0 +1,556 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['DualSplit']
+  Caption='Koreksi Data Rekening Lainnya'
+  Left=100
+  Top=200
+  Width=800
+  Height=280
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnFormShow='FormShow'
+  OnBeginSetData=''
+  OnEndSetData='FormEndSetData'
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caView
+          DataMember='registercif_id'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='registercif_id'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='uipRegisterCIF'
+      ClassTypeName='RegEditRekening'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      AfterApplyRow='uipRegisterCIFApplyRow'
+    >, object:rtf::PClassUI<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['no_rekening'#13#10,
+            'LNasabahDPLK'#13#10]
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='no_peserta'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='keterangan'
+        >, object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['confidential_code'#13#10,
+            'kirim_statemen'#13#10,
+            'LSumberDana'#13#10,
+            'tgl_pensiun'#13#10,
+            'tgl_pensiun_dipercepat'#13#10,
+            'tujuan_pembukaan_rekening'#13#10,
+            'usia_pensiun'#13#10]
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='LTujuanBukaRekening'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='no_rekening'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLK'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='nama_lengkap;tanggal_lahir'
+          Restrictions=''
+          OQLText=['SELECT FROM NasabahDPLK ('#13#10,
+            '  no_peserta,'#13#10,
+            '  nama_lengkap,'#13#10,
+            '  tanggal_lahir'#13#10,
+            ') THEN ORDER BY no_peserta;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LNasabahDPLK'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='no_peserta'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='confidential_code'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='kirim_statemen'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LSumberDana'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='sumber_dana;keterangan'
+          Restrictions=''
+          OQLText=['SELECT FROM SumberDana ('#13#10,
+            '  summber_dana,'#13#10,
+            '  keterangan,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY sumber_dana;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LSumberDana'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tgl_pensiun'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tgl_pensiun_dipercepat'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tujuan_pembukaan_rekening'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='usia_pensiun'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LTujuanBukaRekening'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='tujuan_buka_rekening;keterangan'
+          Restrictions=''
+          OQLText=['SELECT FROM TujuanBukaRekening ('#13#10,
+            '  tujuan_buka_rekening,'#13#10,
+            '  keterangan,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY tujuan_buka_rekening;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LTujuanBukaRekening'
+        >
+      }
+      Name='uipMaster'
+      ClassTypeName='RekInvDPLK'
+      DataBinding=bmMaster
+    >, object:rtf::PClassUI<
+      Name='uipParameter'
+    >, object:rtf::PClassUI<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['no_peserta'#13#10,
+            'nama_lengkap'#13#10,
+            'tanggal_lahir'#13#10,
+            'LNasabahDPLKCorporate'#13#10]
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='alamat_surat_jalan'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='no_peserta'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='nama_lengkap'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tanggal_lahir'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLKCorporate'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='kode_nasabah_corporate'
+          Restrictions=''
+          OQLText=['SELECT FROM NasabahDPLKCorporate ('#13#10,
+            '  kode_nasabah_corporate,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY kode_nasabah_corporate;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LNasabahDPLKCorporate'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_surat_jalan'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='uipNasabahDPLK'
+      ClassTypeName='NasabahDPLK'
+      DataBinding=bmLink
+      Master=$UIPARTS['uipMaster']
+      LinkName='LNasabahDPLK'
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caEdit
+          DataMembers=['no_referensi'#13#10,
+            'LNasabahDPLK'#13#10,
+            'keterangan'#13#10,
+            'user_id'#13#10,
+            'terminal_id'#13#10]
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='registercif_id'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LRekeningDPLK'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='no_referensi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLK'
+          Hidden=false
+          ReadOnlyControl=true
+          DisplayFields='no_peserta;nama_lengkap'
+          Restrictions=''
+          OQLText=['SELECT FROM NasabahDPLK('#13#10,
+            '  self,'#13#10,
+            '  no_rekening,'#13#10,
+            '  nama_lengkap'#13#10,
+            ') THEN ORDER BY no_rekening;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LNasabahDPLK'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          Hidden=false
+          ReadOnlyControl=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='terminal_id'
+          Hidden=false
+          ReadOnlyControl=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='registercif_id'
+          Hidden=true
+          ReadOnlyControl=false
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LRekeningDPLK'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='no_rekening;keterangan'
+          Restrictions=''
+          OQLText=['SELECT * FROM RekInvDPLK('#13#10,
+            '  self,'#13#10,
+            '  no_rekening,'#13#10,
+            '  keterangan'#13#10,
+            ') THEN ORDER BY no_rekening;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LRekeningDPLK'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='mode'
+          Hidden=true
+          ReadOnlyControl=false
+        >
+      }
+      Name='pData'
+      Width=400
+      Height=217
+      Bordered=true
+      UIPart=$UIPARTS['uipRegisterCIF']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='no_referensi'
+          Top=80
+          Left=20
+          Color=12695295
+          ControlCaption='Nomor Referensi'
+          LayoutOrder=15
+        >, *object:rtf::DBLookupEdit<
+          Name='LNasabahDPLK'
+          Top=24
+          Left=20
+          Width=100
+          Height=21
+          Enabled=false
+          Color=15128749
+          ControlCaption='Peserta DPLK'
+          LayoutOrder=5
+          LookupField='LNasabahDPLK.nama_lengkap'
+          DisplayLookupField=true
+        >, *object:rtf::DBEdit<
+          Name='keterangan'
+          Top=108
+          Left=20
+          Width=180
+          Height=21
+          ControlCaption='Keterangan'
+          LayoutOrder=20
+        >, *object:rtf::DBEdit<
+          Name='user_id'
+          Top=136
+          Left=20
+          Width=135
+          Height=21
+          Color=-16777192
+          ControlCaption='User Penginput'
+          LayoutOrder=25
+          ReadOnly=true
+        >, *object:rtf::DBEdit<
+          Name='terminal_id'
+          Top=164
+          Left=20
+          Color=-16777192
+          ControlCaption='Terminal Input'
+          LayoutOrder=30
+          ReadOnly=true
+        >, *object:rtf::DBLookupEdit<
+          Name='LRekeningDPLK'
+          Top=52
+          Left=20
+          Width=100
+          Height=21
+          Enabled=false
+          ControlCaption='Nomor Rekening'
+          LayoutOrder=10
+          LookupField='LRekeningDPLK.keterangan'
+          DisplayLookupField=false
+          DisableLookup=true
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=20
+      ControlTopMargin=24
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Register Nasabah'
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=400
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          ControlCaption=''
+          Caption='&Simpan'
+          Default=true
+          OnClick='btnOKClick'
+        >, object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          OnClick='btnCancelClick'
+        >, object:rtf::Button<
+          Name='btnClose'
+          Layout=clNextSide
+          Top=8
+          Left=166
+          Visible=false
+          ControlCaption=''
+          Caption='&Batal'
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=800
+      Height=280
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['DualSplitLR']
+      InversedAlign=true
+    >, object:rtf::DualSplit<
+      Name='DualSplitLR'
+      Width=800
+      Height=239
+      Container1=$CONTAINERS['pData']
+      Container2=$CONTAINERS['pDataBaru']
+      SplitDirection=sdrSplitLeftRight
+    >, object:rtf::Panel<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LSumberDana'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='usia_pensiun'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='tgl_pensiun'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='tgl_pensiun_dipercepat'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LTujuanBukaRekening'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='tujuan_pembukaan_rekening'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='kirim_statemen'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='confidential_code'
+        >
+      }
+      Elements={
+        *object:rtf::LinkUIElmtSetting<
+          Name='LSumberDana'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='sumber_dana;keterangan'
+          Restrictions=''
+          OQLText=['SELECT FROM SumberDana ('#13#10,
+            '  sumber_dana,'#13#10,
+            '  keterangan,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY sumber_dana;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LSumberDana'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='usia_pensiun'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tgl_pensiun'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tgl_pensiun_dipercepat'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LTujuanBukaRekening'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='tujuan_buka_rekening;keterangan'
+          Restrictions=''
+          OQLText=['SELECT FROM TujuanBukaRekening ('#13#10,
+            '  tujuan_buka_rekening,'#13#10,
+            '  keterangan,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY tujuan_buka_rekening;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LTujuanBukaRekening'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tujuan_pembukaan_rekening'
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=200
+          EnumeratedValues=['1=Tabungan Pribadi'#13#10,
+            '2=Bisnis'#13#10,
+            '3=Lainnya'#13#10]
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='kirim_statemen'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='confidential_code'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='pDataBaru'
+      Width=393
+      Height=225
+      Bordered=true
+      UIPart=$UIPARTS['uipRegisterCIF']
+      Controls={
+        *object:rtf::DBLookupEdit<
+          Name='LSumberDana'
+          Top=24
+          Left=20
+          Color=13353215
+          ControlCaption='Sumber Dana'
+          LookupField='LSumberDana.keterangan'
+          DisplayLookupField=true
+        >, *object:rtf::DBEdit<
+          Name='usia_pensiun'
+          Top=52
+          Left=20
+          Color=13353215
+          ControlCaption='Usia Pensiun'
+          OnExit='UsiaPensiunExit'
+        >, *object:rtf::DBDateEdit<
+          Name='tgl_pensiun'
+          Top=80
+          Left=20
+          Enabled=false
+          ControlCaption='Tgl. Pensiun'
+        >, *object:rtf::DBDateEdit<
+          Name='tgl_pensiun_dipercepat'
+          Top=108
+          Left=20
+          Enabled=false
+          Color=-16777192
+          ControlCaption='Tgl. Pensiun Dipercepat'
+        >, *object:rtf::DBLookupEdit<
+          Name='LTujuanBukaRekening'
+          Top=136
+          Left=20
+          Width=213
+          Height=21
+          ControlCaption='Tujuan Pembukaan Rekening'
+          LookupField='LTujuanBukaRekening.keterangan'
+          DisplayLookupField=false
+        >, *object:rtf::DBComboBox<
+          Name='kirim_statemen'
+          Top=164
+          Left=20
+          Color=13353215
+          ControlCaption='Kirim Statemen'
+        >, *object:rtf::DBEdit<
+          Name='confidential_code'
+          Top=192
+          Left=20
+          Visible=false
+          ControlCaption='Confidential Code'
+        >
+      }
+      EqualCaptionWidth=140
+      ControlLeftMargin=20
+      ControlTopMargin=24
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Rekening Dikoreksi'
+    >
+  }
+>

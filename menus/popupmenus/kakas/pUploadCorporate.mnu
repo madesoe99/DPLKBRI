@@ -1,0 +1,35 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{FF6521AE-DCB8-457C-933C-35D88DB5B672}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rmn::Menu<
+  MenuItems={
+    object:rmn::MenuItem<
+      Name='mnuLihat'
+      Caption='Lihat detil data'
+      OnClick='ShowFormData'
+      AllowedGroups='BO;OM'
+      StringTag='fUploadCorporate_Detail'
+    >, object:rmn::MenuItem<
+      Name='mnuAuth'
+      Caption='Otorisasi data...'
+      OnClick='ShowFormData'
+      AllowedGroups='BO;OM'
+      StringTag='fUploadCorporate_Detail'
+    >, object:rmn::MenuItem<
+      Caption='-'
+      AllowedGroups='BO'
+    >, object:rmn::MenuItem<
+      Name='mnuTambah'
+      Caption='Import baru data korporat'
+      OnClick='ShowForm'
+      AllowedGroups='BO'
+      StringTag='fUploadCorporate'
+    >
+  }
+  MenuType=mtPopupMenu
+  DenyThenAllow=true
+>

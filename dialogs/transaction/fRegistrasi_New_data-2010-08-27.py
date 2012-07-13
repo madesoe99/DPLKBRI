@@ -81,16 +81,16 @@ def uipRegisterNasabahRekeningApplyRow(sender, oData):
   rec = sender.ActiveRecord
 
   if rec.no_referensi in ['', None]:
-    raise '\nPERINGATAN',\
+    raise Exception, '\nPERINGATAN' + \
       '\nNomor Referensi belum terdefinisi! Mohon isi dahulu.'
 
   if rec.jenis_kelamin in ['', None]:
-    raise '\nPERINGATAN',\
+    raise Exception, '\nPERINGATAN' + \
       '\nJenis Kelamin belum terdefinisi! Mohon isi dahulu.'
 
   if rec.usia_pensiun in [None,''] or \
     (rec.usia_pensiun < 45 or rec.usia_pensiun > 65):
-    raise '\nPERINGATAN',\
+    raise Exception, '\nPERINGATAN' + \
       '\nUsia Pensiun tidak valid! Usia Pensiun yang diperbolehkan antara 45 - 65 tahun.'
       
   #cek usia sekarang peserta dan keikutsertaan wasiat ummat
@@ -100,22 +100,22 @@ def uipRegisterNasabahRekeningApplyRow(sender, oData):
   JumlahHariSetahun = oParameter.Numeric_Value
   usiaPeserta = (config.ModDateTime.EncodeDate(y,m,d) - rec.tanggal_lahir) /JumlahHariSetahun
   if rec.wasiat_ummat == 'T' and usiaPeserta > 55.0:
-    raise '\nPERINGATAN',\
+    raise Exception, '\nPERINGATAN' + \
       '\nStatus Wasiat Ummat tidak valid! Usia peserta Wasiat '\
       'Ummat hanya diperbolehkan dibawah usia 55 tahun.'
 
   if rec.nasabah_korporat:
     if oData.LNasabahDPLKCorporate.IsNull:
-      raise '\nPERINGATAN',\
+      raise Exception, '\nPERINGATAN' + \
         '\nData Perusahaan belum terdefinisi! Mohon isi dahulu.'
 
   if oData.auto_debet == 'T':
     if (oData.no_rek_autodebet == '') or (oData.no_rek_autodebet == None):
-      raise '\nPERINGATAN',\
+      raise Exception, '\nPERINGATAN' + \
         '\nNomor Rekening Auto Debet belum terdefinisi! Mohon isi dahulu.'
 
     if (oData.tanggal_autodebet < 1) or (oData.tanggal_autodebet > 31):
-      raise '\nPERINGATAN',\
+      raise Exception, '\nPERINGATAN' + \
         'Tanggal Auto Debet belum valid! Mohon isi dahulu.'
 
   #oData.terminal_id = config.SecurityContext.GetSessionInfo()[1]

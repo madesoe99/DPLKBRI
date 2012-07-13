@@ -67,7 +67,7 @@ class TextFileClass:
   # Actual functions
   def BeginWrite(self, AFileName):
     if self.FActive == 1:
-      raise ValueError, 'Textutils: file already opened'
+      raise Exception, ValueError +  'Textutils: file already opened'
     self.FTextFile = open(AFileName, 'w')
     self.FUNIXStyle = 0
     self.FPageMode = 0
@@ -113,7 +113,7 @@ class TextFileClass:
 
   def FillUntilEndOfPage(self):
     if self.FPageMode==0:
-      raise ValueError, 'TextUtils : Not in page mode'
+      raise Exception, ValueError +  'TextUtils : Not in page mode'
     for i in range(1, (self.FPageHeight - self.FCurrentLine + 2)):
       self.WriteEOL()
     for i in range(1, self.FTopMargin+1):

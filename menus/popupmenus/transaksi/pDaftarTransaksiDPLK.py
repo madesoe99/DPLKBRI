@@ -160,7 +160,7 @@ def mnuShowModalWithData(sender, context):
     
 def PilihClick(sender, context):
 ##  if context.Eof:
-##    raise 'data kosong, tidak bisa dipilih!'
+##    raise Exception, 'data kosong +  tidak bisa dipilih!'
   app = context.OwnerForm.ClientApplication
   flag = sender.StringTag
   flagquery = context.GetFieldValue('TransaksiDPLK.Flag_Pilih')
@@ -184,7 +184,7 @@ def PilihClick(sender, context):
   
 def PilihSemuaClick(sender, context):
 ##  if context.Eof:
-##    raise 'data kosong, tidak bisa dipilih!'
+##    raise Exception, 'data kosong +  tidak bisa dipilih!'
   app = context.OwnerForm.ClientApplication
   uip = context.OwnerForm.GetUIPartByName('uipUserInfo')
   uipFilter = context.OwnerForm.GetUIPartByName('uipFilter')

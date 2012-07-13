@@ -99,7 +99,7 @@ def RolloverMain(config, oDeposito,  isKapitalisir, nom, tgl_transaksi):
 
 
   #if int(JT-10) > int(tt) and oDeposito.jenisJatuhTempo == 1:
-  #   raise '\nPERINGATAN','Deposito belum jatuh tempo'
+  #   raise Exception, '\nPERINGATAN' + 'Deposito belum jatuh tempo'
   
   oDeposito.rollover_counter += 1
   RolloverInvestasi(config, oTransPiutangInvestasi,tt)

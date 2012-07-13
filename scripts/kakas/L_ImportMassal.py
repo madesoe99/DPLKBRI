@@ -24,10 +24,10 @@ def LoadTemplateFile(config, fileName):
       packet = ph.Packet
       packet.SetSerializationString(sDefinition,sData)
     else:
-      raise '','Salah satu file template %s (.def atau .dat) tidak ditemukan!'
+      raise Exception, '' + 'Salah satu file template %s (.def atau .dat) tidak ditemukan!'
 
   except:
-    raise '\nLoading File Template Error', str(sys.exc_info()[1])
+    raise Exception, '\nLoading File Template Error' +  str(sys.exc_info()[1])
 
   return ph
   
@@ -41,7 +41,7 @@ def LoadUploadFile(config, filename):
     
     #cek eksistensi worksheet
     if not workbook.IsWorksheetExist('DataImpor'):
-        raise '','Worksheet DataImpor tidak ditemukan! \
+        raise Exception, '' + 'Worksheet DataImpor tidak ditemukan! \
           \nWorksheet tempat data akan diimpor harus bernama DataImpor.'
     
     #activing worksheet
@@ -87,7 +87,7 @@ def checkingField(config, dictDeskripsiField, workBookXLS):
         
     if fieldNotInColumn != []:
       #terdapat field template yang tidak terdefinisi dalam kolom workBookXLS
-      raise '','Kolom/field data berikut tidak ditemukan pada file upload:\n' + \
+      raise Exception, '' + 'Kolom/field data berikut tidak ditemukan pada file upload:\n' + \
         str(fieldNotInColumn)
   except:
     raise
@@ -118,7 +118,7 @@ def GetRow(config, workBookXLS, row, jumlahKolom, dictDeskripsiField, dictKolomF
         d,m,y = str(workBookXLS.GetCellValue(row,j+1)).split('/')
         valueKolom = [int(y),int(m),int(d),0,0,0,0,0,0]
       else:
-        raise '','Tipe %s tidak terdefinisi sebagai tipe kolom field!' % (tipeKolom)
+        raise Exception, '' + 'Tipe %s tidak terdefinisi sebagai tipe kolom field!' % (tipeKolom)
         
       #value dalam tuple terurut kolom (berdasarkan index)
       currentRowValue.append(valueKolom)

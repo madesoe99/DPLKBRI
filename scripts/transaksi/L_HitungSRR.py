@@ -175,7 +175,7 @@ def Main(config, tglAwalProses, tglAwal, tglAkhir, needSaving):
     lastPaketInvestasi = rSQLNonTrans.kode_paket_investasi 
     rProses = rSQLNonTrans
   else:
-    raise 'Kesalahan Rentang Tanggal','\nData peserta maupun data transaksi tidak ditemukan.'
+    raise Exception, 'Kesalahan Rentang Tanggal' + '\nData peserta maupun data transaksi tidak ditemukan.'
   lastNoPeserta = rProses.no_peserta
 
   #buat objek-objek yang diperlukan
@@ -373,7 +373,7 @@ def CekRentangHitungSRR(config, tglAwal, tglAkhir):
   resSQL = config.CreateSQL(strSQL).RawResult
   resSQL.First()
   if not resSQL.Eof:
-    raise 'Kesalahan Rentang Tanggal\r\n', 'Rentang tanggal tidak boleh beririsan dari perhitungan srr yang sudah dilakukan.'
+    raise Exception, 'Kesalahan Rentang Tanggal\r\n' +  'Rentang tanggal tidak boleh beririsan dari perhitungan srr yang sudah dilakukan.'
 
 def DAFLongScriptMain(config, parameter, pid, monfilename):
   # config: ISysConfig object

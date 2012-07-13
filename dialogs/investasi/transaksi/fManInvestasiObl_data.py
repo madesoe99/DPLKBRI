@@ -67,13 +67,13 @@ def uipTransPiutangInvestasiApplyRow(uipTransPiutangInvestasi, oTransPiutangInve
   config = uipTransPiutangInvestasi.UIDefList.Config
 
   if moduleapi.IsApproxZero(oTransPiutangInvestasi.mutasi_debet) and moduleapi.IsApproxZero(oTransPiutangInvestasi.mutasi_kredit):
-    raise 'Kesalahan Investasi Manual','\nNilai mutasi debet dan mutasi kredit salah satunya harus lebih dari nol.'
+    raise Exception, 'Kesalahan Investasi Manual' + '\nNilai mutasi debet dan mutasi kredit salah satunya harus lebih dari nol.'
 
   if oTransPiutangInvestasi.mutasi_debet < 0.0:
-    raise 'Kesalahan Investasi Manual','Nilai mutasi debet tidak boleh negatif.'
+    raise Exception, 'Kesalahan Investasi Manual' + 'Nilai mutasi debet tidak boleh negatif.'
 
   if oTransPiutangInvestasi.mutasi_kredit < 0.0:
-    raise 'Kesalahan Investasi Manual','Nilai mutasi kredit tidak boleh negatif.'
+    raise Exception, 'Kesalahan Investasi Manual' + 'Nilai mutasi kredit tidak boleh negatif.'
 
   oTransPiutangInvestasi.kode_jns_investasi = oTransPiutangInvestasi.LInvestasi.kode_jns_investasi
   oTransPiutangInvestasi.kode_jenis_trinvestasi = 'I'

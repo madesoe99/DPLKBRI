@@ -49,12 +49,12 @@ def GridAfterNewRecord(pclassui):
   if not initialize:
     return
     
-  raise 'PERINGATAN','\n\nTidak diperkenankan untuk menambah daftar Parameter ini!'
+  raise Exception, 'PERINGATAN' + '\n\nTidak diperkenankan untuk menambah daftar Parameter ini!'
 
 def GridBeforeDelete(pclassui):
-  raise 'PERINGATAN','\n\nTidak diperkenankan untuk menghapus daftar Parameter ini!'
+  raise Exception, 'PERINGATAN' + '\n\nTidak diperkenankan untuk menghapus daftar Parameter ini!'
   
 def GridBeforePost(pclassui):
   if pclassui.GetFieldValue('Key_Parameter') == 'BATAS_TGL_TUTUP_BATCH':
-    raise 'PERINGATAN','\n\nBATAS_TGL_TUTUP_BATCH tidak diperkenankan untuk diubah '\
+    raise Exception, 'PERINGATAN' + '\n\nBATAS_TGL_TUTUP_BATCH tidak diperkenankan untuk diubah '\
     'secara manual!\nAplikasi yang akan menangani secara otomatis.'

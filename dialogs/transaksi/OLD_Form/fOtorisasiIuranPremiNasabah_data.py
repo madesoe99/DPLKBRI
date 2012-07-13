@@ -39,7 +39,7 @@ def FormEndSetData(uideflist, uiname, objdata):
     recNasabah.alamat_kode_pos = oN.alamat_kode_pos
   else:
     #peserta belum terotorisasi sbg nasabah, namun sudah membayar pendaftaran
-    raise '\nINFORMASI','Iuran Peserta pertama ini milik calon peserta %s yang statusnya '\
+    raise Exception, '\nINFORMASI' + 'Iuran Peserta pertama ini milik calon peserta %s yang statusnya '\
       'belum terotorisasi sebagai peserta DPLK. Iuran Iuran Peserta pertama secara otomatis akan '\
       'terotorisasi bersamaan dengan otorisasi calon peserta tersebut.'\
       % (recTransaksi.no_peserta)
@@ -65,6 +65,6 @@ def FormGeneralProcessData(uideflist, data):
       rec.ID_Transaksi, 'A')
 
   except:
-    raise '\nProses Error', str(sys.exc_info()[1])
+    raise Exception, '\nProses Error' +  str(sys.exc_info()[1])
 
   return 0

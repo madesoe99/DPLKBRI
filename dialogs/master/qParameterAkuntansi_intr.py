@@ -11,12 +11,12 @@ def GridAfterNewRecord(pclassui):
   if not initialize:
     return
     
-  raise 'PERINGATAN','Tidak diperkenankan untuk menambah daftar Parameter ini!'
+  raise Exception, 'PERINGATAN' + 'Tidak diperkenankan untuk menambah daftar Parameter ini!'
 
 def GridBeforeDelete(pclassui):
-  raise 'PERINGATAN','Tidak diperkenankan untuk menghapus daftar Parameter ini!'
+  raise Exception, 'PERINGATAN' + 'Tidak diperkenankan untuk menghapus daftar Parameter ini!'
   
 def GridBeforePost(pclassui):
   #ada checking kesamaan intf_code ataupun account_code
   #di bagian
-  raise 'PERINGATAN','Tidak diperkenankan mengubah parameter ini.'
+  raise Exception, 'PERINGATAN' + 'Tidak diperkenankan mengubah parameter ini.'

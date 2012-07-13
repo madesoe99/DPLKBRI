@@ -27,7 +27,7 @@
 #           ph.FirstRecord.CurrentBalance,\
 #           ph.FirstRecord.MotherName]
 #       else:
-#         raise '\n\nError',ph.FirstRecord.ErrMessage
+#         raise Exception, '\n\nError' + ph.FirstRecord.ErrMessage
 #     except:
 #       raise
 #       
@@ -78,7 +78,7 @@ def checkaccount(account_no, userid, host, port):
     messageresp = messageresp.split(';')
 
     if len(messageresp) < 6:
-      raise '90', 'Error receiving data from kiblat : ' + str(messageresp)
+      raise Exception, '90' +  'Error receiving data from kiblat : ' + str(messageresp)
 
     if messageresp[4] == '00':
         res  = messageresp[5]; res  = res.split('|')

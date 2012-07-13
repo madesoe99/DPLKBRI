@@ -1,3 +1,12 @@
+def Form_OnEndSetData(uideflist, uiname, objdata):
+  config = uideflist.config
+  uipPK = uideflist.uipPihakKetiga
+  recPK = uipPK.Dataset.GetRecord(0)
+  if recPK.is_level_detil != 'T':
+    raise Exception, 'Pihak Ketiga bukan level detil tidak bisa memiliki rincian rekening!'
+  
+  return 0
+
 def OnSetData_uipPihakKetiga (uipPihakKetiga) :
   uideflist = uipPihakKetiga.UIDefList
   config = uideflist.config

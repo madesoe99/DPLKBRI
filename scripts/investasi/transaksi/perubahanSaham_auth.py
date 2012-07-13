@@ -229,7 +229,7 @@ def DAFScriptMain(config, parameter, returnpacket):
             % recReksa.id_investasi
   rSQL = config.CreateSQL(strSQL).RawResult
   if rSQL.Eof :
-    raise '\PERINGATAN','Perubahan belum dilakukan'
+    raise Exception, '\PERINGATAN' + 'Perubahan belum dilakukan'
   Id_hist = rSQL.HistNABSahamID
     
   config.BeginTransaction()
@@ -239,7 +239,7 @@ def DAFScriptMain(config, parameter, returnpacket):
     oSaham = config.CreatePObjImplProxy('Saham')
     oSaham.Key = recReksa.id_Investasi
     if oSaham.IsNull :
-      raise 'PERINGATAN','Investasi tidak ditemukan'
+      raise Exception, 'PERINGATAN' + 'Investasi tidak ditemukan'
     config.SendDebugMsg('a1')
     if modeOto : 
        oBatch = config.CreatePObjImplProxy('TransactionBatch')
@@ -278,7 +278,7 @@ def DAFScriptMain(config, parameter, returnpacket):
 
           #cek status commit redemption
           if oRR.isCommitted != 'N' :
-            raise 'PERINGATAN','Redemption belum diotorisasi'
+            raise Exception, 'PERINGATAN' + 'Redemption belum diotorisasi'
           oRR.isCommitted = 'T'
           
           oRR.unit_penyertaan = up

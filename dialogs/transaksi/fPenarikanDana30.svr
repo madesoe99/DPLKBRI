@@ -37,6 +37,10 @@ object:rpclass::TPClassUIDefList<
           Name='jml_tarik_iuran_tmb'
           DataTypeName='double'
           DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='batas_tarik_normal'
+          DataTypeName='double'
+          DataLength=20
         >
       }
       Mode=imSingleRow
@@ -103,6 +107,14 @@ object:rpclass::TPClassUIDefList<
         >, object:rpclass::TCustomLoadedField<
           Name='MIN_BIAYA_TARIK'
           DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='MIN_JML_TARIK_NORMAL'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='LABEL_MIN_JML_TARIK_NORMAL'
+          DataTypeName='varchar'
           DataLength=20
         >
       }

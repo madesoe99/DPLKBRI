@@ -68,6 +68,6 @@ def FormGeneralProcessData(uideflist, data):
 
   except:
     raise
-    #raise '\nProses Error','\nPenyimpanan Koneksitas Core Banking gagal!'
+    #raise Exception, '\nProses Error' + '\nPenyimpanan Koneksitas Core Banking gagal!'
 
   return 0

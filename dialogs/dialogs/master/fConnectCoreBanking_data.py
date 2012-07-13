@@ -47,6 +47,6 @@ def FormGeneralProcessData(uideflist, data):
       recGiro.GiroReturnInvestasi)
 
   except:
-    raise '\nProses Error','\nPenyimpanan Koneksitas Core Banking gagal!'
+    raise Exception, '\nProses Error' + '\nPenyimpanan Koneksitas Core Banking gagal!'
 
   return 0

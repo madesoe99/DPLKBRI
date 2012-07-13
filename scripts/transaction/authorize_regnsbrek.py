@@ -59,8 +59,11 @@ def CreateNasabahDPLK(config, oRegisterNasabahRekening):
   oNasabahDPLK.alamat_rtrw = oRegisterNasabahRekening.alamat_rtrw
   oNasabahDPLK.alamat_kelurahan = oRegisterNasabahRekening.alamat_kelurahan
   oNasabahDPLK.alamat_kecamatan = oRegisterNasabahRekening.alamat_kecamatan
-  oNasabahDPLK.alamat_kota = oRegisterNasabahRekening.alamat_kota
-  oNasabahDPLK.alamat_propinsi = oRegisterNasabahRekening.alamat_propinsi
+  #oNasabahDPLK.alamat_kota = oRegisterNasabahRekening.alamat_kota
+  #oNasabahDPLK.alamat_propinsi = oRegisterNasabahRekening.alamat_propinsi
+  oNasabahDPLK.LATKecamatan = oRegisterNasabahRekening.LATKecamatan
+  oNasabahDPLK.LATKota = oRegisterNasabahRekening.LATKota
+  oNasabahDPLK.LATPropinsi = oRegisterNasabahRekening.LATPropinsi
   oNasabahDPLK.alamat_kode_pos = oRegisterNasabahRekening.alamat_kode_pos
   oNasabahDPLK.alamat_telepon = oRegisterNasabahRekening.alamat_telepon
   oNasabahDPLK.alamat_telepon2 = oRegisterNasabahRekening.alamat_telepon2
@@ -70,8 +73,11 @@ def CreateNasabahDPLK(config, oRegisterNasabahRekening):
   oNasabahDPLK.alamat_surat_rtrw = oRegisterNasabahRekening.alamat_surat_rtrw
   oNasabahDPLK.alamat_surat_kelurahan = oRegisterNasabahRekening.alamat_surat_kelurahan
   oNasabahDPLK.alamat_surat_kecamatan = oRegisterNasabahRekening.alamat_surat_kecamatan
-  oNasabahDPLK.alamat_surat_kota = oRegisterNasabahRekening.alamat_surat_kota
-  oNasabahDPLK.alamat_surat_propinsi = oRegisterNasabahRekening.alamat_surat_propinsi
+  #oNasabahDPLK.alamat_surat_kota = oRegisterNasabahRekening.alamat_surat_kota
+  #oNasabahDPLK.alamat_surat_propinsi = oRegisterNasabahRekening.alamat_surat_propinsi
+  oNasabahDPLK.LASKecamatan = oRegisterNasabahRekening.LASKecamatan
+  oNasabahDPLK.LASKota = oRegisterNasabahRekening.LASKota
+  oNasabahDPLK.LASPropinsi = oRegisterNasabahRekening.LASPropinsi
   oNasabahDPLK.alamat_surat_kode_pos = oRegisterNasabahRekening.alamat_surat_kode_pos
   oNasabahDPLK.alamat_surat_telepon = oRegisterNasabahRekening.alamat_surat_telepon
   oNasabahDPLK.alamat_surat_telepon2 = oRegisterNasabahRekening.alamat_surat_telepon2
@@ -92,11 +98,18 @@ def CreateNasabahDPLK(config, oRegisterNasabahRekening):
   oNasabahDPLK.alamat_kantor_jalan = oRegisterNasabahRekening.alamat_kantor_jalan
   oNasabahDPLK.alamat_kantor_kelurahan = oRegisterNasabahRekening.alamat_kantor_kelurahan
   oNasabahDPLK.alamat_kantor_kecamatan = oRegisterNasabahRekening.alamat_kantor_kecamatan
-  oNasabahDPLK.alamat_kantor_kota = oRegisterNasabahRekening.alamat_kantor_kota
-  oNasabahDPLK.alamat_kantor_propinsi = oRegisterNasabahRekening.alamat_kantor_propinsi
+  #oNasabahDPLK.alamat_kantor_kota = oRegisterNasabahRekening.alamat_kantor_kota
+  #oNasabahDPLK.alamat_kantor_propinsi = oRegisterNasabahRekening.alamat_kantor_propinsi
+  oNasabahDPLK.LAKKecamatan = oRegisterNasabahRekening.LAKKecamatan
+  oNasabahDPLK.LAKKota = oRegisterNasabahRekening.LAKKota
+  oNasabahDPLK.LAKPropinsi = oRegisterNasabahRekening.LAKPropinsi
   oNasabahDPLK.alamat_kantor_kode_pos = oRegisterNasabahRekening.alamat_kantor_kode_pos
   oNasabahDPLK.alamat_kantor_telepon = oRegisterNasabahRekening.alamat_kantor_telepon
   oNasabahDPLK.alamat_kantor_telepon2 = oRegisterNasabahRekening.alamat_kantor_telepon2
+
+  oNasabahDPLK.REFR_NAMA = oRegisterNasabahRekening.REFR_NAMA
+  oNasabahDPLK.REFR_ACCNO = oRegisterNasabahRekening.REFR_ACCNO
+  oNasabahDPLK.REFR_UKER = oRegisterNasabahRekening.REFR_UKER
   
   oNasabahDPLK.tgl_registrasi = moduleapi.DateTimeTupleToFloat(config, oRegisterNasabahRekening.tanggal_register)
   oNasabahDPLK.last_update = config.ModDateTime.Now()
@@ -133,12 +146,17 @@ def CreateRekInvDPLK(config, oRegisterNasabahRekening):
   oRekNasabah.no_rekening = oRegisterNasabahRekening.no_rekening
   oRekNasabah.usia_pensiun = oRegisterNasabahRekening.usia_pensiun
   oRekNasabah.sistem_pembayaran_iuran = oRegisterNasabahRekening.sistem_pembayaran_iuran
+  oRekNasabah.LTujuanBukaRekening = oRegisterNasabahRekening.LTujuanBukaRekening
   oRekNasabah.tujuan_pembukaan_rekening = oRegisterNasabahRekening.tujuan_pembukaan_rekening
   oRekNasabah.tgl_pensiun = oRegisterNasabahRekening.tgl_pensiun
   oRekNasabah.tgl_pensiun_dipercepat = oRegisterNasabahRekening.tgl_pensiun_dipercepat
   oRekNasabah.kirim_statemen = oRegisterNasabahRekening.kirim_statemen
+  oRekNasabah.setoran_awal = oRegisterNasabahRekening.setoran_awal
   oRekNasabah.iuran_pk = oRegisterNasabahRekening.iuran_pk
   oRekNasabah.iuran_pst = oRegisterNasabahRekening.iuran_pst
+  oRekNasabah.tgl_penarikan_iuran = oRegisterNasabahRekening.tgl_penarikan_iuran
+  oRekNasabah.REKSUMBER_NO = oRegisterNasabahRekening.REKSUMBER_NO
+  oRekNasabah.REKSUMBER_NAMA = oRegisterNasabahRekening.REKSUMBER_NAMA
   
   oRekNasabah.LBranchLocation = oRegisterNasabahRekening.LBranchLocation
   #oRekNasabah.kode_cab_daftar = oRegisterNasabahRekening.kode_cab_daftar
@@ -235,6 +253,19 @@ def CreateRekeningDPLK(config, oRegisterNasabahRekening, kode_paket_investasi, p
   oRekeningDPLK.TGL_SRR_AKHIR = moduleapi.DateTimeTupleToFloat(config, oRegisterNasabahRekening.tanggal_register)
   
   return oRekeningDPLK
+
+def CreateAllRekSumber(config, oRegisterNasabahRekening, oRekInvDPLK):
+  Ls_RegNRSumber = oRegisterNasabahRekening.Ls_REGISTERNASABAHREKSUMBER
+  Ls_RegNRSumber.First()
+  while not Ls_RegNRSumber.EndOfList:
+    oRegNRSumber = Ls_RegNRSumber.CurrentElement
+
+    oRekSumber = config.CreatePObject('RekeningSumber')
+    #id rekening sumber
+    oRekSumber.norek_sumber = oRegNRSumber.norek_sumber
+    oRekSumber.LBranchLocation = oRegNRSumber.LBranchLocation
+    oRekSumber.LRekInvDPLK = oRekInvDPLK
+    Ls_RegNRSumber.Next()
 
 def CreateAllAhliWaris(config, oRegisterNasabahRekening, oNasabahDPLK):
   Ls_RegNRAhliWaris = oRegisterNasabahRekening.Ls_RegNRAhliWaris
@@ -342,7 +373,8 @@ def DAFScriptMain(config, parameter, returnpacket):
       oNasabahDPLK = CreateNasabahDPLK(config, oRegisterNasabahRekening)
       CreateAllAhliWaris(config, oRegisterNasabahRekening, oNasabahDPLK)
     
-    CreateRekInvDPLK(config, oRegisterNasabahRekening)
+    oRekInvDPLK = CreateRekInvDPLK(config, oRegisterNasabahRekening)
+    CreateAllRekSumber(config, oRegisterNasabahRekening, oRekInvDPLK)
     CreateHistoriBuku(config, oRegisterNasabahRekening)
     CreateRegisterPassbook(config, oRegisterNasabahRekening)
     
@@ -361,7 +393,7 @@ def DAFScriptMain(config, parameter, returnpacket):
       CreateDetailAkumPengembangan(config, oNasabahDPLK.no_peserta, oRekeningDPLK.kode_paket_investasi)
       i += 1
       rSQL.Next()
-
+      
     if not byPassBiayaDaftar: 
       #otorisasi 'setuju' untuk Iuran Pendaftaran dan Iuran Peserta pertama
       #AKAN DIPROSES LEWAT REKONSILIASI CORE BANKING DAN DPLK LIABILITIES
@@ -374,6 +406,7 @@ def DAFScriptMain(config, parameter, returnpacket):
     #hapus objek Register Nasabah Rekening
     oRegisterNasabahRekening.Ls_RegNRAhliWaris.DeleteAllPObjs()
     oRegisterNasabahRekening.Ls_RegisterNasabahRekPaket.DeleteAllPObjs()
+    oRegisterNasabahRekening.Ls_RegisterNasabahRekSumber.DeleteAllPObjs()
     oRegisterNasabahRekening.Delete()
     #KirimPesertaKeCoreBanking(config, oNasabahDPLK.no_peserta, \
     #oNasabahDPLK.nama_lengkap, oRekeningDPLK.kode_paket_investasi,\

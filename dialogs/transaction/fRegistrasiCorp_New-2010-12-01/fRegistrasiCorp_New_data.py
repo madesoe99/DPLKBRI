@@ -25,10 +25,10 @@ def uipRegEditNasabahDPLKCorporateApplyRow(sender, oData):
   #mode = sender.ActiveRecord.mode
   
   if oData.no_referensi in ['', None]:
-    raise 'Registrasi Error','Nomor referensi tidak terdefinisi.'
+    raise Exception, 'Registrasi Error' + 'Nomor referensi tidak terdefinisi.'
 
   if (oData.tgl_bayar_iuran < 1) or (oData.tgl_bayar_iuran > 31):
-    raise 'Kesalahan Nilai','Tanggal Bayar Iuran tidak valid'
+    raise Exception, 'Kesalahan Nilai' + 'Tanggal Bayar Iuran tidak valid'
 
   oData.tanggal_register = config.Now()
 

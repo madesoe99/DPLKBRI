@@ -26,6 +26,17 @@ object:rtf::Form<
       AfterNewRecord='GridAfterNewRecord'
       BeforeDelete='GridBeforeDelete'
     >, object:rtf::PClassUI<
+      Name='uipParameterKorporat'
+      ClassTypeName='MasterParameter'
+      DataBinding=bmMaster
+      MultiLine=true
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+      DeleteInstanceOnDel=true
+      BeforePost='GridBeforePost'
+      AfterNewRecord='GridAfterNewRecord'
+      BeforeDelete='GridBeforeDelete'
+    >, object:rtf::PClassUI<
       Name='uipPajakTarikDana'
       AlwaysPostToServer=true
       CreateInstanceOnNew=true
@@ -43,8 +54,7 @@ object:rtf::Form<
     object:rtf::Panel<
       Name='panelTitle'
       Width=240
-      Height=40
-      Bordered=true
+      Height=49
       Controls={
         object:rtf::Label<
           Name='lbl'
@@ -149,7 +159,7 @@ object:rtf::Form<
       }
       Name='gParameterAplikasi'
       Width=812
-      Height=410
+      Height=398
       UIPart=$UIPARTS['uipParameter']
       ControlLeftMargin=8
       ControlTopMargin=8
@@ -204,6 +214,107 @@ object:rtf::Form<
           Width=100
         >
       }
+      SuppressHelpLine=true
+    >, object:rtf::Grid<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='Key_Parameter'
+          AccessOption=aoReadOnlyOnEdit
+          Hidden=false
+          ReadOnlyControl=true
+          ControlCaption='Parameter Aplikasi'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >, object:rtf::FieldUIElmtSetting<
+          Name='Numeric_Value'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Nilai Angka'
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='Varchar_Value'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Nilai Teks'
+          DataTypeName='VARCHAR'
+          DataLength=10
+        >, object:rtf::FieldUIElmtSetting<
+          Name='Description'
+          Hidden=false
+          ReadOnlyControl=true
+          ControlCaption='Keterangan'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >, object:rtf::FieldUIElmtSetting<
+          Name='ValueType'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Tipe Parameter'
+          DataTypeName='integer'
+          DataLength=5
+          EnumeratedValues=['0=Angka'#13#10,
+            '1=Teks'#13#10]
+        >
+      }
+      Name='gParameterKorporat'
+      Width=240
+      Height=240
+      UIPart=$UIPARTS['uipParameterKorporat']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Columns={
+        *object:rtf::GridColumn<
+          Name='Key_Parameter'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='Key_Parameter'
+          DisplayFormat=''
+          TitleCaption='Parameter Aplikasi'
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='Numeric_Value'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          Index=3
+          FieldName='Numeric_Value'
+          DisplayFormat=''
+          TitleCaption='Nilai Angka'
+          Width=100
+        >, *object:rtf::GridColumn<
+          Name='Varchar_Value'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          Index=4
+          FieldName='Varchar_Value'
+          DisplayFormat=''
+          TitleCaption='Nilai Teks'
+        >, *object:rtf::GridColumn<
+          Name='Description'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          Index=5
+          FieldName='Description'
+          DisplayFormat=''
+          TitleCaption='Keterangan'
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='ValueType'
+          InputStyle=cisEnumerated
+          EnumeratedValues=['0=Angka'#13#10,
+            '1=Teks'#13#10]
+          OnAfterLookup='ValueTypeAfterLookup'
+          Index=2
+          FieldName='ValueType'
+          DisplayFormat=''
+          TitleCaption='Tipe Parameter'
+          Width=100
+        >
+      }
+      SuppressHelpLine=true
     >, object:rtf::Panel<
       Elements={
         object:rtf::FieldUIElmtSetting<
@@ -502,8 +613,8 @@ object:rtf::Form<
       RowControlGap=7
     >, object:rtf::MultiSplit<
       Name='MultiSplit'
-      Width=820
-      Height=520
+      Width=320
+      Height=320
       Side1Containers={
         $CONTAINERS['panelTitle']
 
@@ -537,8 +648,14 @@ object:rtf::Form<
           PageTitle='Pengaturan Zona Waktu'
           Container=$CONTAINERS['pTimeZone']
           Index=3
+        >, object:rtf::Page<
+          PageName='pageGridParameterKorporat'
+          PageTitle='Nilai Default Parameter Korporat'
+          Container=$CONTAINERS['gParameterKorporat']
+          Index=4
         >
       }
+      TabStyle=tsrFlatButtons
     >, object:rtf::Panel<
       Elements={
         object:rtf::FieldUIElmtSetting<
@@ -648,6 +765,7 @@ object:rtf::Form<
       Name='pTimeZone'
       Width=800
       Height=40
+      Bordered=true
       UIPart=$UIPARTS['uipTimeZone']
       Controls={
         *object:rtf::DBCheckBox<

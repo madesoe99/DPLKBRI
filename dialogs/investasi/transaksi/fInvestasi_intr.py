@@ -42,7 +42,7 @@ class fInvestasi:
       key = 'PObj:Saham#ID_INVESTASI=%d' % uipInvestasi.id_investasi
       caption = 'Saham'
     else:
-      raise 'Kesalahan Jenis Investasi','Jenis Investasi \'%s\' tidak dikenali' % str(kode_jns_investasi)
+      raise Exception, 'Kesalahan Jenis Investasi' + 'Jenis Investasi \'%s\' tidak dikenali' % str(kode_jns_investasi)
 
     form.Caption = caption
 
@@ -62,11 +62,11 @@ class fInvestasi:
   def bTampilkanClick(self, sender) :
       uipRek = self.uipInvestasi
       if uipRek.TglAwal == None:
-          raise 'PERINGATAN', 'Tanggal awal harus diisi!'
+          raise Exception, 'PERINGATAN' +  'Tanggal awal harus diisi!'
       if uipRek.TglAkhir == None:
-          raise 'PERINGATAN', 'Tanggal akhir harus diisi!'
+          raise Exception, 'PERINGATAN' +  'Tanggal akhir harus diisi!'
       if uipRek.TglAwal > uipRek.TglAkhir:
-          raise 'PERINGATAN', 'Tanggal awal tidak boleh lebih besar dari akhir!'
+          raise Exception, 'PERINGATAN' +  'Tanggal awal tidak boleh lebih besar dari akhir!'
 
       ph = self.app.ExecuteScript(
           'investasi/master/HistTransaksi',
@@ -104,11 +104,11 @@ class fInvestasi:
   def bCetakClick(self, sender) :
       uipRek = self.uipInvestasi
       if uipRek.TglAwal == None:
-          raise 'PERINGATAN', 'Tanggal awal harus diisi!'
+          raise Exception, 'PERINGATAN' +  'Tanggal awal harus diisi!'
       if uipRek.TglAkhir == None:
-          raise 'PERINGATAN', 'Tanggal akhir harus diisi!'
+          raise Exception, 'PERINGATAN' +  'Tanggal akhir harus diisi!'
       if uipRek.TglAwal > uipRek.TglAkhir:
-          raise 'PERINGATAN', 'Tanggal awal tidak boleh lebih besar dari akhir!'
+          raise Exception, 'PERINGATAN' +  'Tanggal awal tidak boleh lebih besar dari akhir!'
 
       phret = self.app.ExecuteScript(
           'investasi/master/CetakTransaksi',
@@ -121,13 +121,13 @@ class fInvestasi:
 
       rec = phret.FirstRecord
       if rec.Is_Err:
-        raise 'Peringatan!',rec.Err_Message
+        raise Exception, 'Peringatan!' + rec.Err_Message
       else:
        if phret.Packet.StreamWrapperCount > 0:
         #sw = phret.Packet.GetStreamWrapper(0)
         sw = phret.Packet.GetStreamWrapperByName("upload")
         if sw == None:
-          raise 'PERINGATAN',"Stream tidak ditemukan"
+          raise Exception, 'PERINGATAN' + "Stream tidak ditemukan"
 
         sFileName = 'c:/temphistinv.txt'
         sw.SaveToFile(sFileName)

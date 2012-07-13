@@ -10,7 +10,7 @@ def GetFormInfoByCIFCode(kode_jenis_registercif):
   elif kode_jenis_registercif == 'Z':
     return ['fEditNasabahRekening','NasabahDPLK']
   else:
-    raise 'GetFormInfoByCIFCode Error','Kode jenis Register CIF tidak dikenali.'
+    raise Exception, 'GetFormInfoByCIFCode Error' + 'Kode jenis Register CIF tidak dikenali.'
 
 def SetToCenterForm(prevForm, currForm):
   currForm.Left = (prevForm.Width - currForm.Width)/2 + prevForm.Left

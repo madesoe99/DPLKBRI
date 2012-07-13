@@ -52,6 +52,6 @@ def FormGeneralProcessData(uideflist, data):
       recSetting.BranchCodePremi)
 
   except:
-    raise '\nProses Error','Penyimpanan Login Aplikasi Akuntansi gagal!'
+    raise Exception, '\nProses Error' + 'Penyimpanan Login Aplikasi Akuntansi gagal!'
 
   return 0

@@ -21,7 +21,7 @@ object:rmn::Menu<
       StringTag='editdoc'
     >, object:rmn::MenuItem<
       Name='mnuView'
-      Caption='Lihat Detil Data Korporat...'
+      Caption='Lihat Detil Data Korporat'
       OnClick='displayWithData'
       AllowedGroups='MRKT'
       StringTag='view'
@@ -29,10 +29,15 @@ object:rmn::Menu<
       Caption='-'
     >, object:rmn::MenuItem<
       Name='mnuViewMember'
-      Caption='Lihat Peserta Anggota Korporat...'
+      Caption='Lihat Peserta Anggota Korporat'
       OnClick='displayWithData'
       AllowedGroups='MRKT'
       StringTag='viewmember'
+    >, object:rmn::MenuItem<
+      Name='mnuViewParams'
+      Caption='Daftar Parameter Korporat'
+      OnClick='displayWithDataX'
+      AllowedGroups='MRKT'
     >, object:rmn::MenuItem<
       Caption='-'
       AllowedGroups='MRKT'

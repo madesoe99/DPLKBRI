@@ -99,7 +99,7 @@ def FormGeneralProcessData(uideflist, data):
       #assign kode paket investasi current
       transaksiapi.SetPaketInvestasi(config, oP)
   except:
-    raise '\nProses Error', str(sys.exc_info()[1])
+    raise Exception, '\nProses Error' +  str(sys.exc_info()[1])
 
   return 0
 

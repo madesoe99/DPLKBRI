@@ -160,7 +160,7 @@ def btnOKClick(sender):
   uipDeposito = form.GetUIPartByName('uipDeposito')
   
   if uipTutupDeposito.no_rekening in ('',None) :
-    raise 'PERINGATAN','nomor rekening tujuan harus diisi'
+    raise Exception, 'PERINGATAN' + 'nomor rekening tujuan harus diisi'
   if uipTutupDeposito.mode == 'viewdoc':
     sender.ExitAction = 2
   else:

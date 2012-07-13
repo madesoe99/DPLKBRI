@@ -11,7 +11,7 @@ def FormEndSetData(uideflist, auiname, apobjconst):
     oNasabahDPLKCorporate = config.CreatePObjImplProxy('NasabahDPLKCorporate')
     oNasabahDPLKCorporate.Key = recOrig.kode_nasabah_corporate
     if oNasabahDPLKCorporate.operation_code == 'E':
-      raise 'Peringatan','\nPerusahaan tersebut sedang dikoreksi.'
+      raise Exception, 'Peringatan' + '\nPerusahaan tersebut sedang dikoreksi.'
 
     rec = uipRegEditNasabahDPLKCorporate.Dataset.AddRecord()
     rec.user_id = config.SecurityContext.userid
@@ -20,7 +20,7 @@ def FormEndSetData(uideflist, auiname, apobjconst):
   elif (uipNasabahDPLKCorporate.Dataset.RecordCount <= 0) \
     and (uipRegEditNasabahDPLKCorporate.Dataset.RecordCount <= 0):
     # kemungkinan mode editdoc, tapi key yang dimasukan tidak valid
-    raise 'Peringatan','Data perusahaan tidak ditemukan.'
+    raise Exception, 'Peringatan' + 'Data perusahaan tidak ditemukan.'
 
   #set parameter presisi angka float
   oP = config.CreatePObjImplProxy('Parameter')
@@ -34,7 +34,7 @@ def uipRegEditNasabahDPLKCorporateApplyRow(sender, oData):
   #mode = sender.ActiveRecord.mode
   
   if (oData.tgl_bayar_iuran < 1) or (oData.tgl_bayar_iuran > 31):
-    raise 'Kesalahan Nilai','Tanggal Bayar Iuran tidak valid'
+    raise Exception, 'Kesalahan Nilai' + 'Tanggal Bayar Iuran tidak valid'
 
   oData.tanggal_register = config.Now()
 

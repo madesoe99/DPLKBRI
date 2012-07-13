@@ -288,8 +288,8 @@ def UpdatePindahPaketInvestasi(config, oRegisterPindahPaketInvestasi):
     else:
       oRekDPLK = config.CreatePObject('RekeningDPLK')
       oRekDPLK.nomor_rekening = nomor_rekening
-      oRekDPLK.LPaketInvestasi = oRegPindahPaketDetil.LPaketInvestasi
       oRekDPLK.LRekInvDPLK = oRekInvDPLK
+      oRekDPLK.LPaketInvestasi = oRegPindahPaketDetil.LPaketInvestasi
       oRekDPLK.akum_iuran_pk = 0.0
       oRekDPLK.akum_iuran_pst = 0.0
       oRekDPLK.akum_iuran_tmb = 0.0
@@ -337,7 +337,7 @@ def UpdatePindahPaketInvestasi(config, oRegisterPindahPaketInvestasi):
 # 	try:
 # 	    rph = config.AppObject.rexecscript(sessionID, 'remote/UpdateKodePaketInvestasiKiblat', param, 1)
 # 	    if rph.FirstRecord.IsErr:
-# 		raise '\nError update kode paket investasi',str(rph.FirstRecord.ErrMessage)
+# 		raise Exception, '\nError update kode paket investasi' + str(rph.FirstRecord.ErrMessage)
 # 	except:
 # 	    raise
   """
@@ -362,8 +362,11 @@ def CreateHistoriUbahAlamat(config, oRegisterUbahAlamat):
   oHistoriUbahAlamat.alamat_rtrw = oNasabahDPLK.alamat_rtrw
   oHistoriUbahAlamat.alamat_kelurahan = oNasabahDPLK.alamat_kelurahan
   oHistoriUbahAlamat.alamat_kecamatan = oNasabahDPLK.alamat_kecamatan
-  oHistoriUbahAlamat.alamat_kota = oNasabahDPLK.alamat_kota
-  oHistoriUbahAlamat.alamat_propinsi = oNasabahDPLK.alamat_propinsi
+  #oHistoriUbahAlamat.alamat_kota = oNasabahDPLK.alamat_kota
+  #oHistoriUbahAlamat.alamat_propinsi = oNasabahDPLK.alamat_propinsi
+  oHistoriUbahAlamat.LATKecamatan = oNasabahDPLK.LATKecamatan
+  oHistoriUbahAlamat.LATKota = oNasabahDPLK.LATKota
+  oHistoriUbahAlamat.LATPropinsi = oNasabahDPLK.LATPropinsi
   oHistoriUbahAlamat.alamat_kode_pos = oNasabahDPLK.alamat_kode_pos
   oHistoriUbahAlamat.alamat_telepon = oNasabahDPLK.alamat_telepon
   oHistoriUbahAlamat.alamat_telepon2 = oNasabahDPLK.alamat_telepon2
@@ -374,18 +377,24 @@ def CreateHistoriUbahAlamat(config, oRegisterUbahAlamat):
   oHistoriUbahAlamat.alamat_surat_rtrw = oNasabahDPLK.alamat_surat_rtrw
   oHistoriUbahAlamat.alamat_surat_kelurahan = oNasabahDPLK.alamat_surat_kelurahan
   oHistoriUbahAlamat.alamat_surat_kecamatan = oNasabahDPLK.alamat_surat_kecamatan
-  oHistoriUbahAlamat.alamat_surat_kota = oNasabahDPLK.alamat_surat_kota
-  oHistoriUbahAlamat.alamat_surat_propinsi = oNasabahDPLK.alamat_surat_propinsi
+  #oHistoriUbahAlamat.alamat_surat_kota = oNasabahDPLK.alamat_surat_kota
+  #oHistoriUbahAlamat.alamat_surat_propinsi = oNasabahDPLK.alamat_surat_propinsi
+  oHistoriUbahAlamat.LASKecamatan = oNasabahDPLK.LASKecamatan
+  oHistoriUbahAlamat.LASKota = oNasabahDPLK.LASKota
+  oHistoriUbahAlamat.LASPropinsi = oNasabahDPLK.LASPropinsi
   oHistoriUbahAlamat.alamat_surat_kode_pos = oNasabahDPLK.alamat_surat_kode_pos
   oHistoriUbahAlamat.alamat_surat_telepon = oNasabahDPLK.alamat_surat_telepon
   oHistoriUbahAlamat.alamat_surat_telepon2 = oNasabahDPLK.alamat_surat_telepon2
 
   """
   oHistoriUbahAlamat.alamat_kantor_jalan = oNasabahDPLK.alamat_kantor_jalan
-  oHistoriUbahAlamat.alamat_kantor_propinsi = oNasabahDPLK.alamat_kantor_propinsi
   oHistoriUbahAlamat.alamat_kantor_kelurahan = oNasabahDPLK.alamat_kantor_kelurahan
   oHistoriUbahAlamat.alamat_kantor_kecamatan = oNasabahDPLK.alamat_kantor_kecamatan
-  oHistoriUbahAlamat.alamat_kantor_kota = oNasabahDPLK.alamat_kantor_kota
+  #oHistoriUbahAlamat.alamat_kantor_kota = oNasabahDPLK.alamat_kantor_kota
+  #oHistoriUbahAlamat.alamat_kantor_propinsi = oNasabahDPLK.alamat_kantor_propinsi
+  oHistoriUbahAlamat.LAKKecamatan = oNasabahDPLK.LAKKecamatan
+  oHistoriUbahAlamat.LAKKota = oNasabahDPLK.LAKKota
+  oHistoriUbahAlamat.LAKPropinsi = oNasabahDPLK.LAKPropinsi
   oHistoriUbahAlamat.alamat_kantor_kode_pos = oNasabahDPLK.alamat_kantor_kode_pos
   oHistoriUbahAlamat.alamat_kantor_telepon = oNasabahDPLK.alamat_kantor_telepon
   oHistoriUbahAlamat.alamat_kantor_telepon2 = oNasabahDPLK.alamat_kantor_telepon2
@@ -402,8 +411,11 @@ def UpdateAlamat(config, oRegisterUbahAlamat):
   oNasabahDPLK.alamat_rtrw = oRegisterUbahAlamat.alamat_rtrw
   oNasabahDPLK.alamat_kelurahan = oRegisterUbahAlamat.alamat_kelurahan
   oNasabahDPLK.alamat_kecamatan = oRegisterUbahAlamat.alamat_kecamatan
-  oNasabahDPLK.alamat_kota = oRegisterUbahAlamat.alamat_kota
-  oNasabahDPLK.alamat_propinsi = oRegisterUbahAlamat.alamat_propinsi
+  #oNasabahDPLK.alamat_kota = oRegisterUbahAlamat.alamat_kota
+  #oNasabahDPLK.alamat_propinsi = oRegisterUbahAlamat.alamat_propinsi
+  oNasabahDPLK.LATKecamatan = oRegisterUbahAlamat.LATKecamatan
+  oNasabahDPLK.LATKota = oRegisterUbahAlamat.LATKota
+  oNasabahDPLK.LATPropinsi = oRegisterUbahAlamat.LATPropinsi
   oNasabahDPLK.alamat_kode_pos = oRegisterUbahAlamat.alamat_kode_pos
   oNasabahDPLK.alamat_telepon = oRegisterUbahAlamat.alamat_telepon
   oNasabahDPLK.alamat_telepon2 = oRegisterUbahAlamat.alamat_telepon2
@@ -414,8 +426,11 @@ def UpdateAlamat(config, oRegisterUbahAlamat):
   oNasabahDPLK.alamat_surat_rtrw = oRegisterUbahAlamat.alamat_surat_rtrw
   oNasabahDPLK.alamat_surat_kelurahan = oRegisterUbahAlamat.alamat_surat_kelurahan
   oNasabahDPLK.alamat_surat_kecamatan = oRegisterUbahAlamat.alamat_surat_kecamatan
-  oNasabahDPLK.alamat_surat_kota = oRegisterUbahAlamat.alamat_surat_kota
-  oNasabahDPLK.alamat_surat_propinsi = oRegisterUbahAlamat.alamat_surat_propinsi
+  #oNasabahDPLK.alamat_surat_kota = oRegisterUbahAlamat.alamat_surat_kota
+  #oNasabahDPLK.alamat_surat_propinsi = oRegisterUbahAlamat.alamat_surat_propinsi
+  oNasabahDPLK.LASKecamatan = oRegisterUbahAlamat.LASKecamatan
+  oNasabahDPLK.LASKota = oRegisterUbahAlamat.LASKota
+  oNasabahDPLK.LASPropinsi = oRegisterUbahAlamat.LASPropinsi
   oNasabahDPLK.alamat_surat_kode_pos = oRegisterUbahAlamat.alamat_surat_kode_pos
   oNasabahDPLK.alamat_surat_telepon = oRegisterUbahAlamat.alamat_surat_telepon
   oNasabahDPLK.alamat_surat_telepon2 = oRegisterUbahAlamat.alamat_surat_telepon2
@@ -426,6 +441,9 @@ def UpdateAlamat(config, oRegisterUbahAlamat):
   oNasabahDPLK.alamat_kantor_kecamatan = oRegisterUbahAlamat.alamat_kantor_kecamatan
   oNasabahDPLK.alamat_kantor_kota = oRegisterUbahAlamat.alamat_kantor_kota
   oNasabahDPLK.alamat_kantor_propinsi = oRegisterUbahAlamat.alamat_kantor_propinsi
+  oNasabahDPLK.LAKKecamatan = oRegisterUbahAlamat.LAKKecamatan
+  oNasabahDPLK.LAKKota = oRegisterUbahAlamat.LAKKota
+  oNasabahDPLK.LAKPropinsi = oRegisterUbahAlamat.LAKPropinsi
   oNasabahDPLK.alamat_kantor_kode_pos = oRegisterUbahAlamat.alamat_kantor_kode_pos
   oNasabahDPLK.alamat_kantor_telepon = oRegisterUbahAlamat.alamat_kantor_telepon
   oNasabahDPLK.alamat_kantor_telepon2 = oRegisterUbahAlamat.alamat_kantor_telepon2
@@ -445,6 +463,10 @@ def CreateHistoriIuran(config, oRegisterIuran):
   oHistoriIuran.user_id = oRekInvDPLK.user_id
   oHistoriIuran.iuran_pst = oRekInvDPLK.iuran_pst
   oHistoriIuran.iuran_pk = oRekInvDPLK.iuran_pk
+  oHistoriIuran.sistem_pembayaran_iuran = oRekInvDPLK.sistem_pembayaran_iuran
+  oHistoriIuran.tgl_penarikan_iuran = oRekInvDPLK.tgl_penarikan_iuran
+  oHistoriIuran.reksumber_no = oRekInvDPLK.reksumber_no
+  oHistoriIuran.reksumber_nama = oRekInvDPLK.reksumber_nama
 
   return oHistoriIuran
 #--
@@ -454,6 +476,10 @@ def UpdateIuran(config, oRegisterIuran):
   
   oRekInvDPLK.iuran_pst = oRegisterIuran.iuran_pst
   oRekInvDPLK.iuran_pk = oRegisterIuran.iuran_pk
+  oRekInvDPLK.sistem_pembayaran_iuran = oRegisterIuran.sistem_pembayaran_iuran
+  oRekInvDPLK.tgl_penarikan_iuran = oRegisterIuran.tgl_penarikan_iuran
+  oRekInvDPLK.reksumber_no = oRegisterIuran.reksumber_no
+  oRekInvDPLK.reksumber_nama = oRegisterIuran.reksumber_nama
   
   """
   #cek ikut autodebet atau tidak
@@ -761,8 +787,11 @@ def ClearAlamatKantor(oNasabahDPLK):
   oNasabahDPLK.alamat_kantor_jalan = ''
   oNasabahDPLK.alamat_kantor_kelurahan = ''
   oNasabahDPLK.alamat_kantor_kecamatan = ''
-  oNasabahDPLK.alamat_kantor_kota = ''
-  oNasabahDPLK.alamat_kantor_propinsi = ''
+  #oNasabahDPLK.alamat_kantor_kota = ''
+  #oNasabahDPLK.alamat_kantor_propinsi = ''
+  oNasabahDPLK.LAKKecamatan = None
+  oNasabahDPLK.LAKKota = None
+  oNasabahDPLK.LAKPropinsi = None
   oNasabahDPLK.alamat_kantor_kode_pos = ''
   oNasabahDPLK.alamat_kantor_telepon = ''
   oNasabahDPLK.alamat_kantor_telepon2 = ''
@@ -781,8 +810,11 @@ def UpdateUbahStatusKerja(config, oRegisterUbahStatusKerja):
     oNasabahDPLK.alamat_kantor_jalan = oRegisterUbahStatusKerja.LNasabahDPLKCorporate.alamat_kantor_jalan
     oNasabahDPLK.alamat_kantor_kelurahan = oRegisterUbahStatusKerja.LNasabahDPLKCorporate.alamat_kantor_kelurahan
     oNasabahDPLK.alamat_kantor_kecamatan = oRegisterUbahStatusKerja.LNasabahDPLKCorporate.alamat_kantor_kecamatan
-    oNasabahDPLK.alamat_kantor_kota = oRegisterUbahStatusKerja.LNasabahDPLKCorporate.alamat_kantor_kota
-    oNasabahDPLK.alamat_kantor_propinsi = oRegisterUbahStatusKerja.LNasabahDPLKCorporate.alamat_kantor_propinsi
+    #oNasabahDPLK.alamat_kantor_kota = oRegisterUbahStatusKerja.LNasabahDPLKCorporate.alamat_kantor_kota
+    #oNasabahDPLK.alamat_kantor_propinsi = oRegisterUbahStatusKerja.LNasabahDPLKCorporate.alamat_kantor_propinsi
+    oNasabahDPLK.LAKKecamatan = oRegisterUbahStatusKerja.LNasabahDPLKCorporate.LAKKecamatan
+    oNasabahDPLK.LAKKota = oRegisterUbahStatusKerja.LNasabahDPLKCorporate.LAKKota
+    oNasabahDPLK.LAKPropinsi = oRegisterUbahStatusKerja.LNasabahDPLKCorporate.LAKPropinsi
     oNasabahDPLK.alamat_kantor_kode_pos = oRegisterUbahStatusKerja.LNasabahDPLKCorporate.alamat_kantor_kode_pos
     oNasabahDPLK.alamat_kantor_telepon = oRegisterUbahStatusKerja.LNasabahDPLKCorporate.alamat_kantor_telepon
     oNasabahDPLK.alamat_kantor_telepon2 = oRegisterUbahStatusKerja.LNasabahDPLKCorporate.alamat_kantor_telepon2
@@ -793,7 +825,7 @@ def UpdateNasabahDPLK(config, oRegEditNasabahRekening):
   oNasabahDPLK = config.CreatePObjImplProxy('NasabahDPLK')
   oNasabahDPLK.Key = oRegEditNasabahRekening.no_peserta
   
-  #cek perubahan tanggal lahir ada di bagian UpdateRekeningDPLK
+  #cek perubahan tanggal lahir ada di bagian UpdateRekInvDPLK
   #terkait dengan perubahan tanggal pensiun dan tanggal berakhir autodebet
 
   oNasabahDPLK.nama_lengkap = oRegEditNasabahRekening.nama_lengkap
@@ -829,57 +861,21 @@ def UpdateNasabahDPLK(config, oRegEditNasabahRekening):
   return oNasabahDPLK
 #--
 
-def UpdateRekeningDPLK(config, oRegEditRekening):
+def UpdateRekInvDPLK(config, oRegEditRekening):
   oRekInvDPLK = config.CreatePObjImplProxy('RekInvDPLK')
   oRekInvDPLK.Key = oRegEditRekening.no_rekening
   
   oRekInvDPLK.LSumberDana = oRegEditRekening.LSumberDana
-  oRekInvDPLK.keterangan = oRegEditRekening.keterangan
-  oRekInvDPLK.kirim_statemen = oRegEditRekening.kirim_statemen
-  oRekInvDPLK.confidential_code = oRegEditRekening.confidential_code
-  oRekInvDPLK.tujuan_pembukaan_rekening = oRegEditRekening.tujuan_pembukaan_rekening
-  
+  oRekInvDPLK.usia_pensiun = oRegEditRekening.usia_pensiun
   oRekInvDPLK.tgl_pensiun = oRegEditRekening.tgl_pensiun
   oRekInvDPLK.tgl_pensiun_dipercepat = oRegEditRekening.tgl_pensiun_dipercepat
+  oRekInvDPLK.LTujuanBukaRekening = oRegEditRekening.LTujuanBukaRekening
+  #oRekInvDPLK.tujuan_pembukaan_rekening = oRegEditRekening.tujuan_pembukaan_rekening
+  oRekInvDPLK.kirim_statemen = oRegEditRekening.kirim_statemen
+  oRekInvDPLK.confidential_code = oRegEditRekening.confidential_code
+  oRekInvDPLK.keterangan = oRegEditRekening.keterangan
   
-  #cek jika usia pensiun berubah ataupun tanggal lahir dikoreksi
-  if oRekInvDPLK.usia_pensiun != oRegEditRekening.usia_pensiun:
-    #update usia pensiun
-    oRekInvDPLK.usia_pensiun = oRegEditRekening.usia_pensiun
-    
-    #usia pensiun berubah, tanggal pensiun juga berubah
-    #update tanggal lahir
-    #oRekeningDPLK.LNasabahDPLK.tanggal_lahir = moduleapi.DateTimeTupleToFloat(config, oRegEditNasabahRekening.tanggal_lahir)
-    
-    #update tanggal pensiun
-    tgl_pensiun = moduleapi.AddYearToDateTuple(config, \
-      oRegEditRekening.LRekeningDPLK.LNasabahDPLK.tanggal_lahir, oRegEditRekening.usia_pensiun)
-    tgl_pensiun_dipercepat = moduleapi.AddYearToDateTuple(config, \
-      oRegEditRekening.LRekeningDPLK.LNasabahDPLK.tanggal_lahir, oRegEditRekening.usia_pensiun - 10)
-
-    yRek, mRek, dRek = oRekInvDPLK.tgl_pensiun[:3]
-    yNew, mNew, dNew = tgl_pensiun[:3]
-    if [yRek, mRek, dRek] != [yNew, mNew, dNew]:
-      # tanggal pensiun berubah
-      oRekInvDPLK.tgl_pensiun = moduleapi.DateTimeTupleToFloat(config, tgl_pensiun)
-      oRekInvDPLK.tgl_pensiun_dipercepat = moduleapi.DateTimeTupleToFloat(config, tgl_pensiun_dipercepat)
-
-      """
-      #cek jika peserta ikut autodebet
-      if oRekeningDPLK.status_autodebet == 'T':
-        #Edit SI nasabah, ubah tanggal berakhir / kadaluarsa autodebet
-
-        #ambil no rekening autodebet peserta
-        oRekeningDPLK.Ls_RekeningAutoDebet.First()
-        oRekAutodebet = oRekeningDPLK.Ls_RekeningAutoDebet.CurrentElement
-
-        y,m,d = oRekeningDPLK.tgl_pensiun[:3]
-        #transaksiapi.EditSI(config, oRekeningDPLK.no_peserta, oRekAutodebet.no_rekening, \
-        #  oRekeningDPLK.LPaketInvestasi.no_giro, '20', '1', oRekeningDPLK.iuran_pst, \
-        #  config.ModLibUtils.EncodeDate(y,m,d))
-      """
-      
-  return oRekeningDPLK
+  return oRekInvDPLK
 #--
 
 def UpdateKYCNasabah(config, oRegEditKYCNasabah):
@@ -930,8 +926,8 @@ def DAFScriptMain(config, parameter, returnpacket):
 
     elif oRegisterCIF.kode_jenis_registercif == 'P':
       oRegisterPindahPaketInvestasi = oRegisterCIF.CastAs('RegisterPindahPaketInvestasi')
-      CreateHistoriPindahPaketInvestasi(config, oRegisterPindahPaketInvestasi)
       UpdatePindahPaketInvestasi(config, oRegisterPindahPaketInvestasi)
+      CreateHistoriPindahPaketInvestasi(config, oRegisterPindahPaketInvestasi)
 
     elif oRegisterCIF.kode_jenis_registercif == 'A':
       oRegisterUbahAlamat = oRegisterCIF.CastAs('RegisterUbahAlamat')
@@ -986,11 +982,15 @@ def DAFScriptMain(config, parameter, returnpacket):
     elif oRegisterCIF.kode_jenis_registercif == 'Z':
       oRegEditNasabahRekening = oRegisterCIF.CastAs('RegEditNasabahRekening')
       UpdateNasabahDPLK(config, oRegEditNasabahRekening)
-      #UpdateRekeningDPLK(config, oRegEditNasabahRekening)
 
     elif oRegisterCIF.kode_jenis_registercif == 'Y':
       oRegEditKYCNasabah = oRegisterCIF.CastAs('RegEditKYCNasabah')
       UpdateKYCNasabah(config, oRegEditKYCNasabah)
+    
+    elif oRegisterCIF.kode_jenis_registercif == 'X':
+      oRegEditRekening = oRegisterCIF.CastAs('RegEditRekening')
+      UpdateRekInvDPLK(config, oRegEditRekening)
+
     else:
       # hanya untuk kepentingan debug
       raise Exception,'\n\nPERINGATAN\nKode jenis Register CIF tidak dikenali.'

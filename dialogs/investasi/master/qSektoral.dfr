@@ -4,7 +4,8 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rtf::Form<
+>
+object:rtf::Form<
   MainContainer=$CONTAINERS['qSektoral']
   Caption='Daftar Sektor'
   State=rsMaximized
@@ -23,7 +24,8 @@ document <
   OnSetDataEx=''
   OnBeginProcessData=''
   OnEndProcessData=''
-  Containers={object:rtf::Query<
+  Containers={
+    object:rtf::Query<
       Name='qSektoral'
       Width=800
       Height=600
@@ -38,11 +40,14 @@ document <
         '  kode_sektoral,'#13#10,
         '  nama_sektoral,'#13#10,
         '  deskripsi_sektoral,'#13#10,
+        '  kode_induk,'#13#10,
+        '  is_level_detil$ as is_level_detil,'#13#10,
         '  self'#13#10,
         ') then order by kode_sektoral;']
       DirectDisplay=true
       WindowSize=20
-      Columns={object:rtf::QueryColumn<
+      Columns={
+        object:rtf::QueryColumn<
           FieldName='Sektoral.kode_sektoral'
           Width=60
           Caption='Kode Sektoral'
@@ -54,5 +59,16 @@ document <
           FieldName='Sektoral.deskripsi_sektoral'
           Width=180
           Caption='Deskripsi'
-        >}EnableColumns=true
-    >}>
+        >, object:rtf::QueryColumn<
+          FieldName='Sektoral.kode_induk'
+          Caption='Grup Sektoral'
+        >, object:rtf::QueryColumn<
+          FieldName='Sektoral.is_level_detil'
+          Width=75
+          Caption='Status Detil'
+        >
+      }
+      EnableColumns=true
+    >
+  }
+>

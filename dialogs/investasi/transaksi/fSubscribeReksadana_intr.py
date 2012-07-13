@@ -94,7 +94,7 @@ def nilai_subscribeExit(sender):
   uipSubscribeReksadana.Edit()
   uipSubscribeReksadana.nilai_subscribe = (uipSubscribeReksadana.nilai_subscribe or 0.0)
   if uipReksadana.NAB == 0.0 :
-    raise 'PERINGATAN','Update NAB terlebih dahulu'
+    raise Exception, 'PERINGATAN' + 'Update NAB terlebih dahulu'
   uipSubscribeReksadana.unit_penyertaan = uipSubscribeReksadana.nilai_subscribe / uipReksadana.NAB
 
 def uipSubscribeReksadanaBeforePost(uipSubscribeReksadana):

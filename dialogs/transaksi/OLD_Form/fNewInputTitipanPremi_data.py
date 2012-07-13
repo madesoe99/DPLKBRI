@@ -15,7 +15,7 @@ def FormBeginSetData(uideflist, uipNasabah, key):
     if oR.status_wasiat_ummat == 'F':
       #peserta tidak ikut Wasiat Ummat
       keepGoingProcess = 0
-      raise '\nPeringatan','\nPeserta tidak terdaftar sebagai peserta Wasiat Ummat.'
+      raise Exception, '\nPeringatan' + '\nPeserta tidak terdaftar sebagai peserta Wasiat Ummat.'
   except:
     raise
 
@@ -91,6 +91,6 @@ def FormGeneralProcessData(uideflist, data):
     o.terminal_id = config.SecurityContext.GetSessionInfo()[1]
     o.tgl_sistem = config.Now()
   except:
-    raise '\nProses Error', str(sys.exc_info()[1])
+    raise Exception, '\nProses Error' +  str(sys.exc_info()[1])
 
   return 0

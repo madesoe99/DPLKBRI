@@ -66,7 +66,7 @@ def uipBeliObligasiApplyRow(uipBeliObligasi, oBeliObligasi):
   config = uipBeliObligasi.UIDefList.Config
 
   if oBeliObligasi.mutasi_debet <= 0.0:
-    raise 'Kesalahan Beli Obligasi', 'Nilai beli obligasi harus lebih dari nol.'
+    raise Exception, 'Kesalahan Beli Obligasi' +  'Nilai beli obligasi harus lebih dari nol.'
 
   oBeliObligasi.mutasi_kredit = 0.0
   # nilai kode_jns_investasi diisi lagi jika belum ada

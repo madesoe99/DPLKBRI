@@ -10,11 +10,15 @@ object:rpclass::TPClassUIDefList<
     object:rpclass::TPClassUIDef<
       Name='uipRegisterCIF'
       PClassName='RegisterPindahPaketInvestasi'
-      LoadedFieldList='LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;no_referensi;keterangan;user_id;terminal_id;registercif_id'
-      StoredFieldList='LNasabahDPLK;no_referensi;keterangan;user_id;terminal_id'
+      LoadedFieldList='registercif_id;no_referensi;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;keterangan;user_id;terminal_id;registercif_id;LRekeningDPLK.no_rekening;LRekeningDPLK.no_rekening;LRekeningDPLK.keterangan'
+      StoredFieldList='no_referensi;LNasabahDPLK;keterangan;user_id;terminal_id;LRekeningDPLK'
       CustomLoadedFields={
         object:rpclass::TCustomLoadedField<
           Name='mode'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='cbKombinasiPaket'
           DataTypeName='varchar'
           DataLength=20
         >
@@ -24,6 +28,10 @@ object:rpclass::TPClassUIDefList<
           Name='LNasabahDPLK'
           ClassTypeName='NasabahDPLK'
           FieldNames='no_peserta;no_peserta;nama_lengkap'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LRekeningDPLK'
+          ClassTypeName='RekInvDPLK'
+          FieldNames='no_rekening;no_rekening;keterangan'
         >
       }
       Mode=imSingleRow
@@ -31,25 +39,31 @@ object:rpclass::TPClassUIDefList<
       AfterApplyRow='uipRegisterCIFApplyRow'
     >, object:rpclass::TPClassUIDef<
       Name='uipMaster'
-      MasterUIName='uipRegisterCIF'
-      LinkName='LRekeningDPLK'
-      LoadedFieldList='no_rekening;no_peserta'
-      StoredFieldList='no_peserta'
-    >, object:rpclass::TPClassUIDef<
-      Name='uipParameter'
-      CustomLoadedFields={
-        object:rpclass::TCustomLoadedField<
-          Name='TanggalPakai'
-          DataTypeName='varchar'
-          DataLength=10
+      PClassName='RekInvDPLK'
+      LoadedFieldList='LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;no_rekening;no_peserta;keterangan'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLK'
+          ClassTypeName='NasabahDPLK'
+          FieldNames='no_peserta;no_peserta;nama_lengkap'
         >
       }
+      Mode=imSingleRow
+    >, object:rpclass::TPClassUIDef<
+      Name='uipParameter'
       Mode=imSingleRow
     >, object:rpclass::TPClassUIDef<
       Name='uipRekDPLK'
       MasterUIName='uipMaster'
       ListName='Ls_RekeningDPLK'
-      LoadedFieldList='kode_paket_investasi;pct_alokasi'
+      LoadedFieldList='LPaketInvestasi.kode_paket_investasi;LPaketInvestasi.kode_paket_investasi;LPaketInvestasi.nama_paket_investasi;pct_alokasi'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LPaketInvestasi'
+          ClassTypeName='PaketInvestasi'
+          FieldNames='kode_paket_investasi;kode_paket_investasi;nama_paket_investasi'
+        >
+      }
       CreateInstanceOnNew=true
       DeleteOnDel=true
       SetMasterDetailRelationship=true
@@ -69,7 +83,21 @@ object:rpclass::TPClassUIDefList<
       CreateInstanceOnNew=true
       DeleteOnDel=true
       SetMasterDetailRelationship=true
+    >, object:rpclass::TPClassUIDef<
+      Name='uipTmpPaket'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='kode_pi'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='nama_pi'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+      }
+      Mode=imSingleRow
     >
   }
-  OnBeginSetData='FormBeginSetData'
+  OnEndSetData='FormEndSetData'
 >

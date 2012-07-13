@@ -1,6 +1,6 @@
-import sys
-sys.path.append('c:/dafapp/dplk07/script_modules')
-import moduleapi
+import com.ihsan.util.modman as modman
+
+#moduleapi = modman.getModule(config, 'moduleapi')
 
 def CreateRincianReksadana(config, oReksadana):
   # buat satu objek rincianReksadana
@@ -15,6 +15,8 @@ def CreateRincianReksadana(config, oReksadana):
   
 
 def CreateReksadana(config, oRegisterReksadana):
+  moduleapi = modman.getModule(config, 'moduleapi')
+  
   oReksadana = config.CreatePObject('Reksadana')
   oReksadana.nama_reksadana = oRegisterReksadana.nama_reksadana
   oReksadana.kode_pihak_ketiga = oRegisterReksadana.kode_pihak_ketiga
@@ -53,6 +55,8 @@ def CreateReksadana(config, oRegisterReksadana):
   return oReksadana
 
 def CreateTransPiutangInvestasi(config, oReksadana, oRegisterReksadana):
+  moduleapi = modman.getModule(config, 'moduleapi')
+  
   oSubscribeReksadana = config.CreatePObject('SubscribeReksadana')
   oSubscribeReksadana.LInvestasi = oReksadana
   oSubscribeReksadana.nama_investasi = oReksadana.nama_reksadana
@@ -84,6 +88,8 @@ def CreateTransPiutangInvestasi(config, oReksadana, oRegisterReksadana):
   
 # biaya subscribe
 def CreateBiayaSubscribe(config, oRegisterReksadana, oReksadana):
+  moduleapi = modman.getModule(config, 'moduleapi')
+  
   oTransLRInvestasi = config.CreatePObject('TransLRInvestasi')
   oTransLRInvestasi.LInvestasi = oReksadana
   oTransLRInvestasi.LTransactionBatch = oRegisterReksadana.LTransactionBatch

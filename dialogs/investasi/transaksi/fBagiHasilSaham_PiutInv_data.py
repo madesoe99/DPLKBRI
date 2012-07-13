@@ -13,7 +13,7 @@ def uipInvestasiSetData(uipInvestasi):
   oInvestasi.Key = rec_inv.id_investasi
   
   if (oInvestasi.status == 'F') and (mode == 'uipInvestasi'):
-    raise 'Kesalahan Penutupan Investasi','Investasi sudah ditutup.'
+    raise Exception, 'Kesalahan Penutupan Investasi' + 'Investasi sudah ditutup.'
 
   rec_tpi.SetFieldByName('LInvestasi.id_investasi',oInvestasi.id_investasi)
   rec_tpi.no_bilyet = oInvestasi.no_bilyet

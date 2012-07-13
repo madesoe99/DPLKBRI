@@ -72,17 +72,17 @@ def uipRegisterSahamApplyRow(uipRegisterSaham, oRegisterSaham):
   config = uipRegisterSaham.UIDefList.Config
 
   if oRegisterSaham.nama_Saham in [None, '']:
-    raise 'Kesalahan Register Saham','Nama Saham tidak terdefinisi.'
+    raise Exception, 'Kesalahan Register Saham' + 'Nama Saham tidak terdefinisi.'
 
   if oRegisterSaham.nominal < 0.000001:
-    raise 'Kesalahan Register Saham','Nilai investasi harus lebih besar dari nol.'
+    raise Exception, 'Kesalahan Register Saham' + 'Nilai investasi harus lebih besar dari nol.'
 
   if oRegisterSaham.nominal > min(oRegisterSaham.dpkTersedia, oRegisterSaham.nilaiMaksProporsi):
   #if oRegisterSaham.nominal > min(oRegisterSaham.dpkTersedia, oRegisterSaham.nilaiMaksProporsi, oRegisterSaham.nominalGiro):
-    raise 'Kesalahan Register Saham','\nDana paket investasi tidak tersedia.'
+    raise Exception, 'Kesalahan Register Saham' + '\nDana paket investasi tidak tersedia.'
 
   if oRegisterSaham.NAB_awal <= 0.0:
-    pass#raise 'Kesalahan Register Saham','Nilai harga beli harus lebih besar dari nol.'
+    pass#raise Exception, 'Kesalahan Register Saham' + 'Nilai harga beli harus lebih besar dari nol.'
 
   oRegisterSaham.NAB = oRegisterSaham.NAB_awal
   oRegisterSaham.user_id = config.SecurityContext.userid

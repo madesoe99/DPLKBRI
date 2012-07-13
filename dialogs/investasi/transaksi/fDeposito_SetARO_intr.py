@@ -22,7 +22,7 @@ def FormShow(form, parameter):
   uip.SetFieldValue('LMasterGiro.no_giro',uip.no_rekening)
   if uip.CreateMode == 'Oto' :
     if uip.IsCommited :
-      raise 'PERINGATAN','Data Deposito belum mengalami perubahan apapun'
+      raise Exception, 'PERINGATAN' + 'Data Deposito belum mengalami perubahan apapun'
     form.SetAllControlsReadOnly()
     pButton.GetControlByName('btnClose').Visible = 1
     pButton.GetControlByName('btnOK').Caption = '&Otorisasi'
@@ -39,7 +39,7 @@ def FormShow(form, parameter):
       pData.GetControlByName('LMasterGiro').Visible = 0
   else :
     if not uip.IsCommited :
-      raise '\nPERINGATAN','Perubahan Deposito belum di Otorisasi'
+      raise Exception, '\nPERINGATAN' + 'Perubahan Deposito belum di Otorisasi'
     pButton.GetControlByName('btnCancel').Cancel = 1
     if uip.CreateMode == 'mnuUbahPeriode' :
       ViewMode(form, 'pData',1)

@@ -23,6 +23,10 @@ def GetFormInfoByCIFCode(kode_jenis_registercif):
     return ['fEditKYCNasabah','RegEditKYCNasabah']
   elif kode_jenis_registercif == 'Z':
     return ['fEditNasabahRekening','RegEditNasabahRekening']
+  elif kode_jenis_registercif == 'X':
+    return ['fEditRekInvDPLK','RegEditRekening']
+  elif kode_jenis_registercif == 'S':
+    return ['fEditRekSumber','RegEditRekSumber']
   else:
     raise Exception,'\n\nGetFormInfoByCIFCode Error\nKode jenis Register CIF tidak dikenali.'
 

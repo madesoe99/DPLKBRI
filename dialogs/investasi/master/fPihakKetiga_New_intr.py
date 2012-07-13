@@ -1,3 +1,5 @@
+import sys
+
 def btnOKClick(sender):
   form = sender.OwnerForm
   uipPihakKetiga = form.GetUIPartByName('uipPihakKetiga')
@@ -14,4 +16,6 @@ def btnOKClick(sender):
     form.PostResult()
     sender.ExitAction = 1
   except:
-    raise
+    #raise Exception, str(sys.exc_info()[1])
+    form.ShowMessage(str(sys.exc_info()[1]))
+    return 

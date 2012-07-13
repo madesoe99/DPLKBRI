@@ -1,0 +1,191 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit1']
+  Caption='List data korporat diimport'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=849
+  Height=400
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipNoData'
+    >
+  }
+  Containers={
+    object:rtf::Query<
+      Name='qList'
+      Width=849
+      Height=342
+      ContextMenuName='popupmenus/kakas/pUploadCorporate'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='List data'
+      OQLText=['SELECT FROM UploadCorporate ['#13#10,
+        '  (''ALL''=:all_upload_type OR upload_type=:upload_type)'#13#10,
+        ']('#13#10,
+        '  self,'#13#10,
+        '  kode_nasabah_corporate,'#13#10,
+        '  LNasabahDPLKCorporate.nama_perusahaan AS nama_perusahaan,'#13#10,
+        '  upload_type,'#13#10,
+        '  upload_type $ AS upload_type_name,'#13#10,
+        '  is_auth,'#13#10,
+        '  session_filename,'#13#10,
+        '  session_date,'#13#10,
+        '  session_time,'#13#10,
+        '  session_user_id,'#13#10,
+        '  session_type,'#13#10,
+        '  session_terminal_id,'#13#10,
+        '  trx_session_id'#13#10,
+        ') THEN ORDER BY trx_session_id;']
+      Columns={
+        object:rtf::QueryColumn<
+          FieldName='UploadCorporate.kode_nasabah_corporate'
+          Caption='Kode Korporat'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorporate.nama_perusahaan'
+          Width=200
+          Caption='Nama Korporat'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorporate.upload_type'
+          Width=80
+          Caption='Jenis Upload'
+          Hidden=true
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorporate.upload_type_name'
+          Width=100
+          Caption='Jenis Upload'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorporate.session_filename'
+          Width=300
+          Caption='File Diupload'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorporate.session_date'
+          Caption='Tanggal Upload'
+          Hidden=true
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorporate.session_time'
+          Width=120
+          Caption='Tanggal Upload'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorporate.session_user_id'
+          Width=60
+          Caption='User'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorporate.session_type'
+          Caption='Jenis Session'
+          Hidden=true
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorporate.trx_session_id'
+          Caption='ID Session'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorporate.is_auth'
+          Width=40
+          Caption='Is Auth'
+        >
+      }
+      EnableColumns=true
+    >, object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=849
+      Height=400
+      Container1=$CONTAINERS['dualsplit2']
+      Container2=$CONTAINERS['qList']
+    >, object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='upload_type'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='varchar'
+          DataLength=20
+          EnumeratedValues=['ALL=ALL'#13#10,
+            'P=Import data peserta'#13#10,
+            'K=Import data koreksi peserta'#13#10,
+            'W=Import ahli waris'#13#10,
+            'I=Import iuran peserta'#13#10,
+            'A=Import premi asuransi'#13#10,
+            'R=Import biaya pendaftaran peserta'#13#10]
+        >
+      }
+      Name='pFilter'
+      Width=325
+      Height=60
+      UIPart=$UIPARTS['uipNoData']
+      Controls={
+        *object:rtf::DBComboBox<
+          Name='upload_type'
+          Top=24
+          Left=8
+          Width=200
+          Height=21
+          ControlCaption='Upload Type'
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=8
+      ControlTopMargin=24
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Filter'
+    >, object:rtf::DualSplit<
+      Name='dualsplit2'
+      Width=240
+      Height=57
+      Container1=$CONTAINERS['pFilter']
+      Container2=$CONTAINERS['pFilter3']
+      SplitDirection=sdrSplitLeftRight
+    >, object:rtf::Panel<
+      Name='pFilter3'
+      Width=257
+      Height=60
+      Controls={
+        object:rtf::Button<
+          Name='bFilter'
+          Layout=clNewLine
+          Top=24
+          Left=6
+          ControlCaption=''
+          Caption='Filter'
+          OnClick='bFilterOnClick'
+        >, object:rtf::Button<
+          Name='bReset'
+          Layout=clNextSide
+          Top=24
+          Left=85
+          ControlCaption=''
+          Caption='Reset'
+          OnClick='bResetOnClick'
+        >
+      }
+      ControlLeftMargin=6
+      ControlTopMargin=24
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption=' '
+    >
+  }
+  FormClassName='qUploadCorporate'
+>

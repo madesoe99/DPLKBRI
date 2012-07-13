@@ -4,7 +4,8 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rtf::Form<
+>
+object:rtf::Form<
   MainContainer=$CONTAINERS['DSMain']
   Caption='Buka Investasi MM Baru'
   State=rsMaximized
@@ -13,7 +14,8 @@ document <
   Width=921
   Height=600
   OnFormShow='FormShow'
-  UIParts={object:rtf::PClassUI<
+  UIParts={
+    object:rtf::PClassUI<
       Name='uipRegisterDeposito'
       ClassTypeName='RegisterDeposito'
       DataBinding=bmMaster
@@ -21,20 +23,28 @@ document <
       CreateInstanceOnNew=true
       AfterApplyRow='uipRegisterDepositoApplyRow'
     >, object:rtf::PClassUI<
-      Elements={object:rtf::FieldUIElmtSetting<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
           Name='nowDate'
           Hidden=true
+          ReadOnlyControl=false
           DataTypeName='varchar'
           DataLength=10
         >, object:rtf::FieldUIElmtSetting<
           Name='inv'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='varchar'
           DataLength=1
         >, object:rtf::FieldUIElmtSetting<
           Name='strInv'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='varchar'
           DataLength=20
-        >}Name='uipParameter'
+        >
+      }
+      Name='uipParameter'
       CreateInstanceOnNew=true
     >, object:rtf::PClassUI<
       Name='uipRincianRegisterDeposito'
@@ -52,21 +62,35 @@ document <
       AfterDelete='uipRRDAfterDelete'
       ShadowBufferFields='LRincianPaketInvestasi.kode_paket_investasi'
       UniqueShadowBufferFields='LRincianPaketInvestasi.kode_paket_investasi'
-    >}Containers={object:rtf::Panel<
-      Elements={object:rtf::LinkUIElmtSetting<
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::LinkUIElmtSetting<
           Name='LSubJenisInv'
           RequiredOption=roAlwaysRequired
+          Hidden=false
+          ReadOnlyControl=false
           ControlCaption='Security Type'
           ClassTypeName='SubJnsTransLRInvestasi'
-          KeyFields={object:rtf::FieldUIElmtSetting<
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
               Name='LSubJenisInv.kode_subjns_LRInvestasi'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=20
               UsedAsKey=true
               KeyOrDisplayName='kode_subjns_LRInvestasi'
               FinalDisplayFieldName='kode_subjns_LRInvestasi'
-            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
               Name='LSubJenisInv.kode_subjns_LRInvestasi'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=20
               UsedAsDisplay=true
@@ -74,12 +98,16 @@ document <
               FinalDisplayFieldName='kode_subjns_LRInvestasi'
             >, object:rtf::FieldUIElmtSetting<
               Name='LSubJenisInv.deskripsi'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=100
               UsedAsDisplay=true
               KeyOrDisplayName='deskripsi'
               FinalDisplayFieldName='deskripsi'
-            >}Restrictions=''
+            >
+          }
+          Restrictions=''
           OQLText=['select from SubJnsTransLRInvestasi'#13#10,
             '[kode_jns_investasi =''D'']'#13#10,
             '(kode_subjns_LRInvestasi,'#13#10,
@@ -89,21 +117,33 @@ document <
           FieldBaseName='LSubJenisInv'
         >, object:rtf::FieldUIElmtSetting<
           Name='no_bilyet'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='VARCHAR'
           DataLength=15
         >, object:rtf::LinkUIElmtSetting<
           Name='LPihakKetiga'
           RequiredOption=roAlwaysRequired
+          Hidden=false
+          ReadOnlyControl=false
           ClassTypeName='PihakKetiga'
-          KeyFields={object:rtf::FieldUIElmtSetting<
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
               Name='LPihakKetiga.kode_pihak_ketiga'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=8
               UsedAsKey=true
               KeyOrDisplayName='kode_pihak_ketiga'
               FinalDisplayFieldName='kode_pihak_ketiga'
-            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
               Name='LPihakKetiga.kode_pihak_ketiga'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=8
               UsedAsDisplay=true
@@ -111,12 +151,16 @@ document <
               FinalDisplayFieldName='kode_pihak_ketiga'
             >, object:rtf::FieldUIElmtSetting<
               Name='LPihakKetiga.nama_pihak_ketiga'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=100
               UsedAsDisplay=true
               KeyOrDisplayName='nama_pihak_ketiga'
               FinalDisplayFieldName='nama_pihak_ketiga'
-            >}Restrictions=''
+            >
+          }
+          Restrictions=''
           OQLText=['select from PihakKetiga'#13#10,
             '('#13#10,
             '  kode_pihak_ketiga,'#13#10,
@@ -131,22 +175,33 @@ document <
           FieldBaseName='LPihakKetiga'
         >, object:rtf::FieldUIElmtSetting<
           Name='equivalent_rate'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='DOUBLE'
           DataLength=0
         >, object:rtf::FieldUIElmtSetting<
           Name='tgl_buka'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='TIMESTAMP'
           DataLength=0
         >, object:rtf::FieldUIElmtSetting<
           Name='Rekening_Deposito'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='VARCHAR'
           DataLength=20
         >, object:rtf::LinkUIElmtSetting<
           Name='LRincianPaketInvestasi'
+          Hidden=false
+          ReadOnlyControl=false
           ControlCaption='Paket Investasi'
           ClassTypeName='RincianPaketInvestasi'
-          KeyFields={object:rtf::FieldUIElmtSetting<
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
               Name='LRincianPaketInvestasi.kode_paket_investasi'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=2
               UsedAsKey=true
@@ -154,12 +209,19 @@ document <
               FinalDisplayFieldName='kode_paket_investasi'
             >, object:rtf::FieldUIElmtSetting<
               Name='LRincianPaketInvestasi.kode_jns_investasi'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=3
               UsedAsKey=true
               KeyOrDisplayName='kode_jns_investasi'
               FinalDisplayFieldName='kode_jns_investasi'
-            >}DisplayedFields={}Restrictions=''
+            >
+          }
+          DisplayedFields={
+
+          }
+          Restrictions=''
           OQLText=['select from RincianPaketInvestasi'#13#10,
             '['#13#10,
             '  kode_jns_investasi = ''D'''#13#10,
@@ -176,16 +238,27 @@ document <
           FieldBaseName='LRincianPaketInvestasi'
         >, object:rtf::LinkUIElmtSetting<
           Name='LAccrual'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Accrual'
           ClassTypeName='ACCRUAL'
-          KeyFields={object:rtf::FieldUIElmtSetting<
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
               Name='LAccrual.accrual_code'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=10
               UsedAsKey=true
               KeyOrDisplayName='accrual_code'
               FinalDisplayFieldName='accrual_code'
-            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
               Name='LAccrual.accrual_code'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=10
               UsedAsDisplay=true
@@ -193,26 +266,39 @@ document <
               FinalDisplayFieldName='accrual_code'
             >, object:rtf::FieldUIElmtSetting<
               Name='LAccrual.accrual_day'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='INTEGER'
               DataLength=0
               UsedAsDisplay=true
               KeyOrDisplayName='accrual_day'
               FinalDisplayFieldName='accrual_day'
-            >}Restrictions=''
+            >
+          }
+          Restrictions=''
           FieldBaseName='LAccrual'
         >, object:rtf::LinkUIElmtSetting<
           Name='LPayingAgent'
-          ControlCaption=''
+          Hidden=true
+          ReadOnlyControl=false
           ClassTypeName='PAYINGAGENT'
-          KeyFields={object:rtf::FieldUIElmtSetting<
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
               Name='LPayingAgent.agent_code'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=10
               UsedAsKey=true
               KeyOrDisplayName='agent_code'
               FinalDisplayFieldName='agent_code'
-            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
               Name='LPayingAgent.agent_code'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=10
               UsedAsDisplay=true
@@ -220,25 +306,39 @@ document <
               FinalDisplayFieldName='agent_code'
             >, object:rtf::FieldUIElmtSetting<
               Name='LPayingAgent.agent_name'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=50
               UsedAsDisplay=true
               KeyOrDisplayName='agent_name'
               FinalDisplayFieldName='agent_name'
-            >}Restrictions=''
+            >
+          }
+          Restrictions=''
           FieldBaseName='LPayingAgent'
         >, object:rtf::LinkUIElmtSetting<
           Name='LBroker'
-          ClassTypeName='BROKER'
-          KeyFields={object:rtf::FieldUIElmtSetting<
+          Hidden=true
+          ReadOnlyControl=false
+          ClassTypeName='Broker'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
               Name='LBroker.id'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='INTEGER'
               DataLength=0
               UsedAsKey=true
               KeyOrDisplayName='id'
               FinalDisplayFieldName='id'
-            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
               Name='LBroker.broker_code'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=10
               UsedAsDisplay=true
@@ -246,18 +346,25 @@ document <
               FinalDisplayFieldName='broker_code'
             >, object:rtf::FieldUIElmtSetting<
               Name='LBroker.broker_name'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=100
               UsedAsDisplay=true
               KeyOrDisplayName='broker_name'
               FinalDisplayFieldName='broker_name'
-            >}Restrictions=''
+            >
+          }
+          Restrictions=''
           FieldBaseName='LBroker'
-        >}Name='pData'
+        >
+      }
+      Name='pData'
       Width=496
       Height=360
       UIPart=$UIPARTS['uipRegisterDeposito']
-      Controls={*object:rtf::DBLookupEdit<
+      Controls={
+        *object:rtf::DBLookupEdit<
           Name='LSubJenisInv'
           Top=20
           Left=20
@@ -269,7 +376,6 @@ document <
           Name='no_bilyet'
           Top=76
           Left=20
-          Color=0
           ControlCaption='No bilyet'
           LayoutOrder=3
         >, *object:rtf::DBLookupEdit<
@@ -283,23 +389,20 @@ document <
           DirectInput=true
         >, *object:rtf::DBEdit<
           Name='equivalent_rate'
-          Top=216
+          Top=188
           Left=20
-          Color=0
           ControlCaption='Interest Rate'
           LayoutOrder=6
         >, *object:rtf::DBDateEdit<
           Name='tgl_buka'
-          Top=272
+          Top=216
           Left=20
-          Color=0
-          ControlCaption='tgl buka'
+          ControlCaption='Tanggal Buka'
           LayoutOrder=10
         >, *object:rtf::DBEdit<
           Name='Rekening_Deposito'
           Top=48
           Left=20
-          Color=0
           ControlCaption='Nomor Rekening'
         >, *object:rtf::DBLookupEdit<
           Name='LRincianPaketInvestasi'
@@ -314,29 +417,20 @@ document <
           ControlCaption='Accrual'
           LookupField='LAccrual.accrual_day'
           DisplayLookupField=true
-        >, *object:rtf::DBLookupEdit<
-          Name='LPayingAgent'
-          Top=188
-          Left=20
-          ControlCaption='Payment Bank'
-          LookupField='LPayingAgent.agent_name'
-          DisplayLookupField=true
-        >, *object:rtf::DBLookupEdit<
-          Name='LBroker'
-          Top=244
-          Left=20
-          ControlCaption='Broker'
-          LookupField='LBroker.broker_name'
-          DisplayLookupField=true
-        >}EqualCaptionWidth=120
+        >
+      }
+      EqualCaptionWidth=120
       ControlLeftMargin=20
       ControlTopMargin=20
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
     >, object:rtf::Panel<
-      Elements={object:rtf::FieldUIElmtSetting<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
           Name='jenisJatuhTempo'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='INTEGER'
           DataLength=0
           EnumeratedValues=['1=1 Bulan'#13#10,
@@ -346,10 +440,14 @@ document <
             '0=On Call'#13#10]
         >, object:rtf::FieldUIElmtSetting<
           Name='jmlHariOnCall'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='INTEGER'
           DataLength=0
         >, object:rtf::FieldUIElmtSetting<
           Name='treatmentPokok'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='VARCHAR'
           DataLength=1
           EnumeratedValues=['A=ARO'#13#10,
@@ -357,6 +455,8 @@ document <
             'P=Pindah Buku'#13#10]
         >, object:rtf::FieldUIElmtSetting<
           Name='kapitalisir_rollover'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='VARCHAR'
           DataLength=1
           EnumeratedValues=['F=Pindah Buku'#13#10,
@@ -364,25 +464,37 @@ document <
         >, object:rtf::FieldUIElmtSetting<
           Name='biaya'
           Hidden=true
+          ReadOnlyControl=false
           DataTypeName='DOUBLE'
           DataLength=0
         >, object:rtf::FieldUIElmtSetting<
           Name='no_rekening'
           Hidden=true
+          ReadOnlyControl=false
           DataTypeName='VARCHAR'
           DataLength=20
         >, object:rtf::LinkUIElmtSetting<
           Name='LMasterGiro'
+          Hidden=false
+          ReadOnlyControl=false
           ClassTypeName='MasterGiro'
-          KeyFields={object:rtf::FieldUIElmtSetting<
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
               Name='LMasterGiro.acc_giro'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=20
               UsedAsKey=true
               KeyOrDisplayName='acc_giro'
               FinalDisplayFieldName='acc_giro'
-            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
               Name='LMasterGiro.no_giro'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=30
               UsedAsDisplay=true
@@ -390,12 +502,16 @@ document <
               FinalDisplayFieldName='no_giro'
             >, object:rtf::FieldUIElmtSetting<
               Name='LMasterGiro.acc_giro'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=20
               UsedAsDisplay=true
               KeyOrDisplayName='acc_giro'
               FinalDisplayFieldName='acc_giro'
-            >}Restrictions=''
+            >
+          }
+          Restrictions=''
           OQLText=['select from MasterGiro'#13#10,
             '('#13#10,
             '  no_giro,'#13#10,
@@ -404,15 +520,17 @@ document <
             ') then order by no_giro;']
           LookupOption=loCustomOQL
           FieldBaseName='LMasterGiro'
-        >}Name='pDataRight'
+        >
+      }
+      Name='pDataRight'
       Width=425
       Height=249
       UIPart=$UIPARTS['uipRegisterDeposito']
-      Controls={*object:rtf::DBComboBox<
+      Controls={
+        *object:rtf::DBComboBox<
           Name='jenisJatuhTempo'
           Top=20
           Left=20
-          Color=0
           ControlCaption='jangka waktu'
           LayoutOrder=1
           OnChange='jenisJatuhTempoChange'
@@ -421,21 +539,18 @@ document <
           Top=48
           Left=20
           Visible=false
-          Color=0
           ControlCaption='jatuh tempo on call (hari)'
           LayoutOrder=2
         >, *object:rtf::DBComboBox<
           Name='treatmentPokok'
           Top=76
           Left=20
-          Color=0
           ControlCaption='treatment pokok'
           LayoutOrder=3
         >, *object:rtf::DBComboBox<
           Name='kapitalisir_rollover'
           Top=104
           Left=20
-          Color=0
           ControlCaption='treatment bunga'
           LayoutOrder=4
           OnChange='kapitalisir_rolloverChange'
@@ -449,7 +564,9 @@ document <
           LayoutOrder=5
           LookupField='LMasterGiro.acc_giro'
           DisplayLookupField=false
-        >}EqualCaptionWidth=120
+        >
+      }
+      EqualCaptionWidth=120
       ControlLeftMargin=20
       ControlTopMargin=20
       DefaultControlHeight=21
@@ -457,30 +574,42 @@ document <
       RowControlGap=7
     >, object:rtf::DualSplit<
       Name='DualSplitRight'
-      Width=424
-      Height=351
+      Width=240
+      Height=96
       Container1=$CONTAINERS['pDataRight']
     >, object:rtf::MultiSplit<
       Name='MSMain'
-      Width=921
-      Height=559
-      Side1Containers={$CONTAINERS['DualSplitTop']
-      }Side2Containers={$CONTAINERS['DSBottom']
-      }SpaceContainer=$CONTAINERS['gRincianInvestasi']
+      Width=320
+      Height=320
+      Side1Containers={
+        $CONTAINERS['DualSplitTop']
+
+      }
+      Side2Containers={
+        $CONTAINERS['DSBottom']
+
+      }
+      SpaceContainer=$CONTAINERS['gRincianInvestasi']
     >, object:rtf::DualSplit<
       Name='DualSplitTop'
-      Width=921
+      Width=240
       Height=351
       Container1=$CONTAINERS['pData']
       Container2=$CONTAINERS['DualSplitRight']
       SplitDirection=sdrSplitLeftRight
     >, object:rtf::Grid<
-      Elements={object:rtf::LinkUIElmtSetting<
+      Elements={
+        object:rtf::LinkUIElmtSetting<
           Name='LRincianPaketInvestasi'
           RequiredOption=roAlwaysRequired
+          Hidden=false
+          ReadOnlyControl=false
           ClassTypeName='RincianPaketInvestasi'
-          KeyFields={object:rtf::FieldUIElmtSetting<
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
               Name='LRincianPaketInvestasi.kode_paket_investasi'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=2
               UsedAsKey=true
@@ -488,13 +617,20 @@ document <
               FinalDisplayFieldName='kode_paket_investasi'
             >, object:rtf::FieldUIElmtSetting<
               Name='LRincianPaketInvestasi.kode_jns_investasi'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=3
               UsedAsKey=true
               KeyOrDisplayName='kode_jns_investasi'
               FinalDisplayFieldName='kode_jns_investasi'
-            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
               Name='LRincianPaketInvestasi.kode_paket_investasi'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=2
               UsedAsDisplay=true
@@ -502,6 +638,8 @@ document <
               FinalDisplayFieldName='kode_paket_investasi'
             >, object:rtf::FieldUIElmtSetting<
               Name='LRincianPaketInvestasi.LPaketInvestasi.nama_paket_investasi'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=30
               UsedAsDisplay=true
@@ -509,12 +647,16 @@ document <
               FinalDisplayFieldName='nama_paket_investasi'
             >, object:rtf::FieldUIElmtSetting<
               Name='LRincianPaketInvestasi.maks_proporsi'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='DOUBLE'
               DataLength=0
               UsedAsDisplay=true
               KeyOrDisplayName='maks_proporsi'
               FinalDisplayFieldName='maks_proporsi'
-            >}Restrictions=''
+            >
+          }
+          Restrictions=''
           OQLText=['select from RincianPaketInvestasi'#13#10,
             '['#13#10,
             '  kode_jns_investasi = ''D'''#13#10,
@@ -529,21 +671,25 @@ document <
           FieldBaseName='LRincianPaketInvestasi'
         >, object:rtf::FieldUIElmtSetting<
           Name='dpkPaket'
+          Hidden=false
           ReadOnlyControl=true
           DataTypeName='DOUBLE'
           DataLength=0
         >, object:rtf::FieldUIElmtSetting<
           Name='nilaiMaksProporsi'
+          Hidden=false
           ReadOnlyControl=true
           DataTypeName='DOUBLE'
           DataLength=0
         >, object:rtf::FieldUIElmtSetting<
           Name='dpkInvExisting'
+          Hidden=false
           ReadOnlyControl=true
           DataTypeName='DOUBLE'
           DataLength=0
         >, object:rtf::FieldUIElmtSetting<
           Name='dpkTersedia'
+          Hidden=false
           ReadOnlyControl=true
           DataTypeName='DOUBLE'
           DataLength=0
@@ -555,11 +701,15 @@ document <
           DataLength=0
         >, object:rtf::FieldUIElmtSetting<
           Name='nominal'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='DOUBLE'
           DataLength=0
-        >}Name='gRincianInvestasi'
-      Width=921
-      Height=46
+        >
+      }
+      Name='gRincianInvestasi'
+      Width=240
+      Height=240
       Visible=false
       UIPart=$UIPARTS['uipRincianRegisterDeposito']
       ControlLeftMargin=8
@@ -568,7 +718,8 @@ document <
       HorizontalControlGap=4
       RowControlGap=7
       Caption='&Rincian Investasi'
-      Columns={*object:rtf::GridColumn<
+      Columns={
+        *object:rtf::GridColumn<
           Name='LRincianPaketInvestasi.kode_paket_investasi'
           InputStyle=cisLookup
           EnumeratedValues=''
@@ -639,32 +790,39 @@ document <
           FieldName='nominal'
           DisplayFormat='#,##0.00'
           Width=110
-        >}>, object:rtf::DualSplit<
+        >
+      }
+    >, object:rtf::DualSplit<
       Name='DSMain'
-      Width=921
-      Height=600
+      Width=240
+      Height=96
       Container1=$CONTAINERS['pButton']
       Container2=$CONTAINERS['MSMain']
       InversedAlign=true
     >, object:rtf::Panel<
-      Elements={object:rtf::FieldUIElmtSetting<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
           Name='nominal'
+          Hidden=false
           ReadOnlyControl=true
           DataTypeName='DOUBLE'
           DataLength=0
-        >}Name='pNominal'
+        >
+      }
+      Name='pNominal'
       Width=400
       Height=240
       UIPart=$UIPARTS['uipRegisterDeposito']
-      Controls={*object:rtf::DBEdit<
+      Controls={
+        *object:rtf::DBEdit<
           Name='nominal'
           Top=20
           Left=20
           Color=-2147483624
           ControlCaption='Nominal Pembukaan'
-          FieldName='nominal'
-          DisplayFormat='#,##0.00'
-        >}EqualCaptionWidth=120
+        >
+      }
+      EqualCaptionWidth=120
       ControlLeftMargin=20
       ControlTopMargin=20
       DefaultControlHeight=21
@@ -675,12 +833,12 @@ document <
       Width=400
       Height=40
       Bordered=true
-      Controls={object:rtf::Button<
+      Controls={
+        object:rtf::Button<
           Name='btnOK'
           Layout=clNewLine
           Top=8
           Left=20
-          Color=0
           ControlCaption=''
           Caption='&Simpan'
           Default=true
@@ -690,7 +848,6 @@ document <
           Layout=clNextSide
           Top=8
           Left=99
-          Color=0
           ControlCaption=''
           Caption='&Batal'
           Cancel=true
@@ -701,7 +858,6 @@ document <
           Top=8
           Left=178
           Visible=false
-          Color=0
           ControlCaption=''
           Caption='&Batal'
           ExitAction=eaQuitCancel
@@ -713,47 +869,57 @@ document <
           Width=105
           Height=25
           Visible=false
-          Color=0
           ControlCaption=''
           Caption='&Cetak Ulang Advis'
           OnClick='btnPrintClick'
-        >}ControlLeftMargin=20
+        >
+      }
+      ControlLeftMargin=20
       ControlTopMargin=8
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
     >, object:rtf::Panel<
-      Elements={object:rtf::FieldUIElmtSetting<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
           Name='user_id'
+          Hidden=false
           ReadOnlyControl=true
           DataTypeName='VARCHAR'
           DataLength=20
         >, object:rtf::FieldUIElmtSetting<
           Name='terminal_id'
+          Hidden=false
           ReadOnlyControl=true
           DataTypeName='VARCHAR'
           DataLength=15
         >, object:rtf::FieldUIElmtSetting<
           Name='tanggal_register'
           Hidden=true
+          ReadOnlyControl=false
           DataTypeName='TIMESTAMP'
           DataLength=0
         >, object:rtf::FieldUIElmtSetting<
           Name='id_registerinvestasi'
           AccessOption=aoReadOnly
           Hidden=true
+          ReadOnlyControl=false
           DataTypeName='INTEGER'
           DataLength=0
         >, object:rtf::FieldUIElmtSetting<
           Name='mode'
           Hidden=true
+          ReadOnlyControl=false
           DataTypeName='varchar'
           DataLength=20
-        >}Name='pRegister'
+        >
+      }
+      Name='pRegister'
       Width=240
       Height=40
       UIPart=$UIPARTS['uipRegisterDeposito']
-      Controls={*object:rtf::DBEdit<
+      Controls={
+        *object:rtf::DBEdit<
           Name='user_id'
           Top=20
           Left=20
@@ -767,7 +933,9 @@ document <
           Color=-2147483624
           ControlCaption='terminal id'
           ReadOnly=true
-        >}EqualCaptionWidth=120
+        >
+      }
+      EqualCaptionWidth=120
       ControlLeftMargin=20
       ControlTopMargin=20
       DefaultControlHeight=21
@@ -775,9 +943,11 @@ document <
       RowControlGap=7
     >, object:rtf::DualSplit<
       Name='DSBottom'
-      Width=921
+      Width=240
       Height=160
       Container1=$CONTAINERS['pNominal']
       Container2=$CONTAINERS['pRegister']
       SplitDirection=sdrSplitLeftRight
-    >}>
+    >
+  }
+>

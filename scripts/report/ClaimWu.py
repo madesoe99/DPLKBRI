@@ -192,7 +192,7 @@ def WriteToFile(config, parameter, oFile):
   #config.SendDebugMsg(resSQL)
 
   if (rSQL.nama_lengkap == None or rSQL.nama_lengkap == ''):
-     raise 'Error','\nBukan Peserta Wasiat Ummat.....!'
+     raise Exception, 'Error' + '\nBukan Peserta Wasiat Ummat.....!'
   else:
      nama_lengkap        = rSQL.nama_lengkap
      y, m, d             = rSQL.tgl_akseptasi[:3]

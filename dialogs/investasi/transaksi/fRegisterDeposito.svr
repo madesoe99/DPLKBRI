@@ -4,17 +4,23 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rpclass::TPClassUIDefList<
-  UIDefs={object:rpclass::TPClassUIDef<
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
       Name='uipRegisterDeposito'
       PClassName='RegisterDeposito'
       LoadedFieldList='LSubJenisInv.kode_subjns_LRInvestasi;LSubJenisInv.kode_subjns_LRInvestasi;LSubJenisInv.deskripsi;no_bilyet;LPihakKetiga.kode_pihak_ketiga;LPihakKetiga.kode_pihak_ketiga;LPihakKetiga.nama_pihak_ketiga;equivalent_rate;tgl_buka;Rekening_Deposito;LRincianPaketInvestasi.kode_paket_investasi;LRincianPaketInvestasi.kode_jns_investasi;LAccrual.accrual_code;LAccrual.accrual_code;LAccrual.accrual_day;LPayingAgent.agent_code;LPayingAgent.agent_code;LPayingAgent.agent_name;jenisJatuhTempo;jmlHariOnCall;treatmentPokok;kapitalisir_rollover;biaya;no_rekening;LMasterGiro.acc_giro;LMasterGiro.no_giro;LMasterGiro.acc_giro;nominal;user_id;terminal_id;tanggal_register;id_registerinvestasi'
       StoredFieldList='LSubJenisInv;no_bilyet;LPihakKetiga;equivalent_rate;tgl_buka;Rekening_Deposito;LRincianPaketInvestasi;LAccrual;LPayingAgent;LBroker;jenisJatuhTempo;jmlHariOnCall;treatmentPokok;kapitalisir_rollover;biaya;no_rekening;LMasterGiro;nominal;user_id;terminal_id;tanggal_register'
-      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
           Name='mode'
           DataTypeName='varchar'
           DataLength=20
-        >}CustomLoadedLinks={object:rpclass::TCustomLoadedLink<
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
           Name='LSubJenisInv'
           ClassTypeName='SubJnsTransLRInvestasi'
           FieldNames='kode_subjns_LRInvestasi;kode_subjns_LRInvestasi;deskripsi'
@@ -36,18 +42,21 @@ document <
           FieldNames='agent_code;agent_code;agent_name'
         >, object:rpclass::TCustomLoadedLink<
           Name='LBroker'
-          ClassTypeName='BROKER'
+          ClassTypeName='Broker'
           FieldNames='id;broker_code;broker_name'
         >, object:rpclass::TCustomLoadedLink<
           Name='LMasterGiro'
           ClassTypeName='MasterGiro'
           FieldNames='acc_giro;no_giro;acc_giro'
-        >}Mode=imSingleRow
+        >
+      }
+      Mode=imSingleRow
       CreateInstanceOnNew=true
       AfterApplyRow='uipRegisterDepositoApplyRow'
     >, object:rpclass::TPClassUIDef<
       Name='uipParameter'
-      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
           Name='nowDate'
           DataTypeName='varchar'
           DataLength=10
@@ -59,7 +68,9 @@ document <
           Name='strInv'
           DataTypeName='varchar'
           DataLength=20
-        >}Mode=imSingleRow
+        >
+      }
+      Mode=imSingleRow
       CreateInstanceOnNew=true
     >, object:rpclass::TPClassUIDef<
       Name='uipRincianRegisterDeposito'
@@ -67,12 +78,17 @@ document <
       ListName='Ls_RincianRegisterInvestasi'
       LoadedFieldList='LRincianPaketInvestasi.kode_paket_investasi;LRincianPaketInvestasi.kode_jns_investasi;LRincianPaketInvestasi.kode_paket_investasi;LRincianPaketInvestasi.LPaketInvestasi.nama_paket_investasi;LRincianPaketInvestasi.maks_proporsi;dpkPaket;nilaiMaksProporsi;dpkInvExisting;dpkTersedia;nominalGiro;nominal'
       StoredFieldList='LRincianPaketInvestasi;dpkPaket;nilaiMaksProporsi;dpkInvExisting;dpkTersedia;nominalGiro;nominal'
-      CustomLoadedLinks={object:rpclass::TCustomLoadedLink<
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
           Name='LRincianPaketInvestasi'
           ClassTypeName='RincianPaketInvestasi'
           FieldNames='kode_paket_investasi;kode_jns_investasi;kode_paket_investasi;LPaketInvestasi.nama_paket_investasi;maks_proporsi'
-        >}CreateInstanceOnNew=true
+        >
+      }
+      CreateInstanceOnNew=true
       DeleteOnDel=true
       SetMasterDetailRelationship=true
-    >}OnGeneralSetData='FormGeneralSetData'
+    >
+  }
+  OnGeneralSetData='FormGeneralSetData'
 >

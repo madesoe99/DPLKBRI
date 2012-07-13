@@ -79,7 +79,7 @@ def ScriptMain(config, tglAwal, tglAkhir):
   
   if tglAwal[2] != '-' or tglAwal[5] != '-' \
      or tglAkhir[2] != '-' or tglAkhir[5] != '-' :
-     raise 'ERROR','Format tanggal salah DD-MM-YYY (untuk tanggal awal dan akhir)'
+     raise Exception, 'ERROR' + 'Format tanggal salah DD-MM-YYY (untuk tanggal awal dan akhir)'
   d = 1
   m = int(tglAwal[3:5])
   y = int(tglAwal[6:])
@@ -90,7 +90,7 @@ def ScriptMain(config, tglAwal, tglAkhir):
   dtTglAkhir = config.ModLibUtils.EncodeDate(y,m,d)
   
   if dtTglAwal >= dtTglAkhir :
-     raise 'ERROR','Tanggal proses minimal berbeda 1 bln'
+     raise Exception, 'ERROR' + 'Tanggal proses minimal berbeda 1 bln'
   
   consoleID = 'KolektibilitasWasiatUmmat'
 
@@ -124,7 +124,7 @@ if __name__ == '__main__':
 
 
     if len(sys.argv) < 3:
-          raise 'argument error', 'Exec_CollectivityWasiatUmmatAwal.py <Begin date DD-MM-YYYY> <End date DD-MM-YYYY>'
+          raise Exception, 'argument error' +  'Exec_CollectivityWasiatUmmatAwal.py <Begin date DD-MM-YYYY> <End date DD-MM-YYYY>'
     #
     print 'Configuration File : %s' % CONFIG_FILE
     ScriptMain(config,sys.argv[2],sys.argv[3])

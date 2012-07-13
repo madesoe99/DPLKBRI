@@ -28,7 +28,7 @@ def GetInfoPassbook(config, parameter, returns):
         Rekening.key = No_Peserta
         
         if Rekening.isnull:
-            raise "","Nomor Peserta Tidak Ditemukan"
+            raise Exception, "" + "Nomor Peserta Tidak Ditemukan"
         
         sReg = "SELECT * \
         FROM registerpassbook \
@@ -36,7 +36,7 @@ def GetInfoPassbook(config, parameter, returns):
         RegisterPassbook = config.CreateSQL(sReg).RawResult
         
         if Rekening.has_passbook <> 'T' or RegisterPassbook.Eof:
-            raise "","Rekening Tidak Memiliki Layanan Passbook"
+            raise Exception, "" + "Rekening Tidak Memiliki Layanan Passbook"
           
         # Cari objek nasabah
         Nasabah = Rekening.LNasabahDPLK
@@ -124,7 +124,7 @@ def PrintPassbookTransaction(config, parameter, returnpacket):
       TotalTransaksi += CountTransactionData(No_Peserta,dateQueryCondition)
   
       if TotalTransaksi <= 0 :
-         raise '\nPERINGATAN','Tidak Ada Transaksi Yang Dicetak'
+         raise Exception, '\nPERINGATAN' + 'Tidak Ada Transaksi Yang Dicetak'
   
       # Data Transaksi yang dicetak
       ReportData = chr(15)
@@ -235,7 +235,7 @@ def PrintPassbookTransaction(config, parameter, returnpacket):
       RegisterPassbook.key = rReg.id_register
       
       if RegisterPassbook.isnull:
-          raise "","Rekening Tidak Memiliki Layanan Passbook"
+          raise Exception, "" + "Rekening Tidak Memiliki Layanan Passbook"
       
       sBaseFileName = 'TransaksiPassbook.txt'
       sFileName = config.UserHomeDirectory + sBaseFileName

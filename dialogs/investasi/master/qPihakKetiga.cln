@@ -4,15 +4,17 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rtf::Form<
+>
+object:rtf::Form<
   MainContainer=$CONTAINERS['qPihakKetiga']
-  Caption='Daftar Pihak Ketiga'
+  Caption='Daftar Pihak Ketiga (Issuer / MI / Emiten)'
   State=rsMaximized
   Left=50
   Top=50
   Width=800
   Height=600
-  Containers={object:rtf::Query<
+  Containers={
+    object:rtf::Query<
       Name='qPihakKetiga'
       Width=800
       Height=600
@@ -25,6 +27,8 @@ document <
       OQLText=['select from PihakKetiga'#13#10,
         '('#13#10,
         '  kode_pihak_ketiga,'#13#10,
+        '  is_level_detil$ as is_level_detil,'#13#10,
+        '  kode_induk,'#13#10,
         '  nama_pihak_ketiga,'#13#10,
         '  alamat_pihak_ketiga,'#13#10,
         '  self_investment$ as self_investment,'#13#10,
@@ -35,9 +39,17 @@ document <
         ') then order by kode_pihak_ketiga;']
       DirectDisplay=true
       WindowSize=20
-      Columns={object:rtf::QueryColumn<
+      Columns={
+        object:rtf::QueryColumn<
           FieldName='PihakKetiga.kode_pihak_ketiga'
           Caption='Kode Pihak Ketiga'
+        >, object:rtf::QueryColumn<
+          FieldName='PihakKetiga.kode_induk'
+          Caption='Grup'
+        >, object:rtf::QueryColumn<
+          FieldName='PihakKetiga.is_level_detil'
+          Width=75
+          Caption='Status Detil'
         >, object:rtf::QueryColumn<
           FieldName='PihakKetiga.nama_pihak_ketiga'
           Caption='Nama Pihak Ketiga'
@@ -58,5 +70,9 @@ document <
         >, object:rtf::QueryColumn<
           FieldName='PihakKetiga.npwp'
           Caption='N P W P'
-        >}EnableColumns=true
-    >}>
+        >
+      }
+      EnableColumns=true
+    >
+  }
+>

@@ -1,7 +1,7 @@
 def SetControlsForView(form):
-  form.GetPanelByName('pDataLeft').SetAllControlsReadOnly()
-  form.GetPanelByName('pDataRight').SetAllControlsReadOnly() 
-  form.GetPanelByName('pPerjanjian').SetAllControlsReadOnly()
+  #form.GetPanelByName('pDataLeft').SetAllControlsReadOnly()
+  #form.GetPanelByName('pDataRight').SetAllControlsReadOnly() 
+  #form.GetPanelByName('pPerjanjian').SetAllControlsReadOnly()
   form.GetControlByName('pButton.btnOK').Enabled = 0
   form.GetControlByName('pButton.btnOK').Default = 0
   form.GetControlByName('pButton.btnCancel').Caption = '&Tutup'

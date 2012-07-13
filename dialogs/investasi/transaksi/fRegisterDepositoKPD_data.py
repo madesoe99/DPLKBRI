@@ -27,17 +27,17 @@ def uipRegisterDepositoApplyRow(uipRegisterDeposito, oRegisterDeposito):
   config = uipRegisterDeposito.UIDefList.Config
 
   if oRegisterDeposito.nominal_deposito < moduleapi.zero_approx:
-    raise 'Kesalahan Register Deposito KPD','Nilai nominal harus lebih besar dari nol.'
+    raise Exception, 'Kesalahan Register Deposito KPD' + 'Nilai nominal harus lebih besar dari nol.'
 
   if (oRegisterDeposito.nisbah < 0.0) or (oRegisterDeposito.nisbah >= 100.0):
-    raise 'Kesalahan Register Deposito KPD','Nilai nisbah harus lebih besar dari nol dan kurang dari 100.'
+    raise Exception, 'Kesalahan Register Deposito KPD' + 'Nilai nisbah harus lebih besar dari nol dan kurang dari 100.'
 
   if oRegisterDeposito.jenisJatuhTempo != 0:
     # bukan deposito on call
     oRegisterDeposito.tgl_jatuh_tempo = moduleapi.HitungJatuhTempo(config, oRegisterDeposito.tgl_buka, oRegisterDeposito.jenisJatuhTempo)
   else:
     if oRegisterDeposito.jmlHariOnCall <= 0:
-      raise 'Kesalahan Register Deposito KPD','Jumlah hari jatuh tempo on call harus lebih besar dari nol.'
+      raise Exception, 'Kesalahan Register Deposito KPD' + 'Jumlah hari jatuh tempo on call harus lebih besar dari nol.'
     # deposito on call
     oRegisterDeposito.tgl_jatuh_tempo = moduleapi.HitungJatuhTempo(config, oRegisterDeposito.tgl_buka, oRegisterDeposito.jenisJatuhTempo, oRegisterDeposito.jmlHariOnCall)
 

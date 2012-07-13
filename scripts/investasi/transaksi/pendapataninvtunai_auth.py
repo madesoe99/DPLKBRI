@@ -1,7 +1,3 @@
-import sys
-sys.path.append('c:/dafapp/dplk07/script_modules')
-import moduleapi
-
 def DAFScriptMain(config, parameter, returnpacket):
   # config: ISysConfig object
   # parameter: TPClassUIDataPacket

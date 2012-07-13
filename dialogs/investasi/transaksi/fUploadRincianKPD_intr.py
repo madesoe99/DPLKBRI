@@ -29,6 +29,6 @@ class fUploadRincianKPD:
     rph = self.FormObject.CallServerMethod('ProsesUpload', ph)
 
     if rph.FirstRecord.Is_Err:
-      raise 'PERINGATAN', rph.FirstRecord.Err_Msg
+      raise Exception, 'PERINGATAN' +  rph.FirstRecord.Err_Msg
     else:
       self.app.ShowMessage('Upload rincian KPD berhasil')

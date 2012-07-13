@@ -25,7 +25,7 @@ def GetBatch(config):
 #     resp = ki.send_request(req)
 # 
 #     if resp.error_code != ki.EC_OK:
-#         raise 'getbatch', resp.description
+#         raise Exception, 'getbatch' +  resp.description
         
     userID = config.SecurityContext.UserID
     y,m,d = time.localtime()[:3]
@@ -47,7 +47,7 @@ def begin_session(config):
     return session
     
 def commit_session(config, session, batch_code):
-    if session == None: raise 'commit_session', 'session is not exist'
+    if session == None: raise Exception, 'commit_session' +  'session is not exist'
 
     ki = kiblat_interface
 
@@ -66,7 +66,7 @@ def commit_session(config, session, batch_code):
     resp = ki.send_request(req)
 
     if resp.error_code != ki.EC_OK:
-        raise 'commit_session', resp.description
+        raise Exception, 'commit_session' +  resp.description
 
 def rollback_session(config, session, batch_code):
     ki = kiblat_interface
@@ -85,7 +85,7 @@ def rollback_session(config, session, batch_code):
     resp = ki.send_request(req)
 
     if resp.error_code != ki.EC_OK:
-        raise 'rollback_session', resp.description
+        raise Exception, 'rollback_session' +  resp.description
 
 def new_transaction(config, session, batch_code, account_number, transaction_code, \
 description1, description2, transaction_type, transaction_value):
@@ -115,7 +115,7 @@ description1, description2, transaction_type, transaction_value):
     resp = ki.send_request(req)
 
     if resp.error_code != ki.EC_OK:
-        raise 'new_transaction', resp.description
+        raise Exception, 'new_transaction' +  resp.description
 
 
 '''class batch:
@@ -139,8 +139,8 @@ description1, description2, transaction_type, transaction_value):
         if not propHandled:
             #~ objdata = self.batchobj.GetFieldByName(name)
             #~ if objdata == None: objdata = self.batchobj.GetLinkByName(name)
-            #~ if objdata == None: raise 'getattr', '%s unknown attribut' % (name)
-            raise 'getattr', '%s unknown attribut' % (name)
+            #~ if objdata == None: raise Exception, 'getattr' +  '%s unknown attribut' % (name)
+            raise Exception, 'getattr' +  '%s unknown attribut' % (name)
 
     def __setattr__(self, name, value):
         self.__vdict[name] = value
@@ -163,7 +163,7 @@ description1, description2, transaction_type, transaction_value):
         resp = ki.send_request(req)
 
         if resp.error_code != ki.EC_OK:
-            raise 'closebatch', resp.description
+            raise Exception, 'closebatch' +  resp.description
 
         #self.obj.closed = 'T'
 
@@ -174,7 +174,7 @@ description1, description2, transaction_type, transaction_value):
         self.obj.last_series_number = self.obj.last_series_number + 1
 
     def commit_session(self):
-        if self.session_id == None: raise 'commit_session', 'session is not exist'
+        if self.session_id == None: raise Exception, 'commit_session' +  'session is not exist'
 
         config = self.config
         ki = kiblat_interface
@@ -196,12 +196,12 @@ description1, description2, transaction_type, transaction_value):
         resp = ki.send_request(req)
 
         if resp.error_code != ki.EC_OK:
-            raise 'commit_session', resp.description
+            raise Exception, 'commit_session' +  resp.description
 
         self.__session_id = None
 
     def rollback_session(self):
-        if self.session_id == None: raise 'rollback_session', 'session is not exist'
+        if self.session_id == None: raise Exception, 'rollback_session' +  'session is not exist'
 
         config = self.config
         ki = kiblat_interface
@@ -221,7 +221,7 @@ description1, description2, transaction_type, transaction_value):
         resp = ki.send_request(req)
 
         if resp.error_code != ki.EC_OK:
-            raise 'rollback_session', resp.description
+            raise Exception, 'rollback_session' +  resp.description
 
         self.__session_id = None
 
@@ -266,7 +266,7 @@ class batch_transaction:
             propHandled = 0
 
         if not propHandled:
-            raise 'getattr', '%s unknown attribut' % (name)
+            raise Exception, 'getattr' +  '%s unknown attribut' % (name)
 
     def __setattr__(self, name, value):
             self.__vdict[name] = value
@@ -301,7 +301,7 @@ class batch_transaction:
         #time.sleep(0.2)
 
         if resp.error_code != ki.EC_OK:
-            raise 'send', resp.description
+            raise Exception, 'send' +  resp.description
         
         
 '''

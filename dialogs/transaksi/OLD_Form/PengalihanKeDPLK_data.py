@@ -92,7 +92,7 @@ def FormGeneralProcessData(uideflist, data):
 
       #perlu status penutupan rekening? set saat otorisasi saja!
   except:
-    raise '\nProses Error', str(sys.exc_info()[1])
+    raise Exception, '\nProses Error' +  str(sys.exc_info()[1])
 
   return 0
 

@@ -47,13 +47,13 @@ def uipSahamSetData(uipSaham):
      rec_inv.SetFieldByName('LTransactionBatch.no_batch',oBatch.no_batch)
 
   if moduleapi.IsInvestasiTutup(config, oSaham):
-    raise '\nPERINGATAN','Investasi sudah ditutup.'
+    raise Exception, '\nPERINGATAN' + 'Investasi sudah ditutup.'
 
   oSR = TransactInv.GetLastHistSaham(config, oSaham)
   rec_inv.NomSubscribe = oSR.mutasi_debet
   rec_inv.NABSubs = oSR.NAB_Awal
   if oSR.IsCommitted != 'T' :
-    raise '\nPERINGATAN','Subscribe Saham belum di otorisasi'
+    raise Exception, '\nPERINGATAN' + 'Subscribe Saham belum di otorisasi'
 
   oRR = TransactInv.GetLastRedemtSaham(config, oSaham)
   if not oRR.IsNull :
@@ -61,7 +61,7 @@ def uipSahamSetData(uipSaham):
     rec_inv.NABRedempt = oRR.NAB
     rec_inv.UPRedempt = oRR.unit_penyertaan
     if oRR.IsCommitted not in ('N','T') :
-      raise '\nPERINGATAN','Redemption Saham belum diotorisasi'
+      raise Exception, '\nPERINGATAN' + 'Redemption Saham belum diotorisasi'
 
 def FormEndProcessData(uideflist, datapacket):
   config = uideflist.Config
@@ -71,7 +71,7 @@ def FormEndProcessData(uideflist, datapacket):
   oSaham = config.CreatePObjImplProxy('Saham')
   oSaham.key = rec.id_investasi
 #   if TransactInv.CheckUpdateNAB(config, rec.Tgl_Penetapan, oSaham) :
-#       raise 'PERINGATAN', 'Transaksi Update NAB sudah dilakukan hari ini'
+#       raise Exception, 'PERINGATAN' +  'Transaksi Update NAB sudah dilakukan hari ini'
 
   strSQL = 'Select * from RedemptSaham r, transaksiinvestasi t \
             where t.id_transaksiinvestasi=r.id_transaksiinvestasi \
@@ -82,7 +82,7 @@ def FormEndProcessData(uideflist, datapacket):
     y,m,d = rSQL.tgl_transaksi[:3]
     if int(rec.Tgl_Penetapan) >= config.ModDateTime.EncodeDate(y,m,d) and \
       not TransactInv.CheckUpdateNABSaham(config, rSQL.tgl_transaksi, oSaham) :
-      raise 'PERINGATAN','ada transaksi switch tgl :%s-%s-%s, subscribe dahulu tgl tersebut' % (d,m,y)
+      raise Exception, 'PERINGATAN','ada transaksi switch tgl :%s-%s-%s, subscribe dahulu tgl tersebut' % (d,m + y)
 
   oHistNABSaham = config.CreatePObject('HistNABSaham')
   oHistNABSaham.id_investasi = rec.id_investasi
@@ -94,11 +94,11 @@ def FormEndProcessData(uideflist, datapacket):
   oHistNABSaham.unit_penyertaan = rec.unit_penyertaanbaru
   oHistNABSaham.ID_TransactionBatch = rec.GetFieldByName('LTransactionBatch.ID_TransactionBatch')
   if oHistNABSaham.ID_TransactionBatch in (0, None) :
-    raise 'PERINGATAN','Batch Transaksi belum dipilih'
+    raise Exception, 'PERINGATAN' + 'Batch Transaksi belum dipilih'
 
   if rec.jenis_perubahan != 1 and \
   not TransactInv.CheckUpdateUPSaham(config, rec.Tgl_Penetapan, oSaham, rec.jenis_perubahan) :
-      raise 'PERINGATAN','Tanggal transaksi NAB dan update UP (TOP UP/ Redempt) tidak sama'
+      raise Exception, 'PERINGATAN' + 'Tanggal transaksi NAB dan update UP (TOP UP/ Redempt) tidak sama'
   oSaham.NAB = rec.NAB_lama
 
   return 1

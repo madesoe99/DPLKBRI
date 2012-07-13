@@ -51,7 +51,7 @@ def uipDepositoSetData(uipDeposito):
 
   moduleapi.CheckTransactionValidity(config, oInvestasi, mode)
   if (prevMode in ['new', 'edit', 'view', 'viewdoc', 'auth']) and not moduleapi.IsJatuhTempo(config, oDeposito):
-    raise 'Kesalahan Rollover Deposito', 'Deposito belum jatuh tempo.'
+    raise Exception, 'Kesalahan Rollover Deposito' +  'Deposito belum jatuh tempo.'
 
   rec_tpi.SetFieldByName('LDeposito.id_investasi', oInvestasi.id_investasi)
   rec_tpi.SetFieldByName('LDeposito.no_bilyet', oInvestasi.no_bilyet)
@@ -77,7 +77,7 @@ def uipRolloverDepositoApplyRow(uipRolloverDeposito, oRolloverDeposito):
   rec_tpi = uipRolloverDeposito.ActiveRecord
 
   if not moduleapi.IsJatuhTempo(config, oRolloverDeposito.LDeposito):
-    pass#raise 'Kesalahan Rollover Deposito', 'Deposito belum jatuh tempo.'
+    pass#raise Exception, 'Kesalahan Rollover Deposito' +  'Deposito belum jatuh tempo.'
 
   if rec_tpi.lakukan_kapitalisir == 'T':
     oRolloverDeposito.mutasi_debet = oRolloverDeposito.LDeposito.akum_piutangLR

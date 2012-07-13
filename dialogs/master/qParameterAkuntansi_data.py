@@ -48,6 +48,6 @@ def FormGeneralProcessData(uideflist, data):
         o.user_id = config.SecurityContext.InitUser
         o.last_update = config.ModLibUtils.Now()
   except:
-    raise '\nProses Error','Penyimpanan hasil perubahan Parameter Akuntansi gagal!'
+    raise Exception, '\nProses Error' + 'Penyimpanan hasil perubahan Parameter Akuntansi gagal!'
 
   return 0

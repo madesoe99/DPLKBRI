@@ -12,6 +12,7 @@ import com.ihsan.lib.trace as trace
 
 #def TotalPenarikanSebelumnya(config, tgl_transaksi, noPeserta):
 def TotalPenarikanSebelumnya(config, tgl_transaksi, noRekening):  
+
   #jumlahkan total dana yang sudah pernah ditarik dalam 1 tahun sampai sblm tgl transaksi
   y,m,d = config.ModLibUtils.DecodeDate(tgl_transaksi)
   tgl_akhir = '%s/%s/%d' % (string.zfill(str(m),2),string.zfill(str(d),2),y)
@@ -209,21 +210,23 @@ def HitungPajakPengambilanManfaatAsli(AValue):
 ## PERHITUNGAN PROPORSIONAL BIAYA PENGELOLAAN / BIAYA ADMINISTRASI
 #-------------------------------------------------------------------------------
 
-def HitungProporsiBiaya(config, kode_jenis_transaksi, no_peserta, tgl_transaksi):
+#def HitungProporsiBiaya(config, kode_jenis_transaksi, no_peserta, tgl_transaksi):
+def HitungProporsiBiaya(config, kode_jenis_transaksi, no_rekening, tgl_transaksi):
 
   #cari tanggal transaksi terakhir    
   sSQL = 'select top 1 TGL_TRANSAKSI from TRANSAKSIDPLK ' \
          'where KODE_JENIS_TRANSAKSI = \'%s\' and ' \
          'NO_PESERTA = \'%s\' and ISCOMMITTED = \'T\' ' \
          'order by TGL_TRANSAKSI desc' \
-         % (kode_jenis_transaksi, no_peserta)
+         % (kode_jenis_transaksi, no_rekening)
   rSQL = config.CreateSQL(sSQL).RawResult
   
   if rSQL.Eof:
     #belum pernah melakukan pengambilan manfaat atau pengalihan ke DPLK lain
     #rentang hari dari tanggal registrasi
-    oN = config.CreatePObjImplProxy('NasabahDPLK')
-    oN.Key = no_peserta
+    oRekInv = config.CreatePObjImplProxy('RekInvDPLK')
+    oRekInv.Key = no_rekening
+    oN = oRekInv.LNasabahDPLK
     #config.SendDebugMsg('tglawal-01='+str(oN.tgl_registrasi[0])+str(oN.tgl_registrasi[1])+str(oN.tgl_registrasi[2]))
     tglawal = config.ModLibUtils.EncodeDate(oN.tgl_registrasi[0], \
       oN.tgl_registrasi[1],oN.tgl_registrasi[2])
@@ -234,12 +237,12 @@ def HitungProporsiBiaya(config, kode_jenis_transaksi, no_peserta, tgl_transaksi)
     tglawal = config.ModLibUtils.EncodeDate(rSQL.tgl_transaksi[0], \
       rSQL.tgl_transaksi[1],rSQL.tgl_transaksi[2])     
         
-  tglakhir = config.ModLibUtils.EncodeDate(tgl_transaksi[0],tgl_transaksi[1], \
-    tgl_transaksi[2])
+  # tanggak akhir samakan dengan tanggal transaksi
+  tglakhir = tgl_transaksi
     
   #config.SendDebugMsg('tglakhir='+str(tgl_transaksi[0])+str(tgl_transaksi[1])+str(tgl_transaksi[2]))
         
-  #tentukan proporsi dari rentang hari
+  #tentukan proporsi dari rentang hari (berdasarkan hari)
   oP = config.CreatePObjImplProxy('Parameter')
   oP.Key = 'JUMLAH_HARI_SETAHUN'
   
@@ -395,7 +398,7 @@ def CekKoneksiCoreBanking(config):
   sessionID = config.SysVarIntf.GetStringSysVar('LOGINCOREBANKING', 'AppName') + \
     config.SecurityContext.UserID
   if not config.AppObject.lookuprsession(sessionID):
-    raise Exception, 'Error koneksi core banking:\nUser %s tidak terhubung ke core banking' % config.SecurityContext.UserID
+    raise Exception, 'ID: Error koneksi core banking:\nUser %s tidak terhubung ke core banking' % config.SecurityContext.UserID
   return sessionID
 
 #-------------------------------------------------------------------------------
@@ -441,7 +444,7 @@ def CekRentangWaktuPenarikan(config, noRekening):
     # hitung rentang bulan penarikan terakhir until Now
 
     if not CompareLastTglPenarikan(config, tgl_transaksi):
-      raise Exception, '\nPeringatan:\nPenarikan masih dalam rentang waktu 6 bulan. '\
+      raise Exception, 'ID: \nPeringatan:\nPenarikan masih dalam rentang waktu 6 bulan. '\
         'Penarikan terakhir tanggal %d-%d-%d.' % (tgl_transaksi[2], tgl_transaksi[1], tgl_transaksi[0])
 
 def CekSaldoIuranMin(config, noRekening):
@@ -453,7 +456,7 @@ def CekSaldoIuranMin(config, noRekening):
   oP.Key = 'MIN_JML_AKUM_IURAN_PST'
   saldo_iuran = oRekening.akum_iuran_pk + oRekening.akum_iuran_pst + oRekening.akum_iuran_tmb 
   if saldo_iuran < oP.Numeric_Value:
-    raise Exception, '\nPeringatan:\nDana iuran peserta tidak mencukupi!'
+    raise Exception, 'ID: \nPeringatan:\nDana iuran peserta tidak mencukupi!'
 
 def CekBatasTarikMinPHK(config, ID_Transaksi):
   oPenarikanDanaPHK = config.CreatePObjImplProxy('PenarikanDanaPHK')
@@ -462,7 +465,7 @@ def CekBatasTarikMinPHK(config, ID_Transaksi):
   oRekeningDPLK = oPenarikanDanaPHK.LRekeningDPLK
 
   if oPenarikanDanaPHK.jml_tarik < oRekeningDPLK.akum_dana_iuran_pk:
-    raise Exception, 'Kesalahan Jumlah Penarikan Dana PHK:\nNominal Penarikan tidak boleh kurang dari Batas Penarikan Minimal!'
+    raise Exception, 'ID: Kesalahan Jumlah Penarikan Dana PHK:\nNominal Penarikan tidak boleh kurang dari Batas Penarikan Minimal!'
 
 def CekBatasTarikMaxPHK(config, ID_Transaksi):
   oPenarikanDanaPHK = config.CreatePObjImplProxy('PenarikanDanaPHK')
@@ -470,4 +473,4 @@ def CekBatasTarikMaxPHK(config, ID_Transaksi):
 
   oRekeningDPLK = oPenarikanDanaPHK.LRekeningDPLK
   if oPenarikanDanaPHK.jml_tarik > oRekeningDPLK.akum_dana_iuran_pk + oRekeningDPLK.akum_dana_iuran_pst:
-    raise Exception, 'Kesalahan Jumlah Penarikan Dana PHK:\nNominal Penarikan melebihi batas nominal dana yang boleh ditarik!!'
+    raise Exception, 'ID: Kesalahan Jumlah Penarikan Dana PHK:\nNominal Penarikan melebihi batas nominal dana yang boleh ditarik!!'

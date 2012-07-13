@@ -40,7 +40,7 @@ def InsertPeserta(config, filename):
 def runSQL(config, sSQL):
   res = config.ExecSQL(sSQL)
   if res == -9999:
-    raise 'SQL Error', config.GetDBConnErrorInfo()
+    raise Exception, 'SQL Error' +  config.GetDBConnErrorInfo()
 
 def GetUploadedFile(parameter, recfile):
   
@@ -85,7 +85,7 @@ def DAFScriptMain(config, parameter, returnpacket):
         except:
             config.Rollback()
             errmsg = str(sys.exc_info()[1])
-            raise 'Upload Iuran Error', errmsg
+            raise Exception, 'Upload Iuran Error' +  errmsg
     finally:
         returnpacket.CreateValues(['succeed',1])
 

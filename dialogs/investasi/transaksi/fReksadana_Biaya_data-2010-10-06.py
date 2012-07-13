@@ -72,6 +72,6 @@ def FormEndProcessData(uideflist, datapacket):
   oTI.id_transaksiinduk = rec.GetFieldByName('LIndukTransaksiInvestasi.id_transaksiinvestasi')
   oTI.isCommitted = 'F'
   if oTI.ID_TransactionBatch in (0, None) :
-    raise 'PERINGATAN','Batch Transaksi belum dipilih'
+    raise Exception, 'PERINGATAN' + 'Batch Transaksi belum dipilih'
 
   return 1

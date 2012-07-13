@@ -12,7 +12,7 @@ def DAFScriptMain(config, parameter, returnpacket):
   homeDir = config.GetHomeDir()
   try:
     if str(rec.uploadFileName) == '':
-      raise '','Nama file upload invalid!'
+      raise Exception, '' + 'Nama file upload invalid!'
   
     returnpacket.CreateValues(['exist', os.access(rec.uploadFileName, os.F_OK)])
   except:

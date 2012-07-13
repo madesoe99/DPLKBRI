@@ -41,7 +41,7 @@ def GetValuesFromKlasifikasi(config, klasifikasi):
       'where k.kode_kelompok = n.kode_kelompok '\
       'group by k.kode_kelompok, k.nama_kelompok'
   else:
-    raise 'Kesalahan Klasifikasi','Klasifikasi tidak dikenal.'
+    raise Exception, 'Kesalahan Klasifikasi' + 'Klasifikasi tidak dikenal.'
 
   return [info, code, name, strSQL]  
 

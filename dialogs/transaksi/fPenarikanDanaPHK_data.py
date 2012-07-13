@@ -41,8 +41,7 @@ def Form_OnSetDataEx(uideflist, parameterForm):
   transaksiAPI = modman.getModule(config, 'transaksiapi')
   transaksiAPI.CekRentangWaktuPenarikan(config, recParameterForm.no_rekening)
   transaksiAPI.CekSaldoIuranMin(config, recParameterForm.no_rekening)
-  #raise Exception,'sampai sini!'
-
+  
   #set uideflist
   uideflist.SetData('uipPeserta','PObj:NasabahDPLK#no_peserta='+recParameterForm.no_peserta)
   uideflist.SetData('uipRekening','PObj:RekInvDPLK#no_rekening='+recParameterForm.no_rekening)
@@ -75,8 +74,10 @@ def Form_OnSetDataEx(uideflist, parameterForm):
   #recParameter.PERSEN_PENARIKAN_PHK = oParameter.Numeric_Value
   oParameter.Key = 'MIN_JML_AKUM_IURAN_PST'
   recParameter.MIN_JML_AKUM_IURAN_PST = oParameter.Numeric_Value
+  
   oParameter.Key = 'PERSEN_DENDA_NPWP'
   recParameter.PERSEN_DENDA_NPWP = oParameter.Numeric_Value
+  
   oParameter.Key = 'PERSEN_BIAYA_TARIK_PHK'
   recParameter.PERSEN_BIAYA_TARIK_PHK = oParameter.Numeric_Value
   oParameter.Key = 'MIN_BIAYA_TARIK'
@@ -141,7 +142,7 @@ def SimpanTransaksi(config, params, returns):
     oT.mutasi_pmb_pst = 0.0
     oT.mutasi_pmb_tmb = 0.0
     oT.mutasi_pmb_psl = 0.0
-    oT.kode_jenis_transaksi = 'V'
+    oT.kode_jenis_transaksi = 'W'
     
     #field object TransaksiRekInvDPLK
     oT.no_rekening = recR.no_rekening

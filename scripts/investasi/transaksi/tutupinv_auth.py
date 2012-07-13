@@ -1,6 +1,6 @@
-import sys
-sys.path.append('c:/dafapp/dplk07/script_modules')
-import moduleapi
+import com.ihsan.util.modman as modman
+
+#moduleapi = modman.getModule(config, 'moduleapi')
 
 def SetTransPiutangInvestasi(config, oTransPiutangInvestasi):
   oTransPiutangInvestasi.isCommitted = 'T'
@@ -15,6 +15,7 @@ def CreateTransPiutangLRInvestasi(config, oTransPiutangInvestasi):
   oTransPiutangLRInvestasi.LTransactionBatch = oTransPiutangInvestasi.LTransactionBatch
   oTransPiutangLRInvestasi.kode_jns_investasi = oTransPiutangInvestasi.kode_jns_investasi
   oTransPiutangLRInvestasi.kode_jenis_trinvestasi = 'C' # tutup investasi
+  moduleapi = modman.getModule(config, 'moduleapi')
   oTransPiutangLRInvestasi.tgl_transaksi = moduleapi.DateTimeTupleToFloat(config, oTransPiutangInvestasi.tgl_transaksi)
   oTransPiutangLRInvestasi.mutasi_debet = 0.0
   oTransPiutangLRInvestasi.mutasi_kredit = oTransPiutangInvestasi.LInvestasi.akum_piutangLR
@@ -34,6 +35,7 @@ def CloseInvestasi(config, oTransPiutangInvestasi):
   oInvestasi = oTransPiutangInvestasi.LInvestasi
 
   oInvestasi.status = 'F'
+  moduleapi = modman.getModule(config, 'moduleapi')
   oInvestasi.tgl_tutup = moduleapi.DateTimeTupleToFloat(config, oTransPiutangInvestasi.tgl_transaksi)
   oInvestasi.akum_nominal = 0.0
   oInvestasi.akum_piutangLR = 0.0

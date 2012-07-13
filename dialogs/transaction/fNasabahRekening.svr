@@ -10,8 +10,7 @@ object:rpclass::TPClassUIDefList<
     object:rpclass::TPClassUIDef<
       Name='uipNasabahDPLK'
       PClassName='NasabahDPLK'
-      LoadedFieldList='no_peserta;kode_cab_daftar;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_jalan2;alamat_telepon2;alamat_propinsi;alamat_surat_jalan;alamat_surat_kelurahan;alamat_surat_kecamatan;alamat_surat_rtrw;alamat_surat_kota;alamat_surat_propinsi;alamat_surat_kode_pos;alamat_surat_jalan2;alamat_surat_telepon;alamat_surat_telepon2;no_referensi;keterangan;user_id;terminal_id;tgl_registrasi;no_peserta;LBranchLocation.branch_code;LBranchLocation.branch_code;LBranchLocation.BranchName;ibu_kandung;nama_lengkap;tempat_lahir;tanggal_lahir;jenis_kelamin;golongan_darah;agama;pendidikan_terakhir;status_perkawinan;LDaerahAsal.kode_propinsi;LDaerahAsal.kode_propinsi;LDaerahAsal.nama_propinsi;kewarganegaraan;LNegara.kode_negara;LNegara.kode_negara;LNegara.nama_negara;LNegara.risk_flag;no_identitas_diri;tgl_exp_identitas;LKelompok.kode_kelompok;LKelompok.kode_kelompok;LKelompok.nama_kelompok;alamat_email;NPWP;penghasilan_tetap;penghasilan_tambahan;beneficial_owner;LLDPLain.kode_dp;LLDPLain.kode_dp;LLDPLain.nama_dp;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.nama_perusahaan;LNasabahDPLKCorporate.kode_pemilikan;LNasabahDPLKCorporate.LKepemilikan.keterangan;LNasabahDPLKCorporate.kode_jenis_usaha;LNasabahDPLKCorporate.LJenisUsaha.nama_jenis_usaha;LNasabahDPLKCorporate.alamat_kantor_jalan;LNasabahDPLKCorporate.alamat_kantor_kelurahan;LNasabahDPLKCorporate.alamat_kantor_kecamatan;LNasabahDPLKCorporate.alamat_kantor_kota;LNasabahDPLKCorporate.alamat_kantor_kode_pos;LNasabahDPLKCorporate.alamat_kantor_telepon;LNasabahDPLKCorporate.alamat_kantor_telepon2;nama_perusahaan;LJenisUsaha.kode_jenis_usaha;LJenisUsaha.kode_jenis_usaha;LJenisUsaha.nama_jenis_usaha;LJenisUsaha.risk_flag;LKepemilikan.kode_pemilikan;LKepemilikan.kode_pemilikan;LKepemilikan.keterangan;alamat_kantor_jalan;alamat_kantor_kelurahan;alamat_kantor_kecamatan;alamat_kantor_kota;alamat_kantor_propinsi;alamat_kantor_kode_pos;alamat_kantor_telepon;alamat_kantor_telepon2;nama_orang_tua;LJenisPekerjaanOrtu.kode_jenis_pekerjaan;LJenisPekerjaanOrtu.kode_jenis_pekerjaan;LJenisPekerjaanOrtu.nama_jenis_pekerjaan;LJenisPekerjaanOrtu.risk_flag;LJenisPekerjaanDetailOrtu.jpd_id;LJenisPekerjaanDetailOrtu.kode_jenis_jabatan;LJenisPekerjaanDetailOrtu.LJenisJabatan.nama_jenis_jabatan;LJenisPekerjaanDetailOrtu.risk_flag;LJenisUsahaOrtu.kode_jenis_usaha;LJenisUsahaOrtu.kode_jenis_usaha;LJenisUsahaOrtu.nama_jenis_usaha;LJenisUsahaOrtu.risk_flag;nama_perusahaan_ortu;penghasilan_orang_tua;LJenisPekerjaan.kode_jenis_pekerjaan;LJenisPekerjaan.kode_jenis_pekerjaan;LJenisPekerjaan.nama_jenis_pekerjaan;LJenisPekerjaan.risk_flag;LJenisPekerjaanDetail.jpd_id;LJenisPekerjaanDetail.kode_jenis_jabatan;LJenisPekerjaanDetail.LJenisJabatan.nama_jenis_jabatan;LJenisPekerjaanDetail.risk_flag;status_pep;keterangan_pep'
-      StoredFieldList='nama_orang_tua;LJenisPekerjaanOrtu;LJenisPekerjaanDetailOrtu;LJenisUsahaOrtu;nama_perusahaan_ortu;penghasilan_orang_tua;LJenisPekerjaan;LJenisPekerjaanDetail;status_pep;keterangan_pep'
+      LoadedFieldList='no_peserta;kode_cab_daftar;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_jalan2;alamat_telepon2;alamat_propinsi;LATPropinsi.kode_propinsi;LATPropinsi.kode_propinsi;LATPropinsi.nama_propinsi;LATKota.kode_kota;LATKota.kode_kota;LATKota.nama_kota;LATKecamatan.kode_kecamatan;LATKecamatan.kode_kecamatan;LATKecamatan.nama_kecamatan;alamat_surat_jalan;alamat_surat_kelurahan;alamat_surat_kecamatan;alamat_surat_rtrw;alamat_surat_kota;alamat_surat_propinsi;alamat_surat_kode_pos;alamat_surat_jalan2;alamat_surat_telepon;alamat_surat_telepon2;LASPropinsi.kode_propinsi;LASPropinsi.kode_propinsi;LASPropinsi.nama_propinsi;LASKota.kode_kota;LASKota.kode_kota;LASKota.nama_kota;LASKecamatan.kode_kecamatan;LASKecamatan.kode_kecamatan;LASKecamatan.nama_kecamatan;no_peserta;LBranchLocation.branch_code;LBranchLocation.branch_code;LBranchLocation.BranchName;ibu_kandung;nama_lengkap;tempat_lahir;tanggal_lahir;jenis_kelamin;golongan_darah;agama;pendidikan_terakhir;status_perkawinan;LDaerahAsal.kode_propinsi;LDaerahAsal.kode_propinsi;LDaerahAsal.nama_propinsi;kewarganegaraan;LNegara.kode_negara;LNegara.kode_negara;LNegara.nama_negara;LNegara.risk_flag;no_identitas_diri;tgl_exp_identitas;LKelompok.kode_kelompok;LKelompok.kode_kelompok;LKelompok.nama_kelompok;alamat_email;NPWP;penghasilan_tetap;penghasilan_tambahan;beneficial_owner;LLDPLain.kode_dp;LLDPLain.kode_dp;LLDPLain.nama_dp;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.nama_perusahaan;LNasabahDPLKCorporate.kode_pemilikan;LNasabahDPLKCorporate.LKepemilikan.keterangan;LNasabahDPLKCorporate.kode_jenis_usaha;LNasabahDPLKCorporate.LJenisUsaha.nama_jenis_usaha;LNasabahDPLKCorporate.alamat_kantor_jalan;LNasabahDPLKCorporate.alamat_kantor_kelurahan;LNasabahDPLKCorporate.alamat_kantor_kecamatan;LNasabahDPLKCorporate.alamat_kantor_kota;LNasabahDPLKCorporate.alamat_kantor_kode_pos;LNasabahDPLKCorporate.alamat_kantor_telepon;LNasabahDPLKCorporate.alamat_kantor_telepon2;LNasabahDPLKCorporate.LAKPropinsi.kode_propinsi;LNasabahDPLKCorporate.LAKPropinsi.nama_propinsi;LNasabahDPLKCorporate.LAKKota.kode_kota;LNasabahDPLKCorporate.LAKKota.nama_kota;LNasabahDPLKCorporate.LAKKecamatan.kode_kecamatan;LNasabahDPLKCorporate.LAKKecamatan.nama_kecamatan;nama_perusahaan;LJenisUsaha.kode_jenis_usaha;LJenisUsaha.kode_jenis_usaha;LJenisUsaha.nama_jenis_usaha;LJenisUsaha.risk_flag;LKepemilikan.kode_pemilikan;LKepemilikan.kode_pemilikan;LKepemilikan.keterangan;alamat_kantor_jalan;alamat_kantor_kelurahan;alamat_kantor_kecamatan;alamat_kantor_kota;alamat_kantor_propinsi;alamat_kantor_kode_pos;alamat_kantor_telepon;alamat_kantor_telepon2;LAKPropinsi.kode_propinsi;LAKPropinsi.kode_propinsi;LAKPropinsi.nama_propinsi;LAKKota.kode_kota;LAKKota.kode_kota;LAKKota.nama_kota;LAKKecamatan.kode_kecamatan;LAKKecamatan.kode_kecamatan;LAKKecamatan.nama_kecamatan;nama_orang_tua;LJenisPekerjaanOrtu.kode_jenis_pekerjaan;LJenisPekerjaanOrtu.kode_jenis_pekerjaan;LJenisPekerjaanOrtu.nama_jenis_pekerjaan;LJenisPekerjaanOrtu.risk_flag;LJenisPekerjaanDetailOrtu.jpd_id;LJenisPekerjaanDetailOrtu.kode_jenis_jabatan;LJenisPekerjaanDetailOrtu.LJenisJabatan.nama_jenis_jabatan;LJenisPekerjaanDetailOrtu.risk_flag;LJenisUsahaOrtu.kode_jenis_usaha;LJenisUsahaOrtu.kode_jenis_usaha;LJenisUsahaOrtu.nama_jenis_usaha;LJenisUsahaOrtu.risk_flag;nama_perusahaan_ortu;penghasilan_orang_tua;LJenisPekerjaan.kode_jenis_pekerjaan;LJenisPekerjaan.kode_jenis_pekerjaan;LJenisPekerjaan.nama_jenis_pekerjaan;LJenisPekerjaan.risk_flag;LJenisPekerjaanDetail.jpd_id;LJenisPekerjaanDetail.kode_jenis_jabatan;LJenisPekerjaanDetail.LJenisJabatan.nama_jenis_jabatan;LJenisPekerjaanDetail.risk_flag;status_pep;keterangan_pep;REFR_ACCNO;REFR_NAMA;REFR_UKER;no_referensi;keterangan;user_id;terminal_id;tgl_registrasi'
       CustomLoadedFields={
         object:rpclass::TCustomLoadedField<
           Name='isSamaAlamat'
@@ -61,6 +60,30 @@ object:rpclass::TPClassUIDefList<
       }
       CustomLoadedLinks={
         object:rpclass::TCustomLoadedLink<
+          Name='LATPropinsi'
+          ClassTypeName='DaerahAsal'
+          FieldNames='kode_propinsi;kode_propinsi;nama_propinsi'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LATKota'
+          ClassTypeName='DaerahKota'
+          FieldNames='kode_kota;kode_kota;nama_kota'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LATKecamatan'
+          ClassTypeName='DaerahKecamatan'
+          FieldNames='kode_kecamatan;kode_kecamatan;nama_kecamatan'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LASPropinsi'
+          ClassTypeName='DaerahAsal'
+          FieldNames='kode_propinsi;kode_propinsi;nama_propinsi'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LASKota'
+          ClassTypeName='DaerahKota'
+          FieldNames='kode_kota;kode_kota;nama_kota'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LASKecamatan'
+          ClassTypeName='DaerahKecamatan'
+          FieldNames='kode_kecamatan;kode_kecamatan;nama_kecamatan'
+        >, object:rpclass::TCustomLoadedLink<
           Name='LBranchLocation'
           ClassTypeName='BranchLocation'
           FieldNames='branch_code;branch_code;BranchName'
@@ -83,7 +106,7 @@ object:rpclass::TPClassUIDefList<
         >, object:rpclass::TCustomLoadedLink<
           Name='LNasabahDPLKCorporate'
           ClassTypeName='NasabahDPLKCorporate'
-          FieldNames='kode_nasabah_corporate;kode_nasabah_corporate;nama_perusahaan;kode_pemilikan;LKepemilikan.keterangan;kode_jenis_usaha;LJenisUsaha.nama_jenis_usaha;alamat_kantor_jalan;alamat_kantor_kelurahan;alamat_kantor_kecamatan;alamat_kantor_kota;alamat_kantor_kode_pos;alamat_kantor_telepon;alamat_kantor_telepon2'
+          FieldNames='kode_nasabah_corporate;kode_nasabah_corporate;nama_perusahaan;kode_pemilikan;LKepemilikan.keterangan;kode_jenis_usaha;LJenisUsaha.nama_jenis_usaha;alamat_kantor_jalan;alamat_kantor_kelurahan;alamat_kantor_kecamatan;alamat_kantor_kota;alamat_kantor_kode_pos;alamat_kantor_telepon;alamat_kantor_telepon2;LAKPropinsi.kode_propinsi;LAKPropinsi.nama_propinsi;LAKKota.kode_kota;LAKKota.nama_kota;LAKKecamatan.kode_kecamatan;LAKKecamatan.nama_kecamatan'
         >, object:rpclass::TCustomLoadedLink<
           Name='LJenisUsaha'
           ClassTypeName='JenisUsaha'
@@ -92,6 +115,18 @@ object:rpclass::TPClassUIDefList<
           Name='LKepemilikan'
           ClassTypeName='Kepemilikan'
           FieldNames='kode_pemilikan;kode_pemilikan;keterangan'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LAKPropinsi'
+          ClassTypeName='DaerahAsal'
+          FieldNames='kode_propinsi;kode_propinsi;nama_propinsi'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LAKKota'
+          ClassTypeName='DaerahKota'
+          FieldNames='kode_kota;kode_kota;nama_kota'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LAKKecamatan'
+          ClassTypeName='DaerahKecamatan'
+          FieldNames='kode_kecamatan;kode_kecamatan;nama_kecamatan'
         >, object:rpclass::TCustomLoadedLink<
           Name='LJenisPekerjaanOrtu'
           ClassTypeName='JenisPekerjaan'

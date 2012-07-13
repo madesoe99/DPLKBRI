@@ -51,7 +51,7 @@ def uipInvestasiSetData(uipInvestasi):
 
   moduleapi.CheckTransactionValidity(config, oInvestasi, mode)
   if (prevMode in ['new', 'edit', 'view', 'viewdoc', 'auth']) and not moduleapi.IsJatuhTempo(config, oDeposito):
-    raise 'Kesalahan Alokasi Tambahan', 'Deposito belum jatuh tempo.'
+    raise Exception, 'Kesalahan Alokasi Tambahan' +  'Deposito belum jatuh tempo.'
 
   rec_tpi.SetFieldByName('LInvestasi.id_investasi', oInvestasi.id_investasi)
   rec_tpi.SetFieldByName('LInvestasi.no_bilyet', oInvestasi.no_bilyet)
@@ -75,10 +75,10 @@ def uipTransPiutangInvestasiApplyRow(uipTransPiutangInvestasi, oTransPiutangInve
   oInvestasi = oTransPiutangInvestasi.LInvestasi
   oDeposito = oInvestasi.CastAs('Deposito')
   if not moduleapi.IsJatuhTempo(config, oDeposito):
-    raise 'Kesalahan Alokasi Tambahan', 'Deposito belum jatuh tempo.'
+    raise Exception, 'Kesalahan Alokasi Tambahan' +  'Deposito belum jatuh tempo.'
 
   if oTransPiutangInvestasi.mutasi_debet <= 0.0:
-    raise 'Kesalahan Alokasi Investasi Tambahan','Nilai alokasi tambahan harus lebih dari nol.'
+    raise Exception, 'Kesalahan Alokasi Investasi Tambahan' + 'Nilai alokasi tambahan harus lebih dari nol.'
 
   oTransPiutangInvestasi.mutasi_kredit = 0.0
   # nilai kode_jns_investasi diisi lagi jika belum ada

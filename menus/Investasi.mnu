@@ -32,6 +32,8 @@ object:rmn::Menu<
           StringTag='qJnsTransInvestasi'
           ImageIndex=9
         >, object:rmn::MenuItem<
+          Caption='-'
+        >, object:rmn::MenuItem<
           Name='mnuJenisReksadana'
           Caption='Jenis Reksadana'
           OnClick='DisplayMasterInvestasiQuery'
@@ -53,7 +55,7 @@ object:rmn::Menu<
           ImageIndex=0
         >, object:rmn::MenuItem<
           Name='mnuPihakKetiga'
-          Caption='Pihak Ketiga (Manager Investasi)'
+          Caption='Pihak Ketiga (Issuer / MI / Emiten)'
           OnClick='DisplayMasterInvestasiQuery'
           AllowedGroups='Admin;Root;FM'
           StringTag='qPihakKetiga'
@@ -71,6 +73,8 @@ object:rmn::Menu<
           AllowedGroups='Admin;Root;FM'
           StringTag='qSektoral'
         >, object:rmn::MenuItem<
+          Caption='-'
+        >, object:rmn::MenuItem<
           Name='mnuParameterJournal'
           Caption='Parameter Journal'
           OnClick='DisplayMasterInvestasiQuery'
@@ -82,6 +86,8 @@ object:rmn::Menu<
           OnClick='DisplayMasterInvestasiQuery'
           AllowedGroups='Admin;Root;FM'
           StringTag='qParameterTransaksi'
+        >, object:rmn::MenuItem<
+          Caption='-'
         >, object:rmn::MenuItem<
           Name='mnuAccrual'
           Caption='Accrual'
@@ -134,24 +140,38 @@ object:rmn::Menu<
           StringTag='qRegisterDeposito'
           ImageIndex=4
         >, object:rmn::MenuItem<
-          Name='mnuInvestasi'
+          Caption='-'
+        >, object:rmn::MenuItem<
+          Name='mnuInvestasiMM'
           Caption='Daftar Investasi MM'
           OnClick='DisplayTransaksiInvestasiQuery'
           AllowedGroups='Admin;Root;FM;FMS'
           StringTag='qDeposito'
           ImageIndex=5
         >, object:rmn::MenuItem<
-          Name='mnuInvestasi'
-          Caption='Daftar Rincian Investasi MM Per Fund'
+          Name='mnuInvestasiMMARO'
+          Caption='Daftar Investasi MM ARO'
           OnClick='DisplayTransaksiInvestasiQuery'
-          AllowedGroups='Admin;Root;FM;FMS'
-          StringTag='qDeposito_Rinci'
+          StringTag='qDepositoARO'
         >, object:rmn::MenuItem<
           Caption='-'
           AllowedGroups='Admin;Root;FM;FMS'
         >, object:rmn::MenuItem<
+          Name='mnuInvestasiMMPerFund'
+          Caption='Daftar Rincian Investasi MM per Fund'
+          OnClick='DisplayTransaksiInvestasiQuery'
+          AllowedGroups='Admin;Root;FM;FMS'
+          StringTag='qDeposito_Rinci'
+        >, object:rmn::MenuItem<
+          Name='mnuIssuerInvestasiMM'
+          Caption='Daftar Investasi MM per Issuer'
+          OnClick='DisplayTransaksiInvestasiQuery'
+          StringTag='qDepositoIssuer'
+        >, object:rmn::MenuItem<
+          Caption='-'
+        >, object:rmn::MenuItem<
           Name='mnuRegisterTransaksiInv'
-          Caption='Daftar Transaksi Investasi MM Baru'
+          Caption='Daftar Register Transaksi Investasi MM Baru'
           OnClick='DisplayTransaksiInvestasiQuery'
           AllowedGroups='Admin;Root;FM;FMS'
           StringTag='qRegisterTransaksiDeposito'
@@ -194,6 +214,8 @@ object:rmn::Menu<
           StringTag='qRegisterObligasi'
           ImageIndex=4
         >, object:rmn::MenuItem<
+          Caption='-'
+        >, object:rmn::MenuItem<
           Name='mnuInvestasiObl'
           Caption='Daftar Investasi Fix'
           OnClick='DisplayTransaksiInvestasiQuery'
@@ -205,7 +227,7 @@ object:rmn::Menu<
           AllowedGroups='Admin;Root;FM;FMS'
         >, object:rmn::MenuItem<
           Name='mnuRegisterTransaksiInvObl'
-          Caption='Daftar Transaksi Investasi Fix Baru'
+          Caption='Daftar Register Transaksi Investasi Fix Baru'
           OnClick='DisplayTransaksiInvestasiQuery'
           AllowedGroups='Admin;Root;FM;FMS'
           StringTag='qRegisterTransaksiObligasi'
@@ -239,6 +261,8 @@ object:rmn::Menu<
           StringTag='qRegisterReksadana'
           ImageIndex=4
         >, object:rmn::MenuItem<
+          Caption='-'
+        >, object:rmn::MenuItem<
           Name='mnuInvestasiEQ'
           Caption='Daftar Investasi EQ'
           OnClick='DisplayTransaksiInvestasiQuery'
@@ -250,7 +274,7 @@ object:rmn::Menu<
           AllowedGroups='Admin;Root;FM;FMS'
         >, object:rmn::MenuItem<
           Name='mnuRegisterTransaksiInvEQ'
-          Caption='Daftar Transaksi Investasi EQ Baru'
+          Caption='Daftar Register Transaksi Investasi EQ Baru'
           OnClick='DisplayTransaksiInvestasiQuery'
           AllowedGroups='Admin;Root;FM;FMS'
           StringTag='qRegisterTransaksiReksadana'
@@ -284,6 +308,8 @@ object:rmn::Menu<
           StringTag='qRegisterReksadana'
           ImageIndex=4
         >, object:rmn::MenuItem<
+          Caption='-'
+        >, object:rmn::MenuItem<
           Name='mnuInvestasiRD'
           Caption='Daftar Investasi Reksadana'
           OnClick='DisplayTransaksiInvestasiQuery'
@@ -295,7 +321,7 @@ object:rmn::Menu<
           AllowedGroups='Admin;Root;FM;FMS'
         >, object:rmn::MenuItem<
           Name='mnuRegisterTransaksiInvRD'
-          Caption='Daftar Transaksi Reksadana Baru'
+          Caption='Daftar Register Transaksi Reksadana Baru'
           OnClick='DisplayTransaksiInvestasiQuery'
           AllowedGroups='Admin;Root;FM;FMS'
           StringTag='qRegisterTransaksiReksadana'

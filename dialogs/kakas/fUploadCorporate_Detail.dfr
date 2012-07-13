@@ -1,0 +1,245 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit1']
+  Caption='Data korporat diimport'
+  State=rsMaximized
+  Left=50
+  Top=50
+  Width=800
+  Height=400
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx='FormOnSetDataEx'
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caView
+          DataMember='trx_session_id'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='trx_session_id'
+          Hidden=false
+          ReadOnlyControl=false
+        >, object:rtf::FieldUIElmtSetting<
+          Name='classtypename'
+          Hidden=true
+          ReadOnlyControl=false
+        >, object:rtf::FieldUIElmtSetting<
+          Name='upload_uip_name'
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='varchar'
+          DataLength=50
+        >, object:rtf::FieldUIElmtSetting<
+          Name='kode_entri'
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='varchar'
+          DataLength=10
+        >
+      }
+      Name='uipUploadCorporate'
+      ClassTypeName='UploadCorporate'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      PostLinkValues=true
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Name='pButton'
+      Width=320
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='bSave'
+          Layout=clNextSide
+          Top=8
+          Left=166
+          Visible=false
+          ControlCaption=''
+          LayoutOrder=3
+          Caption='&Simpan'
+          OnClick='bSaveOnClick'
+        >, object:rtf::Button<
+          Name='bCancel'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          ControlCaption=''
+          LayoutOrder=2
+          Caption='Batal/&Tutup'
+          ExitAction=eaQuitCancel
+        >, object:rtf::Button<
+          Name='btnAuth'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          Enabled=false
+          ControlCaption=''
+          LayoutOrder=1
+          Caption='&Otorisasi'
+          OnClick='btnAuthOnClick'
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Frame<
+      Name='frameSpecific'
+      Width=800
+      Height=237
+      Bordered=true
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=240
+      Height=96
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['dualsplit2']
+      InversedAlign=true
+    >, object:rtf::DualSplit<
+      Name='dualsplit2'
+      Width=240
+      Height=96
+      Container1=$CONTAINERS['pGeneral']
+      Container2=$CONTAINERS['frameSpecific']
+    >, object:rtf::Panel<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caView
+          DataMember='LNasabahDPLKCorporate'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='session_filename'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='session_user_id'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='session_time'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='upload_type'
+        >
+      }
+      Elements={
+        *object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLKCorporate'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='kode_nasabah_corporate;nama_perusahaan'
+          Restrictions=''
+          OQLText=['SELECT FROM NasabahDPLKCorporate ('#13#10,
+            '  kode_nasabah_corporate,'#13#10,
+            '  nama_perusahaan,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY kode_nasabah_corporate;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LNasabahDPLKCorporate'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='session_filename'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='session_user_id'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='session_time'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='upload_type'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='pGeneral'
+      Width=753
+      Height=121
+      Bordered=true
+      UIPart=$UIPARTS['uipUploadCorporate']
+      Controls={
+        *object:rtf::DBLookupEdit<
+          Name='LNasabahDPLKCorporate'
+          Top=24
+          Left=20
+          Width=120
+          Height=21
+          Enabled=false
+          ControlCaption='Korporat'
+          FieldName='LNasabahDPLKCorporate.kode_nasabah_corporate'
+          LookupField='LNasabahDPLKCorporate.nama_perusahaan'
+          DisplayLookupField=true
+          DisplayLookupColor=-16777192
+          DisplayLookupWidth=250
+          DisableLookup=true
+        >, *object:rtf::DBEdit<
+          Name='session_filename'
+          Top=52
+          Left=20
+          Width=325
+          Height=21
+          Color=-16777192
+          ControlCaption='Nama file'
+        >, *object:rtf::DBEdit<
+          Name='session_user_id'
+          Top=80
+          Left=20
+          Width=120
+          Height=21
+          Color=-16777192
+          ControlCaption='ID User'
+        >, *object:rtf::DBDateEdit<
+          Name='session_time'
+          Layout=clNextSide
+          Top=80
+          Left=228
+          Color=-16777192
+          ControlCaption='Tanggal upload'
+        >, *object:rtf::DBComboBox<
+          Name='upload_type'
+          Layout=clNextSide
+          Top=80
+          Left=429
+          Enabled=false
+          Color=-16777192
+          ControlCaption='Jenis Upload'
+        >
+      }
+      EqualCaptionWidth=80
+      ControlLeftMargin=20
+      ControlTopMargin=24
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data umum'
+    >
+  }
+  FormClassName='fUploadCorporate_Detail'
+>

@@ -26,7 +26,7 @@ def Koreksi(config):
     config.Commit()	
   except:
     config.Rollback()
-    raise 'Error koreksi : ', str(sys.exc_info()[1]) 
+    raise Exception, 'Error koreksi : ' +  str(sys.exc_info()[1]) 
 
 # Main
 

@@ -1,6 +1,6 @@
-import sys
-sys.path.append('c:/dafapp/dplk/script_modules')
-import moduleapi
+import com.ihsan.util.modman as modman
+
+#moduleapi = modman.getModule(config, 'moduleapi')
 
 def CreateRincianSaham(config, oSaham):
   # buat satu objek rincianSaham
@@ -15,6 +15,8 @@ def CreateRincianSaham(config, oSaham):
   
 
 def CreateSaham(config, oRegisterSaham):
+  moduleapi = modman.getModule(config, 'moduleapi')
+  
   oSaham = config.CreatePObject('Saham')
   oSaham.nama_Saham = oRegisterSaham.nama_Saham
   oSaham.kode_pihak_ketiga = oRegisterSaham.kode_pihak_ketiga
@@ -48,6 +50,8 @@ def CreateSaham(config, oRegisterSaham):
   return oSaham
 
 def CreateTransPiutangInvestasi(config, oSaham, oRegisterSaham):
+  moduleapi = modman.getModule(config, 'moduleapi')
+  
   oSubscribeSaham = config.CreatePObject('SubscribeSaham')
   oSubscribeSaham.LInvestasi = oSaham
   oSubscribeSaham.nama_investasi = oSaham.nama_Saham
@@ -79,6 +83,8 @@ def CreateTransPiutangInvestasi(config, oSaham, oRegisterSaham):
   
 # biaya subscribe
 def CreateBiayaSubscribe(config, oRegisterSaham, oSaham):
+  moduleapi = modman.getModule(config, 'moduleapi')
+  
   oTransLRInvestasi = config.CreatePObject('TransLRInvestasi')
   oTransLRInvestasi.LInvestasi = oSaham
   oTransLRInvestasi.LTransactionBatch = oRegisterSaham.LTransactionBatch

@@ -1,0 +1,127 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['qDetails']
+  Left=50
+  Top=50
+  Width=649
+  Height=560
+  UIParts={
+    object:rtf::PClassUI<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='trx_session_id'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='INTEGER'
+          DataLength=0
+        >
+      }
+      Name='uipParent'
+      ClassTypeName='UploadCorporate'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Query<
+      Name='qDetails'
+      Width=649
+      Height=560
+      ContextMenuName='popupmenus/kakas/pUploadCorporate_Detail'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data ahli waris'
+      OQLText=['SELECT FROM UploadCorpAhliWAris ['#13#10,
+        '  trx_session_id=:trx_session_id'#13#10,
+        ']('#13#10,
+        '  upload_id,'#13#10,
+        '  no_peserta,'#13#10,
+        '  LNasabahDPLK.nama_lengkap AS nama_lengkap,'#13#10,
+        '  nama_ahli_waris,'#13#10,
+        '  hubungan_keluarga,'#13#10,
+        '  tanggal_lahir,'#13#10,
+        '  jenis_kelamin,'#13#10,
+        '  status_ahli_waris,'#13#10,
+        '  no_urut_prioritas,'#13#10,
+        '  keterangan_ahli_waris,'#13#10,
+        '  trx_session_id,'#13#10,
+        '  is_valid,'#13#10,
+        '  keterangan,'#13#10,
+        '  is_auth,'#13#10,
+        '  self'#13#10,
+        ') THEN ORDER BY nama_lengkap;']
+      Columns={
+        object:rtf::QueryColumn<
+          FieldName='UploadCorpAhliWAris.upload_id'
+          Width=40
+          Caption='ID'
+          Hidden=true
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpAhliWAris.no_peserta'
+          Width=100
+          Caption='No. Peserta'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpAhliWAris.nama_lengkap'
+          Width=160
+          Caption='Nama Lengkap Nasabah'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpAhliWAris.nama_ahli_waris'
+          Width=100
+          Caption='Nama Ahli Waris'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpAhliWAris.hubungan_keluarga'
+          Width=100
+          Caption='Hubungan'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpAhliWAris.tanggal_lahir'
+          Width=100
+          Caption='Tanggal Lahir'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpAhliWAris.jenis_kelamin'
+          Width=100
+          Caption='Jenis Kelamin'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpAhliWAris.status_ahli_waris'
+          Width=100
+          Caption='Status Waris'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpAhliWAris.no_urut_prioritas'
+          Width=100
+          Caption='No. Prioritas'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpAhliWAris.keterangan_ahli_waris'
+          Width=100
+          Caption='Keterangan Waris'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpAhliWAris.trx_session_id'
+          Hidden=true
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpAhliWAris.is_valid'
+          Width=40
+          Caption='Is Valid'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpAhliWAris.keterangan'
+          Width=300
+          Caption='Keterangan'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpAhliWAris.is_auth'
+          Width=40
+          Caption='Is Auth'
+        >
+      }
+      EnableColumns=true
+    >
+  }
+  FormClassName='fUCAhliWAris'
+>

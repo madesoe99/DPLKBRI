@@ -69,7 +69,7 @@ def uipPendapatanObligasiApplyRow(uipPendapatanObligasi, oPendapatanObligasi):
   config = uipPendapatanObligasi.UIDefList.Config
 
   #if oPendapatanObligasi.nominal < moduleapi.zero_approx:
-  #  raise 'Kesalahan Pendapatan Obligasi','Nilai pendapatan obligasi harus lebih dari nol.'
+  #  raise Exception, 'Kesalahan Pendapatan Obligasi' + 'Nilai pendapatan obligasi harus lebih dari nol.'
 
   if oPendapatanObligasi.nominal < moduleapi.zero_approx:
     oPendapatanObligasi.mutasi_kredit = 0.0

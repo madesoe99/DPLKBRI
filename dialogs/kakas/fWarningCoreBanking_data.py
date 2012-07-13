@@ -44,6 +44,6 @@ def FormGeneralProcessData(uideflist, data):
         file.close()
 
   except:
-    raise '\nProses Error','Penyimpanan Pesan Peringatan Koneksi CoreBanking gagal!'
+    raise Exception, '\nProses Error' + 'Penyimpanan Pesan Peringatan Koneksi CoreBanking gagal!'
 
   return 0

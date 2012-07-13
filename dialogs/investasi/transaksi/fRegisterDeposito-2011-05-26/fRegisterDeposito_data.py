@@ -63,31 +63,31 @@ def uipRegisterDepositoApplyRow(uipRegisterDeposito, oRegisterDeposito):
   config = uipRegisterDeposito.UIDefList.Config
   
   if oRegisterDeposito.kapitalisir_rollover == 'F' and oRegisterDeposito.LMasterGiro.IsNull :
-     raise 'PERINGATAN','Nomor Rekening Pindah Buku belum dimasukkan'
+     raise Exception, 'PERINGATAN' + 'Nomor Rekening Pindah Buku belum dimasukkan'
 
   #if oRegisterDeposito.no_bilyet in [None, '']:
-  #  raise 'Kesalahan Register Deposito','Nomor bilyet tidak terdefinisi.'
+  #  raise Exception, 'Kesalahan Register Deposito' + 'Nomor bilyet tidak terdefinisi.'
 
   #moduleapi.CheckNoBilyetAvl(config, oRegisterDeposito.no_bilyet)
 
   if oRegisterDeposito.nominal < moduleapi.zero_approx:
-    raise 'Kesalahan Register Deposito','Nilai nominal harus lebih besar dari nol.'
+    raise Exception, 'Kesalahan Register Deposito' + 'Nilai nominal harus lebih besar dari nol.'
 
   #if oRegisterDeposito.nominal > min(oRegisterDeposito.dpkTersedia, oRegisterDeposito.nilaiMaksProporsi):
-  #  raise 'Kesalahan Register Deposito','\nNilai nominal tidak boleh lebih dari dpk yang tersedia dan nilai maksimum proprsi.'
+  #  raise Exception, 'Kesalahan Register Deposito' + '\nNilai nominal tidak boleh lebih dari dpk yang tersedia dan nilai maksimum proprsi.'
 
   if (oRegisterDeposito.nisbah < 0.0) or (oRegisterDeposito.nisbah >= 100.0):
-    raise 'Kesalahan Register Deposito','Nilai nisbah harus lebih besar dari nol dan kurang dari 100.'
+    raise Exception, 'Kesalahan Register Deposito' + 'Nilai nisbah harus lebih besar dari nol dan kurang dari 100.'
 
   #if oRegisterDeposito.biaya < moduleapi.zero_approx:
-  #  raise 'Kesalahan Register Deposito','Biaya tidak boleh kurang dari nol.'
+  #  raise Exception, 'Kesalahan Register Deposito' + 'Biaya tidak boleh kurang dari nol.'
 
   if oRegisterDeposito.jenisJatuhTempo != 0:
     # bukan deposito on call
     oRegisterDeposito.tgl_jatuh_tempo = moduleapi.HitungJatuhTempo(config, oRegisterDeposito.tgl_buka, oRegisterDeposito.jenisJatuhTempo)
   else:
     if oRegisterDeposito.jmlHariOnCall <= 0:
-      raise 'Kesalahan Register Deposito','Jumlah hari jatuh tempo on call harus lebih besar dari nol.'
+      raise Exception, 'Kesalahan Register Deposito' + 'Jumlah hari jatuh tempo on call harus lebih besar dari nol.'
     # deposito on call
     oRegisterDeposito.tgl_jatuh_tempo = moduleapi.HitungJatuhTempo(config, oRegisterDeposito.tgl_buka, oRegisterDeposito.jenisJatuhTempo, oRegisterDeposito.jmlHariOnCall)
 

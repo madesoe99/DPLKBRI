@@ -87,7 +87,7 @@ def GetTemplateList(config):
             pass
       
   except:
-    raise 'GetTemplateList error', str(sys.exc_info()[1])
+    raise Exception, 'GetTemplateList error' +  str(sys.exc_info()[1])
     
   return phTemplateList 
 

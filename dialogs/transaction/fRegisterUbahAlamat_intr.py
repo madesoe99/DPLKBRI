@@ -49,9 +49,28 @@ def FormShow(form, parameter):
       uipRegisterCIF.SetFieldValue('LNasabahDPLK.nama_lengkap',uipMaster.nama_lengkap)
       
       uipMaster.CopyAttributes(uipRegisterCIF,\
-        'alamat_jalan;alamat_jalan2;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_propinsi;alamat_kode_pos;alamat_telepon;alamat_telepon2;'\
-        'alamat_surat_jalan;alamat_surat_jalan2;alamat_surat_rtrw;alamat_surat_kelurahan;alamat_surat_kecamatan;alamat_surat_kota;alamat_surat_propinsi;alamat_surat_kode_pos;alamat_surat_telepon;alamat_surat_telepon2'\
+        'alamat_jalan;alamat_jalan2;alamat_rtrw;alamat_kelurahan;'\
+        'alamat_kecamatan;alamat_kota;alamat_propinsi;'\
+        'alamat_kode_pos;alamat_telepon;alamat_telepon2;'\
+        'alamat_surat_jalan;alamat_surat_jalan2;alamat_surat_rtrw;alamat_surat_kelurahan;'\
+        'alamat_surat_kecamatan;alamat_surat_kota;alamat_surat_propinsi;'\
+        'alamat_surat_kode_pos;alamat_surat_telepon;alamat_surat_telepon2'\
       )
+      
+      uipRegisterCIF.SetFieldValue('LATPropinsi.kode_propinsi',uipMaster.GetFieldValue('LATPropinsi.kode_propinsi'))
+      uipRegisterCIF.SetFieldValue('LATPropinsi.nama_propinsi',uipMaster.GetFieldValue('LATPropinsi.nama_propinsi'))
+      uipRegisterCIF.SetFieldValue('LATKota.kode_kota',uipMaster.GetFieldValue('LATKota.kode_kota'))
+      uipRegisterCIF.SetFieldValue('LATKota.nama_kota',uipMaster.GetFieldValue('LATKota.nama_kota'))
+      uipRegisterCIF.SetFieldValue('LATKecamatan.kode_kecamatan',uipMaster.GetFieldValue('LATKecamatan.kode_kecamatan'))
+      uipRegisterCIF.SetFieldValue('LATKecamatan.nama_kecamatan',uipMaster.GetFieldValue('LATKecamatan.nama_kecamatan'))
+      
+      uipRegisterCIF.SetFieldValue('LASPropinsi.kode_propinsi',uipMaster.GetFieldValue('LASPropinsi.kode_propinsi'))
+      uipRegisterCIF.SetFieldValue('LASPropinsi.nama_propinsi',uipMaster.GetFieldValue('LASPropinsi.nama_propinsi'))
+      uipRegisterCIF.SetFieldValue('LASKota.kode_kota',uipMaster.GetFieldValue('LASKota.kode_kota'))
+      uipRegisterCIF.SetFieldValue('LASKota.nama_kota',uipMaster.GetFieldValue('LASKota.nama_kota'))
+      uipRegisterCIF.SetFieldValue('LASKecamatan.kode_kecamatan',uipMaster.GetFieldValue('LASKecamatan.kode_kecamatan'))
+      uipRegisterCIF.SetFieldValue('LASKecamatan.nama_kecamatan',uipMaster.GetFieldValue('LASKecamatan.nama_kecamatan'))
+
     else:
       #mode Edit
       form.GetControlByName('pData.no_referensi').ReadOnly = 1
@@ -68,8 +87,8 @@ def btnOKClick(sender):
     """alamat: jalan, rt/rw, kota, provinsi, kode pos, telp rumah (+kode area), handphone"""
     if uipRegisterCIF.alamat_jalan in ["", None]\
       or uipRegisterCIF.alamat_rtrw in ["", None]\
-      or uipRegisterCIF.alamat_kota in ["", None]\
-      or uipRegisterCIF.alamat_propinsi in ["", None]\
+      or uipRegisterCIF.GetFieldValue('LATKota.kode_kota') in ["", None]\
+      or uipRegisterCIF.GetFieldValue('LATPropinsi.kode_propinsi') in ["", None]\
       or uipRegisterCIF.alamat_kode_pos in ["", None]\
       or uipRegisterCIF.alamat_telepon in ["", None]\
       or uipRegisterCIF.alamat_telepon2 in ["", None]:
@@ -85,8 +104,8 @@ def btnOKClick(sender):
 
     if uipRegisterCIF.alamat_surat_jalan in ["", None]\
       or uipRegisterCIF.alamat_surat_rtrw in ["", None]\
-      or uipRegisterCIF.alamat_surat_kota in ["", None]\
-      or uipRegisterCIF.alamat_surat_propinsi in ["", None]\
+      or uipRegisterCIF.GetFieldValue('LASKota.kode_kota') in ["", None]\
+      or uipRegisterCIF.GetFieldValue('LASPropinsi.kode_propinsi') in ["", None]\
       or uipRegisterCIF.alamat_surat_kode_pos in ["", None]\
       or uipRegisterCIF.alamat_surat_telepon in ["", None]\
       or uipRegisterCIF.alamat_surat_telepon2 in ["", None]:

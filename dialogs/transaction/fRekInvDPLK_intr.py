@@ -1,11 +1,6 @@
 def FormShow(form, parameter):
   uipNasabahDPLK = form.GetUIPartByName('uipNasabahDPLK')
   
-  kode_nasabah_corporate = uipNasabahDPLK.GetFieldValue('LNasabahDPLKCorporate.kode_nasabah_corporate')
-  if kode_nasabah_corporate == None:
-    form.GetControlByName('pPekerjaan.LNasabahDPLKCorporate').Visible = \
-    form.GetControlByName('pPekerjaan.btnViewCorp').Visible = 0
-    
   #set kolektibilitas dan tunggakan premi
   uipR = form.GetUIPartByName('uipRekInvDPLK')
   if uipR.Status_Asuransi == 'T':
@@ -34,6 +29,13 @@ def btnViewCorpClick(sender):
 def btnStatemenIndividualClick(sender):
   form = sender.OwnerForm
   app = form.ClientApplication
+  uipRekInvDPLK = form.GetUIPartByName('uipRekInvDPLK')
+
+  f = app.CreateForm('report/fStatemenIndividual', 'report/fStatemenIndividual', 0,
+    app.CreateValues(['no_rekening', uipRekInvDPLK.no_rekening]), None)
+  f.FormContainer.Show()
+  
+  """
   uipNasabahDPLK = form.GetUIPartByName('uipNasabahDPLK')
 
   pyFormObj = app.CreateForm('report/fStatemenIndividual', 'fStatemenIndividual', 0, None, None)
@@ -46,4 +48,5 @@ def btnStatemenIndividualClick(sender):
   pyFormObj.pData.GetControlByName('LNasabahDPLK').Enabled = 0
 
   pyFormObj.FormContainer.Show()
+  """
 

@@ -4,13 +4,14 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rtf::Form<
+>
+object:rtf::Form<
   MainContainer=$CONTAINERS['MultiSplit']
-  Caption='Lihat Pihak Ketiga'
+  Caption='Kode Rekening Pihak Ketiga'
   Left=50
   Top=50
   Width=617
-  Height=310
+  Height=350
   BeforeDeleteRow=''
   BeforeResultSent=''
   OnGeneralSetData=''
@@ -18,11 +19,12 @@ document <
   OnGeneralProcessData=''
   OnProcessRawData=''
   OnBeginSetData=''
-  OnEndSetData=''
+  OnEndSetData='Form_OnEndSetData'
   OnSetDataEx=''
   OnBeginProcessData='OnBeginProcessData'
   OnEndProcessData=''
-  UIParts={object:rtf::PClassUI<
+  UIParts={
+    object:rtf::PClassUI<
       Name='uipPihakKetiga'
       ClassTypeName='PihakKetiga'
       DataBinding=bmMaster
@@ -34,8 +36,12 @@ document <
       ClassTypeName='RincianPihakKetiga'
       DataBinding=bmMaster
       MultiLine=true
-    >}Containers={object:rtf::Panel<
-      ControlDefs={object:rtf::ControlDef<
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      ControlDefs={
+        object:rtf::ControlDef<
           Action=caView
           DataMember='kode_pihak_ketiga'
         >, object:rtf::ControlDef<
@@ -47,25 +53,63 @@ document <
         >, object:rtf::ControlDef<
           Action=caView
           DataMember='self_investment'
-        >}Elements={*object:rtf::FieldUIElmtSetting<
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='LInduk'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='is_level_detil'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
           Name='kode_pihak_ketiga'
+          Hidden=false
+          ReadOnlyControl=false
           ControlCaption='Kode Pihak Ketiga'
         >, *object:rtf::FieldUIElmtSetting<
           Name='nama_pihak_ketiga'
+          Hidden=false
+          ReadOnlyControl=false
           ControlCaption='Nama Pihak Ketiga'
         >, *object:rtf::FieldUIElmtSetting<
           Name='alamat_pihak_ketiga'
+          Hidden=false
+          ReadOnlyControl=false
           ControlCaption='Alamat Pihak Ketiga'
         >, *object:rtf::FieldUIElmtSetting<
           Name='self_investment'
+          Hidden=false
+          ReadOnlyControl=false
           ControlCaption='Pihak Terkait'
           GenerateCheckBoxForEnum=true
-        >}Name='pData'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LInduk'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Grup Pihak Ketiga'
+          DisplayFields='kode_pihak_ketiga;nama_pihak_ketiga'
+          Restrictions=''
+          FieldBaseName='LInduk'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='is_level_detil'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Level Detil'
+          DataTypeName='varchar'
+          DataLength=1
+          EnumeratedValues=['F=false'#13#10,
+            'T=true'#13#10]
+          GenerateCheckBoxForEnum=true
+        >
+      }
+      Name='pData'
       Width=240
-      Height=140
+      Height=190
       Bordered=true
       UIPart=$UIPARTS['uipPihakKetiga']
-      Controls={*object:rtf::DBEdit<
+      Controls={
+        *object:rtf::DBEdit<
           Name='kode_pihak_ketiga'
           Top=20
           Left=20
@@ -87,9 +131,28 @@ document <
           Name='self_investment'
           Top=104
           Left=20
-          Color=0
-          ControlCaption='Pihak Terkait'
-        >}EqualCaptionWidth=120
+          Width=200
+          Height=21
+          ControlCaption='Pihak Terkait (Self Investment)'
+        >, *object:rtf::DBLookupEdit<
+          Name='LInduk'
+          Top=132
+          Left=20
+          Enabled=false
+          ControlCaption='Grup Pihak Ketiga'
+          LookupField='LInduk.nama_pihak_ketiga'
+          DisplayLookupField=true
+          DisableLookup=true
+        >, *object:rtf::DBCheckBox<
+          Name='is_level_detil'
+          Top=160
+          Left=20
+          Enabled=false
+          Color=-16777192
+          ControlCaption='Level Detil'
+        >
+      }
+      EqualCaptionWidth=120
       ControlLeftMargin=20
       ControlTopMargin=20
       DefaultControlHeight=21
@@ -99,12 +162,12 @@ document <
       Name='pButton'
       Width=240
       Height=40
-      Controls={object:rtf::Button<
+      Controls={
+        object:rtf::Button<
           Name='btnCancel'
           Layout=clNextSide
           Top=8
           Left=99
-          Color=0
           ControlCaption=''
           LayoutOrder=2
           Caption='&Tutup'
@@ -116,26 +179,34 @@ document <
           Layout=clNewLine
           Top=8
           Left=20
-          Color=0
           ControlCaption='&Simpan'
           LayoutOrder=1
           Caption='&Simpan'
           Default=true
           OnClick='OnClick_OK'
-        >}ControlLeftMargin=20
+        >
+      }
+      ControlLeftMargin=20
       ControlTopMargin=8
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
     >, object:rtf::MultiSplit<
       Name='MultiSplit'
-      Width=617
-      Height=310
-      Side1Containers={$CONTAINERS['pData']
-      }Side2Containers={$CONTAINERS['pButton']
-      }SpaceContainer=$CONTAINERS['gRincianPK']
+      Width=320
+      Height=320
+      Side1Containers={
+        $CONTAINERS['pData']
+
+      }
+      Side2Containers={
+        $CONTAINERS['pButton']
+
+      }
+      SpaceContainer=$CONTAINERS['gRincianPK']
     >, object:rtf::Grid<
-      ControlDefs={object:rtf::ControlDef<
+      ControlDefs={
+        object:rtf::ControlDef<
           Action=caView
           DataMember='kode_jns_investasi'
         >, object:rtf::ControlDef<
@@ -156,34 +227,55 @@ document <
         >, object:rtf::ControlDef<
           Action=caEdit
           DataMember='acc_penjualan'
-        >}Elements={*object:rtf::FieldUIElmtSetting<
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
           Name='kode_jns_investasi'
+          Hidden=false
+          ReadOnlyControl=false
           ControlCaption='Jenis Investasi'
         >, *object:rtf::FieldUIElmtSetting<
           Name='acc_investasi'
+          Hidden=false
+          ReadOnlyControl=false
           ControlCaption='Kode Akun Investasi'
         >, *object:rtf::FieldUIElmtSetting<
           Name='acc_pendapatan'
+          Hidden=false
+          ReadOnlyControl=false
           ControlCaption='Kode Akun Pendapatan'
         >, *object:rtf::FieldUIElmtSetting<
           Name='acc_piut_pendapatan'
+          Hidden=false
+          ReadOnlyControl=false
           ControlCaption='Kode Akun Piutang Pendpt'
         >, *object:rtf::FieldUIElmtSetting<
           Name='acc_beban'
+          Hidden=false
+          ReadOnlyControl=false
           ControlCaption='Kode Akun Beban'
         >, *object:rtf::FieldUIElmtSetting<
           Name='kode_pihak_ketiga'
           Hidden=true
-        >}Name='gRincianPK'
-      Width=617
-      Height=128
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='acc_penjualan'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='gRincianPK'
+      Width=240
+      Height=240
       UIPart=$UIPARTS['uipRincianPK']
       ControlLeftMargin=8
       ControlTopMargin=8
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
-      Columns={*object:rtf::GridColumn<
+      Columns={
+        *object:rtf::GridColumn<
           Name='kode_jns_investasi'
           InputStyle=cisNormal
           EnumeratedValues=''
@@ -219,27 +311,38 @@ document <
           FieldName='acc_beban'
           DisplayFormat=''
           TitleCaption='Kode Akun Beban'
-        >}>, object:rtf::Panel<
-      ControlDefs={object:rtf::ControlDef<
+        >
+      }
+    >, object:rtf::Panel<
+      ControlDefs={
+        object:rtf::ControlDef<
           Action=caEdit
           DataMember='user_id'
         >, object:rtf::ControlDef<
           Action=caEdit
           DataMember='last_update'
-        >}Elements={*object:rtf::FieldUIElmtSetting<
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
           Name='user_id'
+          Hidden=false
           ReadOnlyControl=true
           ControlCaption='ID Pengguna'
         >, *object:rtf::FieldUIElmtSetting<
           Name='last_update'
+          Hidden=false
           ReadOnlyControl=true
           ControlCaption='Terakhir Diperbarui'
-        >}Name='pUser'
+        >
+      }
+      Name='pUser'
       Width=240
       Height=40
       Bordered=true
       UIPart=$UIPARTS['uipPihakKetiga']
-      Controls={*object:rtf::DBEdit<
+      Controls={
+        *object:rtf::DBEdit<
           Name='user_id'
           Top=20
           Left=20
@@ -252,10 +355,14 @@ document <
           Left=20
           Color=-2147483624
           ControlCaption='Terakhir Diperbarui'
-        >}EqualCaptionWidth=120
+        >
+      }
+      EqualCaptionWidth=120
       ControlLeftMargin=20
       ControlTopMargin=20
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
-    >}>
+    >
+  }
+>

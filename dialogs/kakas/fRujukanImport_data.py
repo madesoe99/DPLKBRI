@@ -9,7 +9,7 @@ def UpdateDataTemplateFile(config, fileName, dataString):
       f.close()
 
   except:
-    raise '\nUpdate Data File Template Error', str(sys.exc_info()[1])
+    raise Exception, '\nUpdate Data File Template Error' +  str(sys.exc_info()[1])
 
   return 1
 
@@ -28,13 +28,13 @@ def SaveTemplateFile(config, fileName, definitionString, dataString):
         f.write(dataString)
         f.close()
       else:
-        raise '','File %s.dat terduplikasi!' % (fileName)
+        raise Exception, '' + 'File %s.dat terduplikasi!' % (fileName)
     else:
       #file ada, akan terjadi duplikasi
-      raise '','Nama file template tidak boleh sama!'
+      raise Exception, '' + 'Nama file template tidak boleh sama!'
 
   except:
-    raise '\nPenyimpanan File Template Error', str(sys.exc_info()[1])
+    raise Exception, '\nPenyimpanan File Template Error' +  str(sys.exc_info()[1])
 
   return 1
 
@@ -57,10 +57,10 @@ def LoadTemplateFile(config, fileName):
       packet = ph.Packet
       packet.SetSerializationString(sDefinition,sData)
     else:
-      raise '','Salah satu file template %s (.def atau .dat) tidak ditemukan!'
+      raise Exception, '' + 'Salah satu file template %s (.def atau .dat) tidak ditemukan!'
 
   except:
-    raise '\nLoading File Template Error', str(sys.exc_info()[1])
+    raise Exception, '\nLoading File Template Error' +  str(sys.exc_info()[1])
 
   return ph
 
@@ -181,6 +181,6 @@ def FormGeneralProcessData(uideflist, data):
         UpdateDataTemplateFile(config, fileName, sSerialPaket[1])
 
   except:
-    raise '\nProses Error', str(sys.exc_info()[1])
+    raise Exception, '\nProses Error' +  str(sys.exc_info()[1])
 
   return 0

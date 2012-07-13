@@ -1,0 +1,26 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipDaerahKota'
+      PClassName='DaerahKota'
+      LoadedFieldList='LPropinsi.kode_propinsi;LPropinsi.kode_propinsi;LPropinsi.nama_propinsi;kode_kota;nama_kota;user_id;last_update'
+      StoredFieldList='LPropinsi;nama_kota;user_id;last_update'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LPropinsi'
+          ClassTypeName='DaerahAsal'
+          FieldNames='kode_propinsi;kode_propinsi;nama_propinsi'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+  }
+>

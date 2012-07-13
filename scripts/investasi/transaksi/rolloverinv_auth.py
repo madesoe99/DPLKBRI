@@ -1,10 +1,11 @@
-import sys
-sys.path.append('c:/dafapp/dplk07/script_modules')
-import moduleapi
+import com.ihsan.util.modman as modman
+
+#moduleapi = modman.getModule(config, 'moduleapi')
 
 def RolloverInvestasi(config, oTransPiutangInvestasi):
   oInvestasi = oTransPiutangInvestasi.LInvestasi
   oDeposito = oInvestasi.CastAs('Deposito')
+  moduleapi = modman.getModule(config, 'moduleapi')
   moduleapi.AdvanceJatuhTempo(config, oDeposito)
 
 def SetTransPiutangInvestasi(config, oTransPiutangInvestasi):
@@ -62,7 +63,6 @@ def KapitalisirInvestasi(config, oDeposito, oRolloverDeposito):
 
     resSQL.Next()
 
-
 def RolloverNonKapitalisir(config, oDeposito, oRolloverDeposito):
   CreateTransPiutangLRInvestasi(config, 0, oDeposito, oRolloverDeposito.ID_TransactionBatch)
 
@@ -85,7 +85,7 @@ def DAFScriptMain(config, parameter, returnpacket):
   oInvestasi = oTransPiutangInvestasi.LInvestasi
   oDeposito = oInvestasi.CastAs('Deposito')
   if oDeposito.tgl_jatuh_tempo > config.Now() :
-     raise '\nPERINGATAN','Deposito belum jatuh tempo'
+     raise Exception, '\nPERINGATAN: Deposito belum jatuh tempo'
   config.BeginTransaction()
   try:
     RolloverInvestasi(config, oTransPiutangInvestasi)

@@ -11,7 +11,7 @@ object:rtf::Form<
   Left=100
   Top=50
   Width=800
-  Height=560
+  Height=600
   BeforeDeleteRow=''
   BeforeResultSent=''
   OnGeneralSetData=''
@@ -70,6 +70,17 @@ object:rtf::Form<
             'alamat_surat_jalan2'#13#10,
             'alamat_surat_telepon'#13#10,
             'alamat_surat_telepon2'#13#10]
+        >, object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['LATPropinsi'#13#10,
+            'LATKota'#13#10,
+            'LATKecamatan'#13#10,
+            'LASPropinsi'#13#10,
+            'LASKota'#13#10,
+            'LASKecamatan'#13#10,
+            'LAKPropinsi'#13#10,
+            'LAKKota'#13#10,
+            'LAKKecamatan'#13#10]
         >
       }
       Elements={
@@ -193,6 +204,123 @@ object:rtf::Form<
           Name='alamat_surat_telepon2'
           Hidden=false
           ReadOnlyControl=false
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LATPropinsi'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='kode_propinsi;nama_propinsi'
+          Restrictions=''
+          OQLText=['SELECT FROM DaerahAsal('#13#10,
+            '  kode_propinsi,'#13#10,
+            '  nama_propinsi,'#13#10,
+            '  self'#13#10,
+            ')']
+          LookupOption=loCustomOQL
+          FieldBaseName='LATPropinsi'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LATKota'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='kode_kota;nama_kota'
+          Restrictions=''
+          OQLText=['SELECT FROM DaerahKota('#13#10,
+            '  kode_kota,'#13#10,
+            '  nama_kota,'#13#10,
+            '  self'#13#10,
+            ')']
+          LookupOption=loCustomOQL
+          FieldBaseName='LATKota'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LATKecamatan'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='kode_kecamatan;nama_kecamatan'
+          Restrictions=''
+          OQLText=['SELECT FROM DaerahKecamatan('#13#10,
+            '  kode_kecamatan,'#13#10,
+            '  nama_kecamatan,'#13#10,
+            '  self'#13#10,
+            ')']
+          LookupOption=loCustomOQL
+          FieldBaseName='LATKecamatan'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LASPropinsi'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='kode_propinsi;nama_propinsi'
+          Restrictions=''
+          OQLText=['SELECT FROM DaerahAsal('#13#10,
+            '  kode_propinsi,'#13#10,
+            '  nama_propinsi,'#13#10,
+            '  self'#13#10,
+            ')']
+          LookupOption=loCustomOQL
+          FieldBaseName='LASPropinsi'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LASKota'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='kode_kota;nama_kota'
+          Restrictions=''
+          OQLText=['SELECT FROM DaerahKota('#13#10,
+            '  kode_kota,'#13#10,
+            '  nama_kota,'#13#10,
+            '  self'#13#10,
+            ')']
+          LookupOption=loCustomOQL
+          FieldBaseName='LASKota'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LASKecamatan'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='kode_kecamatan;nama_kecamatan'
+          Restrictions=''
+          OQLText=['SELECT FROM DaerahKecamatan('#13#10,
+            '  kode_kecamatan,'#13#10,
+            '  nama_kecamatan,'#13#10,
+            '  self'#13#10,
+            ')']
+          LookupOption=loCustomOQL
+          FieldBaseName='LASKecamatan'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LAKPropinsi'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='kode_propinsi;nama_propinsi'
+          Restrictions=''
+          OQLText=['SELECT FROM DaerahAsal('#13#10,
+            '  kode_propinsi,'#13#10,
+            '  nama_propinsi,'#13#10,
+            '  self'#13#10,
+            ')']
+          LookupOption=loCustomOQL
+          FieldBaseName='LAKPropinsi'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LAKKota'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='kode_kota;nama_kota'
+          Restrictions=''
+          OQLText=['SELECT FROM DaerahKota('#13#10,
+            '  kode_kota,'#13#10,
+            '  nama_kota,'#13#10,
+            '  self'#13#10,
+            ')']
+          LookupOption=loCustomOQL
+          FieldBaseName='LAKKota'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LAKKecamatan'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='kode_kecamatan;nama_kecamatan'
+          Restrictions=''
+          OQLText=['SELECT FROM DaerahKecamatan('#13#10,
+            '  kode_kecamatan,'#13#10,
+            '  nama_kecamatan,'#13#10,
+            '  self'#13#10,
+            ')']
+          LookupOption=loCustomOQL
+          FieldBaseName='LAKKecamatan'
         >
       }
       Name='uipMaster'
@@ -252,7 +380,7 @@ object:rtf::Form<
     >, object:rtf::MultiSplit<
       Name='MultiSplit'
       Width=800
-      Height=560
+      Height=600
       Side1Containers={
         $CONTAINERS['pData']
 
@@ -384,6 +512,15 @@ object:rtf::Form<
         >, object:rtf::ControlDef<
           Action=caEdit
           DataMember='alamat_propinsi'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LATPropinsi'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LATKota'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LATKecamatan'
         >
       }
       Elements={
@@ -409,7 +546,7 @@ object:rtf::Form<
           ControlCaption='kecamatan'
         >, *object:rtf::FieldUIElmtSetting<
           Name='alamat_kota'
-          Hidden=false
+          Hidden=true
           ReadOnlyControl=false
           ControlCaption='kota'
         >, *object:rtf::FieldUIElmtSetting<
@@ -434,13 +571,56 @@ object:rtf::Form<
           ControlCaption='telepon 2'
         >, *object:rtf::FieldUIElmtSetting<
           Name='alamat_propinsi'
+          Hidden=true
+          ReadOnlyControl=false
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LATPropinsi'
           Hidden=false
           ReadOnlyControl=false
+          DisplayFields='kode_propinsi;nama_propinsi'
+          Restrictions=''
+          OQLText=['SELECT FROM DaerahAsal('#13#10,
+            '  kode_propinsi,'#13#10,
+            '  nama_propinsi,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY kode_propinsi;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LATPropinsi'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LATKota'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='kode_kota;nama_kota'
+          Restrictions='LATPropinsi|LATPropinsi'
+          OQLText=['SELECT FROM DaerahKota ['#13#10,
+            '  LPropinsi=:LATPropinsi'#13#10,
+            ']('#13#10,
+            '  kode_kota,'#13#10,
+            '  nama_kota,'#13#10,
+            ' self'#13#10,
+            ') THEN ORDER BY kode_kota;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LATKota'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LATKecamatan'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='kode_kecamatan;nama_kecamatan'
+          Restrictions='LATKota|LATKota'
+          OQLText=['SELECT FROM DaerahKecamatan ['#13#10,
+            '  LKota=:LATKota'#13#10,
+            ']('#13#10,
+            '  kode_kecamatan,'#13#10,
+            '  nama_kecamatan,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY kode_kecamatan;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LATKecamatan'
         >
       }
       Name='pAlamat'
       Width=400
-      Height=345
+      Height=361
       Bordered=true
       UIPart=$UIPARTS['uipRegisterCIF']
       Controls={
@@ -467,33 +647,25 @@ object:rtf::Form<
           CharCase=ecUpperCase
         >, *object:rtf::DBEdit<
           Name='alamat_kecamatan'
-          Top=142
-          Left=20
-          ControlCaption='Kecamatan'
-          LayoutOrder=5
-          CharCase=ecUpperCase
-        >, *object:rtf::DBEdit<
-          Name='alamat_kota'
-          Top=170
-          Left=20
-          Color=12695295
-          ControlCaption='Kota'
-          LayoutOrder=6
-          CharCase=ecUpperCase
-        >, *object:rtf::DBEdit<
-          Name='alamat_kode_pos'
           Top=226
           Left=20
-          Color=12695295
-          ControlCaption='Kode Pos'
+          Visible=false
+          ControlCaption='Kecamatan (Lainnya)'
           LayoutOrder=8
         >, *object:rtf::DBEdit<
-          Name='alamat_telepon'
+          Name='alamat_kode_pos'
           Top=254
           Left=20
           Color=12695295
-          ControlCaption='Telp. Rumah'
+          ControlCaption='Kode Pos'
           LayoutOrder=9
+        >, *object:rtf::DBEdit<
+          Name='alamat_telepon'
+          Top=282
+          Left=20
+          Color=12695295
+          ControlCaption='Telp. Rumah'
+          LayoutOrder=10
         >, *object:rtf::DBEdit<
           Name='alamat_jalan2'
           Top=58
@@ -503,21 +675,40 @@ object:rtf::Form<
           CharCase=ecUpperCase
         >, *object:rtf::DBEdit<
           Name='alamat_telepon2'
-          Top=282
+          Top=310
           Left=20
           Color=12695295
           ControlCaption='Handphone'
-          LayoutOrder=10
-        >, *object:rtf::DBEdit<
-          Name='alamat_propinsi'
-          Top=198
+          LayoutOrder=11
+        >, *object:rtf::DBLookupEdit<
+          Name='LATPropinsi'
+          Top=142
           Left=20
           Color=12695295
-          ControlCaption='Provinsi'
+          ControlCaption='Propinsi'
+          LayoutOrder=5
+          LookupField='LATPropinsi.nama_propinsi'
+          DisplayLookupField=true
+        >, *object:rtf::DBLookupEdit<
+          Name='LATKota'
+          Top=170
+          Left=20
+          Color=12695295
+          ControlCaption='Kota'
+          LayoutOrder=6
+          LookupField='LATKota.nama_kota'
+          DisplayLookupField=true
+        >, *object:rtf::DBLookupEdit<
+          Name='LATKecamatan'
+          Top=198
+          Left=20
+          ControlCaption='Kecamatan'
           LayoutOrder=7
+          LookupField='LATKecamatan.nama_kecamatan'
+          DisplayLookupField=true
         >
       }
-      EqualCaptionWidth=120
+      EqualCaptionWidth=110
       ControlLeftMargin=20
       ControlTopMargin=30
       DefaultControlHeight=21
@@ -542,6 +733,15 @@ object:rtf::Form<
           Action=caEdit
           DataMembers=['alamat_surat_telepon'#13#10,
             'alamat_surat_telepon2'#13#10]
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LASPropinsi'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LASKota'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LASKecamatan'
         >
       }
       Elements={
@@ -567,12 +767,12 @@ object:rtf::Form<
           ControlCaption='kecamatan'
         >, *object:rtf::FieldUIElmtSetting<
           Name='alamat_surat_kota'
-          Hidden=false
+          Hidden=true
           ReadOnlyControl=false
           ControlCaption='kota'
         >, *object:rtf::FieldUIElmtSetting<
           Name='alamat_surat_propinsi'
-          Hidden=false
+          Hidden=true
           ReadOnlyControl=false
           ControlCaption='propinsi'
         >, *object:rtf::FieldUIElmtSetting<
@@ -597,11 +797,54 @@ object:rtf::Form<
           Hidden=false
           ReadOnlyControl=false
           ControlCaption='telepon 2'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LASPropinsi'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='kode_propinsi;nama_propinsi'
+          Restrictions=''
+          OQLText=['SELECT FROM DaerahAsal('#13#10,
+            '  kode_propinsi,'#13#10,
+            '  nama_propinsi,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY kode_propinsi;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LASPropinsi'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LASKota'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='kode_kota;nama_kota'
+          Restrictions='LASPropinsi|LASPropinsi'
+          OQLText=['SELECT FROM DaerahKota ['#13#10,
+            '  LPropinsi=:LASPropinsi'#13#10,
+            ']('#13#10,
+            '  kode_kota,'#13#10,
+            '  nama_kota,'#13#10,
+            ' self'#13#10,
+            ') THEN ORDER BY kode_kota;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LASKota'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LASKecamatan'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='kode_kecamatan;nama_kecamatan'
+          Restrictions='LASKota|LASKota'
+          OQLText=['SELECT FROM DaerahKecamatan ['#13#10,
+            '  LKota=:LASKota'#13#10,
+            ']('#13#10,
+            '  kode_kecamatan,'#13#10,
+            '  nama_kecamatan,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY kode_kecamatan;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LASKecamatan'
         >
       }
       Name='pAlamatSurat'
-      Width=400
-      Height=300
+      Width=385
+      Height=353
       Bordered=true
       UIPart=$UIPARTS['uipRegisterCIF']
       Controls={
@@ -629,34 +872,19 @@ object:rtf::Form<
           CharCase=ecUpperCase
         >, *object:rtf::DBEdit<
           Name='alamat_surat_kecamatan'
-          Top=142
+          Top=226
           Left=20
-          ControlCaption='Kecamatan'
-          LayoutOrder=5
-          CharCase=ecUpperCase
-        >, *object:rtf::DBEdit<
-          Name='alamat_surat_kota'
-          Top=170
-          Left=20
-          Color=12695295
-          ControlCaption='Kota'
-          LayoutOrder=6
-          CharCase=ecUpperCase
-        >, *object:rtf::DBEdit<
-          Name='alamat_surat_propinsi'
-          Top=198
-          Left=20
-          Color=12695295
-          ControlCaption='Provinsi'
-          LayoutOrder=7
+          Visible=false
+          ControlCaption='Kecamatan (Lainnya)'
+          LayoutOrder=8
           CharCase=ecUpperCase
         >, *object:rtf::DBEdit<
           Name='alamat_surat_kode_pos'
-          Top=226
+          Top=254
           Left=20
           Color=12695295
           ControlCaption='Kode Pos'
-          LayoutOrder=8
+          LayoutOrder=9
           CharCase=ecUpperCase
         >, *object:rtf::DBEdit<
           Name='alamat_surat_jalan2'
@@ -665,21 +893,47 @@ object:rtf::Form<
           ControlCaption=''
         >, *object:rtf::DBEdit<
           Name='alamat_surat_telepon'
-          Top=254
-          Left=20
-          Color=12695295
-          ControlCaption='Telp. Rumah'
-          LayoutOrder=9
-        >, *object:rtf::DBEdit<
-          Name='alamat_surat_telepon2'
           Top=282
           Left=20
           Color=12695295
-          ControlCaption='Handphone'
+          ControlCaption='Telp. Rumah'
           LayoutOrder=10
+        >, *object:rtf::DBEdit<
+          Name='alamat_surat_telepon2'
+          Top=310
+          Left=20
+          Color=12695295
+          ControlCaption='Handphone'
+          LayoutOrder=11
+        >, *object:rtf::DBLookupEdit<
+          Name='LASPropinsi'
+          Top=142
+          Left=20
+          Color=12695295
+          ControlCaption='Propinsi'
+          LayoutOrder=5
+          LookupField='LASPropinsi.nama_propinsi'
+          DisplayLookupField=true
+        >, *object:rtf::DBLookupEdit<
+          Name='LASKota'
+          Top=170
+          Left=20
+          Color=12695295
+          ControlCaption='Kota'
+          LayoutOrder=6
+          LookupField='LASKota.nama_kota'
+          DisplayLookupField=true
+        >, *object:rtf::DBLookupEdit<
+          Name='LASKecamatan'
+          Top=198
+          Left=20
+          ControlCaption='Kecamatan'
+          LayoutOrder=7
+          LookupField='LASKecamatan.nama_kecamatan'
+          DisplayLookupField=true
         >
       }
-      EqualCaptionWidth=120
+      EqualCaptionWidth=110
       ControlLeftMargin=20
       ControlTopMargin=30
       DefaultControlHeight=21

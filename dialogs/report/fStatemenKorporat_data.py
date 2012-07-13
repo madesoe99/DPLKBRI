@@ -21,16 +21,16 @@ def CekJumlahBaris(config, tepi_kiri):
   global tepi_atas, tepi_bawah, baris_per_halaman
 
   if tepi_atas < 0:
-    raise 'Kesalahan Tepi Atas', '\nTepi atas tidak boleh kurang dari nol.'
+    raise Exception, 'Kesalahan Tepi Atas' +  '\nTepi atas tidak boleh kurang dari nol.'
 
   if tepi_bawah < 0:
-    raise 'Kesalahan Tepi Bawah', '\nTepi bawah tidak boleh kurang dari nol.'
+    raise Exception, 'Kesalahan Tepi Bawah' +  '\nTepi bawah tidak boleh kurang dari nol.'
 
   if tepi_kiri < 0:
-    raise 'Kesalahan Tepi Kiri', '\nTepi kiri tidak boleh kurang dari nol.'
+    raise Exception, 'Kesalahan Tepi Kiri' +  '\nTepi kiri tidak boleh kurang dari nol.'
 
   if baris_per_halaman < 25 + tepi_atas + tepi_bawah:
-    raise 'Kesalahan Jumlah Baris', '\nBaris per halaman tidak boleh kurang dari 25 + tepi atas + tepi bawah.'
+    raise Exception, 'Kesalahan Jumlah Baris' +  '\nBaris per halaman tidak boleh kurang dari 25 + tepi atas + tepi bawah.'
 
 def getAwalAkhirTanggal(config, periode, tahun):
   if periode == 13:

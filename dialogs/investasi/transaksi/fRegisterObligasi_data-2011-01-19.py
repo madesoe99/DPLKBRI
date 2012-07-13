@@ -79,18 +79,18 @@ def uipRegisterObligasiApplyRow(uipRegisterObligasi, oRegisterObligasi):
   config = uipRegisterObligasi.UIDefList.Config
 
   if oRegisterObligasi.nama_obligasi in [None, '']:
-    raise 'Kesalahan Register Obligasi','\nNama obligasi tidak terdefinisi.'
+    raise Exception, 'Kesalahan Register Obligasi' + '\nNama obligasi tidak terdefinisi.'
 
   nominal_beli = oRegisterObligasi.harga_pari * oRegisterObligasi.harga_beli / 100.0
   #if nominal_beli > min(oRegisterObligasi.dpkTersedia, oRegisterObligasi.nilaiMaksProporsi, oRegisterObligasi.nominalGiro):
   if nominal_beli > min(oRegisterObligasi.dpkTersedia, oRegisterObligasi.nilaiMaksProporsi):
-    raise 'Kesalahan Register Obligasi','\nDana paket investasi tidak tersedia.'
+    raise Exception, 'Kesalahan Register Obligasi' + '\nDana paket investasi tidak tersedia.'
 
   if oRegisterObligasi.harga_beli <= 0.0:
-    raise 'Kesalahan Register Obligasi','\nHarga beli harus lebih besar dari nol.'
+    raise Exception, 'Kesalahan Register Obligasi' + '\nHarga beli harus lebih besar dari nol.'
 
   if oRegisterObligasi.harga_pari <= 0.0:
-    raise 'Kesalahan Register Obligasi','\nNilai pari harus lebih besar dari nol.'
+    raise Exception, 'Kesalahan Register Obligasi' + '\nNilai pari harus lebih besar dari nol.'
 
   oRegisterObligasi.nominal = oRegisterObligasi.harga_pari
   oRegisterObligasi.user_id = config.SecurityContext.userid

@@ -197,7 +197,7 @@ def OnSetDataEx(uideflist, params):
 
 def FormEndProcessData(uideflist, datapacket):
   config = uideflist.Config
-
+  
   oRegisterNasabahRekening = uideflist.uipRegisterNasabahRekening.ActiveInstance
   kode_cab_daftar = oRegisterNasabahRekening.kode_cab_daftar
 

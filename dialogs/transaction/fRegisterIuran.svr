@@ -10,20 +10,12 @@ object:rpclass::TPClassUIDefList<
     object:rpclass::TPClassUIDef<
       Name='uipRegisterCIF'
       PClassName='RegisterIuran'
-      LoadedFieldList='no_referensi;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;keterangan;user_id;terminal_id;registercif_id;LRekeningDPLK.no_rekening;LRekeningDPLK.no_rekening;LRekeningDPLK.keterangan;iuran_pst;iuran_pk'
-      StoredFieldList='no_referensi;LNasabahDPLK;keterangan;user_id;terminal_id;LRekeningDPLK;iuran_pst;iuran_pk'
+      LoadedFieldList='registercif_id;no_referensi;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;keterangan;user_id;terminal_id;registercif_id;LRekeningDPLK.no_rekening;LRekeningDPLK.no_rekening;LRekeningDPLK.keterangan;sistem_pembayaran_iuran;iuran_pst;iuran_pk;tgl_penarikan_iuran;REKSUMBER_NO;REKSUMBER_NAMA'
+      StoredFieldList='no_referensi;LNasabahDPLK;keterangan;user_id;terminal_id;LRekeningDPLK;sistem_pembayaran_iuran;iuran_pst;iuran_pk;tgl_penarikan_iuran;REKSUMBER_NO;REKSUMBER_NAMA'
       CustomLoadedFields={
         object:rpclass::TCustomLoadedField<
           Name='mode'
           DataTypeName='varchar'
-          DataLength=20
-        >, object:rpclass::TCustomLoadedField<
-          Name='iuran_pst_lama'
-          DataTypeName='double'
-          DataLength=20
-        >, object:rpclass::TCustomLoadedField<
-          Name='iuran_pk_lama'
-          DataTypeName='double'
           DataLength=20
         >
       }
@@ -44,12 +36,12 @@ object:rpclass::TPClassUIDefList<
     >, object:rpclass::TPClassUIDef<
       Name='uipMaster'
       PClassName='RekInvDPLK'
-      LoadedFieldList='no_rekening;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;iuran_pst;iuran_pk;no_peserta;keterangan'
+      LoadedFieldList='no_rekening;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;iuran_pst;iuran_pk;no_peserta;keterangan;sistem_pembayaran_iuran;tgl_penarikan_iuran;REKSUMBER_NO;REKSUMBER_NAMA'
       CustomLoadedLinks={
         object:rpclass::TCustomLoadedLink<
           Name='LNasabahDPLK'
           ClassTypeName='NasabahDPLK'
-          FieldNames='no_peserta;nama_lengkap'
+          FieldNames='no_peserta;no_peserta;nama_lengkap'
         >
       }
       Mode=imSingleRow

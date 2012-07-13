@@ -15,7 +15,7 @@ def GetKasTeller(userid, host, port):
   trace.udp_trace(messageresp)
   messageresp = messageresp.split(';')
   if len(messageresp) < 6:
-    raise '90', 'Error receiving data from kiblat : ' + str(messageresp)
+    raise Exception, '90' +  'Error receiving data from kiblat : ' + str(messageresp)
   else:
     kasteller = messageresp[5]
 
@@ -382,7 +382,7 @@ def CekKoneksiCoreBanking(config):
   sessionID = config.SysVarIntf.GetStringSysVar('LOGINCOREBANKING', 'AppName') + \
     config.SecurityContext.UserID
   if not config.AppObject.lookuprsession(sessionID):
-    raise 'Error koneksi core banking', 'User %s tidak terhubung ke core banking' % config.SecurityContext.UserID
+    raise Exception, 'Error koneksi core banking' +  'User %s tidak terhubung ke core banking' % config.SecurityContext.UserID
   return sessionID
 
 #-------------------------------------------------------------------------------
@@ -405,7 +405,7 @@ def CekKoneksiCoreBanking(config):
     #remote eksekusi creating giro core banking untuk setor tunai
     ph = config.AppObject.rexecscript(sessionID,'remote/SetorTunaiDPLK',param,1)
     if ph.FirstRecord.IsErr:
-      raise '\nError Giro %s' % (noGiro), str(ph.FirstRecord.ErrMessage)
+      raise Exception, '\nError Giro %s' % (noGiro) +  str(ph.FirstRecord.ErrMessage)
   except:
     raise
   
@@ -458,7 +458,7 @@ def SetorTunaiCoreBanking(config, noBatch, noPeserta, namaLengkap, noGiro, \
     #remote eksekusi creating giro core banking untuk pindah buku
     ph = config.AppObject.rexecscript(sessionID,'remote/PindahBukuDPLK',param,1)
     if ph.FirstRecord.IsErr:
-      raise '\nError Giro %s' % (noGiro), str(ph.FirstRecord.ErrMessage)
+      raise Exception, '\nError Giro %s' % (noGiro) +  str(ph.FirstRecord.ErrMessage)
   except:
     raise
 
@@ -512,7 +512,7 @@ def PindahBukuCoreBanking(config, noBatch, noPeserta, namaLengkap, noGiro, \
     #remote eksekusi creating giro core banking untuk setor tunai
     ph = config.AppObject.rexecscript(sessionID,'remote/SetorTunaiDPLKPertama',param,1)
     if ph.FirstRecord.IsErr:
-      raise '\nError Giro %s dan %s' % (noGiroDaftar,noGiroIuran), \
+      raise Exception, '\nError Giro %s dan %s' % (noGiroDaftar,noGiroIuran) +  \
         str(ph.FirstRecord.ErrMessage)
   except:
     raise
@@ -578,7 +578,7 @@ def SetorTunaiPertamaCoreBanking(config, noBatch, noPeserta, namaLengkap, noGiro
     #remote eksekusi creating giro core banking untuk pindah buku
     ph = config.AppObject.rexecscript(sessionID,'remote/PindahBukuDPLKPertama',param,1)
     if ph.FirstRecord.IsErr:
-      raise '\nError Giro %s dan %s' % (noGiroDaftar,noGiroIuran), \
+      raise Exception, '\nError Giro %s dan %s' % (noGiroDaftar,noGiroIuran) +  \
         str(ph.FirstRecord.ErrMessage)
   except:
     raise
@@ -639,7 +639,7 @@ def CreateSI(config, noPeserta, noRekeningDebet, noRekeningKredit, jenisSetoran,
   try:
     ph = config.AppObject.rexecscript(sessionID,'remote/CreateSI',param,1)
     if ph.FirstRecord.IsErr:
-      raise '\nError Create Stading Instruction (SI)',str(ph.FirstRecord.ErrMessage)
+      raise Exception, '\nError Create Stading Instruction (SI)' + str(ph.FirstRecord.ErrMessage)
   except:
     raise
 
@@ -668,7 +668,7 @@ def EditSI(config, noPeserta, noRekeningDebet, noRekeningKredit, jenisRekeningKr
     #remote eksekusi creating giro core banking untuk pindah buku
     ph = config.AppObject.rexecscript(sessionID,'remote/EditSI',param,1)
     if ph.FirstRecord.IsErr:
-      raise '\nError Edit Standing Instruction (SI)', str(ph.FirstRecord.ErrMessage)
+      raise Exception, '\nError Edit Standing Instruction (SI)' +  str(ph.FirstRecord.ErrMessage)
   except:
     raise
 
@@ -690,7 +690,7 @@ def RemoveSI(config, noPeserta, noRekeningDebet, noRekeningKredit):
   try:
     ph = config.AppObject.rexecscript(sessionID,'remote/RemoveSI',param,1)
     if ph.FirstRecord.IsErr:
-      raise '\nError Remove Stading Instruction (SI)',str(ph.FirstRecord.ErrMessage)
+      raise Exception, '\nError Remove Stading Instruction (SI)' + str(ph.FirstRecord.ErrMessage)
   except:
     raise  
 
@@ -791,7 +791,7 @@ def CekRentangWaktuPenarikan(config, noPeserta):
     # hitung rentang bulan penarikan terakhir until Now
 
     if not CompareLastTglPenarikan(config, tgl_transaksi):
-      raise '\nPeringatan','\nPenarikan masih dalam rentang waktu 6 bulan. '\
+      raise Exception, '\nPeringatan' + '\nPenarikan masih dalam rentang waktu 6 bulan. '\
         'Penarikan terakhir tanggal %d-%d-%d.' % (tgl_transaksi[2], tgl_transaksi[1], tgl_transaksi[0])
 
 def CekSaldoIuranMin(config, noPeserta):
@@ -803,7 +803,7 @@ def CekSaldoIuranMin(config, noPeserta):
   oP.Key = 'MIN_JML_AKUM_IURAN_PST'
   saldo_iuran = oRekening.akum_dana_iuran_pk + oRekening.akum_dana_iuran_pst
   if saldo_iuran < oP.Numeric_Value:
-    raise '\nPeringatan', '\nDana iuran peserta tidak mencukupi'
+    raise Exception, '\nPeringatan' +  '\nDana iuran peserta tidak mencukupi'
 
 def CekBatasTarikMinPHK(config, ID_Transaksi):
   oPenarikanDanaPHK = config.CreatePObjImplProxy('PenarikanDanaPHK')
@@ -812,7 +812,7 @@ def CekBatasTarikMinPHK(config, ID_Transaksi):
   oRekeningDPLK = oPenarikanDanaPHK.LRekeningDPLK
 
   if oPenarikanDanaPHK.jml_tarik < oRekeningDPLK.akum_dana_iuran_pk:
-    raise 'Kesalahan Jumlah Penarikan Dana PHK', '\nNominal Penarikan tidak boleh kurang dari Batas Penarikan Minimal!'
+    raise Exception, 'Kesalahan Jumlah Penarikan Dana PHK' +  '\nNominal Penarikan tidak boleh kurang dari Batas Penarikan Minimal!'
 
 def CekBatasTarikMaxPHK(config, ID_Transaksi):
   oPenarikanDanaPHK = config.CreatePObjImplProxy('PenarikanDanaPHK')
@@ -820,4 +820,4 @@ def CekBatasTarikMaxPHK(config, ID_Transaksi):
 
   oRekeningDPLK = oPenarikanDanaPHK.LRekeningDPLK
   if oPenarikanDanaPHK.jml_tarik > oRekeningDPLK.akum_dana_iuran_pk + oRekeningDPLK.akum_dana_iuran_pst:
-    raise 'Kesalahan Jumlah Penarikan Dana PHK', '\nNominal Penarikan melebihi batas nominal dana yang boleh ditarik!!'
+    raise Exception, 'Kesalahan Jumlah Penarikan Dana PHK' +  '\nNominal Penarikan melebihi batas nominal dana yang boleh ditarik!!'

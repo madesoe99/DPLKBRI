@@ -137,7 +137,7 @@ def CekTglPensiunDipercepat(config, jenisMP, tgl_pensiun_dipercepat):
     y,m,d = time.localtime()[:3]
     tglNow = config.ModLibUtils.EncodeDate(y,m,d)
     if tglNow < tgl_pensiun_dipercepat and jenisMP in ('B','D'):
-        raise 'Peringatan!','Peserta belum mencapai tanggal pensiun dipercepat'
+        raise Exception, 'Peringatan!' + 'Peserta belum mencapai tanggal pensiun dipercepat'
     
 def FormGeneralProcessData(uideflist, data):
 
@@ -212,7 +212,7 @@ def FormGeneralProcessData(uideflist, data):
       transaksiapi.SetPaketInvestasi(config, oP)
 
   except:
-    raise '\nProses Error', str(sys.exc_info()[1])
+    raise Exception, '\nProses Error' +  str(sys.exc_info()[1])
 
   return 0
 

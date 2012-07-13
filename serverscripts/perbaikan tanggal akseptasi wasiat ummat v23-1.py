@@ -67,7 +67,7 @@ def Sinkronisasi(config, con):
         if WASIAT_UMMAT.lstrip().rstrip() == 'T':
           oRWU = GetRekeningWasiatUmmat(config, o.no_peserta)
           if not oRWU:
-  ##          raise 'Kesalahan Data Wasiat Ummat', '\nPeserta %s tidak memiliki rekening wasiat ummat.' % (o.no_peserta)
+  ##          raise Exception, 'Kesalahan Data Wasiat Ummat' +  '\nPeserta %s tidak memiliki rekening wasiat ummat.' % (o.no_peserta)
             print 'Peserta %s tidak memiliki rekening wasiat ummat.' % (o.no_peserta)
           else:
             #peserta ikut wasiat ummat, lakukan sinkronisasi tanggal akseptasi wasiat ummat
@@ -80,7 +80,7 @@ def Sinkronisasi(config, con):
       q.Next()
     
   else:
-    raise 'ERROR','Gagal memproses Sinkronisasi Tanggal Akseptasi Wasiat Ummat!'
+    raise Exception, 'ERROR' + 'Gagal memproses Sinkronisasi Tanggal Akseptasi Wasiat Ummat!'
 
   return 1
 

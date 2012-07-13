@@ -86,7 +86,7 @@ def DAFLongScriptMain(config, parameter, pid, monfilename):
                               lookup = config.CreatePObjImplProxy(rec.LookupClass)
                               lookup.Key = value
                               if lookup.isnull:
-                                  raise 'ExecuteImportPackage', '%s tidak ditemukan pada %s (field number %d) !' % (str(value), rec.LookupClass, j)
+                                  raise Exception, 'ExecuteImportPackage', '%s tidak ditemukan pada %s (field number %d) !' % (str(value), rec.LookupClass +  j)
                           if value == None or value == "None":
                             pass
                           else:
@@ -117,7 +117,7 @@ def DAFLongScriptMain(config, parameter, pid, monfilename):
             processStatus = str(sys.exc_info()[1])
             #app.WriteConsole('Server error:' + processStatus, 'process_status')
             app.ConWriteln('Server error:' + processStatus, monfilename)            
-            raise 'ExecuteImportPackage', processStatus
+            raise Exception, 'ExecuteImportPackage' +  processStatus
     finally:
         #app.CloseConsole('process_status')
         #app.CloseConsole(consoleID)

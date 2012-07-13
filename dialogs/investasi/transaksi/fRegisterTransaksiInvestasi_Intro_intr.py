@@ -18,7 +18,7 @@ def GetFormInfoByJnsTransCode(kode_jenis_trinvestasi):
   elif kode_jenis_trinvestasi == 'I':
     return 'fManLRInvestasi'
   else:
-    raise 'GetFormInfoByJnsTransCode Error','Kode jenis transaksi investasi tidak dikenali.'
+    raise Exception, 'GetFormInfoByJnsTransCode Error' + 'Kode jenis transaksi investasi tidak dikenali.'
 
 def btnOKClick(sender):
   form = sender.OwnerForm

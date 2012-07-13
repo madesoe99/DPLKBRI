@@ -4,7 +4,8 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rtf::Form<
+>
+object:rtf::Form<
   MainContainer=$CONTAINERS['DualSplit']
   Caption='Daftar Investasi MM (berdasar Fund)'
   State=rsMaximized
@@ -13,11 +14,18 @@ document <
   Width=800
   Height=600
   OnFormShow='FormShow'
-  UIParts={object:rtf::PClassUI<
+  UIParts={
+    object:rtf::PClassUI<
       Name='uipNoData'
-    >}Containers={object:rtf::Panel<
-      Elements={object:rtf::FieldUIElmtSetting<
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
           Name='date_ltd'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='integer'
           DataLength=20
           EnumeratedValues=['0=0'#13#10,
@@ -25,19 +33,26 @@ document <
           GenerateCheckBoxForEnum=true
         >, object:rtf::FieldUIElmtSetting<
           Name='dateFrom'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='timestamp'
           DataLength=20
         >, object:rtf::FieldUIElmtSetting<
           Name='dateUntil'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='timestamp'
           DataLength=20
         >, object:rtf::FieldUIElmtSetting<
           Name='dateUntil_tmrw'
           Hidden=true
+          ReadOnlyControl=false
           DataTypeName='timestamp'
           DataLength=20
         >, object:rtf::FieldUIElmtSetting<
           Name='status'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='varchar'
           DataLength=1
           EnumeratedValues=['A=Aktif (T)'#13#10,
@@ -46,19 +61,22 @@ document <
         >, object:rtf::FieldUIElmtSetting<
           Name='isDisplay'
           Hidden=true
+          ReadOnlyControl=false
           DataTypeName='integer'
           DataLength=20
-        >}Name='pFilter'
+        >
+      }
+      Name='pFilter'
       Width=500
       Height=120
       Bordered=true
       UIPart=$UIPARTS['uipNoData']
-      Controls={*object:rtf::DBCheckBox<
+      Controls={
+        *object:rtf::DBCheckBox<
           Name='date_ltd'
           Top=20
           Left=20
-          Color=0
-          ControlCaption='Batasi Tanggal'
+          ControlCaption='Batasi Tanggal Buka'
           ValueChecked='1'
           ValueUnchecked='0'
           OnClick='date_ltdClick'
@@ -68,7 +86,6 @@ document <
           Top=20
           Left=145
           Visible=false
-          Color=0
           ControlCaption=' '
         >, *object:rtf::DBDateEdit<
           Name='dateUntil'
@@ -76,24 +93,23 @@ document <
           Top=20
           Left=276
           Visible=false
-          Color=0
           ControlCaption='-'
         >, *object:rtf::DBComboBox<
           Name='status'
           Top=48
           Left=20
-          Color=0
-          ControlCaption='Status                                '
+          ControlCaption='Status Aktif                        '
         >, object:rtf::Button<
           Name='btnShow'
           Layout=clNewLine
           Top=76
           Left=20
-          Color=0
           ControlCaption=''
           Caption='T&ampilkan'
           OnClick='btnShowClick'
-        >}ControlLeftMargin=20
+        >
+      }
+      ControlLeftMargin=20
       ControlTopMargin=20
       DefaultControlHeight=21
       HorizontalControlGap=4
@@ -126,6 +142,7 @@ document <
         '  LDeposito.no_bilyet,'#13#10,
         '  LDeposito.status,'#13#10,
         '  LDeposito.kode_pihak_ketiga as Pihak_Ketiga,'#13#10,
+        '  LDeposito.LPihakKetiga.kode_induk as kode_induk,'#13#10,
         '  LDeposito.nominal_pembukaan as Nominal_Total,'#13#10,
         '  kode_paket_investasi,'#13#10,
         '  proporsi,'#13#10,
@@ -144,7 +161,8 @@ document <
         ') then order by tgl_buka;']
       DirectDisplay=true
       WindowSize=20
-      Columns={object:rtf::QueryColumn<
+      Columns={
+        object:rtf::QueryColumn<
           FieldName='RincianDeposito.no_bilyet'
           Width=100
           Caption='Nomor Bilyet'
@@ -154,7 +172,10 @@ document <
           Caption='Status'
         >, object:rtf::QueryColumn<
           FieldName='RincianDeposito.Pihak_Ketiga'
-          Caption='Pihak Ketiga'
+          Caption='Bank Issuer'
+        >, object:rtf::QueryColumn<
+          FieldName='RincianDeposito.kode_induk'
+          Caption='Grup Issuer'
         >, object:rtf::QueryColumn<
           FieldName='RincianDeposito.Nominal_Total'
           Width=100
@@ -197,24 +218,28 @@ document <
         >, object:rtf::QueryColumn<
           FieldName='RincianDeposito.user_id'
           Width=100
-          Caption='ID Pengguna'
+          Caption='User Transaksi'
         >, object:rtf::QueryColumn<
           FieldName='RincianDeposito.user_id_auth'
           Width=100
-          Caption='Pengotorisasi'
+          Caption='User Otorisasi'
         >, object:rtf::QueryColumn<
           FieldName='RincianDeposito.terminal_id'
           Width=100
-          Caption='ID Terminal'
+          Caption='Terminal Transaksi'
         >, object:rtf::QueryColumn<
           FieldName='RincianDeposito.terminal_id_auth'
           Width=100
-          Caption='Terminal Pengotor'
-        >}EnableColumns=true
+          Caption='Terminal Otorisasi'
+        >
+      }
+      EnableColumns=true
     >, object:rtf::DualSplit<
       Name='DualSplit'
-      Width=800
-      Height=600
+      Width=240
+      Height=96
       Container1=$CONTAINERS['pFilter']
       Container2=$CONTAINERS['qDeposito']
-    >}>
+    >
+  }
+>

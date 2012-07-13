@@ -97,7 +97,7 @@ def FormShow(form, parameter):
     
     if not found:
       #batch yang bersesuaian tidak ketemu
-      raise 'Error','\nBatch yang sesuai untuk transaksi tidak ditemukan!'
+      raise Exception, 'Error' + '\nBatch yang sesuai untuk transaksi tidak ditemukan!'
 
     #matikan lookup batch transaksi
     form.GetControlByName('pInput.LTransactionBatch').Enabled = 0

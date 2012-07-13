@@ -44,6 +44,6 @@ def FormGeneralProcessData(uideflist, data):
         file.close()
 
   except:
-    raise '\nProses Error','Penyimpanan Pesan Login Aplikasi gagal!'
+    raise Exception, '\nProses Error' + 'Penyimpanan Pesan Login Aplikasi gagal!'
 
   return 0

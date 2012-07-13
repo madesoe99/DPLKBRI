@@ -187,7 +187,7 @@ def LRincianPaketInvestasiAfterLookup(sender, linkui):
     #, uipRincianRegisterDeposito.nominalGiro
   )
   if minTersedia <= 0.0:
-    #raise 'Kesalahan Paket Investasi', '\nDana paket investasi %s tidak tersedia.' % (kode_paket_investasi)
+    #raise Exception, 'Kesalahan Paket Investasi' +  '\nDana paket investasi %s tidak tersedia.' % (kode_paket_investasi)
     app.ShowMessage('Dana paket investasi %s tidak tersedia.' % (kode_paket_investasi))
   else:
     uipRincianRegisterDeposito.nominal = minTersedia
@@ -198,7 +198,7 @@ def uipRRDBeforePost(uipRRD):
   uipRRD.nominal = uipRRD.nominal or 0.0
 #   if uipRRD.nominal > min(uipRRD.dpkTersedia, uipRRD.nilaiMaksProporsi, uipRRD.nominalGiro):
   if uipRRD.nominal > min(uipRRD.dpkTersedia, uipRRD.nilaiMaksProporsi):
-    raise 'Kesalahan Nominal Pembukaan', '\nNominal pembukaan melebihi nilai yang tersedia.'
+    raise Exception, 'Kesalahan Nominal Pembukaan' +  '\nNominal pembukaan melebihi nilai yang tersedia.'
 
 def HitungNominalTotal(uipRegisterDeposito, uipRRD):
   uipRegisterDeposito.Edit()

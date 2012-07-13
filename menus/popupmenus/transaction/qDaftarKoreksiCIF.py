@@ -20,7 +20,7 @@ def GetFormIDByCIFCode(kode_jenis_registercif):
   elif kode_jenis_registercif == 'W':
     return 'fRegisterAhliWaris'
   else:
-    raise 'GetFormIDByCIFCode Error','Kode jenis Register CIF tidak dikenali.'
+    raise Exception, 'GetFormIDByCIFCode Error' + 'Kode jenis Register CIF tidak dikenali.'
 
 def mnuNewClick(sender, context):
   app = context.OwnerForm.ClientApplication

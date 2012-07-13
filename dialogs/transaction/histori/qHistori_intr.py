@@ -88,7 +88,7 @@ def strOQLHistori(kode_jenis_registercif):
         self \
       ) then order by no_referensi;'
   else:
-    raise 'Kesalahan Jenis Histori','Kode jenis register CIF tidak ditemukan.'
+    raise Exception, 'Kesalahan Jenis Histori' + 'Kode jenis register CIF tidak ditemukan.'
 
 def FormShow(form, parameter):
   uipNoData = form.GetUIPartByName('uipNoData')

@@ -120,7 +120,7 @@ def GetGroupIDByUserID(config, user_id):
   resSQL = config.CreateSQL(strSQL).RawResult
 
   if resSQL.Eof:
-    raise '\nPERINGATAN','ID Group tidak ditemukan!'
+    raise Exception, '\nPERINGATAN' + 'ID Group tidak ditemukan!'
   else:
     return resSQL.group_id
 
@@ -206,21 +206,21 @@ def GetCounterNumber(config, id_code, param, countnum = 0):
     i = config.ExecSQL(strSQLLock)
 #     config.SendDebugMsg('ilock='+str(i))
     if i <= 0:
-      raise '\nPERINGATAN','Penguncian record tidak berhasil!'
+      raise Exception, '\nPERINGATAN' + 'Penguncian record tidak berhasil!'
 
     # get counter
     resSQL = config.CreateSQL(strSQLGet).RawResult
     if resSQL.Eof:
-      raise '\nPERINGATAN','Counter tidak ditemukan!'
+      raise Exception, '\nPERINGATAN' + 'Counter tidak ditemukan!'
 
     # increment counter
     config.SendDebugMsg(strSQLIncrement)
     if config.ExecSQL(strSQLIncrement) <= 0:
-      raise '\nPERINGATAN','Penguncian record tidak berhasil!'
+      raise Exception, '\nPERINGATAN' + 'Penguncian record tidak berhasil!'
 
     # set unlock
     if config.ExecSQL(strSQLUnlock) <= 0:
-      raise '\nPERINGATAN','Pembukaan kunci record tidak berhasil!'
+      raise Exception, '\nPERINGATAN' + 'Pembukaan kunci record tidak berhasil!'
 
     config.Commit()
   except:
@@ -292,7 +292,7 @@ def CheckRegCIFRestriction(uideflist, auiname, apobjconst):
       oRekeningDPLK.Key = no_peserta
 
       if oRekeningDPLK.kode_cab_daftar <> oUserApp.branch_code:
-        raise '\nPERINGATAN','\nAnda tidak diperkenankan mengoreksi peserta ini!'
+        raise Exception, '\nPERINGATAN' + '\nAnda tidak diperkenankan mengoreksi peserta ini!'
 
 def CheckRegCIFRestr(config, no_peserta):
   oUserApp = config.CreatePObjImplProxy('UserApp')
@@ -303,14 +303,14 @@ def CheckRegCIFRestr(config, no_peserta):
     oRekeningDPLK.Key = no_peserta
 
     if oRekeningDPLK.kode_cab_daftar <> oUserApp.branch_code:
-      raise '\nPERINGATAN','\nAnda tidak diperkenankan mengoreksi peserta ini!'
+      raise Exception, '\nPERINGATAN' + '\nAnda tidak diperkenankan mengoreksi peserta ini!'
 
 def IsNasabahAvail(config, no_peserta):
   oNasabahDPLK = config.CreatePObjImplProxy('NasabahDPLK')
   oNasabahDPLK.Key = no_peserta
 
   if oNasabahDPLK.IsNull:
-    raise '\nPERINGATAN','Nomor peserta tidak ditemukan!'
+    raise Exception, '\nPERINGATAN' + 'Nomor peserta tidak ditemukan!'
 
 def IsPesertaAktif(config, no_peserta):
   #cek status DPLK peserta
@@ -319,7 +319,7 @@ def IsPesertaAktif(config, no_peserta):
 
   if oRekeningDPLK.Status_DPLK != 'A':
     #peserta sudah tidak aktif
-    raise '\nPERINGATAN','\nPeserta DPLK sudah tidak aktif! Perubahan data tidak bisa dilakukan untuk peserta yang sudah tidak aktif'
+    raise Exception, '\nPERINGATAN' + '\nPeserta DPLK sudah tidak aktif! Perubahan data tidak bisa dilakukan untuk peserta yang sudah tidak aktif'
     
 def GetUsiaPeserta(config, no_peserta):
   #cek usia sekarang peserta dan keikutsertaan wasiat ummat (format float)
@@ -359,7 +359,7 @@ def CheckRegisterCIFUniq(config, no_peserta, kode_jenis_registercif):
   resSQL = config.CreateSQL(strSQL).RawResult
 
   if not resSQL.Eof:
-    raise '\nPERINGATAN','\nData tersebut sedang dikoreksi dengan jenis koreksi yang sama!'
+    raise Exception, '\nPERINGATAN' + '\nData tersebut sedang dikoreksi dengan jenis koreksi yang sama!'
 
 def IsInvestasiTutup(config, oInvestasi):
   return oInvestasi.status == 'F'
@@ -380,7 +380,7 @@ def CheckTransLRInvExclusive(config, id_investasi):
     no_bilyet = ''
     if not oInvestasi.IsNull:
       no_bilyet = oInvestasi.no_bilyet
-    raise '\nPERINGATAN',\
+    raise Exception, '\nPERINGATAN' + \
       '\nInvestasi %s telah memiliki register transaksi.'\
       '\nSetujui atau tolak register tersebut untuk melanjutkan.'\
       % (no_bilyet)
@@ -401,7 +401,7 @@ def CheckTransPiutangInvExclusive(config, id_investasi):
     no_bilyet = ''
     if not oInvestasi.IsNull:
       no_bilyet = oInvestasi.no_bilyet
-    raise '\nPERINGATAN',\
+    raise Exception, '\nPERINGATAN' + \
       '\nInvestasi %s telah memiliki register transaksi.'\
       '\nSetujui atau tolak register tersebut untuk melanjutkan.'\
       % (no_bilyet)
@@ -422,7 +422,7 @@ def CheckTransPiutangLRInvExclusive(config, id_investasi):
     no_bilyet = ''
     if not oInvestasi.IsNull:
       no_bilyet = oInvestasi.no_bilyet
-    raise '\nPERINGATAN',\
+    raise Exception, '\nPERINGATAN' + \
       '\nInvestasi %s telah memiliki register transaksi.'\
       '\nSetujui atau tolak register tersebut untuk melanjutkan.'\
       % (no_bilyet)
@@ -434,12 +434,12 @@ def CheckTransaksiInvestasiExclusive(config, id_investasi):
 
 def CheckTransactionValidity(config, oInvestasi, mode, Jns = 'B'):
   if IsInvestasiTutup(config, oInvestasi) and (mode in ['uipInvestasi', 'uipDeposito', 'uipObligasi', 'uipReksadana']) and Jns != 'I' :
-    raise '\nPERINGATAN','Investasi sudah ditutup.'
+    raise Exception, '\nPERINGATAN' + 'Investasi sudah ditutup.'
   y,m,d = oInvestasi.tgl_buka[:3]
   TB = config.ModDateTime.EncodeDate(y,m,d)
   
   if TB >= int(config.Now()) and Jns != 'I' :
-    pass#raise '\nPERINGATAN','Transaksi tidak bisa dilakukan pada hari yang sama dgn tanggal buka'
+    pass#raise Exception, '\nPERINGATAN' + 'Transaksi tidak bisa dilakukan pada hari yang sama dgn tanggal buka'
   if (mode in ['uipInvestasi', 'uipDeposito', 'uipObligasi', 'uipReksadana']):
     CheckTransaksiInvestasiExclusive(config, oInvestasi.id_investasi)
   
@@ -457,7 +457,7 @@ def CheckHistoriRestriction(uideflist, auiname, apobjconst):
     oRekeningDPLK.Key = no_peserta
 
     if oRekeningDPLK.kode_cab_daftar <> oUserApp.branch_code:
-      raise '\nPERINGATAN','\nAnda tidak diperkenankan melihat data peserta ini!'
+      raise Exception, '\nPERINGATAN' + '\nAnda tidak diperkenankan melihat data peserta ini!'
 
 def GetTransactionBatchID(config, user_id_owner, batch_status, batch_type, batch_sub_type):
   y,m,d = time.localtime()[:3]
@@ -474,7 +474,7 @@ def GetTransactionBatchID(config, user_id_owner, batch_status, batch_type, batch
   resSQL = config.CreateSQL(strSQL).RawResult
 
   if resSQL.Eof:
-    raise '\nPERINGATAN','\n\nBatch DPLK (transaksi ataupun registrasi) untuk '\
+    raise Exception, '\nPERINGATAN' + '\n\nBatch DPLK (transaksi ataupun registrasi) untuk '\
       'hari ini tidak ditemukan! \nHubungi Administrator untuk membuatkan batch tersebut.' 
 
   return resSQL.ID_TransactionBatch
@@ -560,7 +560,7 @@ def TransCostOpr(config, oRekeningDPLK, oTransaksiDPLK, costval):
     oTransaksiDPLK.mutasi_peralihan = -red
   
   if costval > zero_approx:
-    #raise 'Error','Dana tidak mencukupi untuk membayar Biaya Administrasi'
+    #raise Exception, 'Error' + 'Dana tidak mencukupi untuk membayar Biaya Administrasi'
     config.SendDebugMsg('Dana peserta %s tidak mencukupi untuk membayar \
       Biaya Administrasi, masih terutang Rp %0.2f' % (oRekeningDPLK.no_peserta, costval))
 
@@ -598,7 +598,7 @@ def GetSingleRPI(config, kode_paket_investasi):
   resSQL = config.CreateSQL(strSQL).RawResult
 
   if resSQL.Eof:
-    raise '\nKesalahan GetSingleRPI','Rincian paket investasi tidak ditemukan!'
+    raise Exception, '\nKesalahan GetSingleRPI' + 'Rincian paket investasi tidak ditemukan!'
 
   kode_jns_investasi = resSQL.kode_jns_investasi
   resSQL.Next()
@@ -704,7 +704,7 @@ def GetAccGiroBagiHasil(config):
 
   oGLI = GetGLInterface(config, GR_BGHASIL)
   if oGLI.IsNull:
-    raise 'Kesalahan Kode GL Interface','\'%s\' tidak ditemukan.' % (GR_BGHASIL)
+    raise Exception, 'Kesalahan Kode GL Interface' + '\'%s\' tidak ditemukan.' % (GR_BGHASIL)
 
   return oGLI.account_code
 
@@ -728,7 +728,7 @@ def CheckNoBilyetAvl(config, no_bilyet):
   resSQL = config.CreateSQL(strSQL).RawResult
   resSQL.First()
   if not resSQL.Eof:
-    raise 'Kesalahan No. Bilyet', 'No. Bilyet \'%s\' sudah ada.' % (no_bilyet)
+    raise Exception, 'Kesalahan No. Bilyet' +  'No. Bilyet \'%s\' sudah ada.' % (no_bilyet)
 
 def AdvanceJatuhTempo(config, oDeposito):
   oDeposito.tgl_jatuh_tempo = HitungJatuhTempo(config, oDeposito.tgl_jatuh_tempo, oDeposito.jenisJatuhTempo, oDeposito.jmlHariOnCall)

@@ -1,6 +1,6 @@
-import sys
-sys.path.append('c:/dafapp/dplk07/script_modules')
-import moduleapi
+import com.ihsan.util.modman as modman
+
+#moduleapi = modman.getModule(config, 'moduleapi')
 
 def CreateInvestasi(config, oRegisterInvestasi):
   oInvestasi = config.CreatePObject('Investasi')
@@ -8,6 +8,7 @@ def CreateInvestasi(config, oRegisterInvestasi):
   oInvestasi.kode_pihak_ketiga = oRegisterInvestasi.kode_pihak_ketiga
   oInvestasi.kode_paket_investasi = oRegisterInvestasi.kode_paket_investasi
   oInvestasi.kode_jns_investasi = oRegisterInvestasi.kode_jns_investasi
+  moduleapi = modman.getModule(config, 'moduleapi')
   oInvestasi.tgl_buka = moduleapi.DateTimeTupleToFloat(config, oRegisterInvestasi.tgl_buka)
   oInvestasi.nominal_pembukaan = oRegisterInvestasi.nominal
   oInvestasi.akum_nominal = oRegisterInvestasi.nominal
@@ -30,6 +31,7 @@ def CreateTransPiutangInvestasi(config, oInvestasi, oRegisterInvestasi):
   oTransPiutangInvestasi.LInvestasi = oInvestasi
   oTransPiutangInvestasi.LTransactionBatch = oRegisterInvestasi.LTransactionBatch
   oTransPiutangInvestasi.kode_jenis_trinvestasi = oInvestasi.kode_jns_investasi #'A' # buat investasi baru
+  moduleapi = modman.getModule(config, 'moduleapi')
   oTransPiutangInvestasi.tgl_transaksi = moduleapi.DateTimeTupleToFloat(config, oInvestasi.tgl_buka)
   oTransPiutangInvestasi.mutasi_debet = oInvestasi.akum_nominal
   oTransPiutangInvestasi.mutasi_kredit = 0.0

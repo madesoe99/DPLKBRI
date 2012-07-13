@@ -28,7 +28,7 @@ def GetFormInfoByJnsTransCode(kode_jenis_trinvestasi, clsfTransaksiInvestasi):
   elif kode_jenis_trinvestasi == 'RRS':
     return ['fRealisasiReturnSaham', 'RealisasiReturnSaham', 'uipRealisasiReturnSaham']
   else:
-    raise 'PERINGATAN','Kode jenis transaksi investasi tidak dikenali / belum terdefinisi.'
+    raise Exception, 'PERINGATAN' + 'Kode jenis transaksi investasi tidak dikenali / belum terdefinisi.'
 
 def displayWithData(sender, context):
   app = context.OwnerForm.ClientApplication

@@ -140,13 +140,13 @@ def ContructSumValues(config, no_rekening, str_dari_tanggal, str_hingga_tanggal_
   sSQL = '''
     SELECT 
       t.KODE_JENIS_TRANSAKSI,
-      isnull(t.KODE_TRANSAKSI_MANUAL,'M') as kode_transaksi_manual,
+      isnull(t.JENIS_TRANSAKSI,'M') as kode_transaksi_manual,
       isnull(sum(t.MUTASI_IURAN_PK),0.0) as sumIuranPK,
       isnull(sum(t.MUTASI_IURAN_PST),0.0) as sumIuranPeserta,
-      isnull(sum(t.MUTASI_pmb_pk),0.0) as sumPengembangan,
+      (isnull(sum(t. MUTASI_pmb_pk),0.0) + isnull(sum(t.MUTASI_pmb_pst),0.0)) as sumPengembangan,
       isnull(sum(t.MUTASI_psl),0.0) as sumPeralihan
     FROM 
-      TRANSAKSIDPLK t
+      TRANSAKSIREKINVDPLK t
     WHERE 
       t.TGL_TRANSAKSI >= '%s' 
       AND t.TGL_TRANSAKSI < '%s' 
@@ -154,7 +154,7 @@ def ContructSumValues(config, no_rekening, str_dari_tanggal, str_hingga_tanggal_
       AND t.KODE_JENIS_TRANSAKSI not in ('A','B') AND
       t.ISCOMMITTED = 'T'
     GROUP BY 
-      t.KODE_JENIS_TRANSAKSI, kode_transaksi_manual'''\
+      t.KODE_JENIS_TRANSAKSI, t.JENIS_TRANSAKSI'''\
       % (str_dari_tanggal,str_hingga_tanggal_plus,no_rekening)
   #config.SendDebugMsg(sSQL)
   rSQL = config.CreateSQL(sSQL).RawResult
@@ -170,8 +170,10 @@ def ContructSumValues(config, no_rekening, str_dari_tanggal, str_hingga_tanggal_
   sumBagiHasil = 0.0
   rSQL.First()
   while not rSQL.Eof:
-    sumDana = (rSQL.sumIuranPK or 0.0) + (rSQL.sumIuranPeserta or 0.0) + (rSQL.sumPengembangan or 0.0) + \
-      (rSQL.sumPeralihan or 0.0)
+    sumDana = (rSQL.sumIuranPK or 0.0) \
+      + (rSQL.sumIuranPeserta or 0.0) \
+      + (rSQL.sumPengembangan or 0.0) \
+      + (rSQL.sumPeralihan or 0.0)
       
     if rSQL.KODE_JENIS_TRANSAKSI in ['K']:
        sumIuranPst += rSQL.sumIuranPeserta or 0.0
@@ -331,13 +333,13 @@ def resSQLCatMutasiIndv(config, no_rekening, str_dari_tanggal, str_hingga_tangga
       tgl_transaksi, 
       id_transaksi,
       kode_jenis_transaksi,
-      isnull(kode_transaksi_manual,'M') as kode_transaksi_manual,
-      isnull(mutasi_psl,0.0) + isnull(mutasi_pmb_pk,0.0) + isnull(mutasi_iuran_pst,0.0) + isnull(mutasi_iuran_pk,0.0) as mutasi_total,
+      isnull(jenis_transaksi,'M') as kode_transaksi_manual,
+      isnull(mutasi_psl,0.0) + isnull(mutasi_pmb_pk,0.0) + isnull(mutasi_pmb_pst,0.0) + isnull(mutasi_iuran_pst,0.0) + isnull(mutasi_iuran_pk,0.0) as mutasi_total,
       substring(keterangan,21,10) as keterangan,
       substring(keterangan,1,26) as keteranganM,
       ispindahpaket
     FROM 
-      TransaksiDPLK
+      TransaksiRekInvDPLK
     WHERE 
       tgl_transaksi >= \'%s\'
       AND tgl_transaksi < \'%s\'
@@ -363,7 +365,7 @@ def ConstructReportValues(config, no_rekening, str_dari_tanggal, str_hingga_tang
   oFile.write('	</tr>')
 
   resSQL = resSQLCatMutasiIndv(config, no_rekening, str_dari_tanggal, str_hingga_tanggal_plus)
-
+  
   dictJenisTransaksiDPLK = {'A':'Pendaftaran','B':'Pembayaran Premi',\
     'C':'Biaya Pengelolaan','D':'Biaya Administrasi',\
     'F':'Pengubahan Jenis Investasi','G':'Hasil Investasi','H':'Pengalihan ke DPLK Lain',\
@@ -404,13 +406,15 @@ def ConstructReportValues(config, no_rekening, str_dari_tanggal, str_hingga_tang
     #ketTrans = resSQL.keterangan
     #ketTrans = ketTrans.replace(' ','.')
     
-
+    keterangan = ''
+    """
     if re.search('[a-z,A-Z,.]+', resSQL.keterangan):
        r = re.search('[a-z,A-Z,.]+', resSQL.keterangan)		
        keterangan = r.group()
     else:
        keterangan = ''
-
+    """
+    
     if len(keterangan) == 0:
        keterangan = ''
     else:
@@ -466,11 +470,9 @@ def ConstructReportValues(config, no_rekening, str_dari_tanggal, str_hingga_tang
 
 def ConstructReportTrailer(config, saldo_akhir, oFile):
   oFile.write('	<tr>')
-#  oFile.write('		<td width="90%" style="border-style: solid; border-width: 1px" colspan="5" align="right"><b>SALDO AKHIR</b></td>')
-#  oFile.write('		<td width="10%" style="border-style: solid; border-width: 1px">')
   oFile.write('		<td width="80%" style="border-style: solid; border-width: 1px" colspan="4" align="left"><b>SALDO AKHIR</b></td>')
   oFile.write('		<td width="20%" style="border-style: solid; border-width: 1px">')
-  oFile.write('		<p align="right"><b>'+ moduleapi.FormatFloatStd(config, saldo_akhir) +'</b><td>')
+  oFile.write('		<p align="right"><b>'+ moduleapi.FormatFloatStd(config, saldo_akhir) +'</b></td>')
   oFile.write('	</tr>')
   oFile.write('</table>')
   oFile.write('<p>&nbsp;</p>')
@@ -496,12 +498,13 @@ def WriteToFile(config, parameter, oFile):
   str_dari_tanggal = config.FormatDateTime('yyyy-mm-dd', dari_tanggal)
   str_hingga_tanggal_plus = config.FormatDateTime('yyyy-mm-dd', hingga_tanggal + 1)
 
+  #import rpdb2; rpdb2.start_embedded_debugger('solusi', True, True)
   saldo_awal = moduleapi.GetSaldoAwal(config, no_rekening, str_dari_tanggal)
 
   ConstructReportHeader(config, no_rekening, dari_tanggal, hingga_tanggal, saldo_awal, oFile)
-  #ContructSumValues(config, no_rekening, str_dari_tanggal, str_hingga_tanggal_plus, saldo_awal, oFile, dari_tanggal, hingga_tanggal)
-  #saldo_akhir = ConstructReportValues(config, no_rekening, str_dari_tanggal, str_hingga_tanggal_plus, saldo_awal, oFile)
-  #ConstructReportTrailer(config, saldo_akhir, oFile)
+  ContructSumValues(config, no_rekening, str_dari_tanggal, str_hingga_tanggal_plus, saldo_awal, oFile, dari_tanggal, hingga_tanggal)
+  saldo_akhir = ConstructReportValues(config, no_rekening, str_dari_tanggal, str_hingga_tanggal_plus, saldo_awal, oFile)
+  ConstructReportTrailer(config, saldo_akhir, oFile)
 
 def CreateReport(config, parameter, returnpacket):
   sBaseFileName = 'statemen_individual.htm'

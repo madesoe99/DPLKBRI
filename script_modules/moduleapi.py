@@ -267,7 +267,7 @@ def GetSaldoAwal(config, no_rekening, str_dari_tanggal):
       TransaksiRekInvDPLK 
     WHERE 
       tgl_transaksi < '%s'
-      AND no_peserta = '%s'
+      AND no_rekening = '%s'
       AND isCommitted = 'T'
       AND kode_jenis_transaksi NOT IN ('A','B')'''\
     % (str_dari_tanggal, no_rekening)
@@ -382,13 +382,20 @@ def GetToleransiByrPremi(config):
 
   return oParameter.Numeric_Value
 
-def CheckRegisterCIFUniq(config, no_peserta, kode_jenis_registercif):
-  strSQL = \
-   'select registercif_id '\
-   'from registercif '\
-   'where no_peserta = \'%s\' '\
-   '  and kode_jenis_registercif = \'%s\''\
-   % (no_peserta, kode_jenis_registercif)
+def CheckRegisterCIFUniq(config, no_peserta, kode_jenis_registercif, no_rekening=None):
+  if no_rekening == None:
+    norek = "IS NULL"
+  else:
+    norek = "= '%s'" % no_rekening
+  
+  strSQL = """
+    SELECT registercif_id 
+    FROM   registercif 
+    WHERE  no_peserta = '%s' 
+           AND no_rekening %s
+           AND kode_jenis_registercif = '%s'
+    """ % (no_peserta, norek, kode_jenis_registercif)
+  
   resSQL = config.CreateSQL(strSQL).RawResult
 
   if not resSQL.Eof:
@@ -530,9 +537,9 @@ def GetTransactionBatchObj(config, user_id_owner, batch_status, batch_type, batc
 def ProsesChargeBiaya(config, oBiaya, nominalBiaya):
   #ambil parameter urutan sumber dana pengenaan biaya
   #terdapat 8 parameter saldo dana terurut, index 0-7
-  sPosDanaBiaya = config.SysVarIntf.GetFloatSysVar('BIAYATRANSAKSI','UrutanPosDanaBiaya')
+  sPosDanaBiaya = config.SysVarIntf.GetStringSysVar('BIAYATRANSAKSI','UrutanPosDanaBiaya')
+  #raise Exception, sPosDanaBiaya
   tPosDanaBiaya = eval(sPosDanaBiaya)
-  
   oRekInv = oBiaya.LRekeningDPLK
   
   #set inisialisasi mutasi (sesuai urutan parameter)
@@ -543,7 +550,7 @@ def ProsesChargeBiaya(config, oBiaya, nominalBiaya):
   oBiaya.mutasi_iuran_tmb = 0.0
   oBiaya.mutasi_iuran_pst = 0.0
   oBiaya.mutasi_iuran_pk = 0.0
-  oBiaya.mutasi_iuran_psl = 0.0
+  #oBiaya.mutasi_iuran_psl = 0.0
 
   #set nilai presisi float / zero_approx 
   oP = config.CreatePObjImplProxy('Parameter')
@@ -556,9 +563,10 @@ def ProsesChargeBiaya(config, oBiaya, nominalBiaya):
     whichMin = [nominalBiaya, oRekInv.GetFieldByName(tPosDanaBiaya[urutanPosDana][0])]
     red = min(whichMin)
   
-    oRekInv.SetFieldByName(tPosDanaBiaya[0], oRekInv.GetFieldByName(tPosDanaBiaya[urutanPosDana][0]) - red)
+    #raise Exception,tPosDanaBiaya[0]
+    oRekInv.SetFieldByName(tPosDanaBiaya[urutanPosDana][0], oRekInv.GetFieldByName(tPosDanaBiaya[urutanPosDana][0]) - red)
     nominalBiaya -= red
-    oBiaya.SetFieldByName(tPosDanaBiaya[urutanPosDana][0], -red)
+    oBiaya.SetFieldByName(tPosDanaBiaya[urutanPosDana][1], -red)
     
     if urutanPosDana > len(tPosDanaBiaya)-1:
       loopAgain = 0
@@ -668,7 +676,7 @@ def TransCostOpr(config, oRekeningDPLK, oTransaksiDPLK, costval):
     oTransaksiDPLK.mutasi_peralihan = -red
   
   if costval > zero_approx:
-    #raise 'Error','Dana tidak mencukupi untuk membayar Biaya Administrasi'
+    #raise Exception, 'Error' + 'Dana tidak mencukupi untuk membayar Biaya Administrasi'
     config.SendDebugMsg('Dana peserta %s tidak mencukupi untuk membayar \
       Biaya Administrasi, masih terutang Rp %0.2f' % (oRekeningDPLK.no_peserta, costval))
 
@@ -706,7 +714,7 @@ def GetSingleRPI(config, kode_paket_investasi):
   resSQL = config.CreateSQL(strSQL).RawResult
 
   if resSQL.Eof:
-    raise '\nKesalahan GetSingleRPI','Rincian paket investasi tidak ditemukan!'
+    raise Exception, '\nKesalahan GetSingleRPI' + 'Rincian paket investasi tidak ditemukan!'
 
   kode_jns_investasi = resSQL.kode_jns_investasi
   resSQL.Next()
@@ -812,7 +820,7 @@ def GetAccGiroBagiHasil(config):
 
   oGLI = GetGLInterface(config, GR_BGHASIL)
   if oGLI.IsNull:
-    raise 'Kesalahan Kode GL Interface','\'%s\' tidak ditemukan.' % (GR_BGHASIL)
+    raise Exception, 'Kesalahan Kode GL Interface' + '\'%s\' tidak ditemukan.' % (GR_BGHASIL)
 
   return oGLI.account_code
 
@@ -836,7 +844,7 @@ def CheckNoBilyetAvl(config, no_bilyet):
   resSQL = config.CreateSQL(strSQL).RawResult
   resSQL.First()
   if not resSQL.Eof:
-    raise 'Kesalahan No. Bilyet', 'No. Bilyet \'%s\' sudah ada.' % (no_bilyet)
+    raise Exception, 'Kesalahan No. Bilyet' +  'No. Bilyet \'%s\' sudah ada.' % (no_bilyet)
 
 def AdvanceJatuhTempo(config, oDeposito):
   oDeposito.tgl_jatuh_tempo = HitungJatuhTempo(config, oDeposito.tgl_jatuh_tempo, oDeposito.jenisJatuhTempo, oDeposito.jmlHariOnCall)

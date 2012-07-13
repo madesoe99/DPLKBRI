@@ -44,7 +44,7 @@ object:rmn::Menu<
           Caption='Koreksi Data Lain-lain...'
           OnClick='displayWithDataSpecific'
           AllowedGroups='BOD;CS;PIC'
-          StringTag='Z'
+          StringTag='X'
         >
       }
       AllowedGroups='BOD;CS;PIC'

@@ -11,7 +11,11 @@ class fSelectTransaksi:
       'P':'transaksi/fOtorisasiPengalihanDariDPKLain',
       'H':'transaksi/fOtorisasiPengalihanKeDPLKLain',
       'V':'transaksi/fOtorisasiPenarikanDana30',
-      'W':'transaksi/fOtorisasiPenarikanDanaPHK'
+      'W':'transaksi/fOtorisasiPenarikanDanaPHK',
+      'J':'transaksi/fOtorisasiPengambilanManfaatPensiun',
+      'C':'transaksi/fViewBiaya',
+      'D':'transaksi/fViewBiaya',
+      'X':'transaksi/fViewBiaya'
     }
   #--
   
@@ -147,11 +151,17 @@ class fSelectTransaksi:
       
     # show form otorisasi
     self.ShowNextForm(button, ['otorisasi'])
+
+    #refresh qTransaksi
+    self.qTransaksi.Refresh()
   #--
   
   def bView_Click(self, button):
     # show form view
     self.ShowNextForm(button, ['view'])
+    
+    #refresh qTransaksi
+    self.qTransaksi.Refresh()
   #--    
 
   def Form_OnClose(self, formObj):

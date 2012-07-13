@@ -25,6 +25,13 @@ class fRegistrasi:
     uipart.alamat_surat_kode_pos = \
     uipart.alamat_surat_telepon = \
     uipart.alamat_surat_telepon2 = None
+
+    uipart.SetFieldValue('LASPropinsi.kode_propinsi', None)
+    uipart.SetFieldValue('LASPropinsi.nama_propinsi', None)
+    uipart.SetFieldValue('LASKota.kode_kota', None)
+    uipart.SetFieldValue('LASKota.nama_kota', None)
+    uipart.SetFieldValue('LASKecamatan.kode_kecamatan', None)
+    uipart.SetFieldValue('LASKecamatan.nama_kecamatan', None)
     
   def ResetAlamatKantorValue(self, uipart):
     uipart.nama_perusahaan = None
@@ -37,6 +44,22 @@ class fRegistrasi:
     uipart.alamat_kantor_telepon = None
     uipart.alamat_kantor_telepon2 = None
   
+    uipart.SetFieldValue('LAKPropinsi.kode_propinsi', None)
+    uipart.SetFieldValue('LAKPropinsi.nama_propinsi', None)
+    uipart.SetFieldValue('LAKKota.kode_kota', None)
+    uipart.SetFieldValue('LAKKota.nama_kota', None)
+    uipart.SetFieldValue('LAKKecamatan.kode_kecamatan', None)
+    uipart.SetFieldValue('LAKKecamatan.nama_kecamatan', None)
+  
+    uipart.SetFieldValue('LKepemilikan.kode_pemilikan',None)
+    uipart.SetFieldValue('LKepemilikan.keterangan',None)
+
+    uipart.SetFieldValue('LJenisUsaha.kode_jenis_usaha',None)
+    uipart.SetFieldValue('LJenisUsaha.nama_jenis_usaha',None)
+
+    uipart.SetFieldValue('LNasabahDPLKCorporate.kode_nasabah_corporate',None)
+    uipart.SetFieldValue('LNasabahDPLKCorporate.nama_perusahaan',None)
+
   def SetControlsForView(self, form):
     form.GetPanelByName('pNasabah').SetAllControlsReadOnly()
     form.GetPanelByName('pNasabahRight').SetAllControlsReadOnly()
@@ -50,7 +73,15 @@ class fRegistrasi:
     form.GetPanelByName('pKelengkapan').SetAllControlsReadOnly()
     form.GetPanelByName('pRegister').SetAllControlsReadOnly()
     form.GetPanelByName('gAhliWaris').SetAllControlsReadOnly()
+    form.GetPanelByName('gAhliWaris').RowSelect = 1
+    form.GetPanelByName('gAhliWaris').SuppressHelpLine = 1
     form.GetPanelByName('gPaket').SetAllControlsReadOnly()
+    form.GetPanelByName('gPaket').RowSelect = 1
+    form.GetPanelByName('gPaket').SuppressHelpLine = 1
+    form.GetPanelByName('pPaketInvestasi').SetAllControlsReadOnly()
+    form.GetPanelByName('gRekSumber').SetAllControlsReadOnly()
+    form.GetPanelByName('gRekSumber').RowSelect = 1
+    form.GetPanelByName('gRekSumber').SuppressHelpLine = 1
     
     pButton = form.GetPanelByName('pButton')
     pButton.GetControlByName('btnOK').Caption = '&Setujui'
@@ -78,7 +109,15 @@ class fRegistrasi:
     form.GetPanelByName('pKelengkapan').SetAllControlsReadOnly()
     form.GetPanelByName('pRegister').SetAllControlsReadOnly()
     form.GetPanelByName('gAhliWaris').SetAllControlsReadOnly()
+    form.GetPanelByName('gAhliWaris').RowSelect = 1
+    form.GetPanelByName('gAhliWaris').SuppressHelpLine = 1
     form.GetPanelByName('gPaket').SetAllControlsReadOnly()
+    form.GetPanelByName('gPaket').RowSelect = 1
+    form.GetPanelByName('gPaket').SuppressHelpLine = 1
+    form.GetPanelByName('pPaketInvestasi').SetAllControlsReadOnly()
+    form.GetPanelByName('gRekSumber').SetAllControlsReadOnly()
+    form.GetPanelByName('gRekSumber').RowSelect = 1
+    form.GetPanelByName('gRekSumber').SuppressHelpLine = 1
     
     pButton = form.GetPanelByName('pButton')
     pButton.GetControlByName('btnOK').Caption = '&Setujui'
@@ -140,7 +179,7 @@ class fRegistrasi:
         pRekening2.GetControlByName('iuran_pk').Enabled = 0
     
     uipRegisterNasabahRekening.cbKombinasiPaket = 0
-    self.LJenisPekerjaanOnAfterLookup(pPekerjaan.GetControlByName('LJenisPekerjaan'), self.uipRegisterNasabahRekening)
+    #self.LJenisPekerjaanOnAfterLookup(pPekerjaan.GetControlByName('LJenisPekerjaan'), self.uipRegisterNasabahRekening)
     self.gReady = 1
   
   def isSamaAlamatClick(self, sender):
@@ -162,6 +201,13 @@ class fRegistrasi:
         uipRNR.alamat_surat_kode_pos = uipRNR.alamat_kode_pos
         uipRNR.alamat_surat_telepon = uipRNR.alamat_telepon
         uipRNR.alamat_surat_telepon2 = uipRNR.alamat_telepon2
+
+        uipRNR.SetFieldValue('LASPropinsi.kode_propinsi', uipRNR.GetFieldValue('LATPropinsi.kode_propinsi'))
+        uipRNR.SetFieldValue('LASPropinsi.nama_propinsi', uipRNR.GetFieldValue('LATPropinsi.nama_propinsi'))
+        uipRNR.SetFieldValue('LASKota.kode_kota', uipRNR.GetFieldValue('LATKota.kode_kota'))
+        uipRNR.SetFieldValue('LASKota.nama_kota', uipRNR.GetFieldValue('LATKota.nama_kota'))
+        uipRNR.SetFieldValue('LASKecamatan.kode_kecamatan', uipRNR.GetFieldValue('LATKecamatan.kode_kecamatan'))
+        uipRNR.SetFieldValue('LASKecamatan.nama_kecamatan', uipRNR.GetFieldValue('LATKecamatan.nama_kecamatan'))
     
       else:
         #reset isi Alamat Surat
@@ -246,9 +292,9 @@ class fRegistrasi:
     form = sender.OwnerForm
     uipRegisterNasabahRekening = form.GetUIPartByName('uipRegisterNasabahRekening')
     uipRegisterNasabahRekening.Edit()
-  
-    uipRegisterNasabahRekening.alamat_propinsi = \
-      uipRegisterNasabahRekening.GetFieldValue('LDaerahAsal.nama_propinsi')
+    
+    uipRegisterNasabahRekening.SetFieldValue('LATPropinsi.kode_propinsi', uipRegisterNasabahRekening.GetFieldValue('LDaerahAsal.kode_propinsi'))
+    uipRegisterNasabahRekening.SetFieldValue('LATPropinsi.nama_propinsi', uipRegisterNasabahRekening.GetFieldValue('LDaerahAsal.nama_propinsi'))
   
   def RAWBeforePost(self, uipRegNRAhliWaris):
     app = uipRegNRAhliWaris.OwnerForm.ClientApplication
@@ -256,7 +302,7 @@ class fRegistrasi:
     if uipRegNRAhliWaris.tanggal_lahir != None and \
       uipRegNRAhliWaris.tanggal_lahir[:3] > \
       app.ModDateTime.DecodeDate(app.ModDateTime.Now())[:3]:
-      raise 'Pesan Kesalahan','Tanggal lahir ahli waris tidak boleh melebihi tanggal hari ini!'
+      raise Exception, 'Pesan Kesalahan' + 'Tanggal lahir ahli waris tidak boleh melebihi tanggal hari ini!'
   
   def UsiaPensiunExit(self, sender):
     app = sender.OwnerForm.ClientApplication
@@ -320,8 +366,8 @@ class fRegistrasi:
     """alamat: jalan, rt/rw, kota, provinsi, kode pos, telp rumah (+kode area), handphone"""
     if uipRegisterNasabahRekening.alamat_jalan in ["", None]\
       or uipRegisterNasabahRekening.alamat_rtrw in ["", None]\
-      or uipRegisterNasabahRekening.alamat_kota in ["", None]\
-      or uipRegisterNasabahRekening.alamat_propinsi in ["", None]\
+      or uipRegisterNasabahRekening.GetFieldValue('LATKota.kode_kota') in ["", None]\
+      or uipRegisterNasabahRekening.GetFieldValue('LATPropinsi.kode_propinsi') in ["", None]\
       or uipRegisterNasabahRekening.alamat_kode_pos in ["", None]\
       or uipRegisterNasabahRekening.alamat_telepon in ["", None]\
       or uipRegisterNasabahRekening.alamat_telepon2 in ["", None]:
@@ -337,8 +383,8 @@ class fRegistrasi:
 
     if uipRegisterNasabahRekening.alamat_surat_jalan in ["", None]\
       or uipRegisterNasabahRekening.alamat_surat_rtrw in ["", None]\
-      or uipRegisterNasabahRekening.alamat_surat_kota in ["", None]\
-      or uipRegisterNasabahRekening.alamat_surat_propinsi in ["", None]\
+      or uipRegisterNasabahRekening.GetFieldValue('LASKota.kode_kota') in ["", None]\
+      or uipRegisterNasabahRekening.GetFieldValue('LASPropinsi.kode_propinsi') in ["", None]\
       or uipRegisterNasabahRekening.alamat_surat_kode_pos in ["", None]\
       or uipRegisterNasabahRekening.alamat_surat_telepon in ["", None]\
       or uipRegisterNasabahRekening.alamat_surat_telepon2 in ["", None]:
@@ -377,30 +423,51 @@ class fRegistrasi:
         'Untuk itu, Statemen tidak bisa dikirim ke alamat Rumah (Alamat Surat)!')
       return False
       
-    """iuran peserta"""
-    if uipRegisterNasabahRekening.iuran_pst in ['', 0, None]:
-      app.ShowMessage('Iuran Peserta masih kosong')
+    """setoran awal"""
+    if uipRegisterNasabahRekening.setoran_awal in ['', 0, None]:
+      app.ShowMessage('Setoran Awal masih kosong')
       return False
             
-    """iuran peserta dan iuran pemberi kerja"""
-    if uipParam.IS_ONLY_MIN_JML_IURAN_PST:
-      #cek minimal iuran masing-masing
-      if uipRegisterNasabahRekening.iuran_pst < uipParam.MIN_JML_IURAN_PST:
-        form.ShowMessage('Iuran Peserta tidak boleh kurang dari Minimum Iuran '\
-          'Peserta Default, yaitu Rp %.2f' % (uipParam.MIN_JML_IURAN_PST))
+    if uipRegisterNasabahRekening.sistem_pembayaran_iuran == "R":
+      """iuran peserta"""
+      if uipRegisterNasabahRekening.iuran_pst in ['', 0, None]:
+        app.ShowMessage('Iuran Rutin Peserta masih kosong')
         return False
-      
-      if uipRegisterNasabahRekening.iuran_pk < uipParam.MIN_JML_IURAN_PK:
-        form.ShowMessage('Iuran Pemberi Kerja tidak boleh kurang dari Minimum Iuran '\
-          'Pemberi Kerja Default, yaitu Rp %.2f' % (uipParam.MIN_JML_IURAN_PST))
+              
+      """tgl penarikan iuran rutin"""
+      if uipRegisterNasabahRekening.tgl_penarikan_iuran in ['', 0, None]:
+        app.ShowMessage('Tanggal Penarikan Iuran Rutin masih kosong')
         return False
-    else:
-      #cek minimal iuran akumulasi
-      if (uipRegisterNasabahRekening.iuran_pst + uipRegisterNasabahRekening.iuran_pk) < uipParam.MIN_JML_IURAN_PST:
-        form.ShowMessage('Gabungan Iuran Peserta dan Iuran Pemberi Kerja tidak boleh '\
-          'kurang dari Minimum Iuran Default,\nyaitu Rp %.2f' % (uipParam.MIN_JML_IURAN_PST))
+              
+      """nomor akun rekening sumber"""
+      if uipRegisterNasabahRekening.REKSUMBER_NO in ['', 0, None]:
+        app.ShowMessage('No. Akun Rekening Sumber masih kosong')
         return False
-  
+              
+      """nama pemilik rekening sumber"""
+      if uipRegisterNasabahRekening.REKSUMBER_NAMA in ['', 0, None]:
+        app.ShowMessage('Nama Pemilik Rekening Sumber masih kosong')
+        return False
+              
+      """iuran peserta dan iuran pemberi kerja"""
+      if uipParam.IS_ONLY_MIN_JML_IURAN_PST:
+        #cek minimal iuran masing-masing
+        if uipRegisterNasabahRekening.iuran_pst < uipParam.MIN_JML_IURAN_PST:
+          form.ShowMessage('Iuran Peserta tidak boleh kurang dari Minimum Iuran '\
+            'Peserta Default, yaitu Rp %.2f' % (uipParam.MIN_JML_IURAN_PST))
+          return False
+        
+        if uipRegisterNasabahRekening.iuran_pk < uipParam.MIN_JML_IURAN_PK:
+          form.ShowMessage('Iuran Pemberi Kerja tidak boleh kurang dari Minimum Iuran '\
+            'Pemberi Kerja Default, yaitu Rp %.2f' % (uipParam.MIN_JML_IURAN_PST))
+          return False
+      else:
+        #cek minimal iuran akumulasi
+        if (uipRegisterNasabahRekening.iuran_pst + uipRegisterNasabahRekening.iuran_pk) < uipParam.MIN_JML_IURAN_PST:
+          form.ShowMessage('Gabungan Iuran Peserta dan Iuran Pemberi Kerja tidak boleh '\
+            'kurang dari Minimum Iuran Default,\nyaitu Rp %.2f' % (uipParam.MIN_JML_IURAN_PST))
+          return False
+    
     """cek tanggal: tanggal lahir, tanggal pensiun (usia pensiun terkait tanggal lahir)"""
     floatTglNow = app.ModDateTime.Now()
     y,m,d = uipRegisterNasabahRekening.tanggal_lahir[:3]
@@ -609,3 +676,15 @@ class fRegistrasi:
         sender.ExitAction = 1
         return
 
+  def uipRekSumberBeforePost(self, uip):
+    # procedure(uip: TrtfPClassUI)
+    if self.gReady != 0:
+      form = self.FormObject
+      app = form.ClientApplication
+      
+      norek_sumber = uip.norek_sumber
+      #if norek_sumber[:4] == ???
+      uip.SetFieldValue("LBranchLocation.branch_code",\
+        self.uipRegisterNasabahRekening.GetFieldValue("LBranchLocation.branch_code"))
+      uip.SetFieldValue("LBranchLocation.BranchName",\
+        self.uipRegisterNasabahRekening.GetFieldValue("LBranchLocation.BranchName"))

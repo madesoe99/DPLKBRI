@@ -91,7 +91,8 @@ class fPenarikanDanaPHK:
     self.pButton_bSimpan.Enabled = 1
     
     #notify user
-    form.ShowMessage('Silahkan lihat di Info Perhitungan.')
+    #form.ShowMessage('Silahkan lihat di Info Perhitungan.')
+    self.MultiPages.ActivePageIndex = 2
   #--
   
   def bSimpanClick(self, button):

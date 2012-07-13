@@ -18,7 +18,7 @@ def btnShowClick(sender):
   qTransaksiObligasi = form.GetPanelByName('qTransaksiObligasi')
 
   if uipNoData.dari_tanggal > uipNoData.hingga_tanggal:
-    raise 'Kesalahan Rentang Tanggal','Tanggal batas awal melebihi tanggal batas akhir.'
+    raise Exception, 'Kesalahan Rentang Tanggal' + 'Tanggal batas awal melebihi tanggal batas akhir.'
 
   y, m, d = uipNoData.dari_tanggal[:3]
   dari_tanggal = '%s/%s/%s' %(MyZFill(str(m), 2),MyZFill(str(d), 2),str(y))

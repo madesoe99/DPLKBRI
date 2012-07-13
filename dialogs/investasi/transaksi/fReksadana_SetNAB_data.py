@@ -43,13 +43,13 @@ def uipReksadanaSetData(uipReksadana):
      rec_inv.ProsesHasilReksadana = int(rSQL.TerminalOto)
 
   if moduleapi.IsInvestasiTutup(config, oReksadana):
-    raise '\nPERINGATAN','Investasi sudah ditutup.'
+    raise Exception, '\nPERINGATAN' + 'Investasi sudah ditutup.'
 
   oSR = TransactInv.GetLastHistReksadana(config, oReksadana)
   rec_inv.NomSubscribe = oSR.mutasi_debet
   rec_inv.NABSubs = oSR.NAB_Awal
   if oSR.IsCommitted != 'T' :
-    raise '\nPERINGATAN','Subscribe Investasi EQ belum di otorisasi'
+    raise Exception, '\nPERINGATAN' + 'Subscribe Investasi EQ belum di otorisasi'
 
   oRR = TransactInv.GetLastRedemt(config, oReksadana)
   if not oRR.IsNull :
@@ -57,7 +57,7 @@ def uipReksadanaSetData(uipReksadana):
     rec_inv.NABRedempt = oRR.NAB
     rec_inv.UPRedempt = oRR.unit_penyertaan
     if oRR.IsCommitted not in ('N','T') :
-      raise '\nPERINGATAN','Redeem Investasi EQ belum diotorisasi'
+      raise Exception, '\nPERINGATAN' + 'Redeem Investasi EQ belum diotorisasi'
 
 def FormEndProcessData(uideflist, datapacket):
   config = uideflist.Config
@@ -67,7 +67,7 @@ def FormEndProcessData(uideflist, datapacket):
   oReksa = config.CreatePObjImplProxy('Reksadana')
   oReksa.key = rec.id_investasi
 #   if TransactInv.CheckUpdateNAB(config, rec.Tgl_Penetapan, oReksa) :
-#       raise 'PERINGATAN', 'Transaksi Update NAB sudah dilakukan hari ini'
+#       raise Exception, 'PERINGATAN' +  'Transaksi Update NAB sudah dilakukan hari ini'
 
   strSQL = 'Select * from RedemptREKSADANA r, transaksiinvestasi t \
             where t.id_transaksiinvestasi=r.id_transaksiinvestasi \
@@ -78,7 +78,7 @@ def FormEndProcessData(uideflist, datapacket):
     y,m,d = rSQL.tgl_transaksi[:3]
     if int(rec.Tgl_Penetapan) >= config.ModDateTime.EncodeDate(y,m,d) and \
       not TransactInv.CheckUpdateNAB(config, rSQL.tgl_transaksi, oReksa) :
-      raise 'PERINGATAN','ada transaksi switch tgl :%s-%s-%s, subscribe dahulu tgl tersebut' % (d,m,y)
+      raise Exception, 'PERINGATAN','ada transaksi switch tgl :%s-%s-%s, subscribe dahulu tgl tersebut' % (d,m + y)
 
   oHistNABReksadana = config.CreatePObject('HistNABReksadana')
   oHistNABReksadana.id_investasi = rec.id_investasi
@@ -91,7 +91,7 @@ def FormEndProcessData(uideflist, datapacket):
 
   if rec.jenis_perubahan != 1 and \
   not TransactInv.CheckUpdateUPReksa(config, rec.Tgl_Penetapan, oReksa, rec.jenis_perubahan) :
-      raise 'PERINGATAN','Tanggal transaksi NAB dan update UP (TOP UP/ Redeem) tidak sama'
+      raise Exception, 'PERINGATAN' + 'Tanggal transaksi NAB dan update UP (TOP UP/ Redeem) tidak sama'
   oReksa.NAB = rec.NAB_lama
 
   return 1

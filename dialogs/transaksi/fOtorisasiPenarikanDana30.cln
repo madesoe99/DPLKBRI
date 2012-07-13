@@ -7,7 +7,7 @@ document <
 >
 object:rtf::Form<
   MainContainer=$CONTAINERS['dualsplit1']
-  Caption='Otorisasi Penarikan Dana 30%'
+  Caption='Otorisasi Penarikan Dana Sebagian'
   State=rsMaximized
   Left=50
   Top=50
@@ -347,15 +347,15 @@ object:rtf::Form<
       Caption='Data Peserta'
     >, object:rtf::DualSplit<
       Name='dualsplit1'
-      Width=240
-      Height=96
+      Width=800
+      Height=600
       Container1=$CONTAINERS['pButton']
       Container2=$CONTAINERS['MultiPages']
       InversedAlign=true
     >, object:rtf::MultiPages<
       Name='MultiPages'
-      Width=320
-      Height=320
+      Width=800
+      Height=559
       Pages={
         object:rtf::Page<
           PageName='pageTransaksi'
@@ -539,7 +539,7 @@ object:rtf::Form<
           Top=76
           Left=10
           Color=9498256
-          ControlCaption='batas penarikan iuran pekerja'
+          ControlCaption='batas penarikan iuran PK'
           LayoutOrder=3
           ReadOnly=true
         >, *object:rtf::DBEdit<
@@ -933,8 +933,8 @@ object:rtf::Form<
         >
       }
       Name='gDetilTransaksi'
-      Width=792
-      Height=531
+      Width=240
+      Height=240
       UIPart=$UIPARTS['uipDetilTransaksi']
       ControlLeftMargin=8
       ControlTopMargin=8
