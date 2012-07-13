@@ -14,8 +14,12 @@ object:rpclass::TPClassUIDefList<
       StoredFieldList='account_giro;no_rekening;rekening_sumber;nominal;is_valid;is_created_transaction;keterangan'
       CustomLoadedFields={
         object:rpclass::TCustomLoadedField<
-          Name='jenis_reconcile'
-          DataTypeName='varchar'
+          Name='o_nominal'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='proses'
+          DataTypeName='integer'
           DataLength=20
         >, object:rpclass::TCustomLoadedField<
           Name='ket'

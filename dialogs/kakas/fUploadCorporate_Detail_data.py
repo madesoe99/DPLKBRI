@@ -31,7 +31,7 @@ def saveData(config, params, returns):
     status.message = "Data gagal disimpan...\n" + str(sys.exc_info()[1])
   
 
-def createTransaction(config, params, returns):
+def createTrxIuran(config, params, returns):
   status = returns.CreateValues(
     ['success', False],
     ['message', ''],
@@ -120,6 +120,74 @@ def createTransaction(config, params, returns):
   except:
     config.Rollback()
     status.message = "Data gagal disimpan...\n" + str(sys.exc_info()[1])
+#--end--createTrxIuran
+
+def createTrxBiayaDaftar(config, params, returns):
+  status = returns.CreateValues(
+    ['success', False],
+    ['message', ''],
+  )
+  
+  id = params.FirstRecord.id
+  oUploadCorporate = config.CreatePObjImplProxy('UploadCorporate')
+  oUploadCorporate.Key = id
+  
+  config.BeginTransaction()
+  try :
+    sSQL = '''
+      SELECT * 
+      FROM   UploadCorpBiayaDaftar
+      WHERE  trx_session_id = %d
+             AND is_auth = 'F'
+             AND is_valid = 'T'
+      ''' % oUploadCorporate.trx_session_id
+    rSQL = config.CreateSQL(sSQL).RawResult
+    rSQL.First()
+    while not rSQL.Eof:
+      recT = rSQL
+      
+      #bayar iuran peserta
+      oIuranPendaftaran = config.CreatePObject('IuranPendaftaran')
+      #field object TransaksiRekInvDPLK
+      oIuranPendaftaran.besar_biaya_daftar = recT.biaya_daftar
+      oIuranPendaftaran.no_rekening = recT.no_rekening
+      oIuranPendaftaran.tgl_transaksi = oUploadCorporate.session_time
+      oIuranPendaftaran.keterangan = recT.keterangan
+      oIuranPendaftaran.jenis_transaksi = 'D'
+    
+      oIuranPendaftaran.isCommitted = 'F'
+      oIuranPendaftaran.user_id = config.SecurityContext.UserID
+      oIuranPendaftaran.terminal_id = config.SecurityContext.GetSessionInfo()[1]
+      oIuranPendaftaran.tgl_sistem = config.ModLibUtils.Now()
+      
+      # TEMPORARY CODE
+      if config.SecurityContext.UserID.upper() == 'ROOT': 
+        oIuranPendaftaran.branch_code = '000'
+      else:
+        oIuranPendaftaran.branch_code = config.SecurityContext.GetSessionInfo()[4]
+      
+      moduleOtor = modman.getModule(config, "scripts#transaksi/OtorisasiTransaksi")
+      otorStatus, otorMessage = moduleOtor.ProsesOtorisasi(config, oIuranPendaftaran.ID_Transaksi, 'A')
+      if otorStatus == 0:
+        oUCBiayaDaftar = config.CreatePObjImplProxy('UploadCorpBiayaDaftar')
+        oUCBiayaDaftar.Key = rSQL.upload_id
+        oUCBiayaDaftar.is_auth = 'T'
+        
+        oRekInvDPLK = config.CreatePObjImplProxy('RekInvDPLK')
+        oRekInvDPLK.Key = recT.no_rekening
+        oRekInvDPLK.status_biaya_daftar = 'T'
+        
+      rSQL.Next()
+
+    oUploadCorporate.is_auth = 'T'
+
+    config.Commit()
+    status.success = True
+    status.message = 'Data berhasil disimpan...'
+  except:
+    config.Rollback()
+    status.message = "Data gagal disimpan...\n" + str(sys.exc_info()[1])
+#--end--createTrxBiayaDaftar
   
 def FormOnSetDataEx(uideflist, params):
   # procedure(uideflist: TPClassUIDefList; params: TPClassUIDataPacket)

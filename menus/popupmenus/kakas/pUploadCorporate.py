@@ -14,7 +14,7 @@ def GetFSpecificString(context):
   elif upload_type == "A":
     fSpecific = 'fFinColIntDeposito,UploadCorporate'
   elif upload_type == "R":
-    fSpecific = 'fFinColAlatBerat,UploadCorporate'
+    fSpecific = 'fUCBiayaDaftar,UploadCorporate'
   else:
     raise Exception, '\n\nPERHATIAN!\nJenis upload tidak terdaftar...'
     

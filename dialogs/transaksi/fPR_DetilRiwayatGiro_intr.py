@@ -12,9 +12,13 @@ class fPR_DetilRiwayatGiro:
     elif jenis == 'E':
        caption = 'e - Channel'
     self.FormObject.Caption += caption
+    self.TampilGrid()
     self.FormContainer.Show()
 
   def TampilkanOnClick(self, sender):
+    self.TampilGrid()
+    
+  def TampilGrid(self):
     qValid = self.qValid
     qValid.OQLText = self.oText('T')
     qValid.DisplayData()
@@ -26,7 +30,7 @@ class fPR_DetilRiwayatGiro:
   def oText(self, jenis):
     uip = self.uipart
     norek = uip.no_rekening or ''
-    AddParam =" id_reconcile = %s and is_created_transaction ='%s' and is_valid = '%s'" % (uip.id_reconcile, uip.is_created_transaction, jenis)
+    AddParam =" id_reconcile = %s and is_valid = '%s'" % (uip.id_reconcile, jenis)
     if norek != '':
        AddParam +=" and no_rekening LLIKE '%s' " % norek
     valid ={} 
@@ -49,18 +53,27 @@ class fPR_DetilRiwayatGiro:
 
   def EditClick(self, sender):
     group_id, form_id = self.DictFormId['E'].split('/')
+    o_nominal = self.qInvalid.GetFieldValue('detilriwayatgiro.nominal')
     form = self.app.FindForm(form_id)
     if form == None:
       key = self.qInvalid.KeyObjConst 
       ph = self.app.CreateValues(['key', key])
-      f = self.app.CreateForm(group_id+'/'+form_id, form_id, 0, ph, None)
-      form = f.FormContainer
-    form.Show()
-    
-    self.qInvalid.Refresh()    
-    self.qValid.Refresh()    
+      form = self.app.CreateForm(group_id+'/'+form_id, form_id, 0, ph, None)
+      #form = f.FormContainer
+    nominal = form.Show()
+    if nominal !=None:
+      selisih = nominal - o_nominal
+      self.uipart.Edit()
+      self.uipart.sum_nominal += selisih
+      self.qInvalid.Refresh()    
+      self.qValid.Refresh()    
 
   def InvalidClick(self, sender):
+    ict = self.qValid.GetFieldValue('detilriwayatgiro.is_created_transaction')
+    if ict =='true':
+      self.app.ShowMessage('Sudah dibuat transaksi, tidak bisa dijadikan invalid!!')
+      return 0
+
     if self.app.ConfirmDialog('Yakin akan menjadikan invalid??'):
       pass
     else:
@@ -89,4 +102,7 @@ class fPR_DetilRiwayatGiro:
     if status.IsErr :
       self.app.ShowMessage(status.ErrMessage)
       return
+    
+    self.uipart.Edit()
+    self.uipart.sum_procced_nominal += status.proced_nominal
     self.qValid.Refresh()    

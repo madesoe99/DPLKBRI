@@ -167,13 +167,11 @@ def CreateRekInvDPLK(config, oRegisterNasabahRekening, oNasabahDPLK, oUploadCorp
   oRekNasabah.REKSUMBER_NAMA = oRegisterNasabahRekening.REKSUMBER_NAMA
   '''
   
-  oRekNasabah.LBranchLocation = oUploadCorporate.LBranchLocation
-  
   '''
   #oRekNasabah.kode_cab_daftar = oRegisterNasabahRekening.kode_cab_daftar
-  oRekNasabah.STATUS_BIAYA_DAFTAR = oRegisterNasabahRekening.status_biaya_daftar
   '''
-  
+  oRekNasabah.LBranchLocation = oUploadCorporate.LBranchLocation
+  oRekNasabah.STATUS_BIAYA_DAFTAR = 'F'
   oRekNasabah.LNasabahDPLK = oNasabahDPLK
   
   '''
@@ -211,7 +209,7 @@ def CreateRekInvDPLK(config, oRegisterNasabahRekening, oNasabahDPLK, oUploadCorp
   #oRekNasabah.kewajiban_asuransi = oRegisterNasabahRekening.kewajiban_asuransi
   #oRekNasabah.Is_Boleh_Debet = oRegisterNasabahRekening.Is_Boleh_Debet
   #oRekNasabah.bln_tunggakan_asuransi = oRegisterNasabahRekening.bln_tunggakan_asuransi
-  oRekNasabah.has_passbook = 'T'
+  oRekNasabah.has_passbook = 'F'
   oRekNasabah.No_Seri_Buku = oRegisterNasabahRekening.no_seri_buku
   oRekNasabah.IS_DELETED = 0
   
@@ -337,6 +335,57 @@ def CreateRegisterAsuransi(config, oRegisterNasabahRekening, oRekeningDPLK):
   oRegisterAsuransi.tanggal_register = config.Now()
   oRegisterAsuransi.terminal_id = config.SecurityContext.GetSessionInfo()[1]
   oRegisterAsuransi.user_id = oRegisterNasabahRekening.user_id
+
+def CreateHistoriAhliWaris(config, oRegisterAhliWaris):
+  oNasabahDPLK = oRegisterAhliWaris.LNasabahDPLK
+  oUploadCorporate = oRegisterAhliWaris.LUploadCorporate
+  
+  oHistoriAhliWaris = config.CreatePObject('HistoriAhliWaris')
+  oHistoriAhliWaris.LNasabahDPLK = oNasabahDPLK
+  oHistoriAhliWaris.auth_user_id = config.SecurityContext.userid
+  oHistoriAhliWaris.keterangan = 'upload masal ahli waris'
+  oHistoriAhliWaris.no_referensi = oUploadCorporate.session_filename
+  oHistoriAhliWaris.tanggal_histori = config.Now()
+  oHistoriAhliWaris.terminal_id = oNasabahDPLK.last_terminal_id
+  oHistoriAhliWaris.user_id = oNasabahDPLK.user_id
+  
+  Ls_AhliWaris = oNasabahDPLK.Ls_AhliWaris
+  Ls_AhliWaris.First()
+  while not Ls_AhliWaris.EndOfList:
+    oAhliWarisDetail = Ls_AhliWaris.CurrentElement
+
+    oHistoriAhliWarisDetail = config.CreatePObject('HistoriAhliWarisDetail')
+    oHistoriAhliWarisDetail.LHistoriAhliWaris = oHistoriAhliWaris
+    oHistoriAhliWarisDetail.hubungan_keluarga = oAhliWarisDetail.hubungan_keluarga
+    oHistoriAhliWarisDetail.jenis_kelamin = oAhliWarisDetail.jenis_kelamin
+    oHistoriAhliWarisDetail.keterangan = oAhliWarisDetail.keterangan
+    oHistoriAhliWarisDetail.nama_lengkap = oAhliWarisDetail.nama_lengkap
+    oHistoriAhliWarisDetail.nomor_urut_prioritas = oAhliWarisDetail.nomor_urut_prioritas
+    oHistoriAhliWarisDetail.status_ahli_waris = oAhliWarisDetail.status_ahli_waris
+    
+    if oAhliWarisDetail.tanggal_lahir != None:
+      oHistoriAhliWarisDetail.tanggal_lahir = moduleapi.DateTimeTupleToFloat(config, oAhliWarisDetail.tanggal_lahir)
+    
+    Ls_AhliWaris.Next()
+
+  return oHistoriAhliWaris
+#--
+
+def CreateNewAhliWaris(config, oRegisterAhliWaris):
+  oNasabahDPLK = oRegisterAhliWaris.LNasabahDPLK
+  
+  oAhliWaris = config.CreatePObject('AhliWaris')
+  oAhliWaris.LNasabahDPLK = oNasabahDPLK
+  oAhliWaris.hubungan_keluarga = oRegisterAhliWaris.hubungan_keluarga
+  oAhliWaris.jenis_kelamin = oRegisterAhliWaris.jenis_kelamin
+  oAhliWaris.keterangan = oRegisterAhliWaris.keterangan_ahli_waris
+  oAhliWaris.nama_lengkap = oRegisterAhliWaris.nama_ahli_waris
+  oAhliWaris.nomor_urut_prioritas = oRegisterAhliWaris.no_urut_prioritas
+  oAhliWaris.status_ahli_waris = oRegisterAhliWaris.status_ahli_waris
+  
+  if oRegisterAhliWaris.tanggal_lahir != None:
+    oAhliWaris.tanggal_lahir = moduleapi.DateTimeTupleToFloat(config, oRegisterAhliWaris.tanggal_lahir)
+#--
   
 def DAFScriptMain(config, parameter, returnpacket):
   # import rpdb2; rpdb2.start_embedded_debugger("000")
@@ -351,28 +400,58 @@ def DAFScriptMain(config, parameter, returnpacket):
 
   config.BeginTransaction()
   try:
-    sSQL = '''
-      SELECT * 
-      FROM   UploadCorpRegisterPeserta
-      WHERE  trx_session_id = %d
-             AND is_auth = 'F'
-             AND is_valid = 'T'
-      ''' % oUploadCorporate.trx_session_id
-    rSQL = config.CreateSQL(sSQL).RawResult
-    rSQL.First()
-    while not rSQL.Eof:
-      oNasabahDPLK = CreateNasabahDPLK(config, rSQL, oUploadCorporate)
-      CreateAllAhliWaris(config, oNasabahDPLK)
-      oRekInvDPLK = CreateRekInvDPLK(config, rSQL, oNasabahDPLK, oUploadCorporate)
-      CreateHistoriBuku(config, rSQL, oUploadCorporate)
-      CreateRegisterPassbook(config, rSQL)
-      CreateRekeningDPLK(config, rSQL, oUploadCorporate)
-      
-      oUCRegisterPeserta = config.CreatePObjImplProxy('UploadCorpRegisterPeserta')
-      oUCRegisterPeserta.Key = rSQL.upload_id
-      oUCRegisterPeserta.is_auth = 'T'
-      
-      rSQL.Next()
+    if oUploadCorporate.upload_type == 'P':
+      sSQL = '''
+        SELECT * 
+        FROM   UploadCorpRegisterPeserta
+        WHERE  trx_session_id = %d
+               AND is_auth = 'F'
+               AND is_valid = 'T'
+        ''' % oUploadCorporate.trx_session_id
+      rSQL = config.CreateSQL(sSQL).RawResult
+      rSQL.First()
+      while not rSQL.Eof:
+        oNasabahDPLK = CreateNasabahDPLK(config, rSQL, oUploadCorporate)
+        CreateAllAhliWaris(config, oNasabahDPLK)
+        oRekInvDPLK = CreateRekInvDPLK(config, rSQL, oNasabahDPLK, oUploadCorporate)
+        CreateHistoriBuku(config, rSQL, oUploadCorporate)
+        CreateRegisterPassbook(config, rSQL)
+        CreateRekeningDPLK(config, rSQL, oUploadCorporate)
+        
+        oUCRegisterPeserta = config.CreatePObjImplProxy('UploadCorpRegisterPeserta')
+        oUCRegisterPeserta.Key = rSQL.upload_id
+        oUCRegisterPeserta.is_auth = 'T'
+        
+        rSQL.Next()
+    elif oUploadCorporate.upload_type == 'W':
+      init_peserta = ''
+      sSQL = '''
+        SELECT * 
+        FROM   UploadCorpAhliWaris
+        WHERE  trx_session_id = %d
+               AND is_auth = 'F'
+               AND is_valid = 'T'
+        ORDER BY no_peserta ASC
+        ''' % oUploadCorporate.trx_session_id
+      rSQL = config.CreateSQL(sSQL).RawResult
+      rSQL.First()
+      while not rSQL.Eof:
+        oUCAhliWaris = config.CreatePObjImplProxy('UploadCorpAhliWaris')
+        oUCAhliWaris.Key = rSQL.upload_id
+        oUCAhliWaris.is_auth = 'T'
+
+        if init_peserta != rSQL.no_peserta:
+          oNasabahDPLK = config.CreatePObjImplProxy('NasabahDPLK')
+          oNasabahDPLK.Key = rSQL.no_peserta
+          
+          CreateHistoriAhliWaris(config, oUCAhliWaris)
+          oNasabahDPLK.Ls_AhliWaris.DeleteAllPObjs()
+        #--endif
+        
+        init_peserta = rSQL.no_peserta        
+        CreateNewAhliWaris(config, oUCAhliWaris)
+        rSQL.Next()
+    #--endwhile      
 
     oUploadCorporate.is_auth = 'T'
 

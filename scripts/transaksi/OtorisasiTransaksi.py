@@ -49,7 +49,12 @@ def ApproveOperation(config, oTransaksi):
   oTransaksi = oTransaksi.CastToLowestDescendant()
   oRekInv = oTransaksi.LRekeningDPLK
   
-  if oTransaksi.IsA("IuranPeserta"):
+  if oTransaksi.IsA("IuranPendaftaran"):
+    #set status iuran pendaftaran rekening investasi DPLK
+    oRekInv.status_biaya_daftar = 'T'
+  #--end Iuran Pendaftaran
+
+  elif oTransaksi.IsA("IuranPeserta"):
     #tambahkan mutasi dana di RekeningInvDPLK
     oRekInv.akum_iuran_pk += oTransaksi.mutasi_iuran_pk
     oRekInv.akum_iuran_pst += oTransaksi.mutasi_iuran_pst
@@ -68,6 +73,7 @@ def ApproveOperation(config, oTransaksi):
       
       Ls_DetilTransaksi.Next()
     #--
+  #--end IuranPeserta
   
   elif oTransaksi.IsA("PenarikanDanaNormal"):
     #buat transaksi biaya transaksi (biaya tarik dana)
@@ -93,6 +99,7 @@ def ApproveOperation(config, oTransaksi):
       
       Ls_DetilTransaksi.Next()
     #--
+  #--end PenarikanDanaNormal
     
   elif oTransaksi.IsA("PenarikanDanaPHK"):
     #buat transaksi biaya transaksi (biaya tarik dana)
@@ -118,6 +125,7 @@ def ApproveOperation(config, oTransaksi):
       
       Ls_DetilTransaksi.Next()
     #--
+  #--end PenarikanDanaPHK
 
   elif oTransaksi.IsA("PengalihanKeDPLKLain"):
     #buat transaksi biaya pengelolaan
@@ -133,6 +141,16 @@ def ApproveOperation(config, oTransaksi):
       oTransaksi.biaya_pindah)
     oBiayaAdmTransaksi.isPindahPaket = 'F'
     
+    #mutasi akan di set ulang dengan saldo rekening investasi DPLK
+    oTransaksi.mutasi_iuran_pk = -oRekInv.akum_iuran_pk
+    oTransaksi.mutasi_iuran_pst = -oRekInv.akum_iuran_pst
+    oTransaksi.mutasi_iuran_tmb = -oRekInv.akum_iuran_tmb
+    oTransaksi.mutasi_psl = -oRekInv.akum_psl
+    oTransaksi.mutasi_pmb_pk = -oRekInv.akum_pmb_pk
+    oTransaksi.mutasi_pmb_pst = -oRekInv.akum_pmb_pst
+    oTransaksi.mutasi_pmb_tmb = -oRekInv.akum_pmb_tmb
+    oTransaksi.mutasi_pmb_psl = -oRekInv.akum_pmb_psl
+
     #nihilkan saldo RekeningInvDPLK
     oRekInv.akum_iuran_pk = 0.0
     oRekInv.akum_iuran_pst = 0.0
@@ -159,12 +177,23 @@ def ApproveOperation(config, oTransaksi):
       oRekDPLK.akum_pmb_tmb = 0.0
       oRekDPLK.akum_pmb_psl = 0.0
       
+      #update mutasi transaksi DetilTransaksi
+      oDetilTransaksi.mutasi_iuran_pk = (oRekDPLK.pct_alokasi / 100.0) * oTransaksi.mutasi_iuran_pk  
+      oDetilTransaksi.mutasi_iuran_pst = (oRekDPLK.pct_alokasi / 100.0) * oTransaksi.mutasi_iuran_pst  
+      oDetilTransaksi.mutasi_iuran_tmb = (oRekDPLK.pct_alokasi / 100.0) * oTransaksi.mutasi_iuran_tmb
+      oDetilTransaksi.mutasi_psl = (oRekDPLK.pct_alokasi / 100.0) * oTransaksi.mutasi_psl
+      oDetilTransaksi.mutasi_pmb_pk = (oRekDPLK.pct_alokasi / 100.0) * oTransaksi.mutasi_pmb_pk
+      oDetilTransaksi.mutasi_pmb_pst = (oRekDPLK.pct_alokasi / 100.0) * oTransaksi.mutasi_pmb_pst 
+      oDetilTransaksi.mutasi_pmb_tmb = (oRekDPLK.pct_alokasi / 100.0) * oTransaksi.mutasi_pmb_tmb 
+      oDetilTransaksi.mutasi_pmb_psl = (oRekDPLK.pct_alokasi / 100.0) * oTransaksi.mutasi_pmb_psl 
+      
       Ls_DetilTransaksi.Next()
     #--
     
     #penutupan RekeningInvDPLK, samakan tgl tutup dengan tgl transaksi
     oRekInv.status_DPLK = 'N'
     oRekInv.tgl_tutup = oTransaksi.tgl_transaksi
+  #--end PengalihanKeDPLKLain
   
   elif oTransaksi.IsA("PengalihanDariDPLKLain") or \
     oTransaksi.kode_jenis_transaksi in ('I','O','P'):
@@ -198,7 +227,109 @@ def ApproveOperation(config, oTransaksi):
       
       Ls_DetilTransaksi.Next()
     #--
+  #--end PengalihanDariDPLKLain
 
+  elif oTransaksi.IsA("PengambilanManfaat"):
+    #buat transaksi biaya pencairan (biaya bila dana mengendap < 1 tahun)
+    oBiayaAdmTransaksi = CreateBiayaTransaksi(config, 'BiayaAdmTransaksi', oTransaksi, \
+      oTransaksi.biaya_pencairan)
+    oBiayaAdmTransaksi.isPindahPaket = 'F'
+
+    #buat transaksi biaya pengelolaan
+    oBiayaPengelolaan = CreateBiayaTransaksi(config, 'BiayaPengelolaanDana', oTransaksi, \
+      oTransaksi.biaya_pengelolaan)
+    
+    #buat transaksi biaya administrasi
+    oBiayaAdmTahunan = CreateBiayaTransaksi(config, 'BiayaAdmTahunan', oTransaksi, \
+      oTransaksi.biaya_administrasi)
+    
+    #mutasi akan di set ulang dengan saldo rekening investasi DPLK
+    oTransaksi.mutasi_iuran_pk = -oRekInv.akum_iuran_pk
+    oTransaksi.mutasi_iuran_pst = -oRekInv.akum_iuran_pst
+    oTransaksi.mutasi_iuran_tmb = -oRekInv.akum_iuran_tmb
+    oTransaksi.mutasi_psl = -oRekInv.akum_psl
+    oTransaksi.mutasi_pmb_pk = -oRekInv.akum_pmb_pk
+    oTransaksi.mutasi_pmb_pst = -oRekInv.akum_pmb_pst
+    oTransaksi.mutasi_pmb_tmb = -oRekInv.akum_pmb_tmb
+    oTransaksi.mutasi_pmb_psl = -oRekInv.akum_pmb_psl
+
+    #nihilkan saldo RekeningInvDPLK
+    oRekInv.akum_iuran_pk = 0.0
+    oRekInv.akum_iuran_pst = 0.0
+    oRekInv.akum_iuran_tmb = 0.0
+    oRekInv.akum_psl = 0.0
+    oRekInv.akum_pmb_pk = 0.0
+    oRekInv.akum_pmb_pst = 0.0
+    oRekInv.akum_pmb_tmb = 0.0
+    oRekInv.akum_pmb_psl = 0.0
+    
+    #nihilkan saldo tiap RekeningDPLK
+    Ls_DetilTransaksi = oTransaksi.Ls_DetilTransaksiDPLK
+    while not Ls_DetilTransaksi.EndOfList:
+      oDetilTransaksi = Ls_DetilTransaksi.CurrentElement
+      
+      oRekDPLK = config.CreatePObjImplProxy('RekeningDPLK')
+      oRekDPLK.Key = oDetilTransaksi.nomor_rekening
+      oRekDPLK.akum_iuran_pk = 0.0
+      oRekDPLK.akum_iuran_pst = 0.0
+      oRekDPLK.akum_iuran_tmb = 0.0
+      oRekDPLK.akum_psl = 0.0
+      oRekDPLK.akum_pmb_pk = 0.0
+      oRekDPLK.akum_pmb_pst = 0.0
+      oRekDPLK.akum_pmb_tmb = 0.0
+      oRekDPLK.akum_pmb_psl = 0.0
+      
+      #update mutasi transaksi DetilTransaksi
+      oDetilTransaksi.mutasi_iuran_pk = (oRekDPLK.pct_alokasi / 100.0) * oTransaksi.mutasi_iuran_pk  
+      oDetilTransaksi.mutasi_iuran_pst = (oRekDPLK.pct_alokasi / 100.0) * oTransaksi.mutasi_iuran_pst  
+      oDetilTransaksi.mutasi_iuran_tmb = (oRekDPLK.pct_alokasi / 100.0) * oTransaksi.mutasi_iuran_tmb
+      oDetilTransaksi.mutasi_psl = (oRekDPLK.pct_alokasi / 100.0) * oTransaksi.mutasi_psl
+      oDetilTransaksi.mutasi_pmb_pk = (oRekDPLK.pct_alokasi / 100.0) * oTransaksi.mutasi_pmb_pk
+      oDetilTransaksi.mutasi_pmb_pst = (oRekDPLK.pct_alokasi / 100.0) * oTransaksi.mutasi_pmb_pst 
+      oDetilTransaksi.mutasi_pmb_tmb = (oRekDPLK.pct_alokasi / 100.0) * oTransaksi.mutasi_pmb_tmb 
+      oDetilTransaksi.mutasi_pmb_psl = (oRekDPLK.pct_alokasi / 100.0) * oTransaksi.mutasi_pmb_psl 
+
+      Ls_DetilTransaksi.Next()
+    #--
+    
+    #penutupan RekeningInvDPLK, samakan tgl tutup dengan tgl transaksi
+    oRekInv.status_DPLK = 'N'
+    oRekInv.tgl_tutup = oTransaksi.tgl_transaksi
+    
+    #checking untuk pembuatan register anuitas
+    oP = config.CreatePObjImplProxy('Parameter')
+    oP.Key = 'PRESISI_ANGKA_FLOAT'
+    if oTransaksi.manfaat_anuitas > oP.Numeric_Value:
+      #buat register anuitas untuk peserta
+      oRA = config.CreatePObject('RegisterAnuitas')
+      oRA.nominal_anuitas = oTransaksi.manfaat_anuitas
+      oRA.keterangan = 'register bersamaan dengan Pengambilan Manfaat peserta ' +\
+        oRekInv.no_peserta
+      oRA.terminal_id = oTransaksi.terminal_id
+      oRA.kode_jenis_registercif = 'N'
+      oRA.no_peserta = oRekInv.no_peserta
+      oRA.no_rekening = oRekInv.no_rekening
+      oRA.user_id = oTransaksi.user_id
+      
+      #tanggal register samakan dengan tanggal transaksi
+      oRA.tanggal_register = oTransaksi.tgl_transaksi
+        
+      #set status anuitas rekening investasi DPLK
+      oRekInv.status_anuitas = 'F'
+    #--end checking pembuatan register anuitas
+    
+    #checking status asuransi
+    if oRekInv.status_asuransi == 'T':
+      #peserta ikut asuransi, tutup sekalian keikutsertaan asuransi
+      registerCIF_Auth = modman.getModule(config, 'moduleapi')
+      oRekAsuransi = registerCIF_Auth.GetRekAsuransiByRekInv(config, oRekInv)
+      registerCIF_Auth.CreateHistAsuransi(config, oRekAsuransi, 'TarikManfaat', \
+        'Telah memasuki usia pensiun', 'Penutupan bersamaan dengan pengambilan manfaat')
+      registerCIF_Auth.UpdateStatusAsuransiOut(config, oRekAsuransi)
+    #--end checking status asuransi
+    
+  #--end PengambilanManfaat
+  
   #set status committed true dan data otorisasi
   oTransaksi.isCommitted = 'T'
   oTransaksi.user_id_auth = config.SecurityContext.UserID

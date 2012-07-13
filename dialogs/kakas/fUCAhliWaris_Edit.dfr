@@ -11,7 +11,7 @@ object:rtf::Form<
   Left=50
   Top=50
   Width=720
-  Height=240
+  Height=320
   BeforeDeleteRow=''
   BeforeResultSent=''
   OnGeneralSetData=''
@@ -39,7 +39,7 @@ object:rtf::Form<
         >
       }
       Name='uipDetail'
-      ClassTypeName='UploadCorpIuranPeserta'
+      ClassTypeName='UploadCorpAhliWaris'
       DataBinding=bmMaster
       AlwaysPostToServer=true
       CreateInstanceOnNew=true
@@ -76,8 +76,8 @@ object:rtf::Form<
       RowControlGap=7
     >, object:rtf::DualSplit<
       Name='dualsplit1'
-      Width=720
-      Height=240
+      Width=240
+      Height=96
       Container1=$CONTAINERS['pButton']
       Container2=$CONTAINERS['dualsplit2']
       InversedAlign=true
@@ -141,87 +141,123 @@ object:rtf::Form<
     >, object:rtf::Panel<
       ControlDefs={
         object:rtf::ControlDef<
-          Action=caView
-          DataMember='LRekInvDPLK'
-        >, object:rtf::MultiControlDef<
           Action=caEdit
-          DataMembers=['iuran_pst'#13#10,
-            'iuran_pk'#13#10]
+          DataMember='LNasabahDPLK'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='nama_ahli_waris'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='hubungan_keluarga'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='tanggal_lahir'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='jenis_kelamin'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='status_ahli_waris'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='no_urut_prioritas'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='keterangan_ahli_waris'
         >
       }
       Elements={
         *object:rtf::LinkUIElmtSetting<
-          Name='LRekInvDPLK'
-          Hidden=true
+          Name='LNasabahDPLK'
+          Hidden=false
           ReadOnlyControl=false
-          DisplayFields='no_peserta;LNasabahDPLK.nama_lengkap;no_rekening'
+          DisplayFields='no_peserta;nama_lengkap'
           Restrictions=''
-          OQLText=['SELECT FROM RekInvDPLK ('#13#10,
+          OQLText=['SELECT FROM NasabahDPLK ('#13#10,
             '  no_peserta,'#13#10,
-            '  no_rekening,'#13#10,
-            '  LNasabahDPLK.nama_lengkap'#13#10,
-            ');']
+            '  nama_lengkap,'#13#10,
+            '  self'#13#10,
+            ') TEHN ORDER BY no_peserta;']
           LookupOption=loCustomOQL
-          FieldBaseName='LRekInvDPLK'
+          FieldBaseName='LNasabahDPLK'
         >, *object:rtf::FieldUIElmtSetting<
-          Name='iuran_pst'
+          Name='nama_ahli_waris'
           Hidden=false
           ReadOnlyControl=false
         >, *object:rtf::FieldUIElmtSetting<
-          Name='iuran_pk'
+          Name='hubungan_keluarga'
           Hidden=false
           ReadOnlyControl=false
-        >, object:rtf::FieldUIElmtSetting<
-          Name='no_rekening'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tanggal_lahir'
           Hidden=false
           ReadOnlyControl=false
-        >, object:rtf::FieldUIElmtSetting<
-          Name='no_peserta'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='jenis_kelamin'
           Hidden=false
           ReadOnlyControl=false
-        >, object:rtf::FieldUIElmtSetting<
-          Name='nama_lengkap'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='status_ahli_waris'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='no_urut_prioritas'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='keterangan_ahli_waris'
           Hidden=false
           ReadOnlyControl=false
         >
       }
       Name='pInput'
       Width=369
-      Height=177
+      Height=265
       Bordered=true
       UIPart=$UIPARTS['uipDetail']
       Controls={
-        *object:rtf::DBEdit<
-          Name='iuran_pst'
+        *object:rtf::DBLookupEdit<
+          Name='LNasabahDPLK'
           Top=24
           Left=20
-          ControlCaption='Iuran Peserta'
+          ControlCaption='Nasabah DPLK'
+          LookupField='LNasabahDPLK.nama_lengkap'
+          DisplayLookupField=true
         >, *object:rtf::DBEdit<
-          Name='iuran_pk'
+          Name='nama_ahli_waris'
           Top=52
           Left=20
-          ControlCaption='Iuran Pemberi Kerja'
-        >, *object:rtf::DBEdit<
-          Name='no_rekening'
+          ControlCaption='Nama Ahli Waris'
+        >, *object:rtf::DBComboBox<
+          Name='hubungan_keluarga'
           Top=80
           Left=20
-          Enabled=false
-          ControlCaption='Nomor Rekening'
-          FieldName='LRekInvDPLK.no_rekening'
-        >, *object:rtf::DBEdit<
-          Name='no_peserta'
+          ControlCaption='Hbungan Keluarga'
+        >, *object:rtf::DBDateEdit<
+          Name='tanggal_lahir'
           Top=108
           Left=20
-          Enabled=false
-          ControlCaption='Nomor Peserta'
-          FieldName='LRekInvDPLK.no_peserta'
-        >, *object:rtf::DBEdit<
-          Name='nama_lengkap'
+          ControlCaption='Tanggal Lahir'
+        >, *object:rtf::DBComboBox<
+          Name='jenis_kelamin'
           Top=136
           Left=20
-          Enabled=false
-          ControlCaption='Nama Lengkap'
-          FieldName='LRekInvDPLK.LNasabahDPLK.nama_lengkap'
+          ControlCaption='Jenis Kelamin'
+        >, *object:rtf::DBComboBox<
+          Name='status_ahli_waris'
+          Top=164
+          Left=20
+          ControlCaption='Status Ahli Waris'
+        >, *object:rtf::DBEdit<
+          Name='no_urut_prioritas'
+          Top=192
+          Left=20
+          ControlCaption='No. Urut Prioritas'
+        >, *object:rtf::DBEdit<
+          Name='keterangan_ahli_waris'
+          Top=220
+          Left=20
+          ControlCaption='Catatan Ahli Waris'
         >
       }
       EqualCaptionWidth=110
@@ -233,12 +269,12 @@ object:rtf::Form<
       Caption='Data Iuran'
     >, object:rtf::DualSplit<
       Name='dualsplit2'
-      Width=720
-      Height=199
+      Width=240
+      Height=96
       Container1=$CONTAINERS['pInput']
       Container2=$CONTAINERS['pInputRight']
       SplitDirection=sdrSplitLeftRight
     >
   }
-  FormClassName='fUCIuranPeserta_Edit'
+  FormClassName='fUCAhliWaris_Edit'
 >

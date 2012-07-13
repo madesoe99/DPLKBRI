@@ -19,6 +19,7 @@ object:rtf::Form<
   AfterSetData=''
   OnGeneralProcessData=''
   OnProcessRawData=''
+  OnClose='Form_OnClose'
   OnBeginSetData=''
   OnEndSetData=''
   OnSetDataEx='FormOnSetDataEx'
@@ -86,14 +87,6 @@ object:rtf::Form<
       Height=40
       Controls={
         object:rtf::Button<
-          Name='bTutup'
-          Layout=clAbsolute
-          Top=8
-          Left=96
-          ControlCaption=''
-          Caption='&Tutup'
-          ExitAction=eaQuitCancel
-        >, object:rtf::Button<
           Name='bViewDetil'
           Layout=clAbsolute
           Top=8

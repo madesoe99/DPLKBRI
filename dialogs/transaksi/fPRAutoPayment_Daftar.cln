@@ -13,6 +13,7 @@ object:rtf::Form<
   Top=50
   Width=641
   Height=425
+  OnClose='Form_OnClose'
   UIParts={
     object:rtf::PClassUI<
       Name='uipart'
@@ -75,14 +76,6 @@ object:rtf::Form<
       Height=40
       Controls={
         object:rtf::Button<
-          Name='bTutup'
-          Layout=clAbsolute
-          Top=8
-          Left=96
-          ControlCaption=''
-          Caption='&Tutup'
-          ExitAction=eaQuitCancel
-        >, object:rtf::Button<
           Name='bViewDetil'
           Layout=clAbsolute
           Top=8

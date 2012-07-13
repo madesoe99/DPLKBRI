@@ -80,6 +80,7 @@ def SimpanTransaksi(config, params, returns):
     oT.dana_dialihkan = recH.dana_dialihkan
     
     #field object TransaksiDPLK
+    #mutasi akan di set ulang saat otorisasi, untuk kalkulasi biaya 
     oT.mutasi_iuran_pk = -recR.akum_iuran_pk
     oT.mutasi_iuran_pst = -recR.akum_iuran_pst
     oT.mutasi_iuran_tmb = -recR.akum_iuran_tmb

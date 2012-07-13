@@ -1,0 +1,57 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipTransaksi'
+      PClassName='IuranPendaftaran'
+      LoadedFieldList='tgl_transaksi;no_rekening;besar_biaya_daftar;branch_code;keterangan;ID_Transaksi;user_id;terminal_id;tgl_sistem;user_id_auth;terminal_id_auth;tgl_otorisasi'
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >, object:rpclass::TPClassUIDef<
+      Name='uipPeserta'
+      PClassName='NasabahDPLK'
+      LoadedFieldList='no_peserta;nama_lengkap;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_email;NPWP'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='IuranPk'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='IuranPst'
+          DataTypeName='double'
+          DataLength=20
+        >
+      }
+      Mode=imSingleRow
+    >, object:rpclass::TPClassUIDef<
+      Name='uipParameter'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='BESAR_BIAYA_DAFTAR'
+          DataTypeName='double'
+          DataLength=20
+        >
+      }
+      Mode=imSingleRow
+    >, object:rpclass::TPClassUIDef<
+      Name='uipRekening'
+      PClassName='RekInvDPLK'
+      LoadedFieldList='akum_pmb_pk;akum_pmb_pst;akum_pmb_tmb;akum_pmb_psl;no_peserta;no_rekening;iuran_pk;iuran_pst;akum_iuran_pk;akum_iuran_pst;akum_iuran_tmb;akum_psl;STATUS_BIAYA_DAFTAR'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='akum_pmb'
+          DataTypeName='double'
+          DataLength=20
+        >
+      }
+      Mode=imSingleRow
+    >
+  }
+  OnSetDataEx='Form_OnSetDataEx'
+>

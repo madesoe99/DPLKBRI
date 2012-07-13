@@ -117,15 +117,15 @@ object:rtf::Form<
       RowControlGap=7
     >, object:rtf::DualSplit<
       Name='dualsplit1'
-      Width=240
-      Height=96
+      Width=800
+      Height=400
       Container1=$CONTAINERS['pButton']
       Container2=$CONTAINERS['dualsplit2']
       InversedAlign=true
     >, object:rtf::DualSplit<
       Name='dualsplit2'
-      Width=240
-      Height=96
+      Width=800
+      Height=359
       Container1=$CONTAINERS['pGeneral']
       Container2=$CONTAINERS['frameSpecific']
     >, object:rtf::Panel<

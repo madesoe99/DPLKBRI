@@ -1,0 +1,102 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['qDetails']
+  Left=50
+  Top=50
+  Width=649
+  Height=560
+  UIParts={
+    object:rtf::PClassUI<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='trx_session_id'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='INTEGER'
+          DataLength=0
+        >
+      }
+      Name='uipParent'
+      ClassTypeName='UploadCorporate'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Query<
+      Name='qDetails'
+      Width=649
+      Height=560
+      ContextMenuName='popupmenus/kakas/pUploadCorporate_Detail'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data biaya pendaftaran'
+      OQLText=['SELECT FROM UploadCorpBiayaDaftar ['#13#10,
+        '  trx_session_id=:trx_session_id'#13#10,
+        ']('#13#10,
+        '  upload_id,'#13#10,
+        '  no_peserta,'#13#10,
+        '  LNasabahDPLK.nama_lengkap AS nama_lengkap,'#13#10,
+        '  no_rekening,'#13#10,
+        '  biaya_daftar,'#13#10,
+        '  trx_session_id,'#13#10,
+        '  is_valid,'#13#10,
+        '  keterangan,'#13#10,
+        '  is_auth,'#13#10,
+        '  self'#13#10,
+        ') THEN ORDER BY nama_lengkap;']
+      Columns={
+        object:rtf::QueryColumn<
+          FieldName='UploadCorpBiayaDaftar.upload_id'
+          Width=40
+          Caption='ID'
+          Hidden=true
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpBiayaDaftar.no_peserta'
+          Width=100
+          Caption='No. Peserta'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpBiayaDaftar.nama_lengkap'
+          Width=160
+          Caption='Nama Lengkap'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpBiayaDaftar.no_rekening'
+          Width=100
+          Caption='No. Rekening'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpBiayaDaftar.biaya_daftar'
+          Width=100
+          Caption='Biaya Daftar'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpBiayaDaftar.trx_session_id'
+          Hidden=true
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpBiayaDaftar.is_valid'
+          Width=40
+          Caption='Is Valid'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpBiayaDaftar.keterangan'
+          Width=300
+          Caption='Keterangan'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpBiayaDaftar.is_auth'
+          Width=40
+          Caption='Is Auth'
+        >
+      }
+      EnableColumns=true
+    >
+  }
+  FormClassName='fUCBiayaDaftar'
+>

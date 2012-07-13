@@ -64,6 +64,7 @@ def GenerateFile(config, params, returns):
         _startLine=_startLine+1
         
         Ls_NasabahDPLK.Next()
+      #--endwhile
         
       strSessDate = str(_sessDate)
       sBaseFileName = '%s_IURAN_%s_%s_%s.xls' % (\
@@ -75,6 +76,57 @@ def GenerateFile(config, params, returns):
       sFileName = uploadDir + sBaseFileName
       if os.access(sFileName, os.F_OK) == 1:
         os.remove(sFileName)
+      #--endif
+      workBookXLS.SaveAs(sFileName)
+    
+      #return packet
+      sw = returns.AddStreamWrapper()
+      sw.LoadFromFile(sFileName)
+      sw.MIMEType = config.AppObject.GetMIMETypeFromExtension(sFileName)
+    elif rec.upload_type == 'R':
+      uploadDir = config.GetGlobalSetting('USERHOMEDIR_ALL_UC') + "/"
+      workBookXLS = LoadTemplateFile(config, uploadDir, "TPL_IuranBiayaDaftar.xls")
+      
+      workBookXLS.SetCellValue(3,3, rec.kode_nasabah_corporate)
+      workBookXLS.SetCellValue(5,3, rec.nama_perusahaan)
+      
+      sSQL = '''
+        SELECT n.no_peserta,
+               n.nama_lengkap,
+               r.no_rekening
+        FROM   NasabahDPLK n
+               INNER JOIN RekInvDPLK r ON r.no_peserta = n.no_peserta
+        WHERE  n.kode_nasabah_corporate = '%s'
+               AND r.status_biaya_daftar = 'F'
+        ''' % rec.kode_nasabah_corporate
+      rSQL = config.CreateSQL(sSQL).RawResult
+      rSQL.First()
+      
+      i = 0
+      _startLine = 8
+      while not rSQL.Eof:
+        i = i+1
+        workBookXLS.SetCellValue(_startLine,1,i)
+        workBookXLS.SetCellValue(_startLine,2,rSQL.no_peserta)
+        workBookXLS.SetCellValue(_startLine,3,rSQL.nama_lengkap)
+        workBookXLS.SetCellValue(_startLine,4,rSQL.no_rekening)
+        workBookXLS.SetCellValue(_startLine,5,0.0)
+        _startLine=_startLine+1
+        
+        rSQL.Next()
+      #--endwhile
+        
+      strSessDate = str(_sessDate)
+      sBaseFileName = '%s_BIAYADAFTAR_%s_%s_%s.xls' % (\
+        _userInfo[0], \
+        str(rec.kode_nasabah_corporate).replace(' ', ''), \
+        str(rec.nama_perusahaan).replace(' ', ''), \
+        strSessDate.replace('.', ''))
+
+      sFileName = uploadDir + sBaseFileName
+      if os.access(sFileName, os.F_OK) == 1:
+        os.remove(sFileName)
+      #--endif
       workBookXLS.SaveAs(sFileName)
     
       #return packet
@@ -85,6 +137,7 @@ def GenerateFile(config, params, returns):
       status.Is_Err = True
       status.Err_Message = 'Jenis template tidak ditemukan...'
       return
+    #--endelse
   except:
     status.Is_Err = True
     status.Err_Message = str(sys.exc_info()[1])

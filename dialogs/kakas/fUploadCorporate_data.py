@@ -44,10 +44,20 @@ def checkRekeningPeserta(config, no_rekening, no_peserta, nama_peserta):
 
   if not oRekInvDPLK.IsNull:
     if no_peserta == oRekInvDPLK.no_peserta\
-      and nama_peserta == oRekInvDPLK.LNasabahDPLK.nama_lengkap:
+      and nama_peserta.lower() == (oRekInvDPLK.LNasabahDPLK.nama_lengkap).lower():
       return no_peserta, no_rekening
       
   return None, None
+
+def checkExistingPeserta(config, no_peserta, nama_peserta):
+  oNasabahDPLK = config.CreatePObjImplProxy('NasabahDPLK')
+  oNasabahDPLK.Key = no_peserta
+
+  if not oNasabahDPLK.IsNull:
+    if nama_peserta.lower() == str(oNasabahDPLK.nama_lengkap).lower():
+      return no_peserta
+      
+  return None
 
 def checkStatusPerkawinan(status_perkawinan):
   kode_status = ''
@@ -72,6 +82,42 @@ def checkJenisKelamin(jenis_kelamin):
     kode_status = 'W'
     
   return kode_status
+
+def checkStatusAhliWaris(status_ahli_waris):
+  kode_status = ''
+  status_ahli_waris = str(status_ahli_waris).lower()
+  
+  if status_ahli_waris in ['a', 'aktif']:
+    kode_status = 'A'  
+  elif status_ahli_waris in ['n', 'tidak aktif']:
+    kode_status = 'N'
+    
+  return kode_status
+
+def checkHubunganKeluarga(hubungan_keluarga):
+  kode_hk = ''
+  hubungan_keluarga = str(hubungan_keluarga).lower()
+  
+  if hubungan_keluarga in ['p', 'peserta']:
+    kode_hk = '0'  
+  elif hubungan_keluarga in ['y', 'ayah']:
+    kode_hk = '1'  
+  elif hubungan_keluarga in ['b', 'ibu']:
+    kode_hk = '2'  
+  elif hubungan_keluarga in ['a', 'anak']:
+    kode_hk = '3'  
+  elif hubungan_keluarga in ['k', 'kakak']:
+    kode_hk = '4'  
+  elif hubungan_keluarga in ['d', 'adik']:
+    kode_hk = '5'  
+  elif hubungan_keluarga in ['i', 'istri']:
+    kode_hk = '6'  
+  elif hubungan_keluarga in ['s', 'suami']:
+    kode_hk = '7'  
+  elif hubungan_keluarga in ['l', 'lain-lain']:
+    kode_hk = '8'
+    
+  return kode_hk
 
 def getDateValue(tanggal_lahir):
   d,m,y = str(tanggal_lahir).split('-')
@@ -200,16 +246,6 @@ def UploadData(config,params,returns):
         
         _checkLine += 1
         required_field = str(workBookXLS.GetCellValue(_checkLine,2)).strip()      
-    elif oUC.upload_type == 'I':
-      _startLine = 11
-      _checkLine = _startLine
-      required_field = str(workBookXLS.GetCellValue(_checkLine,4)).strip()
-      while required_field not in ['', 'None']:
-        _trxCount += 1
-        CreateUCIuranPeserta(config, workBookXLS, oUC, required_field, _checkLine)
-        
-        _checkLine += 1
-        required_field = str(workBookXLS.GetCellValue(_checkLine,4)).strip()      
     elif oUC.upload_type == 'W':
       _startLine = 8
       _checkLine = _startLine
@@ -220,6 +256,26 @@ def UploadData(config,params,returns):
         
         _checkLine += 1
         required_field = str(workBookXLS.GetCellValue(_checkLine,2)).strip()      
+    elif oUC.upload_type == 'I':
+      _startLine = 11
+      _checkLine = _startLine
+      required_field = str(workBookXLS.GetCellValue(_checkLine,4)).strip()
+      while required_field not in ['', 'None']:
+        _trxCount += 1
+        CreateUCIuranPeserta(config, workBookXLS, oUC, required_field, _checkLine)
+        
+        _checkLine += 1
+        required_field = str(workBookXLS.GetCellValue(_checkLine,4)).strip()      
+    elif oUC.upload_type == 'R':
+      _startLine = 8
+      _checkLine = _startLine
+      required_field = str(workBookXLS.GetCellValue(_checkLine,4)).strip()
+      while required_field not in ['', 'None']:
+        _trxCount += 1
+        CreateUCBiayaDaftar(config, workBookXLS, oUC, required_field, _checkLine)
+        
+        _checkLine += 1
+        required_field = str(workBookXLS.GetCellValue(_checkLine,4)).strip()      
     else:
       raise BaseException, '\n\nPERINGATAN!\nJenis upload yang dipilih tidak terdaftar...'
       
@@ -312,6 +368,43 @@ def CreateUCRegisterPeserta(config, workBookExcel, oUploadCorporate, requiredFie
 
     oRP.no_peserta = no_peserta
     oRP.no_rekening = no_rekening
+#--end--CreateUCRegisterPeserta
+
+def CreateUCAhliWaris(config, workBookExcel, oUploadCorporate, requiredField, _Line):
+  oAW = config.CreatePObject("UploadCorpAhliWaris")
+  oAW.LUploadCorporate = oUploadCorporate
+  
+  oAW.no_peserta = checkExistingPeserta(config, \
+    str(workBookExcel.GetCellValue(_Line,2)).strip(), \
+    str(workBookExcel.GetCellValue(_Line,3)).strip())
+  oAW.nama_ahli_waris = str(workBookExcel.GetCellValue(_Line,4)).strip()
+  oAW.hubungan_keluarga = checkHubunganKeluarga(str(workBookExcel.GetCellValue(_Line,5)).strip())
+
+  if not str(workBookExcel.GetCellValue(_Line,6)).strip() in ['', 'None']:
+    try:
+      oAW.tanggal_lahir = workBookExcel.GetCellValue(_Line,6)
+    except:
+      pass
+
+  oAW.jenis_kelamin = checkJenisKelamin(str(workBookExcel.GetCellValue(_Line,7)).strip())
+  oAW.status_ahli_waris = checkStatusAhliWaris(str(workBookExcel.GetCellValue(_Line,8)).strip())
+  oAW.no_urut_prioritas = workBookExcel.GetCellValue(_Line,9)
+  oAW.keterangan_ahli_waris = str(workBookExcel.GetCellValue(_Line,10)).strip()
+  oAW.is_auth = 'F'
+  oAW.is_valid = 'T'
+  
+  if oAW.nama_ahli_waris in ['', 'None']:
+    oAW.is_valid = 'F'
+    oAW.keterangan = 'Nama Ahli Waris masih kosong'
+  
+  if oAW.hubungan_keluarga in ['', 'None']:
+    oAW.is_valid = 'F'
+    oAW.keterangan = 'Hubungan Keluarga tidak terdefinisi'
+  
+  if oAW.no_peserta in [None]:
+    oAW.is_valid = 'F'
+    oAW.keterangan = 'Nomor peserta tidak valid'
+#--end--CreateUCAhliWaris
 
 def CreateUCIuranPeserta(config, workBookExcel, oUploadCorporate, requiredField, _Line):
   oIP = config.CreatePObject("UploadCorpIuranPeserta")
@@ -337,12 +430,32 @@ def CreateUCIuranPeserta(config, workBookExcel, oUploadCorporate, requiredField,
   if oIP.no_rekening in [None]:
     oIP.is_valid = 'F'
     oIP.keterangan = 'Nomor rekening tidak valid'
+#--end--CreateUCIuranPeserta
     
-def CreateUCAhliWaris(config, workBookExcel, oUploadCorporate, requiredField, _Line):
-  oIP = config.CreatePObject("UploadCorpIuranPeserta")
+def CreateUCBiayaDaftar(config, workBookExcel, oUploadCorporate, requiredField, _Line):
+  oIP = config.CreatePObject("UploadCorpBiayaDaftar")
   oIP.LUploadCorporate = oUploadCorporate
+  oIP.no_peserta, oIP.no_rekening = checkRekeningPeserta(config, \
+    requiredField, \
+    str(workBookExcel.GetCellValue(_Line,2)).strip(), \
+    str(workBookExcel.GetCellValue(_Line,3)).strip())
+  oIP.biaya_daftar = workBookExcel.GetCellValue(_Line,5)
   oIP.is_auth = 'F'
   oIP.is_valid = 'T'
   
+  oIP.keterangan = ''
+  if oIP.biaya_daftar <= 0.0:
+    oIP.is_valid = 'F'
+    oIP.keterangan = 'Biaya daftar <= 0.0'
+  
+  if oIP.no_peserta in [None]:
+    oIP.is_valid = 'F'
+    oIP.keterangan = 'Nomor peserta tidak valid'
+
+  if oIP.no_rekening in [None]:
+    oIP.is_valid = 'F'
+    oIP.keterangan = 'Nomor rekening tidak valid'
+#--end--CreateUCBiayaDaftar
+    
   
   

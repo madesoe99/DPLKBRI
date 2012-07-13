@@ -9,11 +9,11 @@ def FormOnSetDataEx(uideflist, params):
    rec.is_created_transaction  = 'F'
    rec.id_reconcile            = RG.id_reconcile
    rec.acc_giro                = RG.account_giro
-   #rec.jenis_reconcile         = 'A'
    rec.jenis_reconcile         = RG.LReconcile.jenis_reconcile
    rec.tanggal_transaksi       = RG.LReconcile.tanggal_transaksi
    rec.waktu_mulai             = RG.LReconcile.waktu_mulai
    rec.sum_nominal             = RG.sum_nominal
+   rec.sum_procced_nominal     = RG.sum_procced_nominal
 
 def invalid_status(config, parameter, returnpacket):
   status = returnpacket.CreateValues(
@@ -35,6 +35,7 @@ def SimpanTransaksi(config, parameter, returnpacket):
   status = returnpacket.CreateValues(
      ['IsErr',0],
      ['ErrMessage',''],
+     ['proced_nominal',0],
   )
   ket = {'A':'Auto Payment','E':'E_Channel'}
   par = parameter.FirstRecord
@@ -46,6 +47,7 @@ def SimpanTransaksi(config, parameter, returnpacket):
     strSQL  = "SELECT * FROM DETILRIWAYATGIRO WHERE ID_RECONCILE=%s \
                AND IS_VALID='T' AND IS_CREATED_TRANSACTION='F'" % id_reconcile
     res = config.CreateSQL(strSQL).RawResult
+    nominal_sukses = 0
     while not res.Eof:
       iuran ={'PK':0.0,'PST':0.0,'TMB':0.0}
       #bayar iuran peserta
@@ -105,8 +107,16 @@ def SimpanTransaksi(config, parameter, returnpacket):
       #-- 
       returns = OtorisasiTransaksi.ProsesOtorisasi(config, oIuranPeserta.ID_Transaksi, 'A')
       updateDetil(config,res.id_detil_giro)
+      nominal_sukses += res.nominal
       res.Next()
       
+    RG = config.CreatePObjImplProxy('RiwayatGiro')
+    RG.SetKey('id_reconcile',id_reconcile)
+    RG.SetKey('account_giro',res.account_giro)
+    RG.sum_procced_nominal = nominal_sukses
+    RG.is_reconciled       = 'T'
+    
+    status.proced_nominal = nominal_sukses
     config.Commit()
   except:
     config.Rollback()

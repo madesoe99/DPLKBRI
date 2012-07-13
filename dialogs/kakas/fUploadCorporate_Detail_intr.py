@@ -82,12 +82,12 @@ class fUploadCorporate_Detail:
     form = sender.OwnerForm
     app = form.ClientApplication
     
-    if self.uipUploadCorporate.upload_type == 'P':
+    if self.uipUploadCorporate.upload_type in ['P','W']:
       ph = app.CreateValues(['id', self.uipUploadCorporate.trx_session_id])
       app.ExecuteScript('transaction/authorize_regnsbrek_masal', ph)
     elif self.uipUploadCorporate.upload_type == 'I':
       ph = app.CreateValues(['id', self.uipUploadCorporate.trx_session_id])
-      resp = form.CallServerMethod('createTransaction', ph)
+      resp = form.CallServerMethod('createTrxIuran', ph)
       status = resp.FirstRecord
       
       if status.success:
@@ -95,6 +95,18 @@ class fUploadCorporate_Detail:
       else:
         app.ShowMessage(status.message)
         return
+    elif self.uipUploadCorporate.upload_type == 'R':
+      ph = app.CreateValues(['id', self.uipUploadCorporate.trx_session_id])
+      resp = form.CallServerMethod('createTrxBiayaDaftar', ph)
+      status = resp.FirstRecord
+      
+      if status.success:
+        app.ShowMessage(status.message)
+      else:
+        app.ShowMessage(status.message)
+        return
+    else:
+      app.ShowMessage('Jenis Upload tidak terdaftar...')
       
     sender.ExitAction = 1
     

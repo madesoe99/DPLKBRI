@@ -55,11 +55,7 @@ object:rtf::Form<
           ReadOnlyControl=false
           DataTypeName='varchar'
           DataLength=20
-          EnumeratedValues=['P=Import data peserta'#13#10,
-            'K=Import data koreksi peserta'#13#10,
-            'W=Import ahli waris'#13#10,
-            'I=Import iuran peserta'#13#10,
-            'A=Import premi asuransi'#13#10,
+          EnumeratedValues=['I=Import iuran peserta'#13#10,
             'R=Import biaya pendaftaran peserta'#13#10]
         >, object:rtf::LinkUIElmtSetting<
           Name='LNasabahDPLKCorporate'
@@ -123,7 +119,6 @@ object:rtf::Form<
           Left=20
           Width=200
           Height=21
-          Enabled=false
           ControlCaption='Jenis Template'
         >, *object:rtf::DBLookupEdit<
           Name='LNasabahDPLKCorporate'

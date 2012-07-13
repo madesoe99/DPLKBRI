@@ -63,10 +63,10 @@ object:rtf::Form<
         '  no_peserta,'#13#10,
         '  LNasabahDPLK.nama_lengkap AS nama_lengkap,'#13#10,
         '  nama_ahli_waris,'#13#10,
-        '  hubungan_keluarga,'#13#10,
+        '  hubungan_keluarga $,'#13#10,
         '  tanggal_lahir,'#13#10,
-        '  jenis_kelamin,'#13#10,
-        '  status_ahli_waris,'#13#10,
+        '  jenis_kelamin $,'#13#10,
+        '  status_ahli_waris $,'#13#10,
         '  no_urut_prioritas,'#13#10,
         '  keterangan_ahli_waris,'#13#10,
         '  trx_session_id,'#13#10,
@@ -95,28 +95,28 @@ object:rtf::Form<
           Caption='Nama Ahli Waris'
         >, object:rtf::QueryColumn<
           FieldName='UploadCorpAhliWAris.hubungan_keluarga'
-          Width=100
+          Width=60
           Caption='Hubungan'
         >, object:rtf::QueryColumn<
           FieldName='UploadCorpAhliWAris.tanggal_lahir'
-          Width=100
+          Width=60
           Caption='Tanggal Lahir'
         >, object:rtf::QueryColumn<
           FieldName='UploadCorpAhliWAris.jenis_kelamin'
-          Width=100
+          Width=60
           Caption='Jenis Kelamin'
         >, object:rtf::QueryColumn<
           FieldName='UploadCorpAhliWAris.status_ahli_waris'
-          Width=100
+          Width=60
           Caption='Status Waris'
         >, object:rtf::QueryColumn<
           FieldName='UploadCorpAhliWAris.no_urut_prioritas'
-          Width=100
-          Caption='No. Prioritas'
+          Width=40
+          Caption='Prioritas'
         >, object:rtf::QueryColumn<
           FieldName='UploadCorpAhliWAris.keterangan_ahli_waris'
-          Width=100
-          Caption='Keterangan Waris'
+          Width=200
+          Caption='Catatan Ahli Waris'
         >, object:rtf::QueryColumn<
           FieldName='UploadCorpAhliWAris.trx_session_id'
           Hidden=true
@@ -126,7 +126,7 @@ object:rtf::Form<
           Caption='Is Valid'
         >, object:rtf::QueryColumn<
           FieldName='UploadCorpAhliWAris.keterangan'
-          Width=300
+          Width=200
           Caption='Keterangan'
         >, object:rtf::QueryColumn<
           FieldName='UploadCorpAhliWAris.is_auth'
@@ -137,5 +137,5 @@ object:rtf::Form<
       EnableColumns=true
     >
   }
-  FormClassName='fUCAhliWAris'
+  FormClassName='fUCAhliWaris'
 >

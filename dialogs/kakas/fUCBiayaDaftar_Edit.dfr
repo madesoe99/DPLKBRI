@@ -1,0 +1,234 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit1']
+  Caption='Koreksi Data'
+  Left=50
+  Top=50
+  Width=720
+  Height=240
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx='FormOnSetDataEx'
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caView
+          DataMember='upload_id'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='upload_id'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='uipDetail'
+      ClassTypeName='UploadCorpBiayaDaftar'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Name='pButton'
+      Width=320
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnSave'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          ControlCaption=''
+          Caption='&Simpan'
+          OnClick='btnSaveOnClick'
+        >, object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          ControlCaption=''
+          Caption='Batal/&Tutup'
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=720
+      Height=240
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['dualsplit2']
+      InversedAlign=true
+    >, object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caEdit
+          DataMembers=['is_valid'#13#10,
+            'keterangan'#13#10,
+            'is_auth'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='is_valid'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='is_auth'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='pInputRight'
+      Width=329
+      Height=137
+      Bordered=true
+      UIPart=$UIPARTS['uipDetail']
+      Controls={
+        *object:rtf::DBComboBox<
+          Name='is_valid'
+          Top=24
+          Left=20
+          Enabled=false
+          ControlCaption='Is Valid'
+        >, *object:rtf::DBEdit<
+          Name='keterangan'
+          Top=52
+          Left=20
+          Enabled=false
+          ControlCaption='Keterangan'
+        >, *object:rtf::DBComboBox<
+          Name='is_auth'
+          Top=80
+          Left=20
+          Enabled=false
+          ControlCaption='Is Auth'
+        >
+      }
+      EqualCaptionWidth=80
+      ControlLeftMargin=20
+      ControlTopMargin=24
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Register'
+    >, object:rtf::Panel<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caView
+          DataMember='LRekInvDPLK'
+        >, object:rtf::MultiControlDef<
+          Action=caEdit
+          DataMembers='biaya_daftar'#13#10
+        >
+      }
+      Elements={
+        *object:rtf::LinkUIElmtSetting<
+          Name='LRekInvDPLK'
+          Hidden=true
+          ReadOnlyControl=false
+          DisplayFields='no_peserta;LNasabahDPLK.nama_lengkap;no_rekening'
+          Restrictions=''
+          OQLText=['SELECT FROM RekInvDPLK ('#13#10,
+            '  no_peserta,'#13#10,
+            '  no_rekening,'#13#10,
+            '  LNasabahDPLK.nama_lengkap'#13#10,
+            ');']
+          LookupOption=loCustomOQL
+          FieldBaseName='LRekInvDPLK'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='biaya_daftar'
+          Hidden=false
+          ReadOnlyControl=false
+        >, object:rtf::FieldUIElmtSetting<
+          Name='no_rekening'
+          Hidden=false
+          ReadOnlyControl=false
+        >, object:rtf::FieldUIElmtSetting<
+          Name='no_peserta'
+          Hidden=false
+          ReadOnlyControl=false
+        >, object:rtf::FieldUIElmtSetting<
+          Name='nama_lengkap'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
+      Name='pInput'
+      Width=369
+      Height=177
+      Bordered=true
+      UIPart=$UIPARTS['uipDetail']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='biaya_daftar'
+          Top=24
+          Left=20
+          ControlCaption='Biaya Daftar'
+        >, *object:rtf::DBEdit<
+          Name='no_rekening'
+          Top=52
+          Left=20
+          Enabled=false
+          ControlCaption='Nomor Rekening'
+          FieldName='LRekInvDPLK.no_rekening'
+        >, *object:rtf::DBEdit<
+          Name='no_peserta'
+          Top=80
+          Left=20
+          Enabled=false
+          ControlCaption='Nomor Peserta'
+          FieldName='LRekInvDPLK.no_peserta'
+        >, *object:rtf::DBEdit<
+          Name='nama_lengkap'
+          Top=108
+          Left=20
+          Enabled=false
+          ControlCaption='Nama Lengkap'
+          FieldName='LRekInvDPLK.LNasabahDPLK.nama_lengkap'
+        >
+      }
+      EqualCaptionWidth=110
+      ControlLeftMargin=20
+      ControlTopMargin=24
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Biaya Pendaftaran Peserta'
+    >, object:rtf::DualSplit<
+      Name='dualsplit2'
+      Width=720
+      Height=199
+      Container1=$CONTAINERS['pInput']
+      Container2=$CONTAINERS['pInputRight']
+      SplitDirection=sdrSplitLeftRight
+    >
+  }
+  FormClassName='fUCBiayaDaftar_Edit'
+>

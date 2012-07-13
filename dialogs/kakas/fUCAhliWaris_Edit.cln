@@ -11,7 +11,7 @@ object:rtf::Form<
   Left=50
   Top=50
   Width=720
-  Height=240
+  Height=320
   UIParts={
     object:rtf::PClassUI<
       Elements={
@@ -25,7 +25,7 @@ object:rtf::Form<
         >
       }
       Name='uipDetail'
-      ClassTypeName='UploadCorpIuranPeserta'
+      ClassTypeName='UploadCorpAhliWaris'
       DataBinding=bmMaster
       AlwaysPostToServer=true
       CreateInstanceOnNew=true
@@ -62,8 +62,8 @@ object:rtf::Form<
       RowControlGap=7
     >, object:rtf::DualSplit<
       Name='dualsplit1'
-      Width=720
-      Height=240
+      Width=240
+      Height=96
       Container1=$CONTAINERS['pButton']
       Container2=$CONTAINERS['dualsplit2']
       InversedAlign=true
@@ -129,26 +129,25 @@ object:rtf::Form<
     >, object:rtf::Panel<
       Elements={
         object:rtf::LinkUIElmtSetting<
-          Name='LRekInvDPLK'
-          AccessOption=aoReadOnly
-          Hidden=true
+          Name='LNasabahDPLK'
+          Hidden=false
           ReadOnlyControl=false
-          ClassTypeName='RekInvDPLK'
+          ClassTypeName='NasabahDPLK'
           KeyFields={
             object:rtf::FieldUIElmtSetting<
-              Name='LRekInvDPLK.no_rekening'
+              Name='LNasabahDPLK.no_peserta'
               Hidden=false
               ReadOnlyControl=false
               DataTypeName='VARCHAR'
-              DataLength=20
+              DataLength=11
               UsedAsKey=true
-              KeyOrDisplayName='no_rekening'
-              FinalDisplayFieldName='no_rekening'
+              KeyOrDisplayName='no_peserta'
+              FinalDisplayFieldName='no_peserta'
             >
           }
           DisplayedFields={
             object:rtf::FieldUIElmtSetting<
-              Name='LRekInvDPLK.no_peserta'
+              Name='LNasabahDPLK.no_peserta'
               Hidden=false
               ReadOnlyControl=false
               DataTypeName='VARCHAR'
@@ -157,102 +156,129 @@ object:rtf::Form<
               KeyOrDisplayName='no_peserta'
               FinalDisplayFieldName='no_peserta'
             >, object:rtf::FieldUIElmtSetting<
-              Name='LRekInvDPLK.LNasabahDPLK.nama_lengkap'
+              Name='LNasabahDPLK.nama_lengkap'
               Hidden=false
               ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=100
               UsedAsDisplay=true
-              KeyOrDisplayName='LNasabahDPLK.nama_lengkap'
+              KeyOrDisplayName='nama_lengkap'
               FinalDisplayFieldName='nama_lengkap'
-            >, object:rtf::FieldUIElmtSetting<
-              Name='LRekInvDPLK.no_rekening'
-              Hidden=false
-              ReadOnlyControl=false
-              DataTypeName='VARCHAR'
-              DataLength=20
-              UsedAsDisplay=true
-              KeyOrDisplayName='no_rekening'
-              FinalDisplayFieldName='no_rekening'
             >
           }
           Restrictions=''
-          OQLText=['SELECT FROM RekInvDPLK ('#13#10,
+          OQLText=['SELECT FROM NasabahDPLK ('#13#10,
             '  no_peserta,'#13#10,
-            '  no_rekening,'#13#10,
-            '  LNasabahDPLK.nama_lengkap'#13#10,
-            ');']
+            '  nama_lengkap,'#13#10,
+            '  self'#13#10,
+            ') TEHN ORDER BY no_peserta;']
           LookupOption=loCustomOQL
-          FieldBaseName='LRekInvDPLK'
+          FieldBaseName='LNasabahDPLK'
         >, object:rtf::FieldUIElmtSetting<
-          Name='iuran_pst'
+          Name='nama_ahli_waris'
           Hidden=false
           ReadOnlyControl=false
-          DataTypeName='DOUBLE'
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >, object:rtf::FieldUIElmtSetting<
+          Name='hubungan_keluarga'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['0=Peserta'#13#10,
+            '1=Ayah'#13#10,
+            '2=Ibu'#13#10,
+            '3=Anak'#13#10,
+            '4=Kakak'#13#10,
+            '5=Adik'#13#10,
+            '6=Istri'#13#10,
+            '7=Suami'#13#10,
+            '8=Lain-lain'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tanggal_lahir'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='TIMESTAMP'
           DataLength=0
         >, object:rtf::FieldUIElmtSetting<
-          Name='iuran_pk'
+          Name='jenis_kelamin'
           Hidden=false
           ReadOnlyControl=false
-          DataTypeName='DOUBLE'
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['P=Pria'#13#10,
+            'W=Wanita'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='status_ahli_waris'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['A=Aktif'#13#10,
+            'N=Tidak Aktif'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='no_urut_prioritas'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='INTEGER'
           DataLength=0
         >, object:rtf::FieldUIElmtSetting<
-          Name='no_rekening'
+          Name='keterangan_ahli_waris'
           Hidden=false
           ReadOnlyControl=false
-          DataTypeName='varchar'
-          DataLength=20
-        >, object:rtf::FieldUIElmtSetting<
-          Name='no_peserta'
-          Hidden=false
-          ReadOnlyControl=false
-          DataTypeName='varchar'
-          DataLength=20
-        >, object:rtf::FieldUIElmtSetting<
-          Name='nama_lengkap'
-          Hidden=false
-          ReadOnlyControl=false
-          DataTypeName='varchar'
-          DataLength=20
+          DataTypeName='VARCHAR'
+          DataLength=100
         >
       }
       Name='pInput'
       Width=369
-      Height=177
+      Height=265
       Bordered=true
       UIPart=$UIPARTS['uipDetail']
       Controls={
-        *object:rtf::DBEdit<
-          Name='iuran_pst'
+        *object:rtf::DBLookupEdit<
+          Name='LNasabahDPLK'
           Top=24
           Left=20
-          ControlCaption='Iuran Peserta'
+          ControlCaption='Nasabah DPLK'
+          LookupField='LNasabahDPLK.nama_lengkap'
+          DisplayLookupField=true
         >, *object:rtf::DBEdit<
-          Name='iuran_pk'
+          Name='nama_ahli_waris'
           Top=52
           Left=20
-          ControlCaption='Iuran Pemberi Kerja'
-        >, *object:rtf::DBEdit<
-          Name='no_rekening'
+          ControlCaption='Nama Ahli Waris'
+        >, *object:rtf::DBComboBox<
+          Name='hubungan_keluarga'
           Top=80
           Left=20
-          Enabled=false
-          ControlCaption='Nomor Rekening'
-          FieldName='LRekInvDPLK.no_rekening'
-        >, *object:rtf::DBEdit<
-          Name='no_peserta'
+          ControlCaption='Hbungan Keluarga'
+        >, *object:rtf::DBDateEdit<
+          Name='tanggal_lahir'
           Top=108
           Left=20
-          Enabled=false
-          ControlCaption='Nomor Peserta'
-          FieldName='LRekInvDPLK.no_peserta'
-        >, *object:rtf::DBEdit<
-          Name='nama_lengkap'
+          ControlCaption='Tanggal Lahir'
+        >, *object:rtf::DBComboBox<
+          Name='jenis_kelamin'
           Top=136
           Left=20
-          Enabled=false
-          ControlCaption='Nama Lengkap'
-          FieldName='LRekInvDPLK.LNasabahDPLK.nama_lengkap'
+          ControlCaption='Jenis Kelamin'
+        >, *object:rtf::DBComboBox<
+          Name='status_ahli_waris'
+          Top=164
+          Left=20
+          ControlCaption='Status Ahli Waris'
+        >, *object:rtf::DBEdit<
+          Name='no_urut_prioritas'
+          Top=192
+          Left=20
+          ControlCaption='No. Urut Prioritas'
+        >, *object:rtf::DBEdit<
+          Name='keterangan_ahli_waris'
+          Top=220
+          Left=20
+          ControlCaption='Catatan Ahli Waris'
         >
       }
       EqualCaptionWidth=110
@@ -264,12 +290,12 @@ object:rtf::Form<
       Caption='Data Iuran'
     >, object:rtf::DualSplit<
       Name='dualsplit2'
-      Width=720
-      Height=199
+      Width=240
+      Height=96
       Container1=$CONTAINERS['pInput']
       Container2=$CONTAINERS['pInputRight']
       SplitDirection=sdrSplitLeftRight
     >
   }
-  FormClassName='fUCIuranPeserta_Edit'
+  FormClassName='fUCAhliWaris_Edit'
 >

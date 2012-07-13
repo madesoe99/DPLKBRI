@@ -1,4 +1,4 @@
-class fUCIuranPeserta_Edit:
+class fUCAhliWaris_Edit:
   def __init__(self, formObj, parentForm):
     pass
   #--
@@ -21,30 +21,22 @@ class fUCIuranPeserta_Edit:
     app = form.ClientApplication
     uipDetail = form.GetUIPartByName('uipDetail')
     
-    """Nominal iuran"""
-    if uipDetail.iuran_pst == None:
-      uipDetail.iuran_pst = 0.0
-    
-    if uipDetail.iuran_pk == None:
-      uipDetail.iuran_pk = 0.0
-
-    if (uipDetail.iuran_pst + uipDetail.iuran_pk) <= 0.0:
-      app.ShowMessage('Nominal iuran <= 0.0')
-      return False
-    
-    """Nomor Rekening"""
-    if uipDetail.GetFieldValue('LRekInvDPLK.no_rekening') in ["", None]:
-      app.ShowMessage('Nomor rekening masih kosong')
-      return False
-    
     """Nomor Peserta"""
-    if uipDetail.GetFieldValue('LRekInvDPLK.no_peserta') in ["", None]:
-      app.ShowMessage('Nomor peserta masih kosong')
-      return False
+    if uipDetail.GetFieldValue('LNasabahDPLK.no_peserta') in ["", None]:
+        app.ShowMessage('Nomor peserta masih kosong')
+        return False
 
     """Nama Lengkap"""
-    if uipDetail.GetFieldValue('LRekInvDPLK.LNasabahDPLK.nama_lengkap') in ["", None]:
+    if uipDetail.GetFieldValue('LNasabahDPLK.nama_lengkap') in ["", None]:
       app.ShowMessage('Nama lengkap masih kosong')
+      return False
+    
+    if uipDetail.nama_ahli_waris in ['', None]:
+      app.ShowMessage('Nama Ahli Waris masih kosong')
+      return False
+    
+    if uipDetail.hubungan_keluarga in ['', None]:
+      app.ShowMessage('Hubungan Keluarga masih kosong')
       return False
     
     return True

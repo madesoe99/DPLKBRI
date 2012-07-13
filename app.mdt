@@ -14487,6 +14487,10 @@ object:ODL<
         >, object:ListMember<
           MemberName='Ls_DetilRiwayatGiro'
           UsedLink=$TYPEDECLS['DetilRiwayatGiro'].MEMBERS['LRiwayatGiro']
+        >, object:FieldMember<
+          MemberName='sum_procced_nominal'
+          PhysicalName='SUM_PROCCED_NOMINAL'
+          DataType=$TYPEDECLS['DOUBLE']
         >
       }
       ClassID='{DAF42728-3279-46B5-88F7-CC99997F4558}'
@@ -14633,6 +14637,56 @@ object:ODL<
       }
       ClassID='{36D31EA8-1CA9-4D9A-8211-DD3455C6A71F}'
       AutoPrimaryKey=$TYPEDECLS['UploadCorpIuranPeserta'].MEMBERS['upload_id']
+    >, object:ClassTypeDecl<
+      TypeName='UploadCorpBiayaDaftar'
+      PTableName='UPLOADCORPBIAYADAFTAR'
+      Members={
+        object:FieldMember<
+          MemberName='upload_id'
+          PhysicalName='UPLOAD_ID'
+          DataType=$TYPEDECLS['INTEGER']
+          IsPrimaryKey=true
+        >, object:LinkMember<
+          MemberName='LUploadCorporate'
+          LinkedClass=$TYPEDECLS['UploadCorporate']
+          AutoForeignKey=true
+        >, object:FieldMember<
+          MemberName='is_valid'
+          PhysicalName='IS_VALID'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=1
+          Enumerator=$TYPEDECLS['FTBoolean']
+        >, object:FieldMember<
+          MemberName='is_auth'
+          PhysicalName='IS_AUTH'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=1
+          Enumerator=$TYPEDECLS['FTBoolean']
+        >, object:FieldMember<
+          MemberName='keterangan'
+          PhysicalName='KETERANGAN'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=100
+        >, object:LinkMember<
+          MemberName='LNasabahDPLK'
+          Optional=true
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['NasabahDPLK']
+          AutoForeignKey=true
+        >, object:LinkMember<
+          MemberName='LRekInvDPLK'
+          Optional=true
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['RekInvDPLK']
+          AutoForeignKey=true
+        >, object:FieldMember<
+          MemberName='biaya_daftar'
+          PhysicalName='BIAYA_DAFTAR'
+          DataType=$TYPEDECLS['DOUBLE']
+        >
+      }
+      ClassID='{36D31EA8-1CA9-4D9A-8211-DD3455C6A71F}'
+      AutoPrimaryKey=$TYPEDECLS['UploadCorpBiayaDaftar'].MEMBERS['upload_id']
     >, object:ClassTypeDecl<
       TypeName='UploadCorpAhliWaris'
       PTableName='UPLOADCORPAHLIWARIS'

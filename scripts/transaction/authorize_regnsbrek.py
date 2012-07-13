@@ -195,7 +195,7 @@ def CreateRekInvDPLK(config, oRegisterNasabahRekening):
   #oRekNasabah.kewajiban_asuransi = oRegisterNasabahRekening.kewajiban_asuransi
   #oRekNasabah.Is_Boleh_Debet = oRegisterNasabahRekening.Is_Boleh_Debet
   #oRekNasabah.bln_tunggakan_asuransi = oRegisterNasabahRekening.bln_tunggakan_asuransi
-  oRekNasabah.has_passbook = 'T'
+  oRekNasabah.has_passbook = 'F'
   oRekNasabah.No_Seri_Buku = oRegisterNasabahRekening.nomor_buku
   oRekNasabah.IS_DELETED = 0
   

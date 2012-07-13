@@ -361,9 +361,24 @@ object:rmn::Menu<
       Caption='&Transaksi'
       MenuItems={
         object:rmn::MenuItem<
-          Name='transaksi/fSelectTransaksi'
           Caption='Daftar Transaksi'
-          OnClick='mnuSelectTransaksi'
+          MenuItems={
+            object:rmn::MenuItem<
+              Name='transaksi/fSelectTransaksi'
+              Caption='Transaksi DPLK'
+              OnClick='mnuSelectTransaksi'
+            >, object:rmn::MenuItem<
+              Caption='Iuran Pendaftaran'
+              OnClick='SimpleShowForm'
+              StringTag='transaksi/fDaftarIuran'
+              NumberTag=2
+            >, object:rmn::MenuItem<
+              Caption='Tiitipan Premi'
+              OnClick='SimpleShowForm'
+              StringTag='transaksi/fDaftarTitipanPremi'
+              NumberTag=2
+            >
+          }
         >, object:rmn::MenuItem<
           Caption='-'
         >, object:rmn::MenuItem<
@@ -472,11 +487,13 @@ object:rmn::Menu<
               Caption='Reconcile Auto Payment'
               OnClick='showForm2'
               StringTag='transaksi/fPRAutoPayment_Daftar'
+              NumberTag=2
             >, object:rmn::MenuItem<
               Name='E'
               Caption='Reconcile E-Channel'
               OnClick='showForm2'
               StringTag='transaksi/fPRAutoPayment_Daftar'
+              NumberTag=2
             >
           }
         >

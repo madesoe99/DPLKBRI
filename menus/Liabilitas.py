@@ -254,6 +254,14 @@ def PickBatchClick(sender, context):
   oform = context.CreateForm('transaksi/fDaftarPickBatch','fDaftarPickBatch',0,None,None)
   oform.FormContainer.Show()
 
+def SimpleShowForm(menuitem, app):
+  formname = menuitem.StringTag
+  form = app.FindForm(formname)
+  if form == None:
+    form = app.CreateForm(formname, formname, menuitem.NumberTag, None, None)
+  
+  form.FormContainer.Show()
+
 def showForm(menuitem, app):
   formname = menuitem.StringTag
   

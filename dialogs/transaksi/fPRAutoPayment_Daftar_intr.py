@@ -56,3 +56,10 @@ class fPRAutoPayment_Daftar:
     form.Show()
     
     self.qPR.Refresh()    
+
+  def Form_OnClose(self, formObj):
+    # procedure(formobj: TrtfForm)
+    app = formObj.ClientApplication
+    userApp = app.UserAppObject
+    userApp.unregisterForm('fPRAutoPayment_Daftar')
+  #--

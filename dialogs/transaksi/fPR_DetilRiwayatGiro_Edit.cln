@@ -16,16 +16,23 @@ object:rtf::Form<
     object:rtf::PClassUI<
       Elements={
         object:rtf::FieldUIElmtSetting<
-          Name='jenis_reconcile'
+          Name='o_nominal'
           Hidden=true
           ReadOnlyControl=false
-          DataTypeName='varchar'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='proses'
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='integer'
           DataLength=20
         >
       }
       Name='uipart1'
       ClassTypeName='DetilRiwayatGiro'
       DataBinding=bmMaster
+      AlwaysPostToServer=true
     >
   }
   Containers={
@@ -119,6 +126,7 @@ object:rtf::Form<
           Top=120
           Left=8
           ControlCaption='is valid'
+          OnClick='is_validOnClick'
         >, *object:rtf::DBCheckBox<
           Name='is_created_transaction'
           Top=148
@@ -145,8 +153,7 @@ object:rtf::Form<
           Left=8
           ControlCaption=''
           Caption='&Simpan'
-          DefaultAction=daProcessAllUI
-          ExitAction=eaQuitOK
+          OnClick='bSimpanOnClick'
         >, object:rtf::Button<
           Name='bBatal'
           Layout=clAbsolute

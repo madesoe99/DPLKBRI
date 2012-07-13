@@ -1,0 +1,42 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipDetail'
+      PClassName='UploadCorpBiayaDaftar'
+      LoadedFieldList='upload_id;is_valid;keterangan;is_auth;LRekInvDPLK.no_rekening;LRekInvDPLK.no_peserta;LRekInvDPLK.LNasabahDPLK.nama_lengkap;LRekInvDPLK.no_rekening;biaya_daftar'
+      StoredFieldList='is_valid;keterangan;is_auth;biaya_daftar'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='no_rekening'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='no_peserta'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='nama_lengkap'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LRekInvDPLK'
+          ClassTypeName='RekInvDPLK'
+          FieldNames='no_rekening;no_peserta;LNasabahDPLK.nama_lengkap;no_rekening'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+  }
+  OnSetDataEx='FormOnSetDataEx'
+>
