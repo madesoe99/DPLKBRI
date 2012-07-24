@@ -1,24 +1,28 @@
-import sys
-sys.path.append('c:/dafapp/dplk07/script_modules')
-import moduleapi
+import sys, string, time
+import com.ihsan.util.modman as modman
+import com.ihsan.foundation.appserver as appserver
+moduleapi = modman.getModule(appserver.ActiveConfig, 'moduleapi')
+
+#sys.path.append('c:/dafapp/dplk07/script_modules')
+#import moduleapi
 
 def FormEndSetData(uideflist, auiname, apobjconst):
   config = uideflist.Config
-  uipRegisterWasiatUmmat = uideflist.uipRegisterWasiatUmmat
+  uipRegisterAsuransi = uideflist.uipRegisterAsuransi
   
   # cek lagi status
-  rec = uipRegisterWasiatUmmat.Dataset.GetRecord(0)
+  rec = uipRegisterAsuransi.Dataset.GetRecord(0)
   if rec.jenis_transaksi == 'O':
-    # berhenti wasiat ummat
+    # berhenti asuransi
     strSQL = '\
       select no_polis, tgl_akseptasi, besar_premi, manfaat_asuransi \
-      from RekeningWasiatUmmat \
-      where no_peserta = \'%s\''\
-      % (rec.GetFieldByName('LNasabahDPLK.no_peserta'))
+      from RekAsuransi \
+      where no_rekening = \'%s\''\
+      % (rec.GetFieldByName('LRekeningDPLK.no_rekening'))
     resSQL = config.CreateSQL(strSQL).RawResult
 
     if resSQL.RecordCount <= 0:
-      raise Exception, 'SQL Result Error' + 'Rekening Wasiat Ummat tidak terdefinisi.'
+      raise Exception, 'SQL Result Error' + 'Rekening Asuransi tidak terdefinisi.'
 
     rec.no_polis = resSQL.no_polis
     rec.besar_premi = resSQL.besar_premi
@@ -26,10 +30,10 @@ def FormEndSetData(uideflist, auiname, apobjconst):
     rec.tgl_akseptasi = moduleapi.DateTimeTupleToFloat(config, resSQL.tgl_akseptasi)
     
     #set kolektibilitas dan tunggakan premi
-    oR = config.CreatePObjImplProxy('RekeningDPLK')
-    oR.Key = rec.GetFieldByName('LNasabahDPLK.no_peserta')
-    rec.kolektibilitas_premi = oR.collectivity_wasiat_ummat
-    rec.tunggakan_premi = oR.kewajiban_wasiat_ummat
+    oR = config.CreatePObjImplProxy('RekInvDPLK')
+    oR.Key = rec.GetFieldByName('LRekeningDPLK.no_rekening')
+    rec.kolektibilitas_premi = oR.collectivity_asuransi
+    rec.tunggakan_premi = oR.kewajiban_asuransi
 
   #set parameter PRESISI_ANGKA_FLOAT
   recParameter = uideflist.uipParameter.Dataset.AddRecord()

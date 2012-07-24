@@ -4,10 +4,13 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rpclass::TPClassUIDefList<
-  UIDefs={object:rpclass::TPClassUIDef<
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
       Name='uipNoData'
-      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
           Name='dari_tanggal'
           DataTypeName='timestamp'
           DataLength=20
@@ -19,6 +22,10 @@ document <
           Name='true_hingga_tanggal'
           DataTypeName='timestamp'
           DataLength=20
-        >}Mode=imSingleRow
-    >}OnGeneralSetData='FormGeneralSetData'
+        >
+      }
+      Mode=imSingleRow
+    >
+  }
+  OnGeneralSetData='FormGeneralSetData'
 >

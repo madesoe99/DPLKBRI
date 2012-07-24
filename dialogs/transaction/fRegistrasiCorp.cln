@@ -713,8 +713,8 @@ object:rtf::Form<
       RowControlGap=7
     >, object:rtf::DualSplit<
       Name='DualSplit'
-      Width=240
-      Height=96
+      Width=800
+      Height=580
       Container1=$CONTAINERS['pButton']
       Container2=$CONTAINERS['multipages1']
       InversedAlign=true
@@ -1537,8 +1537,8 @@ object:rtf::Form<
       SplitDirection=sdrSplitLeftRight
     >, object:rtf::MultiPages<
       Name='multipages1'
-      Width=320
-      Height=320
+      Width=800
+      Height=539
       Pages={
         object:rtf::Page<
           PageTitle='Data &Korporat'
@@ -1691,7 +1691,7 @@ object:rtf::Form<
     >, object:rtf::DualSplit<
       Name='dualsplit3'
       Width=792
-      Height=511
+      Height=508
       Container1=$CONTAINERS['pRefr']
       Container2=$CONTAINERS['pRegister']
     >

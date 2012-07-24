@@ -3,10 +3,12 @@ def showForm(sender, context):
   mode = sender.StringTag
   
   ph = None
+  formid = 'fMasterKartuDPLK'
   if mode == 'edit':  
     key = context.KeyObjConst
     ph = app.CreateValues(['key', key])
+    formid = 'fMasterKartuDPLK_Edit'
   
-  form = app.CreateForm('transaction/fMasterKartuDPLK', 'fMasterKartuDPLK', 0, ph, None)
+  form = app.CreateForm('transaction/'+formid, formid, 0, ph, None)
   form.Show(mode)
 

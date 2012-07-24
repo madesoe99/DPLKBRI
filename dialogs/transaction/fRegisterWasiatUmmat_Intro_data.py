@@ -12,5 +12,5 @@ def FormEndProcessData(uideflist, datapacket):
   rec = uideflist.uipNoData.ActiveRecord
 
   moduleapi.IsNasabahAvail(config, rec.GetFieldByName('LPeserta.no_peserta'))
-  moduleapi.CheckRegisterCIFUniq(config, rec.GetFieldByName('LPeserta.no_peserta'), 'U')
+  #moduleapi.CheckRegisterCIFUniq(config, rec.GetFieldByName('LPeserta.no_peserta'), 'U')
 

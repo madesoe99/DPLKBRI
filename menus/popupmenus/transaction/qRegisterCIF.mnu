@@ -11,22 +11,27 @@ object:rmn::Menu<
       Name='mnuNew'
       Caption='Buat Register CIF Baru...'
       OnClick='mnuNewClick'
+      AllowedGroups='OPR'
     >, object:rmn::MenuItem<
       Name='mnuEdit'
       Caption='Koreksi Register CIF...'
       OnClick='displayWithData'
+      AllowedGroups='OPR'
       StringTag='edit'
     >, object:rmn::MenuItem<
       Name='mnuView'
       Caption='Lihat Detil Hasil Register CIF...'
       OnClick='displayWithData'
+      AllowedGroups='OPR;SPV'
       StringTag='view'
     >, object:rmn::MenuItem<
       Caption='-'
+      AllowedGroups='OPR;SPV'
     >, object:rmn::MenuItem<
       Name='mnuAuth'
       Caption='Otorisasi Hasil Register CIF...'
       OnClick='displayWithData'
+      AllowedGroups='SPV'
       StringTag='auth'
     >
   }

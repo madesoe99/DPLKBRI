@@ -4,10 +4,13 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rpclass::TPClassUIDefList<
-  UIDefs={object:rpclass::TPClassUIDef<
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
       Name='uipNoData'
-      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
           Name='dateFrom'
           DataTypeName='timestamp'
           DataLength=20
@@ -23,5 +26,9 @@ document <
           Name='isDisplay'
           DataTypeName='integer'
           DataLength=20
-        >}Mode=imSingleRow
-    >}>
+        >
+      }
+      Mode=imSingleRow
+    >
+  }
+>

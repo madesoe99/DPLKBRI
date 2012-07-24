@@ -27,7 +27,7 @@ object:rtf::Form<
     object:rtf::PClassUI<
       ControlDefs={
         object:rtf::ControlDef<
-          Action=caView
+          Action=caEdit
           DataMember='no_rekening'
         >
       }

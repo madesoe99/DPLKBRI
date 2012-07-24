@@ -22,6 +22,22 @@ object:rpclass::TPClassUIDefList<
           Name='LPeserta.nama_lengkap'
           DataTypeName='VARCHAR'
           DataLength=100
+        >, object:rpclass::TCustomLoadedField<
+          Name='LRekening.no_rekening'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='LRekening.no_rekening'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='LRekening.no_peserta'
+          DataTypeName='VARCHAR'
+          DataLength=11
+        >, object:rpclass::TCustomLoadedField<
+          Name='LRekening.LNasabahDPLK.nama_lengkap'
+          DataTypeName='VARCHAR'
+          DataLength=100
         >
       }
       CustomLoadedLinks={
@@ -29,6 +45,10 @@ object:rpclass::TPClassUIDefList<
           Name='LPeserta'
           ClassTypeName='NasabahDPLK'
           FieldNames='no_peserta;no_peserta;nama_lengkap'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LRekening'
+          ClassTypeName='RekInvDPLK'
+          FieldNames='no_rekening;no_rekening;no_peserta;LNasabahDPLK.nama_lengkap'
         >
       }
       Mode=imSingleRow

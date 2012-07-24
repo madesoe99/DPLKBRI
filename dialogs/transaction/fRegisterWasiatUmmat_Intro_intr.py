@@ -10,7 +10,15 @@ def btnOKClick(sender):
   form.CommitBuffer()
   form.PostResult()
 
-  key = 'PObj:RekeningDPLK#NO_PESERTA=%s' % (uipNoData.GetFieldValue('LPeserta.no_peserta'))
+  if uipNoData.GetFieldValue('LPeserta.no_peserta') in ['', None]:
+    app.ShowMessage('Peserta masih kosong...')
+    return
+
+  if uipNoData.GetFieldValue('LRekening.no_rekening') in ['', None]:
+    app.ShowMessage('Rekening DPLK masih kosong...')
+    return
+
+  key = 'PObj:RekInvDPLK#NO_REKENING=%s' % (uipNoData.GetFieldValue('LRekening.no_rekening'))
 
   formid = 'fRegisterWasiatUmmat'
   aform = app.GetFormWithData('transaction/'+formid,formid,0,key,'uipMaster')

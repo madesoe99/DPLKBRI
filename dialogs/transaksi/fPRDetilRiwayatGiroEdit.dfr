@@ -1,0 +1,181 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['panel1']
+  Caption='Edit Detil Riwayat Giro '
+  Left=50
+  Top=50
+  Width=400
+  Height=281
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx='FormOnSetDataEx'
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='o_nominal'
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='double'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='proses'
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='integer'
+          DataLength=20
+        >
+      }
+      Name='uipart1'
+      ClassTypeName='DetilRiwayatGiro'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caEdit
+          DataMembers=['account_giro'#13#10,
+            'no_rekening'#13#10,
+            'rekening_sumber'#13#10,
+            'nominal'#13#10,
+            'is_valid'#13#10,
+            'is_created_transaction'#13#10,
+            'keterangan'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='account_giro'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='no_rekening'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='rekening_sumber'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='nominal'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='is_valid'
+          Hidden=false
+          ReadOnlyControl=false
+          GenerateCheckBoxForEnum=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='is_created_transaction'
+          Hidden=false
+          ReadOnlyControl=false
+          GenerateCheckBoxForEnum=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, object:rtf::FieldUIElmtSetting<
+          Name='ket'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='varchar'
+          DataLength=100
+        >
+      }
+      Name='panel1'
+      Width=393
+      Height=273
+      UIPart=$UIPARTS['uipart1']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='account_giro'
+          Top=8
+          Left=8
+          Enabled=false
+          ControlCaption='No Rekening Giro'
+        >, *object:rtf::DBEdit<
+          Name='no_rekening'
+          Top=36
+          Left=8
+          Enabled=false
+          ControlCaption='No. Rekening DPLK'
+        >, *object:rtf::DBEdit<
+          Name='rekening_sumber'
+          Top=64
+          Left=8
+          ControlCaption='Rekening Sumber'
+        >, *object:rtf::DBEdit<
+          Name='nominal'
+          Top=92
+          Left=8
+          ControlCaption='Nominal'
+        >, *object:rtf::DBCheckBox<
+          Name='is_valid'
+          Top=120
+          Left=8
+          ControlCaption='is valid'
+          OnClick='is_validOnClick'
+        >, *object:rtf::DBCheckBox<
+          Name='is_created_transaction'
+          Top=148
+          Left=8
+          Enabled=false
+          ControlCaption='is created transaction'
+        >, *object:rtf::DBEdit<
+          Name='keterangan'
+          Top=204
+          Left=8
+          ControlCaption='keterangan'
+          LayoutOrder=8
+        >, *object:rtf::DBEdit<
+          Name='ket'
+          Top=176
+          Left=8
+          ControlCaption='Keterangan (asli)'
+          LayoutOrder=7
+          ReadOnly=true
+        >, object:rtf::Button<
+          Name='bSimpan'
+          Layout=clAbsolute
+          Top=240
+          Left=8
+          ControlCaption=''
+          Caption='&Simpan'
+          OnClick='bSimpanOnClick'
+        >, object:rtf::Button<
+          Name='bBatal'
+          Layout=clAbsolute
+          Top=240
+          Left=88
+          ControlCaption=''
+          Caption='&Batal'
+          ExitAction=eaQuitOK
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+  }
+  FormClassName='fPRDetilRiwayatGiroEdit'
+>

@@ -14,7 +14,7 @@ class fOtorisasiPenarikanDana30:
       self.pButton_bReject.Enabled = 0
       self.pButton_bCancel.Caption = '&Tutup'
       self.pButton_bCancel.Default = 1
-      form.Caption = 'Lihat Detil Pengalihan Dari DPLK Lain'
+      form.Caption = 'Lihat Detil Penarikan Dana Sebagian'
   #--
 
   def bReject_Click(self, button):

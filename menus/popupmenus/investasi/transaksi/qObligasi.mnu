@@ -4,16 +4,25 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rmn::Menu<
-  MenuItems={object:rmn::MenuItem<
+>
+object:rmn::Menu<
+  MenuItems={
+    object:rmn::MenuItem<
       Name='mnuTransaksiObligasi'
       Caption='Transaksi Investasi FIX'
-      MenuItems={object:rmn::MenuItem<
+      MenuItems={
+        object:rmn::MenuItem<
           Name='mnuPendapatanInvTunai'
           Caption='Pembayaran Kupon...'
           OnClick='mnuTransOblClick'
           AllowedGroups='Root;Admin;FMS'
           StringTag='fPendapatanObligasi'
+        >, object:rmn::MenuItem<
+          Name='mnuBeliObl'
+          Caption='Beli investasi (secondary)'
+          OnClick='mnuTransOblClick'
+          AllowedGroups='Root;Admin;FMS'
+          StringTag='fKoreksiNilaiSukuk'
         >, object:rmn::MenuItem<
           Name='mnuPendapatanObl'
           Caption='Koreksi nilai wajar'
@@ -32,7 +41,8 @@ document <
         >, object:rmn::MenuItem<
           Name='mnuTransaksiManual'
           Caption='Transaksi Manual'
-          MenuItems={object:rmn::MenuItem<
+          MenuItems={
+            object:rmn::MenuItem<
               Name='mnuInvestasiManual'
               Caption='Koreksi Pokok Investasi...'
               OnClick='mnuTransInvClick'
@@ -44,8 +54,12 @@ document <
               OnClick='mnuTransInvClick'
               AllowedGroups='Root;Admin;FMS'
               StringTag='fManLRInvestasiObl'
-            >}AllowedGroups='Root;Admin;FMS'
-        >}AllowedGroups='Root;Admin;FMS'
+            >
+          }
+          AllowedGroups='Root;Admin;FMS'
+        >
+      }
+      AllowedGroups='Root;Admin;FMS'
     >, object:rmn::MenuItem<
       Name='Settlement'
       Caption='Settlement Investasi FIX...'
@@ -73,5 +87,7 @@ document <
       OnClick='mnuViewClick'
       AllowedGroups='Root;Admin;FM;FMS'
       StringTag='view'
-    >}MenuType=mtPopupMenu
+    >
+  }
+  MenuType=mtPopupMenu
 >

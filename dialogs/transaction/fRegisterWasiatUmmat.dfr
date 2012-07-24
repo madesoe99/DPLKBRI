@@ -6,7 +6,7 @@ document <
   MinorVersion='0'
 >
 object:rtf::Form<
-  MainContainer=$CONTAINERS['MultiSplit']
+  MainContainer=$CONTAINERS['dualsplit1']
   Caption='Pendaftaran Asuransi'
   Left=300
   Top=150
@@ -82,131 +82,6 @@ object:rtf::Form<
   }
   Containers={
     object:rtf::Panel<
-      ControlDefs={
-        object:rtf::MultiControlDef<
-          Action=caEdit
-          DataMembers=['LNasabahDPLK'#13#10,
-            'user_id'#13#10,
-            'terminal_id'#13#10]
-        >, object:rtf::ControlDef<
-          Action=caEdit
-          DataMember='jenis_transaksi'
-        >, object:rtf::ControlDef<
-          Action=caView
-          DataMember='registercif_id'
-        >, object:rtf::ControlDef<
-          Action=caView
-          DataMember='LRekeningDPLK'
-        >
-      }
-      Elements={
-        *object:rtf::LinkUIElmtSetting<
-          Name='LNasabahDPLK'
-          Hidden=false
-          ReadOnlyControl=true
-          DisplayFields='no_peserta;nama_lengkap'
-          Restrictions=''
-          OQLText=['SELECT FROM NasabahDPLK('#13#10,
-            '  self,'#13#10,
-            '  no_peserta,'#13#10,
-            '  nama_lengkap'#13#10,
-            ') THEN ORDER BY no_peserta;']
-          LookupOption=loCustomOQL
-          FieldBaseName='LNasabahDPLK'
-        >, *object:rtf::FieldUIElmtSetting<
-          Name='user_id'
-          Hidden=false
-          ReadOnlyControl=true
-        >, *object:rtf::FieldUIElmtSetting<
-          Name='terminal_id'
-          Hidden=false
-          ReadOnlyControl=true
-        >, *object:rtf::FieldUIElmtSetting<
-          Name='jenis_transaksi'
-          Hidden=false
-          ReadOnlyControl=false
-        >, *object:rtf::FieldUIElmtSetting<
-          Name='registercif_id'
-          Hidden=true
-          ReadOnlyControl=false
-        >, *object:rtf::LinkUIElmtSetting<
-          Name='LRekeningDPLK'
-          Hidden=false
-          ReadOnlyControl=false
-          DisplayFields='no_rekening;no_peserta'
-          Restrictions=''
-          OQLText=['SELECT FROM RekInvDPLK ('#13#10,
-            '  self,'#13#10,
-            '  no_rekening,'#13#10,
-            '  no_peserta'#13#10,
-            ') THEN ORDER BY no_rekening;']
-          LookupOption=loCustomOQL
-        >, object:rtf::FieldUIElmtSetting<
-          Name='mode'
-          Hidden=true
-          ReadOnlyControl=false
-        >
-      }
-      Name='pData'
-      Width=385
-      Height=177
-      UIPart=$UIPARTS['uipRegisterCIF']
-      Controls={
-        *object:rtf::DBLookupEdit<
-          Name='LNasabahDPLK'
-          Top=20
-          Left=20
-          Width=100
-          Height=21
-          Enabled=false
-          Color=15128749
-          ControlCaption='Peserta DPLK'
-          LookupField='LNasabahDPLK.nama_lengkap'
-          DisplayLookupField=true
-        >, *object:rtf::DBEdit<
-          Name='user_id'
-          Top=76
-          Left=20
-          Width=135
-          Height=21
-          Color=-16777192
-          ControlCaption='User Penginput'
-          LayoutOrder=4
-          ReadOnly=true
-        >, *object:rtf::DBEdit<
-          Name='terminal_id'
-          Top=104
-          Left=20
-          Color=-16777192
-          ControlCaption='Terminal Input'
-          LayoutOrder=5
-          ReadOnly=true
-        >, *object:rtf::DBComboBox<
-          Name='jenis_transaksi'
-          Top=132
-          Left=20
-          ControlCaption='Jenis Transaksi'
-          LayoutOrder=6
-        >, *object:rtf::DBLookupEdit<
-          Name='LRekeningDPLK'
-          Top=48
-          Left=20
-          Width=100
-          Height=21
-          Enabled=false
-          ControlCaption='Nomor Rekening'
-          LookupField='LRekeningDPLK.no_peserta'
-          DisplayLookupField=false
-          DisableLookup=true
-        >
-      }
-      EqualCaptionWidth=100
-      ControlLeftMargin=20
-      ControlTopMargin=20
-      DefaultControlHeight=21
-      HorizontalControlGap=4
-      RowControlGap=7
-    >, object:rtf::Panel<
       Name='pButton'
       Width=400
       Height=40
@@ -256,15 +131,75 @@ object:rtf::Form<
       RowControlGap=7
     >, object:rtf::Panel<
       ControlDefs={
-        object:rtf::MultiControlDef<
+        object:rtf::ControlDef<
+          Action=caView
+          DataMember='registercif_id'
+        >, object:rtf::MultiControlDef<
           Action=caEdit
-          DataMembers=['no_referensi'#13#10,
-            'keterangan'#13#10,
-            'alasan_berhenti'#13#10]
+          DataMembers='LNasabahDPLK'#13#10
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LRekeningDPLK'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='jenis_transaksi'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='alasan_berhenti'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='no_referensi'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='keterangan'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='user_id'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='terminal_id'
         >
       }
       Elements={
         *object:rtf::FieldUIElmtSetting<
+          Name='registercif_id'
+          Hidden=true
+          ReadOnlyControl=false
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLK'
+          Hidden=false
+          ReadOnlyControl=true
+          DisplayFields='no_peserta;nama_lengkap'
+          Restrictions=''
+          OQLText=['SELECT FROM NasabahDPLK('#13#10,
+            '  self,'#13#10,
+            '  no_peserta,'#13#10,
+            '  nama_lengkap'#13#10,
+            ') THEN ORDER BY no_peserta;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LNasabahDPLK'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LRekeningDPLK'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='no_rekening;no_peserta'
+          Restrictions=''
+          OQLText=['SELECT FROM RekInvDPLK ('#13#10,
+            '  self,'#13#10,
+            '  no_rekening,'#13#10,
+            '  no_peserta'#13#10,
+            ') THEN ORDER BY no_rekening;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LRekeningDPLK'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='jenis_transaksi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alasan_berhenti'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
           Name='no_referensi'
           Hidden=false
           ReadOnlyControl=false
@@ -273,56 +208,101 @@ object:rtf::Form<
           Hidden=false
           ReadOnlyControl=false
         >, *object:rtf::FieldUIElmtSetting<
-          Name='alasan_berhenti'
+          Name='user_id'
           Hidden=false
+          ReadOnlyControl=true
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='terminal_id'
+          Hidden=false
+          ReadOnlyControl=true
+        >, object:rtf::FieldUIElmtSetting<
+          Name='mode'
+          Hidden=true
           ReadOnlyControl=false
         >
       }
-      Name='pDataTransaksi'
-      Width=393
-      Height=129
+      Name='pData'
+      Width=385
+      Height=289
+      Bordered=true
       UIPart=$UIPARTS['uipRegisterCIF']
       Controls={
-        *object:rtf::DBEdit<
+        *object:rtf::DBLookupEdit<
+          Name='LNasabahDPLK'
+          Top=20
+          Left=20
+          Width=100
+          Height=21
+          Enabled=false
+          Color=15128749
+          ControlCaption='Peserta DPLK'
+          LookupField='LNasabahDPLK.nama_lengkap'
+          DisplayLookupField=true
+        >, *object:rtf::DBLookupEdit<
+          Name='LRekeningDPLK'
+          Top=48
+          Left=20
+          Width=100
+          Height=21
+          Enabled=false
+          ControlCaption='Nomor Rekening'
+          LookupField='LRekeningDPLK.no_peserta'
+          DisplayLookupField=false
+        >, *object:rtf::DBComboBox<
+          Name='jenis_transaksi'
+          Top=76
+          Left=20
+          Enabled=false
+          ControlCaption='Jenis Transaksi'
+          OnChange='jenis_transaksiOnChange'
+        >, *object:rtf::DBEdit<
+          Name='alasan_berhenti'
+          Top=104
+          Left=20
+          Visible=false
+          ControlCaption='Alasan Berhenti'
+        >, *object:rtf::DBEdit<
           Name='no_referensi'
-          Top=7
+          Top=132
           Left=20
           Color=12695295
           ControlCaption='Nomor Referensi'
         >, *object:rtf::DBEdit<
           Name='keterangan'
-          Top=35
+          Top=160
           Left=20
-          Width=180
-          Height=21
           ControlCaption='Keterangan'
         >, *object:rtf::DBEdit<
-          Name='alasan_berhenti'
-          Top=63
+          Name='user_id'
+          Top=188
           Left=20
-          Visible=false
-          ControlCaption='Alasan Berhenti'
+          Width=135
+          Height=21
+          Color=-16777192
+          ControlCaption='User Penginput'
+          ReadOnly=true
+        >, *object:rtf::DBEdit<
+          Name='terminal_id'
+          Top=216
+          Left=20
+          Color=-16777192
+          ControlCaption='Terminal Input'
+          ReadOnly=true
         >
       }
       EqualCaptionWidth=100
       ControlLeftMargin=20
-      ControlTopMargin=7
+      ControlTopMargin=20
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
-    >, object:rtf::MultiSplit<
-      Name='MultiSplit'
-      Width=320
-      Height=320
-      Side1Containers={
-        $CONTAINERS['pData']
-
-      }
-      Side2Containers={
-        $CONTAINERS['pButton']
-
-      }
-      SpaceContainer=$CONTAINERS['pDataTransaksi']
+    >, object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=400
+      Height=350
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['pData']
+      InversedAlign=true
     >
   }
 >

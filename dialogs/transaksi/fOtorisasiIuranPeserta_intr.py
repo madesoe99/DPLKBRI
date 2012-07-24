@@ -4,7 +4,7 @@ class fOtorisasiIuranPeserta:
     self.App = formObj.ClientApplication
     self.Mode = mode
   #--
-
+  
   def Form_OnFormShow(self, form, parameter):
     #cek mode
     if self.Mode == 'view':

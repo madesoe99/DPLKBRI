@@ -6,7 +6,7 @@ document <
   MinorVersion='0'
 >
 object:rtf::Form<
-  MainContainer=$CONTAINERS['pData']
+  MainContainer=$CONTAINERS['DualSplit']
   Caption='Pengajuan Anuitas'
   Left=100
   Top=200
@@ -26,26 +26,60 @@ object:rtf::Form<
   OnEndProcessData=''
   UIParts={
     object:rtf::PClassUI<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caView
+          DataMember='no_rekening'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='no_rekening'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
       Name='uipRegisterCIF'
       ClassTypeName='RegisterAnuitas'
       DataBinding=bmMaster
       AlwaysPostToServer=true
       CreateInstanceOnNew=true
       AfterApplyRow='uipRegisterCIFApplyRow'
-    >
-    , object:rtf::PClassUI<
+    >, object:rtf::PClassUI<
       ControlDefs={
         object:rtf::MultiControlDef<
           Action=caView
           DataMembers=['no_peserta'#13#10,
             'LNasabahDPLK'#13#10,
             'status_anuitas'#13#10]
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='no_rekening'
         >
       }
       Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='no_peserta'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLK'
+          Hidden=false
+          ReadOnlyControl=false
+          Restrictions=''
+          FieldBaseName='LNasabahDPLK'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='status_anuitas'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='no_rekening'
+          Hidden=false
+          ReadOnlyControl=false
+        >
       }
       Name='uipMaster'
-      ClassTypeName='RekeningDPLK'
+      ClassTypeName='RekInvDPLK'
       DataBinding=bmMaster
     >
   }
@@ -59,53 +93,83 @@ object:rtf::Form<
             'keterangan'#13#10,
             'user_id'#13#10,
             'terminal_id'#13#10]
-        >
-        , object:rtf::ControlDef<
+        >, object:rtf::ControlDef<
           Action=caView
           DataMember='registercif_id'
-        >
-        , object:rtf::ControlDef<
+        >, object:rtf::ControlDef<
           Action=caView
           DataMember='tanggal_register'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='LRekeningDPLK'
         >
       }
       Elements={
-        *object:rtf::LinkUIElmtSetting<
+        *object:rtf::FieldUIElmtSetting<
+          Name='no_referensi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::LinkUIElmtSetting<
           Name='LNasabahDPLK'
+          Hidden=false
           ReadOnlyControl=true
           DisplayFields='no_peserta;nama_lengkap'
           Restrictions=''
-        >
-        , *object:rtf::FieldUIElmtSetting<
+          FieldBaseName='LNasabahDPLK'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
           Name='user_id'
+          Hidden=false
           ReadOnlyControl=true
-        >
-        , *object:rtf::FieldUIElmtSetting<
+        >, *object:rtf::FieldUIElmtSetting<
           Name='terminal_id'
+          Hidden=false
           ReadOnlyControl=true
-        >
-        , *object:rtf::FieldUIElmtSetting<
+        >, *object:rtf::FieldUIElmtSetting<
           Name='registercif_id'
           Hidden=true
-        >
-        , object:rtf::FieldUIElmtSetting<
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tanggal_register'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LRekeningDPLK'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='no_rekening'
+          Restrictions=''
+          OQLText=['SELECT FROM RekInvDPLK ('#13#10,
+            '  no_rekening,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY no_rekening;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LRekeningDPLK'
+        >, object:rtf::FieldUIElmtSetting<
           Name='mode'
           Hidden=true
+          ReadOnlyControl=false
         >
       }
       Name='pData'
       Width=400
-      Height=180
+      Height=233
       Bordered=true
       UIPart=$UIPARTS['uipRegisterCIF']
       Controls={
         *object:rtf::DBEdit<
           Name='no_referensi'
+          Top=30
+          Left=20
           Color=12695295
           ControlCaption='Nomor Referensi'
-        >
-        , *object:rtf::DBLookupEdit<
+        >, *object:rtf::DBLookupEdit<
           Name='LNasabahDPLK'
+          Top=58
+          Left=20
           Width=100
           Height=21
           Enabled=false
@@ -113,32 +177,50 @@ object:rtf::Form<
           ControlCaption='Peserta DPLK'
           LookupField='LNasabahDPLK.nama_lengkap'
           DisplayLookupField=true
-        >
-        , *object:rtf::DBEdit<
+        >, *object:rtf::DBEdit<
           Name='keterangan'
+          Top=142
+          Left=20
           Width=252
           Height=21
           ControlCaption='Keterangan'
-          LayoutOrder=5
-        >
-        , *object:rtf::DBEdit<
+          LayoutOrder=6
+        >, *object:rtf::DBEdit<
           Name='user_id'
+          Top=170
+          Left=20
           Width=135
           Height=21
+          Color=-16777192
           ControlCaption='User Penginput'
-          LayoutOrder=6
-          ReadOnly=true
-        >
-        , *object:rtf::DBEdit<
-          Name='terminal_id'
-          ControlCaption='Terminal Input'
           LayoutOrder=7
           ReadOnly=true
-        >
-        , *object:rtf::DBDateEdit<
+        >, *object:rtf::DBEdit<
+          Name='terminal_id'
+          Top=198
+          Left=20
+          Color=-16777192
+          ControlCaption='Terminal Input'
+          LayoutOrder=8
+          ReadOnly=true
+        >, *object:rtf::DBDateEdit<
           Name='tanggal_register'
+          Top=114
+          Left=20
+          Color=-16777192
           ControlCaption='Tanggal Register'
-          LayoutOrder=3
+          LayoutOrder=5
+        >, *object:rtf::DBLookupEdit<
+          Name='LRekeningDPLK'
+          Top=86
+          Left=20
+          Width=100
+          Height=21
+          Enabled=false
+          ControlCaption='Rekening DPLK'
+          LookupField='LRekeningDPLK.no_rekening'
+          DisplayLookupField=false
+          DisableLookup=true
         >
       }
       EqualCaptionWidth=100
@@ -148,8 +230,7 @@ object:rtf::Form<
       HorizontalControlGap=4
       RowControlGap=7
       Caption='Data Register'
-    >
-    , object:rtf::Panel<
+    >, object:rtf::Panel<
       Name='pButton'
       Width=400
       Height=40
@@ -157,25 +238,26 @@ object:rtf::Form<
         object:rtf::Button<
           Name='btnOK'
           Layout=clNewLine
-          Color=0
+          Top=8
+          Left=8
           ControlCaption=''
           Caption='&Simpan'
           Default=true
           OnClick='btnOKClick'
-        >
-        , object:rtf::Button<
+        >, object:rtf::Button<
           Name='btnCancel'
           Layout=clNextSide
-          Color=0
+          Top=8
+          Left=87
           ControlCaption=''
           Caption='&Batal'
           OnClick='btnCancelClick'
-        >
-        , object:rtf::Button<
+        >, object:rtf::Button<
           Name='btnClose'
           Layout=clNextSide
+          Top=8
+          Left=166
           Visible=false
-          Color=0
           ControlCaption=''
           Caption='&Batal'
           Cancel=true
@@ -187,59 +269,82 @@ object:rtf::Form<
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
-    >
-    , object:rtf::DualSplit<
+    >, object:rtf::DualSplit<
       Name='DualSplit'
-      Width=240
-      Height=100
+      Width=800
+      Height=300
       Container1=$CONTAINERS['pButton']
       Container2=$CONTAINERS['DualSplitLR']
       InversedAlign=true
-    >
-    , object:rtf::Panel<
+    >, object:rtf::Panel<
       ControlDefs={
-        object:rtf::MultiControlDef<
+        object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='no_rekening_anuitas'
+        >, object:rtf::MultiControlDef<
           Action=caEdit
           DataMembers=['nama_asuransi'#13#10,
             'no_polis_anuitas'#13#10,
             'tgl_pembelian_anuitas'#13#10,
-            'no_rekening'#13#10,
             'nominal_anuitas'#13#10]
         >
       }
       Elements={
         *object:rtf::FieldUIElmtSetting<
+          Name='no_rekening_anuitas'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='nama_asuransi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='no_polis_anuitas'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tgl_pembelian_anuitas'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
           Name='nominal_anuitas'
+          Hidden=false
           ReadOnlyControl=true
         >
       }
       Name='pDataBaru'
-      Width=240
-      Height=40
+      Width=385
+      Height=233
       Bordered=true
       UIPart=$UIPARTS['uipRegisterCIF']
       Controls={
         *object:rtf::DBEdit<
+          Name='no_rekening_anuitas'
+          Top=30
+          Left=20
+          Color=12695295
+          ControlCaption='No. Rekening Anuitas'
+        >, *object:rtf::DBEdit<
           Name='nama_asuransi'
+          Top=58
+          Left=20
           Color=12695295
           ControlCaption='Nama Asuransi'
-        >
-        , *object:rtf::DBEdit<
+        >, *object:rtf::DBEdit<
           Name='no_polis_anuitas'
+          Top=86
+          Left=20
           Color=12695295
           ControlCaption='Nomor Polis Anuitas'
-        >
-        , *object:rtf::DBDateEdit<
+        >, *object:rtf::DBDateEdit<
           Name='tgl_pembelian_anuitas'
+          Top=114
+          Left=20
           ControlCaption='Tanggal Beli Anuitas'
-        >
-        , *object:rtf::DBEdit<
-          Name='no_rekening'
-          Color=12695295
-          ControlCaption='Nomor Rekening'
-        >
-        , *object:rtf::DBEdit<
+        >, *object:rtf::DBEdit<
           Name='nominal_anuitas'
+          Top=142
+          Left=20
           Color=9498256
           ControlCaption='Nominal Anuitas'
           ReadOnly=true
@@ -252,11 +357,10 @@ object:rtf::Form<
       HorizontalControlGap=4
       RowControlGap=7
       Caption='Data Rekening Anuitas'
-    >
-    , object:rtf::DualSplit<
+    >, object:rtf::DualSplit<
       Name='DualSplitLR'
-      Width=240
-      Height=100
+      Width=800
+      Height=259
       Container1=$CONTAINERS['pData']
       Container2=$CONTAINERS['pDataBaru']
       SplitDirection=sdrSplitLeftRight

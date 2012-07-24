@@ -11,16 +11,16 @@ object:rmn::Menu<
       Name='mnuNew'
       Caption='Kartu baru...'
       OnClick='showForm'
-      AllowedGroups='BOD;MRKT;CC;CS'
+      AllowedGroups='OPR'
       StringTag='new'
     >, object:rmn::MenuItem<
       Name='mnuKoreksi'
       Caption='Koreksi informasi kartu...'
       OnClick='showForm'
-      AllowedGroups='BOD;MRKT;CC;CS'
+      AllowedGroups='OPR'
       StringTag='edit'
     >
   }
   MenuType=mtPopupMenu
-  AllowedGroups='MRKT;BOD;CC;CS'
+  AllowedGroups='SPV;OPR'
 >

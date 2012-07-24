@@ -13,7 +13,7 @@ def mnuNewClick(sender, context):
 
 def displayWithData(sender, context):
   app = context.OwnerForm.ClientApplication
-  keyvalue = context.GetFieldValue('RegisterCIF.ID')
+  keyvalue = context.GetFieldValue('RegisterAsuransi.ID')
 
   keyobjconst = 'PObj:RegisterAsuransi#REGISTERCIF_ID=%d' % (keyvalue)
 

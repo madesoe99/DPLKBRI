@@ -4,7 +4,8 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rtf::Form<
+>
+object:rtf::Form<
   MainContainer=$CONTAINERS['DualSplitUD']
   Caption='Register Realisasi Return Saham'
   Left=50
@@ -12,7 +13,8 @@ document <
   Width=760
   Height=400
   OnFormShow='FormShow'
-  UIParts={object:rtf::PClassUI<
+  UIParts={
+    object:rtf::PClassUI<
       Name='uipRealisasiReturnSaham'
       ClassTypeName='RealisasiReturnSaham'
       DataBinding=bmMaster
@@ -20,130 +22,122 @@ document <
       CreateInstanceOnNew=true
       AfterApplyRow='uipRealisasiReturnApplyRow'
     >, object:rtf::PClassUI<
-      Elements={object:rtf::FieldUIElmtSetting<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
           Name='id_investasi'
           AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='INTEGER'
           DataLength=0
-        >}Name='uipSaham'
+        >
+      }
+      Name='uipSaham'
       ClassTypeName='SAHAM'
       DataBinding=bmLink
       Master=$UIPARTS['uipRealisasiReturnSaham']
       LinkName='LSaham'
       OnSetData='uipSahamSetData'
     >, object:rtf::PClassUI<
-      Elements={object:rtf::FieldUIElmtSetting<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
           Name='nowDate'
           Hidden=true
+          ReadOnlyControl=false
           DataTypeName='varchar'
           DataLength=10
         >, object:rtf::FieldUIElmtSetting<
           Name='inv'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='varchar'
           DataLength=1
-        >}Name='uipParameter'
+        >
+      }
+      Name='uipParameter'
       CreateInstanceOnNew=true
-    >}Containers={object:rtf::Panel<
-      Elements={object:rtf::FieldUIElmtSetting<
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
           Name='id_transaksiinvestasi'
           AccessOption=aoReadOnly
           Hidden=true
+          ReadOnlyControl=false
           DataTypeName='INTEGER'
           DataLength=0
         >, object:rtf::FieldUIElmtSetting<
           Name='tgl_transaksi'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='TIMESTAMP'
           DataLength=0
-        >, object:rtf::LinkUIElmtSetting<
-          Name='LTransactionBatch'
-          RequiredOption=roAlwaysRequired
-          ControlCaption='batch investasi'
-          ClassTypeName='TransactionBatch'
-          KeyFields={object:rtf::FieldUIElmtSetting<
-              Name='LTransactionBatch.ID_TransactionBatch'
-              DataTypeName='INTEGER'
-              DataLength=0
-              UsedAsKey=true
-              KeyOrDisplayName='ID_TransactionBatch'
-              FinalDisplayFieldName='ID_TransactionBatch'
-            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
-              Name='LTransactionBatch.ID_TransactionBatch'
-              DataTypeName='INTEGER'
-              DataLength=0
-              UsedAsDisplay=true
-              KeyOrDisplayName='ID_TransactionBatch'
-              FinalDisplayFieldName='ID_TransactionBatch'
-            >, object:rtf::FieldUIElmtSetting<
-              Name='LTransactionBatch.no_batch'
-              DataTypeName='VARCHAR'
-              DataLength=32
-              UsedAsDisplay=true
-              KeyOrDisplayName='no_batch'
-              FinalDisplayFieldName='no_batch'
-            >}Restrictions='uipParameter.nowDate|NowDate'
-          OQLText=['select from TransactionBatch'#13#10,
-            '['#13#10,
-            '  batch_status = ''O'' '#13#10,
-            '  and batch_type = ''I'' '#13#10,
-            '  and batch_sub_type = ''M'''#13#10,
-            '  and account_link_type = ''S'''#13#10,
-            '  and tgl_used = :NowDate'#13#10,
-            ']'#13#10,
-            '('#13#10,
-            '  no_batch,'#13#10,
-            '  tgl_create,'#13#10,
-            '  account_link_type,'#13#10,
-            '  user_id_owner,'#13#10,
-            '  ID_TransactionBatch,'#13#10,
-            '  self'#13#10,
-            ') then order by no_batch;']
-          LookupOption=loCustomOQL
-          FieldBaseName='LTransactionBatch'
         >, object:rtf::FieldUIElmtSetting<
           Name='kode_jns_investasi'
           Hidden=true
+          ReadOnlyControl=false
           DataTypeName='VARCHAR'
           DataLength=3
         >, object:rtf::FieldUIElmtSetting<
           Name='nominal_investasi'
+          Hidden=false
           ReadOnlyControl=true
           DataTypeName='DOUBLE'
           DataLength=0
         >, object:rtf::FieldUIElmtSetting<
           Name='NAB'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='DOUBLE'
           DataLength=0
         >, object:rtf::FieldUIElmtSetting<
           Name='unit_penyertaan'
+          Hidden=false
           ReadOnlyControl=true
           DataTypeName='DOUBLE'
           DataLength=0
         >, object:rtf::FieldUIElmtSetting<
           Name='profit'
+          Hidden=false
           ReadOnlyControl=true
           DataTypeName='DOUBLE'
           DataLength=0
         >, object:rtf::FieldUIElmtSetting<
           Name='no_rekening'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='VARCHAR'
           DataLength=20
         >, object:rtf::FieldUIElmtSetting<
           Name='nama_Saham'
           Hidden=true
+          ReadOnlyControl=false
           DataTypeName='varchar'
           DataLength=15
         >, object:rtf::LinkUIElmtSetting<
           Name='LPihakKetiga'
+          Hidden=false
+          ReadOnlyControl=false
           ClassTypeName='PihakKetiga'
-          KeyFields={object:rtf::FieldUIElmtSetting<
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
               Name='LPihakKetiga.kode_pihak_ketiga'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=8
               UsedAsKey=true
               KeyOrDisplayName='kode_pihak_ketiga'
               FinalDisplayFieldName='kode_pihak_ketiga'
-            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
               Name='LPihakKetiga.kode_pihak_ketiga'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=8
               UsedAsDisplay=true
@@ -151,25 +145,39 @@ document <
               FinalDisplayFieldName='kode_pihak_ketiga'
             >, object:rtf::FieldUIElmtSetting<
               Name='LPihakKetiga.nama_pihak_ketiga'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=100
               UsedAsDisplay=true
               KeyOrDisplayName='nama_pihak_ketiga'
               FinalDisplayFieldName='nama_pihak_ketiga'
-            >}Restrictions=''
+            >
+          }
+          Restrictions=''
           FieldBaseName='LPihakKetiga'
         >, object:rtf::LinkUIElmtSetting<
           Name='LPaketInvestasi'
+          Hidden=false
+          ReadOnlyControl=false
           ClassTypeName='PaketInvestasi'
-          KeyFields={object:rtf::FieldUIElmtSetting<
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
               Name='LPaketInvestasi.kode_paket_investasi'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=2
               UsedAsKey=true
               KeyOrDisplayName='kode_paket_investasi'
               FinalDisplayFieldName='kode_paket_investasi'
-            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
               Name='LPaketInvestasi.kode_paket_investasi'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=2
               UsedAsDisplay=true
@@ -177,148 +185,152 @@ document <
               FinalDisplayFieldName='kode_paket_investasi'
             >, object:rtf::FieldUIElmtSetting<
               Name='LPaketInvestasi.nama_paket_investasi'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=30
               UsedAsDisplay=true
               KeyOrDisplayName='nama_paket_investasi'
               FinalDisplayFieldName='nama_paket_investasi'
-            >}Restrictions=''
+            >
+          }
+          Restrictions=''
           FieldBaseName='LPaketInvestasi'
-        >}Name='pData'
+        >
+      }
+      Name='pData'
       Width=380
       Height=40
       UIPart=$UIPARTS['uipRealisasiReturnSaham']
-      Controls={*object:rtf::DBDateEdit<
+      Controls={
+        *object:rtf::DBDateEdit<
           Name='tgl_transaksi'
-          Top=234
+          Top=206
           Left=20
-          Color=0
           ControlCaption='tgl transaksi'
           LayoutOrder=10
-        >, *object:rtf::DBLookupEdit<
-          Name='LTransactionBatch'
-          Top=10
-          Left=20
-          ControlCaption='batch investasi'
-          LayoutOrder=1
-          LookupField='LTransactionBatch.no_batch'
-          DisplayLookupField=true
         >, *object:rtf::DBEdit<
           Name='nominal_investasi'
-          Top=94
+          Top=66
           Left=20
           Color=-2147483624
           ControlCaption='nominal investasi'
           LayoutOrder=4
-          FieldName='nominal_investasi'
-          DisplayFormat='#,##0.00'
           ReadOnly=true
         >, *object:rtf::DBEdit<
           Name='NAB'
-          Top=122
+          Top=94
           Left=20
-          Color=0
           ControlCaption='NAB'
           LayoutOrder=6
-          FieldName='NAB'
-          DisplayFormat='#,##0.00'
           OnExit='NABExit'
         >, *object:rtf::DBEdit<
           Name='unit_penyertaan'
-          Top=150
+          Top=122
           Left=20
           Color=-2147483624
           ControlCaption='unit penyertaan'
           LayoutOrder=7
-          FieldName='unit_penyertaan'
-          DisplayFormat='#,##0.#####'
           ReadOnly=true
         >, *object:rtf::DBEdit<
           Name='profit'
-          Top=178
+          Top=150
           Left=20
           Color=-2147483624
           ControlCaption='profit'
           LayoutOrder=8
-          FieldName='profit'
-          DisplayFormat='#,##0.00'
           ReadOnly=true
         >, *object:rtf::DBEdit<
           Name='no_rekening'
-          Top=206
+          Top=178
           Left=20
-          Color=0
           ControlCaption='no rekening'
           LayoutOrder=9
         >, *object:rtf::DBLookupEdit<
           Name='LPihakKetiga'
-          Top=38
+          Top=10
           Left=20
           Enabled=false
-          Color=0
           ControlCaption='manajer investasi'
           LayoutOrder=2
           LookupField='LPihakKetiga.nama_pihak_ketiga'
           DisplayLookupField=true
         >, *object:rtf::DBLookupEdit<
           Name='LPaketInvestasi'
-          Top=66
+          Top=38
           Left=20
           Width=120
           Height=21
           Enabled=false
-          Color=0
           ControlCaption='paket investasi'
           LayoutOrder=3
           LookupField='LPaketInvestasi.nama_paket_investasi'
           DisplayLookupField=false
-        >}EqualCaptionWidth=120
+        >
+      }
+      EqualCaptionWidth=120
       ControlLeftMargin=20
       ControlTopMargin=10
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
     >, object:rtf::Panel<
-      Elements={object:rtf::FieldUIElmtSetting<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
           Name='user_id'
           AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='VARCHAR'
           DataLength=20
         >, object:rtf::FieldUIElmtSetting<
           Name='terminal_id'
           AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='VARCHAR'
           DataLength=15
         >, object:rtf::FieldUIElmtSetting<
           Name='tgl_otorisasi'
           AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='TIMESTAMP'
           DataLength=0
         >, object:rtf::FieldUIElmtSetting<
           Name='user_id_auth'
           AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='VARCHAR'
           DataLength=20
         >, object:rtf::FieldUIElmtSetting<
           Name='terminal_id_auth'
           AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='VARCHAR'
           DataLength=15
         >, object:rtf::FieldUIElmtSetting<
           Name='tgl_sistem'
           Hidden=true
+          ReadOnlyControl=false
           DataTypeName='TIMESTAMP'
           DataLength=0
         >, object:rtf::FieldUIElmtSetting<
           Name='mode'
           Hidden=true
+          ReadOnlyControl=false
           DataTypeName='varchar'
           DataLength=20
-        >}Name='pRegister'
+        >
+      }
+      Name='pRegister'
       Width=240
       Height=40
       UIPart=$UIPARTS['uipRealisasiReturnSaham']
-      Controls={*object:rtf::DBEdit<
+      Controls={
+        *object:rtf::DBEdit<
           Name='user_id'
           Top=10
           Left=20
@@ -351,7 +363,9 @@ document <
           Visible=false
           Color=-2147483624
           ControlCaption='terminal id auth'
-        >}EqualCaptionWidth=120
+        >
+      }
+      EqualCaptionWidth=120
       ControlLeftMargin=20
       ControlTopMargin=10
       DefaultControlHeight=21
@@ -362,12 +376,12 @@ document <
       Width=400
       Height=40
       Bordered=true
-      Controls={object:rtf::Button<
+      Controls={
+        object:rtf::Button<
           Name='btnOK'
           Layout=clNewLine
           Top=8
           Left=20
-          Color=0
           ControlCaption=''
           Caption='&Simpan'
           Default=true
@@ -377,7 +391,6 @@ document <
           Layout=clNextSide
           Top=8
           Left=99
-          Color=0
           ControlCaption=''
           Caption='&Batal'
           Cancel=true
@@ -388,60 +401,69 @@ document <
           Top=8
           Left=178
           Visible=false
-          Color=0
           ControlCaption=''
           Caption='&Batal'
           ExitAction=eaQuitCancel
-        >}ControlLeftMargin=20
+        >
+      }
+      ControlLeftMargin=20
       ControlTopMargin=8
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
     >, object:rtf::DualSplit<
       Name='DualSplitLR'
-      Width=240
-      Height=96
+      Width=760
+      Height=359
       Container1=$CONTAINERS['DualSplitLeft']
       Container2=$CONTAINERS['DualSplitUDRight']
       SplitDirection=sdrSplitLeftRight
     >, object:rtf::DualSplit<
       Name='DualSplitUD'
-      Width=240
-      Height=96
+      Width=760
+      Height=400
       Container1=$CONTAINERS['pButton']
       Container2=$CONTAINERS['DualSplitLR']
       InversedAlign=true
     >, object:rtf::Panel<
-      Elements={object:rtf::FieldUIElmtSetting<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
           Name='akum_nominal'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='DOUBLE'
           DataLength=0
         >, object:rtf::FieldUIElmtSetting<
           Name='NAB_awal'
+          Hidden=false
           ReadOnlyControl=true
           DataTypeName='DOUBLE'
           DataLength=0
         >, object:rtf::FieldUIElmtSetting<
           Name='NAB'
+          Hidden=false
           ReadOnlyControl=true
           DataTypeName='DOUBLE'
           DataLength=0
         >, object:rtf::FieldUIElmtSetting<
           Name='unit_penyertaan'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='DOUBLE'
           DataLength=0
-        >}Name='pAkum'
+        >
+      }
+      Name='pAkum'
       Width=240
       Height=130
       UIPart=$UIPARTS['uipSaham']
-      Controls={*object:rtf::DBEdit<
+      Controls={
+        *object:rtf::DBEdit<
           Name='akum_nominal'
           Top=20
           Left=20
           Color=-2147483624
           ControlCaption='nominal investasi'
-          FieldName='akum_nominal'
-          DisplayFormat='#,##0.00'
           ReadOnly=true
         >, *object:rtf::DBEdit<
           Name='NAB_awal'
@@ -450,8 +472,6 @@ document <
           Visible=false
           Color=-2147483624
           ControlCaption='NAB pembelian'
-          FieldName='NAB_awal'
-          DisplayFormat='#,##0.00'
           ReadOnly=true
         >, *object:rtf::DBEdit<
           Name='NAB'
@@ -466,10 +486,10 @@ document <
           Left=20
           Color=-2147483624
           ControlCaption='unit penyertaan'
-          FieldName='unit_penyertaan'
-          DisplayFormat='#,##0.#####'
           ReadOnly=true
-        >}EqualCaptionWidth=120
+        >
+      }
+      EqualCaptionWidth=120
       ControlLeftMargin=20
       ControlTopMargin=20
       DefaultControlHeight=21
@@ -477,24 +497,35 @@ document <
       RowControlGap=7
     >, object:rtf::DualSplit<
       Name='DualSplitUDRight'
-      Width=240
-      Height=96
+      Width=359
+      Height=359
       Container1=$CONTAINERS['pAkum']
       Container2=$CONTAINERS['pRegister']
     >, object:rtf::Panel<
-      Elements={object:rtf::LinkUIElmtSetting<
+      Elements={
+        object:rtf::LinkUIElmtSetting<
           Name='LSaham'
           RequiredOption=roAlwaysRequired
+          Hidden=false
+          ReadOnlyControl=false
           ClassTypeName='SAHAM'
-          KeyFields={object:rtf::FieldUIElmtSetting<
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
               Name='LSaham.id_investasi'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='INTEGER'
               DataLength=0
               UsedAsKey=true
               KeyOrDisplayName='id_investasi'
               FinalDisplayFieldName='id_investasi'
-            >}DisplayedFields={object:rtf::FieldUIElmtSetting<
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
               Name='LSaham.nama_Saham'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=50
               UsedAsDisplay=true
@@ -502,6 +533,8 @@ document <
               FinalDisplayFieldName='nama_SAHAM'
             >, object:rtf::FieldUIElmtSetting<
               Name='LSaham.tgl_buka'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='TIMESTAMP'
               DataLength=0
               UsedAsDisplay=true
@@ -509,6 +542,8 @@ document <
               FinalDisplayFieldName='tgl_buka'
             >, object:rtf::FieldUIElmtSetting<
               Name='LSaham.id_investasi'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='INTEGER'
               DataLength=0
               UsedAsDisplay=true
@@ -516,6 +551,8 @@ document <
               FinalDisplayFieldName='id_investasi'
             >, object:rtf::FieldUIElmtSetting<
               Name='LSaham.LPihakKetiga.nama_pihak_ketiga'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=100
               UsedAsDisplay=true
@@ -523,6 +560,8 @@ document <
               FinalDisplayFieldName='nama_pihak_ketiga'
             >, object:rtf::FieldUIElmtSetting<
               Name='LSaham.LRincianPaketInvestasi.LPaketInvestasi.Nama_paket_investasi'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=30
               UsedAsDisplay=true
@@ -530,6 +569,8 @@ document <
               FinalDisplayFieldName='nama_paket_investasi'
             >, object:rtf::FieldUIElmtSetting<
               Name='LSaham.LRincianPaketInvestasi.LJenisInvestasi.nama_jns_investasi'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=50
               UsedAsDisplay=true
@@ -537,6 +578,8 @@ document <
               FinalDisplayFieldName='nama_jns_investasi'
             >, object:rtf::FieldUIElmtSetting<
               Name='LSaham.akum_nominal'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='DOUBLE'
               DataLength=0
               UsedAsDisplay=true
@@ -544,6 +587,8 @@ document <
               FinalDisplayFieldName='akum_nominal'
             >, object:rtf::FieldUIElmtSetting<
               Name='LSaham.akum_piutangLR'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='DOUBLE'
               DataLength=0
               UsedAsDisplay=true
@@ -551,6 +596,8 @@ document <
               FinalDisplayFieldName='akum_piutangLR'
             >, object:rtf::FieldUIElmtSetting<
               Name='LSaham.akum_LR'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='DOUBLE'
               DataLength=0
               UsedAsDisplay=true
@@ -558,6 +605,8 @@ document <
               FinalDisplayFieldName='akum_LR'
             >, object:rtf::FieldUIElmtSetting<
               Name='LSaham.kode_pihak_ketiga'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=8
               UsedAsDisplay=true
@@ -565,6 +614,8 @@ document <
               FinalDisplayFieldName='kode_pihak_ketiga'
             >, object:rtf::FieldUIElmtSetting<
               Name='LSaham.kode_paket_investasi'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=2
               UsedAsDisplay=true
@@ -572,6 +623,8 @@ document <
               FinalDisplayFieldName='kode_paket_investasi'
             >, object:rtf::FieldUIElmtSetting<
               Name='LSaham.kode_jns_investasi'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='VARCHAR'
               DataLength=3
               UsedAsDisplay=true
@@ -579,6 +632,8 @@ document <
               FinalDisplayFieldName='kode_jns_investasi'
             >, object:rtf::FieldUIElmtSetting<
               Name='LSaham.NAB_awal'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='DOUBLE'
               DataLength=0
               UsedAsDisplay=true
@@ -586,6 +641,8 @@ document <
               FinalDisplayFieldName='NAB_awal'
             >, object:rtf::FieldUIElmtSetting<
               Name='LSaham.NAB'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='DOUBLE'
               DataLength=0
               UsedAsDisplay=true
@@ -593,12 +650,16 @@ document <
               FinalDisplayFieldName='NAB'
             >, object:rtf::FieldUIElmtSetting<
               Name='LSaham.unit_penyertaan'
+              Hidden=false
+              ReadOnlyControl=false
               DataTypeName='DOUBLE'
               DataLength=0
               UsedAsDisplay=true
               KeyOrDisplayName='unit_penyertaan'
               FinalDisplayFieldName='unit_penyertaan'
-            >}Restrictions=''
+            >
+          }
+          Restrictions=''
           OQLText=['select from Saham'#13#10,
             '['#13#10,
             '  (kode_jns_investasi = ''C'')'#13#10,
@@ -632,11 +693,14 @@ document <
             ') then order by nama_Saham;']
           LookupOption=loCustomOQL
           FieldBaseName='LSaham'
-        >}Name='pSelector'
+        >
+      }
+      Name='pSelector'
       Width=240
       Height=50
       UIPart=$UIPARTS['uipRealisasiReturnSaham']
-      Controls={*object:rtf::DBLookupEdit<
+      Controls={
+        *object:rtf::DBLookupEdit<
           Name='LSaham'
           Top=20
           Left=20
@@ -644,13 +708,14 @@ document <
           Height=21
           ControlCaption='Saham'
           FieldName='LSaham.nama_Saham'
-          DisplayFormat=''
           LookupField='LSaham.tgl_buka'
           DisplayLookupField=true
           OnAfterLookup='LSahamAfterLookup'
           DisplayLookupColor=-2147483624
           DisplayLookupWidth=112
-        >}EqualCaptionWidth=120
+        >
+      }
+      EqualCaptionWidth=120
       ControlLeftMargin=20
       ControlTopMargin=20
       DefaultControlHeight=21
@@ -662,4 +727,6 @@ document <
       Height=96
       Container1=$CONTAINERS['pSelector']
       Container2=$CONTAINERS['pData']
-    >}>
+    >
+  }
+>

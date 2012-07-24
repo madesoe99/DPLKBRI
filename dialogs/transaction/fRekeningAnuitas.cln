@@ -1,0 +1,400 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit1']
+  Caption='Rekening Anuitas - Detil'
+  Left=50
+  Top=50
+  Width=750
+  Height=400
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipRekeningAnuitas'
+      ClassTypeName='RekeningAnuitas'
+      DataBinding=bmMaster
+    >
+  }
+  Containers={
+    object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=240
+      Height=96
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['dualsplit2']
+      InversedAlign=true
+    >, object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='tanggal_auth'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='auth_user_id'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='auth_terminal_id'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=15
+        >
+      }
+      Name='pOtor'
+      Width=320
+      Height=113
+      Bordered=true
+      UIPart=$UIPARTS['uipRekeningAnuitas']
+      Controls={
+        *object:rtf::DBDateEdit<
+          Name='tanggal_auth'
+          Top=24
+          Left=20
+          Color=-16777192
+          ControlCaption='Tanggal Otorisasi'
+        >, *object:rtf::DBEdit<
+          Name='auth_user_id'
+          Top=52
+          Left=20
+          Color=-16777192
+          ControlCaption='User Otorisasi'
+        >, *object:rtf::DBEdit<
+          Name='auth_terminal_id'
+          Top=80
+          Left=20
+          Color=-16777192
+          ControlCaption='Terminal Otorisasi'
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=20
+      ControlTopMargin=24
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Otorisasi'
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=320
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnClose'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          ControlCaption=''
+          Caption='&Tutup'
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='dualsplit2'
+      Width=240
+      Height=96
+      Container1=$CONTAINERS['pAnuitas']
+      Container2=$CONTAINERS['dualsplit4']
+      SplitDirection=sdrSplitLeftRight
+    >, object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='no_referensi'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLK'
+          RequiredOption=roAlwaysRequired
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          ClassTypeName='NasabahDPLK'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLK.no_peserta'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsKey=true
+              KeyOrDisplayName='no_peserta'
+              FinalDisplayFieldName='no_peserta'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLK.no_peserta'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsDisplay=true
+              KeyOrDisplayName='no_peserta'
+              FinalDisplayFieldName='no_peserta'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLK.nama_lengkap'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=100
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_lengkap'
+              FinalDisplayFieldName='nama_lengkap'
+            >
+          }
+          Restrictions=''
+          OQLText=['SELECT FROM NasabahDPLK ('#13#10,
+            '  no_peserta,'#13#10,
+            '  nama_lengkap,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY no_peserta;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LNasabahDPLK'
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LRekeningDPLK'
+          RequiredOption=roAlwaysRequired
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          ClassTypeName='RekInvDPLK'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LRekeningDPLK.no_rekening'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=20
+              UsedAsKey=true
+              KeyOrDisplayName='no_rekening'
+              FinalDisplayFieldName='no_rekening'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LRekeningDPLK.no_rekening'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=20
+              UsedAsDisplay=true
+              KeyOrDisplayName='no_rekening'
+              FinalDisplayFieldName='no_rekening'
+            >
+          }
+          Restrictions=''
+          OQLText=['SELECT FROM RekInvDPLK ('#13#10,
+            '  no_rekening,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY no_rekening;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LRekeningDPLK'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tanggal_register'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >, object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='terminal_id'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=15
+        >
+      }
+      Name='pRegister'
+      Width=385
+      Height=233
+      Bordered=true
+      UIPart=$UIPARTS['uipRekeningAnuitas']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='no_referensi'
+          Top=24
+          Left=20
+          Color=-16777192
+          ControlCaption='Nomor Referensi'
+        >, *object:rtf::DBLookupEdit<
+          Name='LNasabahDPLK'
+          Top=52
+          Left=20
+          Width=100
+          Height=21
+          Enabled=false
+          ControlCaption='Peserta DPLK'
+          LookupField='LNasabahDPLK.nama_lengkap'
+          DisplayLookupField=true
+          DisableLookup=true
+        >, *object:rtf::DBLookupEdit<
+          Name='LRekeningDPLK'
+          Top=80
+          Left=20
+          Width=100
+          Height=21
+          Enabled=false
+          ControlCaption='Rekening DPLK'
+          LookupField='LRekeningDPLK.no_rekening'
+          DisplayLookupField=false
+          DisableLookup=true
+        >, *object:rtf::DBDateEdit<
+          Name='tanggal_register'
+          Top=108
+          Left=20
+          Color=-16777192
+          ControlCaption='Tanggal Register'
+        >, *object:rtf::DBEdit<
+          Name='keterangan'
+          Top=136
+          Left=20
+          Color=-16777192
+          ControlCaption='Keterangan'
+        >, *object:rtf::DBEdit<
+          Name='user_id'
+          Top=164
+          Left=20
+          Color=-16777192
+          ControlCaption='User Input'
+        >, *object:rtf::DBEdit<
+          Name='terminal_id'
+          Top=192
+          Left=20
+          Color=-16777192
+          ControlCaption='Terminal Input'
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=20
+      ControlTopMargin=24
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Register'
+    >, object:rtf::DualSplit<
+      Name='dualsplit4'
+      Width=240
+      Height=96
+      Container1=$CONTAINERS['pRegister']
+      Container2=$CONTAINERS['pOtor']
+    >, object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='no_rekening_anuitas'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='nama_asuransi'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >, object:rtf::FieldUIElmtSetting<
+          Name='no_polis_anuitas'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tgl_pembelian_anuitas'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='nominal_anuitas'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >
+      }
+      Name='pAnuitas'
+      Width=346
+      Height=225
+      Bordered=true
+      UIPart=$UIPARTS['uipRekeningAnuitas']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='no_rekening_anuitas'
+          Top=24
+          Left=20
+          Color=-16777192
+          ControlCaption='No. Rekening Anuitas'
+        >, *object:rtf::DBEdit<
+          Name='nama_asuransi'
+          Top=52
+          Left=20
+          Color=-16777192
+          ControlCaption='Nama Asuransi'
+        >, *object:rtf::DBEdit<
+          Name='no_polis_anuitas'
+          Top=80
+          Left=20
+          Color=-16777192
+          ControlCaption='No. Polis Anuitas'
+        >, *object:rtf::DBDateEdit<
+          Name='tgl_pembelian_anuitas'
+          Top=108
+          Left=20
+          Color=-16777192
+          ControlCaption='Tgl. Beli Anuitas'
+        >, *object:rtf::DBEdit<
+          Name='nominal_anuitas'
+          Top=136
+          Left=20
+          Color=-16777192
+          ControlCaption='Nominal Anuitas'
+        >
+      }
+      EqualCaptionWidth=110
+      ControlLeftMargin=20
+      ControlTopMargin=24
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Rekening Anuitas'
+    >
+  }
+  FormClassName='fRekeningAnuitas'
+>

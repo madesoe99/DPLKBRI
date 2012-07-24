@@ -203,6 +203,7 @@ def CreateRekInvDPLK(config, oRegisterNasabahRekening):
   
 def CreateHistoriBuku(config, oRegisterNasabahRekening):
   oHistoriBuku = config.CreatePObject('HistoriBukuDPLK')
+  oHistoriBuku.branch_code = oRegisterNasabahRekening.kode_cab_daftar
   oHistoriBuku.no_peserta = oRegisterNasabahRekening.no_peserta
   oHistoriBuku.no_rekening = oRegisterNasabahRekening.no_rekening
   oHistoriBuku.no_seri_buku = oRegisterNasabahRekening.nomor_buku
@@ -212,15 +213,15 @@ def CreateHistoriBuku(config, oRegisterNasabahRekening):
 
 def CreateRegisterPassbook(config, oRegisterNasabahRekening):
   oRegisterpassbook = config.CreatePObject('REGISTERPASSBOOK')
-  oRegisterpassbook.Baris_cetak_terakhir = 0
-  oRegisterpassbook.halaman_cetak_terakhir = 1
+  oRegisterpassbook.Baris_Cetak_Terakhir = 0
+  oRegisterpassbook.Halaman_Cetak_Terakhir = 1
   #Id_Register
   #ID_Transaksi
-  oRegisterpassbook.is_baru_register = 'T'
+  oRegisterpassbook.Is_Baru_Register = 'T'
   #LRekeningDPLK
   #LTransaksiTerakhir
   oRegisterpassbook.no_rekening = oRegisterNasabahRekening.no_rekening
-  oRegisterpassbook.nomor_buku_terakhir = 1
+  oRegisterpassbook.Nomor_Buku_Terakhir = 1
   #oRegisterpassbook.Tanggal_Cetak_Terakhir = config.Now()
   
 def CreateRekeningDPLK(config, oRegisterNasabahRekening, kode_paket_investasi, proporsi, no_urut):
@@ -251,6 +252,7 @@ def CreateRekeningDPLK(config, oRegisterNasabahRekening, kode_paket_investasi, p
   oRekeningDPLK.pct_alokasi = proporsi
   oRekeningDPLK.SRR_AKHIR = 0.0
   oRekeningDPLK.TGL_SRR_AKHIR = moduleapi.DateTimeTupleToFloat(config, oRegisterNasabahRekening.tanggal_register)
+  oRekeningDPLK.is_deleted == 'F'
   
   return oRekeningDPLK
 
@@ -328,7 +330,7 @@ def CreateRekeningAutoDebet(config, oRegisterNasabahRekening, oRegisterDPLK):
 #  oRekeningAsuransi.besar_premi = parameter.FirstRecord.besar_premi
 #  oRekeningAsuransi.tgl_akseptasi = parameter.FirstRecord.tgl_akseptasi
 
-def CreateRegisterAsuransi(config, oRegisterNasabahRekening, oRekeningDPLK):
+def CreateRegisterAsuransi(config, oRegisterNasabahRekening):
   oRegisterAsuransi = config.CreatePObject('RegisterAsuransi')
   #alasan_berhenti
   oRegisterAsuransi.jenis_transaksi = 'R'
@@ -375,8 +377,12 @@ def DAFScriptMain(config, parameter, returnpacket):
     
     oRekInvDPLK = CreateRekInvDPLK(config, oRegisterNasabahRekening)
     CreateAllRekSumber(config, oRegisterNasabahRekening, oRekInvDPLK)
-    CreateHistoriBuku(config, oRegisterNasabahRekening)
-    CreateRegisterPassbook(config, oRegisterNasabahRekening)
+    #CreateRegisterPassbook(config, oRegisterNasabahRekening)
+    #CreateHistoriBuku(config, oRegisterNasabahRekening)
+    #if oRegisterNasabahRekening.auto_debet == 'T':
+    #  CreateRekeningAutoDebet(config, oRegisterNasabahRekening, oRekeningDPLK)
+    if oRegisterNasabahRekening.ikut_asuransi == 'T':
+      CreateRegisterAsuransi(config, oRegisterNasabahRekening)
     
     sSQL = "SELECT * FROM RegisterNasabahRekPaket WHERE registernr_id = %s" \
       % (oRegisterNasabahRekening.registernr_id)
@@ -386,10 +392,6 @@ def DAFScriptMain(config, parameter, returnpacket):
     #import rpdb2; rpdb2.start_embedded_debugger('solusi', True, True)
     while not rSQL.Eof:
       oRekeningDPLK = CreateRekeningDPLK(config, oRegisterNasabahRekening, rSQL.kode_paket_investasi, rSQL.proporsi, str(i))      
-      #if oRegisterNasabahRekening.auto_debet == 'T':
-      #  CreateRekeningAutoDebet(config, oRegisterNasabahRekening, oRekeningDPLK)
-      if oRegisterNasabahRekening.ikut_asuransi == 'T':
-        CreateRegisterAsuransi(config, oRegisterNasabahRekening, oRekeningDPLK)
       CreateDetailAkumPengembangan(config, oNasabahDPLK.no_peserta, oRekeningDPLK.kode_paket_investasi)
       i += 1
       rSQL.Next()

@@ -11,13 +11,13 @@ object:rmn::Menu<
       Name='mnuNew'
       Caption='Registrasi Peserta dan Rekening Baru...'
       OnClick='mnuNewClick'
-      AllowedGroups='BOD'
+      AllowedGroups='OPR'
       StringTag='fRegistrasi_New'
     >, object:rmn::MenuItem<
       Name='mnuNewRekInv'
       Caption='Registrasi Rekening Baru dari Peserta Terdaftar...'
       OnClick='mnuNewClick'
-      AllowedGroups='BOD'
+      AllowedGroups='OPR'
       StringTag='fRegistrasi_New'
       NumberTag=1
     >, object:rmn::MenuItem<
@@ -28,31 +28,31 @@ object:rmn::Menu<
           Name='mnuEditPindahPaketInvestasi'
           Caption='Pindah Paket Investasi...'
           OnClick='displayWithDataSpecific'
-          AllowedGroups='BOD'
+          AllowedGroups='OPR'
           StringTag='P'
         >, object:rmn::MenuItem<
           Name='mnuEditIuran'
           Caption='Koreksi Iuran Peserta / Pemberi Kerja...'
           OnClick='displayWithDataSpecific'
-          AllowedGroups='BOD;CS;PIC'
+          AllowedGroups='OPR'
           StringTag='I'
         >, object:rmn::MenuItem<
           Caption='-'
-          AllowedGroups='BOD;CS;PIC'
+          AllowedGroups='OPR'
         >, object:rmn::MenuItem<
           Name='mnuEdit'
           Caption='Koreksi Data Lain-lain...'
           OnClick='displayWithDataSpecific'
-          AllowedGroups='BOD;CS;PIC'
+          AllowedGroups='OPR'
           StringTag='X'
         >
       }
-      AllowedGroups='BOD;CS;PIC'
+      AllowedGroups='OPR'
     >, object:rmn::MenuItem<
       Name='mnuView'
       Caption='Lihat Detil Data Rekening'
       OnClick='displayWithData'
-      AllowedGroups='MRKT;BOD;CC;CS;SPV'
+      AllowedGroups='OPR;SPV'
       StringTag='view'
     >, object:rmn::MenuItem<
       Caption='-'
@@ -60,32 +60,23 @@ object:rmn::Menu<
       Name='mnuHistori'
       Caption='Lihat Riwayat Perubahan CIF'
       OnClick='mnuHistoriClick'
-      AllowedGroups='MRKT;BOD;SPV;CS;PIC'
+      AllowedGroups='OPR;SPV'
       StringTag='fHistoriRekening'
     >, object:rmn::MenuItem<
       Name='mnuHistoriTransaksi'
       Caption='Lihat Riwayat Transaksi'
       OnClick='mnuHistoriClick'
-      AllowedGroups='MRKT;BOD;SPV;CS;PIC'
+      AllowedGroups='OPR;SPV'
       StringTag='fHistoriTransaksi'
-    >, object:rmn::MenuItem<
-      Caption='-'
-    >, object:rmn::MenuItem<
-      Name='mnuDelete'
-      Caption='Hapus Rekening'
-      OnClick='mnuDeleteClick'
-      AllowedGroups='root'
-    >, object:rmn::MenuItem<
-      Caption='-'
     >, object:rmn::MenuItem<
       Caption='-'
     >, object:rmn::MenuItem<
       Name='mnuStatemen'
       Caption='Statemen rekening...'
       OnClick='mnuStatemenClick'
-      AllowedGroups='BOD;MRKT;CC;CS;PIC'
+      AllowedGroups='OPR;SPV'
     >
   }
   MenuType=mtPopupMenu
-  AllowedGroups='MRKT;BOD;CC;CS'
+  AllowedGroups='OPR;SPV'
 >

@@ -13,10 +13,11 @@ def FormEndSetData(uideflist, auiname, apobjconst):
     if auiname == 'uipMaster':
       no_peserta = uiCalled.ActiveRecord.no_peserta
     else:
-      no_peserta = uiCalled.ActiveRecord.GetFieldByName('LNasabahDPLK.no_peserta')
+      no_peserta = uiCalled.ActiveRecord.GetFieldByName('LNasabahDPLK.no_peserta')      
+    
     moduleapi.IsPesertaAktif(config, no_peserta)
-
     moduleapi.CheckRegCIFRestriction(uideflist, auiname, apobjconst)
+    
     if uideflist.uipMaster.Dataset.RecordCount > 0:
       rec = uideflist.uipMaster.ActiveRecord
       moduleapi.CheckRegisterCIFUniq(config, rec.no_peserta, 'Z')

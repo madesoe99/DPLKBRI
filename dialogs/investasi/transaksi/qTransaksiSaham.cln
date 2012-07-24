@@ -4,7 +4,8 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rtf::Form<
+>
+object:rtf::Form<
   MainContainer=$CONTAINERS['DualSplit']
   Caption='Daftar Transaksi Saham'
   State=rsMaximized
@@ -13,9 +14,13 @@ document <
   Width=800
   Height=600
   OnFormShow='FormShow'
-  UIParts={object:rtf::PClassUI<
+  UIParts={
+    object:rtf::PClassUI<
       Name='uipNoData'
-    >}Containers={object:rtf::Query<
+    >
+  }
+  Containers={
+    object:rtf::Query<
       Name='qTransaksiSaham'
       Width=800
       Height=539
@@ -35,7 +40,6 @@ document <
         '('#13#10,
         '  tgl_transaksi,'#13#10,
         '  nama_investasi,'#13#10,
-        '  LTransactionBatch.no_batch,'#13#10,
         '  mutasi_debet,'#13#10,
         '  mutasi_kredit,'#13#10,
         '  clsfTransaksiInvestasi,'#13#10,
@@ -50,7 +54,8 @@ document <
         '  self'#13#10,
         ') then order by ID;']
       WindowSize=20
-      Columns={object:rtf::QueryColumn<
+      Columns={
+        object:rtf::QueryColumn<
           FieldName='TransaksiInvestasi.id_investasi'
           Width=70
           Caption='id Saham'
@@ -58,10 +63,6 @@ document <
           FieldName='TransaksiInvestasi.tgl_transaksi'
           Width=130
           Caption='Tanggal Transaksi'
-        >, object:rtf::QueryColumn<
-          FieldName='TransaksiInvestasi.no_batch'
-          Width=130
-          Caption='Nomor Batch'
         >, object:rtf::QueryColumn<
           FieldName='TransaksiInvestasi.nama_investasi'
           Width=200
@@ -94,50 +95,60 @@ document <
           FieldName='TransaksiInvestasi.terminal_id'
           Width=100
           Caption='ID Terminal'
-        >}EnableColumns=true
+        >
+      }
+      EnableColumns=true
     >, object:rtf::Panel<
-      Elements={object:rtf::FieldUIElmtSetting<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
           Name='dari_tanggal'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='timestamp'
           DataLength=20
         >, object:rtf::FieldUIElmtSetting<
           Name='hingga_tanggal'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='timestamp'
           DataLength=20
         >, object:rtf::FieldUIElmtSetting<
           Name='true_hingga_tanggal'
           Hidden=true
+          ReadOnlyControl=false
           DataTypeName='timestamp'
           DataLength=20
-        >}Name='pFilter'
+        >
+      }
+      Name='pFilter'
       Width=800
       Height=60
       Bordered=true
       UIPart=$UIPARTS['uipNoData']
-      Controls={*object:rtf::DBDateEdit<
+      Controls={
+        *object:rtf::DBDateEdit<
           Name='dari_tanggal'
           Top=20
           Left=20
-          Color=0
           ControlCaption='Dari Tanggal'
         >, *object:rtf::DBDateEdit<
           Name='hingga_tanggal'
           Layout=clNextSide
           Top=20
           Left=235
-          Color=0
           ControlCaption='Hingga Tanggal (termasuk)'
         >, object:rtf::Button<
           Name='btnShow'
           Layout=clNextSide
           Top=20
           Left=504
-          Color=0
           ControlCaption=''
           Caption='T&ampilkan'
           Default=true
           OnClick='btnShowClick'
-        >}EqualCaptionWidth=75
+        >
+      }
+      EqualCaptionWidth=75
       ControlLeftMargin=20
       ControlTopMargin=20
       DefaultControlHeight=21
@@ -149,4 +160,6 @@ document <
       Height=600
       Container1=$CONTAINERS['pFilter']
       Container2=$CONTAINERS['qTransaksiSaham']
-    >}>
+    >
+  }
+>

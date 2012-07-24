@@ -11,29 +11,29 @@ object:rmn::Menu<
       Name='mnuNew'
       Caption='Registrasi Korporat Baru...'
       OnClick='ShowForm'
-      AllowedGroups='MRKT'
+      AllowedGroups='OPR'
       StringTag='new'
     >, object:rmn::MenuItem<
       Name='mnuEdit'
       Caption='Koreksi Register Korporat...'
       OnClick='ShowForm'
-      AllowedGroups='MRKT'
+      AllowedGroups='OPR'
       StringTag='edit'
     >, object:rmn::MenuItem<
       Name='mnuView'
       Caption='Lihat Detil Hasil Register Korporat...'
       OnClick='ShowForm'
-      AllowedGroups='MRKT,BOD,ADM'
+      AllowedGroups='OPR;SPV'
       StringTag='view'
       NumberTag=1
     >, object:rmn::MenuItem<
       Caption='-'
-      AllowedGroups='MRKT'
+      AllowedGroups='OPR;SPV'
     >, object:rmn::MenuItem<
       Name='mnuAuth'
       Caption='Otorisasi Hasil Register Korporat...'
       OnClick='ShowForm'
-      AllowedGroups='MRKT;SPV'
+      AllowedGroups='SPV'
       StringTag='auth'
     >
   }

@@ -43,12 +43,14 @@ object:rtf::Form<
         '['#13#10,
         '  (1 = :isAdmin or LUserApp.branch_code = :branch_code)'#13#10,
         '  AND kode_jenis_registercif <> ''U'''#13#10,
+        '  AND kode_jenis_registercif <> ''N'''#13#10,
         ']'#13#10,
         '('#13#10,
         '  no_referensi,'#13#10,
         '  LUserApp.branch_code,'#13#10,
         '  no_peserta,'#13#10,
         '  LNasabahDPLK.nama_lengkap as nama_lengkap,'#13#10,
+        '  no_rekening,'#13#10,
         '  LJenisRegisterCIF.kode_jenis_registercif as kode_jenis_registercif,'#13#10,
         '  LJenisRegisterCIF.nama_jenis_registercif as nama_jenis_registercif,'#13#10,
         '  keterangan,'#13#10,
@@ -77,8 +79,8 @@ object:rtf::Form<
           Caption='Tanggal Register'
         >, object:rtf::QueryColumn<
           FieldName='RegisterCIF.kode_jenis_registercif'
-          Width=100
-          Caption='Kode Register CIF'
+          Width=60
+          Caption='Kode CIF'
           UseCustomColor=true
           Color=12695295
         >, object:rtf::QueryColumn<
@@ -93,6 +95,10 @@ object:rtf::Form<
           FieldName='RegisterCIF.nama_lengkap'
           Width=200
           Caption='Nama Lengkap'
+        >, object:rtf::QueryColumn<
+          FieldName='RegisterCIF.no_rekening'
+          Width=100
+          Caption='Nomor Rekening'
         >, object:rtf::QueryColumn<
           FieldName='RegisterCIF.keterangan'
           Width=200

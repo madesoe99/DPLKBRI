@@ -11,39 +11,39 @@ object:rmn::Menu<
       Name='mnuNew'
       Caption='Registrasi Peserta Baru...'
       OnClick='mnuNewClick'
-      AllowedGroups='BOD'
+      AllowedGroups='OPR'
       StringTag='fRegistrasi_New'
     >, object:rmn::MenuItem<
       Name='mnuEdit'
       Caption='Koreksi Register Peserta...'
       OnClick='displayWithData'
-      AllowedGroups='MRKT;CS'
+      AllowedGroups='OPR'
       StringTag='edit'
     >, object:rmn::MenuItem<
       Name='mnuView'
       Caption='Lihat Detil Hasil Register Peserta...'
       OnClick='displayWithData'
-      AllowedGroups='MRKT;Admin;Root;CS;BO;SPV'
+      AllowedGroups='OPR;SPV'
       StringTag='view'
     >, object:rmn::MenuItem<
       Caption='-'
-      AllowedGroups='MRKT;Admin;Root;BO'
+      AllowedGroups='OPR;SPV'
     >, object:rmn::MenuItem<
       Name='mnuPayment'
       Caption='Bayar Biaya Pendaftaran dan Iuran Pertama...'
       OnClick='mnuPaymentClick'
-      AllowedGroups='Teller'
+      AllowedGroups='OPR'
     >, object:rmn::MenuItem<
       Caption='-'
-      AllowedGroups='MRKT;Admin;Root'
+      AllowedGroups='OPR;SPV'
     >, object:rmn::MenuItem<
       Name='mnuAuth'
       Caption='Otorisasi Hasil Register Peserta...'
       OnClick='displayWithData'
-      AllowedGroups='Teller;CS;SPV'
+      AllowedGroups='SPV'
       StringTag='auth'
     >
   }
   MenuType=mtPopupMenu
-  AllowedGroups='MRKT;BOD;CC;CS;SPV'
+  AllowedGroups='OPR;SPV'
 >

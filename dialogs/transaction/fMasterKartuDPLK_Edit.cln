@@ -1,0 +1,233 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['dualsplit1']
+  Caption='Master Kartu DPLK'
+  Left=50
+  Top=50
+  Width=500
+  Height=320
+  UIParts={
+    object:rtf::PClassUI<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='no_rekening'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >
+      }
+      Name='uipMasterKartuDPLK'
+      ClassTypeName='MasterKartuDPLK'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLK'
+          RequiredOption=roAlwaysRequired
+          Hidden=false
+          ReadOnlyControl=false
+          ClassTypeName='NasabahDPLK'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLK.no_peserta'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsKey=true
+              KeyOrDisplayName='no_peserta'
+              FinalDisplayFieldName='no_peserta'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLK.no_peserta'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsDisplay=true
+              KeyOrDisplayName='no_peserta'
+              FinalDisplayFieldName='no_peserta'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLK.nama_lengkap'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=100
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_lengkap'
+              FinalDisplayFieldName='nama_lengkap'
+            >
+          }
+          Restrictions=''
+          OQLText=['SELECT FROM NasabahDPLK ('#13#10,
+            '  no_peserta,'#13#10,
+            '  nama_lengkap,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY no_peserta;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LNasabahDPLK'
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LRekeningDPLK'
+          RequiredOption=roAlwaysRequired
+          Hidden=false
+          ReadOnlyControl=false
+          ClassTypeName='RekInvDPLK'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LRekeningDPLK.no_rekening'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=20
+              UsedAsKey=true
+              KeyOrDisplayName='no_rekening'
+              FinalDisplayFieldName='no_rekening'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LRekeningDPLK.no_rekening'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=20
+              UsedAsDisplay=true
+              KeyOrDisplayName='no_rekening'
+              FinalDisplayFieldName='no_rekening'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LRekeningDPLK.tgl_akseptasi'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='TIMESTAMP'
+              DataLength=0
+              UsedAsDisplay=true
+              KeyOrDisplayName='tgl_akseptasi'
+              FinalDisplayFieldName='tgl_akseptasi'
+            >
+          }
+          Restrictions='LNasabahDPLK|LNasabahDPLK'
+          OQLText=['SELECT FROM RekInvDPLK ['#13#10,
+            '  LNasabahDPLK = :LNasabahDPLK'#13#10,
+            ']('#13#10,
+            '  no_rekening,'#13#10,
+            '  tgl_akseptasi,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY no_rekening;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LRekeningDPLK'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='TGL_CETAK'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='TGL_KIRIM'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >
+      }
+      Name='pMain'
+      Width=481
+      Height=153
+      Bordered=true
+      UIPart=$UIPARTS['uipMasterKartuDPLK']
+      Controls={
+        *object:rtf::DBLookupEdit<
+          Name='LNasabahDPLK'
+          Top=24
+          Left=20
+          Width=121
+          Height=21
+          ControlCaption='Nasabah'
+          FieldName='LNasabahDPLK.no_peserta'
+          LookupField='LNasabahDPLK.nama_lengkap'
+          DisplayLookupField=true
+          DisplayLookupColor=-16777192
+          DisplayLookupWidth=200
+        >, *object:rtf::DBLookupEdit<
+          Name='LRekeningDPLK'
+          Top=52
+          Left=20
+          Width=121
+          Height=21
+          ControlCaption='Rekening DPLK'
+          FieldName='LRekeningDPLK.no_rekening'
+          LookupField='LRekeningDPLK.tgl_akseptasi'
+          DisplayLookupField=true
+          DisplayLookupColor=-16777192
+          DisplayLookupWidth=200
+        >, *object:rtf::DBDateEdit<
+          Name='TGL_CETAK'
+          Top=80
+          Left=20
+          ControlCaption='Tgl. Cetak Kartu'
+        >, *object:rtf::DBDateEdit<
+          Name='TGL_KIRIM'
+          Top=108
+          Left=20
+          ControlCaption='Tgl. Kirim Kartu'
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=24
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::Panel<
+      Name='pButton'
+      Width=320
+      Height=40
+      Controls={
+        object:rtf::Button<
+          Name='btnSave'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          ControlCaption=''
+          Caption='&Simpan'
+          OnClick='btnSaveOnClick'
+        >, object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          ControlCaption=''
+          Caption='Batal/&Tutup'
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='dualsplit1'
+      Width=240
+      Height=96
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['pMain']
+      InversedAlign=true
+    >
+  }
+  FormClassName='fMasterKartuDPLK'
+>

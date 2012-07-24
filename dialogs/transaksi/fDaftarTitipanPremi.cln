@@ -112,8 +112,12 @@ object:rtf::Form<
           Width=100
           Caption='Nomor Rekening'
         >, object:rtf::QueryColumn<
+          FieldName='TitipanPremi.nama_lengkap'
+          Width=120
+          Caption='Nama Lengkap'
+        >, object:rtf::QueryColumn<
           FieldName='TitipanPremi.keterangan'
-          Width=500
+          Width=300
           Caption='Keterangan'
         >
       }

@@ -4,6 +4,42 @@ import com.ihsan.util.modman as modman
 #DEBUG MODE
 #import rpdb2;rpdb2.start_embedded_debugger('haryo',True,True)
 
+def SetKolektibilitasAsuransi(config, oRekInv, oTransaksi):
+  #ambil info besar premi di rekening asuransi
+  registerCIF_Auth = modman.getModule(config, 'scripts#transaction.registercif_auth')
+  oRekAsuransi = registerCIF_Auth.GetRekAsuransiByRekInv(config, oRekInv)
+
+  if oRekAsuransi != None:
+    selisihNominal = oTransaksi.besar_premi - oRekAsuransi.besar_premi
+  
+    if selisihNominal > 0.0:
+      #ada kelebihan nominal dari besar premi yang dibayarkan
+      #cek nominal kewajiban asuransi
+      if oRekInv.kewajiban_asuransi > 0.0:
+        #masih ada sisa kewajiban sebelumnya
+        sisaKewajiban = oRekInv.kewajiban_asuransi - selisihNominal
+  
+        #cek sisa kewajiban
+        if sisaKewajiban > 0.0:
+          #masih ada sisa yang belum terlunasi, jadikan sbg kewajiban yang baru
+          oRekInv.kewajiban_asuransi = sisaKewajiban          
+        else: 
+          #sisa terlunasi semua, jika ada kelebihan dianggap sbg kelebihan
+          #bayar premi peserta
+          oRekInv.kewajiban_asuransi = 0.0
+  
+      #else: tidak ada sisa kewajiban sebelumnya, selisihNominal dianggap
+      #kelebihan bayar premi peserta 
+  
+    if oRekInv.kewajiban_asuransi > 0.0:
+      #masih ada sisa kewajiban yang belum dilunasi 
+      oRekInv.collectivity_asuransi = 'F'
+    else:
+      #sisa kewajiban premi sudah dilunasi
+      oRekInv.collectivity_asuransi = 'T'
+
+  return 1
+
 def CreateBiayaTransaksi(config, classJenisBiaya, oTransaksi, nominalBiaya):
   oBiaya = config.CreatePObject(classJenisBiaya)
 
@@ -53,6 +89,11 @@ def ApproveOperation(config, oTransaksi):
     #set status iuran pendaftaran rekening investasi DPLK
     oRekInv.status_biaya_daftar = 'T'
   #--end Iuran Pendaftaran
+
+  elif oTransaksi.IsA("TitipanPremi"):
+    #operasi yang terkait dengan premi
+    SetKolektibilitasAsuransi(config, oRekInv, oTransaksi)
+  #--end titipan premi
 
   elif oTransaksi.IsA("IuranPeserta"):
     #tambahkan mutasi dana di RekeningInvDPLK
@@ -321,15 +362,82 @@ def ApproveOperation(config, oTransaksi):
     #checking status asuransi
     if oRekInv.status_asuransi == 'T':
       #peserta ikut asuransi, tutup sekalian keikutsertaan asuransi
-      registerCIF_Auth = modman.getModule(config, 'moduleapi')
+      registerCIF_Auth = modman.getModule(config, 'scripts#transaction.registercif_auth')
       oRekAsuransi = registerCIF_Auth.GetRekAsuransiByRekInv(config, oRekInv)
       registerCIF_Auth.CreateHistAsuransi(config, oRekAsuransi, 'TarikManfaat', \
         'Telah memasuki usia pensiun', 'Penutupan bersamaan dengan pengambilan manfaat')
       registerCIF_Auth.UpdateStatusAsuransiOut(config, oRekAsuransi)
     #--end checking status asuransi
-    
   #--end PengambilanManfaat
   
+  elif oTransaksi.IsA("PengembalianDana"):
+    #buat transaksi biaya pencairan
+    oBiayaAdmTransaksi = CreateBiayaTransaksi(config, 'BiayaAdmTransaksi', oTransaksi, \
+      oTransaksi.biaya_pencairan)
+    oBiayaAdmTransaksi.isPindahPaket = 'F'
+
+    #buat transaksi biaya pengelolaan
+    oBiayaPengelolaan = CreateBiayaTransaksi(config, 'BiayaPengelolaanDana', oTransaksi, \
+      oTransaksi.biaya_pengelolaan)
+    
+    #buat transaksi biaya administrasi
+    oBiayaAdmTahunan = CreateBiayaTransaksi(config, 'BiayaAdmTahunan', oTransaksi, \
+      oTransaksi.biaya_administrasi)
+    
+    #mutasi akan di set ulang dengan saldo rekening investasi DPLK
+    oTransaksi.mutasi_iuran_pk = -oRekInv.akum_iuran_pk
+    oTransaksi.mutasi_iuran_pst = -oRekInv.akum_iuran_pst
+    oTransaksi.mutasi_iuran_tmb = -oRekInv.akum_iuran_tmb
+    oTransaksi.mutasi_psl = -oRekInv.akum_psl
+    oTransaksi.mutasi_pmb_pk = -oRekInv.akum_pmb_pk
+    oTransaksi.mutasi_pmb_pst = -oRekInv.akum_pmb_pst
+    oTransaksi.mutasi_pmb_tmb = -oRekInv.akum_pmb_tmb
+    oTransaksi.mutasi_pmb_psl = -oRekInv.akum_pmb_psl
+
+    #nihilkan saldo RekeningInvDPLK
+    oRekInv.akum_iuran_pk = 0.0
+    oRekInv.akum_iuran_pst = 0.0
+    oRekInv.akum_iuran_tmb = 0.0
+    oRekInv.akum_psl = 0.0
+    oRekInv.akum_pmb_pk = 0.0
+    oRekInv.akum_pmb_pst = 0.0
+    oRekInv.akum_pmb_tmb = 0.0
+    oRekInv.akum_pmb_psl = 0.0
+    
+    #nihilkan saldo tiap RekeningDPLK
+    Ls_DetilTransaksi = oTransaksi.Ls_DetilTransaksiDPLK
+    while not Ls_DetilTransaksi.EndOfList:
+      oDetilTransaksi = Ls_DetilTransaksi.CurrentElement
+      
+      oRekDPLK = config.CreatePObjImplProxy('RekeningDPLK')
+      oRekDPLK.Key = oDetilTransaksi.nomor_rekening
+      oRekDPLK.akum_iuran_pk = 0.0
+      oRekDPLK.akum_iuran_pst = 0.0
+      oRekDPLK.akum_iuran_tmb = 0.0
+      oRekDPLK.akum_psl = 0.0
+      oRekDPLK.akum_pmb_pk = 0.0
+      oRekDPLK.akum_pmb_pst = 0.0
+      oRekDPLK.akum_pmb_tmb = 0.0
+      oRekDPLK.akum_pmb_psl = 0.0
+      
+      #update mutasi transaksi DetilTransaksi
+      oDetilTransaksi.mutasi_iuran_pk = (oRekDPLK.pct_alokasi / 100.0) * oTransaksi.mutasi_iuran_pk  
+      oDetilTransaksi.mutasi_iuran_pst = (oRekDPLK.pct_alokasi / 100.0) * oTransaksi.mutasi_iuran_pst  
+      oDetilTransaksi.mutasi_iuran_tmb = (oRekDPLK.pct_alokasi / 100.0) * oTransaksi.mutasi_iuran_tmb
+      oDetilTransaksi.mutasi_psl = (oRekDPLK.pct_alokasi / 100.0) * oTransaksi.mutasi_psl
+      oDetilTransaksi.mutasi_pmb_pk = (oRekDPLK.pct_alokasi / 100.0) * oTransaksi.mutasi_pmb_pk
+      oDetilTransaksi.mutasi_pmb_pst = (oRekDPLK.pct_alokasi / 100.0) * oTransaksi.mutasi_pmb_pst 
+      oDetilTransaksi.mutasi_pmb_tmb = (oRekDPLK.pct_alokasi / 100.0) * oTransaksi.mutasi_pmb_tmb 
+      oDetilTransaksi.mutasi_pmb_psl = (oRekDPLK.pct_alokasi / 100.0) * oTransaksi.mutasi_pmb_psl 
+
+      Ls_DetilTransaksi.Next()
+    #--
+    
+    #penutupan RekeningInvDPLK, samakan tgl tutup dengan tgl transaksi
+    oRekInv.status_DPLK = 'N'
+    oRekInv.tgl_tutup = oTransaksi.tgl_transaksi
+  #--end PengembalianDana
+
   #set status committed true dan data otorisasi
   oTransaksi.isCommitted = 'T'
   oTransaksi.user_id_auth = config.SecurityContext.UserID

@@ -1,0 +1,29 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipRekeningAnuitas'
+      PClassName='RekeningAnuitas'
+      LoadedFieldList='tanggal_auth;auth_user_id;auth_terminal_id;no_referensi;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;LRekeningDPLK.no_rekening;LRekeningDPLK.no_rekening;tanggal_register;keterangan;user_id;terminal_id;no_rekening_anuitas;nama_asuransi;no_polis_anuitas;tgl_pembelian_anuitas;nominal_anuitas'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLK'
+          ClassTypeName='NasabahDPLK'
+          FieldNames='no_peserta;no_peserta;nama_lengkap'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LRekeningDPLK'
+          ClassTypeName='RekInvDPLK'
+          FieldNames='no_rekening;no_rekening'
+        >
+      }
+      Mode=imSingleRow
+    >
+  }
+  OnSetDataEx='FormOnSetDataEx'
+>

@@ -1,7 +1,13 @@
 import sys, string
-sys.path.append('c:/dafapp/dplk07/script_modules')
-import moduleapi, transaksiapi
+import com.ihsan.util.modman as modman
+import com.ihsan.foundation.appserver as appserver
 
+modman.loadStdModules(globals(),
+  [
+    "moduleapi",
+    "transaksiapi"
+  ]
+)
 
 def Terbilang(x):
 
@@ -395,4 +401,3 @@ def DAFScriptMain(config, parameter, returnpacket):
   CreateReport(config, parameter, returnpacket)
 
   return 1
-

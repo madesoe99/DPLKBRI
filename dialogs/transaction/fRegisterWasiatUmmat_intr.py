@@ -4,7 +4,6 @@ def SetToCenterForm(prevForm, currForm):
 
 def SetControlsForView(form):
   form.GetPanelByName('pData').SetAllControlsReadOnly()
-  form.GetPanelByName('pDataTransaksi').SetAllControlsReadOnly()
   form.GetControlByName('pButton.btnOK').Caption = '&Setujui'
   form.GetControlByName('pButton.btnOK').Enabled = 0
   form.GetControlByName('pButton.btnOK').Default = 0
@@ -17,7 +16,6 @@ def SetControlsForView(form):
 
 def SetControlsForAuth(form):
   form.GetPanelByName('pData').SetAllControlsReadOnly()
-  form.GetPanelByName('pDataTransaksi').SetAllControlsReadOnly()
   form.GetControlByName('pButton.btnOK').Caption = '&Setujui'
   form.GetControlByName('pButton.btnCancel').Caption = '&Tolak'
   form.GetControlByName('pButton.btnClose').Visible = 1
@@ -33,7 +31,7 @@ def FormShow(form, parameter):
 
   if uipRegisterCIF.mode in ['view','auth']:
     if uipRegisterCIF.jenis_transaksi == 'O':
-      form.GetControlByName('pDataTransaksi.alasan_berhenti').Visible = 1
+      form.GetPanelByName('pData').GetControlByName('alasan_berhenti').Visible = 1
       form.Caption = 'Penutupan Asuransi'
 
     if uipRegisterCIF.mode == 'view':
@@ -51,21 +49,22 @@ def FormShow(form, parameter):
     if uipRegisterCIF.mode == 'new':
       uipRegisterCIF.SetFieldValue('LNasabahDPLK.no_peserta',uipMaster.no_peserta)
       uipRegisterCIF.SetFieldValue('LNasabahDPLK.nama_lengkap',uipMaster.GetFieldValue('LNasabahDPLK.nama_lengkap'))
+      uipRegisterCIF.SetFieldValue('LRekeningDPLK.no_rekening',uipMaster.no_rekening)
 
       if uipMaster.status_asuransi == 'T':
         # sudah Asuransi, transaksi berhenti Asuransi
-        form.GetControlByName('pDataTransaksi.alasan_berhenti').Visible = 1
+        form.GetPanelByName('pData').GetControlByName('alasan_berhenti').Visible = 1
         form.Caption = 'Penutupan Asuransi'
         uipRegisterCIF.jenis_transaksi = 'O'
       else:
         uipRegisterCIF.jenis_transaksi = 'R'
     else:
       #mode edit
-      form.GetControlByName('pDataTransaksi.no_referensi').ReadOnly = 1
-      form.GetControlByName('pDataTransaksi.no_referensi').Color = -2147483624
+      form.GetPanelByName('pData').GetControlByName('no_referensi').ReadOnly = 1
+      form.GetPanelByName('pData').GetControlByName('no_referensi').Color = -2147483624
 
       if uipRegisterCIF.jenis_transaksi == 'O':
-        form.GetControlByName('pDataTransaksi.alasan_berhenti').Visible = 1
+        form.GetPanelByName('pData').GetControlByName('alasan_berhenti').Visible = 1
         form.Caption = 'Penutupan Asuransi'
 
 def btnOKClick(sender):
@@ -86,11 +85,11 @@ def btnOKClick(sender):
     sender.ExitAction = 1
   elif uipRegisterCIF.mode == 'auth':
     #mode auth, go otorisasi
-    keyobjconst = 'PObj:RegisterWasiatUmmat#REGISTERCIF_ID=%d' \
+    keyobjconst = 'PObj:RegisterAsuransi#REGISTERCIF_ID=%d' \
       % (uipRegisterCIF.registercif_id)
 
     aform = app.GetFormWithData('transaction/fRegisterWasiatUmmat_preauth',\
-      'fRegisterWasiatUmmat_preauth',0,keyobjconst,'uipRegisterWasiatUmmat')
+      'fRegisterWasiatUmmat_preauth',0,keyobjconst,'uipRegisterAsuransi')
     #SetToCenterForm(form, aform.FormObject)
     if aform.Show() == 1:
       # eaQuitOK
@@ -114,3 +113,16 @@ def btnCancelClick(sender):
   else:
     sender.ExitAction = 2
 
+
+
+def jenis_transaksiOnChange(sender):
+  # procedure(sender: TrtfDBComboBox)
+  form = sender.OwnerForm
+  app = form.ClientApplication
+  uipRegisterCIF = form.GetUIPartByName('uipRegisterCIF')
+  
+  if sender.Values[sender.ItemIndex] == 'R':
+    uipRegisterCIF.alasan_berhenti = None
+    form.GetPanelByName('pData').GetControlByName('alasan_berhenti').Visible = 0
+  else:
+    form.GetPanelByName('pData').GetControlByName('alasan_berhenti').Visible = 1

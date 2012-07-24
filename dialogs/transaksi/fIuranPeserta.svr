@@ -17,7 +17,7 @@ object:rpclass::TPClassUIDefList<
     >, object:rpclass::TPClassUIDef<
       Name='uipPeserta'
       PClassName='NasabahDPLK'
-      LoadedFieldList='no_peserta;nama_lengkap;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_email'
+      LoadedFieldList='kode_nasabah_corporate;no_peserta;nama_lengkap;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_email;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.nama_perusahaan'
       CustomLoadedFields={
         object:rpclass::TCustomLoadedField<
           Name='IuranPk'
@@ -27,6 +27,13 @@ object:rpclass::TPClassUIDefList<
           Name='IuranPst'
           DataTypeName='double'
           DataLength=20
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLKCorporate'
+          ClassTypeName='NasabahDPLKCorporate'
+          FieldNames='kode_nasabah_corporate;kode_nasabah_corporate;nama_perusahaan'
         >
       }
       Mode=imSingleRow
@@ -43,8 +50,13 @@ object:rpclass::TPClassUIDefList<
     >, object:rpclass::TPClassUIDef<
       Name='uipRekening'
       PClassName='RekInvDPLK'
-      LoadedFieldList='no_rekening;iuran_pk;iuran_pst'
+      LoadedFieldList='operation_code;no_rekening;iuran_pk;iuran_pst'
       Mode=imSingleRow
+    >, object:rpclass::TPClassUIDef<
+      Name='uipDetilRekening'
+      MasterUIName='uipRekening'
+      ListName='Ls_RekeningDPLK'
+      LoadedFieldList='nomor_rekening;kode_paket_investasi;pct_alokasi;nilai_unit;jml_unit;jml_unit_pk;jml_unit_psl;jml_unit_tmb;jml_unit_pst;is_deleted'
     >
   }
   OnSetDataEx='Form_OnSetDataEx'

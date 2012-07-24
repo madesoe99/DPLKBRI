@@ -38,6 +38,18 @@ def checkKota(config, nama_kota):
   
   return kode_kota
 
+def checkKecamatan(config, nama_kecamatan):
+  kode_kecamatan = ''
+  
+  strSQL = '''
+    SELECT kode_kecamatan FROM DaerahKecamatan WHERE nama_kecamatan = '%s'
+    ''' % (nama_kecamatan)
+  resSQL = config.CreateSQL(strSQL).RawResult
+  if not resSQL.Eof:
+    kode_kecamatan = resSQL.kode_kecamatan
+  
+  return kode_kecamatan
+
 def checkRekeningPeserta(config, no_rekening, no_peserta, nama_peserta):
   oRekInvDPLK = config.CreatePObjImplProxy('RekInvDPLK')
   oRekInvDPLK.Key = no_rekening
@@ -187,6 +199,9 @@ def UploadData(config,params,returns):
   _userInfo = config.SecurityContext.GetUserInfo()
   _sessDate = config.Now()
   _branch_code = _userInfo[4]
+  app = config.AppObject
+  app.ConCreate('out')
+  app.ConWriteln('mulai...')
 
   status = returns.CreateValues(
     ['sucsess',0],
@@ -242,7 +257,123 @@ def UploadData(config,params,returns):
       required_field = str(workBookXLS.GetCellValue(_checkLine,2)).strip()
       while required_field not in ['', 'None']:
         _trxCount += 1
+        
         CreateUCRegisterPeserta(config, workBookXLS, oUC, required_field, _checkLine, oUC.branch_code)
+        '''
+        workBookExcel = workBookXLS
+        _Line = _checkLine
+        tanggal_lahir = None
+        if not str(workBookExcel.GetCellValue(_Line,9)).strip() in ['', 'None']:
+          try:
+            tanggal_lahir = workBookExcel.GetCellValue(_Line,9)
+          except:
+            pass
+      
+        sSQL = """
+          INSERT INTO UPLOADCORPREGISTERPESERTA_TMP (
+            NAMA_LENGKAP,
+            NO_REFERENSI,
+            ALAMAT_JALAN,
+            ALAMAT_RTRW,
+            ALAMAT_PROPINSI,
+            ALAMAT_KOTA,
+            TEMPAT_LAHIR,
+            TANGGAL_LAHIR,
+            STATUS_PERKAWINAN,
+            JENIS_KELAMIN,
+            NPWP,
+            IBU_KANDUNG,
+            IS_AUTH,
+            IS_VALID) 
+          VALUES ('%s','%s','%s','%s','%s','%s','%s',%s,'%s','%s','%s','%s','%s','%s')""" \
+          % (\
+            required_field,\
+            str(workBookExcel.GetCellValue(_Line,3)).strip(),\
+            str(workBookExcel.GetCellValue(_Line,4)).strip(),\
+            str(workBookExcel.GetCellValue(_Line,5)).strip(),\
+            str(workBookExcel.GetCellValue(_Line,6)).strip(),\
+            str(workBookExcel.GetCellValue(_Line,7)).strip(),\
+            str(workBookExcel.GetCellValue(_Line,8)).strip(),\
+            tanggal_lahir,\
+            checkStatusPerkawinan(str(workBookExcel.GetCellValue(_Line,10)).strip()),\
+            checkJenisKelamin(str(workBookExcel.GetCellValue(_Line,11)).strip()),\
+            str(workBookExcel.GetCellValue(_Line,12)).strip(),\
+            str(workBookExcel.GetCellValue(_Line,13)).strip(),\
+            'F',\
+            'T')
+        config.ExecSQL(sSQL)
+        
+        sSQL = """
+          UPDATE 
+            UPLOADCORPREGISTERPESERTA_TMP 
+          SET 
+            UPLOADCORPREGISTERPESERTA_TMP.KODE_PROPINSI = DAERAHASAL.KODE_PROPINSI
+          FROM UPLOADCORPREGISTERPESERTA_TMP
+            INNER JOIN DAERAHASAL ON DAERAHASAL.NAMA_PROPINSI = UPLOADCORPREGISTERPESERTA_TMP.ALAMAT_PROPINSI"""
+        sSQl = """
+          UPDATE
+            UPLOADCORPREGISTERPESERTA_TMP t
+          SET
+            t.KODE_PROPINSI = x.KODE_PROPINSI
+          FROM
+            (SELECT KODE_PROPINSI FROM DAERAHASAL ) x
+          WHERE
+            x.NAMA_PROPINSI = t.ALAMAT_PROPINSI"""
+        config.ExecSQL(sSQL)
+        
+        sSQL = """
+          UPDATE 
+            UPLOADCORPREGISTERPESERTA_TMP 
+          SET 
+            UPLOADCORPREGISTERPESERTA_TMP.KODE_KOTA = DAERAHKOTA.KODE_KOTA
+          FROM UPLOADCORPREGISTERPESERTA_TMP
+            INNER JOIN DAERAHKOTA ON DAERAHKOTA.NAMA_KOTA = UPLOADCORPREGISTERPESERTA_TMP.ALAMAT_KOTA"""
+        sSQl = """
+          UPDATE
+            UPLOADCORPREGISTERPESERTA_TMP t
+          SET
+            t.KODE_KOTA = x.KODE_KOTA
+          FROM
+            (SELECT KODE_KOTA FROM DAERAHKOTA ) x
+          WHERE
+            x.NAMA_KOTA = t.ALAMAT_KOTA"""
+        config.ExecSQL(sSQL)
+        
+        sSQL = """
+          UPDATE 
+            UPLOADCORPREGISTERPESERTA_TMP
+          SET 
+            IS_VALID = 'F'
+            KETERANGAN = 'Data belum lengkap...'
+          WHERE
+            NO_REFERENSI = 'None'
+            OR ALAMAT_JALAN = 'None',
+            OR ALAMAT_RTRW = 'None',
+            OR KODE_PROPINSI = 'None',
+            OR KODE_KOTA = 'None',
+            OR TEMPAT_LAHIR = 'None',
+            OR TANGGAL_LAHIR IS NULL,
+            OR STATUS_PERKAWINAN = '',
+            OR JENIS_KELAMIN = '',
+            OR NPWP = 'None',
+            OR IBU_KANDUNG = 'None'"""
+        config.ExecSQL(sSQL)
+        '''
+        
+        if (_trxCount % 50) == 0:
+          app.ConWriteln('%d data diproses...' % _trxCount)
+        
+        _checkLine += 1
+        required_field = str(workBookXLS.GetCellValue(_checkLine,2)).strip()      
+    elif oUC.upload_type == 'K':
+      _startLine = 8
+      _checkLine = _startLine
+      required_field = str(workBookXLS.GetCellValue(_checkLine,2)).strip()
+      while required_field not in ['', 'None']:
+        _trxCount += 1
+        CreateUCKoreksiPeserta(config, workBookXLS, oUC, required_field, _checkLine)
+        if (_trxCount % 50) == 0:
+          app.ConWriteln('%d data diproses...' % _trxCount)
         
         _checkLine += 1
         required_field = str(workBookXLS.GetCellValue(_checkLine,2)).strip()      
@@ -253,6 +384,8 @@ def UploadData(config,params,returns):
       while required_field not in ['', 'None']:
         _trxCount += 1
         CreateUCAhliWaris(config, workBookXLS, oUC, required_field, _checkLine)
+        if (_trxCount % 50) == 0:
+          app.ConWriteln('%d data diproses...' % _trxCount)
         
         _checkLine += 1
         required_field = str(workBookXLS.GetCellValue(_checkLine,2)).strip()      
@@ -263,6 +396,8 @@ def UploadData(config,params,returns):
       while required_field not in ['', 'None']:
         _trxCount += 1
         CreateUCIuranPeserta(config, workBookXLS, oUC, required_field, _checkLine)
+        if (_trxCount % 50) == 0:
+          app.ConWriteln('%d data diproses...' % _trxCount)
         
         _checkLine += 1
         required_field = str(workBookXLS.GetCellValue(_checkLine,4)).strip()      
@@ -273,6 +408,8 @@ def UploadData(config,params,returns):
       while required_field not in ['', 'None']:
         _trxCount += 1
         CreateUCBiayaDaftar(config, workBookXLS, oUC, required_field, _checkLine)
+        if (_trxCount % 50) == 0:
+          app.ConWriteln('%d data diproses...' % _trxCount)
         
         _checkLine += 1
         required_field = str(workBookXLS.GetCellValue(_checkLine,4)).strip()      
@@ -369,6 +506,40 @@ def CreateUCRegisterPeserta(config, workBookExcel, oUploadCorporate, requiredFie
     oRP.no_peserta = no_peserta
     oRP.no_rekening = no_rekening
 #--end--CreateUCRegisterPeserta
+
+def CreateUCKoreksiPeserta(config, workBookExcel, oUploadCorporate, requiredField, _Line):
+  oKP = config.CreatePObject("UploadCorpKoreksiPeserta")
+  oKP.LUploadCorporate = oUploadCorporate
+  
+  oKP.no_peserta = checkExistingPeserta(config, \
+    str(workBookExcel.GetCellValue(_Line,2)).strip(), \
+    str(workBookExcel.GetCellValue(_Line,3)).strip())
+  oKP.no_referensi = str(workBookExcel.GetCellValue(_Line,4)).strip()
+  oKP.alamat_jalan = str(workBookExcel.GetCellValue(_Line,5)).strip()
+  oKP.alamat_jalan2 = str(workBookExcel.GetCellValue(_Line,6)).strip()
+  oKP.alamat_rtrw = str(workBookExcel.GetCellValue(_Line,7)).strip()
+  oKP.kode_propinsi = checkPropinsi(config, str(workBookExcel.GetCellValue(_Line,8)).strip())
+  oKP.kode_kota = checkKota(config, str(workBookExcel.GetCellValue(_Line,9)).strip())
+  oKP.kode_kecamatan = checkKecamatan(config, str(workBookExcel.GetCellValue(_Line,10)).strip())
+  oKP.alamat_kelurahan = str(workBookExcel.GetCellValue(_Line,11)).strip()
+  oKP.alamat_kode_pos = str(workBookExcel.GetCellValue(_Line,12)).strip()
+  oKP.alamat_telepon = str(workBookExcel.GetCellValue(_Line,13)).strip()
+  oKP.alamat_telepon2 = str(workBookExcel.GetCellValue(_Line,14)).strip()
+  oKP.is_auth = 'F'
+  oKP.is_valid = 'T'
+  
+  oKP.keterangan = ''
+  if oKP.no_referensi in ['', 'None']\
+    or oKP.alamat_jalan in ['', 'None']\
+    or oKP.alamat_rtrw in ['', 'None']\
+    or oKP.kode_propinsi in ['', 'None']\
+    or oKP.kode_kota in ['', 'None']\
+    or oKP.alamat_kode_pos in [None]\
+    or oKP.alamat_telepon in ['', 'None']\
+    or oKP.alamat_telepon2 in ['', 'None']:
+    oKP.is_valid = 'F'
+    oKP.keterangan = 'Data tidak lengkap... '
+#--end--CreateUCKoreksiPeserta
 
 def CreateUCAhliWaris(config, workBookExcel, oUploadCorporate, requiredField, _Line):
   oAW = config.CreatePObject("UploadCorpAhliWaris")

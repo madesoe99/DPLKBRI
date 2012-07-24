@@ -1,7 +1,13 @@
 import sys, string
-sys.path.append('c:/dafapp/dplk07/script_modules')
-import moduleapi, transaksiapi
+import com.ihsan.util.modman as modman
+import com.ihsan.foundation.appserver as appserver
 
+modman.loadStdModules(globals(),
+  [
+    "moduleapi",
+    "transaksiapi"
+  ]
+)
 
 def Terbilang(x):
 
@@ -275,8 +281,8 @@ def strSQLDataWu(config, no_peserta):
     '     , wu.TGL_AKSEPTASI '\
     '     , wu.REKENINGWASIATUMMAT_ID '\
     'from NASABAHDPLK n'\
-    '   , REKENINGDPLK r '\
-    '   , REKENINGWASIATUMMAT wu '\
+    '   , REKINVDPLK r '\
+    '   , REKASURANSI wu '\
     '   , TUNGGAKANPREMI tp '\
     'where n.no_peserta = r.no_peserta '\
     '  and r.no_peserta = wu.no_peserta '\
@@ -297,8 +303,8 @@ def strSQLTunggakanPremi(config, no_peserta):
 
 def WriteToFile(config, parameter, oFile):
 
-  no_peserta      = parameter.FirstRecord.no_peserta
-  strSQL = strSQLDataWu(config, no_peserta)
+  no_rekening = parameter.FirstRecord.no_rekening
+  strSQL = strSQLDataWu(config, no_rekening)
 
   ConstructReportHeader(
      config
@@ -328,4 +334,3 @@ def DAFScriptMain(config, parameter, returnpacket):
   CreateReport(config, parameter, returnpacket)
 
   return 1
-

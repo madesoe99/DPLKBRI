@@ -1,0 +1,119 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['qDetails']
+  Left=50
+  Top=50
+  Width=649
+  Height=560
+  UIParts={
+    object:rtf::PClassUI<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='trx_session_id'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='INTEGER'
+          DataLength=0
+        >
+      }
+      Name='uipParent'
+      ClassTypeName='UploadCorporate'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Query<
+      Name='qDetails'
+      Width=649
+      Height=560
+      ContextMenuName='popupmenus/kakas/pUploadCorporate_Detail'
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data koreksi peserta korporat'
+      OQLText=['SELECT FROM UploadCorpKoreksiPeserta ['#13#10,
+        '  trx_session_id=:trx_session_id'#13#10,
+        ']('#13#10,
+        '  upload_id,'#13#10,
+        '  LNasabahDPLK.nama_lengkap As nama_lengkap,'#13#10,
+        '  no_referensi,'#13#10,
+        '  alamat_jalan,'#13#10,
+        '  alamat_rtrw,'#13#10,
+        '  LATPropinsi.nama_propinsi AS nama_propinsi,'#13#10,
+        '  LATKota.nama_kota AS nama_kota,'#13#10,
+        '  trx_session_id,'#13#10,
+        '  no_peserta,'#13#10,
+        '  is_valid,'#13#10,
+        '  keterangan,'#13#10,
+        '  is_auth,'#13#10,
+        '  self'#13#10,
+        ') THEN ORDER BY nama_lengkap;']
+      Columns={
+        object:rtf::QueryColumn<
+          FieldName='UploadCorpKoreksiPeserta.upload_id'
+          Width=40
+          Caption='ID'
+          Hidden=true
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpKoreksiPeserta.no_peserta'
+          Width=100
+          Caption='No. Peserta'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpKoreksiPeserta.nama_lengkap'
+          Width=160
+          Caption='Nama Lengkap'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpKoreksiPeserta.no_referensi'
+          Width=120
+          Caption='NIK/Identitas Pegawai'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpKoreksiPeserta.alamat_jalan'
+          Width=160
+          Caption='Alamat Jalan'
+          Hidden=true
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpKoreksiPeserta.alamat_rtrw'
+          Width=40
+          Caption='RT RW'
+          Hidden=true
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpKoreksiPeserta.nama_propinsi'
+          Width=120
+          Caption='Propinsi'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpKoreksiPeserta.nama_kota'
+          Width=160
+          Caption='Kota'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpKoreksiPeserta.trx_session_id'
+          Hidden=true
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpKoreksiPeserta.is_valid'
+          Width=40
+          Caption='Is Valid'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpKoreksiPeserta.keterangan'
+          Width=300
+          Caption='Keterangan'
+        >, object:rtf::QueryColumn<
+          FieldName='UploadCorpKoreksiPeserta.is_auth'
+          Width=40
+          Caption='Is Auth'
+        >
+      }
+      EnableColumns=true
+    >
+  }
+  FormClassName='fUCKoreksiPeserta'
+>

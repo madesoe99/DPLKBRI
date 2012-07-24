@@ -58,6 +58,9 @@ BranchCodeTransaksi=001
 BranchCodePremi=003
 DefaultCurrency=Rupiah
 
+[URLWEBSERVICES]
+BRINet = http://localhost:8008
+
 [PAJAKTARIKDANA]
 ; parameter untuk batas dan persentase pajak penarikan dana (30% / PHK)
 Batas1=50000000

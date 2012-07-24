@@ -11,18 +11,22 @@ object:rmn::Menu<
       Name='mnuEdit'
       Caption='Koreksi Pengajuan Anuitas...'
       OnClick='displayWithData'
+      AllowedGroups='OPR'
       StringTag='edit'
     >, object:rmn::MenuItem<
       Name='mnuView'
       Caption='Lihat Detil Pengajuan Anuitas...'
       OnClick='displayWithData'
+      AllowedGroups='OPR;SPV'
       StringTag='view'
     >, object:rmn::MenuItem<
       Caption='-'
+      AllowedGroups='OPR;SPV'
     >, object:rmn::MenuItem<
       Name='mnuAuth'
       Caption='Otorisasi Pengajuan Anuitas...'
       OnClick='displayWithData'
+      AllowedGroups='SPV'
       StringTag='auth'
     >
   }

@@ -226,7 +226,7 @@ def CreateHistoriPindahPaketInvestasi(config, oRegisterPindahPaketInvestasi):
   Ls_RekeningDPLK.First()
   while not Ls_RekeningDPLK.EndOfList:
     oRekDPLK = Ls_RekeningDPLK.CurrentElement
-    if oRekDPLK.is_deleted == 'T':
+    if oRekDPLK.is_deleted == 'F':
       oHPPD = config.CreatePObject('HistoriPindahPaketDetail')
       oHPPD.LHistoriPindahPaketInvestasi = oHPPI
       oHPPD.LPaketInvestasi = oRekDPLK.LPaketInvestasi
@@ -251,6 +251,7 @@ def CreateHistoriPindahPaketInvestasi(config, oRegisterPindahPaketInvestasi):
       oHPPD.jml_unit_pst = oRekDPLK.jml_unit_pst
       oHPPD.jml_unit_tmb = oRekDPLK.jml_unit_tmb
       oHPPD.jml_unit_psl = oRekDPLK.jml_unit_psl    
+
     Ls_RekeningDPLK.Next()
 
   return oHPPI
@@ -497,23 +498,33 @@ def UpdateIuran(config, oRegisterIuran):
   """
 #--
 
-"""
 # otorisasi register anuitas
 def UpdateAnuitas(config, oRegisterAnuitas):
-  oRegisterAnuitas.LNasabahDPLK.LRekeningDPLK.status_anuitas = 'T'
+  oRegisterAnuitas.LRekeningDPLK.status_anuitas = 'T'
   
   oRA = config.CreatePObject('RekeningAnuitas')
+  #oRA.LRekeningDPLK = oRegisterAnuitas.LRekeningDPLK
   oRA.no_rekening = oRegisterAnuitas.no_rekening
+  oRA.no_rekening_anuitas = oRegisterAnuitas.no_rekening_anuitas
   oRA.nama_asuransi = oRegisterAnuitas.nama_asuransi
   oRA.no_polis_anuitas = oRegisterAnuitas.no_polis_anuitas
   oRA.nominal_anuitas = oRegisterAnuitas.nominal_anuitas
-  oRA.no_peserta = oRegisterAnuitas.no_peserta
+  oRA.LNasabahDPLK = oRegisterAnuitas.LNasabahDPLK
 
   y,m,d = oRegisterAnuitas.tgl_pembelian_anuitas[:3]
   oRA.tgl_pembelian_anuitas = config.ModLibUtils.EncodeDate(y,m,d) 
 
+  oRA.tanggal_register = oRegisterAnuitas.tanggal_register
+  oRA.keterangan = oRegisterAnuitas.keterangan
+  oRA.user_id = oRegisterAnuitas.user_id
+  oRA.terminal_id = oRegisterAnuitas.terminal_id
+  oRA.tanggal_auth = config.Now()
+  oRA.auth_user_id = config.SecurityContext.userid
+  oRA.auth_terminal_id = config.SecurityContext.GetSessionInfo()[1]
+  
 # otorisasi register autodebt
 
+"""
 def GetRekeningAutoDebetByNasabah(config, oNasabahDPLK):
   strSQL = '\
     select no_rekening \
@@ -630,35 +641,22 @@ def UpdateStatusAutodebetIn(config, oRegisterAutoDebet):
 # otorisasi register wasiat ummat
 """
 
-def GetRekAsuransiByRekInv(config, oRekInvDPLK):
-  """
-  strSQL = '\
-    select rekasuransi_id \
-    from RekAsuransi \
-    where no_rekening = \'%s\'' \
-    % (oRekinvDPLK.no_rekening)
-  resSQL = config.CreateSQL(strSQL).RawResult
-
-  oRekAsuransi = config.CreatePObjImplProxy('RekAsuransi')
-  oRekAsuransi.Key = resSQL.rekasuransi_id
-  """
-  return oRekInvDPLK.LRekAsuransi
-#--
-
-def CreateHistAsuransi(config, oRekAsuransi, noReferensi, alasanBerhenti, keterangan):
-  oRekInvDPLK = oRekAsuransi.LRekeningDPLK
+def CreateHistAsuransi(config, oRegisterAsuransi):
+  oRekInvDPLK = oRegisterAsuransi.LRekeningDPLK
+  oRekAsuransi = oRekInvDPLK.LRekAsuransi
+  
   oHistAsuransi = config.CreatePObject('HistAsuransi')
 
   oHistAsuransi.LRekeningDPLK = oRekInvDPLK
   oHistAsuransi.auth_user_id = config.SecurityContext.userid
-  oHistAsuransi.keterangan = keterangan
-  oHistAsuransi.no_referensi = noReferensi
+  oHistAsuransi.keterangan = oRegisterAsuransi.keterangan
+  oHistAsuransi.no_referensi = oRegisterAsuransi.no_referensi
   oHistAsuransi.tanggal_histori = config.Now()
   oHistAsuransi.terminal_id = oRekInvDPLK.last_terminal_id
   oHistAsuransi.user_id = oRekInvDPLK.user_id
 
-  oHistAsuransi.tunggakan_premi = oRekInvDPLK.kewajiban_asuransi
-  oHistAsuransi.alasan_berhenti = alasanBerhenti
+  oHistAsuransi.tunggakan_premi = oRekAsuransi.tunggakan_premi
+  oHistAsuransi.alasan_berhenti = oRegisterAsuransi.alasan_berhenti
   oHistAsuransi.tgl_akseptasi = moduleapi.DateTimeTupleToFloat(config, oRekAsuransi.tgl_akseptasi)
   oHistAsuransi.tgl_berakhir = config.Now()
   oHistAsuransi.no_polis = oRekAsuransi.no_polis
@@ -668,11 +666,12 @@ def CreateHistAsuransi(config, oRekAsuransi, noReferensi, alasanBerhenti, ketera
   return oHistAsuransi
 #--
 
-def UpdateStatusAsuransiOut(config, oRekAsuransi):
-  oRekInvDPLK = oRekAsuransi.LRekeningDPLK
+def UpdateStatusAsuransiOut(config, oRegisterAsuransi):
+  oRekInvDPLK = oRegisterAsuransi.LRekeningDPLK
+  oRekAsuransi = oRekInvDPLK.LRekAsuransi
   
   oRekInvDPLK.status_asuransi = 'F'
-  oRekInvDPLK.tgl_akseptasi = moduleapi.DateTimeTupleToFloat(config, oRekAsuransi.tgl_akseptasi)
+  #oRekInvDPLK.tgl_akseptasi = moduleapi.DateTimeTupleToFloat(config, oRekAsuransi.tgl_akseptasi)
   
   #nullkan kolektibilitas dan kewajiban wasiat ummat
   oRekInvDPLK.collectivity_asuransi = None
@@ -703,8 +702,6 @@ def UpdateStatusAsuransiOut(config, oRekAsuransi):
 #--
 
 def UpdateStatusAsuransiIn(config, oRegisterAsuransi, parameter):
-  oRegisterAsuransi.LRekeningDPLK.status_asuransi = 'T'
-  
   oRekAsuransi = config.CreatePObject('RekAsuransi')
   oRekAsuransi.user_id = oRegisterAsuransi.user_id
   oRekAsuransi.auth_user_id = config.SecurityContext.userid
@@ -718,9 +715,13 @@ def UpdateStatusAsuransiIn(config, oRegisterAsuransi, parameter):
   y,m,d = oRekAsuransi.LRekeningDPLK.tgl_pensiun[:3] 
   oRekAsuransi.tgl_berakhir = config.ModLibUtils.EncodeDate(y,m,d)
   
+  """ Update RekInvDPLK """
+  oRekInvDPLK = oRekAsuransi.LRekeningDPLK
+  oRekInvDPLK.LRekAsuransi = oRekAsuransi
+  oRekInvDPLK.status_asuransi = 'T'
   #inisialisasi kolektibilitas dan kewajiban wasiat ummat
-  oRekAsuransi.LRekeningDPLK.collectivity_asuransi = 'T'
-  oRekAsuransi.LRekeningDPLK.kewajiban_asuransi = 0.0
+  oRekInvDPLK.collectivity_asuransi = 'T'
+  oRekInvDPLK.kewajiban_asuransi = 0.0
   
   """
   #cek peserta apakah ikut autodebet
@@ -926,9 +927,9 @@ def DAFScriptMain(config, parameter, returnpacket):
 
     elif oRegisterCIF.kode_jenis_registercif == 'P':
       oRegisterPindahPaketInvestasi = oRegisterCIF.CastAs('RegisterPindahPaketInvestasi')
-      UpdatePindahPaketInvestasi(config, oRegisterPindahPaketInvestasi)
       CreateHistoriPindahPaketInvestasi(config, oRegisterPindahPaketInvestasi)
-
+      UpdatePindahPaketInvestasi(config, oRegisterPindahPaketInvestasi)
+      
     elif oRegisterCIF.kode_jenis_registercif == 'A':
       oRegisterUbahAlamat = oRegisterCIF.CastAs('RegisterUbahAlamat')
       CreateHistoriUbahAlamat(config, oRegisterUbahAlamat)
@@ -962,12 +963,7 @@ def DAFScriptMain(config, parameter, returnpacket):
     elif oRegisterCIF.kode_jenis_registercif == 'U':
       oRegisterAsuransi = oRegisterCIF.CastAs('RegisterAsuransi')
       if oRegisterAsuransi.jenis_transaksi == 'O':
-        # berhenti Asuransi
-        oRegisterAsuransi = GetRekAsuransiByRekInv(config, oRegisterAsuransi.LRekeningDPLK)
-        noReferensi = oRegisterAsuransi.no_referensi
-        alasanBerhenti = oRegisterAsuransi.alasan_berhenti
-        keterangan = oRegisterAsuransi.keterangan  
-        CreateHistAsuransi(config, oRegisterAsuransi, noReferensi, alasanBerhenti, keterangan)
+        CreateHistAsuransi(config, oRegisterAsuransi)
         UpdateStatusAsuransiOut(config, oRegisterAsuransi)
       else:
         UpdateStatusAsuransiIn(config, oRegisterAsuransi, parameter)

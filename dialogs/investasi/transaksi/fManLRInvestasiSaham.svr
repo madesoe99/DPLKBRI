@@ -4,13 +4,16 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rpclass::TPClassUIDefList<
-  UIDefs={object:rpclass::TPClassUIDef<
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
       Name='uipTransLRInvestasi'
       PClassName='TransLRInvestasi'
-      LoadedFieldList='id_transaksiinvestasi;tgl_transaksi;LTransactionBatch.ID_TransactionBatch;LTransactionBatch.ID_TransactionBatch;LTransactionBatch.no_batch;LSubJnsTransLRInvestasi.kode_subjns_LRInvestasi;LSubJnsTransLRInvestasi.kode_subjns_LRInvestasi;LSubJnsTransLRInvestasi.deskripsi;mutasi_debet;mutasi_kredit;keterangan;LAsalTransLRInvestasi.id_transaksiinvestasi;LAsalTransLRInvestasi.id_transaksiinvestasi;LAsalTransLRInvestasi.keterangan;user_id;terminal_id;tgl_otorisasi;user_id_auth;terminal_id_auth;tgl_sistem;LInvestasi.id_investasi;LInvestasi.id_investasi;LInvestasi.tgl_buka;LInvestasi.id_investasi;LInvestasi.LPihakKetiga.nama_pihak_ketiga;LInvestasi.LRincianPaketInvestasi.LPaketInvestasi.Nama_paket_investasi;LInvestasi.LRincianPaketInvestasi.LJenisInvestasi.nama_jns_investasi;LInvestasi.akum_nominal;LInvestasi.akum_piutangLR;LInvestasi.akum_LR;LInvestasi.kode_pihak_ketiga;LInvestasi.kode_paket_investasi;LInvestasi.kode_jns_investasi'
-      StoredFieldList='tgl_transaksi;LTransactionBatch;LSubJnsTransLRInvestasi;mutasi_debet;mutasi_kredit;keterangan;LAsalTransLRInvestasi;tgl_sistem;LInvestasi'
-      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+      LoadedFieldList='id_transaksiinvestasi;tgl_transaksi;LSubJnsTransLRInvestasi.kode_subjns_LRInvestasi;LSubJnsTransLRInvestasi.kode_subjns_LRInvestasi;LSubJnsTransLRInvestasi.deskripsi;mutasi_debet;mutasi_kredit;keterangan;LAsalTransLRInvestasi.id_transaksiinvestasi;LAsalTransLRInvestasi.id_transaksiinvestasi;LAsalTransLRInvestasi.keterangan;user_id;terminal_id;tgl_otorisasi;user_id_auth;terminal_id_auth;tgl_sistem;LInvestasi.id_investasi;LInvestasi.id_investasi;LInvestasi.tgl_buka;LInvestasi.id_investasi;LInvestasi.LPihakKetiga.nama_pihak_ketiga;LInvestasi.LRincianPaketInvestasi.LPaketInvestasi.Nama_paket_investasi;LInvestasi.LRincianPaketInvestasi.LJenisInvestasi.nama_jns_investasi;LInvestasi.akum_nominal;LInvestasi.akum_piutangLR;LInvestasi.akum_LR;LInvestasi.kode_pihak_ketiga;LInvestasi.kode_paket_investasi;LInvestasi.kode_jns_investasi'
+      StoredFieldList='tgl_transaksi;LSubJnsTransLRInvestasi;mutasi_debet;mutasi_kredit;keterangan;LAsalTransLRInvestasi;tgl_sistem;LInvestasi'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
           Name='id_investasi'
           DataTypeName='integer'
           DataLength=15
@@ -42,11 +45,10 @@ document <
           Name='mode'
           DataTypeName='varchar'
           DataLength=20
-        >}CustomLoadedLinks={object:rpclass::TCustomLoadedLink<
-          Name='LTransactionBatch'
-          ClassTypeName='TransactionBatch'
-          FieldNames='ID_TransactionBatch;ID_TransactionBatch;no_batch'
-        >, object:rpclass::TCustomLoadedLink<
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
           Name='LSubJnsTransLRInvestasi'
           ClassTypeName='SubJnsTransLRInvestasi'
           FieldNames='kode_subjns_LRInvestasi;kode_subjns_LRInvestasi;deskripsi'
@@ -66,7 +68,9 @@ document <
           Name='LPaketInvestasi'
           ClassTypeName='PaketInvestasi'
           FieldNames='kode_paket_investasi;kode_paket_investasi;nama_paket_investasi'
-        >}Mode=imSingleRow
+        >
+      }
+      Mode=imSingleRow
       CreateInstanceOnNew=true
       AfterApplyRow='uipTransLRInvestasiApplyRow'
     >, object:rpclass::TPClassUIDef<
@@ -77,12 +81,17 @@ document <
       OnSetData='uipInvestasiSetData'
     >, object:rpclass::TPClassUIDef<
       Name='uipParameter'
-      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
           Name='nowDate'
           DataTypeName='varchar'
           DataLength=10
-        >}Mode=imSingleRow
+        >
+      }
+      Mode=imSingleRow
       CreateInstanceOnNew=true
-    >}OnGeneralSetData='FormGeneralSetData'
+    >
+  }
+  OnGeneralSetData='FormGeneralSetData'
   OnEndProcessData='FormEndProcessData'
 >

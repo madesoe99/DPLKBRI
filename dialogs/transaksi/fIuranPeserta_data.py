@@ -25,11 +25,24 @@ def Form_OnSetDataEx(uideflist, parameterForm):
   recRekening = uipRekening.Dataset.GetRecord(0)
   recParameter = uipParameter.Dataset.AddRecord()
   
+  #cek rekening investasi DPLK
+  if recRekening.operation_code != 'F':
+    raise Exception, "Rekening DPLK peserta berstatus Sedang Diubah. Transaksi tidak diperbolehkan!"
+
   #set field Data Transaksi
   recTransaksi.tgl_transaksi = config.ModLibUtils.Now()
-  recTransaksi.mutasi_iuran_pk = recRekening.iuran_pk
-  recTransaksi.mutasi_iuran_pst = recRekening.iuran_pst
-  recTransaksi.mutasi_iuran_tmb = 0.0
+  
+  #cek peserta korporat atau individu
+  if recPeserta.kode_nasabah_corporate not in (None,''):
+    #peserta korporat
+    recTransaksi.mutasi_iuran_pk = 0.0
+    recTransaksi.mutasi_iuran_pst = 0.0
+    recTransaksi.mutasi_iuran_tmb = 0.0
+  else:
+    #peserta individu
+    recTransaksi.mutasi_iuran_pk = 0.0
+    recTransaksi.mutasi_iuran_pst = recRekening.iuran_pst
+    recTransaksi.mutasi_iuran_tmb = 0.0
 
   #set parameter default
   oParameter = config.CreatePObjImplProxy('Parameter')
@@ -77,19 +90,21 @@ def SimpanTransaksi(config, params, returns):
     oRekInv.Key = recR.no_rekening
     Ls_RekeningDPLK = oRekInv.Ls_RekeningDPLK
     while not Ls_RekeningDPLK.EndOfList:
-      oRekDPLK = Ls_RekeningDPLK.CurrentElement 
+      oRekDPLK = Ls_RekeningDPLK.CurrentElement
+      if oRekDPLK.is_deleted == 'F':
       
-      oDetilTransaksi = config.CreatePObject('DetilTransaksiDPLK')
-      oDetilTransaksi.ID_Transaksi = oIuranPeserta.ID_Transaksi
-      oDetilTransaksi.nomor_rekening = oRekDPLK.nomor_rekening 
-      oDetilTransaksi.kode_paket_investasi = oRekDPLK.kode_paket_investasi
-      
-      oDetilTransaksi.mutasi_iuran_pk = (oRekDPLK.pct_alokasi / 100.0) * oIuranPeserta.mutasi_iuran_pk  
-      oDetilTransaksi.mutasi_iuran_pst = (oRekDPLK.pct_alokasi / 100.0) * oIuranPeserta.mutasi_iuran_pst  
-      oDetilTransaksi.mutasi_iuran_tmb = (oRekDPLK.pct_alokasi / 100.0) * oIuranPeserta.mutasi_iuran_tmb
-      oDetilTransaksi.mutasi_psl = oDetilTransaksi.mutasi_pmb_pk = \
-        oDetilTransaksi.mutasi_pmb_pst = oDetilTransaksi.mutasi_pmb_tmb = \
-        oDetilTransaksi.mutasi_pmb_psl = 0.0
+        #rekening DPLK masih aktif
+        oDetilTransaksi = config.CreatePObject('DetilTransaksiDPLK')
+        oDetilTransaksi.ID_Transaksi = oIuranPeserta.ID_Transaksi
+        oDetilTransaksi.nomor_rekening = oRekDPLK.nomor_rekening 
+        oDetilTransaksi.kode_paket_investasi = oRekDPLK.kode_paket_investasi
+        
+        oDetilTransaksi.mutasi_iuran_pk = (oRekDPLK.pct_alokasi / 100.0) * oIuranPeserta.mutasi_iuran_pk  
+        oDetilTransaksi.mutasi_iuran_pst = (oRekDPLK.pct_alokasi / 100.0) * oIuranPeserta.mutasi_iuran_pst  
+        oDetilTransaksi.mutasi_iuran_tmb = (oRekDPLK.pct_alokasi / 100.0) * oIuranPeserta.mutasi_iuran_tmb
+        oDetilTransaksi.mutasi_psl = oDetilTransaksi.mutasi_pmb_pk = \
+          oDetilTransaksi.mutasi_pmb_pst = oDetilTransaksi.mutasi_pmb_tmb = \
+          oDetilTransaksi.mutasi_pmb_psl = 0.0
       
       Ls_RekeningDPLK.Next()
     #-- 

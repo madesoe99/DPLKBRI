@@ -205,8 +205,8 @@ object:rtf::Form<
       RowControlGap=7
     >, object:rtf::DualSplit<
       Name='DualSplit'
-      Width=240
-      Height=96
+      Width=400
+      Height=150
       Container1=$CONTAINERS['pButton']
       Container2=$CONTAINERS['pInput']
       InversedAlign=true

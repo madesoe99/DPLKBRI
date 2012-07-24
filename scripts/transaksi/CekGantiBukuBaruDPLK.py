@@ -18,37 +18,36 @@ def CekNomorPeserta(config, noPeserta, noRekening, noBuku):
   
   config.BeginTransaction()
   try:
-
-     config.SendDebugMsg('no buku :'+ str(noBuku))
-     NoPesertaExist = 1
-     oN = config.CreatePObjImplProxy('NasabahDPLK')
-     oN.Key = noPeserta
-
-     config.SendDebugMsg('Ubah Status Ambil Buku')
-
-     oR = config.CreatePObjImplProxy('RekInvDPLK')
-     oR.Key = noRekening
-     oR.no_seri_buku = noBuku
-
-     oHistBuku = config.CreatePObjImplProxy('HistoriBukuDPLK')
-     oHistBuku.key = oN.no_peserta
-     oHistBuku.status = 'F'
-     noBukuHist = oHistBuku.no_seri_buku
+    config.SendDebugMsg('no buku :'+ str(noBuku))
+    NoPesertaExist = 1
+    
+    oR = config.CreatePObjImplProxy('RekInvDPLK')
+    oR.Key = noRekening
+    oR.has_passbook = 'T'
+    noBukuLama = oR.no_seri_buku; oR.no_seri_buku = noBuku
      
-     oH = config.CreatePObject('HistoriBukuDPLK')
-     oH.no_peserta = noPeserta
-     oH.no_rekening = noRekening
-     oH.no_seri_buku = noBuku
-     oH.status = 'T'
-     oH.tgl_input =  config.Now()
-     oH.user_id = userid
-     oH.branch_code = kode_cabang
-
-     config.Commit()
+    oB = config.CreatePObjImplProxy('MASTERBUKUDPLK')
+    oB.Key = noBuku
+    oB.status_buku = 'T'
+    
+    oHistBuku = config.CreatePObjImplProxy('HistoriBukuDPLK')
+    oHistBuku.Key = noBukuLama
+    oHistBuku.status = 'F'
+      
+    oH = config.CreatePObject('HistoriBukuDPLK')
+    oH.branch_code = kode_cabang
+    oH.no_peserta = noPeserta
+    oH.no_rekening = noRekening
+    oH.no_seri_buku = noBuku
+    oH.tgl_input =  config.Now()
+    oH.status = 'T'
+    oH.user_id = userid
+     
+    config.Commit()
   except:
-     config.Rollback()
-     NoPesertaExist = 2
-     raise
+    config.Rollback()
+    NoPesertaExist = 2
+    raise
 
   config.SendDebugMsg('Selesai......')
   return NoPesertaExist

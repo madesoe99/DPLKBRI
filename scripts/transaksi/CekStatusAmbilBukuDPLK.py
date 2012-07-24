@@ -8,7 +8,6 @@ modman.loadStdModules(globals(),
   ]
 )
 
-
 #sys.path.append('c:/dafapp/dplk07/script_modules')
 #import moduleapi
 
@@ -19,33 +18,37 @@ def CekNomorPeserta(config, noPeserta, noRekening, noBuku):
   
   config.BeginTransaction()
   try:
+    config.SendDebugMsg('no buku :'+ str(noBuku))
+    NoPesertaExist = 1
 
-     config.SendDebugMsg('no buku :'+ str(noBuku))
-     NoPesertaExist = 1
-     oN = config.CreatePObjImplProxy('NasabahDPLK')
-     oN.Key = noPeserta
-
-     config.SendDebugMsg('Ubah Status Ambil Buku')
-
-     oR = config.CreatePObjImplProxy('RekInvDPLK')
-     oR.Key = noRekening
-     oR.has_passbook = 'T'
-     oR.no_seri_buku = noBuku
-
-     oH = config.CreatePObject('HistoriBukuDPLK')
-     oH.no_peserta = noPeserta
-     oH.no_rekening = noRekening
-     oH.no_seri_buku = noBuku
-     oH.tgl_input =  config.Now()
-     oH.status = 'T'
-     oH.user_id = userid
-     oH.branch_code = kode_cabang
-
-     config.Commit()
+    oR = config.CreatePObjImplProxy('RekInvDPLK')
+    oR.Key = noRekening
+    hasPassbook = oR.has_passbook; oR.has_passbook = 'T'
+    noBukuLama = oR.no_seri_buku; oR.no_seri_buku = noBuku
+     
+    oB = config.CreatePObjImplProxy('MASTERBUKUDPLK')
+    oB.Key = noBuku
+    oB.status_buku = 'T'
+     
+    if hasPassbook == 'T':
+      oHistBuku = config.CreatePObjImplProxy('HistoriBukuDPLK')
+      oHistBuku.Key = noBukuLama
+      oHistBuku.status = 'F'
+     
+    oH = config.CreatePObject('HistoriBukuDPLK')
+    oH.branch_code = kode_cabang
+    oH.no_peserta = noPeserta
+    oH.no_rekening = noRekening
+    oH.no_seri_buku = noBuku
+    oH.tgl_input =  config.Now()
+    oH.status = 'T'
+    oH.user_id = userid
+     
+    config.Commit()
   except:
-     config.Rollback()
-     NoPesertaExist = 2
-     raise
+    config.Rollback()
+    NoPesertaExist = 2
+    raise
 
   config.SendDebugMsg('Selesai......')
   return NoPesertaExist

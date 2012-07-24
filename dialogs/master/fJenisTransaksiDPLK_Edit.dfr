@@ -6,7 +6,7 @@ document <
   MinorVersion='0'
 >
 object:rtf::Form<
-  MainContainer=$CONTAINERS['pData']
+  MainContainer=$CONTAINERS['DualSplit']
   Caption='Koreksi Jenis Transaksi DPLK'
   Left=50
   Top=50
@@ -21,6 +21,7 @@ object:rtf::Form<
   OnFormShow='FormShow'
   OnBeginSetData=''
   OnEndSetData=''
+  OnSetDataEx=''
   OnBeginProcessData=''
   OnEndProcessData=''
   UIParts={
@@ -38,29 +39,35 @@ object:rtf::Form<
         object:rtf::ControlDef<
           Action=caView
           DataMember='kode_jenis_transaksi'
-        >
-        , object:rtf::ControlDef<
+        >, object:rtf::ControlDef<
           Action=caEdit
           DataMember='nama_transaksi'
-        >
-        , object:rtf::ControlDef<
+        >, object:rtf::ControlDef<
           Action=caEdit
           DataMember='user_id'
-        >
-        , object:rtf::ControlDef<
+        >, object:rtf::ControlDef<
           Action=caEdit
           DataMember='last_update'
         >
       }
       Elements={
         *object:rtf::FieldUIElmtSetting<
+          Name='kode_jenis_transaksi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='nama_transaksi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
           Name='user_id'
+          Hidden=false
           ReadOnlyControl=true
           DataTypeName='VARCHAR'
           DataLength=20
-        >
-        , *object:rtf::FieldUIElmtSetting<
+        >, *object:rtf::FieldUIElmtSetting<
           Name='last_update'
+          Hidden=false
           ReadOnlyControl=true
         >
       }
@@ -72,21 +79,28 @@ object:rtf::Form<
       Controls={
         *object:rtf::DBComboBox<
           Name='kode_jenis_transaksi'
+          Top=20
+          Left=20
           Enabled=false
           Color=-2147483624
           ControlCaption='Kode Jenis Transaksi'
-        >
-        , *object:rtf::DBEdit<
+        >, *object:rtf::DBEdit<
           Name='nama_transaksi'
+          Top=48
+          Left=20
           ControlCaption='Nama Transaksi'
-        >
-        , *object:rtf::DBEdit<
+        >, *object:rtf::DBEdit<
           Name='user_id'
+          Top=76
+          Left=20
+          Color=-16777192
           ControlCaption='User ID'
           ReadOnly=true
-        >
-        , *object:rtf::DBDateEdit<
+        >, *object:rtf::DBDateEdit<
           Name='last_update'
+          Top=104
+          Left=20
+          Color=-16777192
           ControlCaption='Last Update'
         >
       }
@@ -96,8 +110,7 @@ object:rtf::Form<
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
-    >
-    , object:rtf::Panel<
+    >, object:rtf::Panel<
       Name='pButton'
       Width=240
       Height=40
@@ -105,17 +118,18 @@ object:rtf::Form<
         object:rtf::Button<
           Name='btnOK'
           Layout=clNewLine
-          Color=0
+          Top=8
+          Left=8
           ControlCaption=''
           Caption='&OK'
           Default=true
           DefaultAction=daProcessAllUI
           ExitAction=eaQuitOK
-        >
-        , object:rtf::Button<
+        >, object:rtf::Button<
           Name='btnCancel'
           Layout=clNextSide
-          Color=0
+          Top=8
+          Left=87
           ControlCaption=''
           Caption='&Batal'
           Cancel=true
@@ -127,11 +141,10 @@ object:rtf::Form<
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
-    >
-    , object:rtf::DualSplit<
+    >, object:rtf::DualSplit<
       Name='DualSplit'
-      Width=240
-      Height=100
+      Width=380
+      Height=250
       Container1=$CONTAINERS['pButton']
       Container2=$CONTAINERS['pData']
       InversedAlign=true

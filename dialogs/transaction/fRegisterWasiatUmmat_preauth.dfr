@@ -6,8 +6,8 @@ document <
   MinorVersion='0'
 >
 object:rtf::Form<
-  MainContainer=$CONTAINERS['pRegister']
-  Caption='Pra Otorisasi Pendaftaran Wasiat Ummat'
+  MainContainer=$CONTAINERS['MultiSplit']
+  Caption='Pra Otorisasi Pendaftaran Asuransi'
   Left=300
   Top=150
   Width=400
@@ -26,15 +26,15 @@ object:rtf::Form<
   OnEndProcessData=''
   UIParts={
     object:rtf::PClassUI<
-      Name='uipRegisterWasiatUmmat'
-      ClassTypeName='RegisterWasiatUmmat'
+      Name='uipRegisterAsuransi'
+      ClassTypeName='RegisterAsuransi'
       DataBinding=bmMaster
-    >
-    , object:rtf::PClassUI<
+    >, object:rtf::PClassUI<
       Elements={
         object:rtf::FieldUIElmtSetting<
           Name='PRESISI_ANGKA_FLOAT'
           Hidden=true
+          ReadOnlyControl=false
           DataTypeName='double'
           DataLength=20
         >
@@ -53,43 +53,78 @@ object:rtf::Form<
             'user_id'#13#10,
             'terminal_id'#13#10,
             'alasan_berhenti'#13#10]
-        >
-        , object:rtf::ControlDef<
+        >, object:rtf::ControlDef<
           Action=caEdit
           DataMember='jenis_transaksi'
-        >
-        , object:rtf::ControlDef<
+        >, object:rtf::ControlDef<
           Action=caView
           DataMember='registercif_id'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='LRekeningDPLK'
         >
       }
       Elements={
-        *object:rtf::LinkUIElmtSetting<
+        *object:rtf::FieldUIElmtSetting<
+          Name='no_referensi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::LinkUIElmtSetting<
           Name='LNasabahDPLK'
+          Hidden=false
+          ReadOnlyControl=false
           DisplayFields='no_peserta;nama_lengkap'
           Restrictions=''
-        >
-        , *object:rtf::FieldUIElmtSetting<
+          FieldBaseName='LNasabahDPLK'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='user_id'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='terminal_id'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alasan_berhenti'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
           Name='jenis_transaksi'
           Hidden=true
-        >
-        , *object:rtf::FieldUIElmtSetting<
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
           Name='registercif_id'
           Hidden=true
+          ReadOnlyControl=false
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LRekeningDPLK'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='no_peserta'
+          Restrictions=''
+          FieldBaseName='LRekeningDPLK'
         >
       }
       Name='pRegister'
-      Width=240
-      Height=220
+      Width=385
+      Height=233
       Bordered=true
-      UIPart=$UIPARTS['uipRegisterWasiatUmmat']
+      UIPart=$UIPARTS['uipRegisterAsuransi']
       Controls={
         *object:rtf::DBEdit<
           Name='no_referensi'
+          Top=30
+          Left=20
+          Color=-16777192
           ControlCaption='Nomor Referensi'
-        >
-        , *object:rtf::DBLookupEdit<
+        >, *object:rtf::DBLookupEdit<
           Name='LNasabahDPLK'
+          Top=58
+          Left=20
           Width=100
           Height=21
           Enabled=false
@@ -97,26 +132,51 @@ object:rtf::Form<
           ControlCaption='Peserta DPLK'
           LookupField='LNasabahDPLK.nama_lengkap'
           DisplayLookupField=true
-        >
-        , *object:rtf::DBEdit<
+          DisableLookup=true
+        >, *object:rtf::DBEdit<
           Name='keterangan'
+          Top=114
+          Left=20
           Width=180
           Height=21
+          Color=-16777192
           ControlCaption='Keterangan'
-        >
-        , *object:rtf::DBEdit<
+          LayoutOrder=4
+        >, *object:rtf::DBEdit<
           Name='user_id'
+          Top=142
+          Left=20
           Width=135
           Height=21
+          Color=-16777192
           ControlCaption='ID User'
-        >
-        , *object:rtf::DBEdit<
+          LayoutOrder=5
+        >, *object:rtf::DBEdit<
           Name='terminal_id'
+          Top=170
+          Left=20
+          Color=-16777192
           ControlCaption='ID Terminal'
-        >
-        , *object:rtf::DBEdit<
+          LayoutOrder=6
+        >, *object:rtf::DBEdit<
           Name='alasan_berhenti'
+          Top=198
+          Left=20
+          Color=-16777192
           ControlCaption='Alasan Berhenti'
+          LayoutOrder=7
+        >, *object:rtf::DBLookupEdit<
+          Name='LRekeningDPLK'
+          Top=86
+          Left=20
+          Width=100
+          Height=21
+          Enabled=false
+          Color=-16777192
+          ControlCaption='Rekening DPLK'
+          LookupField='LRekeningDPLK.no_peserta'
+          DisplayLookupField=false
+          DisableLookup=true
         >
       }
       EqualCaptionWidth=100
@@ -126,77 +186,93 @@ object:rtf::Form<
       HorizontalControlGap=4
       RowControlGap=7
       Caption='Data Register'
-    >
-    , object:rtf::Panel<
+    >, object:rtf::Panel<
       Elements={
         object:rtf::FieldUIElmtSetting<
           Name='no_polis'
-        >
-        , object:rtf::FieldUIElmtSetting<
+          Hidden=false
+          ReadOnlyControl=false
+        >, object:rtf::FieldUIElmtSetting<
           Name='tgl_akseptasi'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='timestamp'
           DataLength=20
-        >
-        , object:rtf::FieldUIElmtSetting<
+        >, object:rtf::FieldUIElmtSetting<
           Name='besar_premi'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='double'
           DataLength=20
-        >
-        , object:rtf::FieldUIElmtSetting<
+        >, object:rtf::FieldUIElmtSetting<
           Name='manfaat_asuransi'
+          Hidden=false
+          ReadOnlyControl=false
           ControlCaption='Manfaat Asuransi'
           DataTypeName='double'
           DataLength=20
-        >
-        , object:rtf::FieldUIElmtSetting<
+        >, object:rtf::FieldUIElmtSetting<
           Name='kolektibilitas_premi'
+          Hidden=false
+          ReadOnlyControl=false
           ControlCaption='Kolektibilitas Premi'
           DataTypeName='varchar'
           DataLength=1
           EnumeratedValues=['T=Lancar'#13#10,
             'F=Tidak Lancar'#13#10]
-        >
-        , object:rtf::FieldUIElmtSetting<
+        >, object:rtf::FieldUIElmtSetting<
           Name='tunggakan_premi'
+          Hidden=false
+          ReadOnlyControl=false
           ControlCaption='Tunggakan Premi'
           DataTypeName='double'
           DataLength=20
         >
       }
       Name='pOtorisasi'
-      Width=240
-      Height=40
+      Width=353
+      Height=209
       Bordered=true
-      UIPart=$UIPARTS['uipRegisterWasiatUmmat']
+      UIPart=$UIPARTS['uipRegisterAsuransi']
       Controls={
         *object:rtf::DBEdit<
           Name='no_polis'
+          Top=30
+          Left=20
           Color=12695295
           ControlCaption='Nomor Polis'
-        >
-        , *object:rtf::DBDateEdit<
+        >, *object:rtf::DBDateEdit<
           Name='tgl_akseptasi'
+          Top=58
+          Left=20
           Color=12695295
           ControlCaption='Tanggal Akseptasi'
-        >
-        , *object:rtf::DBEdit<
+        >, *object:rtf::DBEdit<
           Name='besar_premi'
+          Top=86
+          Left=20
           Color=12695295
           ControlCaption='Besar Premi'
-        >
-        , *object:rtf::DBEdit<
+        >, *object:rtf::DBEdit<
           Name='manfaat_asuransi'
+          Top=114
+          Left=20
           Color=12695295
-        >
-        , *object:rtf::DBComboBox<
+          ControlCaption='Manfaat Asuransi'
+        >, *object:rtf::DBComboBox<
           Name='kolektibilitas_premi'
+          Top=142
+          Left=20
           Enabled=false
           Color=15128749
-        >
-        , *object:rtf::DBEdit<
+          ControlCaption='Kolektibilitas Premi'
+        >, *object:rtf::DBEdit<
           Name='tunggakan_premi'
+          Top=170
+          Left=20
           Enabled=false
           Color=9498256
+          ControlCaption='Tunggakan Premi'
         >
       }
       EqualCaptionWidth=100
@@ -206,8 +282,7 @@ object:rtf::Form<
       HorizontalControlGap=4
       RowControlGap=7
       Caption='Data Otorisasi'
-    >
-    , object:rtf::Panel<
+    >, object:rtf::Panel<
       Name='pButton'
       Width=240
       Height=40
@@ -215,16 +290,17 @@ object:rtf::Form<
         object:rtf::Button<
           Name='btnOK'
           Layout=clNewLine
-          Color=0
+          Top=8
+          Left=8
           ControlCaption=''
           Caption='&OK'
           Default=true
           OnClick='btnOKClick'
-        >
-        , object:rtf::Button<
+        >, object:rtf::Button<
           Name='btnCancel'
           Layout=clNextSide
-          Color=0
+          Top=8
+          Left=87
           ControlCaption=''
           Caption='&Batal'
           Cancel=true
@@ -236,16 +312,17 @@ object:rtf::Form<
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
-    >
-    , object:rtf::MultiSplit<
+    >, object:rtf::MultiSplit<
       Name='MultiSplit'
-      Width=240
-      Height=100
+      Width=400
+      Height=490
       Side1Containers={
         $CONTAINERS['pRegister']
+
       }
       Side2Containers={
         $CONTAINERS['pButton']
+
       }
       SpaceContainer=$CONTAINERS['pOtorisasi']
     >

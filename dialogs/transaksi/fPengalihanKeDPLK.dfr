@@ -85,6 +85,9 @@ object:rtf::Form<
             'akum_pmb_pst'#13#10,
             'akum_pmb_tmb'#13#10,
             'akum_pmb_psl'#13#10]
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='operation_code'
         >
       }
       Elements={
@@ -102,6 +105,10 @@ object:rtf::Form<
           ReadOnlyControl=false
         >, *object:rtf::FieldUIElmtSetting<
           Name='akum_pmb_psl'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='operation_code'
           Hidden=false
           ReadOnlyControl=false
         >

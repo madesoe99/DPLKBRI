@@ -13,6 +13,8 @@ class fSelectTransaksi:
       'V':'transaksi/fOtorisasiPenarikanDana30',
       'W':'transaksi/fOtorisasiPenarikanDanaPHK',
       'J':'transaksi/fOtorisasiPengambilanManfaatPensiun',
+      'Q':'transaksi/fOtorisasiPengembalianDana',
+      'F':'transaksi/fOtorisasiPindahPaketInvestasi',
       'C':'transaksi/fViewBiaya',
       'D':'transaksi/fViewBiaya',
       'X':'transaksi/fViewBiaya'

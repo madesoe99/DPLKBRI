@@ -30,7 +30,7 @@ object:rtf::Form<
   }
   Containers={
     object:rtf::Query<
-      Name='qRegisterCIF'
+      Name='qRegisterAsuransi'
       Width=800
       Height=559
       ContextMenuName='popupmenus/transaction/qRegisterWasiatUmmat'
@@ -39,14 +39,14 @@ object:rtf::Form<
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
-      OQLText=['select from RegisterCIF'#13#10,
+      OQLText=['select from RegisterAsuransi'#13#10,
         '['#13#10,
-        '  (kode_jenis_registercif = ''U'')'#13#10,
-        '  and (1 = :isAdmin or LUserApp.branch_code = :branch_code)'#13#10,
+        '  1 = :isAdmin or LUserApp.branch_code = :branch_code'#13#10,
         ']'#13#10,
         '('#13#10,
         '  no_referensi,'#13#10,
         '  LUserApp.branch_code,'#13#10,
+        '  no_rekening,'#13#10,
         '  no_peserta,'#13#10,
         '  LNasabahDPLK.nama_lengkap as nama_lengkap,'#13#10,
         '  keterangan,'#13#10,
@@ -54,37 +54,46 @@ object:rtf::Form<
         '  terminal_id,'#13#10,
         '  tanggal_register,'#13#10,
         '  registercif_id as ID,'#13#10,
+        '  jenis_transaksi$,'#13#10,
         '  self'#13#10,
         ') then order by no_referensi;']
       DirectDisplay=true
       WindowSize=20
       Columns={
         object:rtf::QueryColumn<
-          FieldName='RegisterCIF.no_referensi'
+          FieldName='RegisterAsuransi.no_rekening'
+          Width=100
+          Caption='Nomor Rekening'
+        >, object:rtf::QueryColumn<
+          FieldName='RegisterAsuransi.no_peserta'
+          Width=100
+          Caption='Nomor Peserta'
+        >, object:rtf::QueryColumn<
+          FieldName='RegisterAsuransi.nama_lengkap'
+          Width=200
+          Caption='Nama Lengkap'
+        >, object:rtf::QueryColumn<
+          FieldName='RegisterAsuransi.no_referensi'
           Width=100
           Caption='Nomor Referensi'
         >, object:rtf::QueryColumn<
-          FieldName='RegisterCIF.branch_code'
+          FieldName='RegisterAsuransi.branch_code'
           Width=75
           Caption='Kantor Cabang'
           UseCustomColor=true
           Color=15128749
         >, object:rtf::QueryColumn<
-          FieldName='RegisterCIF.tanggal_register'
+          FieldName='RegisterAsuransi.tanggal_register'
           Width=120
           Caption='Tanggal Register'
         >, object:rtf::QueryColumn<
-          FieldName='RegisterCIF.no_peserta'
-          Width=100
-          Caption='Nomor Peserta'
-        >, object:rtf::QueryColumn<
-          FieldName='RegisterCIF.nama_lengkap'
-          Width=200
-          Caption='Nama Lengkap'
-        >, object:rtf::QueryColumn<
-          FieldName='RegisterCIF.keterangan'
-          Width=300
+          FieldName='RegisterAsuransi.keterangan'
+          Width=180
           Caption='Keterangan'
+        >, object:rtf::QueryColumn<
+          FieldName='RegisterAsuransi.jenis_transaksi'
+          Width=80
+          Caption='Jenis Transaksi'
         >
       }
       EnableColumns=true
@@ -163,10 +172,10 @@ object:rtf::Form<
       RowControlGap=7
     >, object:rtf::DualSplit<
       Name='DualSplit'
-      Width=240
-      Height=96
+      Width=800
+      Height=600
       Container1=$CONTAINERS['pFilter']
-      Container2=$CONTAINERS['qRegisterCIF']
+      Container2=$CONTAINERS['qRegisterAsuransi']
     >
   }
 >

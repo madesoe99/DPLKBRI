@@ -11,24 +11,30 @@ object:rmn::Menu<
       Name='mnuNew'
       Caption='Buat Register Asuransi Baru...'
       OnClick='mnuNewClick'
+      AllowedGroups='OPR'
     >, object:rmn::MenuItem<
       Name='mnuEdit'
       Caption='Koreksi Register Asuransi...'
       OnClick='displayWithData'
+      AllowedGroups='OPR'
       StringTag='edit'
     >, object:rmn::MenuItem<
       Name='mnuView'
       Caption='Lihat Detil Hasil Register Asuransi...'
       OnClick='displayWithData'
+      AllowedGroups='OPR'
       StringTag='view'
     >, object:rmn::MenuItem<
       Caption='-'
+      AllowedGroups='OPR;SPV'
     >, object:rmn::MenuItem<
       Name='mnuAuth'
       Caption='Otorisasi Hasil Register Asuransi...'
       OnClick='displayWithData'
+      AllowedGroups='SPV'
       StringTag='auth'
     >
   }
   MenuType=mtPopupMenu
+  AllowedGroups='OPR;SPV'
 >

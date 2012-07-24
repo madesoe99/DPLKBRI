@@ -48,6 +48,19 @@ object:rtf::Form<
       }
       Name='uipParameter'
     >, object:rtf::PClassUI<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caView
+          DataMember='operation_code'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='operation_code'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
       Name='uipRekening'
       ClassTypeName='RekInvDPLK'
       DataBinding=bmMaster

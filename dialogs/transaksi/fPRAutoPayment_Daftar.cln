@@ -39,6 +39,10 @@ object:rtf::Form<
           Width=90
           Caption='Sudah Direconcile ?'
         >, object:rtf::QueryColumn<
+          FieldName='riwayatgiro.is_pindahbuku'
+          Width=90
+          Caption='Sudah Pindahbuku?'
+        >, object:rtf::QueryColumn<
           FieldName='riwayatgiro.tanggal_transaksi'
           Width=100
           Caption='Tanggal Transaksi'
@@ -65,7 +69,11 @@ object:rtf::Form<
         >, object:rtf::QueryColumn<
           FieldName='riwayatgiro.sum_nominal'
           Width=90
-          Caption='Jumlah Nominal'
+          Caption='Total Nominal'
+        >, object:rtf::QueryColumn<
+          FieldName='riwayatgiro.sum_pindahbuku'
+          Width=90
+          Caption='Tontal Pindah buku'
         >
       }
       EnableColumns=true

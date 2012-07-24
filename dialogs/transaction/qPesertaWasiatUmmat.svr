@@ -4,10 +4,13 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rpclass::TPClassUIDefList<
-  UIDefs={object:rpclass::TPClassUIDef<
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
       Name='uipNoData'
-      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
           Name='LBranchLocation.branch_code'
           DataTypeName='VARCHAR'
           DataLength=5
@@ -23,10 +26,17 @@ document <
           Name='NoLimitLocation'
           DataTypeName='varchar'
           DataLength=1
-        >}CustomLoadedLinks={object:rpclass::TCustomLoadedLink<
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
           Name='LBranchLocation'
           ClassTypeName='BranchLocation'
           FieldNames='branch_code;branch_code;BranchName'
-        >}Mode=imSingleRow
-    >}OnGeneralSetData='FormGeneralSetData'
+        >
+      }
+      Mode=imSingleRow
+    >
+  }
+  OnGeneralSetData='FormGeneralSetData'
 >

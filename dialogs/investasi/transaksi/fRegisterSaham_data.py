@@ -1,8 +1,16 @@
 import sys, time, string
-sys.path.append('c:/dafapp/dplk/script_modules')
-sys.path.append('c:/dafapp/dplk/scripts/investasi/transaksi')
-import moduleapi, paketinvinfo
+#sys.path.append('c:/dafapp/dplk/script_modules')
+#sys.path.append('c:/dafapp/dplk/scripts/investasi/transaksi')
+#import moduleapi, paketinvinfo
 
+# application-level modules, loaded via modman
+import com.ihsan.util.modman as modman
+modman.loadStdModules(globals(), 
+  [
+    "moduleapi",
+    "scripts#investasi.transaksi.paketinvinfo"
+  ]
+)
 def FormGeneralSetData(uideflist, auiname, apobjconst):
   config = uideflist.Config
   uipRegisterSaham = uideflist.uipRegisterSaham
@@ -36,9 +44,9 @@ def FormGeneralSetData(uideflist, auiname, apobjconst):
       rec.SetFieldByName('LRincianPaketInvestasi.kode_jns_investasi', KodeJnsInv)
       rec.SetFieldByName('LRincianPaketInvestasi.kode_paket_investasi', resSQLRPI.kode_paket_investasi)
       rec.maks_proporsi = resSQLRPI.maks_proporsi or 0.0
-      rec.dpkPaket, rec.dpkInvExisting, rec.dpkTersedia, rec.nilaiMaksProporsi, rec.nominalGiro = paketinvinfo.getPaketInfo(config, resSQLRPI.kode_paket_investasi, KodeJnsInv)
+      #rec.dpkPaket, rec.dpkInvExisting, rec.dpkTersedia, rec.nilaiMaksProporsi, rec.nominalGiro = paketinvinfo.getPaketInfo(config, resSQLRPI.kode_paket_investasi, KodeJnsInv)
 #       rec.nominal = min(rec.dpkTersedia, rec.nilaiMaksProporsi, rec.nominalGiro)
-      rec.nominal = min(rec.dpkTersedia, rec.nilaiMaksProporsi)
+      #rec.nominal = min(rec.dpkTersedia, rec.nilaiMaksProporsi)
 
       #uipRincianRegisterDeposito = uideflist.uipRincianRegisterDeposito
       #rec = uipRincianRegisterDeposito.Dataset.AddRecord()

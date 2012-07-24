@@ -1,6 +1,16 @@
+#sys.path.append('c:/dafapp/dplk07/script_modules')
+#import moduleapi, transaksiapi
+
 import sys, string
-sys.path.append('c:/dafapp/dplk07/script_modules')
-import moduleapi, transaksiapi
+import com.ihsan.util.modman as modman
+import com.ihsan.foundation.appserver as appserver
+
+modman.loadStdModules(globals(),
+  [
+    "moduleapi",
+    "transaksiapi"
+  ]
+)
 
 def tabelpremi(config, usia_masuk, usia_pensiun):
 
@@ -14,6 +24,7 @@ def tabelpremi(config, usia_masuk, usia_pensiun):
     x += 1
 
   #b = b - 45
+  ratepremi = 0
   if usia_masuk == 18:
      rate=[1.35,1.35,1.35,1.40,1.40,1.45,1.45,1.50,1.50,1.55,1.65,1.70,1.75,1.80,1.85,1.90,2.05,2.10,2.20,2.25,2.35]
      ratepremi = rate[b]
@@ -144,6 +155,9 @@ def tabelpremi(config, usia_masuk, usia_pensiun):
      rate=[0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,18.55]
      ratepremi = rate[b]
 
+  if ratepremi == 0:
+    raise Exception, '\n\nPERHATIAN!\nRate premi tidak terdefinisi'
+    
   return ratepremi
 
 ### Pengganti

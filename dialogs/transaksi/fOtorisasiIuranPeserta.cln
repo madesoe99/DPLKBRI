@@ -57,6 +57,12 @@ object:rtf::Form<
       DataBinding=bmList
       Master=$UIPARTS['uipTransaksi']
       ListName='Ls_DetilTransaksiDPLK'
+    >, object:rtf::PClassUI<
+      Name='uipDetilRekening'
+      ClassTypeName='RekeningDPLK'
+      DataBinding=bmList
+      Master=$UIPARTS['uipRekening']
+      ListName='Ls_RekeningDPLK'
     >
   }
   Containers={
@@ -293,6 +299,11 @@ object:rtf::Form<
           PageTitle='Info Otorisasi'
           Container=$CONTAINERS['pOtorisasi']
           Index=3
+        >, object:rtf::Page<
+          PageName='pageUnit'
+          PageTitle='Info Unit'
+          Container=$CONTAINERS['gDetilRekening']
+          Index=4
         >
       }
     >, object:rtf::DualSplit<
@@ -675,7 +686,7 @@ object:rtf::Form<
           Index=4
           FieldName='mutasi_iuran_pk'
           DisplayFormat=',0.00'
-          TitleCaption='Mutasi Iuran Pekerja'
+          TitleCaption='Mutasi Iuran PK'
           Width=150
           ReadOnly=true
         >, *object:rtf::GridColumn<
@@ -706,6 +717,179 @@ object:rtf::Form<
           FieldName='LRekeningDPLK.pct_alokasi'
           DisplayFormat=''
           TitleCaption='% Alokasi'
+          ReadOnly=true
+        >
+      }
+      ReadOnly=true
+      RowSelect=true
+      SuppressHelpLine=true
+    >, object:rtf::Grid<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='nomor_rekening'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=20
+          ServerMIME='nomor rekening'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='kode_paket_investasi'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=2
+          ServerMIME='paket investasi'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='pct_alokasi'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='DOUBLE'
+          DataLength=0
+          ServerMIME='% alokasi'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='nilai_unit'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='DOUBLE'
+          DataLength=0
+          ServerMIME='nilai unit'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='jml_unit'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='DOUBLE'
+          DataLength=0
+          ServerMIME='jumlah unit'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='jml_unit_pk'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='DOUBLE'
+          DataLength=0
+          ServerMIME='jumlah unit PK'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='jml_unit_pst'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='DOUBLE'
+          DataLength=0
+          ServerMIME='jumlah unit peserta'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='jml_unit_tmb'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='DOUBLE'
+          DataLength=0
+          ServerMIME='jumlah unit tambahan'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='jml_unit_psl'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='DOUBLE'
+          DataLength=0
+          ServerMIME='jumlah unit PSL'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='is_deleted'
+          AccessOption=aoReadOnly
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['F=false'#13#10,
+            'T=true'#13#10]
+        >
+      }
+      Name='gDetilRekening'
+      Width=792
+      Height=531
+      UIPart=$UIPARTS['uipDetilRekening']
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Detil Unit'
+      Columns={
+        *object:rtf::GridColumn<
+          Name='nomor_rekening'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='nomor_rekening'
+          DisplayFormat=''
+          TitleCaption='nomor rekening'
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='kode_paket_investasi'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='kode_paket_investasi'
+          DisplayFormat=''
+          TitleCaption='paket investasi'
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='pct_alokasi'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='pct_alokasi'
+          DisplayFormat=''
+          TitleCaption='% alokasi'
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='nilai_unit'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='nilai_unit'
+          DisplayFormat=''
+          TitleCaption='nilai unit'
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='jml_unit'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='jml_unit'
+          DisplayFormat=''
+          TitleCaption='jumlah unit'
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='jml_unit_pk'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='jml_unit_pk'
+          DisplayFormat=''
+          TitleCaption='jumlah unit iuran PK'
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='jml_unit_pst'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='jml_unit_pst'
+          DisplayFormat=''
+          TitleCaption='jumlah unit iuran peserta'
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='jml_unit_tmb'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='jml_unit_tmb'
+          DisplayFormat=''
+          TitleCaption='jumlah unit iuran tambahan'
+          ReadOnly=true
+        >, *object:rtf::GridColumn<
+          Name='jml_unit_psl'
+          InputStyle=cisNormal
+          EnumeratedValues=''
+          FieldName='jml_unit_psl'
+          DisplayFormat=''
+          TitleCaption='jumlah unit PSL'
           ReadOnly=true
         >
       }

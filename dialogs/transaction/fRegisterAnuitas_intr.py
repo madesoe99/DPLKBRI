@@ -16,6 +16,7 @@ def SetControlsForAuth(form):
   form.GetPanelByName('pDataBaru').SetAllControlsReadOnly()
   form.GetControlByName('pButton.btnOK').Caption = '&Setujui'
   form.GetControlByName('pButton.btnCancel').Caption = '&Tolak'
+  form.GetControlByName('pButton.btnCancel').Enabled = 0
   form.GetControlByName('pButton.btnClose').Visible = 1
   form.Caption = 'Otorisasi ' + form.Caption
 
@@ -49,7 +50,7 @@ def btnOKClick(sender):
     return
 
   #cek nomor rekening, nama rekening, tanggal autodebet
-  if uipRegisterCIF.no_rekening in ['',None] or \
+  if uipRegisterCIF.no_rekening_anuitas in ['',None] or \
     uipRegisterCIF.nama_asuransi in ['',None] or \
     uipRegisterCIF.no_polis_anuitas in ['',None]:
     form.ShowMessage('Diantara Data Rekening Anuitas masih kosong. Mohon untuk diisi dahulu.')

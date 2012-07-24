@@ -140,13 +140,12 @@ def btnPrintClick(sender):
   CetakAdvis(app, uipTransLRInvestasi)
 
 def CetakAdvis(app, uipTransLRInvestasi):
-  lHeader = ['ID Saham', 'No. Batch', 'Pihak Ketiga', 'Paket Investasi', \
+  lHeader = ['ID Saham', 'Pihak Ketiga', 'Paket Investasi', \
              'Tgl Transaksi', 'Mutasi Debet', 'Mutasi Kredit', 'Keterangan']
   sHeader = '|'.join(lHeader)
   tgl = uipTransLRInvestasi.tgl_transaksi
   sTgl = '%s-%s-%s' % (tgl[2],tgl[1],tgl[0])
   lData = [str(uipTransLRInvestasi.GetFieldValue('LInvestasi.id_investasi')),\
-           str(uipTransLRInvestasi.GetFieldValue('LTransactionBatch.no_batch')),\
            '%s - %s'% (uipTransLRInvestasi.GetFieldValue('LPihakKetiga.kode_pihak_ketiga'),\
            uipTransLRInvestasi.GetFieldValue('LPihakKetiga.nama_pihak_ketiga')),\
            str(uipTransLRInvestasi.GetFieldValue('LPaketInvestasi.kode_paket_investasi')),\

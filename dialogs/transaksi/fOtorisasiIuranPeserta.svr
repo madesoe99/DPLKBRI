@@ -46,6 +46,11 @@ object:rpclass::TPClassUIDefList<
           FieldNames='nomor_rekening;pct_alokasi'
         >
       }
+    >, object:rpclass::TPClassUIDef<
+      Name='uipDetilRekening'
+      MasterUIName='uipRekening'
+      ListName='Ls_RekeningDPLK'
+      LoadedFieldList='nomor_rekening;kode_paket_investasi;pct_alokasi;nilai_unit;jml_unit;jml_unit_pk;jml_unit_pst;jml_unit_tmb;jml_unit_psl;is_deleted'
     >
   }
   OnGeneralProcessData='Form_OnGeneralProcessData'

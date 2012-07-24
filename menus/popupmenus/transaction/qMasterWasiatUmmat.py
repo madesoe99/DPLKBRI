@@ -4,7 +4,7 @@ def mnuSuratAkseptasiClick(sender, context):
 
   res = app.ExecuteScript('report/SuratAkseptasi',
     app.CreateValues(
-      ['no_peserta',context.GetFieldValue('RekeningWasiatUmmat.no_peserta')]
+      ['no_rekening',context.GetFieldValue('RekAsuransi.no_rekening')]
     )
   )
 
@@ -15,7 +15,7 @@ def mnuSuratTunggakanPremiClick(sender, context):
 
   res = app.ExecuteScript('report/SuratTunggakanPremi',
     app.CreateValues(
-      ['no_peserta',context.GetFieldValue('RekeningWasiatUmmat.no_peserta')]
+      ['no_rekening',context.GetFieldValue('RekAsuransi.no_rekening')]
     )
   )
 

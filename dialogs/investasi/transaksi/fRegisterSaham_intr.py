@@ -239,7 +239,7 @@ def btnPrintClick(sender):
   CetakAdvis(app, uipRegisterSaham)
   
 def CetakAdvis(app, uipRegisterSaham):
-  lHeader = ['Nama Saham', 'No. Batch', 'Manajer Investasi', 'Paket Investasi', \
+  lHeader = ['Nama Saham', 'Manajer Investasi', 'Paket Investasi', \
              'Maks. Proporsi', 'Nominal Paket', 'Nilai Maks. Proporsi', \
              'Saham Existing', 'Dana Idle', 'Nominal Giro', \
              'Tgl Buka','Nilai Investasi']
@@ -247,7 +247,6 @@ def CetakAdvis(app, uipRegisterSaham):
   tgl_buka = uipRegisterSaham.tgl_buka
   sTglBuka = '%s-%s-%s' % (tgl_buka[2],tgl_buka[1],tgl_buka[0])
   lData = [str(uipRegisterSaham.nama_Saham),\
-           str(uipRegisterSaham.GetFieldValue('LTransactionBatch.no_batch')),\
            '%s - %s'% (uipRegisterSaham.GetFieldValue('LPihakKetiga.kode_pihak_ketiga'),\
            uipRegisterSaham.GetFieldValue('LPihakKetiga.nama_pihak_ketiga')),\
            str(uipRegisterSaham.GetFieldValue('LRincianPaketInvestasi.kode_paket_investasi')),\

@@ -1,23 +1,33 @@
-import sys, string
-sys.path.append('c:/dafapp/dplk07/script_modules')
+import sys
+import com.ihsan.util.modman as modman
+import com.ihsan.foundation.appserver as appserver
 
-import moduleapi
+modman.loadStdModules(globals(),
+  [
+    "moduleapi"
+  ]
+)
 
-def CekNomorPeserta(config, noBuku):
+#sys.path.append('c:/dafapp/dplk07/script_modules')
+#import moduleapi
+
+def CekNomorBuku(config, noBuku):
 
   userid = config.SecurityContext.userid
   
   config.SendDebugMsg('no buku :'+ str(noBuku))
-  NoPesertaExist = 1
+  NoBukuExist = 1
 
   oR = config.CreatePObjImplProxy('MasterBukuDPLK')
   oR.Key = noBuku
 
   if oR.IsNull:
-    #objek Peserta DPLK tidak ditemukan: tidak terdaftar
-     NoPesertaExist = 0
+    #objek buku DPLK tidak ditemukan: tidak terdaftar
+    NoBukuExist = 0
+  elif oR.status_buku == 'T':
+    NoBukuExist = 2    
 
-  return NoPesertaExist
+  return NoBukuExist
 
 def DAFScriptMain(config, parameter, returnpacket):
   # config: ISysConfig object
@@ -27,7 +37,7 @@ def DAFScriptMain(config, parameter, returnpacket):
   noBuku = parameter.FirstRecord.nobuku
 
   try:
-    succeedStatus = CekNomorPeserta(config, noBuku)
+    succeedStatus = CekNomorBuku(config, noBuku)
       
   except:
     raise

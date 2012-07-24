@@ -4,8 +4,10 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rmn::Menu<
-  MenuItems={object:rmn::MenuItem<
+>
+object:rmn::Menu<
+  MenuItems={
+    object:rmn::MenuItem<
       Name='mnuSuratAkseptasi'
       Caption='Cetak Surat Akseptasi'
       OnClick='mnuSuratAkseptasiClick'
@@ -13,6 +15,8 @@ document <
       Name='mnuSuratTunggakanPremi'
       Caption='Cetak Surat Tunggakan Premi'
       OnClick='mnuSuratTunggakanPremiClick'
-    >}MenuType=mtPopupMenu
+    >
+  }
+  MenuType=mtPopupMenu
   AllowedGroups='MRKT;BOD;CC;CS'
 >

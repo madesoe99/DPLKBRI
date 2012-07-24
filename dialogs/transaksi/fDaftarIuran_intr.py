@@ -33,6 +33,7 @@ class fDaftarIuran:
     oText += "(tgl_transaksi,\
        branch_code as Kode_Cabang,\
        isCommitted,\
+       LRekeningDPLK.LNasabahDPLK.nama_lengkap, \
        ID_Transaksi,\
        besar_biaya_daftar,\
        no_rekening,\

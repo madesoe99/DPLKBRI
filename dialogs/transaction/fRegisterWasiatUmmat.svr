@@ -10,8 +10,8 @@ object:rpclass::TPClassUIDefList<
     object:rpclass::TPClassUIDef<
       Name='uipRegisterCIF'
       PClassName='RegisterAsuransi'
-      LoadedFieldList='LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;user_id;terminal_id;jenis_transaksi;registercif_id;LRekeningDPLK.no_rekening;LRekeningDPLK.no_rekening;LRekeningDPLK.no_peserta;no_referensi;keterangan;alasan_berhenti'
-      StoredFieldList='LNasabahDPLK;user_id;terminal_id;jenis_transaksi;no_referensi;keterangan;alasan_berhenti'
+      LoadedFieldList='registercif_id;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;LRekeningDPLK.no_rekening;LRekeningDPLK.no_rekening;LRekeningDPLK.no_peserta;jenis_transaksi;alasan_berhenti;no_referensi;keterangan;user_id;terminal_id'
+      StoredFieldList='LNasabahDPLK;LRekeningDPLK;jenis_transaksi;alasan_berhenti;no_referensi;keterangan;user_id;terminal_id'
       CustomLoadedFields={
         object:rpclass::TCustomLoadedField<
           Name='mode'

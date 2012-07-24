@@ -32,32 +32,21 @@ object:rpclass::TPClassUIDefList<
       Name='uipHistoriAhliWaris'
       MasterUIName='uipNasabahDPLK'
       ListName='Ls_HistoriAhliWaris'
-      LoadedFieldList='no_referensi;tanggal_histori;keterangan'
       SetMasterDetailRelationship=true
     >, object:rpclass::TPClassUIDef<
       Name='uipHistoriUbahAlamat'
       MasterUIName='uipNasabahDPLK'
       ListName='Ls_HistoriAlamat'
-      LoadedFieldList='no_referensi;tanggal_histori;alamat_jalan;alamat_kota;alamat_surat_jalan;alamat_surat_kota;keterangan;alamat_jalan2;alamat_surat_jalan2'
       SetMasterDetailRelationship=true
     >, object:rpclass::TPClassUIDef<
       Name='uipHistoriUbahStatusKerja'
       MasterUIName='uipNasabahDPLK'
       ListName='Ls_HistoriUbahStatusKerja'
-      LoadedFieldList='jenis_transaksi;no_referensi;tanggal_histori;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.nama_perusahaan;keterangan'
-      CustomLoadedLinks={
-        object:rpclass::TCustomLoadedLink<
-          Name='LNasabahDPLKCorporate'
-          ClassTypeName='NasabahDPLKCorporate'
-          FieldNames='kode_nasabah_corporate;kode_nasabah_corporate;nama_perusahaan'
-        >
-      }
       SetMasterDetailRelationship=true
     >, object:rpclass::TPClassUIDef<
       Name='uipHistoriAhliWarisDetail'
       MasterUIName='uipHistoriAhliWaris'
       ListName='Ls_HistoriAhliWarisDetail'
-      LoadedFieldList='nomor_urut_prioritas;nama_lengkap;tanggal_lahir;jenis_kelamin;status_ahli_waris;hubungan_keluarga;keterangan'
       SetMasterDetailRelationship=true
     >
   }

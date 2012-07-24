@@ -36,11 +36,18 @@ object:rtf::Form<
         object:rtf::ControlDef<
           Action=caView
           DataMember='tgl_registrasi'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='kode_nasabah_corporate'
         >
       }
       Elements={
         *object:rtf::FieldUIElmtSetting<
           Name='tgl_registrasi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='kode_nasabah_corporate'
           Hidden=false
           ReadOnlyControl=false
         >
@@ -156,6 +163,9 @@ object:rtf::Form<
           Action=caView
           DataMembers=['tgl_pensiun'#13#10,
             'tgl_pensiun_dipercepat'#13#10]
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='operation_code'
         >
       }
       Elements={
@@ -181,6 +191,10 @@ object:rtf::Form<
           ReadOnlyControl=false
         >, *object:rtf::FieldUIElmtSetting<
           Name='tgl_pensiun_dipercepat'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='operation_code'
           Hidden=false
           ReadOnlyControl=false
         >
@@ -282,6 +296,9 @@ object:rtf::Form<
           Action=caView
           DataMembers=['tanggal_lahir'#13#10,
             'tgl_registrasi'#13#10]
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='LNasabahDPLKCorporate'
         >
       }
       Elements={
@@ -337,6 +354,14 @@ object:rtf::Form<
           Name='tgl_registrasi'
           Hidden=true
           ReadOnlyControl=false
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLKCorporate'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='korporat'
+          DisplayFields='kode_nasabah_corporate;nama_perusahaan'
+          Restrictions=''
+          FieldBaseName='LNasabahDPLKCorporate'
         >, object:rtf::FieldUIElmtSetting<
           Name='IuranPk'
           Hidden=true
@@ -425,6 +450,15 @@ object:rtf::Form<
           Left=10
           Color=-16777192
           ControlCaption='NPWP'
+        >, *object:rtf::DBLookupEdit<
+          Name='LNasabahDPLKCorporate'
+          Top=328
+          Left=10
+          Enabled=false
+          ControlCaption='korporat'
+          LookupField='LNasabahDPLKCorporate.nama_perusahaan'
+          DisplayLookupField=true
+          DisableLookup=true
         >
       }
       EqualCaptionWidth=160

@@ -10,8 +10,8 @@ object:rpclass::TPClassUIDefList<
     object:rpclass::TPClassUIDef<
       Name='uipRegisterCIF'
       PClassName='RegisterAnuitas'
-      LoadedFieldList='no_referensi;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;keterangan;user_id;terminal_id;registercif_id;tanggal_register;nama_asuransi;no_polis_anuitas;tgl_pembelian_anuitas;no_rekening;nominal_anuitas'
-      StoredFieldList='no_referensi;LNasabahDPLK;keterangan;user_id;terminal_id;nama_asuransi;no_polis_anuitas;tgl_pembelian_anuitas;no_rekening;nominal_anuitas'
+      LoadedFieldList='no_rekening;no_referensi;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;keterangan;user_id;terminal_id;registercif_id;tanggal_register;LRekeningDPLK.no_rekening;LRekeningDPLK.no_rekening;no_rekening_anuitas;nama_asuransi;no_polis_anuitas;tgl_pembelian_anuitas;nominal_anuitas'
+      StoredFieldList='no_referensi;LNasabahDPLK;keterangan;user_id;terminal_id;no_rekening_anuitas;nama_asuransi;no_polis_anuitas;tgl_pembelian_anuitas;nominal_anuitas'
       CustomLoadedFields={
         object:rpclass::TCustomLoadedField<
           Name='mode'
@@ -24,16 +24,19 @@ object:rpclass::TPClassUIDefList<
           Name='LNasabahDPLK'
           ClassTypeName='NasabahDPLK'
           FieldNames='no_peserta;no_peserta;nama_lengkap'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LRekeningDPLK'
+          ClassTypeName='RekInvDPLK'
+          FieldNames='no_rekening;no_rekening'
         >
       }
       Mode=imSingleRow
       CreateInstanceOnNew=true
       AfterApplyRow='uipRegisterCIFApplyRow'
-    >
-    , object:rpclass::TPClassUIDef<
+    >, object:rpclass::TPClassUIDef<
       Name='uipMaster'
-      PClassName='RekeningDPLK'
-      LoadedFieldList='no_peserta;LNasabahDPLK.no_peserta;status_anuitas'
+      PClassName='RekInvDPLK'
+      LoadedFieldList='no_peserta;LNasabahDPLK.no_peserta;status_anuitas;no_rekening'
       CustomLoadedLinks={
         object:rpclass::TCustomLoadedLink<
           Name='LNasabahDPLK'

@@ -18,9 +18,6 @@ def Form_OnSetDataEx(uideflist, parameterForm):
   uideflist.SetData('uipPeserta','PObj:NasabahDPLK#no_peserta='+recRekening.no_peserta)
   recPeserta = uipPeserta.Dataset.GetRecord(0) 
   
-  if recRekening.STATUS_BIAYA_DAFTAR == 'T': 
-     raise Exception,'Peserta [ '+recRekening.no_rekening+' ] '+recPeserta.nama_lengkap+' Sudah Bayar Iuran Pendaftaran.!!' 
-
   #set field data rekening
   recRekening.akum_pmb = recRekening.akum_pmb_pk + recRekening.akum_pmb_pst + \
     recRekening.akum_pmb_tmb + recRekening.akum_pmb_psl 

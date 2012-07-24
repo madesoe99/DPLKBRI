@@ -1,10 +1,10 @@
 def FormShow(form, parameter):
-  uipRegisterWasiatUmmat = form.GetUIPartByName('uipRegisterWasiatUmmat')
-  if uipRegisterWasiatUmmat.jenis_transaksi == 'R':
-    uipRegisterWasiatUmmat.Edit()
-    uipRegisterWasiatUmmat.tgl_akseptasi = form.ClientApplication.ModDateTime.Now()
-    uipRegisterWasiatUmmat.besar_premi = 0.0
-    uipRegisterWasiatUmmat.manfaat_asuransi = 0.0
+  uipRegisterAsuransi = form.GetUIPartByName('uipRegisterAsuransi')
+  if uipRegisterAsuransi.jenis_transaksi == 'R':
+    uipRegisterAsuransi.Edit()
+    uipRegisterAsuransi.tgl_akseptasi = form.ClientApplication.ModDateTime.Now()
+    uipRegisterAsuransi.besar_premi = 0.0
+    uipRegisterAsuransi.manfaat_asuransi = 0.0
 
     form.GetControlByName('pRegister.alasan_berhenti').Visible = 0
     form.GetControlByName('pOtorisasi.kolektibilitas_premi').Visible = 0
@@ -14,46 +14,47 @@ def FormShow(form, parameter):
     form.GetControlByName('pOtorisasi.tunggakan_premi').Enabled = 0
   else:
     form.GetPanelByName('pOtorisasi').SetAllControlsReadOnly()
-    form.Caption = 'Pra Otorisasi Penutupan Wasiat Ummat'
+    form.Caption = 'Pra Otorisasi Penutupan Asuransi'
 
 def btnOKClick(sender):
   form = sender.OwnerForm
   app = form.ClientApplication
-  uipRegisterWasiatUmmat = form.GetUIPartByName('uipRegisterWasiatUmmat')
-
+  uipRegisterAsuransi = form.GetUIPartByName('uipRegisterAsuransi')
+  form.CommitBuffer()
+  
   #checking no polis
-  if (not uipRegisterWasiatUmmat.no_polis) \
-    and (uipRegisterWasiatUmmat.jenis_transaksi == 'R'):
+  if uipRegisterAsuransi.no_polis in ['', None] \
+    and (uipRegisterAsuransi.jenis_transaksi == 'R'):
     form.ShowMessage('Nomor Polis masih kosong. Mohon untuk diisi.')
     return
 
   #checking nominal besar premi dan manfaat asuransi
   uipP = form.GetUIPartByName('uipParameter')
-  if uipRegisterWasiatUmmat.besar_premi in ['',None] or \
-    uipRegisterWasiatUmmat.besar_premi < uipP.PRESISI_ANGKA_FLOAT:
+  if uipRegisterAsuransi.besar_premi in [0,'',None] or \
+    uipRegisterAsuransi.besar_premi < uipP.PRESISI_ANGKA_FLOAT:
     form.ShowMessage('Nominal Besar Premi masih kosong atau 0! Mohon untuk diisi.')
     return
-  elif uipRegisterWasiatUmmat.manfaat_asuransi in ['',None] or \
-    uipRegisterWasiatUmmat.manfaat_asuransi < uipP.PRESISI_ANGKA_FLOAT:
+    
+  if uipRegisterAsuransi.manfaat_asuransi in ['',None] or \
+    uipRegisterAsuransi.manfaat_asuransi < uipP.PRESISI_ANGKA_FLOAT:
     form.ShowMessage('Nominal Manfaat Asuransi masih kosong atau 0! Mohon untuk diisi.')
     return
 
-  form.CommitBuffer()
   try:
-    if uipRegisterWasiatUmmat.jenis_transaksi == 'R':
+    if uipRegisterAsuransi.jenis_transaksi == 'R':
       app.ExecuteScript('transaction/registercif_auth',\
         app.CreateValues(\
-          ['id',uipRegisterWasiatUmmat.registercif_id],\
-          ['no_polis',uipRegisterWasiatUmmat.no_polis],\
-          ['besar_premi',uipRegisterWasiatUmmat.besar_premi],\
-          ['manfaat_asuransi',uipRegisterWasiatUmmat.manfaat_asuransi],\
-          ['tgl_akseptasi',uipRegisterWasiatUmmat.tgl_akseptasi]\
+          ['id',uipRegisterAsuransi.registercif_id],\
+          ['no_polis',uipRegisterAsuransi.no_polis],\
+          ['besar_premi',uipRegisterAsuransi.besar_premi],\
+          ['manfaat_asuransi',uipRegisterAsuransi.manfaat_asuransi],\
+          ['tgl_akseptasi',uipRegisterAsuransi.tgl_akseptasi]\
         )\
       )
     else:
       app.ExecuteScript('transaction/registercif_auth',\
         app.CreateValues(\
-          ['id',uipRegisterWasiatUmmat.registercif_id]\
+          ['id',uipRegisterAsuransi.registercif_id]\
         )\
       )
   except:

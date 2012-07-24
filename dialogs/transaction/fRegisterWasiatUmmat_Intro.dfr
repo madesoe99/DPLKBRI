@@ -47,11 +47,28 @@ object:rtf::Form<
             'then order by no_peserta;']
           LookupOption=loCustomOQL
           FieldBaseName='LPeserta'
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LRekening'
+          Hidden=false
+          ReadOnlyControl=false
+          ClassTypeName='RekInvDPLK'
+          DisplayFields='no_rekening;no_peserta;LNasabahDPLK.nama_lengkap'
+          Restrictions='LPeserta|LNasabahDPLK'
+          OQLText=['SELECT FROM RekInvDPLK ['#13#10,
+            '  LNasabahDPLK=:LNasabahDPLK'#13#10,
+            ']('#13#10,
+            '  no_rekening,'#13#10,
+            '  no_peserta,'#13#10,
+            '  LNasabahDPLK.nama_lengkap,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY no_rekening;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LRekening'
         >
       }
       Name='pData'
       Width=400
-      Height=40
+      Height=73
       Bordered=true
       UIPart=$UIPARTS['uipNoData']
       Controls={
@@ -65,6 +82,15 @@ object:rtf::Form<
           LookupField='LPeserta.nama_lengkap'
           DisplayLookupField=true
           DirectInput=true
+        >, *object:rtf::DBLookupEdit<
+          Name='LRekening'
+          Top=38
+          Left=20
+          Width=100
+          Height=21
+          ControlCaption='Rekening DPLK'
+          LookupField='LRekening.LNasabahDPLK.nama_lengkap'
+          DisplayLookupField=true
         >
       }
       EqualCaptionWidth=100

@@ -11,19 +11,19 @@ object:rmn::Menu<
       Name='mnuNew'
       Caption='Registrasi Korporat Baru...'
       OnClick='mnuNewClick'
-      AllowedGroups='MRKT'
+      AllowedGroups='OPR'
       StringTag='fRegistrasiCorp_New'
     >, object:rmn::MenuItem<
       Name='mnuEdit'
       Caption='Koreksi Data Korporat...'
       OnClick='displayWithData'
-      AllowedGroups='MRKT'
+      AllowedGroups='OPR'
       StringTag='editdoc'
     >, object:rmn::MenuItem<
       Name='mnuView'
       Caption='Lihat Detil Data Korporat'
       OnClick='displayWithData'
-      AllowedGroups='MRKT'
+      AllowedGroups='OPR;SPV'
       StringTag='view'
     >, object:rmn::MenuItem<
       Caption='-'
@@ -31,21 +31,21 @@ object:rmn::Menu<
       Name='mnuViewMember'
       Caption='Lihat Peserta Anggota Korporat'
       OnClick='displayWithData'
-      AllowedGroups='MRKT'
+      AllowedGroups='OPR;SPV'
       StringTag='viewmember'
     >, object:rmn::MenuItem<
       Name='mnuViewParams'
       Caption='Daftar Parameter Korporat'
       OnClick='displayWithDataX'
-      AllowedGroups='MRKT'
+      AllowedGroups='OPR'
     >, object:rmn::MenuItem<
       Caption='-'
-      AllowedGroups='MRKT'
+      AllowedGroups='OPR;SPV'
     >, object:rmn::MenuItem<
       Name='mnuDelete'
       Caption='Hapus Korporat'
       OnClick='mnuDeleteClick'
-      AllowedGroups='MRKT'
+      AllowedGroups='XXX'
     >
   }
   MenuType=mtPopupMenu

@@ -3,6 +3,8 @@ def SetControlsForView(form):
   form.GetPanelByName('pDataRight').SetAllControlsReadOnly()
   form.GetPanelByName('pKorporatHolding').SetAllControlsReadOnly()
   form.GetPanelByName('pPerjanjian').SetAllControlsReadOnly()
+  form.GetPanelByName('pRefr').SetAllControlsReadOnly()
+  form.GetPanelByName('pRegister').SetAllControlsReadOnly()
   form.GetControlByName('pButton.btnOK').Caption = '&Setujui'
   form.GetControlByName('pButton.btnOK').Enabled = 0
   form.GetControlByName('pButton.btnOK').Default = 0
@@ -18,6 +20,8 @@ def SetControlsForAuth(form):
   form.GetPanelByName('pDataRight').SetAllControlsReadOnly()
   form.GetPanelByName('pKorporatHolding').SetAllControlsReadOnly()
   form.GetPanelByName('pPerjanjian').SetAllControlsReadOnly()
+  form.GetPanelByName('pRefr').SetAllControlsReadOnly()
+  form.GetPanelByName('pRegister').SetAllControlsReadOnly()
   form.GetControlByName('pButton.btnOK').Caption = '&Setujui'
   form.GetControlByName('pButton.btnCancel').Caption = '&Tolak'
   form.GetControlByName('pButton.btnClose').Visible = 1

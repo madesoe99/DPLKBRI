@@ -2,7 +2,7 @@ class fPRAutoPayment_Daftar:
   def __init__(self, formObj, parentForm):
     self.app = formObj.ClientApplication
     self.DictFormId = {
-      'D':'transaksi/fPR_DetilRiwayatGiro'
+      'D':'transaksi/fPRDetilRiwayatGiro'
     }
        
   def Show(self,jenis):
@@ -34,7 +34,10 @@ class fPRAutoPayment_Daftar:
     qPR.OQLText = " select from riwayatgiro [ %s ] \
     ( account_giro, \
       is_reconciled $, \
+      is_pindahbuku $, \
       id_reconcile, \
+      sum_procced_nominal, \
+      sum_pindahbuku, \
       sum_nominal, \
       LReconcile.tanggal_transaksi, \
       LReconcile.waktu_mulai, \
@@ -43,7 +46,7 @@ class fPRAutoPayment_Daftar:
       LReconcile.nama_file, \
       LReconcile.is_file_valid $, \
       self \
-    );" % (AddParam)
+    );" % (AddParam)     
     qPR.DisplayData()
 
   def bViewDetilOnClick(self, sender):

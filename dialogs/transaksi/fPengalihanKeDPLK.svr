@@ -70,7 +70,7 @@ object:rpclass::TPClassUIDefList<
     >, object:rpclass::TPClassUIDef<
       Name='uipRekening'
       PClassName='RekInvDPLK'
-      LoadedFieldList='akum_pmb_pk;akum_pmb_pst;akum_pmb_tmb;akum_pmb_psl;no_rekening;iuran_pk;iuran_pst;akum_iuran_pk;akum_iuran_pst;akum_iuran_tmb;akum_psl'
+      LoadedFieldList='akum_pmb_pk;akum_pmb_pst;akum_pmb_tmb;akum_pmb_psl;operation_code;no_rekening;iuran_pk;iuran_pst;akum_iuran_pk;akum_iuran_pst;akum_iuran_tmb;akum_psl'
       CustomLoadedFields={
         object:rpclass::TCustomLoadedField<
           Name='akum_pmb'

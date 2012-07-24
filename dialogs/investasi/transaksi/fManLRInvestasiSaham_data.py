@@ -1,7 +1,13 @@
 import sys, time, string
-sys.path.append('c:/dafapp/dplk07/script_modules')
-import moduleapi
-
+#sys.path.append('c:/dafapp/dplk07/script_modules')
+#import moduleapi
+# application-level modules, loaded via modman
+import com.ihsan.util.modman as modman
+modman.loadStdModules(globals(), 
+  [
+    "moduleapi"
+  ]
+)
 mode = ''
 
 def FormGeneralSetData(uideflist, auiname, apobjconst):

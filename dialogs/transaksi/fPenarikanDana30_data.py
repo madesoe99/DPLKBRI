@@ -36,9 +36,9 @@ def GetNominalPajak(config, params, returns):
 def Form_OnSetDataEx(uideflist, parameterForm):
   config = uideflist.config
   recParameterForm = parameterForm.FirstRecord
+  transaksiAPI = modman.getModule(config, 'transaksiapi')
 
   # cek penarikan terakhir dan saldo iuran minimal
-  transaksiAPI = modman.getModule(config, 'transaksiapi')
   transaksiAPI.CekRentangWaktuPenarikan(config, recParameterForm.no_rekening)
   transaksiAPI.CekSaldoIuranMin(config, recParameterForm.no_rekening)
 
@@ -60,32 +60,60 @@ def Form_OnSetDataEx(uideflist, parameterForm):
   recRekening = uipRekening.Dataset.GetRecord(0)
   recParameter = uipParameter.Dataset.AddRecord()
   
+  #cek rekening investasi DPLK
+  if recRekening.operation_code != 'F':
+    raise Exception, "Rekening DPLK peserta berstatus Sedang Diubah. Transaksi tidak diperbolehkan!"
+
   #cek parameter default atau parameter korporat
   
   #set parameter default
   oParameter = config.CreatePObjImplProxy('Parameter')
   oParameter.Key = 'PRESISI_ANGKA_FLOAT'
   recParameter.PRESISI_ANGKA_FLOAT = oParameter.Numeric_Value
-  oParameter.Key = 'BIAYA_SKN'
-  recParameter.BiayaSKN = oParameter.Numeric_Value
-  oParameter.Key = 'BIAYA_RTGS'
-  recParameter.BiayaRTGS = oParameter.Numeric_Value
-  oParameter.Key = 'BIAYA_TUNAI'
-  recParameter.BiayaTunai = oParameter.Numeric_Value
-  oParameter.Key = 'BIAYA_PINDAH_BUKU'
-  recParameter.BiayaPindahBuku = oParameter.Numeric_Value
-  oParameter.Key = 'PERSEN_PENARIKAN_NORMAL'
-  recParameter.PERSEN_PENARIKAN_NORMAL = oParameter.Numeric_Value
-  oParameter.Key = 'MIN_JML_AKUM_IURAN_PST'
-  recParameter.MIN_JML_AKUM_IURAN_PST = oParameter.Numeric_Value
-  oParameter.Key = 'PERSEN_DENDA_NPWP'
-  recParameter.PERSEN_DENDA_NPWP = oParameter.Numeric_Value
-  oParameter.Key = 'MIN_BIAYA_TARIK'
-  recParameter.MIN_BIAYA_TARIK = oParameter.Numeric_Value
-  oParameter.Key = 'MIN_JML_TARIK_NORMAL'
-  recParameter.MIN_JML_TARIK_NORMAL = oParameter.Numeric_Value
-  oParameter.Key = 'PERSEN_BIAYA_TARIK_NORMAL'
-  recParameter.PERSEN_BIAYA_TARIK_NORMAL = oParameter.Numeric_Value
+
+  #cek parameter default atau parameter korporat
+  if recPeserta.kode_nasabah_corporate not in (None,''):
+    #pakai parameter korporat
+    listParameterKey =[]
+    dictParameterKorporat = transaksiAPI.GetParameterCorporate(config, \
+      recPeserta.kode_nasabah_corporate, listParameterKey)
+    
+    recParameter.BiayaSKN = dictParameterKorporat['BIAYA_SKN'][1]
+    recParameter.BiayaRTGS = dictParameterKorporat['BIAYA_RTGS'][1]
+    recParameter.BiayaTunai = dictParameterKorporat['BIAYA_TUNAI'][1]
+    recParameter.BiayaPindahBuku = dictParameterKorporat['BIAYA_PINDAH_BUKU'][1]
+
+    recParameter.PERSEN_PENARIKAN_NORMAL = dictParameterKorporat['PERSEN_PENARIKAN_NORMAL'][1]
+    recParameter.MIN_JML_AKUM_IURAN_PST = dictParameterKorporat['MIN_JML_AKUM_IURAN_PST'][1]
+    recParameter.PERSEN_DENDA_NPWP = dictParameterKorporat['PERSEN_DENDA_NPWP'][1]
+    recParameter.MIN_BIAYA_TARIK = dictParameterKorporat['MIN_BIAYA_TARIK'][1]
+    recParameter.MIN_JML_TARIK_NORMAL = dictParameterKorporat['MIN_JML_TARIK_NORMAL'][1]
+    recParameter.PERSEN_BIAYA_TARIK_NORMAL = dictParameterKorporat['PERSEN_BIAYA_TARIK_NORMAL'][1]
+
+    recParameter.PERSEN_DENDA_NPWP = dictParameterKorporat['PERSEN_DENDA_NPWP'][1]
+  else:
+    #pakai parameter default aplikasi
+    oParameter.Key = 'BIAYA_SKN'
+    recParameter.BiayaSKN = oParameter.Numeric_Value
+    oParameter.Key = 'BIAYA_RTGS'
+    recParameter.BiayaRTGS = oParameter.Numeric_Value
+    oParameter.Key = 'BIAYA_TUNAI'
+    recParameter.BiayaTunai = oParameter.Numeric_Value
+    oParameter.Key = 'BIAYA_PINDAH_BUKU'
+    recParameter.BiayaPindahBuku = oParameter.Numeric_Value
+  
+    oParameter.Key = 'PERSEN_PENARIKAN_NORMAL'
+    recParameter.PERSEN_PENARIKAN_NORMAL = oParameter.Numeric_Value
+    oParameter.Key = 'MIN_JML_AKUM_IURAN_PST'
+    recParameter.MIN_JML_AKUM_IURAN_PST = oParameter.Numeric_Value
+    oParameter.Key = 'PERSEN_DENDA_NPWP'
+    recParameter.PERSEN_DENDA_NPWP = oParameter.Numeric_Value
+    oParameter.Key = 'MIN_BIAYA_TARIK'
+    recParameter.MIN_BIAYA_TARIK = oParameter.Numeric_Value
+    oParameter.Key = 'MIN_JML_TARIK_NORMAL'
+    recParameter.MIN_JML_TARIK_NORMAL = oParameter.Numeric_Value
+    oParameter.Key = 'PERSEN_BIAYA_TARIK_NORMAL'
+    recParameter.PERSEN_BIAYA_TARIK_NORMAL = oParameter.Numeric_Value
 
   recParameter.LABEL_MIN_JML_TARIK_NORMAL = config.FormatFloat(',0.00', recParameter.MIN_JML_TARIK_NORMAL)
   
@@ -179,20 +207,22 @@ def SimpanTransaksi(config, params, returns):
     Ls_RekeningDPLK = oRekInv.Ls_RekeningDPLK
     while not Ls_RekeningDPLK.EndOfList:
       oRekDPLK = Ls_RekeningDPLK.CurrentElement 
-      
-      oDetilTransaksi = config.CreatePObject('DetilTransaksiDPLK')
-      oDetilTransaksi.ID_Transaksi = oT.ID_Transaksi
-      oDetilTransaksi.nomor_rekening = oRekDPLK.nomor_rekening 
-      oDetilTransaksi.kode_paket_investasi = oRekDPLK.kode_paket_investasi
-      
-      oDetilTransaksi.mutasi_iuran_pk = (oRekDPLK.pct_alokasi / 100.0) * oT.mutasi_iuran_pk  
-      oDetilTransaksi.mutasi_iuran_pst = (oRekDPLK.pct_alokasi / 100.0) * oT.mutasi_iuran_pst  
-      oDetilTransaksi.mutasi_iuran_tmb = (oRekDPLK.pct_alokasi / 100.0) * oT.mutasi_iuran_tmb
-      oDetilTransaksi.mutasi_psl = (oRekDPLK.pct_alokasi / 100.0) * oT.mutasi_psl
-      oDetilTransaksi.mutasi_pmb_pk = (oRekDPLK.pct_alokasi / 100.0) * oT.mutasi_pmb_pk
-      oDetilTransaksi.mutasi_pmb_pst = (oRekDPLK.pct_alokasi / 100.0) * oT.mutasi_pmb_pst 
-      oDetilTransaksi.mutasi_pmb_tmb = (oRekDPLK.pct_alokasi / 100.0) * oT.mutasi_pmb_tmb 
-      oDetilTransaksi.mutasi_pmb_psl = (oRekDPLK.pct_alokasi / 100.0) * oT.mutasi_pmb_psl 
+      if oRekDPLK.is_deleted == 'F':
+        
+        #rekening DPLK masih aktif 
+        oDetilTransaksi = config.CreatePObject('DetilTransaksiDPLK')
+        oDetilTransaksi.ID_Transaksi = oT.ID_Transaksi
+        oDetilTransaksi.nomor_rekening = oRekDPLK.nomor_rekening 
+        oDetilTransaksi.kode_paket_investasi = oRekDPLK.kode_paket_investasi
+        
+        oDetilTransaksi.mutasi_iuran_pk = (oRekDPLK.pct_alokasi / 100.0) * oT.mutasi_iuran_pk  
+        oDetilTransaksi.mutasi_iuran_pst = (oRekDPLK.pct_alokasi / 100.0) * oT.mutasi_iuran_pst  
+        oDetilTransaksi.mutasi_iuran_tmb = (oRekDPLK.pct_alokasi / 100.0) * oT.mutasi_iuran_tmb
+        oDetilTransaksi.mutasi_psl = (oRekDPLK.pct_alokasi / 100.0) * oT.mutasi_psl
+        oDetilTransaksi.mutasi_pmb_pk = (oRekDPLK.pct_alokasi / 100.0) * oT.mutasi_pmb_pk
+        oDetilTransaksi.mutasi_pmb_pst = (oRekDPLK.pct_alokasi / 100.0) * oT.mutasi_pmb_pst 
+        oDetilTransaksi.mutasi_pmb_tmb = (oRekDPLK.pct_alokasi / 100.0) * oT.mutasi_pmb_tmb 
+        oDetilTransaksi.mutasi_pmb_psl = (oRekDPLK.pct_alokasi / 100.0) * oT.mutasi_pmb_psl 
       
       Ls_RekeningDPLK.Next()
     #-- 

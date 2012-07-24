@@ -50,7 +50,7 @@ object:rpclass::TPClassUIDefList<
     >, object:rpclass::TPClassUIDef<
       Name='uipRekening'
       PClassName='RekInvDPLK'
-      LoadedFieldList='no_rekening;iuran_pk;iuran_pst;akum_iuran_pk;akum_iuran_pst;akum_iuran_tmb;akum_psl'
+      LoadedFieldList='operation_code;no_rekening;iuran_pk;iuran_pst;akum_iuran_pk;akum_iuran_pst;akum_iuran_tmb;akum_psl'
       Mode=imSingleRow
     >
   }

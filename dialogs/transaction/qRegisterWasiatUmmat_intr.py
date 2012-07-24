@@ -1,14 +1,14 @@
 def SetQueryParameter(form, paramname, paramvalue, flagAdmin):
-  qRegisterCIF = form.GetPanelByName('qRegisterCIF')
-  qRegisterCIF.SetParameter(paramname, paramvalue)
-  qRegisterCIF.SetParameter('isAdmin', flagAdmin)
-  qRegisterCIF.DisplayData()
+  qRegisterAsuransi = form.GetPanelByName('qRegisterAsuransi')
+  qRegisterAsuransi.SetParameter(paramname, paramvalue)
+  qRegisterAsuransi.SetParameter('isAdmin', flagAdmin)
+  qRegisterAsuransi.DisplayData()
 
 def ResetQueryParameter(form, paramname, paramvalue, flagAdmin):
-  qRegisterCIF = form.GetPanelByName('qRegisterCIF')
-  qRegisterCIF.SetParameter(paramname, paramvalue)
-  qRegisterCIF.SetParameter('isAdmin', flagAdmin)
-  qRegisterCIF.Refresh()
+  qRegisterAsuransi = form.GetPanelByName('qRegisterAsuransi')
+  qRegisterAsuransi.SetParameter(paramname, paramvalue)
+  qRegisterAsuransi.SetParameter('isAdmin', flagAdmin)
+  qRegisterAsuransi.Refresh()
 
 def FormShow(form, parameter):
   uipNoData = form.GetUIPartByName('uipNoData')

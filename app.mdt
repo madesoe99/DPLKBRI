@@ -1151,6 +1151,14 @@ object:ODL<
           MemberName='nav'
           PhysicalName='NAV'
           DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='nav_custody'
+          PhysicalName='NAV_CUSTODY'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='unit_custody'
+          PhysicalName='UNIT_CUSTODY'
+          DataType=$TYPEDECLS['DOUBLE']
         >
       }
       ClassID='{BE892323-8485-47F8-B1B5-B653E2C81C0E}'
@@ -3039,6 +3047,9 @@ object:ODL<
         >, object:EnumMember<
           StringValue='P'
           DescriptiveName='Pengalihan dari DPK Lain'
+        >, object:EnumMember<
+          StringValue='Q'
+          DescriptiveName='Pengembalian Dana'
         >
       }
     >, object:EnumTypeDecl<
@@ -5753,6 +5764,11 @@ object:ODL<
           MemberName='tgl_pembelian_anuitas'
           PhysicalName='TGL_PEMBELIAN_ANUITAS'
           DataType=$TYPEDECLS['TIMESTAMP']
+        >, object:FieldMember<
+          MemberName='no_rekening_anuitas'
+          PhysicalName='NO_REKENING_ANUITAS'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=20
         >
       }
       Ancestors={
@@ -5774,15 +5790,19 @@ object:ODL<
       PTableName='REKENINGANUITAS'
       Members={
         object:FieldMember<
-          MemberName='no_rekening'
-          PhysicalName='NO_REKENING'
+          MemberName='no_rekening_anuitas'
+          PhysicalName='NO_REKENING_ANUITAS'
           DataType=$TYPEDECLS['VARCHAR']
           DataLength=20
-          IsPrimaryKey=true
         >, object:LinkMember<
           MemberName='LRekeningDPLK'
+          AttrLinks={
+            object:AttributeLink<
+              ThisField=$TYPEDECLS['RekeningAnuitas'].MEMBERS['no_rekening']
+              OriginPKey=$TYPEDECLS['RekInvDPLK'].MEMBERS['no_rekening']
+            >
+          }
           LinkedClass=$TYPEDECLS['RekInvDPLK']
-          AutoForeignKey=true
         >, object:FieldMember<
           MemberName='tgl_pembelian_anuitas'
           PhysicalName='TGL_PEMBELIAN_ANUITAS'
@@ -5801,6 +5821,74 @@ object:ODL<
           MemberName='nominal_anuitas'
           PhysicalName='NOMINAL_ANUITAS'
           DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='no_rekening'
+          PhysicalName='NO_REKENING'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=20
+          IsPrimaryKey=true
+        >, object:LinkMember<
+          MemberName='LNasabahDPLK'
+          LinkedClass=$TYPEDECLS['NasabahDPLK']
+          AutoForeignKey=true
+        >, object:FieldMember<
+          MemberName='tanggal_register'
+          PhysicalName='TANGGAL_REGISTER'
+          DataType=$TYPEDECLS['TIMESTAMP']
+        >, object:FieldMember<
+          MemberName='keterangan'
+          PhysicalName='KETERANGAN'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=100
+        >, object:FieldMember<
+          MemberName='user_id'
+          PhysicalName='USER_ID'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=20
+        >, object:FieldMember<
+          MemberName='terminal_id'
+          PhysicalName='TERMINAL_ID'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=15
+        >, object:FieldMember<
+          MemberName='auth_user_id'
+          PhysicalName='AUTH_USER_ID'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=20
+        >, object:FieldMember<
+          MemberName='auth_terminal_id'
+          PhysicalName='AUTH_TERMINAL_ID'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=15
+        >, object:FieldMember<
+          MemberName='tanggal_auth'
+          PhysicalName='TANGGAL_AUTH'
+          DataType=$TYPEDECLS['TIMESTAMP']
+        >, object:FieldMember<
+          MemberName='no_referensi'
+          PhysicalName='NO_REFERENSI'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=50
+        >, object:LinkMember<
+          MemberName='LUserApp'
+          AttrLinks={
+            object:AttributeLink<
+              ThisField=$TYPEDECLS['RekeningAnuitas'].MEMBERS['user_id']
+              OriginPKey=$TYPEDECLS['UserApp'].MEMBERS['user_id']
+            >
+          }
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['UserApp']
+        >, object:LinkMember<
+          MemberName='LUserAppAuth'
+          AttrLinks={
+            object:AttributeLink<
+              ThisField=$TYPEDECLS['RekeningAnuitas'].MEMBERS['auth_user_id']
+              OriginPKey=$TYPEDECLS['UserApp'].MEMBERS['user_id']
+            >
+          }
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['UserApp']
         >
       }
       ClassID='{504ACC34-6587-4354-AD0A-AC7D0D066F85}'
@@ -7642,10 +7730,14 @@ object:ODL<
       Members={
         object:LinkMember<
           MemberName='LKepemilikan'
+          Optional=true
+          IsWeak=true
           LinkedClass=$TYPEDECLS['Kepemilikan']
           AutoForeignKey=true
         >, object:LinkMember<
           MemberName='LDaerahAsal'
+          Optional=true
+          IsWeak=true
           LinkedClass=$TYPEDECLS['DaerahAsal']
           AutoForeignKey=true
         >, object:FieldMember<
@@ -7676,6 +7768,7 @@ object:ODL<
         >, object:LinkMember<
           MemberName='LKelompok'
           Optional=true
+          IsWeak=true
           LinkedClass=$TYPEDECLS['Kelompok']
           AutoForeignKey=true
         >, object:FieldMember<
@@ -12465,6 +12558,12 @@ object:ODL<
           }
           IsWeak=true
           LinkedClass=$TYPEDECLS['BranchLocation']
+        >, object:FieldMember<
+          MemberName='STATUS_BUKU'
+          PhysicalName='STATUS_BUKU'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=1
+          Enumerator=$TYPEDECLS['FTBoolean']
         >
       }
       ClassID='{923E7EE7-C98F-4973-9076-D9BCFE678037}'
@@ -14246,6 +14345,9 @@ object:ODL<
           IsWeak=true
           LinkedClass=$TYPEDECLS['BranchLocation']
           AutoForeignKey=true
+        >, object:ListMember<
+          MemberName='Ls_UploadCorpKoreksiPeserta'
+          UsedLink=$TYPEDECLS['UploadCorpKoreksiPeserta'].MEMBERS['LUploadCorporate']
         >
       }
       Ancestors={
@@ -14477,6 +14579,7 @@ object:ODL<
           Enumerator=$TYPEDECLS['FTBoolean']
         >, object:LinkMember<
           MemberName='LReconcile'
+          Optional=true
           AttrLinks={
             object:AttributeLink<
               ThisField=$TYPEDECLS['RiwayatGiro'].MEMBERS['id_reconcile']
@@ -14490,6 +14593,16 @@ object:ODL<
         >, object:FieldMember<
           MemberName='sum_procced_nominal'
           PhysicalName='SUM_PROCCED_NOMINAL'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='is_pindahbuku'
+          PhysicalName='IS_PINDAHBUKU'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=1
+          Enumerator=$TYPEDECLS['FTBoolean']
+        >, object:FieldMember<
+          MemberName='sum_pindahbuku'
+          PhysicalName='SUM_PINDAHBUKU'
           DataType=$TYPEDECLS['DOUBLE']
         >
       }
@@ -14763,6 +14876,337 @@ object:ODL<
       }
       ClassID='{FBAC5F03-12EF-4BD1-A2DC-CFDDA7996216}'
       AutoPrimaryKey=$TYPEDECLS['UploadCorpAhliWaris'].MEMBERS['upload_id']
+    >, object:ClassTypeDecl<
+      TypeName='PengembalianDana'
+      PTableName='PENGEMBALIANDANA'
+      Members={
+        object:FieldMember<
+          MemberName='ID_Transaksi'
+          PhysicalName='ID_TRANSAKSI'
+          DataType=$TYPEDECLS['INTEGER']
+          IsPrimaryKey=true
+        >, object:FieldMember<
+          MemberName='biaya_administrasi'
+          PhysicalName='BIAYA_ADMINISTRASI'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='biaya_pencairan'
+          PhysicalName='BIAYA_PENCAIRAN'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='biaya_pengelolaan'
+          PhysicalName='BIAYA_PENGELOLAAN'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='count_advis'
+          PhysicalName='COUNT_ADVIS'
+          DataType=$TYPEDECLS['INTEGER']
+        >, object:LinkMember<
+          MemberName='LBiayaAdmTahunan'
+          AttrLinks={
+            object:AttributeLink<
+              ThisField=$TYPEDECLS['PengembalianDana'].MEMBERS['ID_Transaksi_BAdmThn']
+              OriginPKey=$TYPEDECLS['BiayaAdmTahunan'].MEMBERS['ID_Transaksi']
+            >
+          }
+          LinkedClass=$TYPEDECLS['BiayaAdmTahunan']
+        >, object:FieldMember<
+          MemberName='ID_Transaksi_BAdmThn'
+          PhysicalName='ID_TRANSAKSI_BADMTHN'
+          DataType=$TYPEDECLS['INTEGER']
+        >, object:LinkMember<
+          MemberName='LBiayaAdmTransaksi'
+          AttrLinks={
+            object:AttributeLink<
+              ThisField=$TYPEDECLS['PengembalianDana'].MEMBERS['ID_Transaksi_BAdmTrans']
+              OriginPKey=$TYPEDECLS['BiayaAdmTransaksi'].MEMBERS['ID_Transaksi']
+            >
+          }
+          LinkedClass=$TYPEDECLS['BiayaAdmTransaksi']
+        >, object:FieldMember<
+          MemberName='ID_Transaksi_BAdmTrans'
+          PhysicalName='ID_TRANSAKSI_BADMTRANS'
+          DataType=$TYPEDECLS['INTEGER']
+        >, object:LinkMember<
+          MemberName='LBiayaPengelolaanDana'
+          AttrLinks={
+            object:AttributeLink<
+              ThisField=$TYPEDECLS['PengembalianDana'].MEMBERS['ID_Transaksi_BPeng']
+              OriginPKey=$TYPEDECLS['BiayaPengelolaanDana'].MEMBERS['ID_Transaksi']
+            >
+          }
+          LinkedClass=$TYPEDECLS['BiayaPengelolaanDana']
+        >, object:FieldMember<
+          MemberName='ID_Transaksi_BPeng'
+          PhysicalName='ID_TRANSAKSI_BPENG'
+          DataType=$TYPEDECLS['INTEGER']
+        >, object:FieldMember<
+          MemberName='biaya_lain'
+          PhysicalName='BIAYA_LAIN'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='jenis_biaya'
+          PhysicalName='JENIS_BIAYA'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=1
+          Enumerator=$TYPEDECLS['eJenisBiaya']
+        >, object:FieldMember<
+          MemberName='saldo_iuran_pk'
+          PhysicalName='SALDO_IURAN_PK'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='saldo_iuran_pst'
+          PhysicalName='SALDO_IURAN_PST'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='saldo_iuran_tmb'
+          PhysicalName='SALDO_IURAN_TMB'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='saldo_psl'
+          PhysicalName='SALDO_PSL'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='saldo_pmb_pk'
+          PhysicalName='SALDO_PMB_PK'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='saldo_pmb_pst'
+          PhysicalName='SALDO_PMB_PST'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='saldo_pmb_tmb'
+          PhysicalName='SALDO_PMB_TMB'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='saldo_pmb_psl'
+          PhysicalName='SALDO_PMB_PSL'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='saldo_jml_dana'
+          PhysicalName='SALDO_JML_DANA'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='pajak'
+          PhysicalName='PAJAK'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='dana_stlh_pajak'
+          PhysicalName='DANA_STLH_PAJAK'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='dana_dikembalikan'
+          PhysicalName='DANA_DIKEMBALIKAN'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='saldo_pengembalian'
+          PhysicalName='SALDO_PENGEMBALIAN'
+          DataType=$TYPEDECLS['DOUBLE']
+        >
+      }
+      Ancestors={
+        object:Inheritance<
+          ClassifierStringValue='Q'
+          AncestorClass=$TYPEDECLS['TransaksiDPLK']
+          InhLinks={
+            object:InheritanceLink<
+              ThisPKey=$TYPEDECLS['PengembalianDana'].MEMBERS['ID_Transaksi']
+              OriginPKey=$TYPEDECLS['TransaksiDPLK'].MEMBERS['ID_Transaksi']
+            >
+          }
+        >
+      }
+      ClassID='{33E9F258-6BEE-452D-8F8F-1B86CA2833FF}'
+      AutoPrimaryKey=$TYPEDECLS['PengembalianDana'].MEMBERS['ID_Transaksi']
+    >, object:ClassTypeDecl<
+      TypeName='UploadCorpKoreksiPeserta'
+      PTableName='UPLOADCORPKOREKSIPESERTA'
+      Members={
+        object:FieldMember<
+          MemberName='upload_id'
+          PhysicalName='UPLOAD_ID'
+          DataType=$TYPEDECLS['INTEGER']
+          IsPrimaryKey=true
+        >, object:LinkMember<
+          MemberName='LUploadCorporate'
+          LinkedClass=$TYPEDECLS['UploadCorporate']
+          AutoForeignKey=true
+        >, object:LinkMember<
+          MemberName='LNasabahDPLK'
+          Optional=true
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['NasabahDPLK']
+          AutoForeignKey=true
+        >, object:FieldMember<
+          MemberName='is_auth'
+          PhysicalName='IS_AUTH'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=1
+          Enumerator=$TYPEDECLS['FTBoolean']
+        >, object:FieldMember<
+          MemberName='is_valid'
+          PhysicalName='IS_VALID'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=1
+          Enumerator=$TYPEDECLS['FTBoolean']
+        >, object:FieldMember<
+          MemberName='keterangan'
+          PhysicalName='KETERANGAN'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=100
+        >, object:FieldMember<
+          MemberName='no_referensi'
+          PhysicalName='NO_REFERENSI'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=50
+        >, object:FieldMember<
+          MemberName='alamat_jalan'
+          PhysicalName='ALAMAT_JALAN'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=200
+        >, object:FieldMember<
+          MemberName='alamat_rtrw'
+          PhysicalName='ALAMAT_RTRW'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=7
+        >, object:FieldMember<
+          MemberName='alamat_propinsi'
+          PhysicalName='ALAMAT_PROPINSI'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=50
+        >, object:FieldMember<
+          MemberName='alamat_kota'
+          PhysicalName='ALAMAT_KOTA'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=50
+        >, object:FieldMember<
+          MemberName='alamat_kecamatan'
+          PhysicalName='ALAMAT_KECAMATAN'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=50
+        >, object:FieldMember<
+          MemberName='alamat_kode_pos'
+          PhysicalName='ALAMAT_KODE_POS'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=30
+        >, object:FieldMember<
+          MemberName='alamat_telepon'
+          PhysicalName='ALAMAT_TELEPON'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=30
+        >, object:FieldMember<
+          MemberName='alamat_telepon2'
+          PhysicalName='ALAMAT_TELEPON2'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=30
+        >, object:LinkMember<
+          MemberName='LATKecamatan'
+          Optional=true
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['DaerahKecamatan']
+          AutoForeignKey=true
+        >, object:LinkMember<
+          MemberName='LATKota'
+          Optional=true
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['DaerahKota']
+          AutoForeignKey=true
+        >, object:LinkMember<
+          MemberName='LATPropinsi'
+          Optional=true
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['DaerahAsal']
+          AutoForeignKey=true
+        >, object:FieldMember<
+          MemberName='alamat_kelurahan'
+          PhysicalName='ALAMAT_KELURAHAN'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=50
+        >, object:FieldMember<
+          MemberName='alamat_jalan2'
+          PhysicalName='ALAMAT_JALAN2'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=200
+        >
+      }
+      ClassID='{E4F2B77B-F3B5-47AB-82AF-997A92E6C7E4}'
+      AutoPrimaryKey=$TYPEDECLS['UploadCorpKoreksiPeserta'].MEMBERS['upload_id']
+    >, object:ClassTypeDecl<
+      TypeName='PindahPaketInvestasi'
+      PTableName='PINDAHPAKETINVESTASI'
+      Members={
+        object:FieldMember<
+          MemberName='ID_Transaksi'
+          PhysicalName='ID_TRANSAKSI'
+          DataType=$TYPEDECLS['INTEGER']
+          IsPrimaryKey=true
+        >, object:FieldMember<
+          MemberName='biaya_pindah'
+          PhysicalName='BIAYA_PINDAH'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='saldo_jml_dana'
+          PhysicalName='SALDO_JML_DANA'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='saldo_iuran_pk'
+          PhysicalName='SALDO_IURAN_PK'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='saldo_iuran_pst'
+          PhysicalName='SALDO_IURAN_PST'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='saldo_iuran_tmb'
+          PhysicalName='SALDO_IURAN_TMB'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='saldo_psl'
+          PhysicalName='SALDO_PSL'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='saldo_pmb_pk'
+          PhysicalName='SALDO_PMB_PK'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='saldo_pmb_pst'
+          PhysicalName='SALDO_PMB_PST'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='saldo_pmb_tmb'
+          PhysicalName='SALDO_PMB_TMB'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='saldo_pmb_psl'
+          PhysicalName='SALDO_PMB_PSL'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='count_advis'
+          PhysicalName='COUNT_ADVIS'
+          DataType=$TYPEDECLS['INTEGER']
+        >, object:FieldMember<
+          MemberName='ID_Transaksi_BAdmTrans'
+          PhysicalName='ID_TRANSAKSI_BADMTRANS'
+          DataType=$TYPEDECLS['INTEGER']
+        >, object:FieldMember<
+          MemberName='saldo_dipindahkan'
+          PhysicalName='SALDO_DIPINDAHKAN'
+          DataType=$TYPEDECLS['DOUBLE']
+        >
+      }
+      Ancestors={
+        object:Inheritance<
+          ClassifierStringValue='F'
+          AncestorClass=$TYPEDECLS['TransaksiDPLK']
+          InhLinks={
+            object:InheritanceLink<
+              ThisPKey=$TYPEDECLS['PindahPaketInvestasi'].MEMBERS['ID_Transaksi']
+              OriginPKey=$TYPEDECLS['TransaksiDPLK'].MEMBERS['ID_Transaksi']
+            >
+          }
+        >
+      }
+      ClassID='{053D1F60-3B2F-49DB-8F59-9329A2ECB1BA}'
     >
   }
   PhysicalDB=object:ODLDatabase<

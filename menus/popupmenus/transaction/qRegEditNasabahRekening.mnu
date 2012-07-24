@@ -11,34 +11,35 @@ object:rmn::Menu<
       Name='mnuNew'
       Caption='New Correction...'
       OnClick='mnuNewClick'
-    >
-    , object:rmn::MenuItem<
+      AllowedGroups='OPR'
+    >, object:rmn::MenuItem<
       Name='mnuEdit'
       Caption='Edit...'
       OnClick='displayWithData'
+      AllowedGroups='OPR'
       StringTag='edit'
-    >
-    , object:rmn::MenuItem<
+    >, object:rmn::MenuItem<
       Name='mnuView'
       Caption='View'
       OnClick='displayWithData'
+      AllowedGroups='OPR;SPV'
       StringTag='view'
-    >
-    , object:rmn::MenuItem<
+    >, object:rmn::MenuItem<
       Caption='-'
-    >
-    , object:rmn::MenuItem<
+      AllowedGroups='OPR;SPV'
+    >, object:rmn::MenuItem<
       Name='mnuDelete'
       Caption='Delete'
       OnClick='mnuDeleteClick'
-    >
-    , object:rmn::MenuItem<
+      AllowedGroups='XXX'
+    >, object:rmn::MenuItem<
       Caption='-'
-    >
-    , object:rmn::MenuItem<
+      AllowedGroups='OPR;SPV'
+    >, object:rmn::MenuItem<
       Name='mnuAuthorize'
       Caption='Authorize...'
       OnClick='mnuAuthorizeClick'
+      AllowedGroups='SPV'
     >
   }
   MenuType=mtPopupMenu

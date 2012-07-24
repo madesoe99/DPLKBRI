@@ -11,16 +11,16 @@ object:rmn::Menu<
       Name='mnuLihat'
       Caption='Tampilkan detil...'
       OnClick='ShowFormData'
-      AllowedGroups='BO;OM'
+      AllowedGroups='OPR;SPV'
       StringTag='view'
     >, object:rmn::MenuItem<
       Caption='-'
-      AllowedGroups='BO'
+      AllowedGroups='OPR;SPV'
     >, object:rmn::MenuItem<
       Name='mnuKoreksi'
       Caption='Koreksi data...'
       OnClick='ShowFormData'
-      AllowedGroups='BO'
+      AllowedGroups='OPR'
       StringTag='edit'
     >
   }

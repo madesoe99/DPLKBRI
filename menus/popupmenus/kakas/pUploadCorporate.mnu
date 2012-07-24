@@ -11,22 +11,22 @@ object:rmn::Menu<
       Name='mnuLihat'
       Caption='Lihat detil data'
       OnClick='ShowFormData'
-      AllowedGroups='BO;OM'
+      AllowedGroups='OPR;SPV'
       StringTag='fUploadCorporate_Detail'
     >, object:rmn::MenuItem<
       Name='mnuAuth'
       Caption='Otorisasi data...'
       OnClick='ShowFormData'
-      AllowedGroups='BO;OM'
+      AllowedGroups='SPV'
       StringTag='fUploadCorporate_Detail'
     >, object:rmn::MenuItem<
       Caption='-'
-      AllowedGroups='BO'
+      AllowedGroups='OPR;SPV'
     >, object:rmn::MenuItem<
       Name='mnuTambah'
       Caption='Import baru data korporat'
       OnClick='ShowForm'
-      AllowedGroups='BO'
+      AllowedGroups='OPR'
       StringTag='fUploadCorporate'
     >
   }

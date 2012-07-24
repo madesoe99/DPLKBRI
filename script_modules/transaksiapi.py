@@ -474,3 +474,32 @@ def CekBatasTarikMaxPHK(config, ID_Transaksi):
   oRekeningDPLK = oPenarikanDanaPHK.LRekeningDPLK
   if oPenarikanDanaPHK.jml_tarik > oRekeningDPLK.akum_dana_iuran_pk + oRekeningDPLK.akum_dana_iuran_pst:
     raise Exception, 'ID: Kesalahan Jumlah Penarikan Dana PHK:\nNominal Penarikan melebihi batas nominal dana yang boleh ditarik!!'
+    
+#-------------------------------------------------------------------------------
+## AMBIL PARAMETER KORPORATE
+#-------------------------------------------------------------------------------
+
+def GetParameterCorporate(config, kodeNasabahCorporate, listParameterKey):
+  if len(listParameterKey) > 0:
+    needListParameterKey = 1
+  else:
+    needListParameterKey = 0
+    listParameterKey = ['DUMMY']
+    
+  #ambil parameter korporate
+  sSQL = "SELECT Key_Parameter, Varchar_Value, Numeric_Value from NasabahCorpParams \
+    where kode_nasabah_corporate = '%s' and (0 = %d or Key_Parameter in ('%s'))" \
+    % (kodeNasabahCorporate, needListParameterKey, "','".join(listParameterKey))
+  rSQL = config.CreateSQL(sSQL).RawResult
+  
+  if rSQL.Eof:
+    raise Exception, 'ID: Terjadi kesalahan. Korporat tidak memiliki parameter!'
+  else:
+    dictParameterKorporat = {}
+    while not rSQL.Eof:
+      dictParameterKorporat[rSQL.Key_Parameter] = (rSQL.Varchar_Value,rSQL.Numeric_Value)
+      
+      rSQL.Next()
+    #--
+    return dictParameterKorporat
+#--

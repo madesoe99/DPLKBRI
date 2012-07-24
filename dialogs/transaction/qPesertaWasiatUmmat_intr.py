@@ -3,16 +3,16 @@
 bInitial = 1
 
 def ApplyParameter(form):
-  qRekeningWasiatUmmat = form.GetPanelByName('qRekeningWasiatUmmat')
-  qRekeningWasiatUmmat.DisplayData()
+  qRekeningAsuransi = form.GetPanelByName('qRekeningAsuransi')
+  qRekeningAsuransi.DisplayData()
 
 def RefreshQuery(form):
-  qRekeningWasiatUmmat = form.GetPanelByName('qRekeningWasiatUmmat')
-  qRekeningWasiatUmmat.Refresh()
+  qRekeningAsuransi = form.GetPanelByName('qRekeningAsuransi')
+  qRekeningAsuransi.Refresh()
 
 def SetQueryParameter(form, paramname, paramvalue):
-  qRekeningWasiatUmmat = form.GetPanelByName('qRekeningWasiatUmmat')
-  qRekeningWasiatUmmat.SetParameter(paramname, paramvalue)
+  qRekeningAsuransi = form.GetPanelByName('qRekeningAsuransi')
+  qRekeningAsuransi.SetParameter(paramname, paramvalue)
 
 def FormShow(form, parameter):
   global bInitial

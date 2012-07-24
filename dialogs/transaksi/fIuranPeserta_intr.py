@@ -7,6 +7,13 @@ class fIuranPeserta:
     form = self.FormObject
     
     #cek nominal iuran peserta
+    if self.uipPeserta.kode_nasabah_corporate not in ('',None):
+      #peserta korporat
+      pass
+    else:
+      #peserta individu
+      pass
+      
     if self.uipTransaksi.mutasi_iuran_pst in (None,'') or \
       self.uipTransaksi.mutasi_iuran_pst < self.uipParameter.PRESISI_ANGKA_FLOAT:
       form.ShowMessage('Nominal Iuran Peserta masih kosong atau 0! Mohon untuk diisi.')
@@ -26,4 +33,19 @@ class fIuranPeserta:
     else:
       #KODE LAIN BILA MEMERLUKAN PRINT SLIP
       button.ExitAction = 1
+  #--
+
+  def Form_AfterProcessServerData(self, formobj, operationid, datapacket):
+    # function(formobj: TrtfForm; operationid: integer; datapacket: TPClassUIDataPacket):boolean
+    
+    if self.uipPeserta.kode_nasabah_corporate not in ('',None):
+      #peserta korporat
+      self.pDataTransaksi_mutasi_iuran_pk.Enabled = 0
+      self.pDataTransaksi_mutasi_iuran_pst.Enabled = 0
+      self.pDataTransaksi_mutasi_iuran_tmb.Enabled = 1
+    else:
+      #peserta individu
+      self.pDataTransaksi_mutasi_iuran_pk.Enabled = 0
+      self.pDataTransaksi_mutasi_iuran_pst.Enabled = 1
+      self.pDataTransaksi_mutasi_iuran_tmb.Enabled = 0
   #--

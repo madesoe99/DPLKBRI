@@ -4,13 +4,16 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rpclass::TPClassUIDefList<
-  UIDefs={object:rpclass::TPClassUIDef<
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
       Name='uipRealisasiReturnSaham'
       PClassName='RealisasiReturnSaham'
-      LoadedFieldList='id_transaksiinvestasi;tgl_transaksi;LTransactionBatch.ID_TransactionBatch;LTransactionBatch.ID_TransactionBatch;LTransactionBatch.no_batch;kode_jns_investasi;nominal_investasi;NAB;unit_penyertaan;profit;no_rekening;user_id;terminal_id;tgl_otorisasi;user_id_auth;terminal_id_auth;tgl_sistem;LSaham.id_investasi;LSaham.nama_Saham;LSaham.tgl_buka;LSaham.id_investasi;LSaham.LPihakKetiga.nama_pihak_ketiga;LSaham.LRincianPaketInvestasi.LPaketInvestasi.Nama_paket_investasi;LSaham.LRincianPaketInvestasi.LJenisInvestasi.nama_jns_investasi;LSaham.akum_nominal;LSaham.akum_piutangLR;LSaham.akum_LR;LSaham.kode_pihak_ketiga;LSaham.kode_paket_investasi;LSaham.kode_jns_investasi;LSaham.NAB_awal;LSaham.NAB;LSaham.unit_penyertaan'
-      StoredFieldList='tgl_transaksi;LTransactionBatch;kode_jns_investasi;nominal_investasi;NAB;unit_penyertaan;profit;no_rekening;tgl_sistem;LSaham'
-      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+      LoadedFieldList='id_transaksiinvestasi;tgl_transaksi;kode_jns_investasi;nominal_investasi;NAB;unit_penyertaan;profit;no_rekening;user_id;terminal_id;tgl_otorisasi;user_id_auth;terminal_id_auth;tgl_sistem;LSaham.id_investasi;LSaham.nama_Saham;LSaham.tgl_buka;LSaham.id_investasi;LSaham.LPihakKetiga.nama_pihak_ketiga;LSaham.LRincianPaketInvestasi.LPaketInvestasi.Nama_paket_investasi;LSaham.LRincianPaketInvestasi.LJenisInvestasi.nama_jns_investasi;LSaham.akum_nominal;LSaham.akum_piutangLR;LSaham.akum_LR;LSaham.kode_pihak_ketiga;LSaham.kode_paket_investasi;LSaham.kode_jns_investasi;LSaham.NAB_awal;LSaham.NAB;LSaham.unit_penyertaan'
+      StoredFieldList='tgl_transaksi;kode_jns_investasi;nominal_investasi;NAB;unit_penyertaan;profit;no_rekening;tgl_sistem;LSaham'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
           Name='nama_Saham'
           DataTypeName='varchar'
           DataLength=15
@@ -42,11 +45,10 @@ document <
           Name='mode'
           DataTypeName='varchar'
           DataLength=20
-        >}CustomLoadedLinks={object:rpclass::TCustomLoadedLink<
-          Name='LTransactionBatch'
-          ClassTypeName='TransactionBatch'
-          FieldNames='ID_TransactionBatch;ID_TransactionBatch;no_batch'
-        >, object:rpclass::TCustomLoadedLink<
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
           Name='LSaham'
           ClassTypeName='SAHAM'
           FieldNames='id_investasi;nama_Saham;tgl_buka;id_investasi;LPihakKetiga.nama_pihak_ketiga;LRincianPaketInvestasi.LPaketInvestasi.Nama_paket_investasi;LRincianPaketInvestasi.LJenisInvestasi.nama_jns_investasi;akum_nominal;akum_piutangLR;akum_LR;kode_pihak_ketiga;kode_paket_investasi;kode_jns_investasi;NAB_awal;NAB;unit_penyertaan'
@@ -58,7 +60,9 @@ document <
           Name='LPaketInvestasi'
           ClassTypeName='PaketInvestasi'
           FieldNames='kode_paket_investasi;kode_paket_investasi;nama_paket_investasi'
-        >}Mode=imSingleRow
+        >
+      }
+      Mode=imSingleRow
       CreateInstanceOnNew=true
       AfterApplyRow='uipRealisasiReturnApplyRow'
     >, object:rpclass::TPClassUIDef<
@@ -69,7 +73,8 @@ document <
       OnSetData='uipSahamSetData'
     >, object:rpclass::TPClassUIDef<
       Name='uipParameter'
-      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
           Name='nowDate'
           DataTypeName='varchar'
           DataLength=10
@@ -77,8 +82,12 @@ document <
           Name='inv'
           DataTypeName='varchar'
           DataLength=1
-        >}Mode=imSingleRow
+        >
+      }
+      Mode=imSingleRow
       CreateInstanceOnNew=true
-    >}OnGeneralSetData='FormGeneralSetData'
+    >
+  }
+  OnGeneralSetData='FormGeneralSetData'
   OnEndProcessData='FormEndProcessData'
 >

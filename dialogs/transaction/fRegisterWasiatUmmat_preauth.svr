@@ -8,37 +8,32 @@ document <
 object:rpclass::TPClassUIDefList<
   UIDefs={
     object:rpclass::TPClassUIDef<
-      Name='uipRegisterWasiatUmmat'
-      PClassName='RegisterWasiatUmmat'
-      LoadedFieldList='no_referensi;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;keterangan;user_id;terminal_id;alasan_berhenti;jenis_transaksi;registercif_id'
+      Name='uipRegisterAsuransi'
+      PClassName='RegisterAsuransi'
+      LoadedFieldList='no_referensi;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;keterangan;user_id;terminal_id;alasan_berhenti;jenis_transaksi;registercif_id;LRekeningDPLK.no_rekening;LRekeningDPLK.no_peserta'
       StoredFieldList='jenis_transaksi'
       CustomLoadedFields={
         object:rpclass::TCustomLoadedField<
           Name='no_polis'
           DataTypeName='varchar'
           DataLength=20
-        >
-        , object:rpclass::TCustomLoadedField<
+        >, object:rpclass::TCustomLoadedField<
           Name='tgl_akseptasi'
           DataTypeName='timestamp'
           DataLength=20
-        >
-        , object:rpclass::TCustomLoadedField<
+        >, object:rpclass::TCustomLoadedField<
           Name='besar_premi'
           DataTypeName='double'
           DataLength=20
-        >
-        , object:rpclass::TCustomLoadedField<
+        >, object:rpclass::TCustomLoadedField<
           Name='manfaat_asuransi'
           DataTypeName='double'
           DataLength=20
-        >
-        , object:rpclass::TCustomLoadedField<
+        >, object:rpclass::TCustomLoadedField<
           Name='kolektibilitas_premi'
           DataTypeName='varchar'
           DataLength=1
-        >
-        , object:rpclass::TCustomLoadedField<
+        >, object:rpclass::TCustomLoadedField<
           Name='tunggakan_premi'
           DataTypeName='double'
           DataLength=20
@@ -49,11 +44,14 @@ object:rpclass::TPClassUIDefList<
           Name='LNasabahDPLK'
           ClassTypeName='NasabahDPLK'
           FieldNames='no_peserta;no_peserta;nama_lengkap'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LRekeningDPLK'
+          ClassTypeName='RekInvDPLK'
+          FieldNames='no_rekening;no_peserta'
         >
       }
       Mode=imSingleRow
-    >
-    , object:rpclass::TPClassUIDef<
+    >, object:rpclass::TPClassUIDef<
       Name='uipParameter'
       CustomLoadedFields={
         object:rpclass::TCustomLoadedField<

@@ -36,6 +36,7 @@ def reserveNumber(config, params, returns):
        oReg.tgl_input  = config.Now()
        oReg.user_id = userid
        config.SendDebugMsg('user id :'+userid)
+       oReg.status_buku = 'F'
        
        countAwal = countAwal + 1
 

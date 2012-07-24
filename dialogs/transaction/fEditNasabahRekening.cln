@@ -70,7 +70,7 @@ object:rtf::Form<
               Hidden=false
               ReadOnlyControl=false
               DataTypeName='VARCHAR'
-              DataLength=8
+              DataLength=2
               UsedAsKey=true
               KeyOrDisplayName='kode_propinsi'
               FinalDisplayFieldName='kode_propinsi'
@@ -82,7 +82,7 @@ object:rtf::Form<
               Hidden=false
               ReadOnlyControl=false
               DataTypeName='VARCHAR'
-              DataLength=8
+              DataLength=2
               UsedAsDisplay=true
               KeyOrDisplayName='kode_propinsi'
               FinalDisplayFieldName='kode_propinsi'
@@ -425,7 +425,7 @@ object:rtf::Form<
               Hidden=false
               ReadOnlyControl=false
               DataTypeName='VARCHAR'
-              DataLength=8
+              DataLength=2
               UsedAsKey=true
               KeyOrDisplayName='kode_propinsi'
               FinalDisplayFieldName='kode_propinsi'
@@ -437,7 +437,7 @@ object:rtf::Form<
               Hidden=false
               ReadOnlyControl=false
               DataTypeName='VARCHAR'
-              DataLength=8
+              DataLength=2
               UsedAsDisplay=true
               KeyOrDisplayName='kode_propinsi'
               FinalDisplayFieldName='kode_propinsi'
@@ -621,15 +621,15 @@ object:rtf::Form<
       RowControlGap=7
     >, object:rtf::DualSplit<
       Name='DualSplitLeftRight'
-      Width=240
-      Height=96
+      Width=800
+      Height=439
       Container1=$CONTAINERS['pDataLeft']
       Container2=$CONTAINERS['dualsplit1']
       SplitDirection=sdrSplitLeftRight
     >, object:rtf::DualSplit<
       Name='DualSplit'
-      Width=240
-      Height=96
+      Width=800
+      Height=480
       Container1=$CONTAINERS['pButton']
       Container2=$CONTAINERS['DualSplitLeftRight']
       InversedAlign=true
@@ -879,8 +879,8 @@ object:rtf::Form<
       Caption='Data Re&gister'
     >, object:rtf::DualSplit<
       Name='dualsplit1'
-      Width=240
-      Height=96
+      Width=399
+      Height=439
       Container1=$CONTAINERS['pDataRight']
       Container2=$CONTAINERS['pDataIndukRegister']
     >

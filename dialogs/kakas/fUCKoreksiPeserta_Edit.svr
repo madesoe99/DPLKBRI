@@ -1,0 +1,39 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipDetail'
+      PClassName='UploadCorpKoreksiPeserta'
+      LoadedFieldList='upload_id;is_valid;keterangan;is_auth;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;no_referensi;alamat_jalan;alamat_jalan2;alamat_rtrw;LATPropinsi.kode_propinsi;LATPropinsi.kode_propinsi;LATPropinsi.nama_propinsi;LATKota.kode_kota;LATKota.kode_kota;LATKota.nama_kota;LATKecamatan.kode_kecamatan;LATKecamatan.kode_kecamatan;LATKecamatan.nama_kecamatan;alamat_kelurahan;alamat_kode_pos;alamat_telepon;alamat_telepon2'
+      StoredFieldList='is_valid;keterangan;is_auth;no_referensi;alamat_jalan;alamat_jalan2;alamat_rtrw;LATPropinsi;LATKota;LATKecamatan;alamat_kelurahan;alamat_kode_pos;alamat_telepon;alamat_telepon2'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLK'
+          ClassTypeName='NasabahDPLK'
+          FieldNames='no_peserta;no_peserta;nama_lengkap'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LATPropinsi'
+          ClassTypeName='DaerahAsal'
+          FieldNames='kode_propinsi;kode_propinsi;nama_propinsi'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LATKota'
+          ClassTypeName='DaerahKota'
+          FieldNames='kode_kota;kode_kota;nama_kota'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LATKecamatan'
+          ClassTypeName='DaerahKecamatan'
+          FieldNames='kode_kecamatan;kode_kecamatan;nama_kecamatan'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+  }
+  OnSetDataEx='FormOnSetDataEx'
+>

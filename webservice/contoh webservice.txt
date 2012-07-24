@@ -1,0 +1,9 @@
+contoh akses
+from suds.client import Client
+test_client = Client('http://localhost:8008') # ambil wsdl
+# ada beberapa yg nyediain method ambil wsdlnya dengan cara berbeda
+# contoh test_client = Client('http://localhost:8008/?wsdl')
+print test_client  # liat isi wsdl
+
+result = test_client.service.Adder(1,2)
+print result

@@ -5,7 +5,7 @@ class fDaftarTitipanPremi:
     self.FormObj = formObj
     self.App = formObj.ClientApplication
     self.DictFormId = {
-      'P':'transaksi/fTitipanPremi_otor'
+      'P':'transaksi/fPremiPeserta_otor'
     }
   #--
 
@@ -36,6 +36,7 @@ class fDaftarTitipanPremi:
        ID_Transaksi,\
        besar_premi,\
        LRekeningDPLK.LRekAsuransi.no_polis,\
+       LRekeningDPLK.LNasabahDPLK.nama_lengkap,\
        no_rekening,\
        keterangan,\
        self) \
@@ -60,7 +61,7 @@ class fDaftarTitipanPremi:
     self.qTransaksi.DisplayData()
 
   def ShowNextForm(self, button, mode):
-    group_id, form_id = self.DictFormId['D'].split('/')
+    group_id, form_id = self.DictFormId['P'].split('/')
     form = self.App.FindForm(form_id)
     if form == None:
       nomorRekening = self.qTransaksi.GetFieldValue('TitipanPremi.no_rekening')

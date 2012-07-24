@@ -10,9 +10,9 @@ def GetFSpecificString(context):
   elif upload_type == "W":
     fSpecific = 'fUCAhliWaris,UploadCorporate'
   elif upload_type == "K":
-    fSpecific = 'fFinColKendaraan,UploadCorporate'
+    fSpecific = 'fUCKoreksiPeserta,UploadCorporate'
   elif upload_type == "A":
-    fSpecific = 'fFinColIntDeposito,UploadCorporate'
+    fSpecific = 'fUCPremiAsuransi,UploadCorporate'
   elif upload_type == "R":
     fSpecific = 'fUCBiayaDaftar,UploadCorporate'
   else:

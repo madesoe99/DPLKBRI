@@ -11,7 +11,7 @@ object:rpclass::TPClassUIDefList<
       Name='uipMasterKartuDPLK'
       PClassName='MasterKartuDPLK'
       LoadedFieldList='no_rekening;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;LRekeningDPLK.no_rekening;LRekeningDPLK.no_rekening;LRekeningDPLK.tgl_akseptasi;TGL_CETAK;TGL_KIRIM'
-      StoredFieldList='LNasabahDPLK;LRekeningDPLK;TGL_CETAK;TGL_KIRIM'
+      StoredFieldList='no_rekening;LNasabahDPLK;LRekeningDPLK;TGL_CETAK;TGL_KIRIM'
       CustomLoadedLinks={
         object:rpclass::TCustomLoadedLink<
           Name='LNasabahDPLK'

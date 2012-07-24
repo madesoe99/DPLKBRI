@@ -83,6 +83,76 @@ def GenerateFile(config, params, returns):
       sw = returns.AddStreamWrapper()
       sw.LoadFromFile(sFileName)
       sw.MIMEType = config.AppObject.GetMIMETypeFromExtension(sFileName)
+    elif rec.upload_type == 'K':
+      uploadDir = config.GetGlobalSetting('USERHOMEDIR_ALL_UC') + "/"
+      workBookXLS = LoadTemplateFile(config, uploadDir, "TPL_KoreksiPesertaKorporat.xls")
+      
+      workBookXLS.SetCellValue(3,3, rec.kode_nasabah_corporate)
+      workBookXLS.SetCellValue(5,3, rec.nama_perusahaan)
+      
+      sSQL = '''
+        SELECT n.no_peserta,
+               n.nama_lengkap,
+               n.no_referensi,
+               n.alamat_jalan,
+               n.alamat_jalan2,
+               n.alamat_rtrw,
+               p.nama_propinsi,
+               k.nama_kota,
+               c.nama_kecamatan,
+               n.alamat_kelurahan,
+               n.alamat_kode_pos,
+               n.alamat_telepon,
+               n.alamat_telepon2
+        FROM   NasabahDPLK n
+               LEFT JOIN DaerahAsal p ON p.kode_propinsi = n.alamat_propinsi_kode
+               LEFT JOIN DaerahKota k ON k.kode_kota = n.alamat_kota_kode
+               LEFT JOIN DaerahKecamatan c ON c.kode_kecamatan = n.alamat_kecamatan_kode
+        WHERE  n.kode_nasabah_corporate = '%s'
+        ''' % rec.kode_nasabah_corporate
+      rSQL = config.CreateSQL(sSQL).RawResult
+      rSQL.First()
+      
+      i = 0
+      _startLine = 8
+      while not rSQL.Eof:
+        i = i+1
+        workBookXLS.SetCellValue(_startLine,1,i)
+        workBookXLS.SetCellValue(_startLine,2,rSQL.no_peserta)
+        workBookXLS.SetCellValue(_startLine,3,rSQL.nama_lengkap)
+        workBookXLS.SetCellValue(_startLine,4,rSQL.no_referensi)
+        workBookXLS.SetCellValue(_startLine,5,rSQL.alamat_jalan)
+        workBookXLS.SetCellValue(_startLine,6,rSQL.alamat_jalan2)
+        workBookXLS.SetCellValue(_startLine,7,rSQL.alamat_rtrw)
+        workBookXLS.SetCellValue(_startLine,8,rSQL.nama_propinsi)
+        workBookXLS.SetCellValue(_startLine,9,rSQL.nama_kota)
+        workBookXLS.SetCellValue(_startLine,10,rSQL.nama_kecamatan)
+        workBookXLS.SetCellValue(_startLine,11,rSQL.alamat_kelurahan)
+        workBookXLS.SetCellValue(_startLine,12,rSQL.alamat_kode_pos)
+        workBookXLS.SetCellValue(_startLine,13,rSQL.alamat_telepon)
+        workBookXLS.SetCellValue(_startLine,14,rSQL.alamat_telepon2)
+        _startLine=_startLine+1
+        
+        rSQL.Next()
+      #--endwhile
+        
+      strSessDate = str(_sessDate)
+      sBaseFileName = '%s_KOREKSIPESERTA_%s_%s_%s.xls' % (\
+        _userInfo[0], \
+        str(rec.kode_nasabah_corporate).replace(' ', ''), \
+        str(rec.nama_perusahaan).replace(' ', ''), \
+        strSessDate.replace('.', ''))
+
+      sFileName = uploadDir + sBaseFileName
+      if os.access(sFileName, os.F_OK) == 1:
+        os.remove(sFileName)
+      #--endif
+      workBookXLS.SaveAs(sFileName)
+    
+      #return packet
+      sw = returns.AddStreamWrapper()
+      sw.LoadFromFile(sFileName)
+      sw.MIMEType = config.AppObject.GetMIMETypeFromExtension(sFileName)
     elif rec.upload_type == 'R':
       uploadDir = config.GetGlobalSetting('USERHOMEDIR_ALL_UC') + "/"
       workBookXLS = LoadTemplateFile(config, uploadDir, "TPL_IuranBiayaDaftar.xls")

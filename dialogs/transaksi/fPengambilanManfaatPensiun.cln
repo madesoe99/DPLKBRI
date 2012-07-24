@@ -29,6 +29,13 @@ object:rtf::Form<
           ReadOnlyControl=false
           DataTypeName='TIMESTAMP'
           DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='kode_nasabah_corporate'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=11
         >
       }
       Name='uipPeserta'
@@ -174,6 +181,13 @@ object:rtf::Form<
           ReadOnlyControl=false
           DataTypeName='TIMESTAMP'
           DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='operation_code'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=1
         >
       }
       Name='uipRekening'
@@ -345,6 +359,48 @@ object:rtf::Form<
           ReadOnlyControl=false
           DataTypeName='TIMESTAMP'
           DataLength=0
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLKCorporate'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='korporat'
+          ClassTypeName='NasabahDPLKCorporate'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLKCorporate.kode_nasabah_corporate'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsKey=true
+              KeyOrDisplayName='kode_nasabah_corporate'
+              FinalDisplayFieldName='kode_nasabah_corporate'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLKCorporate.kode_nasabah_corporate'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_nasabah_corporate'
+              FinalDisplayFieldName='kode_nasabah_corporate'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLKCorporate.nama_perusahaan'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=100
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_perusahaan'
+              FinalDisplayFieldName='nama_perusahaan'
+            >
+          }
+          Restrictions=''
+          FieldBaseName='LNasabahDPLKCorporate'
         >, object:rtf::FieldUIElmtSetting<
           Name='IuranPk'
           Hidden=true
@@ -433,6 +489,15 @@ object:rtf::Form<
           Left=10
           Color=-16777192
           ControlCaption='NPWP'
+        >, *object:rtf::DBLookupEdit<
+          Name='LNasabahDPLKCorporate'
+          Top=328
+          Left=10
+          Enabled=false
+          ControlCaption='korporat'
+          LookupField='LNasabahDPLKCorporate.nama_perusahaan'
+          DisplayLookupField=true
+          DisableLookup=true
         >
       }
       EqualCaptionWidth=160

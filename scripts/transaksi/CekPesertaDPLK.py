@@ -21,7 +21,7 @@ def GetPersyaratan(config, status, no_peserta):
 
   return persyaratan
 
-def CekNomorPeserta(config, noPeserta):
+def CekNomorPeserta(config, noPeserta, noRekening):
   oN = config.CreatePObjImplProxy('NasabahDPLK')
   oN.Key = noPeserta
 
@@ -32,34 +32,35 @@ def CekNomorPeserta(config, noPeserta):
     NoPesertaExist = 0
   else:
     #objek Peserta DPLK ada, cek status rekening
-    sSQL = "select * from rekinvdplk\
-    where no_peserta = '%s'" % oN.no_peserta
-    rSQL = config.CreateSQL(sSQL).RawResult
-    #oR = config.CreatePObjImplProxy('RekeningDPLK')
-    #oR.Key = oN.no_peserta
-    #while not rSQL.Eof:
-    tgl_pensiun = rSQL.tgl_pensiun
-    if rSQL.status_DPLK == 'N':
-      #status rekening non aktif
-      config.SendDebugMsg('Non Aktif')
-      NoPesertaExist = 2
-    elif rSQL.status_DPLK == 'S':
-      #status rekening suspend
-      config.SendDebugMsg('Suspend')
-      NoPesertaExist = 3
-    elif rSQL.Status_Biaya_Daftar == 'F':
-      #peserta belum membayar biaya pendaftaran
-      config.SendDebugMsg('Belum membayar biaya pendaftaran')
-      NoPesertaExist = 4
-    elif config.ModLibUtils.Now() > config.ModLibUtils.EncodeDate(tgl_pensiun[0],\
-      tgl_pensiun[1],tgl_pensiun[2]): 
-      #tgl pensiun peserta sudah lewat
-      config.SendDebugMsg('tgl pensiun sudah lewat')
-      NoPesertaExist = 5
-    elif rSQL.Is_Boleh_Debet == 'F':
-      NoPesertaExist = 6
-    elif rSQL.Is_Boleh_Debet == 'S': #boleh didebet dengan syarat tertentu
-      NoPesertaExist = 7
+    oR = config.CreatePObjImplProxy('RekInvDPLK')
+    oR.Key = noRekening
+    
+    if not oR.IsNull:
+      tgl_pensiun = oR.tgl_pensiun
+      if oR.status_DPLK == 'N':
+        #status rekening non aktif
+        config.SendDebugMsg('Non Aktif')
+        NoPesertaExist = 2
+      elif oR.status_DPLK == 'S':
+        #status rekening suspend
+        config.SendDebugMsg('Suspend')
+        NoPesertaExist = 3
+      elif config.ModLibUtils.Now() > config.ModLibUtils.EncodeDate(tgl_pensiun[0],\
+        tgl_pensiun[1],tgl_pensiun[2]): 
+        #tgl pensiun peserta sudah lewat
+        config.SendDebugMsg('tgl pensiun sudah lewat')
+        NoPesertaExist = 5
+      
+      """
+      elif oR.Status_Biaya_Daftar == 'F':
+        #peserta belum membayar biaya pendaftaran
+        config.SendDebugMsg('Belum membayar biaya pendaftaran')
+        NoPesertaExist = 4
+      elif oR.Is_Boleh_Debet == 'F':
+        NoPesertaExist = 6
+      elif oR.Is_Boleh_Debet == 'S': #boleh didebet dengan syarat tertentu
+        NoPesertaExist = 7
+      """
   
   config.SendDebugMsg('Selesai......')
   return NoPesertaExist
@@ -70,9 +71,10 @@ def DAFScriptMain(config, parameter, returnpacket):
   # returnpacket: TPClassUIDataPacket (undefined structure)
 
   noPeserta = parameter.FirstRecord.nopeserta
+  noRekening = parameter.FirstRecord.norekening
 
   try:
-    succeedStatus = CekNomorPeserta(config, noPeserta)
+    succeedStatus = CekNomorPeserta(config, noPeserta, noRekening)
       
   except:
     raise

@@ -96,6 +96,13 @@ object:rtf::Form<
           ReadOnlyControl=false
           DataTypeName='DOUBLE'
           DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='operation_code'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=1
         >
       }
       Name='uipRekening'

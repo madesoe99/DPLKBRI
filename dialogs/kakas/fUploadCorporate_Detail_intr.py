@@ -82,7 +82,7 @@ class fUploadCorporate_Detail:
     form = sender.OwnerForm
     app = form.ClientApplication
     
-    if self.uipUploadCorporate.upload_type in ['P','W']:
+    if self.uipUploadCorporate.upload_type in ['P','K','W']:
       ph = app.CreateValues(['id', self.uipUploadCorporate.trx_session_id])
       app.ExecuteScript('transaction/authorize_regnsbrek_masal', ph)
     elif self.uipUploadCorporate.upload_type == 'I':

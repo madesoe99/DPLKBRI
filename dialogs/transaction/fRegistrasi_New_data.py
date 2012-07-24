@@ -103,8 +103,11 @@ def OnSetDataEx(uideflist, params):
         rec.SetFieldByName("LKelompok.nama_kelompok", oND.LKelompok.nama_kelompok)
       
       rec.kewarganegaraan = oND.kewarganegaraan      
-      rec.SetFieldByName("LNegara.kode_negara", oND.LNegara.kode_negara)
-      rec.SetFieldByName("LNegara.nama_negara", oND.LNegara.nama_negara)
+      
+      if not oND.LNegara.IsNull:
+        rec.SetFieldByName("LNegara.kode_negara", oND.LNegara.kode_negara)
+        rec.SetFieldByName("LNegara.nama_negara", oND.LNegara.nama_negara)
+      
       rec.golongan_darah = oND.golongan_darah
       rec.agama = oND.agama
       rec.pendidikan_terakhir = oND.pendidikan_terakhir

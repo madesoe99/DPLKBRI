@@ -4,7 +4,8 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rtf::Form<
+>
+object:rtf::Form<
   MainContainer=$CONTAINERS['dualsplit2']
   Left=50
   Top=50
@@ -21,12 +22,16 @@ document <
   OnSetDataEx=''
   OnBeginProcessData=''
   OnEndProcessData=''
-  UIParts={object:rtf::PClassUI<
+  UIParts={
+    object:rtf::PClassUI<
       Name='uipInput'
     >, object:rtf::PClassUI<
       Name='uipOutput'
       NeverPostToServer=true
-    >}Containers={object:rtf::DualSplit<
+    >
+  }
+  Containers={
+    object:rtf::DualSplit<
       Name='dualsplit2'
       Width=431
       Height=460
@@ -38,12 +43,12 @@ document <
       Width=190
       Height=50
       Bordered=true
-      Controls={object:rtf::Button<
+      Controls={
+        object:rtf::Button<
           Name='btnOK'
           Layout=clNewLine
           Top=8
           Left=8
-          Color=0
           ControlCaption=''
           Caption='&Proses'
           OnClick='btnOKClick'
@@ -52,11 +57,12 @@ document <
           Layout=clAbsolute
           Top=8
           Left=96
-          Color=0
           ControlCaption=''
           Caption='&Cancel'
           ExitAction=eaQuitOK
-        >}ControlLeftMargin=8
+        >
+      }
+      ControlLeftMargin=8
       ControlTopMargin=8
       DefaultControlHeight=21
       HorizontalControlGap=4
@@ -69,46 +75,61 @@ document <
       Container2=$CONTAINERS['pData']
       InversedAlign=true
     >, object:rtf::Panel<
-      Elements={object:rtf::FieldUIElmtSetting<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
           Name='tanggal_lahir'
+          Hidden=false
+          ReadOnlyControl=false
           ControlCaption='Tanggal Lahir'
           DataTypeName='timestamp'
           DataLength=20
         >, object:rtf::FieldUIElmtSetting<
           Name='tanggal_registrasi'
+          Hidden=false
+          ReadOnlyControl=false
           ControlCaption='Tanggal Registrasi DPLK '
           DataTypeName='timestamp'
           DataLength=20
         >, object:rtf::FieldUIElmtSetting<
           Name='usia_pensiun'
+          Hidden=false
+          ReadOnlyControl=false
           ControlCaption='Usia Pensiun'
           DataTypeName='integer'
           DataLength=2
         >, object:rtf::FieldUIElmtSetting<
           Name='paket_investasi'
+          Hidden=false
+          ReadOnlyControl=false
           ControlCaption='Paket Investasi'
           DataTypeName='varchar'
           DataLength=1
         >, object:rtf::FieldUIElmtSetting<
           Name='premi'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='double'
           DataLength=10
         >, object:rtf::FieldUIElmtSetting<
           Name='manfaat_pensiun'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='double'
           DataLength=15
-        >}Name='pData'
+        >
+      }
+      Name='pData'
       Width=430
       Height=217
       Bordered=true
       UIPart=$UIPARTS['uipInput']
-      Controls={*object:rtf::DBDateEdit<
+      Controls={
+        *object:rtf::DBDateEdit<
           Name='tanggal_lahir'
           Top=40
           Left=20
           Width=100
           Height=21
-          Color=0
           ControlCaption='Tanggal Lahir'
         >, *object:rtf::DBDateEdit<
           Name='tanggal_registrasi'
@@ -116,7 +137,6 @@ document <
           Left=20
           Width=100
           Height=21
-          Color=0
           ControlCaption='Tanggal Registrasi DPLK'
         >, *object:rtf::DBEdit<
           Name='usia_pensiun'
@@ -124,27 +144,23 @@ document <
           Left=20
           Width=25
           Height=21
-          Color=0
           ControlCaption='Usia Pensiun'
         >, *object:rtf::DBEdit<
           Name='paket_investasi'
           Top=124
           Left=20
-          Color=0
           ControlCaption='Paket Investasi'
           LayoutOrder=4
         >, *object:rtf::DBEdit<
           Name='premi'
           Top=152
           Left=20
-          Color=0
           ControlCaption='Premi yang diinginkan'
           LayoutOrder=5
         >, *object:rtf::DBEdit<
           Name='manfaat_pensiun'
           Top=180
           Left=20
-          Color=0
           ControlCaption='Manfaat pensiun yang diinginkan'
           LayoutOrder=6
         >, object:rtf::Label<
@@ -154,7 +170,6 @@ document <
           Left=232
           Width=26
           Height=17
-          Color=0
           ControlCaption=''
           Caption='A.   B.   C.'
           AutoSize=true
@@ -168,14 +183,15 @@ document <
           Left=232
           Width=26
           Height=17
-          Color=0
           ControlCaption=''
           Caption='45  s/d  65 Thn'
           AutoSize=true
           FontName='Tahoma'
           FontColor=-2147483640
           FontSize=8
-        >}EqualCaptionWidth=180
+        >
+      }
+      EqualCaptionWidth=180
       ControlLeftMargin=20
       ControlTopMargin=40
       DefaultControlHeight=21
@@ -183,37 +199,50 @@ document <
       RowControlGap=7
       Caption='SIMULASI BESARAN PREMI ATAU MANFAAT '
     >, object:rtf::Panel<
-      Elements={object:rtf::FieldUIElmtSetting<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
           Name='usia_masuk'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='varchar'
           DataLength=2
         >, object:rtf::FieldUIElmtSetting<
           Name='rate_premi'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='double'
           DataLength=3
         >, object:rtf::FieldUIElmtSetting<
           Name='nominal_premi'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='double'
           DataLength=10
         >, object:rtf::FieldUIElmtSetting<
           Name='manfaat_pensiun'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='double'
           DataLength=10
         >, object:rtf::FieldUIElmtSetting<
           Name='tingkat_investasi'
+          Hidden=false
+          ReadOnlyControl=false
           ControlCaption='Tingkat Investasi'
           DataTypeName='double'
           DataLength=20
-        >}Name='pnlOutput'
+        >
+      }
+      Name='pnlOutput'
       Width=430
       Height=191
       Bordered=true
       UIPart=$UIPARTS['uipOutput']
-      Controls={*object:rtf::DBEdit<
+      Controls={
+        *object:rtf::DBEdit<
           Name='usia_masuk'
           Top=35
           Left=15
-          Color=0
           ControlCaption='Usia Masuk'
           ReadOnly=true
         >, *object:rtf::DBEdit<
@@ -222,7 +251,6 @@ document <
           Left=15
           Width=40
           Height=21
-          Color=0
           ControlCaption='Rate Premi'
           LayoutOrder=3
           ReadOnly=true
@@ -230,7 +258,6 @@ document <
           Name='nominal_premi'
           Top=119
           Left=15
-          Color=0
           ControlCaption='Premi Perbulan'
           LayoutOrder=4
           ReadOnly=true
@@ -238,7 +265,6 @@ document <
           Name='manfaat_pensiun'
           Top=147
           Left=15
-          Color=0
           ControlCaption='Manfaat Pensiun'
           LayoutOrder=5
           ReadOnly=true
@@ -248,16 +274,19 @@ document <
           Left=15
           Width=40
           Height=21
-          Color=0
           ControlCaption='Tingkat Investasi'
           LayoutOrder=2
           ReadOnly=true
-        >}EqualCaptionWidth=180
+        >
+      }
+      EqualCaptionWidth=180
       ControlLeftMargin=15
       ControlTopMargin=35
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
       Caption='Hasil Perhitungan Nominal Premi / Manfaat Yang Dicover'
-    >}FormClassName='frmReserveCustID'
+    >
+  }
+  FormClassName='frmReserveCustID'
 >

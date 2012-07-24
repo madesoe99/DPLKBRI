@@ -32,6 +32,19 @@ object:rtf::Form<
       AlwaysPostToServer=true
       CreateInstanceOnNew=true
     >, object:rtf::PClassUI<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caView
+          DataMember='kode_nasabah_corporate'
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='kode_nasabah_corporate'
+          Hidden=false
+          ReadOnlyControl=false
+        >
+      }
       Name='uipPeserta'
       ClassTypeName='NasabahDPLK'
       DataBinding=bmMaster
@@ -109,6 +122,9 @@ object:rtf::Form<
             'akum_pmb_pst'#13#10,
             'akum_pmb_tmb'#13#10,
             'akum_pmb_psl'#13#10]
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='operation_code'
         >
       }
       Elements={
@@ -126,6 +142,10 @@ object:rtf::Form<
           ReadOnlyControl=false
         >, *object:rtf::FieldUIElmtSetting<
           Name='akum_pmb_psl'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='operation_code'
           Hidden=false
           ReadOnlyControl=false
         >
@@ -200,6 +220,9 @@ object:rtf::Form<
         >, object:rtf::ControlDef<
           Action=caView
           DataMember='NPWP'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='LNasabahDPLKCorporate'
         >
       }
       Elements={
@@ -247,6 +270,14 @@ object:rtf::Form<
           Name='NPWP'
           Hidden=false
           ReadOnlyControl=false
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLKCorporate'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='korporat'
+          DisplayFields='kode_nasabah_corporate;nama_perusahaan'
+          Restrictions=''
+          FieldBaseName='LNasabahDPLKCorporate'
         >, object:rtf::FieldUIElmtSetting<
           Name='IuranPk'
           Hidden=true
@@ -335,6 +366,15 @@ object:rtf::Form<
           Left=10
           Color=-16777192
           ControlCaption='NPWP'
+        >, *object:rtf::DBLookupEdit<
+          Name='LNasabahDPLKCorporate'
+          Top=328
+          Left=10
+          Enabled=false
+          ControlCaption='korporat'
+          LookupField='LNasabahDPLKCorporate.nama_perusahaan'
+          DisplayLookupField=true
+          DisableLookup=true
         >
       }
       EqualCaptionWidth=160
@@ -346,15 +386,15 @@ object:rtf::Form<
       Caption='Data Peserta'
     >, object:rtf::DualSplit<
       Name='dualsplit1'
-      Width=800
-      Height=600
+      Width=240
+      Height=96
       Container1=$CONTAINERS['pButton']
       Container2=$CONTAINERS['MultiPages']
       InversedAlign=true
     >, object:rtf::MultiPages<
       Name='MultiPages'
-      Width=800
-      Height=559
+      Width=320
+      Height=320
       Pages={
         object:rtf::Page<
           PageName='pageTransaksi'

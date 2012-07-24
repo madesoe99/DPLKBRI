@@ -232,14 +232,13 @@ def btnPrintClick(sender):
   CetakAdvis(app, uipRedemptionSaham, uipSaham)
   
 def CetakAdvis(app, uipRedemptionSaham, uipSaham):
-  lHeader = ['Nama Saham', 'No. Batch', 'Pihak Ketiga', 'Paket Investasi', \
+  lHeader = ['Nama Saham', 'Pihak Ketiga', 'Paket Investasi', \
               'Tgl Transaksi', 'Nilai Redempt', 'Unit Penyertaan',\
              'No. Rekening Redempt', 'Nominal Investasi']
   sHeader = '|'.join(lHeader)
   tgl = uipRedemptionSaham.tgl_transaksi
   sTgl = '%s-%s-%s' % (tgl[2],tgl[1],tgl[0])
   lData = [str(uipRedemptionSaham.GetFieldValue('LSaham.nama_Saham')),\
-           str(uipRedemptionSaham.GetFieldValue('LTransactionBatch.no_batch')),\
            '%s - %s'% (uipRedemptionSaham.GetFieldValue('LPihakKetiga.kode_pihak_ketiga'),\
            uipRedemptionSaham.GetFieldValue('LPihakKetiga.nama_pihak_ketiga')),\
            str(uipRedemptionSaham.GetFieldValue('LPaketInvestasi.kode_paket_investasi')),\

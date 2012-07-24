@@ -17,7 +17,7 @@ object:rtf::Form<
       Elements={
         object:rtf::FieldUIElmtSetting<
           Name='no_rekening'
-          AccessOption=aoReadOnly
+          AccessOption=aoReadOnlyOnEdit
           Hidden=false
           ReadOnlyControl=false
           DataTypeName='VARCHAR'
