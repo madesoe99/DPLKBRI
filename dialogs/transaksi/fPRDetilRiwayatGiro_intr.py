@@ -3,7 +3,7 @@ class fPRDetilRiwayatGiro:
     self.app = formObj.ClientApplication
     self.caption =''
     self.DictFormId = {
-      'E':'transaksi/fPR_DetilRiwayatGiroEdit'
+      'E':'transaksi/fPRDetilRiwayatGiroEdit'
     }
        
   def Show(self):
@@ -86,7 +86,7 @@ class fPRDetilRiwayatGiro:
       return 0
   
     key = self.qValid.KeyObjConst 
-    resp = self.app.ExecuteScript('PindahBuku.invalid_status',self.app.CreateValues(['key', key]))
+    resp = self.app.ExecuteScript('DRG3.invalid_status',self.app.CreateValues(['key', key]))
 
     status = resp.FirstRecord
     if status.IsErr :
@@ -102,7 +102,7 @@ class fPRDetilRiwayatGiro:
       ph = self.app.CreateValues(['id_reconcile', self.uipart.id_reconcile],
                                  ['jenis', self.uipart.jenis_reconcile],
                                  ['waktu_mulai', self.uipart.waktu_mulai])
-      resp = self.app.ExecuteScript("PindahBuku.SimpanTransaksi", ph)
+      resp = self.app.ExecuteScript("DRG3.SimpanTransaksi", ph)
   
       #process return
       status = resp.FirstRecord
@@ -120,7 +120,7 @@ class fPRDetilRiwayatGiro:
       ph = self.app.CreateValues(['id_reconcile', self.uipart.id_reconcile],
                                  ['jenis', self.uipart.jenis_reconcile],
                                  ['account_giro', self.uipart.acc_giro])
-      resp = self.app.ExecuteScript('PindahBuku.Pindah_Bukukan', ph)
+      resp = self.app.ExecuteScript('DRG3.Pindah_Bukukan', ph)
   
       #process return
       status = resp.FirstRecord

@@ -2,6 +2,18 @@ from suds.client import Client
 import sys
 import com.ihsan.util.modman as modman
 
+''' TRANCODE = 8746
+    BUCKET 1	No Rekening Nasabah. 
+    BUCKET 2	Besar amount yang ditransfer 
+    BUCKET 9	Besar Charge yang dikenakan. Defaul isian ""
+    BUCKET 11	Besar Charge yang dikenakan. Defaul isian 0
+    BUCKET 15	No Rekening IA Product DPLK
+    BUCKET 16	Besar amount yang ditransfer
+    BRANCHCODE	Kode Branch
+    DEFAULTCURRENCY	Default "IDR"
+    ALTERNATECURRENCY	Default "IDR"
+    APPLICATION	Nama Aplikasi. Defaul "Aplikasi DPLK"
+'''
 
 def Pindah_Bukukan(config, parameter, returnpacket):
   status = returnpacket.CreateValues(
@@ -13,22 +25,43 @@ def Pindah_Bukukan(config, parameter, returnpacket):
   par = parameter.FirstRecord
   id_reconcile = par.id_reconcile
   jenis = par.jenis
+  ParApp = {'TRANCODE':8746,
+            'BUCKET 1':'',                   
+            'BUCKET 2':0,                   
+            'BUCKET 9':'',                  
+            'BUCKET 11':0,                   
+            'BUCKET 15':'',                  
+            'BUCKET 16':0,                   
+            'BRANCHCODE':'',                 
+            'DEFAULTCURRENCY':'IDR',
+            'ALTERNATECURRENCY':'IDR',
+            'APPLICATION':'Aplikasi DPLK'}
   config.BeginTransaction()
   try:
     RG = config.CreatePObjImplProxy('RiwayatGiro')
     RG.SetKey('id_reconcile',id_reconcile)
     RG.SetKey('account_giro',par.account_giro)
-    raise Exception,RG.sum_procced_nominal
+    
+    
+    conn = KoneksiWeb(config)
+    result = conn.service.Adder(1,2)
+    #raise Exception,result
     if 2==1:
       RG.sum_pindahbuku    += RG.sum_procced_nominal
       RG.is_pindahbuku      = 'T'
     
-    status.proced_nominal = per.sum_procced_nominal
+    status.proced_nominal = RG.sum_procced_nominal
     config.Commit()
   except:
     config.Rollback()
     status.IsErr = 1
     status.ErrMessage = str(sys.exc_info()[1])
+    
+def KoneksiWeb(config):
+    url_web = config.SysVarIntf.GetStringSysVar('URLWEBSERVICES','BRINet')
+    get_conn = Client(url_web)  
+
+    return get_conn
     
 def invalid_status(config, parameter, returnpacket):
   status = returnpacket.CreateValues(
