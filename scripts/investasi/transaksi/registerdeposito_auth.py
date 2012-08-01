@@ -1,7 +1,53 @@
 import com.ihsan.util.modman as modman
+import sys, calendar, time
 
-#moduleapi = modman.getModule(config, 'moduleapi')
+dictFund = {'A':'DPLK-MM',
+            'B':'DPLK-FIX',
+            'C':'DPLK-EQ',
+           }
+def HitungAccrue(config, rate, nom_pokok, nhari, n):
+  y,m,d = config.ModLibUtils.DecodeDate(config.Now())
+  if nhari == 1:
+    nhari = NumOfDay(y)
+    
+  if IsEndOfMonth(y,m,d) and d > n:
+    n = d - n
+  accrue = round((rate / 100) * (n / nhari) * nom_pokok,2)
+  config.SendDebugMsg(str(rate))
+  config.SendDebugMsg(str(n))
+  config.SendDebugMsg(str(nhari))
+  config.SendDebugMsg(str(nom_pokok))
+  config.SendDebugMsg(str(accrue))
+  return accrue
 
+def NumOfDay(year):
+  if calendar.isleap(year):
+    n = 366
+  else:
+    n = 365
+    
+  return n
+  
+def IsEndOfMonth(y,m,d):
+  a,b = calendar.monthrange(y,m)
+  
+  return d == b
+  
+def FormatDate(tgl):
+  if tgl == None: restgl = ''
+  else: restgl = '%s/%s/%s' % (tgl[1],tgl[2],tgl[0])
+
+  return restgl
+
+def runSQL(config, sSQL):
+  print 'SQL:> \n', sSQL
+  t1 = time.clock()
+  if config.ExecSQL(sSQL) < 0:
+    raise #'runSQL', config.GetDBConnErrorInfo()
+  t2 = time.clock()
+  
+  print '>>... %.8f seconds\n' % (t2-t1)
+    
 def CreateRincianDeposito(config, oRegisterDeposito, oDeposito):
   oRincianDeposito = config.CreatePObject('RincianDeposito')
   oRincianDeposito.LDeposito = oDeposito
@@ -32,13 +78,13 @@ def CreateRincianDeposito_SQL(config, oRegisterDeposito, oDeposito):
 
 
 def CreateDeposito(config, oRegisterDeposito):
+  moduleapi = modman.getModule(config, 'moduleapi')
   oDeposito = config.CreatePObject('Deposito')
   oDeposito.no_bilyet = oRegisterDeposito.no_bilyet
   oDeposito.Rekening_Deposito = oRegisterDeposito.Rekening_Deposito
   oDeposito.kode_pihak_ketiga = oRegisterDeposito.kode_pihak_ketiga
   oDeposito.kode_paket_investasi = oRegisterDeposito.kode_paket_investasi
   oDeposito.kode_jns_investasi = oRegisterDeposito.kode_jns_investasi
-  moduleapi = modman.getModule(config, 'moduleapi')
   oDeposito.tgl_buka = oDeposito.tgl_settlement = moduleapi.DateTimeTupleToFloat(config, oRegisterDeposito.tgl_buka)
   oDeposito.nominal_pembukaan = oRegisterDeposito.nominal
   oDeposito.akum_nominal = oRegisterDeposito.nominal
@@ -49,7 +95,6 @@ def CreateDeposito(config, oRegisterDeposito):
 
   oDeposito.jenisJatuhTempo = oRegisterDeposito.jenisJatuhTempo
   oDeposito.jmlHariOnCall = oRegisterDeposito.jmlHariOnCall
-  moduleapi = modman.getModule(config, 'moduleapi')
   oDeposito.tgl_jatuh_tempo = moduleapi.DateTimeTupleToFloat(config, oRegisterDeposito.tgl_jatuh_tempo)
   oDeposito.equivalent_rate = oRegisterDeposito.equivalent_rate
   oDeposito.treatmentPokok = oRegisterDeposito.treatmentPokok
@@ -76,11 +121,11 @@ def CreateDeposito(config, oRegisterDeposito):
   return oDeposito
 
 def CreateTransPiutangInvestasi(config, oDeposito, oRegisterDeposito):
+  moduleapi = modman.getModule(config, 'moduleapi')
   oTransPiutangInvestasi = config.CreatePObject('TransPiutangInvestasi')
   oTransPiutangInvestasi.LInvestasi = oDeposito
   oTransPiutangInvestasi.kode_jns_investasi = 'D' # deposito
   oTransPiutangInvestasi.kode_jenis_trinvestasi = 'A' # buat investasi baru
-  moduleapi = modman.getModule(config, 'moduleapi')
   oTransPiutangInvestasi.tgl_transaksi = moduleapi.DateTimeTupleToFloat(config, oDeposito.tgl_buka)
   oTransPiutangInvestasi.mutasi_debet = oDeposito.akum_nominal
   oTransPiutangInvestasi.mutasi_kredit = 0.0
@@ -97,24 +142,67 @@ def CreateTransPiutangInvestasi(config, oDeposito, oRegisterDeposito):
   CreateTrxCIM(config, oTransPiutangInvestasi, oDeposito)
 
 def CreateTrxCIM(config, oTransPiutangInvestasi, oDeposito):
+  if oDeposito.LPayingAgent.IsNull:
+    JenisTransaksi = 'RFOP'
+  else:
+    JenisTransaksi = 'RVP'
+  JenisTransaksi = JenisTransaksi + '-DEPO'
+  TanggalTransaksi = FormatDate(oDeposito.tgl_buka)
+  TanggalSettlement = FormatDate(oDeposito.tgl_settlement)
+  ClientID = SubAccountId = dictFund[oDeposito.kode_paket_investasi]
+  SecurityType = oDeposito.kode_subjns_LRInvestasi
+  subCustodian = 'BRI'
+  if oDeposito.LBroker.IsNull:
+    broker = 'NA'
+  else:
+    broker = oDeposito.LBroker.broker_code
+  if oDeposito.LPayingAgent.IsNull:
+    bankId = ''
+    bankAcc = ''
+  else:
+    bankId = oDeposito.LPayingAgent.agent_code
+    bankAcc = oDeposito.LPayingAgent.agent_name 
+  MaturityDate = FormatDate(oDeposito.tgl_jatuh_tempo)
+  if oDeposito.jenisJatuhTempo == 0:
+    Periode = oDeposito.jenisJatuhTempo
+  else:
+    Periode = oDeposito.jenisJatuhTempo * 30
+  BilyetBank = oDeposito.kode_pihak_ketiga
+  BilyetNumber = oDeposito.no_bilyet
+  BilyetAccount = oDeposito.Rekening_Deposito
+  InterestAmmount = HitungAccrue(config, oDeposito.equivalent_rate, oDeposito.nominal_pembukaan, oDeposito.LAccrual.accrual_day, oDeposito.LAccrual.accrual_month)
+  if oDeposito.treatmentPokok == 'A': 
+    if oDeposito.kapitalisir_rollover == 'F':
+      MaturityInstruction = 1 #ARO Nominal
+    else:
+      MaturityInstruction = 2 #ARO Interest
+  else:
+    MaturityInstruction = 0 #FULL REDEEM
+  
+  scriptlessstatus = 'N'
   status = 'A'
   statusdesc = 'APPROVAL ENTRY'
   
   sSQL = "INSERT INTO TrxToCIM (IDTransaksiDPLK,JenisTransaksi,TanggalTransaksi,TanggalSettlement,ClientID,\
   SubAccountId,SecurityType,subCustodian,broker,scriptlessstatus,bankId,bankAcc,Nominal,InterestRate,\
   MaturityDate,Periode,BilyetBank,BilyetNumber,BilyetAccount,InterestAmmount,MaturityInstruction,\
-  Status,StatusDesc) VALUES (oTransPiutangInvestasi.id_transaksiinvestasi,'','','','','','','','',\
-  '','','','','','','','','','','','',status,statusdesc)"
+  Status,StatusDesc,CIM_SendStatus) VALUES (%s,'%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s',%s,%s,'%s',\
+  '%s','%s','%s','%s',%s,'%s','%s','%s','F')" % (oTransPiutangInvestasi.id_transaksiinvestasi,JenisTransaksi,TanggalTransaksi,\
+  TanggalSettlement,ClientID,SubAccountId,SecurityType,subCustodian,broker,\
+  scriptlessstatus,bankId,bankAcc,oDeposito.nominal_pembukaan,oDeposito.equivalent_rate,MaturityDate,\
+  Periode,BilyetBank,BilyetNumber,BilyetAccount,InterestAmmount,MaturityInstruction,status,statusdesc)
+  
+  config.SendDebugMsg(sSQL)
   runSQL(config, sSQL)
   
 # biaya buka deposito
 def CreateBiayaBuka(config, oDeposito, oRegisterDeposito):
+  moduleapi = modman.getModule(config, 'moduleapi')
   oTransLRInvestasi = config.CreatePObject('TransLRInvestasi')
   oTransLRInvestasi.LInvestasi = oDeposito
   oTransLRInvestasi.kode_jns_investasi = 'D'
   oTransLRInvestasi.kode_jenis_trinvestasi = 'D' # biaya deposito
   oTransLRInvestasi.kode_subjns_LRInvestasi = 'A-OPEN' # biaya pembukaan deposito
-  moduleapi = modman.getModule(config, 'moduleapi')
   oTransLRInvestasi.tgl_transaksi = moduleapi.DateTimeTupleToFloat(config, oDeposito.tgl_buka)
   oTransLRInvestasi.mutasi_debet = oRegisterDeposito.biaya
   oTransLRInvestasi.mutasi_kredit = 0.0
@@ -133,6 +221,7 @@ def CreateBiayaBuka(config, oDeposito, oRegisterDeposito):
   return oTransLRInvestasi
 
 def InsertRegisterAuthorized(config, id_register, id_deposito):
+  config.SendDebugMsg('InsertRegisterAuthorized')
   sSQL = "INSERT INTO REGISTERINVESTASIAUTHORIZED\
           SELECT * FROM REGISTERINVESTASI\
           WHERE id_registerinvestasi = %s;\
@@ -141,41 +230,33 @@ def InsertRegisterAuthorized(config, id_register, id_deposito):
           WHERE id_registerinvestasi = %s;\
           INSERT INTO LINKINVESTASIREGISTER VALUES (%s, %s);" \
           % (id_register, id_register, id_deposito, id_register) 
+  config.SendDebugMsg(sSQL)
   i = config.ExecSQL(sSQL)
   if i < 0:
-    raise Exception, 'insert register authorized error ' + str(sys.exc_info()[1])
+    raise #'insert register authorized error', str(sys.exc_info()[1])
 
-def runSQL(config, sSQL):
-  print 'SQL:> \n', sSQL
-  t1 = time.clock()
-  if config.ExecSQL(sSQL) < 0:
-    raise Exception, 'runSQL: ' + config.GetDBConnErrorInfo()
-  t2 = time.clock()
-  
-  print '>>... %.8f seconds\n' % (t2-t1)
-    
 def DAFScriptMain(config, parameter, returnpacket):
   # config: ISysConfig object
   # parameter: TPClassUIDataPacket
   # returnpacket: TPClassUIDataPacket (undefined structure)
+  moduleapi = modman.getModule(config, 'moduleapi')
 
   id = parameter.FirstRecord.id
 
   oRegisterDeposito = config.CreatePObjImplProxy('RegisterDeposito')
   oRegisterDeposito.Key = id
   if oRegisterDeposito.no_bilyet not in ('',None) :
-    moduleapi = modman.getModule(config, 'moduleapi')
     moduleapi.CheckNoBilyetAvl(config, oRegisterDeposito.no_bilyet)
 
   config.BeginTransaction()
   try:
     oDeposito = CreateDeposito(config, oRegisterDeposito)
     CreateTransPiutangInvestasi(config, oDeposito, oRegisterDeposito)
-
+    
     if oRegisterDeposito.biaya > 0.0:
       CreateBiayaBuka(config, oDeposito, oRegisterDeposito)
 
-    InsertRegisterAuthorized(config, id, oDeposito.id_investasi)
+    #InsertRegisterAuthorized(config, id, oDeposito.id_investasi)
     oRegisterDeposito.Ls_RincianRegisterDeposito.DeleteAllPObjs()
     oRegisterDeposito.Ls_RincianRegisterInvestasi.DeleteAllPObjs()
     oRegisterDeposito.Delete()
@@ -183,7 +264,7 @@ def DAFScriptMain(config, parameter, returnpacket):
     config.Commit()
   except:
     config.Rollback()
-    raise
+    raise #'register deposito error', str(sys.exc_info()[1])
 
   return 1
 

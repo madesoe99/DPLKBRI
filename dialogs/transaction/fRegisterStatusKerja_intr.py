@@ -46,7 +46,8 @@ def FormShow(form, parameter):
 
     if uipRegisterCIF.mode == 'new':
       uipRegisterCIF.SetFieldValue('LNasabahDPLK.no_peserta',uipMaster.no_peserta)
-      uipRegisterCIF.SetFieldValue('LNasabahDPLK.nama_lengkap',uipMaster.nama_lengkap)
+      uipRegisterCIF.SetFieldValue('LNasabahDPLK.nama_lengkap',uipMaster.GetFieldValue('LNasabahDPLK.nama_lengkap'))
+      uipRegisterCIF.SetFieldValue('LRekeningDPLK.no_rekening',uipMaster.no_rekening)
 
       if uipMaster.GetFieldValue('LNasabahDPLKCorporate.kode_nasabah_corporate') <> None:
         # sudah menjadi peserta perusahaan, transaksi PHK
@@ -73,9 +74,9 @@ def btnOKClick(sender):
     #mode New or Edit
     
     #checking nomor referensi
-    if uipRegisterCIF.no_referensi in ['',None]:
-      form.ShowMessage('Nomor Referensi masih kosong. Mohon untuk diisi.')
-      return
+    #if uipRegisterCIF.no_referensi in ['',None]:
+    #  form.ShowMessage('Nomor Referensi masih kosong. Mohon untuk diisi.')
+    #  return
       
     #checking perusahaan
     if uipRegisterCIF.jenis_transaksi == 'R' and \

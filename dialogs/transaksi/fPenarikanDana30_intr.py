@@ -1,6 +1,7 @@
 class fPenarikanDana30:
   def __init__(self, formObj, parentForm):
-    pass
+    self.app = formObj.ClientApplication
+    self.Input = self.app.GetClientClass("Inputan", "Inputan")()
   #--
 
   def JenisBiaya_OnChange(self, cbJenisBiaya):
@@ -10,22 +11,32 @@ class fPenarikanDana30:
       self.uipTransaksi.biaya_lain = self.uipParameter.BiayaSKN
     elif index == 1:
       self.uipTransaksi.biaya_lain = self.uipParameter.BiayaRTGS
+    elif index == 2:
+      self.uipTransaksi.biaya_lain = self.uipParameter.BiayaPindahBuku
   #--
   
+  def OnEnter(self, sender):
+    uip = self.uipTransaksi
+    self.Input.OnEnter(sender,uip)
+  
   def JumlahTarik_OnExit(self, dbEdit):
+    self.Input.OnExit(dbEdit,self.uipTransaksi)
     #cek masing-masing nominal penarikan iuran pekerja
     if self.uipTransaksi.jml_tarik_iuran_pk > self.uipTransaksi.batas_penarikan_pk:
       self.FormObject.ShowMessage('Input jumlah penarikan iuran pekerja melebihi batas penarikan iuran pekerja')
+      self.FormObject.GetPanelByName('pDataTransaksi').GetControlByName(dbEdit.Name).SetFocus()
       return
 
     #cek masing-masing nominal penarikan iuran peserta
     if self.uipTransaksi.jml_tarik_iuran_pst > self.uipTransaksi.batas_penarikan_pst:
       self.FormObject.ShowMessage('Input jumlah penarikan iuran peserta melebihi batas penarikan iuran peserta')
+      self.FormObject.GetPanelByName('pDataTransaksi').GetControlByName(dbEdit.Name).SetFocus()
       return
 
     #cek masing-masing nominal penarikan iuran tambahan
     if self.uipTransaksi.jml_tarik_iuran_tmb > self.uipTransaksi.batas_penarikan_tmb:
       self.FormObject.ShowMessage('Input jumlah penarikan iuran tambahan melebihi batas penarikan iuran tambahan')
+      self.FormObject.GetPanelByName('pDataTransaksi').GetControlByName(dbEdit.Name).SetFocus()
       return
 
     self.uipTransaksi.Edit()
@@ -81,7 +92,7 @@ class fPenarikanDana30:
     self.uipHitung.jml_tarik = self.uipTransaksi.jml_tarik
     
     self.uipHitung.biaya_tarik = self.uipParameter.PERSEN_BIAYA_TARIK_NORMAL / 100 * \
-      self.uipHitung.saldo_pmb
+      self.uipHitung.jml_tarik
     if self.uipHitung.biaya_tarik < self.uipParameter.MIN_BIAYA_TARIK:
       self.uipHitung.biaya_tarik = self.uipParameter.MIN_BIAYA_TARIK
     
@@ -108,7 +119,7 @@ class fPenarikanDana30:
     self.uipHitung.nominal_biaya_lain = self.uipTransaksi.biaya_lain
     
     self.uipHitung.dana_diterima = self.uipHitung.jml_tarik - \
-      self.uipHitung.pajak - self.uipHitung.nominal_biaya_lain  
+      self.uipHitung.pajak - self.uipHitung.nominal_biaya_lain 
     
     #set readonly all control page perhitungan
     self.pHitung.SetAllControlsReadOnly()
@@ -149,6 +160,11 @@ class fPenarikanDana30:
       self.FormObject.ShowMessage('Nominal penarikan tidak boleh < %s!' \
         % self.uipParameter.LABEL_MIN_JML_TARIK_NORMAL)
       return
+    #if self.Input.CekKet(form,self.uipTransaksi.keterangan) == 0:return
+    if self.app.ConfirmDialog('Anda yakin Simpan transaksi Penarikan Dana peserta %s %s?' % (self.uipPeserta.no_peserta, self.uipPeserta.nama_lengkap)):
+      pass
+    else:
+      return 0
 
     form.CommitBuffer()
     phForm = form.GetDataPacket()
@@ -163,5 +179,10 @@ class fPenarikanDana30:
       return
     else:
       #KODE LAIN BILA MEMERLUKAN PRINT SLIP
-      button.ExitAction = 1
+      button.ExitAction = 1     
   #--
+  
+  def OnEnter(self, sender):
+    uip = self.uipTransaksi
+    self.Input.OnEnter(sender,uip)
+

@@ -12,6 +12,8 @@ class fPRAutoPayment_Daftar:
        caption = 'Auto Payment'
     elif jenis == 'E':
        caption = 'e - Channel'
+    elif jenis == 'M':
+       caption = 'Manual Giro'
     self.FormObject.Caption += caption
     self.FormContainer.Show()
 
@@ -28,9 +30,11 @@ class fPRAutoPayment_Daftar:
     AddParam ="LReconcile.jenis_reconcile='%(jenis)s' and \
                LReconcile.tanggal_transaksi >='%(tgl_awal)s' and \
                LReconcile.tanggal_transaksi <= '%(tgl_akhir)s' and \
-               LReconcile.is_file_valid = '%(is_berhasil)s' and \
+               ('A'='%(is_berhasil)s' or LReconcile.is_file_valid = '%(is_berhasil)s') and \
                is_reconciled = '%(is_reconciled)s' " % Data
 
+    #self.FormObject.ShowMessage(AddParam)
+    #return
     qPR.OQLText = " select from riwayatgiro [ %s ] \
     ( account_giro, \
       is_reconciled $, \
@@ -39,6 +43,7 @@ class fPRAutoPayment_Daftar:
       sum_procced_nominal, \
       sum_pindahbuku, \
       sum_nominal, \
+      LReconcile.keterangan, \
       LReconcile.tanggal_transaksi, \
       LReconcile.waktu_mulai, \
       LReconcile.waktu_selesai, \
@@ -46,10 +51,15 @@ class fPRAutoPayment_Daftar:
       LReconcile.nama_file, \
       LReconcile.is_file_valid $, \
       self \
-    );" % (AddParam)     
+    );" % (AddParam)
+    
     qPR.DisplayData()
 
   def bViewDetilOnClick(self, sender):
+    if self.qPR.GetFieldValue('riwayatgiro.is_file_valid') =='F':
+      self.FormObject.ShowMessage('Proses Valid Gagal Tidak memiliki detil')
+      return
+    
     group_id, form_id = self.DictFormId['D'].split('/')
     form = self.app.FindForm(form_id)
     if form == None:

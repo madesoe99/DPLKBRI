@@ -1,6 +1,6 @@
 class fPengembalianDana:
   def __init__(self, formObj, parentForm):
-    pass
+    self.app = formObj.ClientApplication
   #--
 
   def JenisBiaya_OnChange(self, cbJenisBiaya):
@@ -10,6 +10,8 @@ class fPengembalianDana:
       self.uipTransaksi.biaya_lain = self.uipParameter.BiayaSKN
     elif index == 1:
       self.uipTransaksi.biaya_lain = self.uipParameter.BiayaRTGS
+    elif index == 2:
+      self.uipTransaksi.biaya_lain = self.uipParameter.BiayaPindahBuku
   #--
   
   def bHitungClick(self, button):
@@ -39,10 +41,9 @@ class fPengembalianDana:
     self.uipHitung.biaya_pencairan = (persenBiayaKembali / 100) * self.uipHitung.saldo_jml_dana 
     
     # biaya pengelolaan dan biaya administrasi dihitung berdasarkan proporsi
-    self.uipHitung.biaya_pengelolaan = self.uipParameter.proporsiBiaya * \
-      (self.uipParameter.PERSEN_BIAYA_PENGELOLAAN / 100) * self.uipHitung.saldo_jml_dana
-    self.uipHitung.biaya_administrasi = self.uipParameter.proporsiBiaya * \
-      self.uipParameter.BIAYA_ADM_TAHUNAN 
+    self.uipHitung.biaya_pengelolaan = self.uipParameter.proporsiHari * \
+      (self.uipParameter.PERSEN_BIAYA_PENGELOLAAN / 100 / 12) * self.uipHitung.saldo_jml_dana
+    self.uipHitung.biaya_administrasi = self.uipParameter.BIAYA_ADM_TAHUNAN / 12 
     
     self.uipHitung.saldo_pengembalian = self.uipHitung.saldo_jml_dana - \
       self.uipHitung.biaya_pencairan - \
@@ -94,6 +95,11 @@ class fPengembalianDana:
     if self.uipTransaksi.total_dana < self.uipParameter.PRESISI_ANGKA_FLOAT:
       self.FormObject.ShowMessage('Total Dana Peserta ialah 0! Untuk itu, tidak ada dana yang bisa ditarik')
       return
+
+    if self.app.ConfirmDialog('Anda yakin Simpan transaksi Pengembalian Dana peserta %s %s?' % (self.uipPeserta.no_peserta, self.uipPeserta.nama_lengkap)):
+      pass
+    else:
+      return 0
 
     form.CommitBuffer()
     phForm = form.GetDataPacket()

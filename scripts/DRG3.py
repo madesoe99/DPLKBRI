@@ -100,7 +100,7 @@ def SimpanTransaksi(config, parameter, returnpacket):
       iuran ={'PK':0.0,'PST':0.0,'TMB':0.0}
       #bayar iuran peserta
       oIuranPeserta = config.CreatePObject('IuranPeserta')
-      oIuranPeserta.catatan_bayar_iuran = 'Transaksi reconcile '+ket[par.jenis]
+      oIuranPeserta.catatan_bayar_iuran = jenis
        
       #field object TransaksiDPLK
       if res.is_corporate =='T':
@@ -176,4 +176,3 @@ def SimpanTransaksi(config, parameter, returnpacket):
 def updateDetil(config,id_detil_giro):
     strSQL  = "UPDATE DETILRIWAYATGIRO SET IS_CREATED_TRANSACTION='T' WHERE ID_DETIL_GIRO="+str(id_detil_giro)
     resSQL = config.ExecSQL(strSQL)
-

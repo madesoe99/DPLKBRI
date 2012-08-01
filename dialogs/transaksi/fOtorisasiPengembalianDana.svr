@@ -10,13 +10,14 @@ object:rpclass::TPClassUIDefList<
     object:rpclass::TPClassUIDef<
       Name='uipTransaksi'
       PClassName='PengembalianDana'
-      LoadedFieldList='ID_Transaksi;tgl_transaksi;keterangan;saldo_jml_dana;jenis_biaya;biaya_lain;user_id;terminal_id;tgl_sistem;user_id_auth;terminal_id_auth;tgl_otorisasi;saldo_iuran_pk;saldo_pmb_pk;saldo_iuran_pst;saldo_pmb_pst;saldo_iuran_tmb;saldo_pmb_tmb;saldo_psl;saldo_pmb_psl;saldo_jml_dana;biaya_pencairan;biaya_pengelolaan;biaya_administrasi;saldo_pengembalian;pajak;dana_stlh_pajak;jenis_biaya;biaya_lain;dana_dikembalikan'
+      LoadedFieldList='ID_Transaksi;tgl_transaksi;keterangan;jenis_biaya;biaya_lain;saldo_jml_dana;user_id;terminal_id;tgl_sistem;user_id_auth;terminal_id_auth;tgl_otorisasi;saldo_iuran_pk;saldo_pmb_pk;saldo_iuran_pst;saldo_pmb_pst;saldo_iuran_tmb;saldo_pmb_tmb;saldo_psl;saldo_pmb_psl;saldo_jml_dana;biaya_pencairan;biaya_pengelolaan;biaya_administrasi;saldo_pengembalian;pajak;dana_stlh_pajak;jenis_biaya;biaya_lain;dana_dikembalikan'
+      StoredFieldList='tgl_transaksi;keterangan;jenis_biaya;biaya_lain;saldo_jml_dana'
       Mode=imSingleRow
       CreateInstanceOnNew=true
     >, object:rpclass::TPClassUIDef<
       Name='uipPeserta'
       PClassName='NasabahDPLK'
-      LoadedFieldList='no_peserta;nama_lengkap;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_email;NPWP;tgl_registrasi'
+      LoadedFieldList='no_peserta;nama_lengkap;alamat_jalan;alamat_rtrw;alamat_rw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_email;NPWP;tanggal_lahir;tgl_registrasi;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.nama_perusahaan;tgl_registrasi'
       CustomLoadedFields={
         object:rpclass::TCustomLoadedField<
           Name='IuranPk'
@@ -26,6 +27,13 @@ object:rpclass::TPClassUIDefList<
           Name='IuranPst'
           DataTypeName='double'
           DataLength=20
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLKCorporate'
+          ClassTypeName='NasabahDPLKCorporate'
+          FieldNames='kode_nasabah_corporate;kode_nasabah_corporate;nama_perusahaan'
         >
       }
       Mode=imSingleRow
@@ -55,6 +63,5 @@ object:rpclass::TPClassUIDefList<
       }
     >
   }
-  OnGeneralProcessData='Form_OnGeneralProcessData'
   OnSetDataEx='Form_OnSetDataEx'
 >

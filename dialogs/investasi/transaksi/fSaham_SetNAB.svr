@@ -4,13 +4,16 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rpclass::TPClassUIDefList<
-  UIDefs={object:rpclass::TPClassUIDef<
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
       Name='uipSaham'
       PClassName='Saham'
       LoadedFieldList='nama_SAHAM;LPihakKetiga.kode_pihak_ketiga;LPihakKetiga.kode_pihak_ketiga;LPihakKetiga.nama_pihak_ketiga;LRincianPaketInvestasi.kode_paket_investasi;LRincianPaketInvestasi.kode_jns_investasi;LRincianPaketInvestasi.kode_paket_investasi;LRincianPaketInvestasi.LPaketInvestasi.nama_paket_investasi;LRincianPaketInvestasi.kode_jns_investasi;LCustodianBank.BankCode;LCustodianBank.BankCode;LCustodianBank.BankName;tgl_buka;unit_penyertaan;akum_nominal;NAB_awal;NAB;id_investasi'
       StoredFieldList='NAB'
-      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
           Name='IsCommited'
           DataTypeName='integer'
           DataLength=1
@@ -63,16 +66,6 @@ document <
           DataTypeName='integer'
           DataLength=20
         >, object:rpclass::TCustomLoadedField<
-          Name='LTransactionBatch.ID_TransactionBatch'
-          DataTypeName='INTEGER'
-        >, object:rpclass::TCustomLoadedField<
-          Name='LTransactionBatch.ID_TransactionBatch'
-          DataTypeName='INTEGER'
-        >, object:rpclass::TCustomLoadedField<
-          Name='LTransactionBatch.no_batch'
-          DataTypeName='VARCHAR'
-          DataLength=32
-        >, object:rpclass::TCustomLoadedField<
           Name='Tgl_penetapan'
           DataTypeName='timestamp'
           DataLength=20
@@ -84,7 +77,10 @@ document <
           Name='terminal_id'
           DataTypeName='varchar'
           DataLength=20
-        >}CustomLoadedLinks={object:rpclass::TCustomLoadedLink<
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
           Name='LPihakKetiga'
           ClassTypeName='PihakKetiga'
           FieldNames='kode_pihak_ketiga;kode_pihak_ketiga;nama_pihak_ketiga'
@@ -96,16 +92,15 @@ document <
           Name='LCustodianBank'
           ClassTypeName='CustodianBank'
           FieldNames='BankCode;BankCode;BankName'
-        >, object:rpclass::TCustomLoadedLink<
-          Name='LTransactionBatch'
-          ClassTypeName='TransactionBatch'
-          FieldNames='ID_TransactionBatch;ID_TransactionBatch;no_batch'
-        >}Mode=imSingleRow
+        >
+      }
+      Mode=imSingleRow
       CreateInstanceOnNew=true
       OnSetData='uipSahamSetData'
     >, object:rpclass::TPClassUIDef<
       Name='uipParameter'
-      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
           Name='nowDate'
           DataTypeName='varchar'
           DataLength=10
@@ -117,8 +112,12 @@ document <
           Name='strInv'
           DataTypeName='varchar'
           DataLength=20
-        >}Mode=imSingleRow
+        >
+      }
+      Mode=imSingleRow
       CreateInstanceOnNew=true
       OnSetData='uipParameterSetData'
-    >}OnEndProcessData='FormEndProcessData'
+    >
+  }
+  OnEndProcessData='FormEndProcessData'
 >

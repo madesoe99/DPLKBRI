@@ -9,7 +9,7 @@ def mnuNewClick(sender, context):
   form.Show(app.CreateValues(['mode','new']))
 
 def displayWithData(sender, context):
-  formID = 'fRegistrasi'
+  formID = 'fRegistrasi_testPrint'
   mode = sender.StringTag
   #aform = app.GetFormWithData('transaction/'+formid,formid,0,key,'uipRegisterNasabahRekening')
   if context.KeyObjConst not in ['', 0]:
@@ -38,7 +38,7 @@ def mnuPaymentClick(sender, context):
   
   #cek status biaya daftar peserta (sudah bayar pendaftaran atau belum)
   if context.GetFieldValue('RegisterNasabahRekening.STATUS_BIAYA_DAFTAR') == 'T':
-    app.ShowMessage('Peserta sudah membayar Biaya Pendaftaran.\nSelanjutnya silahkan lakukan otorisasi.')
+    app.ShowMessage('Peserta sudah membayar Biaya Pendaftaran.\nSelanjutnya silahkan lakukan approval.')
     return
   
   try:

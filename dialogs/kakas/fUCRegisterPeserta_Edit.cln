@@ -10,8 +10,8 @@ object:rtf::Form<
   Caption='Koreksi Data'
   Left=50
   Top=50
-  Width=720
-  Height=420
+  Width=900
+  Height=460
   UIParts={
     object:rtf::PClassUI<
       Elements={
@@ -65,117 +65,319 @@ object:rtf::Form<
       Width=240
       Height=96
       Container1=$CONTAINERS['pButton']
-      Container2=$CONTAINERS['dualsplit2']
+      Container2=$CONTAINERS['multipages1']
       InversedAlign=true
     >, object:rtf::Panel<
       Elements={
         object:rtf::FieldUIElmtSetting<
-          Name='no_peserta'
-          Hidden=false
-          ReadOnlyControl=false
-          DataTypeName='VARCHAR'
-          DataLength=11
-        >, object:rtf::FieldUIElmtSetting<
-          Name='no_rekening'
-          Hidden=false
-          ReadOnlyControl=false
-          DataTypeName='VARCHAR'
-          DataLength=20
-        >, object:rtf::FieldUIElmtSetting<
-          Name='is_valid'
-          Hidden=false
-          ReadOnlyControl=false
-          DataTypeName='VARCHAR'
-          DataLength=1
-          EnumeratedValues=['F=false'#13#10,
-            'T=true'#13#10]
-        >, object:rtf::FieldUIElmtSetting<
-          Name='keterangan'
+          Name='ibu_kandung'
           Hidden=false
           ReadOnlyControl=false
           DataTypeName='VARCHAR'
           DataLength=100
         >, object:rtf::FieldUIElmtSetting<
-          Name='is_auth'
-          Hidden=false
-          ReadOnlyControl=false
-          DataTypeName='VARCHAR'
-          DataLength=1
-          EnumeratedValues=['F=false'#13#10,
-            'T=true'#13#10]
-        >
-      }
-      Name='pInputRight'
-      Width=329
-      Height=240
-      Bordered=true
-      UIPart=$UIPARTS['uipDetail']
-      Controls={
-        *object:rtf::DBEdit<
-          Name='no_peserta'
-          Top=24
-          Left=20
-          Enabled=false
-          ControlCaption='No. Peserta'
-        >, *object:rtf::DBEdit<
-          Name='no_rekening'
-          Top=52
-          Left=20
-          Enabled=false
-          ControlCaption='No. Rekening'
-        >, *object:rtf::DBComboBox<
-          Name='is_valid'
-          Top=80
-          Left=20
-          Enabled=false
-          ControlCaption='Is Valid'
-        >, *object:rtf::DBEdit<
-          Name='keterangan'
-          Top=108
-          Left=20
-          Enabled=false
-          ControlCaption='Keterangan'
-        >, *object:rtf::DBComboBox<
-          Name='is_auth'
-          Top=136
-          Left=20
-          Enabled=false
-          ControlCaption='Is Auth'
-        >
-      }
-      EqualCaptionWidth=80
-      ControlLeftMargin=20
-      ControlTopMargin=24
-      DefaultControlHeight=21
-      HorizontalControlGap=4
-      RowControlGap=7
-      Caption='Data Register'
-    >, object:rtf::Panel<
-      Elements={
-        object:rtf::FieldUIElmtSetting<
           Name='nama_lengkap'
           Hidden=false
           ReadOnlyControl=false
+          ControlCaption='Nama Lengkap'
           DataTypeName='VARCHAR'
           DataLength=100
         >, object:rtf::FieldUIElmtSetting<
-          Name='no_referensi'
+          Name='tempat_lahir'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Tempat Lahir'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tanggal_lahir'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Tanggal Lahir'
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='jenis_kelamin'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Jenis Kelamin'
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['P=Pria'#13#10,
+            'W=Wanita'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='status_perkawinan'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['1=Belum Menikah'#13#10,
+            '2=Menikah'#13#10,
+            '3=Janda/Duda'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='kewarganegaraan'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Kewarganegaraan'
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['1=WNI'#13#10,
+            '2=WNA'#13#10]
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LNegara'
+          Hidden=false
+          ReadOnlyControl=false
+          ClassTypeName='Negara'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LNegara.kode_negara'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=3
+              UsedAsKey=true
+              KeyOrDisplayName='kode_negara'
+              FinalDisplayFieldName='kode_negara'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LNegara.kode_negara'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=3
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_negara'
+              FinalDisplayFieldName='kode_negara'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LNegara.nama_negara'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=30
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_negara'
+              FinalDisplayFieldName='nama_negara'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LNegara.risk_flag'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=1
+              UsedAsDisplay=true
+              KeyOrDisplayName='risk_flag'
+              FinalDisplayFieldName='risk_flag'
+            >
+          }
+          Restrictions=''
+          OQLText=['select from Negara'#13#10,
+            '('#13#10,
+            '  kode_negara,'#13#10,
+            '  nama_negara,'#13#10,
+            '  risk_flag,'#13#10,
+            '  self'#13#10,
+            ') then order by kode_negara;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LNegara'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='email'
           Hidden=false
           ReadOnlyControl=false
           DataTypeName='VARCHAR'
           DataLength=50
         >, object:rtf::FieldUIElmtSetting<
+          Name='NPWP'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >, object:rtf::FieldUIElmtSetting<
+          Name='penghasilan_setahun'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='RF_Negara'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='varchar'
+          DataLength=20
+          EnumeratedValues=['L=Low'#13#10,
+            'M=Moderate'#13#10,
+            'H=High'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='mode'
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='nolimitlocation'
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='varchar'
+          DataLength=1
+        >
+      }
+      Name='pNasabah'
+      Width=441
+      Height=657
+      Bordered=true
+      UIPart=$UIPARTS['uipDetail']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='ibu_kandung'
+          Top=24
+          Left=20
+          Color=13353215
+          ControlCaption='Nama Ibu Kandung'
+          LayoutOrder=2
+          CharCase=ecUpperCase
+        >, *object:rtf::DBEdit<
+          Name='nama_lengkap'
+          Top=52
+          Left=20
+          Color=13353215
+          ControlCaption='Nama Lengkap Peserta'
+          LayoutOrder=3
+          CharCase=ecUpperCase
+        >, *object:rtf::DBEdit<
+          Name='tempat_lahir'
+          Top=80
+          Left=20
+          Color=13353215
+          ControlCaption='Tempat Lahir'
+          LayoutOrder=4
+          CharCase=ecUpperCase
+        >, *object:rtf::DBDateEdit<
+          Name='tanggal_lahir'
+          Top=108
+          Left=20
+          Color=13353215
+          ControlCaption='Tanggal Lahir'
+          LayoutOrder=5
+        >, *object:rtf::DBComboBox<
+          Name='jenis_kelamin'
+          Top=136
+          Left=20
+          Color=13353215
+          ControlCaption='Jenis Kelamin'
+          LayoutOrder=6
+        >, *object:rtf::DBComboBox<
+          Name='status_perkawinan'
+          Top=164
+          Left=20
+          ControlCaption='Status Perkawinan'
+          LayoutOrder=7
+        >, *object:rtf::DBComboBox<
+          Name='kewarganegaraan'
+          Top=192
+          Left=20
+          ControlCaption='Kewarganegaraan'
+          LayoutOrder=8
+        >, *object:rtf::DBLookupEdit<
+          Name='LNegara'
+          Top=220
+          Left=20
+          ControlCaption='Negara'
+          LayoutOrder=9
+          LookupField='LNegara.nama_negara'
+          DisplayLookupField=true
+        >, *object:rtf::DBEdit<
+          Name='email'
+          Top=276
+          Left=20
+          ControlCaption='Email'
+          LayoutOrder=11
+          CharCase=ecUpperCase
+        >, *object:rtf::DBEdit<
+          Name='NPWP'
+          Top=304
+          Left=20
+          ControlCaption='NPWP'
+          LayoutOrder=12
+          CharCase=ecUpperCase
+        >, *object:rtf::DBEdit<
+          Name='penghasilan_setahun'
+          Top=332
+          Left=20
+          ControlCaption='Penghasilan Setahun'
+          LayoutOrder=13
+        >, *object:rtf::DBComboBox<
+          Name='RF_Negara'
+          Top=248
+          Left=20
+          Enabled=false
+          ControlCaption='Risk Negara'
+          LayoutOrder=10
+          FieldName='LNegara.risk_flag'
+        >, object:rtf::Button<
+          Name='btnCekPesertaTerdaftar'
+          Layout=clAbsolute
+          Top=132
+          Left=268
+          Width=149
+          Height=25
+          ControlCaption=''
+          LayoutOrder=1
+          Caption='Cek Jika Peserta Terdaftar'
+          OnClick='btnCekPesertaTerdaftarOnClick'
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=24
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      ControlCharCase=ecUpperCase
+      Caption='Identitas Peserta - 1'
+    >, object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
           Name='alamat_jalan'
           Hidden=false
           ReadOnlyControl=false
+          ControlCaption='Jalan'
           DataTypeName='VARCHAR'
           DataLength=200
         >, object:rtf::FieldUIElmtSetting<
           Name='alamat_rtrw'
           Hidden=false
           ReadOnlyControl=false
+          ControlCaption='RT RW'
           DataTypeName='VARCHAR'
-          DataLength=7
+          DataLength=3
+        >, object:rtf::FieldUIElmtSetting<
+          Name='alamat_kota'
+          Hidden=true
+          ReadOnlyControl=false
+          ControlCaption='Kota'
+          DataTypeName='VARCHAR'
+          DataLength=50
+        >, object:rtf::FieldUIElmtSetting<
+          Name='alamat_telepon'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Telepon 1'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >, object:rtf::FieldUIElmtSetting<
+          Name='alamat_telepon2'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Telepon 2'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >, object:rtf::FieldUIElmtSetting<
+          Name='alamat_propinsi'
+          Hidden=true
+          ReadOnlyControl=false
+          ControlCaption='Propinsi'
+          DataTypeName='VARCHAR'
+          DataLength=50
         >, object:rtf::LinkUIElmtSetting<
           Name='LATPropinsi'
           Hidden=false
@@ -215,7 +417,7 @@ object:rtf::Form<
             >
           }
           Restrictions=''
-          OQLText=['SELECT FROM DaerahAsal('#13#10,
+          OQLText=['SELECT FROM DaerahAsal ('#13#10,
             '  kode_propinsi,'#13#10,
             '  nama_propinsi,'#13#10,
             '  self'#13#10,
@@ -261,7 +463,7 @@ object:rtf::Form<
             >
           }
           Restrictions='LATPropinsi|LATPropinsi'
-          OQLText=['SELECT FROM DaerahKota['#13#10,
+          OQLText=['SELECT FROM DaerahKota ['#13#10,
             '  LPropinsi=:LATPropinsi'#13#10,
             ']('#13#10,
             '  kode_kota,'#13#10,
@@ -270,134 +472,833 @@ object:rtf::Form<
             ') THEN ORDER BY kode_kota;']
           LookupOption=loCustomOQL
           FieldBaseName='LATKota'
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LATKecamatan'
+          Hidden=false
+          ReadOnlyControl=false
+          ClassTypeName='DaerahKecamatan'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LATKecamatan.kode_kecamatan'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=7
+              UsedAsKey=true
+              KeyOrDisplayName='kode_kecamatan'
+              FinalDisplayFieldName='kode_kecamatan'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LATKecamatan.kode_kecamatan'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=7
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_kecamatan'
+              FinalDisplayFieldName='kode_kecamatan'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LATKecamatan.nama_kecamatan'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=100
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_kecamatan'
+              FinalDisplayFieldName='nama_kecamatan'
+            >
+          }
+          Restrictions='LATKota|LATKota'
+          OQLText=['SELECT FROM DaerahKecamatan ['#13#10,
+            '  LKota=:LATKota'#13#10,
+            ']('#13#10,
+            '  kode_kecamatan,'#13#10,
+            '  nama_kecamatan,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY kode_kecamatan;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LATKecamatan'
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LATKodePos'
+          Hidden=false
+          ReadOnlyControl=false
+          ClassTypeName='DaerahKodePos'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LATKodePos.id_kodepos'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='INTEGER'
+              DataLength=0
+              UsedAsKey=true
+              KeyOrDisplayName='id_kodepos'
+              FinalDisplayFieldName='id_kodepos'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LATKodePos.id_kodepos'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='INTEGER'
+              DataLength=0
+              UsedAsDisplay=true
+              KeyOrDisplayName='id_kodepos'
+              FinalDisplayFieldName='id_kodepos'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LATKodePos.kode_pos'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=6
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_pos'
+              FinalDisplayFieldName='kode_pos'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LATKodePos.kode_propinsi'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=2
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_propinsi'
+              FinalDisplayFieldName='kode_propinsi'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LATKodePos.kode_kota'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=4
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_kota'
+              FinalDisplayFieldName='kode_kota'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LATKodePos.kode_kecamatan'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=7
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_kecamatan'
+              FinalDisplayFieldName='kode_kecamatan'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LATKodePos.LPropinsi.nama_propinsi'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=30
+              UsedAsDisplay=true
+              KeyOrDisplayName='LPropinsi.nama_propinsi'
+              FinalDisplayFieldName='nama_propinsi'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LATKodePos.LKota.nama_kota'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=30
+              UsedAsDisplay=true
+              KeyOrDisplayName='LKota.nama_kota'
+              FinalDisplayFieldName='nama_kota'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LATKodePos.LKecamatan.nama_kecamatan'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=100
+              UsedAsDisplay=true
+              KeyOrDisplayName='LKecamatan.nama_kecamatan'
+              FinalDisplayFieldName='nama_kecamatan'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LATKodePos.nama_kelurahan'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=50
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_kelurahan'
+              FinalDisplayFieldName='nama_kelurahan'
+            >
+          }
+          Restrictions=''
+          OQLText=['SELECT FROM DaerahKodePos ('#13#10,
+            '  id_kodepos,'#13#10,
+            '  kode_pos,'#13#10,
+            '  kode_propinsi,'#13#10,
+            '  LPropinsi.nama_propinsi AS nama_propinsi,'#13#10,
+            '  kode_kota,'#13#10,
+            '  LKota.nama_kota AS nama_kota,'#13#10,
+            '  kode_kecamatan,'#13#10,
+            '  LKecamatan.nama_kecamatan AS nama_kecamatan,'#13#10,
+            '  nama_kelurahan,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY kode_pos;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LATKodePos'
         >, object:rtf::FieldUIElmtSetting<
-          Name='tempat_lahir'
+          Name='alamat_rw'
           Hidden=false
           ReadOnlyControl=false
           DataTypeName='VARCHAR'
-          DataLength=30
-        >, object:rtf::FieldUIElmtSetting<
-          Name='tanggal_lahir'
-          Hidden=false
-          ReadOnlyControl=false
-          DataTypeName='TIMESTAMP'
-          DataLength=0
-        >, object:rtf::FieldUIElmtSetting<
-          Name='status_perkawinan'
-          Hidden=false
-          ReadOnlyControl=false
-          DataTypeName='varchar'
-          DataLength=1
-          EnumeratedValues=['1=Belum Menikah'#13#10,
-            '2=Menikah'#13#10,
-            '3=Janda/Duda'#13#10]
-        >, object:rtf::FieldUIElmtSetting<
-          Name='jenis_kelamin'
-          Hidden=false
-          ReadOnlyControl=false
-          DataTypeName='VARCHAR'
-          DataLength=1
-          EnumeratedValues=['P=Pria'#13#10,
-            'W=Wanita'#13#10]
-        >, object:rtf::FieldUIElmtSetting<
-          Name='NPWP'
-          Hidden=false
-          ReadOnlyControl=false
-          DataTypeName='VARCHAR'
-          DataLength=50
-        >, object:rtf::FieldUIElmtSetting<
-          Name='ibu_kandung'
-          Hidden=false
-          ReadOnlyControl=false
-          DataTypeName='VARCHAR'
-          DataLength=100
+          DataLength=3
         >
       }
-      Name='pInput'
-      Width=369
-      Height=369
+      Name='pAlamat'
+      Width=441
+      Height=265
       Bordered=true
       UIPart=$UIPARTS['uipDetail']
       Controls={
         *object:rtf::DBEdit<
-          Name='nama_lengkap'
+          Name='alamat_jalan'
           Top=24
           Left=20
-          ControlCaption='Nama Lengkap'
-        >, *object:rtf::DBEdit<
-          Name='no_referensi'
-          Top=52
-          Left=20
-          ControlCaption='NIK / Identitas Pegawai'
-        >, *object:rtf::DBEdit<
-          Name='alamat_jalan'
-          Top=80
-          Left=20
-          ControlCaption='Alamat Jalan'
+          Width=297
+          Height=21
+          Color=13353215
+          ControlCaption='Jalan'
+          LayoutOrder=1
+          CharCase=ecUpperCase
         >, *object:rtf::DBEdit<
           Name='alamat_rtrw'
-          Top=108
+          Layout=clNextSide
+          Top=136
+          Left=330
+          Color=13353215
+          ControlCaption='RT'
+          LayoutOrder=9
+          CharCase=ecUpperCase
+        >, *object:rtf::DBEdit<
+          Name='alamat_telepon'
+          Top=164
           Left=20
-          ControlCaption='RT RW'
+          Width=150
+          Height=21
+          Color=13353215
+          ControlCaption='Telp. Rumah'
+          LayoutOrder=11
+          CharCase=ecUpperCase
+        >, *object:rtf::DBEdit<
+          Name='alamat_telepon2'
+          Top=192
+          Left=20
+          Width=150
+          Height=21
+          Color=13353215
+          ControlCaption='Handphone'
+          LayoutOrder=12
+          CharCase=ecUpperCase
         >, *object:rtf::DBLookupEdit<
           Name='LATPropinsi'
-          Top=136
+          Top=80
           Left=20
+          Enabled=false
+          Color=13353215
           ControlCaption='Propinsi'
+          LayoutOrder=4
           LookupField='LATPropinsi.nama_propinsi'
           DisplayLookupField=true
         >, *object:rtf::DBLookupEdit<
           Name='LATKota'
-          Top=164
+          Top=108
           Left=20
+          Enabled=false
+          Color=13353215
           ControlCaption='Kota'
+          LayoutOrder=5
           LookupField='LATKota.nama_kota'
           DisplayLookupField=true
+        >, *object:rtf::DBLookupEdit<
+          Name='LATKecamatan'
+          Top=136
+          Left=20
+          Enabled=false
+          ControlCaption='Kecamatan'
+          LayoutOrder=6
+          LookupField='LATKecamatan.nama_kecamatan'
+          DisplayLookupField=true
+        >, *object:rtf::DBLookupEdit<
+          Name='LATKodePos'
+          Top=52
+          Left=20
+          Color=13353215
+          ControlCaption='Kode Pos'
+          LayoutOrder=3
+          LookupField='LATKodePos.kode_pos'
+          DisplayLookupField=true
+          OnAfterLookup='LATKodePosOnAfterLookup'
         >, *object:rtf::DBEdit<
-          Name='tempat_lahir'
-          Top=192
-          Left=20
-          ControlCaption='Tempat Lahir'
-        >, *object:rtf::DBDateEdit<
-          Name='tanggal_lahir'
-          Top=220
-          Left=20
-          ControlCaption='Tanggal Lahir'
-        >, *object:rtf::DBComboBox<
-          Name='status_perkawinan'
-          Top=248
-          Left=20
-          ControlCaption='Status Perkawinan'
-        >, *object:rtf::DBComboBox<
-          Name='jenis_kelamin'
-          Top=276
-          Left=20
-          ControlCaption='Jenis Kelamin'
-        >, *object:rtf::DBEdit<
-          Name='NPWP'
-          Top=304
-          Left=20
-          ControlCaption='NPWP'
-        >, *object:rtf::DBEdit<
-          Name='ibu_kandung'
-          Top=332
-          Left=20
-          ControlCaption='Ibu Kandung'
+          Name='alamat_rw'
+          Layout=clNextSide
+          Top=136
+          Left=378
+          Color=13353215
+          ControlCaption='RW'
+          LayoutOrder=10
         >
       }
-      EqualCaptionWidth=100
+      EqualCaptionWidth=80
       ControlLeftMargin=20
       ControlTopMargin=24
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
-      Caption='Data Personal'
+      Caption='Alamat Tempat Tinggal'
+    >, object:rtf::Panel<
+      Elements={
+        object:rtf::LinkUIElmtSetting<
+          Name='LJenisPekerjaan'
+          Hidden=false
+          ReadOnlyControl=false
+          ClassTypeName='JenisPekerjaan'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LJenisPekerjaan.kode_jenis_pekerjaan'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=2
+              UsedAsKey=true
+              KeyOrDisplayName='kode_jenis_pekerjaan'
+              FinalDisplayFieldName='kode_jenis_pekerjaan'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LJenisPekerjaan.kode_jenis_pekerjaan'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=2
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_jenis_pekerjaan'
+              FinalDisplayFieldName='kode_jenis_pekerjaan'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LJenisPekerjaan.nama_jenis_pekerjaan'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=30
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_jenis_pekerjaan'
+              FinalDisplayFieldName='nama_jenis_pekerjaan'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LJenisPekerjaan.risk_flag'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=1
+              UsedAsDisplay=true
+              KeyOrDisplayName='risk_flag'
+              FinalDisplayFieldName='risk_flag'
+            >
+          }
+          Restrictions=''
+          OQLText=['select from JenisPekerjaan'#13#10,
+            '(kode_jenis_pekerjaan,nama_jenis_pekerjaan,'#13#10,
+            '  risk_flag,self)'#13#10,
+            'then order by kode_jenis_pekerjaan;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LJenisPekerjaan'
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LJenisPekerjaanDetail'
+          Hidden=false
+          ReadOnlyControl=false
+          ClassTypeName='JenisPekerjaanDetail'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LJenisPekerjaanDetail.jpd_id'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='INTEGER'
+              DataLength=0
+              UsedAsKey=true
+              KeyOrDisplayName='jpd_id'
+              FinalDisplayFieldName='jpd_id'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LJenisPekerjaanDetail.kode_jenis_jabatan'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=2
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_jenis_jabatan'
+              FinalDisplayFieldName='kode_jenis_jabatan'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LJenisPekerjaanDetail.LJenisJabatan.nama_jenis_jabatan'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=30
+              UsedAsDisplay=true
+              KeyOrDisplayName='LJenisJabatan.nama_jenis_jabatan'
+              FinalDisplayFieldName='nama_jenis_jabatan'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LJenisPekerjaanDetail.risk_flag'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=1
+              UsedAsDisplay=true
+              KeyOrDisplayName='risk_flag'
+              FinalDisplayFieldName='risk_flag'
+            >
+          }
+          Restrictions='LJenisPekerjaan|LJenisPekerjaan'
+          OQLText=['SELECT FROM JenisPekerjaanDetail ['#13#10,
+            '  LJenisPekerjaan = :LJenisPekerjaan'#13#10,
+            ']('#13#10,
+            '  LJenisJabatan.kode_jenis_jabatan AS kode_jenis_jabatan,'#13#10,
+            '  LJenisJabatan.nama_jenis_jabatan AS nama_jenis_jabatan,'#13#10,
+            '  risk_flag,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY kode_jenis_jabatan;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LJenisPekerjaanDetail'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='RF_JenisPekerjaan'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='varchar'
+          DataLength=20
+          EnumeratedValues=['L=Low'#13#10,
+            'M=Moderate'#13#10,
+            'H=High'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='RF_JPD'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='varchar'
+          DataLength=20
+          EnumeratedValues=['L=Low'#13#10,
+            'M=Moderate'#13#10,
+            'H=High'#13#10]
+        >
+      }
+      Name='pPekerjaan'
+      Width=425
+      Height=145
+      Bordered=true
+      UIPart=$UIPARTS['uipDetail']
+      Controls={
+        *object:rtf::DBLookupEdit<
+          Name='LJenisPekerjaan'
+          Top=24
+          Left=20
+          ControlCaption='Jenis Pekerjaan'
+          LayoutOrder=1
+          LookupField='LJenisPekerjaan.nama_jenis_pekerjaan'
+          DisplayLookupField=true
+        >, *object:rtf::DBLookupEdit<
+          Name='LJenisPekerjaanDetail'
+          Top=80
+          Left=20
+          ControlCaption='Jabatan Pekerjaan'
+          LayoutOrder=4
+          LookupField='LJenisPekerjaanDetail.LJenisJabatan.nama_jenis_jabatan'
+          DisplayLookupField=true
+        >, *object:rtf::DBComboBox<
+          Name='RF_JenisPekerjaan'
+          Top=52
+          Left=20
+          Enabled=false
+          ControlCaption='Risk'
+          LayoutOrder=2
+          FieldName='LJenisPekerjaan.risk_flag'
+        >, *object:rtf::DBComboBox<
+          Name='RF_JPD'
+          Top=108
+          Left=20
+          Enabled=false
+          ControlCaption='Risk'
+          LayoutOrder=5
+          FieldName='LJenisPekerjaanDetail.risk_flag'
+        >
+      }
+      EqualCaptionWidth=120
+      ControlLeftMargin=20
+      ControlTopMargin=24
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Jenis Pekerjaan'
+    >, object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='no_peserta'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=11
+        >, object:rtf::FieldUIElmtSetting<
+          Name='no_rekening'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='is_valid'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['F=false'#13#10,
+            'T=true'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='keterangan'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >, object:rtf::FieldUIElmtSetting<
+          Name='is_auth'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['F=false'#13#10,
+            'T=true'#13#10]
+        >
+      }
+      Name='pRegister'
+      Width=329
+      Height=240
+      Bordered=true
+      UIPart=$UIPARTS['uipDetail']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='no_peserta'
+          Top=24
+          Left=20
+          Enabled=false
+          ControlCaption='No. Peserta'
+        >, *object:rtf::DBEdit<
+          Name='no_rekening'
+          Top=52
+          Left=20
+          Enabled=false
+          ControlCaption='No. Rekening'
+        >, *object:rtf::DBComboBox<
+          Name='is_valid'
+          Top=80
+          Left=20
+          Enabled=false
+          ControlCaption='Is Valid'
+        >, *object:rtf::DBEdit<
+          Name='keterangan'
+          Top=108
+          Left=20
+          Enabled=false
+          ControlCaption='Keterangan'
+        >, *object:rtf::DBComboBox<
+          Name='is_auth'
+          Top=136
+          Left=20
+          Enabled=false
+          ControlCaption='Is Auth'
+        >
+      }
+      EqualCaptionWidth=80
+      ControlLeftMargin=20
+      ControlTopMargin=24
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Register'
     >, object:rtf::DualSplit<
-      Name='dualsplit2'
+      Name='dualsplit3'
       Width=240
       Height=96
-      Container1=$CONTAINERS['pInput']
-      Container2=$CONTAINERS['pInputRight']
+      Container1=$CONTAINERS['pPekerjaan']
+      Container2=$CONTAINERS['pAlamat']
+    >, object:rtf::MultiPages<
+      Name='multipages1'
+      Width=320
+      Height=320
+      Pages={
+        object:rtf::Page<
+          PageTitle='Data &Indivdu'
+          Container=$CONTAINERS['dualsplit2']
+        >, object:rtf::Page<
+          PageTitle='Data &Rekening dan Register'
+          Container=$CONTAINERS['dualsplit4']
+          Index=1
+        >
+      }
+    >, object:rtf::DualSplit<
+      Name='dualsplit2'
+      Width=892
+      Height=391
+      Container1=$CONTAINERS['pNasabah']
+      Container2=$CONTAINERS['dualsplit3']
+      SplitDirection=sdrSplitLeftRight
+    >, object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='isPesertaPengalihan'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Termasuk Peserta Pengalihan'
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['F=false'#13#10,
+            'T=true'#13#10]
+          GenerateCheckBoxForEnum=true
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LSumberDana'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Sumber Dana'
+          ClassTypeName='SumberDana'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LSumberDana.sumber_dana'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=20
+              UsedAsKey=true
+              KeyOrDisplayName='sumber_dana'
+              FinalDisplayFieldName='sumber_dana'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LSumberDana.sumber_dana'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=20
+              UsedAsDisplay=true
+              KeyOrDisplayName='sumber_dana'
+              FinalDisplayFieldName='sumber_dana'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LSumberDana.keterangan'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=100
+              UsedAsDisplay=true
+              KeyOrDisplayName='keterangan'
+              FinalDisplayFieldName='keterangan'
+            >
+          }
+          Restrictions=''
+          OQLText=['select from SumberDana'#13#10,
+            '('#13#10,
+            '  sumber_dana,'#13#10,
+            '  keterangan,'#13#10,
+            '  self'#13#10,
+            ') then order by sumber_dana;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LSumberDana'
+        >, object:rtf::FieldUIElmtSetting<
+          Name='usia_pensiun'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Usia Pensiun'
+          DataTypeName='INTEGER'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tgl_pensiun'
+          Hidden=false
+          ReadOnlyControl=true
+          ControlCaption='Tanggal Pensiun'
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tgl_pensiun_dipercepat'
+          Hidden=false
+          ReadOnlyControl=true
+          ControlCaption='Tanggal Pensiun Dipercepat'
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='sistem_pembayaran_iuran'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['R=Rutin'#13#10,
+            'N=Non Rutin'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tgl_debet_rekening'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='INTEGER'
+          DataLength=0
+          EnumeratedValues=['1=1'#13#10,
+            '2=2'#13#10,
+            '3=3'#13#10,
+            '4=4'#13#10,
+            '5=5'#13#10,
+            '6=6'#13#10,
+            '7=7'#13#10,
+            '8=8'#13#10,
+            '9=9'#13#10,
+            '10=10'#13#10,
+            '11=11'#13#10,
+            '12=12'#13#10,
+            '13=13'#13#10,
+            '14=14'#13#10,
+            '15=15'#13#10,
+            '16=16'#13#10,
+            '17=17'#13#10,
+            '18=18'#13#10,
+            '19=19'#13#10,
+            '20=20'#13#10,
+            '21=21'#13#10,
+            '22=22'#13#10,
+            '23=23'#13#10,
+            '24=24'#13#10,
+            '25=25'#13#10,
+            '26=26'#13#10,
+            '27=27'#13#10,
+            '28=28'#13#10]
+        >, object:rtf::FieldUIElmtSetting<
+          Name='REKSUMBER_NO'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='REKSUMBER_NAMA'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=100
+        >, object:rtf::FieldUIElmtSetting<
+          Name='iuran_tmb'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='ikut_asuransi'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=1
+          EnumeratedValues=['F=false'#13#10,
+            'T=true'#13#10]
+          GenerateCheckBoxForEnum=true
+        >
+      }
+      Name='pRekening'
+      Width=465
+      Height=369
+      Bordered=true
+      UIPart=$UIPARTS['uipDetail']
+      Controls={
+        *object:rtf::DBCheckBox<
+          Name='isPesertaPengalihan'
+          Top=24
+          Left=20
+          Width=175
+          Height=21
+          ControlCaption='Termasuk Peserta Pengalihan'
+          LayoutOrder=1
+        >, *object:rtf::DBLookupEdit<
+          Name='LSumberDana'
+          Top=220
+          Left=20
+          Color=13353215
+          ControlCaption='Sumber Dana'
+          LayoutOrder=8
+          LookupField='LSumberDana.keterangan'
+          DisplayLookupField=true
+          DirectInput=true
+        >, *object:rtf::DBEdit<
+          Name='usia_pensiun'
+          Top=248
+          Left=20
+          Color=13353215
+          ControlCaption='Usia Pensiun'
+          LayoutOrder=9
+          OnExit='UsiaPensiunExit'
+        >, *object:rtf::DBDateEdit<
+          Name='tgl_pensiun'
+          Top=276
+          Left=20
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Tanggal Pensiun'
+          LayoutOrder=11
+        >, *object:rtf::DBDateEdit<
+          Name='tgl_pensiun_dipercepat'
+          Top=304
+          Left=20
+          Enabled=false
+          Color=-2147483624
+          ControlCaption='Tanggal Pensiun Dipercepat'
+          LayoutOrder=12
+        >, *object:rtf::DBComboBox<
+          Name='sistem_pembayaran_iuran'
+          Top=80
+          Left=20
+          ControlCaption='Sistem Pembayaran Iuran Tambahan'
+          LayoutOrder=3
+          OnChange='sistem_pembayaran_iuranOnChange'
+        >, *object:rtf::DBComboBox<
+          Name='tgl_debet_rekening'
+          Top=108
+          Left=20
+          ControlCaption='Tgl. Debet Rekening'
+          LayoutOrder=4
+        >, *object:rtf::DBEdit<
+          Name='REKSUMBER_NO'
+          Top=164
+          Left=20
+          ControlCaption='Nomor Rekening Sumber'
+          LayoutOrder=6
+        >, *object:rtf::DBEdit<
+          Name='REKSUMBER_NAMA'
+          Top=192
+          Left=20
+          ControlCaption='Nama Pemilik Rekening Sumber'
+          LayoutOrder=7
+        >, *object:rtf::DBEdit<
+          Name='iuran_tmb'
+          Top=136
+          Left=20
+          ControlCaption='Iuran Tambahan'
+          LayoutOrder=5
+        >, *object:rtf::DBCheckBox<
+          Name='ikut_asuransi'
+          Top=52
+          Left=20
+          ControlCaption='Ikut serta Asuransi'
+          LayoutOrder=2
+        >, object:rtf::Label<
+          Name='label1'
+          Layout=clNextSide
+          Top=248
+          Left=338
+          ControlCaption=''
+          LayoutOrder=10
+          Caption='*) 45-65 Tahun'
+          AutoSize=true
+          FontSize=8
+          FontStyleItalic=true
+        >
+      }
+      EqualCaptionWidth=190
+      ControlLeftMargin=20
+      ControlTopMargin=24
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Informasi Rekening'
+    >, object:rtf::DualSplit<
+      Name='dualsplit4'
+      Width=892
+      Height=391
+      Container1=$CONTAINERS['pRekening']
+      Container2=$CONTAINERS['pRegister']
       SplitDirection=sdrSplitLeftRight
     >
   }

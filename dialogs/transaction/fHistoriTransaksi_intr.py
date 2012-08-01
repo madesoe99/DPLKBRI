@@ -45,7 +45,7 @@ class fHistoriTransaksi:
     strDateFilterAwal = self.DateTupToOQLFormat(uipRekInvDPLK.tanggal_filter)
     strDateFilterAkhir = self.DateTupToOQLFormat(uipRekInvDPLK.tanggal_filter_akhir)
   
-    qTransaksiDPLK.SetParameter('no_peserta',uipNasabahDPLK.no_peserta)
+    qTransaksiDPLK.SetParameter('no_rekening',uipRekInvDPLK.no_rekening)
     qTransaksiDPLK.SetParameter('all_tgl_awal',0)
     qTransaksiDPLK.SetParameter('tgl_transaksi_awal',strDateFilterAwal)
     if strDateFilterAwal in [None]:
@@ -60,7 +60,7 @@ class fHistoriTransaksi:
     
     qTransaksiDPLK.DisplayData()
     
-    qTitipanPremi.SetParameter('no_peserta',uipNasabahDPLK.no_peserta)
+    qTitipanPremi.SetParameter('no_rekening',uipRekInvDPLK.no_rekening)
     qTitipanPremi.SetParameter('all_tgl_awal',0)
     qTitipanPremi.SetParameter('tgl_transaksi_awal',strDateFilterAwal)
     if strDateFilterAwal in [None]:

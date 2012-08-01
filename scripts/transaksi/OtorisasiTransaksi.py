@@ -81,6 +81,23 @@ def CreateBiayaTransaksi(config, classJenisBiaya, oTransaksi, nominalBiaya):
   
   return oBiaya
 
+def UpdateUnit(config,oRekDPLK,oDetilTransaksi):
+  sSQL = "SELECT * FROM PAKETINVESTASI WHERE kode_paket_investasi='%s' " % oRekDPLK.kode_paket_investasi
+  PI = config.CreateSQL(sSQL).RawResult
+  
+  nav_c = PI.nav_custody
+  oDetilTransaksi.nav_custody = nav_c
+
+  akumIuran = oDetilTransaksi.mutasi_iuran_pk + \
+              oDetilTransaksi.mutasi_iuran_pst + \
+              oDetilTransaksi.mutasi_iuran_tmb
+  
+  h_unit = float(akumIuran) / float(nav_c)
+  unit = "%.4f" % h_unit
+  
+  return unit
+  #raise Exception, h_unit
+
 def ApproveOperation(config, oTransaksi): 
   oTransaksi = oTransaksi.CastToLowestDescendant()
   oRekInv = oTransaksi.LRekeningDPLK
@@ -108,10 +125,14 @@ def ApproveOperation(config, oTransaksi):
       
       oRekDPLK = config.CreatePObjImplProxy('RekeningDPLK')
       oRekDPLK.Key = oDetilTransaksi.nomor_rekening
+      
       oRekDPLK.akum_iuran_pk += oDetilTransaksi.mutasi_iuran_pk
       oRekDPLK.akum_iuran_pst += oDetilTransaksi.mutasi_iuran_pst
       oRekDPLK.akum_iuran_tmb += oDetilTransaksi.mutasi_iuran_tmb
       
+      Unit = UpdateUnit(config, oRekDPLK,oDetilTransaksi)
+      oRekDPLK.jml_unit = float(unit)
+
       Ls_DetilTransaksi.Next()
     #--
   #--end IuranPeserta
@@ -122,10 +143,39 @@ def ApproveOperation(config, oTransaksi):
       oTransaksi.biaya_tarik)
     oBiayaAdmTransaksi.isPindahPaket = 'F'
 
-    #tambahkan mutasi dana di RekeningInvDPLK
-    oRekInv.akum_iuran_pk += oTransaksi.mutasi_iuran_pk
-    oRekInv.akum_iuran_pst += oTransaksi.mutasi_iuran_pst
-    oRekInv.akum_iuran_tmb += oTransaksi.mutasi_iuran_tmb
+    oP = config.CreatePObjImplProxy('Parameter')
+    oP.Key = 'PRESISI_ANGKA_FLOAT'
+
+    #cek apakah perlu set ulang mutasi bila penarikan ternyata mencapai 100%
+    if oRekInv.akum_iuran_pk + oTransaksi.mutasi_iuran_pk + \
+      oBiayaAdmTransaksi.mutasi_iuran_pk < oP.Numeric_Value:
+      #saldo akum iuran PK berpotensi minus, set ulang mutasi iuran PK 
+      oTransaksi.mutasi_iuran_pk = -oRekInv.akum_iuran_pk
+      oRekInv.akum_iuran_pk = 0.0
+      potensiMinus_PK = 1
+    else:
+      oRekInv.akum_iuran_pk += oTransaksi.mutasi_iuran_pk
+      potensiMinus_PK = 0
+
+    if oRekInv.akum_iuran_pst + oTransaksi.mutasi_iuran_pst + \
+      oBiayaAdmTransaksi.mutasi_iuran_pst < oP.Numeric_Value:
+      #saldo akum iuran PST berpotensi minus, set ulang mutasi iuran PST
+      oTransaksi.mutasi_iuran_pst = -oRekInv.akum_iuran_pst
+      oRekInv.akum_iuran_pst = 0.0
+      potensiMinus_PST = 1
+    else: 
+      oRekInv.akum_iuran_pst += oTransaksi.mutasi_iuran_pst
+      potensiMinus_PST = 0
+
+    if oRekInv.akum_iuran_tmb + oTransaksi.mutasi_iuran_tmb + \
+      oBiayaAdmTransaksi.mutasi_iuran_tmb < oP.Numeric_Value:
+      #saldo akum iuran TMB berpotensi minus, set ulang mutasi iuran TMB
+      oTransaksi.mutasi_iuran_tmb = -oRekInv.akum_iuran_tmb
+      oRekInv.akum_iuran_pst = 0.0
+      potensiMinus_TMB = 1
+    else: 
+      oRekInv.akum_iuran_tmb += oTransaksi.mutasi_iuran_tmb
+      potensiMinus_TMB = 0
 
     #tambahkan mutasi dana dan unit di tiap RekeningDPLK terkait investasi
     Ls_DetilTransaksi = oTransaksi.Ls_DetilTransaksiDPLK
@@ -134,9 +184,24 @@ def ApproveOperation(config, oTransaksi):
       
       oRekDPLK = config.CreatePObjImplProxy('RekeningDPLK')
       oRekDPLK.Key = oDetilTransaksi.nomor_rekening
-      oRekDPLK.akum_iuran_pk += oDetilTransaksi.mutasi_iuran_pk
-      oRekDPLK.akum_iuran_pst += oDetilTransaksi.mutasi_iuran_pst
-      oRekDPLK.akum_iuran_tmb += oDetilTransaksi.mutasi_iuran_tmb
+
+      if potensiMinus_PK:
+        oDetilTransaksi.mutasi_iuran_pk = -oRekDPLK.akum_iuran_pk
+        oRekDPLK.akum_iuran_pk = 0.0
+      else:
+        oRekDPLK.akum_iuran_pk += oDetilTransaksi.mutasi_iuran_pk
+      
+      if potensiMinus_PST:
+        oDetilTransaksi.mutasi_iuran_pst = -oRekDPLK.akum_iuran_pst
+        oRekDPLK.akum_iuran_pst = 0.0
+      else:
+        oRekDPLK.akum_iuran_pst += oDetilTransaksi.mutasi_iuran_pst
+      
+      if potensiMinus_TMB:
+        oDetilTransaksi.mutasi_iuran_tmb = -oRekDPLK.akum_iuran_tmb
+        oRekDPLK.akum_iuran_tmb = 0.0
+      else:
+        oRekDPLK.akum_iuran_tmb += oDetilTransaksi.mutasi_iuran_tmb
       
       Ls_DetilTransaksi.Next()
     #--
@@ -148,10 +213,39 @@ def ApproveOperation(config, oTransaksi):
       oTransaksi.biaya_tarik)
     oBiayaAdmTransaksi.isPindahPaket = 'F'
 
-    #tambahkan mutasi dana di RekeningInvDPLK
-    oRekInv.akum_iuran_pk += oTransaksi.mutasi_iuran_pk
-    oRekInv.akum_iuran_pst += oTransaksi.mutasi_iuran_pst
-    oRekInv.akum_iuran_tmb += oTransaksi.mutasi_iuran_tmb
+    oP = config.CreatePObjImplProxy('Parameter')
+    oP.Key = 'PRESISI_ANGKA_FLOAT'
+
+    #cek apakah perlu set ulang mutasi bila penarikan ternyata mencapai 100%
+    if oRekInv.akum_iuran_pk + oTransaksi.mutasi_iuran_pk + \
+      oBiayaAdmTransaksi.mutasi_iuran_pk < oP.Numeric_Value:
+      #saldo akum iuran PK berpotensi minus, set ulang mutasi iuran PK 
+      oTransaksi.mutasi_iuran_pk = -oRekInv.akum_iuran_pk
+      oRekInv.akum_iuran_pk = 0.0
+      potensiMinus_PK = 1
+    else:
+      oRekInv.akum_iuran_pk += oTransaksi.mutasi_iuran_pk
+      potensiMinus_PK = 0
+
+    if oRekInv.akum_iuran_pst + oTransaksi.mutasi_iuran_pst + \
+      oBiayaAdmTransaksi.mutasi_iuran_pst < oP.Numeric_Value:
+      #saldo akum iuran PST berpotensi minus, set ulang mutasi iuran PST
+      oTransaksi.mutasi_iuran_pst = -oRekInv.akum_iuran_pst
+      oRekInv.akum_iuran_pst = 0.0
+      potensiMinus_PST = 1
+    else: 
+      oRekInv.akum_iuran_pst += oTransaksi.mutasi_iuran_pst
+      potensiMinus_PST = 0
+
+    if oRekInv.akum_iuran_tmb + oTransaksi.mutasi_iuran_tmb + \
+      oBiayaAdmTransaksi.mutasi_iuran_tmb < oP.Numeric_Value:
+      #saldo akum iuran TMB berpotensi minus, set ulang mutasi iuran TMB
+      oTransaksi.mutasi_iuran_tmb = -oRekInv.akum_iuran_tmb
+      oRekInv.akum_iuran_pst = 0.0
+      potensiMinus_TMB = 1
+    else: 
+      oRekInv.akum_iuran_tmb += oTransaksi.mutasi_iuran_tmb
+      potensiMinus_TMB = 0
 
     #tambahkan mutasi dana dan unit di tiap RekeningDPLK terkait investasi
     Ls_DetilTransaksi = oTransaksi.Ls_DetilTransaksiDPLK
@@ -160,9 +254,24 @@ def ApproveOperation(config, oTransaksi):
       
       oRekDPLK = config.CreatePObjImplProxy('RekeningDPLK')
       oRekDPLK.Key = oDetilTransaksi.nomor_rekening
-      oRekDPLK.akum_iuran_pk += oDetilTransaksi.mutasi_iuran_pk
-      oRekDPLK.akum_iuran_pst += oDetilTransaksi.mutasi_iuran_pst
-      oRekDPLK.akum_iuran_tmb += oDetilTransaksi.mutasi_iuran_tmb
+
+      if potensiMinus_PK:
+        oDetilTransaksi.mutasi_iuran_pk = -oRekDPLK.akum_iuran_pk
+        oRekDPLK.akum_iuran_pk = 0.0
+      else:
+        oRekDPLK.akum_iuran_pk += oDetilTransaksi.mutasi_iuran_pk
+      
+      if potensiMinus_PST:
+        oDetilTransaksi.mutasi_iuran_pst = -oRekDPLK.akum_iuran_pst
+        oRekDPLK.akum_iuran_pst = 0.0
+      else:
+        oRekDPLK.akum_iuran_pst += oDetilTransaksi.mutasi_iuran_pst
+      
+      if potensiMinus_TMB:
+        oDetilTransaksi.mutasi_iuran_tmb = -oRekDPLK.akum_iuran_tmb
+        oRekDPLK.akum_iuran_tmb = 0.0
+      else:
+        oRekDPLK.akum_iuran_tmb += oDetilTransaksi.mutasi_iuran_tmb
       
       Ls_DetilTransaksi.Next()
     #--
@@ -253,6 +362,10 @@ def ApproveOperation(config, oTransaksi):
     oRekInv.akum_iuran_pst += oTransaksi.mutasi_iuran_pst
     oRekInv.akum_iuran_tmb += oTransaksi.mutasi_iuran_tmb
     oRekInv.akum_psl += oTransaksi.mutasi_psl
+    oRekInv.akum_pmb_pk += oTransaksi.mutasi_pmb_pk
+    oRekInv.akum_pmb_pst += oTransaksi.mutasi_pmb_pst
+    oRekInv.akum_pmb_tmb += oTransaksi.mutasi_pmb_tmb
+    oRekInv.akum_pmb_psl += oTransaksi.mutasi_pmb_psl
 
     #tambahkan mutasi dana dan unit di tiap RekeningDPLK terkait investasi
     Ls_DetilTransaksi = oTransaksi.Ls_DetilTransaksiDPLK
@@ -265,6 +378,10 @@ def ApproveOperation(config, oTransaksi):
       oRekDPLK.akum_iuran_pst += oDetilTransaksi.mutasi_iuran_pst
       oRekDPLK.akum_iuran_tmb += oDetilTransaksi.mutasi_iuran_tmb
       oRekDPLK.akum_psl += oDetilTransaksi.mutasi_psl
+      oRekDPLK.akum_pmb_pk += oDetilTransaksi.mutasi_pmb_pk
+      oRekDPLK.akum_pmb_pst += oDetilTransaksi.mutasi_pmb_pst
+      oRekDPLK.akum_pmb_tmb += oDetilTransaksi.mutasi_pmb_tmb
+      oRekDPLK.akum_pmb_psl += oDetilTransaksi.mutasi_pmb_psl
       
       Ls_DetilTransaksi.Next()
     #--

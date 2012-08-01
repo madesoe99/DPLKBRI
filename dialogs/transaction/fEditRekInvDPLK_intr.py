@@ -57,6 +57,13 @@ def FormShow(form, parameter):
       uipRegisterCIF.SetFieldValue("tujuan_pembukaan_rekening", uipMaster.GetFieldValue("tujuan_pembukaan_rekening"))
       uipRegisterCIF.SetFieldValue("kirim_statemen", uipMaster.GetFieldValue("kirim_statemen"))
       uipRegisterCIF.SetFieldValue("confidential_code", uipMaster.GetFieldValue("confidential_code"))
+      
+      uipRegisterCIF.SetFieldValue("ISPESERTAPENGALIHAN", uipMaster.GetFieldValue("ISPESERTAPENGALIHAN"))
+      uipRegisterCIF.SetFieldValue("LLDPLain.kode_dp", uipMaster.GetFieldValue("LLDPLain.kode_dp"))
+      uipRegisterCIF.SetFieldValue("LLDPLain.nama_dp", uipMaster.GetFieldValue("LLDPLain.nama_dp"))
+      uipRegisterCIF.SetFieldValue("LKelompok.kode_kelompok", uipMaster.GetFieldValue("LKelompok.kode_kelompok"))
+      uipRegisterCIF.SetFieldValue("LKelompok.nama_kelompok", uipMaster.GetFieldValue("LKelompok.nama_kelompok"))
+      
     else:
       #mode edit
       form.GetControlByName('pData.no_referensi').ReadOnly = 1
@@ -69,9 +76,9 @@ def validateForm(form):
   uipNasabahDPLK = form.GetUIPartByName('uipNasabahDPLK')
   
   """sumber dana"""
-  if uipRegisterCIF.GetFieldValue("no_referensi") in ['', 0, None]:
-    app.ShowMessage('Nomor Referensi masih kosong')
-    return False
+  #if uipRegisterCIF.GetFieldValue("no_referensi") in ['', 0, None]:
+  #  app.ShowMessage('Nomor Referensi masih kosong')
+  #  return False
           
   """tanggal lahir"""
   if uipNasabahDPLK.tanggal_lahir in [[], None]:
@@ -89,7 +96,7 @@ def validateForm(form):
     return False
           
   """cek kiriman statemen"""
-  if uipRegisterCIF.kirim_statemen == 'K' and uipNasabahDPLK.LNasabahDPLKCorporate.IsNull:
+  if uipRegisterCIF.kirim_statemen == 'K' and uipMaster.LNasabahDPLKCorporate.IsNull:
     #bukan nasabah korporat tapi statemen minta dikirim ke alamat kantor
     form.ShowMessage('Peserta mendaftar tidak sebagai anggota peserta korporat manapun. '\
       'Untuk itu, Statemen tidak bisa dikirim ke alamat Kantor (Korporat)!')

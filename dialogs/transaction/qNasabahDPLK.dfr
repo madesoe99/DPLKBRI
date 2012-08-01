@@ -43,8 +43,7 @@ object:rtf::Form<
       RowControlGap=7
       OQLText=['select from NasabahDPLK'#13#10,
         '['#13#10,
-        '  (1 = :display_all_cabang OR  kode_cab_daftar = :kode_cab_daftar)'#13#10,
-        '  AND (is_deleted IS NULL OR is_deleted = 0)'#13#10,
+        '  (is_deleted IS NULL OR is_deleted = 0)'#13#10,
         ']'#13#10,
         '('#13#10,
         '  self,'#13#10,
@@ -54,20 +53,16 @@ object:rtf::Form<
         '  tanggal_lahir AS Tanggal_Lahir,'#13#10,
         '  tgl_registrasi as Tgl_Registrasi,'#13#10,
         '  ibu_kandung,'#13#10,
-        '  LDaerahAsal.kode_propinsi as Kode_Propinsi,'#13#10,
-        '  LDaerahAsal.nama_propinsi as Nama_Propinsi,'#13#10,
-        '  LKepemilikan.kode_pemilikan as Kode_Pemilikan,'#13#10,
-        '  LKepemilikan.keterangan as Keterangan,'#13#10,
-        '  LJenisUsaha.kode_jenis_usaha as Kode_Jenis_Usaha,'#13#10,
-        '  LJenisUsaha.nama_jenis_usaha as Nama_Jenis_Usaha,'#13#10,
+        '  LDaerahAsal.nama_propinsi as daerah_asal,'#13#10,
+        '  LATPropinsi.nama_propinsi as daerah_tinggal,'#13#10,
         '  is_deleted $ as is_deleted'#13#10,
         ') then order by No_Peserta;']
       WindowSize=20
       Columns={
         object:rtf::QueryColumn<
           FieldName='NasabahDPLK.No_Peserta'
-          Width=80
-          Caption='Nomor Peserta'
+          Width=100
+          Caption='CIF Peserta'
         >, object:rtf::QueryColumn<
           FieldName='NasabahDPLK.Nama_Lengkap'
           Width=200
@@ -78,20 +73,24 @@ object:rtf::Form<
           Caption='Tempat Lahir'
         >, object:rtf::QueryColumn<
           FieldName='NasabahDPLK.Tanggal_Lahir'
-          Width=80
+          Width=75
           Caption='Tgl Lahir'
         >, object:rtf::QueryColumn<
           FieldName='NasabahDPLK.ibu_kandung'
-          Width=100
+          Width=80
           Caption='Ibu Kandung'
         >, object:rtf::QueryColumn<
-          FieldName='NasabahDPLK.Nama_Propinsi'
+          FieldName='NasabahDPLK.daerah_tinggal'
+          Width=140
+          Caption='Propinsi Tempat Tinggal'
+        >, object:rtf::QueryColumn<
+          FieldName='NasabahDPLK.daerah_asal'
           Width=100
           Caption='Daerah Asal'
         >, object:rtf::QueryColumn<
           FieldName='NasabahDPLK.Tgl_Registrasi'
           Width=130
-          Caption='Tgl Registrasi'
+          Caption='Tgl. Registrasi'
         >, object:rtf::QueryColumn<
           FieldName='NasabahDPLK.is_deleted'
           Width=60
@@ -101,55 +100,11 @@ object:rtf::Form<
       }
       EnableColumns=true
     >, object:rtf::Panel<
-      Elements={
-        object:rtf::LinkUIElmtSetting<
-          Name='LBranchLocation'
-          Hidden=false
-          ReadOnlyControl=false
-          ClassTypeName='BranchLocation'
-          DisplayFields='branch_code;BranchName'
-          Restrictions=''
-          OQLText=['SELECT FROM BranchLocation ('#13#10,
-            '  self,'#13#10,
-            '  branch_code,'#13#10,
-            '  BranchName'#13#10,
-            ') THEN ORDER BY branch_code;']
-          LookupOption=loCustomOQL
-          FieldBaseName='LBranchLocation'
-        >, object:rtf::FieldUIElmtSetting<
-          Name='NoLimitLocation'
-          Hidden=true
-          ReadOnlyControl=false
-          DataTypeName='varchar'
-          DataLength=1
-        >
-      }
       Name='pFilter'
       Width=713
       Height=40
       Bordered=true
       UIPart=$UIPARTS['uipNoData']
-      Controls={
-        *object:rtf::DBLookupEdit<
-          Name='LBranchLocation'
-          Top=10
-          Left=10
-          ControlCaption='Kantor Cabang Pendaftaran'
-          LookupField='LBranchLocation.BranchName'
-          DisplayLookupField=true
-          OnAfterLookup='BranchLocationAfterLookup'
-          DirectInput=true
-        >, object:rtf::CheckBox<
-          Name='cbDisplayAllCabang'
-          Layout=clAbsolute
-          Top=8
-          Left=400
-          Width=225
-          Height=17
-          ControlCaption='Tampilkan seluruh data'
-          OnClick='cbDisplayAllCabangClick'
-        >
-      }
       EqualCaptionWidth=150
       ControlLeftMargin=10
       ControlTopMargin=10
@@ -158,8 +113,8 @@ object:rtf::Form<
       RowControlGap=7
     >, object:rtf::DualSplit<
       Name='DualSplit'
-      Width=240
-      Height=96
+      Width=800
+      Height=600
       Container1=$CONTAINERS['pFilter']
       Container2=$CONTAINERS['qNasabahDPLK']
     >

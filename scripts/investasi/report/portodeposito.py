@@ -225,7 +225,6 @@ def getNilaiDeposito(config, id_investasi, strNextDateSQL):
 
 def WriteTotalDeposito(config, jenisDep, sumTotal, oFile):
   moduleapi = modman.getModule(config, 'moduleapi')
-  
   ## TOTAL DEPOSITO
   oFile.write('	<tr>\n')
   oFile.write('		<td width="'+ str(NOCOL) +'" style="border-left:1px solid #000000; border-right-style:solid; border-right-width:1px; border-top-style:solid; border-top-width:1px; border-bottom-style:solid; border-bottom-width:1px" align="right" bgcolor="#FFFFFF">\n')
@@ -275,6 +274,7 @@ def WriteTotalDeposito(config, jenisDep, sumTotal, oFile):
   ##
 
 def WriteDeposito(config, isBerjangka, noUrutDep, resPK, strNextDateSQL, oFile):
+  moduleapi = modman.getModule(config, 'moduleapi')
   if isBerjangka:
     jenisDep = 'Deposito Berjangka'
     waktu = 'bulan'
@@ -507,4 +507,3 @@ def DAFScriptMain(config, parameter, returnpacket):
   sw.MIMEType = config.AppObject.GetMIMETypeFromExtension(sFileName)
 
   return 1
-

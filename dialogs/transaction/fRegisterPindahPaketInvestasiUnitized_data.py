@@ -14,7 +14,6 @@ modman.loadStdModules(globals(),
 
 def FormEndSetData(uideflist, auiname, apobjconst):
   config = uideflist.Config
-
   try:
     uiCalled = uideflist.GetPClassUIByName(auiname)
     rec = uiCalled.ActiveRecord
@@ -50,9 +49,9 @@ def FormEndSetData(uideflist, auiname, apobjconst):
     minMasaKepesertaan = int(oP.Numeric_Value)
 
     """periksa masa kepesertaan minimum untuk boleh pindah paket"""
-    oNasabahDPLK = config.CreatePObjImplProxy('NasabahDPLK')
-    oNasabahDPLK.Key = no_peserta
-    y, m, d = oNasabahDPLK.tgl_registrasi[:3]
+    oRekInvDPLK = config.CreatePObjImplProxy('RekInvDPLK')
+    oRekInvDPLK.Key = no_rekening
+    y, m, d = oRekInvDPLK.tgl_registrasi[:3]
     dtTglRegistrasi = config.ModLibUtils.EncodeDate(y, m, d)
     if (config.Now() - dtTglRegistrasi) < minMasaKepesertaan:
       raise Exception,'\n\nPERINGATAN!\nPeserta belum mencapai masa kepesertaan minimum.'
@@ -96,7 +95,7 @@ def uipRegisterCIFApplyRow(sender, oData):
   uideflist = sender.UIDefList
   config = uideflist.Config
 
-  if oData.no_referensi in ['', None]:
-    raise Exception,'\n\nRegistrasi Error\nNomor referensi tidak terdefinisi.'
+  #if oData.no_referensi in ['', None]:
+  #  raise Exception,'\n\nRegistrasi Error\nNomor referensi tidak terdefinisi.'
 
   oData.tanggal_register = config.Now()

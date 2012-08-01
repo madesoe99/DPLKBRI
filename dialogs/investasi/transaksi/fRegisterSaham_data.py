@@ -29,7 +29,10 @@ def FormGeneralSetData(uideflist, auiname, apobjconst):
     rec.nominal = 0.0
     rec.tanggal_register = config.Now()
     rec.mode = auiname
-
+                                                                 
+    rec.SetFieldByName('LSubJenisInv.kode_subjns_LRInvestasi', 'SHS')
+    rec.SetFieldByName('LSubJenisInv.deskripsi', 'Saham')
+    
     rec.biaya = 0.0
     rec.unit_penyertaan = 0.0
     rec.NAB_awal = 0.0
@@ -87,7 +90,7 @@ def uipRegisterSahamApplyRow(uipRegisterSaham, oRegisterSaham):
 
   if oRegisterSaham.nominal > min(oRegisterSaham.dpkTersedia, oRegisterSaham.nilaiMaksProporsi):
   #if oRegisterSaham.nominal > min(oRegisterSaham.dpkTersedia, oRegisterSaham.nilaiMaksProporsi, oRegisterSaham.nominalGiro):
-    raise Exception, 'Kesalahan Register Saham' + '\nDana paket investasi tidak tersedia.'
+    pass#raise Exception, 'Kesalahan Register Saham' + '\nDana paket investasi tidak tersedia.'     
 
   if oRegisterSaham.NAB_awal <= 0.0:
     pass#raise Exception, 'Kesalahan Register Saham' + 'Nilai harga beli harus lebih besar dari nol.'

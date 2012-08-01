@@ -192,15 +192,15 @@ object:rtf::Form<
       RowControlGap=7
     >, object:rtf::DualSplit<
       Name='dualsplit1'
-      Width=240
-      Height=96
+      Width=800
+      Height=360
       Container1=$CONTAINERS['pButton']
       Container2=$CONTAINERS['dualsplit2']
       InversedAlign=true
     >, object:rtf::DualSplit<
       Name='dualsplit2'
-      Width=240
-      Height=96
+      Width=800
+      Height=319
       Container1=$CONTAINERS['dualsplit4']
       Container2=$CONTAINERS['dualsplit3']
     >, object:rtf::DualSplit<
@@ -245,7 +245,7 @@ object:rtf::Form<
         >
       }
       Name='pDataNasabah'
-      Width=369
+      Width=418
       Height=153
       Bordered=true
       UIPart=$UIPARTS['uipRegisterNasabahRekening']
@@ -253,31 +253,45 @@ object:rtf::Form<
         *object:rtf::DBEdit<
           Name='no_referensi'
           Top=30
-          Left=20
+          Left=10
           Color=-16777192
           ControlCaption='Nomor Referensi'
         >, *object:rtf::DBEdit<
           Name='no_peserta'
           Top=58
-          Left=20
+          Left=10
           Color=-16777192
           ControlCaption='No Peserta'
         >, *object:rtf::DBEdit<
           Name='nama_lengkap'
           Top=86
-          Left=20
+          Left=10
           Color=-16777192
           ControlCaption='Nama Lengkap'
         >, *object:rtf::DBEdit<
           Name='no_rekening'
           Top=114
-          Left=20
+          Left=10
           Color=-16777192
           ControlCaption='Nomor Rekening'
+        >, object:rtf::Label<
+          Name='label1'
+          Layout=clAbsolute
+          Top=32
+          Left=320
+          Width=89
+          Height=41
+          ControlCaption=''
+          Caption='*) Diisi PN Pekerja BRI atau Nomor Pegawai'
+          AutoSize=true
+          FontName='Tahoma'
+          FontColor=-16777208
+          FontSize=8
+          FontStyleItalic=true
         >
       }
       EqualCaptionWidth=100
-      ControlLeftMargin=20
+      ControlLeftMargin=10
       ControlTopMargin=30
       DefaultControlHeight=21
       HorizontalControlGap=4

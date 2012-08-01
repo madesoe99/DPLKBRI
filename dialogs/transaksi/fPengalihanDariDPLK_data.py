@@ -29,10 +29,16 @@ def Form_OnSetDataEx(uideflist, parameterForm):
   if recRekening.operation_code != 'F':
     raise Exception, "Rekening DPLK peserta berstatus Sedang Diubah. Transaksi tidak diperbolehkan!"
 
+  #set field data rekening
+  recRekening.akum_pmb = recRekening.akum_pmb_pk + recRekening.akum_pmb_pst + \
+    recRekening.akum_pmb_tmb + recRekening.akum_pmb_psl 
+
   #set field Data Transaksi
   recTransaksi.tgl_transaksi = config.ModLibUtils.Now()
   recTransaksi.mutasi_iuran_pk = recTransaksi.mutasi_iuran_pst = \
     recTransaksi.mutasi_iuran_tmb = recTransaksi.mutasi_psl = 0.0
+  recTransaksi.mutasi_pmb_pk = recTransaksi.mutasi_pmb_pst = \
+    recTransaksi.mutasi_pmb_tmb = recTransaksi.mutasi_pmb_psl = 0.0
 
   #set parameter default
   oParameter = config.CreatePObjImplProxy('Parameter')
@@ -62,9 +68,10 @@ def SimpanTransaksi(config, params, returns):
     oT.mutasi_iuran_pst = recT.mutasi_iuran_pst
     oT.mutasi_iuran_tmb = recT.mutasi_iuran_tmb
     oT.mutasi_psl = recT.mutasi_psl
-    oT.mutasi_pmb_pk = \
-      oT.mutasi_pmb_pst = oT.mutasi_pmb_tmb = \
-      oT.mutasi_pmb_psl = 0.0
+    oT.mutasi_pmb_pk = recT.mutasi_pmb_pk
+    oT.mutasi_pmb_pst = recT.mutasi_pmb_pst
+    oT.mutasi_pmb_tmb = recT.mutasi_pmb_tmb
+    oT.mutasi_pmb_psl = recT.mutasi_pmb_psl
     oT.kode_jenis_transaksi = 'I'
     
     #field object TransaksiRekInvDPLK
@@ -101,9 +108,10 @@ def SimpanTransaksi(config, params, returns):
         oDetilTransaksi.mutasi_iuran_pst = (oRekDPLK.pct_alokasi / 100.0) * oT.mutasi_iuran_pst  
         oDetilTransaksi.mutasi_iuran_tmb = (oRekDPLK.pct_alokasi / 100.0) * oT.mutasi_iuran_tmb
         oDetilTransaksi.mutasi_psl = (oRekDPLK.pct_alokasi / 100.0) * oT.mutasi_psl
-        oDetilTransaksi.mutasi_pmb_pk = \
-          oDetilTransaksi.mutasi_pmb_pst = oDetilTransaksi.mutasi_pmb_tmb = \
-          oDetilTransaksi.mutasi_pmb_psl = 0.0
+        oDetilTransaksi.mutasi_pmb_pk = (oRekDPLK.pct_alokasi / 100.0) * oT.mutasi_pmb_pk 
+        oDetilTransaksi.mutasi_pmb_pst = (oRekDPLK.pct_alokasi / 100.0) * oT.mutasi_pmb_pst
+        oDetilTransaksi.mutasi_pmb_tmb = (oRekDPLK.pct_alokasi / 100.0) * oT.mutasi_pmb_tmb
+        oDetilTransaksi.mutasi_pmb_psl = (oRekDPLK.pct_alokasi / 100.0) * oT.mutasi_pmb_psl
       
       Ls_RekeningDPLK.Next()
     #-- 

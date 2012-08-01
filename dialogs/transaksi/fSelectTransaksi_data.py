@@ -14,6 +14,7 @@ def Form_OnSetDataEx(uideflist, params):
   recFilter.cbAllCabang = 0
   recFilter.cbAllTransaksi = 0
   recFilter.cbStatusOtorisasi = 'A'
+  #recFilter.Metode = 'A'
   recFilter.eAwalTanggal = config.ModLibUtils.Now()
   recFilter.eHinggaTanggal = config.ModLibUtils.Now()
     

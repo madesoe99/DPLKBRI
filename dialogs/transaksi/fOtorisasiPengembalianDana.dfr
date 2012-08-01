@@ -17,7 +17,7 @@ object:rtf::Form<
   BeforeResultSent=''
   OnGeneralSetData=''
   AfterSetData=''
-  OnGeneralProcessData='Form_OnGeneralProcessData'
+  OnGeneralProcessData=''
   OnProcessRawData=''
   OnFormShow='Form_OnFormShow'
   OnBeginSetData=''
@@ -110,9 +110,8 @@ object:rtf::Form<
           Top=8
           Left=8
           ControlCaption=''
-          Caption='&Setujui'
-          DefaultAction=daProcessAllAndClear
-          ExitAction=eaQuitOK
+          Caption='&Approve'
+          OnClick='bApprove_Click'
         >, object:rtf::Button<
           Name='bReject'
           Layout=clNextSide
@@ -146,6 +145,7 @@ object:rtf::Form<
             'nama_lengkap'#13#10,
             'alamat_jalan'#13#10,
             'alamat_rtrw'#13#10,
+            'alamat_rw'#13#10,
             'alamat_kelurahan'#13#10,
             'alamat_kecamatan'#13#10,
             'alamat_kota'#13#10,
@@ -155,6 +155,13 @@ object:rtf::Form<
         >, object:rtf::ControlDef<
           Action=caView
           DataMember='NPWP'
+        >, object:rtf::MultiControlDef<
+          Action=caView
+          DataMembers=['tanggal_lahir'#13#10,
+            'tgl_registrasi'#13#10]
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='LNasabahDPLKCorporate'
         >
       }
       Elements={
@@ -172,6 +179,10 @@ object:rtf::Form<
           ReadOnlyControl=false
         >, *object:rtf::FieldUIElmtSetting<
           Name='alamat_rtrw'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_rw'
           Hidden=false
           ReadOnlyControl=false
         >, *object:rtf::FieldUIElmtSetting<
@@ -202,6 +213,22 @@ object:rtf::Form<
           Name='NPWP'
           Hidden=false
           ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tanggal_lahir'
+          Hidden=true
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='tgl_registrasi'
+          Hidden=true
+          ReadOnlyControl=false
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLKCorporate'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='korporat'
+          DisplayFields='kode_nasabah_corporate;nama_perusahaan'
+          Restrictions=''
+          FieldBaseName='LNasabahDPLKCorporate'
         >, object:rtf::FieldUIElmtSetting<
           Name='IuranPk'
           Hidden=true
@@ -229,67 +256,82 @@ object:rtf::Form<
           Top=20
           Left=10
           Color=-16777192
-          ControlCaption='no peserta'
+          ControlCaption='Nomor Peserta (CIF)'
         >, *object:rtf::DBEdit<
           Name='nama_lengkap'
           Top=48
           Left=10
           Color=-16777192
-          ControlCaption='nama lengkap'
+          ControlCaption='Nama Lengkap'
         >, *object:rtf::DBEdit<
           Name='alamat_jalan'
           Top=76
           Left=10
           Color=-16777192
-          ControlCaption='alamat jalan'
+          ControlCaption='Alamat Jalan'
         >, *object:rtf::DBEdit<
           Name='alamat_rtrw'
           Top=104
           Left=10
           Color=-16777192
-          ControlCaption='alamat rtrw'
+          ControlCaption='Alamat RT'
         >, *object:rtf::DBEdit<
-          Name='alamat_kelurahan'
+          Name='alamat_rw'
           Top=132
           Left=10
           Color=-16777192
-          ControlCaption='alamat kelurahan'
+          ControlCaption='Alamat RW'
         >, *object:rtf::DBEdit<
-          Name='alamat_kecamatan'
+          Name='alamat_kelurahan'
           Top=160
           Left=10
           Color=-16777192
-          ControlCaption='alamat kecamatan'
+          ControlCaption='Alamat Kelurahan'
         >, *object:rtf::DBEdit<
-          Name='alamat_kota'
+          Name='alamat_kecamatan'
           Top=188
           Left=10
           Color=-16777192
-          ControlCaption='alamat kota'
+          ControlCaption='Alamat Kecamatan'
         >, *object:rtf::DBEdit<
-          Name='alamat_kode_pos'
+          Name='alamat_kota'
           Top=216
           Left=10
           Color=-16777192
-          ControlCaption='alamat kode pos'
+          ControlCaption='Alamat Kota'
         >, *object:rtf::DBEdit<
-          Name='alamat_telepon'
+          Name='alamat_kode_pos'
           Top=244
           Left=10
           Color=-16777192
-          ControlCaption='alamat telepon'
+          ControlCaption='Alamat Kode Pos'
         >, *object:rtf::DBEdit<
-          Name='alamat_email'
+          Name='alamat_telepon'
           Top=272
           Left=10
           Color=-16777192
-          ControlCaption='alamat email'
+          ControlCaption='Alamat Telepon'
         >, *object:rtf::DBEdit<
-          Name='NPWP'
+          Name='alamat_email'
           Top=300
           Left=10
           Color=-16777192
+          ControlCaption='Alamat Email'
+        >, *object:rtf::DBEdit<
+          Name='NPWP'
+          Top=328
+          Left=10
+          Color=-16777192
           ControlCaption='NPWP'
+        >, *object:rtf::DBLookupEdit<
+          Name='LNasabahDPLKCorporate'
+          Top=356
+          Left=10
+          Enabled=false
+          ControlCaption='Korporat'
+          LookupField='LNasabahDPLKCorporate.nama_perusahaan'
+          DisplayLookupField=true
+          DisableLookup=true
         >
       }
       EqualCaptionWidth=160
@@ -332,7 +374,7 @@ object:rtf::Form<
           Index=3
         >, object:rtf::Page<
           PageName='pageOtorisasi'
-          PageTitle='Info Otorisasi'
+          PageTitle='Info Approved'
           Container=$CONTAINERS['pOtorisasi']
           Index=4
         >
@@ -348,16 +390,14 @@ object:rtf::Form<
     >, object:rtf::Panel<
       ControlDefs={
         object:rtf::MultiControlDef<
-          Action=caView
+          Action=caEdit
           DataMembers=['tgl_transaksi'#13#10,
             'keterangan'#13#10]
-        >, object:rtf::ControlDef<
-          Action=caView
-          DataMember='saldo_jml_dana'
         >, object:rtf::MultiControlDef<
-          Action=caView
+          Action=caEdit
           DataMembers=['jenis_biaya'#13#10,
-            'biaya_lain'#13#10]
+            'biaya_lain'#13#10,
+            'saldo_jml_dana'#13#10]
         >
       }
       Elements={
@@ -365,22 +405,32 @@ object:rtf::Form<
           Name='tgl_transaksi'
           Hidden=false
           ReadOnlyControl=false
-          ControlCaption='tanggal transaksi'
+          ControlCaption='Tanggal Transaksi'
         >, *object:rtf::FieldUIElmtSetting<
           Name='keterangan'
           Hidden=false
           ReadOnlyControl=false
-          ControlCaption='keterangan'
-        >, *object:rtf::FieldUIElmtSetting<
-          Name='saldo_jml_dana'
-          Hidden=false
-          ReadOnlyControl=false
+          ControlCaption='Keterangan Transaksi (Remark)'
+          DataTypeName='varchar'
+          DataLength=100
         >, *object:rtf::FieldUIElmtSetting<
           Name='jenis_biaya'
           Hidden=false
           ReadOnlyControl=false
+          ControlCaption='Jenis Transfer'
+          DataTypeName='varchar'
+          DataLength=1
+          EnumeratedValues=['S=SKN'#13#10,
+            'R=RTGS'#13#10,
+            'P=Pindah Buku'#13#10]
         >, *object:rtf::FieldUIElmtSetting<
           Name='biaya_lain'
+          Hidden=false
+          ReadOnlyControl=true
+          ControlCaption='Nominal Transfer'
+          DataTypeName='double'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='saldo_jml_dana'
           Hidden=false
           ReadOnlyControl=false
         >
@@ -395,33 +445,33 @@ object:rtf::Form<
           Name='tgl_transaksi'
           Top=20
           Left=10
-          Color=-16777192
-          ControlCaption='tanggal transaksi'
+          ControlCaption='Tanggal Transaksi'
+          LayoutOrder=1
         >, *object:rtf::DBEdit<
           Name='keterangan'
-          Top=48
-          Left=10
-          Color=-16777192
-          ControlCaption='keterangan'
-        >, *object:rtf::DBEdit<
-          Name='saldo_jml_dana'
-          Top=76
-          Left=10
-          Color=12695295
-          ControlCaption='total dana'
-        >, *object:rtf::DBComboBox<
-          Name='jenis_biaya'
-          Top=104
-          Left=10
-          Enabled=false
-          Color=-16777192
-          ControlCaption='jenis biaya'
-        >, *object:rtf::DBEdit<
-          Name='biaya_lain'
           Top=132
           Left=10
+          ControlCaption='Keterangan Transaksi (Remark)'
+          LayoutOrder=5
+        >, *object:rtf::DBComboBox<
+          Name='jenis_biaya'
+          Top=76
+          Left=10
+          ControlCaption='Jenis Biaya Transfer'
+          LayoutOrder=3
+        >, *object:rtf::DBEdit<
+          Name='biaya_lain'
+          Top=104
+          Left=10
           Color=-16777192
-          ControlCaption='biaya lain'
+          ControlCaption='Nominal Biaya Transfer'
+          LayoutOrder=4
+        >, *object:rtf::DBEdit<
+          Name='saldo_jml_dana'
+          Top=48
+          Left=10
+          Color=12695295
+          ControlCaption='Total Dana'
         >
       }
       EqualCaptionWidth=160
@@ -483,7 +533,7 @@ object:rtf::Form<
           Name='akum_pmb'
           Hidden=false
           ReadOnlyControl=false
-          ControlCaption='saldo pengembangan'
+          ControlCaption='Saldo pengembangan'
           DataTypeName='double'
           DataLength=20
         >
@@ -499,49 +549,49 @@ object:rtf::Form<
           Top=20
           Left=10
           Color=-16777192
-          ControlCaption='no rekening'
+          ControlCaption='Nomor Rekening DPLK'
         >, *object:rtf::DBEdit<
           Name='iuran_pk'
           Top=48
           Left=10
           Color=9498256
-          ControlCaption='iuran pemberi kerja'
+          ControlCaption='Iuran Pemberi Kerja'
         >, *object:rtf::DBEdit<
           Name='iuran_pst'
           Top=76
           Left=10
           Color=9498256
-          ControlCaption='iuran peserta'
+          ControlCaption='Iuran Peserta'
         >, *object:rtf::DBEdit<
           Name='akum_iuran_pk'
           Top=104
           Left=10
           Color=9498256
-          ControlCaption='saldo iuran pemberi kerja'
+          ControlCaption='Saldo Iuran Pemberi Kerja'
         >, *object:rtf::DBEdit<
           Name='akum_iuran_pst'
           Top=132
           Left=10
           Color=9498256
-          ControlCaption='saldo iuran peserta'
+          ControlCaption='Saldo Iuran Peserta'
         >, *object:rtf::DBEdit<
           Name='akum_iuran_tmb'
           Top=160
           Left=10
           Color=9498256
-          ControlCaption='saldo iuran tambahan'
+          ControlCaption='Saldo Iuran Tambahan'
         >, *object:rtf::DBEdit<
           Name='akum_psl'
           Top=188
           Left=10
           Color=9498256
-          ControlCaption='saldo PSL'
+          ControlCaption='Saldo PSL'
         >, *object:rtf::DBEdit<
           Name='akum_pmb'
           Top=216
           Left=10
           Color=9498256
-          ControlCaption='saldo pengembangan'
+          ControlCaption='Saldo Pengembangan'
           ReadOnly=true
         >
       }
@@ -598,7 +648,6 @@ object:rtf::Form<
       Name='pOtorisasi'
       Width=320
       Height=400
-      Bordered=true
       UIPart=$UIPARTS['uipTransaksi']
       Controls={
         *object:rtf::DBEdit<
@@ -606,37 +655,37 @@ object:rtf::Form<
           Top=20
           Left=10
           Color=-16777192
-          ControlCaption='user id'
+          ControlCaption='User ID'
         >, *object:rtf::DBEdit<
           Name='terminal_id'
           Top=48
           Left=10
           Color=-16777192
-          ControlCaption='terminal id'
+          ControlCaption='Terminal ID'
         >, *object:rtf::DBDateEdit<
           Name='tgl_sistem'
           Top=76
           Left=10
           Color=-16777192
-          ControlCaption='tanggal sistem'
+          ControlCaption='Tanggal Sistem'
         >, *object:rtf::DBEdit<
           Name='user_id_auth'
           Top=104
           Left=10
           Color=-16777192
-          ControlCaption='user id auth'
+          ControlCaption='User ID Approved'
         >, *object:rtf::DBEdit<
           Name='terminal_id_auth'
           Top=132
           Left=10
           Color=-16777192
-          ControlCaption='terminal id auth'
+          ControlCaption='Terminal ID Approved'
         >, *object:rtf::DBDateEdit<
           Name='tgl_otorisasi'
           Top=160
           Left=10
           Color=-16777192
-          ControlCaption='tanggal otorisasi'
+          ControlCaption='Tanggal Approved'
         >
       }
       EqualCaptionWidth=160
@@ -645,7 +694,7 @@ object:rtf::Form<
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
-      Caption='Data Otorisasi'
+      Caption='Data Approved'
     >, object:rtf::Grid<
       ControlDefs={
         object:rtf::MultiControlDef<
@@ -922,7 +971,7 @@ object:rtf::Form<
           Name='saldo_jml_dana'
           Hidden=false
           ReadOnlyControl=false
-          ControlCaption='saldo jumlah dana'
+          ControlCaption='Saldo jumlah dana'
         >, *object:rtf::FieldUIElmtSetting<
           Name='biaya_pencairan'
           Hidden=false
@@ -956,7 +1005,7 @@ object:rtf::Form<
           Name='biaya_lain'
           Hidden=false
           ReadOnlyControl=false
-          ControlCaption='nominal biaya lain'
+          ControlCaption='Nominal Biaya Transfer'
         >, *object:rtf::FieldUIElmtSetting<
           Name='dana_dikembalikan'
           Hidden=false
@@ -974,7 +1023,7 @@ object:rtf::Form<
           Top=20
           Left=10
           Color=-16777192
-          ControlCaption='saldo iuran pemberi kerja'
+          ControlCaption='Saldo Iuran Pemberi Kerja'
         >, *object:rtf::DBEdit<
           Name='saldo_pmb_pk'
           Layout=clNextSide
@@ -982,13 +1031,13 @@ object:rtf::Form<
           Left=330
           ForceUseEqualCaptionWidth=true
           Color=-16777192
-          ControlCaption='saldo pengembangan pemberi kerja'
+          ControlCaption='Saldo Pengembangan Pemberi Kerja'
         >, *object:rtf::DBEdit<
           Name='saldo_iuran_pst'
           Top=48
           Left=10
           Color=-16777192
-          ControlCaption='saldo iuran peserta'
+          ControlCaption='Saldo Iuran Peserta'
         >, *object:rtf::DBEdit<
           Name='saldo_pmb_pst'
           Layout=clNextSide
@@ -996,13 +1045,13 @@ object:rtf::Form<
           Left=330
           ForceUseEqualCaptionWidth=true
           Color=-16777192
-          ControlCaption='saldo pengembangan peserta'
+          ControlCaption='Saldo Pengembangan Peserta'
         >, *object:rtf::DBEdit<
           Name='saldo_iuran_tmb'
           Top=76
           Left=10
           Color=-16777192
-          ControlCaption='saldo iuran tambahan'
+          ControlCaption='Saldo Iuran Tambahan'
         >, *object:rtf::DBEdit<
           Name='saldo_pmb_tmb'
           Layout=clNextSide
@@ -1010,13 +1059,13 @@ object:rtf::Form<
           Left=330
           ForceUseEqualCaptionWidth=true
           Color=-16777192
-          ControlCaption='saldo pengembanga tambahan'
+          ControlCaption='Saldo Pengembanga Tambahan'
         >, *object:rtf::DBEdit<
           Name='saldo_psl'
           Top=104
           Left=10
           Color=-16777192
-          ControlCaption='saldo PSL'
+          ControlCaption='Saldo PSL'
         >, *object:rtf::DBEdit<
           Name='saldo_pmb_psl'
           Layout=clNextSide
@@ -1024,68 +1073,68 @@ object:rtf::Form<
           Left=330
           ForceUseEqualCaptionWidth=true
           Color=-16777192
-          ControlCaption='saldo pengembanga PSL'
+          ControlCaption='Saldo Pengembanga PSL'
         >, *object:rtf::DBEdit<
           Name='saldo_jml_dana'
           Top=132
           Left=10
           Color=-16777192
-          ControlCaption='saldo jumlah dana'
+          ControlCaption='Saldo Jumlah Dana'
         >, *object:rtf::DBEdit<
           Name='biaya_pencairan'
           Top=160
           Left=10
           Color=-16777192
-          ControlCaption='biaya pencairan'
+          ControlCaption='Biaya Pencairan'
         >, *object:rtf::DBEdit<
           Name='biaya_pengelolaan'
           Top=188
           Left=10
           Color=-16777192
-          ControlCaption='biaya pengelolaan'
+          ControlCaption='Biaya Pengelolaan'
         >, *object:rtf::DBEdit<
           Name='biaya_administrasi'
           Top=216
           Left=10
           Color=-16777192
-          ControlCaption='biaya administrasi'
+          ControlCaption='Biaya Administrasi'
         >, *object:rtf::DBEdit<
           Name='saldo_pengembalian'
           Top=244
           Left=10
           Color=-16777192
-          ControlCaption='saldo pengembalian'
+          ControlCaption='Saldo Pengembalian'
         >, *object:rtf::DBEdit<
           Name='pajak'
           Top=272
           Left=10
           Color=-16777192
-          ControlCaption='pajak'
+          ControlCaption='Pajak'
         >, *object:rtf::DBEdit<
           Name='dana_stlh_pajak'
           Top=300
           Left=10
           Color=-16777192
-          ControlCaption='dana setelah pajak'
+          ControlCaption='Dana Setelah Pajak'
         >, *object:rtf::DBComboBox<
           Name='jenis_biaya'
           Top=328
           Left=10
           Enabled=false
           Color=-16777192
-          ControlCaption='jenis biaya'
+          ControlCaption='Jenis Biaya Transfer'
         >, *object:rtf::DBEdit<
           Name='biaya_lain'
           Top=356
           Left=10
           Color=-16777192
-          ControlCaption='nominal biaya lain'
+          ControlCaption='Nominal Biaya Transfer'
         >, *object:rtf::DBEdit<
           Name='dana_dikembalikan'
           Top=384
           Left=10
           Color=-16777192
-          ControlCaption='dana dikembalikan'
+          ControlCaption='Dana Dikembalikan'
         >
       }
       EqualCaptionWidth=180
@@ -1121,7 +1170,7 @@ object:rtf::Form<
           Top=20
           Left=10
           Color=-16777192
-          ControlCaption='tanggal registrasi'
+          ControlCaption='Tanggal Registrasi'
         >
       }
       EqualCaptionWidth=160

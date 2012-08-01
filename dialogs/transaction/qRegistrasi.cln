@@ -51,8 +51,10 @@ object:rtf::Form<
         '  nama_lengkap,'#13#10,
         '  tempat_lahir,'#13#10,
         '  tanggal_lahir,'#13#10,
+        '  ibu_kandung,'#13#10,
         '  npwp,'#13#10,
-        '  alamat_kota,'#13#10,
+        '  LDaerahAsal.nama_propinsi AS daerah_asal,'#13#10,
+        '  LATPropinsi.nama_propinsi AS daerah_tinggal,'#13#10,
         '  user_id,'#13#10,
         '  terminal_id,'#13#10,
         '  ikut_asuransi,'#13#10,
@@ -67,12 +69,14 @@ object:rtf::Form<
           FieldName='RegisterNasabahRekening.no_referensi'
           Width=100
           Caption='Nomor Referensi'
+          Hidden=true
         >, object:rtf::QueryColumn<
           FieldName='RegisterNasabahRekening.STATUS_BIAYA_DAFTAR'
           Width=150
           Caption='Kelunasan Biaya Pendaftaran'
           UseCustomColor=true
           Color=12695295
+          Hidden=true
         >, object:rtf::QueryColumn<
           FieldName='RegisterNasabahRekening.kode_cab_daftar'
           Width=110
@@ -82,10 +86,10 @@ object:rtf::Form<
         >, object:rtf::QueryColumn<
           FieldName='RegisterNasabahRekening.no_peserta'
           Width=100
-          Caption='Nomor Peserta'
+          Caption='CIF Peserta'
         >, object:rtf::QueryColumn<
           FieldName='RegisterNasabahRekening.no_rekening'
-          Caption='Nomor Rekening'
+          Caption='Nomor Account'
         >, object:rtf::QueryColumn<
           FieldName='RegisterNasabahRekening.nama_lengkap'
           Width=200
@@ -99,13 +103,22 @@ object:rtf::Form<
           Width=75
           Caption='Tanggal Lahir'
         >, object:rtf::QueryColumn<
+          FieldName='RegisterNasabahRekening.ibu_kandung'
+          Width=80
+          Caption='Ibu Kandung'
+        >, object:rtf::QueryColumn<
           FieldName='RegisterNasabahRekening.alamat_jalan'
           Width=250
           Caption='Alamat'
+          Hidden=true
         >, object:rtf::QueryColumn<
-          FieldName='RegisterNasabahRekening.alamat_kota'
+          FieldName='RegisterNasabahRekening.daerah_tinggal'
+          Width=140
+          Caption='Propinsi Tempat Tinggal'
+        >, object:rtf::QueryColumn<
+          FieldName='RegisterNasabahRekening.daerah_asal'
           Width=100
-          Caption='Kota'
+          Caption='Daerah Asal'
         >
       }
       EnableColumns=true
@@ -184,8 +197,8 @@ object:rtf::Form<
       RowControlGap=7
     >, object:rtf::DualSplit<
       Name='DualSplit'
-      Width=240
-      Height=96
+      Width=800
+      Height=600
       Container1=$CONTAINERS['pFilter']
       Container2=$CONTAINERS['qRegistrasi']
     >

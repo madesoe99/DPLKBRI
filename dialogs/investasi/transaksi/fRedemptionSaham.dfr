@@ -161,6 +161,13 @@ object:rtf::Form<
           ClassTypeName='MasterGiro'
           DisplayFields='no_giro;acc_giro'
           Restrictions=''
+          OQLText=['select from mastergiro'#13#10,
+            '('#13#10,
+            '  no_giro,'#13#10,
+            '  acc_giro,'#13#10,
+            '  self'#13#10,
+            ') then order by no_giro;']
+          LookupOption=loCustomOQL
           FieldBaseName='LMasterGiro'
         >, object:rtf::LinkUIElmtSetting<
           Name='LSahamSwitch'
@@ -200,7 +207,6 @@ object:rtf::Form<
           Left=20
           ControlCaption='nilai redempt'
           LayoutOrder=8
-          FieldName='nilai_redempt'
           OnExit='nilai_redemptExit'
         >, *object:rtf::DBEdit<
           Name='unit_penyertaan'
@@ -208,7 +214,6 @@ object:rtf::Form<
           Left=20
           ControlCaption='unit penyertaan'
           LayoutOrder=9
-          FieldName='unit_penyertaan'
           OnExit='UP_OnExit'
         >, *object:rtf::DBComboBox<
           Name='biaya_redempt'
@@ -474,7 +479,6 @@ object:rtf::Form<
           Left=20
           Color=-2147483624
           ControlCaption='nominal investasi'
-          FieldName='akum_nominal'
           ReadOnly=true
         >, *object:rtf::DBEdit<
           Name='NAB'
@@ -483,7 +487,6 @@ object:rtf::Form<
           Visible=false
           Color=-2147483624
           ControlCaption='NAB'
-          FieldName='NAB'
           ReadOnly=true
         >, *object:rtf::DBEdit<
           Name='unit_penyertaan'
@@ -492,7 +495,6 @@ object:rtf::Form<
           Visible=false
           Color=-2147483624
           ControlCaption='unit penyertaan'
-          FieldName='unit_penyertaan'
           ReadOnly=true
         >
       }

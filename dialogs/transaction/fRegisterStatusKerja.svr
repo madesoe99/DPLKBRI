@@ -10,8 +10,8 @@ object:rpclass::TPClassUIDefList<
     object:rpclass::TPClassUIDef<
       Name='uipRegisterCIF'
       PClassName='RegisterUbahStatusKerja'
-      LoadedFieldList='jenis_transaksi;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.nama_perusahaan;no_referensi;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;keterangan;user_id;terminal_id;jenis_transaksi;registercif_id'
-      StoredFieldList='jenis_transaksi;LNasabahDPLKCorporate;no_referensi;LNasabahDPLK;keterangan;user_id;terminal_id;jenis_transaksi'
+      LoadedFieldList='jenis_transaksi;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.nama_perusahaan;no_referensi;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;keterangan;user_id;terminal_id;jenis_transaksi;registercif_id;LRekeningDPLK.no_rekening;LRekeningDPLK.no_rekening'
+      StoredFieldList='jenis_transaksi;LNasabahDPLKCorporate;no_referensi;LNasabahDPLK;keterangan;user_id;terminal_id;jenis_transaksi;LRekeningDPLK'
       CustomLoadedFields={
         object:rpclass::TCustomLoadedField<
           Name='mode'
@@ -28,6 +28,10 @@ object:rpclass::TPClassUIDefList<
           Name='LNasabahDPLK'
           ClassTypeName='NasabahDPLK'
           FieldNames='no_peserta;no_peserta;nama_lengkap'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LRekeningDPLK'
+          ClassTypeName='RekInvDPLK'
+          FieldNames='no_rekening;no_rekening'
         >
       }
       Mode=imSingleRow
@@ -35,10 +39,14 @@ object:rpclass::TPClassUIDefList<
       AfterApplyRow='uipRegisterCIFApplyRow'
     >, object:rpclass::TPClassUIDef<
       Name='uipMaster'
-      PClassName='NasabahDPLK'
-      LoadedFieldList='no_peserta;nama_lengkap;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.nama_perusahaan'
+      PClassName='RekInvDPLK'
+      LoadedFieldList='no_rekening;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;no_peserta;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.nama_perusahaan'
       CustomLoadedLinks={
         object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLK'
+          ClassTypeName='NasabahDPLK'
+          FieldNames='no_peserta;no_peserta;nama_lengkap'
+        >, object:rpclass::TCustomLoadedLink<
           Name='LNasabahDPLKCorporate'
           ClassTypeName='NasabahDPLKCorporate'
           FieldNames='kode_nasabah_corporate;kode_nasabah_corporate;nama_perusahaan'

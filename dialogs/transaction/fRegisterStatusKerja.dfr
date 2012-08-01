@@ -36,18 +36,36 @@ object:rtf::Form<
       ControlDefs={
         object:rtf::MultiControlDef<
           Action=caView
-          DataMembers=['no_peserta'#13#10,
-            'nama_lengkap'#13#10,
-            'LNasabahDPLKCorporate'#13#10]
+          DataMembers=['no_rekening'#13#10,
+            'LNasabahDPLK'#13#10]
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='no_peserta'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='LNasabahDPLKCorporate'
         >
       }
       Elements={
         *object:rtf::FieldUIElmtSetting<
-          Name='no_peserta'
+          Name='no_rekening'
           Hidden=false
           ReadOnlyControl=false
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLK'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='no_peserta;nama_lengkap'
+          Restrictions=''
+          OQLText=['SELECT FROM NasabahDPLK ('#13#10,
+            '  no_peserta,'#13#10,
+            '  nama_lengkap,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY no_peserta;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LNasabahDPLK'
         >, *object:rtf::FieldUIElmtSetting<
-          Name='nama_lengkap'
+          Name='no_peserta'
           Hidden=false
           ReadOnlyControl=false
         >, *object:rtf::LinkUIElmtSetting<
@@ -56,11 +74,17 @@ object:rtf::Form<
           ReadOnlyControl=false
           DisplayFields='kode_nasabah_corporate;nama_perusahaan'
           Restrictions=''
+          OQLText=['SELECT FROM NasabahDPLPKCorporate ('#13#10,
+            '  kode_nasabah_corporate,'#13#10,
+            '  nama_perusahaan,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY kode_nasabah_corporate;']
+          LookupOption=loCustomOQL
           FieldBaseName='LNasabahDPLKCorporate'
         >
       }
       Name='uipMaster'
-      ClassTypeName='NasabahDPLK'
+      ClassTypeName='RekInvDPLK'
       DataBinding=bmMaster
     >
   }
@@ -195,6 +219,9 @@ object:rtf::Form<
         >, object:rtf::ControlDef<
           Action=caView
           DataMember='registercif_id'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LRekeningDPLK'
         >
       }
       Elements={
@@ -208,6 +235,12 @@ object:rtf::Form<
           ReadOnlyControl=true
           DisplayFields='no_peserta;nama_lengkap'
           Restrictions=''
+          OQLText=['SELECT FROM NasabahDPLK ('#13#10,
+            '  no_peserta,'#13#10,
+            '  nama_lengkap,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY no_peserta;']
+          LookupOption=loCustomOQL
           FieldBaseName='LNasabahDPLK'
         >, *object:rtf::FieldUIElmtSetting<
           Name='keterangan'
@@ -229,6 +262,18 @@ object:rtf::Form<
           Name='registercif_id'
           Hidden=true
           ReadOnlyControl=false
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LRekeningDPLK'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='no_rekening'
+          Restrictions=''
+          OQLText=['SELECT FROM RekInvDPLK ('#13#10,
+            '  no_rekening,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY no_rekening;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LRekeningDPLK'
         >, object:rtf::FieldUIElmtSetting<
           Name='mode'
           Hidden=true
@@ -243,18 +288,21 @@ object:rtf::Form<
       Controls={
         *object:rtf::DBEdit<
           Name='no_referensi'
-          Top=30
+          Top=170
           Left=20
+          Visible=false
           Color=12695295
           ControlCaption='Nomor Referensi'
+          LayoutOrder=6
         >, *object:rtf::DBLookupEdit<
           Name='LNasabahDPLK'
-          Top=58
+          Top=30
           Left=20
           Width=100
           Height=21
           Enabled=false
-          ControlCaption='Peserta DPLK'
+          ControlCaption='CIF Peserta'
+          LayoutOrder=1
           LookupField='LNasabahDPLK.nama_lengkap'
           DisplayLookupField=true
         >, *object:rtf::DBEdit<
@@ -264,6 +312,7 @@ object:rtf::Form<
           Width=180
           Height=21
           ControlCaption='Keterangan'
+          LayoutOrder=3
         >, *object:rtf::DBEdit<
           Name='user_id'
           Top=114
@@ -272,6 +321,7 @@ object:rtf::Form<
           Height=21
           Color=-2147483624
           ControlCaption='User Penginput'
+          LayoutOrder=4
           ReadOnly=true
         >, *object:rtf::DBEdit<
           Name='terminal_id'
@@ -279,7 +329,19 @@ object:rtf::Form<
           Left=20
           Color=-2147483624
           ControlCaption='Terminal Input'
+          LayoutOrder=5
           ReadOnly=true
+        >, *object:rtf::DBLookupEdit<
+          Name='LRekeningDPLK'
+          Top=58
+          Left=20
+          Width=100
+          Height=21
+          Enabled=false
+          ControlCaption='Account DPLK'
+          LayoutOrder=2
+          LookupField='LRekeningDPLK.no_rekening'
+          DisplayLookupField=false
         >
       }
       EqualCaptionWidth=100

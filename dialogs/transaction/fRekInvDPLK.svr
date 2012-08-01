@@ -10,7 +10,7 @@ object:rpclass::TPClassUIDefList<
     object:rpclass::TPClassUIDef<
       Name='uipRekInvDPLK'
       PClassName='RekInvDPLK'
-      LoadedFieldList='collectivity_asuransi;kewajiban_asuransi;no_rekening;account_old;No_Seri_Buku;STATUS_DPLK;usia_pensiun;tgl_pensiun;tgl_pensiun_dipercepat;TGL_TUTUP;LTujuanBukaRekening.tujuan_buka_rekening;LTujuanBukaRekening.tujuan_buka_rekening;LTujuanBukaRekening.keterangan;tujuan_pembukaan_rekening;STATUS_DPLK;STATUS_BIAYA_DAFTAR;status_anuitas;status_asuransi;has_passbook;kirim_statemen;nilai_bayar_anuitas;tgl_bayar_anuitas;kewajiban_asuransi;bln_tunggakan_asuransi;status_autodebet;Is_Boleh_Debet;collectivity_asuransi;status_komisi;LBranchLocation.branch_code;LBranchLocation.branch_code;LBranchLocation.BranchName;user_id;keterangan;tgl_akseptasi;auth_user_id;last_update;last_terminal_id;sumber_dana;sistem_pembayaran_iuran;tgl_penarikan_iuran;REKSUMBER_NO;REKSUMBER_NAMA;setoran_awal;iuran_pst;iuran_pk;akum_iuran_pk;akum_iuran_pst;akum_iuran_tmb;akum_psl;akum_pmb_pk;akum_pmb_pst;akum_pmb_tmb;akum_pmb_psl'
+      LoadedFieldList='collectivity_asuransi;kewajiban_asuransi;no_rekening;account_old;usia_pensiun;tgl_pensiun;tgl_pensiun_dipercepat;LTujuanBukaRekening.tujuan_buka_rekening;LTujuanBukaRekening.tujuan_buka_rekening;LTujuanBukaRekening.keterangan;tujuan_pembukaan_rekening;isPesertaPengalihan;LLDPLain.kode_dp;LLDPLain.kode_dp;LLDPLain.nama_dp;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.nama_perusahaan;LKelompok.kode_kelompok;LKelompok.kode_kelompok;LKelompok.nama_kelompok;TGL_TUTUP;LBranchLocation.branch_code;LBranchLocation.branch_code;LBranchLocation.BranchName;sumber_dana;sistem_pembayaran_iuran;tgl_penarikan_iuran;REKSUMBER_NO;REKSUMBER_NAMA;setoran_awal;iuran_pk;iuran_pst;iuran_tmb;akum_iuran_pk;akum_iuran_pst;akum_iuran_tmb;akum_psl;akum_pmb_pk;akum_pmb_pst;akum_pmb_tmb;akum_pmb_psl;STATUS_DPLK;status_anuitas;status_asuransi;has_passbook;kirim_statemen;nilai_bayar_anuitas;tgl_bayar_anuitas;kewajiban_asuransi;bln_tunggakan_asuransi;status_autodebet;collectivity_asuransi;No_Seri_Buku;LRekAsuransi.rekasuransi_id;LRekAsuransi.no_polis;LRekAsuransi.besar_premi;LRekeningAnuitas.no_rekening;LRekeningAnuitas.no_polis_anuitas;LRekeningAnuitas.nama_asuransi;user_id;keterangan;auth_user_id;last_update;last_terminal_id;TGL_OTORISASI;no_referensi'
       CustomLoadedFields={
         object:rpclass::TCustomLoadedField<
           Name='saldo_total'
@@ -24,9 +24,29 @@ object:rpclass::TPClassUIDefList<
           ClassTypeName='TujuanBukaRekening'
           FieldNames='tujuan_buka_rekening;tujuan_buka_rekening;keterangan'
         >, object:rpclass::TCustomLoadedLink<
+          Name='LLDPLain'
+          ClassTypeName='LDP'
+          FieldNames='kode_dp;kode_dp;nama_dp'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLKCorporate'
+          ClassTypeName='NasabahDPLKCorporate'
+          FieldNames='kode_nasabah_corporate;kode_nasabah_corporate;nama_perusahaan'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LKelompok'
+          ClassTypeName='Kelompok'
+          FieldNames='kode_kelompok;kode_kelompok;nama_kelompok'
+        >, object:rpclass::TCustomLoadedLink<
           Name='LBranchLocation'
           ClassTypeName='BranchLocation'
           FieldNames='branch_code;branch_code;BranchName'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LRekAsuransi'
+          ClassTypeName='RekAsuransi'
+          FieldNames='rekasuransi_id;no_polis;besar_premi'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LRekeningAnuitas'
+          ClassTypeName='RekeningAnuitas'
+          FieldNames='no_rekening;no_polis_anuitas;nama_asuransi'
         >
       }
       Mode=imSingleRow
@@ -36,19 +56,12 @@ object:rpclass::TPClassUIDefList<
       Name='uipNasabahDPLK'
       MasterUIName='uipRekInvDPLK'
       LinkName='LNasabahDPLK'
-      LoadedFieldList='LBranchLocation.branch_code;LBranchLocation.branch_code;LBranchLocation.BranchName;no_peserta;nama_lengkap;tanggal_lahir;ibu_kandung'
+      LoadedFieldList='no_peserta;nama_lengkap;tanggal_lahir;ibu_kandung'
       CustomLoadedFields={
         object:rpclass::TCustomLoadedField<
           Name='mode'
           DataTypeName='varchar'
           DataLength=20
-        >
-      }
-      CustomLoadedLinks={
-        object:rpclass::TCustomLoadedLink<
-          Name='LBranchLocation'
-          ClassTypeName='BranchLocation'
-          FieldNames='branch_code;branch_code;BranchName'
         >
       }
       CreateInstanceOnNew=true
@@ -61,7 +74,6 @@ object:rpclass::TPClassUIDefList<
       Name='uipRekSumber'
       MasterUIName='uipRekInvDPLK'
       ListName='Ls_REKENINGSUMBER'
-      LoadedFieldList='norek_sumber'
     >
   }
   OnEndSetData='FormEndSetData'

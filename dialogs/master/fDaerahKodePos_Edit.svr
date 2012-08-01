@@ -1,0 +1,34 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{03AB2DCD-D5DA-4DD5-B07D-CD15AE22527E}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
+      Name='uipDaerahKodePos'
+      PClassName='DaerahKodePos'
+      LoadedFieldList='kode_pos;nama_kelurahan;LPropinsi.kode_propinsi;LPropinsi.kode_propinsi;LPropinsi.nama_propinsi;LKota.kode_kota;LKota.kode_kota;LKota.nama_kota;LKecamatan.kode_kecamatan;LKecamatan.kode_kecamatan;LKecamatan.nama_kecamatan'
+      StoredFieldList='kode_pos;nama_kelurahan;LPropinsi;LKota;LKecamatan'
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LPropinsi'
+          ClassTypeName='DaerahAsal'
+          FieldNames='kode_propinsi;kode_propinsi;nama_propinsi'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LKota'
+          ClassTypeName='DaerahKota'
+          FieldNames='kode_kota;kode_kota;nama_kota'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LKecamatan'
+          ClassTypeName='DaerahKecamatan'
+          FieldNames='kode_kecamatan;kode_kecamatan;nama_kecamatan'
+        >
+      }
+      Mode=imSingleRow
+      CreateInstanceOnNew=true
+    >
+  }
+>

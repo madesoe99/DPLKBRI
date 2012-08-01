@@ -335,7 +335,7 @@ object:ODL<
           MemberName='alamat_rtrw'
           PhysicalName='alamat_rtrw'
           DataType=$TYPEDECLS['VARCHAR']
-          DataLength=7
+          DataLength=3
         >, object:FieldMember<
           MemberName='alamat_kelurahan'
           PhysicalName='alamat_kelurahan'
@@ -453,7 +453,7 @@ object:ODL<
           MemberName='alamat_surat_rtrw'
           PhysicalName='ALAMAT_SURAT_RTRW'
           DataType=$TYPEDECLS['VARCHAR']
-          DataLength=7
+          DataLength=3
         >, object:FieldMember<
           MemberName='alamat_surat_kota'
           PhysicalName='ALAMAT_SURAT_KOTA'
@@ -980,6 +980,77 @@ object:ODL<
           }
           IsWeak=true
           LinkedClass=$TYPEDECLS['DaerahKecamatan']
+        >, object:FieldMember<
+          MemberName='ALAMAT_KANTOR_KODE_POS_KODE'
+          PhysicalName='ALAMAT_KANTOR_KODE_POS_KODE'
+          DataType=$TYPEDECLS['INTEGER']
+        >, object:FieldMember<
+          MemberName='ALAMAT_SURAT_KODE_POS_KODE'
+          PhysicalName='ALAMAT_SURAT_KODE_POS_KODE'
+          DataType=$TYPEDECLS['INTEGER']
+        >, object:FieldMember<
+          MemberName='ALAMAT_KODE_POS_KODE'
+          PhysicalName='ALAMAT_KODE_POS_KODE'
+          DataType=$TYPEDECLS['INTEGER']
+        >, object:LinkMember<
+          MemberName='LAKKodePos'
+          Optional=true
+          AttrLinks={
+            object:AttributeLink<
+              ThisField=$TYPEDECLS['NasabahDPLK'].MEMBERS['ALAMAT_KANTOR_KODE_POS_KODE']
+              OriginPKey=$TYPEDECLS['DaerahKodePos'].MEMBERS['id_kodepos']
+            >
+          }
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['DaerahKodePos']
+        >, object:LinkMember<
+          MemberName='LASKodePos'
+          Optional=true
+          AttrLinks={
+            object:AttributeLink<
+              ThisField=$TYPEDECLS['NasabahDPLK'].MEMBERS['ALAMAT_SURAT_KODE_POS_KODE']
+              OriginPKey=$TYPEDECLS['DaerahKodePos'].MEMBERS['id_kodepos']
+            >
+          }
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['DaerahKodePos']
+        >, object:LinkMember<
+          MemberName='LATKodePos'
+          Optional=true
+          AttrLinks={
+            object:AttributeLink<
+              ThisField=$TYPEDECLS['NasabahDPLK'].MEMBERS['ALAMAT_KODE_POS_KODE']
+              OriginPKey=$TYPEDECLS['DaerahKodePos'].MEMBERS['id_kodepos']
+            >
+          }
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['DaerahKodePos']
+        >, object:FieldMember<
+          MemberName='HUBUNGAN_KELENGKAPAN'
+          PhysicalName='HUBUNGAN_KELENGKAPAN'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=1
+          Enumerator=$TYPEDECLS['eHubunganKeluarga']
+        >, object:FieldMember<
+          MemberName='TGL_OTORISASI'
+          PhysicalName='TGL_OTORISASI'
+          DataType=$TYPEDECLS['TIMESTAMP']
+        >, object:FieldMember<
+          MemberName='alamat_rw'
+          PhysicalName='ALAMAT_RW'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=3
+        >, object:FieldMember<
+          MemberName='alamat_surat_rw'
+          PhysicalName='ALAMAT_SURAT_RW'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=3
+        >, object:FieldMember<
+          MemberName='jenis_kartu_identitas'
+          PhysicalName='JENIS_KARTU_IDENTITAS'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=1
+          Enumerator=$TYPEDECLS['eJenisKartuIdentitas']
         >
       }
       ClassID='{350A4CF4-FB33-48A1-B64B-C347DCA99D84}'
@@ -1526,7 +1597,7 @@ object:ODL<
           MemberName='No_Seri_Buku'
           PhysicalName='NO_SERI_BUKU'
           DataType=$TYPEDECLS['VARCHAR']
-          DataLength=7
+          DataLength=20
         >, object:ListMember<
           MemberName='Ls_RekAsuransi'
           UsedLink=$TYPEDECLS['RekAsuransi'].MEMBERS['LRekeningDPLK']
@@ -1579,6 +1650,63 @@ object:ODL<
           IsWeak=true
           LinkedClass=$TYPEDECLS['TujuanBukaRekening']
           AutoForeignKey=true
+        >, object:LinkMember<
+          MemberName='LNasabahDPLKCorporate'
+          Optional=true
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['NasabahDPLKCorporate']
+          AutoForeignKey=true
+        >, object:LinkMember<
+          MemberName='LLDPLain'
+          Optional=true
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['LDP']
+          AutoForeignKey=true
+        >, object:LinkMember<
+          MemberName='LKelompok'
+          Optional=true
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['Kelompok']
+          AutoForeignKey=true
+        >, object:FieldMember<
+          MemberName='isPesertaPengalihan'
+          PhysicalName='ISPESERTAPENGALIHAN'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=1
+          Enumerator=$TYPEDECLS['FTBoolean']
+        >, object:FieldMember<
+          MemberName='TGL_REGISTRASI'
+          PhysicalName='TGL_REGISTRASI'
+          DataType=$TYPEDECLS['TIMESTAMP']
+        >, object:FieldMember<
+          MemberName='TGL_OTORISASI'
+          PhysicalName='TGL_OTORISASI'
+          DataType=$TYPEDECLS['TIMESTAMP']
+        >, object:FieldMember<
+          MemberName='iuran_tmb'
+          PhysicalName='IURAN_TMB'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='no_referensi'
+          PhysicalName='NO_REFERENSI'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=50
+        >, object:LinkMember<
+          MemberName='LRekeningAnuitas'
+          Optional=true
+          AttrLinks={
+            object:AttributeLink<
+              ThisField=$TYPEDECLS['RekInvDPLK'].MEMBERS['rekeninganuitas_id']
+              OriginPKey=$TYPEDECLS['RekeningAnuitas'].MEMBERS['no_rekening']
+            >
+          }
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['RekeningAnuitas']
+        >, object:FieldMember<
+          MemberName='rekeninganuitas_id'
+          PhysicalName='REKENINGANUITAS_ID'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=20
         >
       }
       ClassID='{9FECDF2F-6EDE-4435-9DAC-F26A4FBF8C23}'
@@ -1766,7 +1894,7 @@ object:ODL<
           PhysicalName='ISCOMMITTED'
           DataType=$TYPEDECLS['VARCHAR']
           DataLength=1
-          Enumerator=$TYPEDECLS['FTBoolean']
+          Enumerator=$TYPEDECLS['ARBoolean']
         >, object:FieldMember<
           MemberName='Ref_CoreBanking'
           PhysicalName='REF_COREBANKING'
@@ -1936,6 +2064,10 @@ object:ODL<
           Optional=true
           LinkedClass=$TYPEDECLS['UnitRedRequest']
           AutoForeignKey=true
+        >, object:FieldMember<
+          MemberName='nav_custody'
+          PhysicalName='NAV_CUSTODY'
+          DataType=$TYPEDECLS['DOUBLE']
         >
       }
       ClassID='{AFBE925D-C4B2-400E-81A4-BE4B92B8DBDB}'
@@ -3096,9 +3228,6 @@ object:ODL<
       EnumType=etString
       EnumMembers={
         object:EnumMember<
-          StringValue='0'
-          DescriptiveName='Peserta'
-        >, object:EnumMember<
           StringValue='1'
           DescriptiveName='Ayah'
         >, object:EnumMember<
@@ -3119,9 +3248,6 @@ object:ODL<
         >, object:EnumMember<
           StringValue='7'
           DescriptiveName='Suami'
-        >, object:EnumMember<
-          StringValue='8'
-          DescriptiveName='Lain-lain'
         >
       }
     >, object:EnumTypeDecl<
@@ -4578,6 +4704,31 @@ object:ODL<
         >, object:ListMember<
           MemberName='Ls_NASABAHCORPPARAMS'
           UsedLink=$TYPEDECLS['NASABAHCORPPARAMS'].MEMBERS['LNasabahDPLKCorporate']
+        >, object:FieldMember<
+          MemberName='alamat_email'
+          PhysicalName='ALAMAT_EMAIL'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=100
+        >, object:FieldMember<
+          MemberName='ALAMAT_KANTOR_KODE_POS_KODE'
+          PhysicalName='ALAMAT_KANTOR_KODE_POS_KODE'
+          DataType=$TYPEDECLS['INTEGER']
+        >, object:LinkMember<
+          MemberName='LAKKodePos'
+          Optional=true
+          AttrLinks={
+            object:AttributeLink<
+              ThisField=$TYPEDECLS['NasabahDPLKCorporate'].MEMBERS['ALAMAT_KANTOR_KODE_POS_KODE']
+              OriginPKey=$TYPEDECLS['DaerahKodePos'].MEMBERS['id_kodepos']
+            >
+          }
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['DaerahKodePos']
+        >, object:FieldMember<
+          MemberName='BENEFICIAL_OWNER'
+          PhysicalName='BENEFICIAL_OWNER'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=50
         >
       }
       ClassID='{CD25247E-11EA-4505-AA07-C5F1B18A9AD9}'
@@ -4689,7 +4840,7 @@ object:ODL<
           MemberName='alamat_rtrw'
           PhysicalName='alamat_rtrw'
           DataType=$TYPEDECLS['VARCHAR']
-          DataLength=7
+          DataLength=3
         >, object:FieldMember<
           MemberName='alamat_kelurahan'
           PhysicalName='alamat_kelurahan'
@@ -4769,7 +4920,7 @@ object:ODL<
           MemberName='alamat_surat_rtrw'
           PhysicalName='ALAMAT_SURAT_RTRW'
           DataType=$TYPEDECLS['VARCHAR']
-          DataLength=7
+          DataLength=3
         >, object:FieldMember<
           MemberName='alamat_surat_kota'
           PhysicalName='ALAMAT_SURAT_KOTA'
@@ -4974,6 +5125,61 @@ object:ODL<
           }
           IsWeak=true
           LinkedClass=$TYPEDECLS['DaerahKecamatan']
+        >, object:FieldMember<
+          MemberName='ALAMAT_KANTOR_KODE_POS_KODE'
+          PhysicalName='ALAMAT_KANTOR_KODE_POS_KODE'
+          DataType=$TYPEDECLS['INTEGER']
+        >, object:FieldMember<
+          MemberName='ALAMAT_SURAT_KODE_POS_KODE'
+          PhysicalName='ALAMAT_SURAT_KODE_POS_KODE'
+          DataType=$TYPEDECLS['INTEGER']
+        >, object:FieldMember<
+          MemberName='ALAMAT_KODE_POS_KODE'
+          PhysicalName='ALAMAT_KODE_POS_KODE'
+          DataType=$TYPEDECLS['INTEGER']
+        >, object:LinkMember<
+          MemberName='LAKKodePos'
+          Optional=true
+          AttrLinks={
+            object:AttributeLink<
+              ThisField=$TYPEDECLS['RegisterUbahAlamat'].MEMBERS['ALAMAT_KANTOR_KODE_POS_KODE']
+              OriginPKey=$TYPEDECLS['DaerahKodePos'].MEMBERS['id_kodepos']
+            >
+          }
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['DaerahKodePos']
+        >, object:LinkMember<
+          MemberName='LASKodePos'
+          Optional=true
+          AttrLinks={
+            object:AttributeLink<
+              ThisField=$TYPEDECLS['RegisterUbahAlamat'].MEMBERS['ALAMAT_SURAT_KODE_POS_KODE']
+              OriginPKey=$TYPEDECLS['DaerahKodePos'].MEMBERS['id_kodepos']
+            >
+          }
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['DaerahKodePos']
+        >, object:LinkMember<
+          MemberName='LATKodePos'
+          Optional=true
+          AttrLinks={
+            object:AttributeLink<
+              ThisField=$TYPEDECLS['RegisterUbahAlamat'].MEMBERS['ALAMAT_KODE_POS_KODE']
+              OriginPKey=$TYPEDECLS['DaerahKodePos'].MEMBERS['id_kodepos']
+            >
+          }
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['DaerahKodePos']
+        >, object:FieldMember<
+          MemberName='alamat_rw'
+          PhysicalName='ALAMAT_RW'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=3
+        >, object:FieldMember<
+          MemberName='alamat_surat_rw'
+          PhysicalName='ALAMAT_SURAT_RW'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=3
         >
       }
       Ancestors={
@@ -5007,7 +5213,7 @@ object:ODL<
           MemberName='alamat_rtrw'
           PhysicalName='alamat_rtrw'
           DataType=$TYPEDECLS['VARCHAR']
-          DataLength=7
+          DataLength=3
         >, object:FieldMember<
           MemberName='alamat_kelurahan'
           PhysicalName='alamat_kelurahan'
@@ -5087,7 +5293,7 @@ object:ODL<
           MemberName='alamat_surat_rtrw'
           PhysicalName='ALAMAT_SURAT_RTRW'
           DataType=$TYPEDECLS['VARCHAR']
-          DataLength=7
+          DataLength=3
         >, object:FieldMember<
           MemberName='alamat_surat_kota'
           PhysicalName='ALAMAT_SURAT_KOTA'
@@ -5321,6 +5527,61 @@ object:ODL<
           }
           IsWeak=true
           LinkedClass=$TYPEDECLS['DaerahKecamatan']
+        >, object:FieldMember<
+          MemberName='ALAMAT_KANTOR_KODE_POS_KODE'
+          PhysicalName='ALAMAT_KANTOR_KODE_POS_KODE'
+          DataType=$TYPEDECLS['INTEGER']
+        >, object:FieldMember<
+          MemberName='ALAMAT_SURAT_KODE_POS_KODE'
+          PhysicalName='ALAMAT_SURAT_KODE_POS_KODE'
+          DataType=$TYPEDECLS['INTEGER']
+        >, object:FieldMember<
+          MemberName='ALAMAT_KODE_POS_KODE'
+          PhysicalName='ALAMAT_KODE_POS_KODE'
+          DataType=$TYPEDECLS['INTEGER']
+        >, object:LinkMember<
+          MemberName='LAKKodePos'
+          Optional=true
+          AttrLinks={
+            object:AttributeLink<
+              ThisField=$TYPEDECLS['HistoriUbahAlamat'].MEMBERS['ALAMAT_KANTOR_KODE_POS_KODE']
+              OriginPKey=$TYPEDECLS['DaerahKodePos'].MEMBERS['id_kodepos']
+            >
+          }
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['DaerahKodePos']
+        >, object:LinkMember<
+          MemberName='LASKodePos'
+          Optional=true
+          AttrLinks={
+            object:AttributeLink<
+              ThisField=$TYPEDECLS['HistoriUbahAlamat'].MEMBERS['ALAMAT_SURAT_KODE_POS_KODE']
+              OriginPKey=$TYPEDECLS['DaerahKodePos'].MEMBERS['id_kodepos']
+            >
+          }
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['DaerahKodePos']
+        >, object:LinkMember<
+          MemberName='LATKodePos'
+          Optional=true
+          AttrLinks={
+            object:AttributeLink<
+              ThisField=$TYPEDECLS['HistoriUbahAlamat'].MEMBERS['ALAMAT_KODE_POS_KODE']
+              OriginPKey=$TYPEDECLS['DaerahKodePos'].MEMBERS['id_kodepos']
+            >
+          }
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['DaerahKodePos']
+        >, object:FieldMember<
+          MemberName='alamat_rw'
+          PhysicalName='ALAMAT_RW'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=3
+        >, object:FieldMember<
+          MemberName='alamat_surat_rw'
+          PhysicalName='ALAMAT_SURAT_RW'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=3
         >
       }
       ClassID='{A10E5BCD-31D4-455F-90AB-AB235E99DB2F}'
@@ -5417,6 +5678,12 @@ object:ODL<
           DataType=$TYPEDECLS['VARCHAR']
           DataLength=1
           Enumerator=$TYPEDECLS['eDaftarKeluarTrans']
+        >, object:LinkMember<
+          MemberName='LRekeningDPLK'
+          Optional=true
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['RekInvDPLK']
+          AutoForeignKey=true
         >
       }
       ClassID='{6C8C996D-A1DE-4829-B26C-903188A22EEB}'
@@ -5996,7 +6263,7 @@ object:ODL<
           MemberName='alamat_rtrw'
           PhysicalName='alamat_rtrw'
           DataType=$TYPEDECLS['VARCHAR']
-          DataLength=7
+          DataLength=3
         >, object:FieldMember<
           MemberName='alamat_kelurahan'
           PhysicalName='alamat_kelurahan'
@@ -6081,7 +6348,7 @@ object:ODL<
           MemberName='alamat_surat_rtrw'
           PhysicalName='ALAMAT_SURAT_RTRW'
           DataType=$TYPEDECLS['VARCHAR']
-          DataLength=7
+          DataLength=3
         >, object:FieldMember<
           MemberName='alamat_surat_kota'
           PhysicalName='ALAMAT_SURAT_KOTA'
@@ -6525,9 +6792,6 @@ object:ODL<
           }
           IsWeak=true
           LinkedClass=$TYPEDECLS['JenisUsaha']
-        >, object:ListMember<
-          MemberName='Ls_REGISTERNASABAHREKSUMBER'
-          UsedLink=$TYPEDECLS['REGISTERNASABAHREKSUMBER'].MEMBERS['LRegisterNasabahRekening']
         >, object:FieldMember<
           MemberName='setoran_awal'
           PhysicalName='SETORAN_AWAL'
@@ -6715,6 +6979,77 @@ object:ODL<
           }
           IsWeak=true
           LinkedClass=$TYPEDECLS['DaerahKecamatan']
+        >, object:FieldMember<
+          MemberName='ALAMAT_KANTOR_KODE_POS_KODE'
+          PhysicalName='ALAMAT_KANTOR_KODE_POS_KODE'
+          DataType=$TYPEDECLS['INTEGER']
+        >, object:FieldMember<
+          MemberName='ALAMAT_SURAT_KODE_POS_KODE'
+          PhysicalName='ALAMAT_SURAT_KODE_POS_KODE'
+          DataType=$TYPEDECLS['INTEGER']
+        >, object:FieldMember<
+          MemberName='ALAMAT_KODE_POS_KODE'
+          PhysicalName='ALAMAT_KODE_POS_KODE'
+          DataType=$TYPEDECLS['INTEGER']
+        >, object:FieldMember<
+          MemberName='HUBUNGAN_KELENGKAPAN'
+          PhysicalName='HUBUNGAN_KELENGKAPAN'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=1
+          Enumerator=$TYPEDECLS['eHubunganKeluarga']
+        >, object:LinkMember<
+          MemberName='LATKodePos'
+          Optional=true
+          AttrLinks={
+            object:AttributeLink<
+              ThisField=$TYPEDECLS['RegisterNasabahRekening'].MEMBERS['ALAMAT_KODE_POS_KODE']
+              OriginPKey=$TYPEDECLS['DaerahKodePos'].MEMBERS['id_kodepos']
+            >
+          }
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['DaerahKodePos']
+        >, object:LinkMember<
+          MemberName='LAKKodePos'
+          Optional=true
+          AttrLinks={
+            object:AttributeLink<
+              ThisField=$TYPEDECLS['RegisterNasabahRekening'].MEMBERS['ALAMAT_KANTOR_KODE_POS_KODE']
+              OriginPKey=$TYPEDECLS['DaerahKodePos'].MEMBERS['id_kodepos']
+            >
+          }
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['DaerahKodePos']
+        >, object:LinkMember<
+          MemberName='LASKodePos'
+          Optional=true
+          AttrLinks={
+            object:AttributeLink<
+              ThisField=$TYPEDECLS['RegisterNasabahRekening'].MEMBERS['ALAMAT_SURAT_KODE_POS_KODE']
+              OriginPKey=$TYPEDECLS['DaerahKodePos'].MEMBERS['id_kodepos']
+            >
+          }
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['DaerahKodePos']
+        >, object:FieldMember<
+          MemberName='iuran_tmb'
+          PhysicalName='IURAN_TMB'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='jenis_kartu_identitas'
+          PhysicalName='JENIS_KARTU_IDENTITAS'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=1
+          Enumerator=$TYPEDECLS['eJenisKartuIdentitas']
+        >, object:FieldMember<
+          MemberName='alamat_rw'
+          PhysicalName='ALAMAT_RW'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=3
+        >, object:FieldMember<
+          MemberName='alamat_surat_rw'
+          PhysicalName='ALAMAT_SURAT_RW'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=3
         >
       }
       ClassID='{13BDED58-C879-4864-A8E4-69EB98E1DAEB}'
@@ -7041,6 +7376,10 @@ object:ODL<
           PhysicalName='REKSUMBER_NAMA'
           DataType=$TYPEDECLS['VARCHAR']
           DataLength=100
+        >, object:FieldMember<
+          MemberName='IURAN_TMB'
+          PhysicalName='IURAN_TMB'
+          DataType=$TYPEDECLS['DOUBLE']
         >
       }
       ClassID='{19D52E43-F96A-4F23-A094-2CD0DE9A7C18}'
@@ -7082,6 +7421,10 @@ object:ODL<
           PhysicalName='REKSUMBER_NAMA'
           DataType=$TYPEDECLS['VARCHAR']
           DataLength=100
+        >, object:FieldMember<
+          MemberName='iuran_tmb'
+          PhysicalName='IURAN_TMB'
+          DataType=$TYPEDECLS['DOUBLE']
         >
       }
       Ancestors={
@@ -7720,6 +8063,31 @@ object:ODL<
           }
           IsWeak=true
           LinkedClass=$TYPEDECLS['DaerahKecamatan']
+        >, object:FieldMember<
+          MemberName='alamat_email'
+          PhysicalName='ALAMAT_EMAIL'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=100
+        >, object:LinkMember<
+          MemberName='LAKKodePos'
+          Optional=true
+          AttrLinks={
+            object:AttributeLink<
+              ThisField=$TYPEDECLS['RegEditNasabahDPLKCorporate'].MEMBERS['ALAMAT_KANTOR_KODE_POS_KODE']
+              OriginPKey=$TYPEDECLS['DaerahKodePos'].MEMBERS['id_kodepos']
+            >
+          }
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['DaerahKodePos']
+        >, object:FieldMember<
+          MemberName='ALAMAT_KANTOR_KODE_POS_KODE'
+          PhysicalName='ALAMAT_KANTOR_KODE_POS_KODE'
+          DataType=$TYPEDECLS['INTEGER']
+        >, object:FieldMember<
+          MemberName='BENEFICIAL_OWNER'
+          PhysicalName='BENEFICIAL_OWNER'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=50
         >
       }
       ClassID='{BE10C956-FF55-489B-A055-604AC3492635}'
@@ -7826,6 +8194,12 @@ object:ODL<
           IsWeak=true
           LinkedClass=$TYPEDECLS['LDP']
           AutoForeignKey=true
+        >, object:FieldMember<
+          MemberName='jenis_kartu_identitas'
+          PhysicalName='JENIS_KARTU_IDENTITAS'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=1
+          Enumerator=$TYPEDECLS['eJenisKartuIdentitas']
         >
       }
       Ancestors={
@@ -8656,18 +9030,6 @@ object:ODL<
           IsWeak=true
           LinkedClass=$TYPEDECLS['SEKTORAL']
           AutoForeignKey=true
-        >, object:FieldMember<
-          MemberName='nav'
-          PhysicalName='NAV'
-          DataType=$TYPEDECLS['DOUBLE']
-        >, object:FieldMember<
-          MemberName='nav_prev'
-          PhysicalName='NAV_PREV'
-          DataType=$TYPEDECLS['DOUBLE']
-        >, object:FieldMember<
-          MemberName='unit'
-          PhysicalName='UNIT'
-          DataType=$TYPEDECLS['DOUBLE']
         >, object:LinkMember<
           MemberName='LSubJenisInv'
           Optional=true
@@ -8848,7 +9210,7 @@ object:ODL<
       EnumMembers={
         object:EnumMember<
           StringValue='B'
-          DescriptiveName='Pensiun Biasa'
+          DescriptiveName='Pensiun Normal'
         >, object:EnumMember<
           StringValue='D'
           DescriptiveName='Pensiun Dipercepat'
@@ -8858,9 +9220,6 @@ object:ODL<
         >, object:EnumMember<
           StringValue='J'
           DescriptiveName='Pensiun Meninggal'
-        >, object:EnumMember<
-          StringValue='T'
-          DescriptiveName='Pensiun Ditunda'
         >
       }
     >, object:EnumTypeDecl<
@@ -12445,6 +12804,11 @@ object:ODL<
           PhysicalName='no_rekening'
           DataType=$TYPEDECLS['VARCHAR']
           DataLength=20
+        >, object:FieldMember<
+          MemberName='NO_SERI_KARTU'
+          PhysicalName='NO_SERI_KARTU'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=40
           IsPrimaryKey=true
         >
       }
@@ -12531,7 +12895,7 @@ object:ODL<
           MemberName='NO_SERI_BUKU'
           PhysicalName='NO_SERI_BUKU'
           DataType=$TYPEDECLS['VARCHAR']
-          DataLength=7
+          DataLength=10
           IsPrimaryKey=true
         >, object:FieldMember<
           MemberName='KODE_CABANG'
@@ -12564,6 +12928,12 @@ object:ODL<
           DataType=$TYPEDECLS['VARCHAR']
           DataLength=1
           Enumerator=$TYPEDECLS['FTBoolean']
+        >, object:FieldMember<
+          MemberName='IS_RESERVED'
+          PhysicalName='IS_RESERVED'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=1
+          Enumerator=$TYPEDECLS['FTBoolean']
         >
       }
       ClassID='{923E7EE7-C98F-4973-9076-D9BCFE678037}'
@@ -12575,7 +12945,7 @@ object:ODL<
           MemberName='NO_SERI_BUKU'
           PhysicalName='NO_SERI_BUKU'
           DataType=$TYPEDECLS['VARCHAR']
-          DataLength=7
+          DataLength=20
           IsPrimaryKey=true
         >, object:FieldMember<
           MemberName='STATUS'
@@ -13259,6 +13629,12 @@ object:ODL<
           }
           IsWeak=true
           LinkedClass=$TYPEDECLS['JenisUsaha']
+        >, object:FieldMember<
+          MemberName='HUBUNGAN_KELENGKAPAN'
+          PhysicalName='HUBUNGAN_KELENGKAPAN'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=1
+          Enumerator=$TYPEDECLS['eHubunganKeluarga']
         >
       }
       Ancestors={
@@ -13496,6 +13872,23 @@ object:ODL<
           IsWeak=true
           LinkedClass=$TYPEDECLS['TujuanBukaRekening']
           AutoForeignKey=true
+        >, object:LinkMember<
+          MemberName='LLDPLain'
+          Optional=true
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['LDP']
+          AutoForeignKey=true
+        >, object:LinkMember<
+          MemberName='LKelompok'
+          Optional=true
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['Kelompok']
+          AutoForeignKey=true
+        >, object:FieldMember<
+          MemberName='ISPESERTAPENGALIHAN'
+          PhysicalName='ISPESERTAPENGALIHAN'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=1
         >
       }
       Ancestors={
@@ -14392,7 +14785,7 @@ object:ODL<
           MemberName='alamat_rtrw'
           PhysicalName='ALAMAT_RTRW'
           DataType=$TYPEDECLS['VARCHAR']
-          DataLength=7
+          DataLength=3
         >, object:FieldMember<
           MemberName='alamat_propinsi'
           PhysicalName='ALAMAT_PROPINSI'
@@ -14506,6 +14899,125 @@ object:ODL<
           PhysicalName='NO_SERI_BUKU'
           DataType=$TYPEDECLS['VARCHAR']
           DataLength=7
+        >, object:FieldMember<
+          MemberName='alamat_rw'
+          PhysicalName='ALAMAT_RW'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=3
+        >, object:LinkMember<
+          MemberName='LATKodePos'
+          Optional=true
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['DaerahKodePos']
+          AutoForeignKey=true
+        >, object:FieldMember<
+          MemberName='email'
+          PhysicalName='EMAIL'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=50
+        >, object:FieldMember<
+          MemberName='telepon1'
+          PhysicalName='TELEPON1'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=30
+        >, object:FieldMember<
+          MemberName='telepon2'
+          PhysicalName='TELEPON2'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=30
+        >, object:FieldMember<
+          MemberName='kewarganegaraan'
+          PhysicalName='KEWARGANEGARAAN'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=1
+        >, object:LinkMember<
+          MemberName='LJenisPekerjaan'
+          Optional=true
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['JenisPekerjaan']
+          AutoForeignKey=true
+        >, object:LinkMember<
+          MemberName='LJenisPekerjaanDetail'
+          Optional=true
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['JenisPekerjaanDetail']
+          AutoForeignKey=true
+        >, object:LinkMember<
+          MemberName='LSumberDana'
+          Optional=true
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['SumberDana']
+          AutoForeignKey=true
+        >, object:FieldMember<
+          MemberName='penghasilan_setahun'
+          PhysicalName='PENGHASILAN_SETAHUN'
+          DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='reksumber_no'
+          PhysicalName='REKSUMBER_NO'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=20
+        >, object:FieldMember<
+          MemberName='ispesertapengalihan'
+          PhysicalName='ISPESERTAPENGALIHAN'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=1
+          Enumerator=$TYPEDECLS['FTBoolean']
+        >, object:FieldMember<
+          MemberName='sistem_pembayaran_iuran'
+          PhysicalName='SISTEM_PEMBAYARAN_IURAN'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=1
+          Enumerator=$TYPEDECLS['eSistemPembayaranIuran']
+        >, object:FieldMember<
+          MemberName='tgl_debet_rekening'
+          PhysicalName='TGL_DEBET_REKENING'
+          DataType=$TYPEDECLS['INTEGER']
+        >, object:FieldMember<
+          MemberName='pct_pi_fix'
+          PhysicalName='PCT_PI_FIX'
+          DataType=$TYPEDECLS['INTEGER']
+        >, object:FieldMember<
+          MemberName='pct_pi_eq'
+          PhysicalName='PCT_PI_EQ'
+          DataType=$TYPEDECLS['INTEGER']
+        >, object:FieldMember<
+          MemberName='pct_pi_mm'
+          PhysicalName='PCT_PI_MM'
+          DataType=$TYPEDECLS['INTEGER']
+        >, object:FieldMember<
+          MemberName='usia_pensiun'
+          PhysicalName='USIA_PENSIUN'
+          DataType=$TYPEDECLS['INTEGER']
+        >, object:FieldMember<
+          MemberName='ikut_asuransi'
+          PhysicalName='IKUT_ASURANSI'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=1
+          Enumerator=$TYPEDECLS['FTBoolean']
+        >, object:LinkMember<
+          MemberName='LNegara'
+          Optional=true
+          IsWeak=true
+          LinkedClass=$TYPEDECLS['Negara']
+          AutoForeignKey=true
+        >, object:FieldMember<
+          MemberName='tgl_pensiun'
+          PhysicalName='TGL_PENSIUN'
+          DataType=$TYPEDECLS['TIMESTAMP']
+        >, object:FieldMember<
+          MemberName='tgl_pensiun_dipercepat'
+          PhysicalName='TGL_PENSIUN_DIPERCEPAT'
+          DataType=$TYPEDECLS['TIMESTAMP']
+        >, object:FieldMember<
+          MemberName='REKSUMBER_NAMA'
+          PhysicalName='REKSUMBER_NAMA'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=100
+        >, object:FieldMember<
+          MemberName='iuran_tmb'
+          PhysicalName='IURAN_TMB'
+          DataType=$TYPEDECLS['DOUBLE']
         >
       }
       ClassID='{0A056415-70EA-4DD7-9140-92ADE62BF6A2}'
@@ -14548,6 +15060,11 @@ object:ODL<
           DataType=$TYPEDECLS['VARCHAR']
           DataLength=1
           Enumerator=$TYPEDECLS['FTBoolean']
+        >, object:FieldMember<
+          MemberName='keterangan'
+          PhysicalName='KETERANGAN'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=100
         >
       }
       ClassID='{07390F3D-0F7D-4FC6-9D90-6C63D3F08F81}'
@@ -14604,6 +15121,10 @@ object:ODL<
           MemberName='sum_pindahbuku'
           PhysicalName='SUM_PINDAHBUKU'
           DataType=$TYPEDECLS['DOUBLE']
+        >, object:FieldMember<
+          MemberName='sum_koreksi'
+          PhysicalName='SUM_KOREKSI'
+          DataType=$TYPEDECLS['DOUBLE']
         >
       }
       ClassID='{DAF42728-3279-46B5-88F7-CC99997F4558}'
@@ -14656,6 +15177,10 @@ object:ODL<
           DataType=$TYPEDECLS['VARCHAR']
           DataLength=1
           Enumerator=$TYPEDECLS['FTBoolean']
+        >, object:FieldMember<
+          MemberName='id_transaksi'
+          PhysicalName='ID_TRANSAKSI'
+          DataType=$TYPEDECLS['INTEGER']
         >
       }
       ClassID='{FF547D1E-9D92-4C65-A1CF-9EBE8F4DF951}'
@@ -14670,6 +15195,9 @@ object:ODL<
         >, object:EnumMember<
           StringValue='E'
           DescriptiveName='e - chanel'
+        >, object:EnumMember<
+          StringValue='M'
+          DescriptiveName='Manual Giro'
         >
       }
     >, object:EnumTypeDecl<
@@ -15207,6 +15735,77 @@ object:ODL<
         >
       }
       ClassID='{053D1F60-3B2F-49DB-8F59-9329A2ECB1BA}'
+    >, object:ClassTypeDecl<
+      TypeName='DaerahKodePos'
+      PTableName='DAERAHKODEPOS'
+      Members={
+        object:FieldMember<
+          MemberName='kode_pos'
+          PhysicalName='KODE_POS'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=6
+        >, object:LinkMember<
+          MemberName='LPropinsi'
+          LinkedClass=$TYPEDECLS['DaerahAsal']
+          AutoForeignKey=true
+        >, object:LinkMember<
+          MemberName='LKota'
+          LinkedClass=$TYPEDECLS['DaerahKota']
+          AutoForeignKey=true
+        >, object:LinkMember<
+          MemberName='LKecamatan'
+          LinkedClass=$TYPEDECLS['DaerahKecamatan']
+          AutoForeignKey=true
+        >, object:FieldMember<
+          MemberName='nama_kelurahan'
+          PhysicalName='NAMA_KELURAHAN'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=50
+        >, object:FieldMember<
+          MemberName='id_kodepos'
+          PhysicalName='ID_KODEPOS'
+          DataType=$TYPEDECLS['INTEGER']
+          IsPrimaryKey=true
+        >, object:FieldMember<
+          MemberName='user_id'
+          PhysicalName='USER_ID'
+          DataType=$TYPEDECLS['VARCHAR']
+          DataLength=20
+        >, object:FieldMember<
+          MemberName='last_update'
+          PhysicalName='LAST_UPDATE'
+          DataType=$TYPEDECLS['TIMESTAMP']
+        >
+      }
+      ClassID='{EDCD205D-7626-4F1E-B38D-9829D3631B83}'
+      AutoPrimaryKey=$TYPEDECLS['DaerahKodePos'].MEMBERS['id_kodepos']
+    >, object:EnumTypeDecl<
+      TypeName='eJenisKartuIdentitas'
+      EnumType=etString
+      EnumMembers={
+        object:EnumMember<
+          StringValue='K'
+          DescriptiveName='KTP'
+        >, object:EnumMember<
+          StringValue='S'
+          DescriptiveName='SIM'
+        >, object:EnumMember<
+          StringValue='P'
+          DescriptiveName='Passport'
+        >
+      }
+    >, object:EnumTypeDecl<
+      TypeName='ARBoolean'
+      EnumType=etString
+      EnumMembers={
+        object:EnumMember<
+          StringValue='F'
+          DescriptiveName='Belum Approve'
+        >, object:EnumMember<
+          StringValue='T'
+          DescriptiveName='Approved'
+        >
+      }
     >
   }
   PhysicalDB=object:ODLDatabase<

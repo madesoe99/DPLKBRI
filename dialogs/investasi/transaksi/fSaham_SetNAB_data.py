@@ -1,6 +1,13 @@
 import sys
-sys.path.append('c:/dafapp/dplk/script_modules')
-import moduleapi,TransactInv
+#sys.path.append('c:/dafapp/dplk/script_modules')
+#import moduleapi,TransactInv
+import com.ihsan.util.modman as modman
+modman.loadStdModules(globals(), 
+  [
+    "moduleapi",
+    "TransactInv"
+  ]
+)
 
 def uipSahamSetData(uipSaham):
   uideflist = uipSaham.UIDefList
@@ -41,10 +48,6 @@ def uipSahamSetData(uipSaham):
      rec_inv.NAB = rSQL.NAB
      rec_inv.unit_penyertaanbaru = rSQL.unit_penyertaan
      rec_inv.ProsesHasilSaham = int(rSQL.TerminalOto)
-     oBatch = config.CreatePObjImplProxy('TransactionBatch')
-     oBatch.key = rSQL.ID_TransactionBatch
-     rec_inv.SetFieldByName('LTransactionBatch.ID_TransactionBatch',oBatch.key)
-     rec_inv.SetFieldByName('LTransactionBatch.no_batch',oBatch.no_batch)
 
   if moduleapi.IsInvestasiTutup(config, oSaham):
     raise Exception, '\nPERINGATAN' + 'Investasi sudah ditutup.'
@@ -92,10 +95,6 @@ def FormEndProcessData(uideflist, datapacket):
   oHistNABSaham.NAB = rec.NAB
   oHistNABSaham.TerminalOto = str(rec.ProsesHasilSaham)
   oHistNABSaham.unit_penyertaan = rec.unit_penyertaanbaru
-  oHistNABSaham.ID_TransactionBatch = rec.GetFieldByName('LTransactionBatch.ID_TransactionBatch')
-  if oHistNABSaham.ID_TransactionBatch in (0, None) :
-    raise Exception, 'PERINGATAN' + 'Batch Transaksi belum dipilih'
-
   if rec.jenis_perubahan != 1 and \
   not TransactInv.CheckUpdateUPSaham(config, rec.Tgl_Penetapan, oSaham, rec.jenis_perubahan) :
       raise Exception, 'PERINGATAN' + 'Tanggal transaksi NAB dan update UP (TOP UP/ Redempt) tidak sama'

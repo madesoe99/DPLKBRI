@@ -29,7 +29,7 @@ object:rmn::Menu<
       AllowedGroups='OPR;SPV'
     >, object:rmn::MenuItem<
       Name='mnuAuth'
-      Caption='Otorisasi Hasil Register Asuransi...'
+      Caption='Approval Hasil Register Asuransi...'
       OnClick='displayWithData'
       AllowedGroups='SPV'
       StringTag='auth'

@@ -14,6 +14,22 @@ def uipartAfterApplyRow(sender, obj):
 
     return 1
 
+def checkKodePos(config, kode_pos):
+  id_kodepos = ''
+  kode_propinsi = ''
+  kode_kota = ''
+  
+  strSQL = '''
+    SELECT id_kodepos, kode_propinsi, kode_kota FROM DaerahKodePos WHERE kode_pos = '%s'
+    ''' % (kode_pos)
+  resSQL = config.CreateSQL(strSQL).RawResult
+  if not resSQL.Eof:
+    id_kodepos = resSQL.id_kodepos
+    kode_propinsi = resSQL.kode_propinsi
+    kode_kota = resSQL.kode_kota
+  
+  return id_kodepos, kode_propinsi, kode_kota
+
 def checkPropinsi(config, nama_propinsi):
   kode_propinsi = ''
   
@@ -50,6 +66,44 @@ def checkKecamatan(config, nama_kecamatan):
   
   return kode_kecamatan
 
+def checkJenisPekerjaan(config, nama_jenis_pekerjaan):
+  kode_jp = ''
+  
+  strSQL = '''
+    SELECT kode_jenis_pekerjaan FROM JenisPekerjaan WHERE nama_jenis_pekerjaan = '%s'
+    ''' % (nama_jenis_pekerjaan)
+  resSQL = config.CreateSQL(strSQL).RawResult
+  if not resSQL.Eof:
+    kode_jp = resSQL.kode_jenis_pekerjaan
+  
+  return kode_jp
+
+def checkJabatanPekerjaan(config, nama_jabatan, kode_jp):
+  kode_jpd = ''
+  
+  strSQL = '''
+    SELECT jpd.jpd_id FROM JENISPEKERJAANDETAIL jpd\
+    INNER JOIN JENISJABATAN jj ON jj.kode_jenis_jabatan = jpd.kode_jenis_jabatan
+    WHERE jj.nama_jenis_jabatan = '%s' AND jpd.kode_jenis_pekerjaan = '%s'
+    ''' % (nama_jabatan, kode_jp)
+  resSQL = config.CreateSQL(strSQL).RawResult
+  if not resSQL.Eof:
+    kode_jpd = resSQL.jpd_id
+  
+  return kode_jpd
+
+def checkSumberDana(config, sumber_dana):
+  kode_status = ''
+  
+  strSQL = '''
+    SELECT sumber_dana FROM SumberDana WHERE sumber_dana = '%s'
+    ''' % (sumber_dana)
+  resSQL = config.CreateSQL(strSQL).RawResult
+  if not resSQL.Eof:
+    kode_status = resSQL.sumber_dana
+  
+  return kode_status
+
 def checkRekeningPeserta(config, no_rekening, no_peserta, nama_peserta):
   oRekInvDPLK = config.CreatePObjImplProxy('RekInvDPLK')
   oRekInvDPLK.Key = no_rekening
@@ -84,6 +138,17 @@ def checkStatusPerkawinan(status_perkawinan):
     
   return kode_status
 
+def checkKewarganegaraan(status_wn):
+  kode_status = ''
+  status_wn = str(status_wn).lower()
+  
+  if status_wn in ['1', 'ina', 'wni']:
+    kode_status = '1'  
+  elif status_wn in ['2', 'wna']:
+    kode_status = '2'
+    
+  return kode_status
+
 def checkJenisKelamin(jenis_kelamin):
   kode_status = ''
   jenis_kelamin = str(jenis_kelamin).lower()
@@ -103,6 +168,28 @@ def checkStatusAhliWaris(status_ahli_waris):
     kode_status = 'A'  
   elif status_ahli_waris in ['n', 'tidak aktif']:
     kode_status = 'N'
+    
+  return kode_status
+
+def checkTrueFalse(status):
+  kode_status = ''
+  status = str(status).lower()
+  
+  if status in ['y', 'yes']:
+    kode_status = 'T'  
+  elif status in ['n', 'no']:
+    kode_status = 'F'
+    
+  return kode_status
+
+def checkSistemBayarIuran(sistem_bayar_iuran):
+  kode_status = ''
+  sistem_bayar_iuran = str(sistem_bayar_iuran).lower()
+  
+  if sistem_bayar_iuran in ['n', 'non rutin']:
+    kode_status = 'N'  
+  elif sistem_bayar_iuran in ['r', 'rutin']:
+    kode_status = 'R'
     
   return kode_status
 
@@ -431,21 +518,63 @@ def CreateUCRegisterPeserta(config, workBookExcel, oUploadCorporate, requiredFie
   oRP.no_referensi = str(workBookExcel.GetCellValue(_Line,3)).strip()
   oRP.alamat_jalan = str(workBookExcel.GetCellValue(_Line,4)).strip()
   oRP.alamat_rtrw = str(workBookExcel.GetCellValue(_Line,5)).strip()
-  oRP.kode_propinsi = checkPropinsi(config, str(workBookExcel.GetCellValue(_Line,6)).strip())
-  oRP.kode_kota = checkKota(config, str(workBookExcel.GetCellValue(_Line,7)).strip())
-  oRP.tempat_lahir = str(workBookExcel.GetCellValue(_Line,8)).strip()
+  oRP.alamat_rw = str(workBookExcel.GetCellValue(_Line,6)).strip()
+  #oRP.kode_propinsi = checkPropinsi(config, str(workBookExcel.GetCellValue(_Line,7)).strip())
+  #oRP.kode_kota = checkKota(config, str(workBookExcel.GetCellValue(_Line,8)).strip())
+  if workBookExcel.GetCellValue(_Line,9) != None:
+    oRP.id_kodepos, oRP.kode_propinsi, oRP.kode_kota = checkKodePos(config, str(int(workBookExcel.GetCellValue(_Line,9))))
+  
+  oRP.tempat_lahir = str(workBookExcel.GetCellValue(_Line,10)).strip()
   
   #import rpdb2; rpdb2.start_embedded_debugger("solusi", True, True)
-  if not str(workBookExcel.GetCellValue(_Line,9)).strip() in ['', 'None']:
+  if not str(workBookExcel.GetCellValue(_Line,11)).strip() in ['', 'None']:
     try:
-      oRP.tanggal_lahir = workBookExcel.GetCellValue(_Line,9)
+      oRP.tanggal_lahir = workBookExcel.GetCellValue(_Line,11)
     except:
       pass
   
-  oRP.status_perkawinan = checkStatusPerkawinan(str(workBookExcel.GetCellValue(_Line,10)).strip())
-  oRP.jenis_kelamin = checkJenisKelamin(str(workBookExcel.GetCellValue(_Line,11)).strip())
-  oRP.NPWP = str(workBookExcel.GetCellValue(_Line,12)).strip()
-  oRP.ibu_kandung = str(workBookExcel.GetCellValue(_Line,13)).strip()
+  if workBookExcel.GetCellValue(_Line,12) != None:
+    oRP.status_perkawinan = checkStatusPerkawinan(str(workBookExcel.GetCellValue(_Line,12)).strip())
+  
+  if workBookExcel.GetCellValue(_Line,13) != None:
+    oRP.jenis_kelamin = checkJenisKelamin(str(workBookExcel.GetCellValue(_Line,13)).strip())
+  
+  oRP.NPWP = str(workBookExcel.GetCellValue(_Line,14)).strip()
+  oRP.ibu_kandung = str(workBookExcel.GetCellValue(_Line,15)).strip()
+  oRP.email = str(workBookExcel.GetCellValue(_Line,16)).strip()
+  oRP.telepon1 = str(workBookExcel.GetCellValue(_Line,17)).strip()
+  oRP.telepon2 = str(workBookExcel.GetCellValue(_Line,18)).strip()
+  
+  if workBookExcel.GetCellValue(_Line,19) != None:
+    oRP.kewarganegaraan = checkKewarganegaraan(str(workBookExcel.GetCellValue(_Line,19)).strip())
+  
+  if workBookExcel.GetCellValue(_Line,20) != None:
+    oRP.kode_jenis_pekerjaan = checkJenisPekerjaan(config, str(workBookExcel.GetCellValue(_Line,20)).strip())
+  
+  if oRP.kode_jenis_pekerjaan != '' and workBookExcel.GetCellValue(_Line,21) != None:
+    oRP.jpd_id = checkJabatanPekerjaan(config, str(workBookExcel.GetCellValue(_Line,21)).strip(), oRP.kode_jenis_pekerjaan)
+  
+  if workBookExcel.GetCellValue(_Line,22) != None:
+    oRP.sumber_dana = checkSumberDana(config, str(workBookExcel.GetCellValue(_Line,22)).strip())
+  
+  oRP.penghasilan_setahun = float(workBookExcel.GetCellValue(_Line,23))
+  oRP.reksumber_no = str(workBookExcel.GetCellValue(_Line,24)).strip()
+  
+  if workBookExcel.GetCellValue(_Line,25) != None:
+    oRP.ispesertapengalihan = checkTrueFalse(str(workBookExcel.GetCellValue(_Line,25)).strip())
+  
+  if workBookExcel.GetCellValue(_Line,26) != None:
+    oRP.sistem_pembayaran_iuran = checkSistemBayarIuran(str(workBookExcel.GetCellValue(_Line,26)).strip())
+  
+  oRP.tgl_debet_rekening = int(workBookExcel.GetCellValue(_Line,27))
+  oRP.pct_pi_fix = int(workBookExcel.GetCellValue(_Line,28))
+  oRP.pct_pi_eq = int(workBookExcel.GetCellValue(_Line,29))
+  oRP.pct_pi_mm = int(workBookExcel.GetCellValue(_Line,30))
+  oRP.usia_pensiun = int(workBookExcel.GetCellValue(_Line,31))
+  
+  if workBookExcel.GetCellValue(_Line,32) != None:
+    oRP.ikut_asuransi = checkTrueFalse(str(workBookExcel.GetCellValue(_Line,32)).strip())
+  
   oRP.is_auth = 'F'
   oRP.is_valid = 'T'
   
@@ -453,6 +582,8 @@ def CreateUCRegisterPeserta(config, workBookExcel, oUploadCorporate, requiredFie
   if oRP.no_referensi in ['', 'None']\
     or oRP.alamat_jalan in ['', 'None']\
     or oRP.alamat_rtrw in ['', 'None']\
+    or oRP.alamat_rw in ['', 'None']\
+    or oRP.id_kodepos in ['', 'None']\
     or oRP.kode_propinsi in ['', 'None']\
     or oRP.kode_kota in ['', 'None']\
     or oRP.tempat_lahir in ['', 'None']\

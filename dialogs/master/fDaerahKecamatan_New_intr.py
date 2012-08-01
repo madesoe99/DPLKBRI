@@ -5,4 +5,3 @@ def FormShow(form, parameter):
   uipDaerahKecamatan.Edit()
   uipDaerahKecamatan.user_id = app.UserID
   uipDaerahKecamatan.last_update = app.ModDateTime.Now()
-

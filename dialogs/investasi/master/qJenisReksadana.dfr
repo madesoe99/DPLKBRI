@@ -4,9 +4,10 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rtf::Form<
+>
+object:rtf::Form<
   MainContainer=$CONTAINERS['qJenisReksadana']
-  Caption='Daftar Pihak Ketiga'
+  Caption='Daftar Jenis Reksadana'
   State=rsMaximized
   Left=50
   Top=50
@@ -23,7 +24,8 @@ document <
   OnSetDataEx=''
   OnBeginProcessData=''
   OnEndProcessData=''
-  Containers={object:rtf::Query<
+  Containers={
+    object:rtf::Query<
       Name='qJenisReksadana'
       Width=800
       Height=600
@@ -42,7 +44,8 @@ document <
         ') then order by kode_jns_reksadana;']
       DirectDisplay=true
       WindowSize=20
-      Columns={object:rtf::QueryColumn<
+      Columns={
+        object:rtf::QueryColumn<
           FieldName='JenisReksadana.kode_jns_reksadana'
           Width=100
           Caption='Kode Jenis Reksadana'
@@ -54,5 +57,9 @@ document <
           FieldName='JenisReksadana.keterangan'
           Width=300
           Caption='keterangan'
-        >}EnableColumns=true
-    >}>
+        >
+      }
+      EnableColumns=true
+    >
+  }
+>

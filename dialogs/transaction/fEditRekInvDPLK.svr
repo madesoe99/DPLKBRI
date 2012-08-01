@@ -10,8 +10,8 @@ object:rpclass::TPClassUIDefList<
     object:rpclass::TPClassUIDef<
       Name='uipRegisterCIF'
       PClassName='RegEditRekening'
-      LoadedFieldList='registercif_id;no_referensi;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;keterangan;user_id;terminal_id;registercif_id;LRekeningDPLK.no_rekening;LRekeningDPLK.no_rekening;LRekeningDPLK.keterangan;LSumberDana.sumber_dana;LSumberDana.sumber_dana;LSumberDana.keterangan;usia_pensiun;tgl_pensiun;tgl_pensiun_dipercepat;LTujuanBukaRekening.tujuan_buka_rekening;LTujuanBukaRekening.tujuan_buka_rekening;LTujuanBukaRekening.keterangan;tujuan_pembukaan_rekening;kirim_statemen;confidential_code'
-      StoredFieldList='no_referensi;LNasabahDPLK;keterangan;user_id;terminal_id;LRekeningDPLK;LSumberDana;usia_pensiun;tgl_pensiun;tgl_pensiun_dipercepat;LTujuanBukaRekening;tujuan_pembukaan_rekening;kirim_statemen;confidential_code'
+      LoadedFieldList='registercif_id;no_referensi;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;keterangan;user_id;terminal_id;registercif_id;LRekeningDPLK.no_rekening;LRekeningDPLK.no_rekening;LRekeningDPLK.keterangan;LSumberDana.sumber_dana;LSumberDana.sumber_dana;LSumberDana.keterangan;usia_pensiun;tgl_pensiun;tgl_pensiun_dipercepat;LTujuanBukaRekening.tujuan_buka_rekening;LTujuanBukaRekening.tujuan_buka_rekening;LTujuanBukaRekening.keterangan;tujuan_pembukaan_rekening;kirim_statemen;confidential_code;ISPESERTAPENGALIHAN;LLDPLain.kode_dp;LLDPLain.kode_dp;LLDPLain.nama_dp;LKelompok.kode_kelompok;LKelompok.kode_kelompok;LKelompok.nama_kelompok'
+      StoredFieldList='no_referensi;LNasabahDPLK;keterangan;user_id;terminal_id;LRekeningDPLK;LSumberDana;usia_pensiun;tgl_pensiun;tgl_pensiun_dipercepat;LTujuanBukaRekening;tujuan_pembukaan_rekening;kirim_statemen;confidential_code;ISPESERTAPENGALIHAN;LLDPLain;LKelompok'
       CustomLoadedFields={
         object:rpclass::TCustomLoadedField<
           Name='mode'
@@ -36,6 +36,14 @@ object:rpclass::TPClassUIDefList<
           Name='LTujuanBukaRekening'
           ClassTypeName='TujuanBukaRekening'
           FieldNames='tujuan_buka_rekening;tujuan_buka_rekening;keterangan'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LLDPLain'
+          ClassTypeName='LDP'
+          FieldNames='kode_dp;kode_dp;nama_dp'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LKelompok'
+          ClassTypeName='Kelompok'
+          FieldNames='kode_kelompok;kode_kelompok;nama_kelompok'
         >
       }
       Mode=imSingleRow
@@ -44,7 +52,7 @@ object:rpclass::TPClassUIDefList<
     >, object:rpclass::TPClassUIDef<
       Name='uipMaster'
       PClassName='RekInvDPLK'
-      LoadedFieldList='no_rekening;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;LNasabahDPLK.tanggal_lahir;no_peserta;keterangan;confidential_code;kirim_statemen;LSumberDana.sumber_dana;LSumberDana.sumber_dana;LSumberDana.keterangan;tgl_pensiun;tgl_pensiun_dipercepat;tujuan_pembukaan_rekening;usia_pensiun;LTujuanBukaRekening.tujuan_buka_rekening;LTujuanBukaRekening.tujuan_buka_rekening;LTujuanBukaRekening.keterangan'
+      LoadedFieldList='no_rekening;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;LNasabahDPLK.tanggal_lahir;no_peserta;keterangan;confidential_code;kirim_statemen;LSumberDana.sumber_dana;LSumberDana.sumber_dana;LSumberDana.keterangan;tgl_pensiun;tgl_pensiun_dipercepat;tujuan_pembukaan_rekening;usia_pensiun;LTujuanBukaRekening.tujuan_buka_rekening;LTujuanBukaRekening.tujuan_buka_rekening;LTujuanBukaRekening.keterangan;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.kode_nasabah_corporate;isPesertaPengalihan;LLDPLain.kode_dp;LLDPLain.kode_dp;LLDPLain.nama_dp;LKelompok.kode_kelompok;LKelompok.kode_kelompok;LKelompok.nama_kelompok'
       CustomLoadedLinks={
         object:rpclass::TCustomLoadedLink<
           Name='LNasabahDPLK'
@@ -58,6 +66,18 @@ object:rpclass::TPClassUIDefList<
           Name='LTujuanBukaRekening'
           ClassTypeName='TujuanBukaRekening'
           FieldNames='tujuan_buka_rekening;tujuan_buka_rekening;keterangan'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLKCorporate'
+          ClassTypeName='NasabahDPLKCorporate'
+          FieldNames='kode_nasabah_corporate;kode_nasabah_corporate'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LLDPLain'
+          ClassTypeName='LDP'
+          FieldNames='kode_dp;kode_dp;nama_dp'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LKelompok'
+          ClassTypeName='Kelompok'
+          FieldNames='kode_kelompok;kode_kelompok;nama_kelompok'
         >
       }
       Mode=imSingleRow

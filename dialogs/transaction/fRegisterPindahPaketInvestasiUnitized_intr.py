@@ -3,6 +3,8 @@ fready = False
 
 def SetControlsForView(form):
   form.GetPanelByName('pData').SetAllControlsReadOnly()
+  form.GetPanelByName('pPaketInvestasi').SetAllControlsReadOnly()
+  
   #form.gPaketBaru.ReadOnly = 1
   form.GetPanelByName('gPaketBaru').SetAllControlsReadOnly()
   form.GetPanelByName('gPaketBaru').SuppressHelpLine = 1
@@ -19,6 +21,8 @@ def SetControlsForView(form):
 
 def SetControlsForAuth(form):
   form.GetPanelByName('pData').SetAllControlsReadOnly()
+  form.GetPanelByName('pPaketInvestasi').SetAllControlsReadOnly()
+  
   #form.gPaketBaru.ReadOnly = 1
   form.GetPanelByName('gPaketBaru').SetAllControlsReadOnly()
   form.GetPanelByName('gPaketBaru').SuppressHelpLine = 1
@@ -80,9 +84,9 @@ def btnOKClick(sender):
     #mode New or edit
 
     """checking nomor referensi"""
-    if uipRegisterCIF.no_referensi in ['',None]:
-      form.ShowMessage('Nomor Referensi masih kosong. Mohon untuk diisi.')
-      return
+    #if uipRegisterCIF.no_referensi in ['',None]:
+    #  form.ShowMessage('Nomor Referensi masih kosong. Mohon untuk diisi.')
+    #  return
 
     """cek proporsi paket"""
     uipPaket = form.GetUIPartByName("uipRegDetail")

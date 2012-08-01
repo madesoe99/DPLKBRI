@@ -1,6 +1,7 @@
 class fPengambilanManfaatPensiun:
   def __init__(self, formObj, parentForm):
-    pass
+    self.app = formObj.ClientApplication
+    self.Input = self.app.GetClientClass("Inputan", "Inputan")()
   #--
 
   def JenisBiaya_OnChange(self, cbJenisBiaya):
@@ -10,6 +11,8 @@ class fPengambilanManfaatPensiun:
       self.uipTransaksi.biaya_lain = self.uipParameter.BiayaSKN
     elif index == 1:
       self.uipTransaksi.biaya_lain = self.uipParameter.BiayaRTGS
+    elif index == 2:
+      self.uipTransaksi.biaya_lain = self.uipParameter.BiayaPindahBuku
   #--
   
   def JenisPenerimaanManfaatBeforeLookup(self, sender, linkui):
@@ -20,6 +23,13 @@ class fPengambilanManfaatPensiun:
   
     return 1
   #--
+  def OnEnter(self, sender):
+    uip = self.uipTransaksi
+    self.Input.OnEnter(sender,uip)
+
+  def OnExit(self, sender):
+    uip = self.uipTransaksi
+    self.Input.OnExit(sender,uip)
   
   def JenisPenerimaanManfaatAfterLookup(self, sender, linkui):
     #cek jenis penerimaan manfaat pensiun janda / anak
@@ -35,7 +45,7 @@ class fPengambilanManfaatPensiun:
     
     #cek total dana pengambilan manfaat
     if self.uipTransaksi.total_dana < self.uipParameter.PRESISI_ANGKA_FLOAT:
-      self.FormObject.ShowMessage('Total Dana Peserta ialah 0! Untuk itu, tidak ada dana yang bisa ditarik')
+      self.FormObject.ShowMessage('Total Dana Peserta ialah 0! Untuk itu, tidak ada dana yang bisa dicairkan')
       return
 
     #cek jenis penerimaan manfaat
@@ -73,10 +83,9 @@ class fPengambilanManfaatPensiun:
     self.uipHitung.biaya_pencairan = (persenBiayaCair / 100) * self.uipHitung.saldo_jml_dana 
     
     # biaya pengelolaan dan biaya administrasi dihitung berdasarkan proporsi
-    self.uipHitung.biaya_pengelolaan = self.uipParameter.proporsiBiaya * \
-      (self.uipParameter.PERSEN_BIAYA_PENGELOLAAN / 100) * self.uipHitung.saldo_jml_dana
-    self.uipHitung.biaya_administrasi = self.uipParameter.proporsiBiaya * \
-      self.uipParameter.BIAYA_ADM_TAHUNAN 
+    self.uipHitung.biaya_pengelolaan = self.uipParameter.proporsiHari * \
+      (self.uipParameter.PERSEN_BIAYA_PENGELOLAAN / 100 / 12) * self.uipHitung.saldo_jml_dana
+    self.uipHitung.biaya_administrasi = self.uipParameter.BIAYA_ADM_TAHUNAN / 12 
     
     self.uipHitung.saldo_manfaat = self.uipHitung.saldo_jml_dana - \
       self.uipHitung.biaya_pencairan - \
@@ -114,6 +123,14 @@ class fPengambilanManfaatPensiun:
       self.uipHitung.manfaat_tunai = self.uipHitung.manfaat_setelah_pajak
       self.uipHitung.manfaat_anuitas = 0.0
     
+    #cek % anuitas pilihan peserta jika semua dana diterima tunai
+    if self.uipHitung.manfaat_anuitas < self.uipParameter.PRESISI_ANGKA_FLOAT:
+      #semua dana diterima tunai, lihat % anuitas pilihan peserta
+      self.uipHitung.manfaat_anuitas = (self.uipTransaksi.persen_anuitas_pilihan_peserta / 100) * \
+        self.uipHitung.manfaat_tunai
+      self.uipHitung.manfaat_tunai = self.uipHitung.manfaat_setelah_pajak - \
+         self.uipHitung.manfaat_anuitas
+    
     self.uipHitung.jenis_biaya_lain = self.uipTransaksi.jenis_biaya
     self.uipHitung.nominal_biaya_lain = self.uipTransaksi.biaya_lain
     
@@ -140,7 +157,7 @@ class fPengambilanManfaatPensiun:
     
     #cek total dana pengambilan manfaat
     if self.uipTransaksi.total_dana < self.uipParameter.PRESISI_ANGKA_FLOAT:
-      self.FormObject.ShowMessage('Total Dana Peserta ialah 0! Untuk itu, tidak ada dana yang bisa ditarik')
+      self.FormObject.ShowMessage('Total Dana Peserta ialah 0! Untuk itu, tidak ada dana yang bisa dicairkan')
       return
 
     #cek jenis penerimaan manfaat
@@ -155,9 +172,15 @@ class fPengambilanManfaatPensiun:
       return
 
     #cek nama anuitas
-    if self.uipHitung.manfaat_anuitas < self.uipParameter.PRESISI_ANGKA_FLOAT:
-      self.FormObject.ShowMessage('Mohon isi nama anuitas yang dipilih peserta')
+    if self.uipHitung.manfaat_anuitas > self.uipParameter.PRESISI_ANGKA_FLOAT and \
+      self.uipTransaksi.nama_anuitas in (None,''):
+      self.FormObject.ShowMessage('Peserta ikut anuitas, mohon isi nama anuitas yang dipilih peserta')
       return
+
+    if self.app.ConfirmDialog('Anda yakin Simpan transaksi pengambilan Manfaat Pensiun %s %s?' % (self.uipPeserta.no_peserta, self.uipPeserta.nama_lengkap)):
+      pass
+    else:
+      return 0
 
     form.CommitBuffer()
     phForm = form.GetDataPacket()

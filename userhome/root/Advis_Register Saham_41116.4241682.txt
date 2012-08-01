@@ -1,0 +1,28 @@
+DPLK Bank Rakyat Indonesia
+Lembar Advis Register Saham
+========================================================================
+Nama Saham                    : tes
+Manajer Investasi             : BBKPS - Bank Bukopin Syariah
+Paket Investasi               : C
+Maks. Proporsi                : 50.00
+Nominal Paket                 : 0.00
+Nilai Maks. Proporsi          : 0.00
+Saham Existing                : 0.00
+Dana Idle                     : 0.00
+Nominal Giro                  : 0.00
+Tgl Buka                      : 26-7-2012
+Nilai Investasi               : 1,000,000,000.00
+
+
+
+
+         Inputer data           Checker           Approver
+
+
+
+
+         root
+
+----------
+Tanggal pembuatan advis : 26-07-2012 10:10:48
+User pembuat advis      : root user

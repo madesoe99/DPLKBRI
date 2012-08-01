@@ -43,12 +43,6 @@ object:rmn::Menu<
           AllowedGroups='OPR'
           StringTag='Y'
         >, object:rmn::MenuItem<
-          Name='mnuEditStatusKerja'
-          Caption='PHK dari / Pendaftaran ke Perusahaan...'
-          OnClick='displayWithDataSpecific'
-          AllowedGroups='OPR'
-          StringTag='K'
-        >, object:rmn::MenuItem<
           Caption='-'
           AllowedGroups='OPR'
         >, object:rmn::MenuItem<

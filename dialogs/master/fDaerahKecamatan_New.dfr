@@ -69,6 +69,7 @@ object:rtf::Form<
             '  self'#13#10,
             ') THEN ORDER BY kode_propinsi;']
           LookupOption=loCustomOQL
+          FieldBaseName='LPropinsi'
         >, *object:rtf::LinkUIElmtSetting<
           Name='LKota'
           Hidden=false
@@ -83,6 +84,7 @@ object:rtf::Form<
             '  self'#13#10,
             ') THEN ORDER BY kode_kota;']
           LookupOption=loCustomOQL
+          FieldBaseName='LKota'
         >, *object:rtf::FieldUIElmtSetting<
           Name='kode_kecamatan'
           Hidden=false

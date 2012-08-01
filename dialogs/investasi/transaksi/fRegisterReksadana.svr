@@ -4,13 +4,16 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rpclass::TPClassUIDefList<
-  UIDefs={object:rpclass::TPClassUIDef<
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
       Name='uipRegisterReksadana'
       PClassName='RegisterReksadana'
       LoadedFieldList='LSubJenisInv.kode_subjns_LRInvestasi;LSubJenisInv.kode_subjns_LRInvestasi;LSubJenisInv.deskripsi;nama_reksadana;LPihakKetiga.kode_pihak_ketiga;LPihakKetiga.kode_pihak_ketiga;LPihakKetiga.nama_pihak_ketiga;LRincianPaketInvestasi.kode_paket_investasi;LRincianPaketInvestasi.kode_jns_investasi;LRincianPaketInvestasi.kode_paket_investasi;LRincianPaketInvestasi.LPaketInvestasi.nama_paket_investasi;LRincianPaketInvestasi.kode_jns_investasi;LRincianPaketInvestasi.maks_proporsi;LJenisReksadana.kode_jns_reksadana;LJenisReksadana.kode_jns_reksadana;LJenisReksadana.jenis_reksadana;tgl_buka;nominal;dpkPaket;dpkInvExisting;dpkTersedia;nominalGiro;nilaiMaksProporsi;LPayingAgent.agent_code;LPayingAgent.agent_code;LPayingAgent.agent_name;LBroker.id;LBroker.broker_code;LBroker.broker_name;nominal;biaya;NAB_awal;unit_penyertaan;LCustodianBank.BankCode;LCustodianBank.BankCode;LCustodianBank.BankName;user_id;terminal_id;tanggal_register;id_registerinvestasi'
       StoredFieldList='LSubJenisInv;nama_reksadana;LPihakKetiga;LRincianPaketInvestasi;LJenisReksadana;tgl_buka;nominal;dpkPaket;dpkInvExisting;dpkTersedia;nominalGiro;nilaiMaksProporsi;LPayingAgent;LBroker;nominal;biaya;NAB_awal;unit_penyertaan;LCustodianBank;user_id;terminal_id;tanggal_register'
-      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
           Name='maks_proporsi'
           DataTypeName='double'
           DataLength=20
@@ -18,7 +21,10 @@ document <
           Name='mode'
           DataTypeName='varchar'
           DataLength=20
-        >}CustomLoadedLinks={object:rpclass::TCustomLoadedLink<
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
           Name='LSubJenisInv'
           ClassTypeName='SubJnsTransLRInvestasi'
           FieldNames='kode_subjns_LRInvestasi;kode_subjns_LRInvestasi;deskripsi'
@@ -40,19 +46,22 @@ document <
           FieldNames='agent_code;agent_code;agent_name'
         >, object:rpclass::TCustomLoadedLink<
           Name='LBroker'
-          ClassTypeName='BROKER'
+          ClassTypeName='Broker'
           FieldNames='id;broker_code;broker_name'
         >, object:rpclass::TCustomLoadedLink<
           Name='LCustodianBank'
           ClassTypeName='CustodianBank'
           FieldNames='BankCode;BankCode;BankName'
-        >}Mode=imSingleRow
+        >
+      }
+      Mode=imSingleRow
       CreateInstanceOnNew=true
       OnSetData='uipRegisterReksadanaSetData'
       AfterApplyRow='uipRegisterReksadanaApplyRow'
     >, object:rpclass::TPClassUIDef<
       Name='uipParameter'
-      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
           Name='nowDate'
           DataTypeName='varchar'
           DataLength=10
@@ -64,7 +73,11 @@ document <
           Name='strInv'
           DataTypeName='varchar'
           DataLength=20
-        >}Mode=imSingleRow
+        >
+      }
+      Mode=imSingleRow
       CreateInstanceOnNew=true
-    >}OnGeneralSetData='FormGeneralSetData'
+    >
+  }
+  OnGeneralSetData='FormGeneralSetData'
 >

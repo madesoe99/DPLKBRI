@@ -17,7 +17,8 @@ class fSelectTransaksi:
       'F':'transaksi/fOtorisasiPindahPaketInvestasi',
       'C':'transaksi/fViewBiaya',
       'D':'transaksi/fViewBiaya',
-      'X':'transaksi/fViewBiaya'
+      'X':'transaksi/fViewBiaya',
+      'G':'transaksi/fViewBiaya'
     }
   #--
   
@@ -63,7 +64,7 @@ class fSelectTransaksi:
         and tgl_transaksi < :tanggal_akhir] \
       (tgl_transaksi,\
        branch_code,\
-       isCommitted,\
+       isCommitted $,\
        ID_Transaksi,\
        LJenisTransaksiDPLK.kode_jenis_transaksi,\
        LJenisTransaksiDPLK.nama_transaksi,\
@@ -147,7 +148,7 @@ class fSelectTransaksi:
   #--
   
   def bOtorisasi_Click(self, button):
-    if self.qTransaksi.GetFieldValue('TransaksiDPLK.isCommitted').upper() in ['T','TRUE']:
+    if self.qTransaksi.GetFieldValue('TransaksiDPLK.isCommitted').upper() in ['T','APPROVED','TRUE']:
       self.FormObj.ShowMessage("Transaksi telah terotorisasi!")
       return
       

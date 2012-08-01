@@ -26,9 +26,9 @@ class fRegistrasiCorp_New:
     uipRegEditNasabahDPLKCorporate = form.GetUIPartByName('uipRegEditNasabahDPLKCorporate')
     uipP = form.GetUIPartByName('uipParameter')
   
-    if uipRegEditNasabahDPLKCorporate.no_referensi in ['',None]:
-      form.ShowMessage('Nomor Referensi masih kosong. Mohon untuk diisi.')
-      return
+    #if uipRegEditNasabahDPLKCorporate.no_referensi in ['',None]:
+    #  form.ShowMessage('Nomor Referensi masih kosong. Mohon untuk diisi.')
+    #  return
   
     if uipRegEditNasabahDPLKCorporate.kode_nasabah_corporate in ['',None]:
       form.ShowMessage('Kode Peserta Korporat masih kosong. Mohon untuk diisi.')
@@ -47,16 +47,16 @@ class fRegistrasiCorp_New:
       return
   
     #checking tgl bayar iuran
-    if uipRegEditNasabahDPLKCorporate.tgl_bayar_iuran in ['',None]:
-      form.ShowMessage('Tanggal Bayar Iuran masih kosong. Mohon untuk diisi.')
-      return
+    #if uipRegEditNasabahDPLKCorporate.tgl_bayar_iuran in ['',None]:
+    #  form.ShowMessage('Tanggal Bayar Iuran masih kosong. Mohon untuk diisi.')
+    #  return
       
     #checking biaya daftar anggota
-    if uipRegEditNasabahDPLKCorporate.biaya_daftar_anggota in ['',None] or \
-      uipRegEditNasabahDPLKCorporate.biaya_daftar_anggota < 0.0:
-      #memakai batas 0.0 sebab dimungkinkan gratis
-      form.ShowMessage('Biaya Daftar Anggota tidak boleh kosong atau negatif.')
-      return
+    #if uipRegEditNasabahDPLKCorporate.biaya_daftar_anggota in ['',None] or \
+    #  uipRegEditNasabahDPLKCorporate.biaya_daftar_anggota < 0.0:
+       #memakai batas 0.0 sebab dimungkinkan gratis
+    #  form.ShowMessage('Biaya Daftar Anggota tidak boleh kosong atau negatif.')
+    #  return
   
     if uipRegEditNasabahDPLKCorporate.GetFieldValue("LNegara.kode_negara") in ['',None]:
       form.ShowMessage('Negara masih kosong. Mohon untuk diisi.')
@@ -80,3 +80,27 @@ class fRegistrasiCorp_New:
     uipReg = ctlLNegara.OwnerForm.GetUIPartByName('uipRegEditNasabahDPLKCorporate')
     uipReg.Edit()   
     uipReg.SetFieldValue('RF_Negara', self.dictRiskFlag[uipReg.GetFieldValue('LNegara.Risk_Flag') or ''])      
+
+  def LAKKodePosOnAfterLookup(self, sender, linkui):
+    # procedure(sender: TrtfDBLookupEdit; linkui: TrtfLinkUIElmtSetting)
+    form = sender.OwnerForm
+    uipReg = form.GetUIPartByName('uipRegEditNasabahDPLKCorporate')
+    uipReg.Edit()
+    
+    uipReg.SetFieldValue('LAKPropinsi.kode_propinsi', uipReg.GetFieldValue('LAKKodePos.kode_propinsi'))
+    uipReg.SetFieldValue('LAKPropinsi.nama_propinsi', uipReg.GetFieldValue('LAKKodePos.LPropinsi.nama_propinsi'))
+    self.pDataRight.GetControlByName('LAKPropinsi').Enabled = 0
+    
+    uipReg.SetFieldValue('LAKKota.kode_kota', uipReg.GetFieldValue('LAKKodePos.kode_kota'))
+    uipReg.SetFieldValue('LAKKota.nama_kota', uipReg.GetFieldValue('LAKKodePos.LKota.nama_kota'))
+    self.pDataRight.GetControlByName('LAKKota').Enabled = 0
+    
+    uipReg.SetFieldValue('LAKKecamatan.kode_kecamatan', uipReg.GetFieldValue('LAKKodePos.kode_kecamatan'))
+    uipReg.SetFieldValue('LAKKecamatan.nama_kecamatan', uipReg.GetFieldValue('LAKKodePos.LKecamatan.nama_kecamatan'))
+    self.pDataRight.GetControlByName('LAKKecamatan').Enabled = 0
+    
+    uipReg.SetFieldValue('alamat_kantor_kelurahan', uipReg.GetFieldValue('LAKKodePos.nama_kelurahan'))
+    if not uipReg.GetFieldValue('LAKKodePos.nama_kelurahan') in ['', None]:
+      self.pDataRight.GetControlByName('alamat_kantor_kelurahan').Enabled = 0
+    
+    

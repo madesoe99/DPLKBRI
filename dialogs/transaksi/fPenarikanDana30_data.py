@@ -71,6 +71,18 @@ def Form_OnSetDataEx(uideflist, parameterForm):
   oParameter.Key = 'PRESISI_ANGKA_FLOAT'
   recParameter.PRESISI_ANGKA_FLOAT = oParameter.Numeric_Value
 
+  oParameter.Key = 'BIAYA_SKN'
+  recParameter.BiayaSKN = oParameter.Numeric_Value
+  oParameter.Key = 'BIAYA_RTGS'
+  recParameter.BiayaRTGS = oParameter.Numeric_Value
+  oParameter.Key = 'BIAYA_TUNAI'
+  recParameter.BiayaTunai = oParameter.Numeric_Value
+  oParameter.Key = 'BIAYA_PINDAH_BUKU'
+  recParameter.BiayaPindahBuku = oParameter.Numeric_Value
+
+  oParameter.Key = 'PERSEN_DENDA_NPWP'
+  recParameter.PERSEN_DENDA_NPWP = oParameter.Numeric_Value
+
   #cek parameter default atau parameter korporat
   if recPeserta.kode_nasabah_corporate not in (None,''):
     #pakai parameter korporat
@@ -78,36 +90,17 @@ def Form_OnSetDataEx(uideflist, parameterForm):
     dictParameterKorporat = transaksiAPI.GetParameterCorporate(config, \
       recPeserta.kode_nasabah_corporate, listParameterKey)
     
-    recParameter.BiayaSKN = dictParameterKorporat['BIAYA_SKN'][1]
-    recParameter.BiayaRTGS = dictParameterKorporat['BIAYA_RTGS'][1]
-    recParameter.BiayaTunai = dictParameterKorporat['BIAYA_TUNAI'][1]
-    recParameter.BiayaPindahBuku = dictParameterKorporat['BIAYA_PINDAH_BUKU'][1]
-
     recParameter.PERSEN_PENARIKAN_NORMAL = dictParameterKorporat['PERSEN_PENARIKAN_NORMAL'][1]
     recParameter.MIN_JML_AKUM_IURAN_PST = dictParameterKorporat['MIN_JML_AKUM_IURAN_PST'][1]
-    recParameter.PERSEN_DENDA_NPWP = dictParameterKorporat['PERSEN_DENDA_NPWP'][1]
     recParameter.MIN_BIAYA_TARIK = dictParameterKorporat['MIN_BIAYA_TARIK'][1]
     recParameter.MIN_JML_TARIK_NORMAL = dictParameterKorporat['MIN_JML_TARIK_NORMAL'][1]
     recParameter.PERSEN_BIAYA_TARIK_NORMAL = dictParameterKorporat['PERSEN_BIAYA_TARIK_NORMAL'][1]
-
-    recParameter.PERSEN_DENDA_NPWP = dictParameterKorporat['PERSEN_DENDA_NPWP'][1]
   else:
     #pakai parameter default aplikasi
-    oParameter.Key = 'BIAYA_SKN'
-    recParameter.BiayaSKN = oParameter.Numeric_Value
-    oParameter.Key = 'BIAYA_RTGS'
-    recParameter.BiayaRTGS = oParameter.Numeric_Value
-    oParameter.Key = 'BIAYA_TUNAI'
-    recParameter.BiayaTunai = oParameter.Numeric_Value
-    oParameter.Key = 'BIAYA_PINDAH_BUKU'
-    recParameter.BiayaPindahBuku = oParameter.Numeric_Value
-  
     oParameter.Key = 'PERSEN_PENARIKAN_NORMAL'
     recParameter.PERSEN_PENARIKAN_NORMAL = oParameter.Numeric_Value
     oParameter.Key = 'MIN_JML_AKUM_IURAN_PST'
     recParameter.MIN_JML_AKUM_IURAN_PST = oParameter.Numeric_Value
-    oParameter.Key = 'PERSEN_DENDA_NPWP'
-    recParameter.PERSEN_DENDA_NPWP = oParameter.Numeric_Value
     oParameter.Key = 'MIN_BIAYA_TARIK'
     recParameter.MIN_BIAYA_TARIK = oParameter.Numeric_Value
     oParameter.Key = 'MIN_JML_TARIK_NORMAL'
@@ -175,6 +168,7 @@ def SimpanTransaksi(config, params, returns):
     oT.user_name = config.SecurityContext.UserID
     
     #field object TransaksiDPLK
+    #mutasi perlu direview saat otorisasi, terutama bila penarikan mencapai 100%
     oT.mutasi_iuran_pk = -recT.jml_tarik_iuran_pk
     oT.mutasi_iuran_pst = -recT.jml_tarik_iuran_pst
     oT.mutasi_iuran_tmb = -recT.jml_tarik_iuran_tmb
@@ -215,6 +209,7 @@ def SimpanTransaksi(config, params, returns):
         oDetilTransaksi.nomor_rekening = oRekDPLK.nomor_rekening 
         oDetilTransaksi.kode_paket_investasi = oRekDPLK.kode_paket_investasi
         
+        #mutasi perlu direview terutama penarikan dana mencapai 100% 
         oDetilTransaksi.mutasi_iuran_pk = (oRekDPLK.pct_alokasi / 100.0) * oT.mutasi_iuran_pk  
         oDetilTransaksi.mutasi_iuran_pst = (oRekDPLK.pct_alokasi / 100.0) * oT.mutasi_iuran_pst  
         oDetilTransaksi.mutasi_iuran_tmb = (oRekDPLK.pct_alokasi / 100.0) * oT.mutasi_iuran_tmb

@@ -57,21 +57,6 @@ object:rtf::Form<
           ControlCaption=''
           Caption='&Proses Otorisasi'
           OnClick='bProsesOnClick'
-        >, object:rtf::Label<
-          Name='label1'
-          Layout=clAbsolute
-          Top=12
-          Left=480
-          Width=26
-          Height=17
-          ControlCaption=''
-          Caption='Ket : DoubleClick di Grid untuk merubah status valid riwayat'
-          AutoSize=true
-          TextLayout=tlrCenter
-          FontName='Tahoma'
-          FontColor=-16777208
-          FontSize=10
-          FontStyleBold=true
         >, object:rtf::Button<
           Name='bPindahbuku'
           Layout=clAbsolute
@@ -79,6 +64,7 @@ object:rtf::Form<
           Left=104
           Width=105
           Height=25
+          Enabled=false
           ControlCaption=''
           Caption='&Proses Pindahbuku'
           OnClick='bPindahbukuOnClick'
@@ -139,7 +125,6 @@ object:rtf::Form<
         >
       }
       EnableColumns=true
-      OnDoubleClick='EditClick'
     >, object:rtf::Query<
       Name='qValid'
       Width=857
@@ -173,7 +158,6 @@ object:rtf::Form<
         >
       }
       EnableColumns=true
-      OnDoubleClick='InvalidClick'
     >, object:rtf::MultiPages<
       Name='multipages1'
       Width=865
@@ -202,6 +186,13 @@ object:rtf::Form<
           Hidden=false
           ReadOnlyControl=true
           ControlCaption='Nominal Sudah diotorisasi'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='sum_koreksi'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Nominal Yang Sudah Dikoreksi'
           DataTypeName='double'
           DataLength=20
         >, object:rtf::FieldUIElmtSetting<
@@ -241,15 +232,22 @@ object:rtf::Form<
           ControlCaption='Nominal Sudah diotorisasi'
           ReadOnly=true
         >, *object:rtf::DBEdit<
-          Name='sum_sisa'
+          Name='sum_koreksi'
           Top=64
+          Left=8
+          Enabled=false
+          Color=65535
+          ControlCaption='Nominal Yang Sudah Dikoreksi'
+        >, *object:rtf::DBEdit<
+          Name='sum_sisa'
+          Top=92
           Left=8
           Enabled=false
           Color=8454143
           ControlCaption='Nominal yang belum otorisasi'
         >, *object:rtf::DBEdit<
           Name='sum_pindahbuku'
-          Top=92
+          Top=120
           Left=8
           Enabled=false
           Color=8454143

@@ -42,19 +42,21 @@ def bOKClick(sender):
     namaBiaya = 'Biaya Pengelolaan Dana'
   #elif yang lainnya...
   
-  try:
-    if app.ConfirmDialog('Anda yakin akan melakukan pengenaan %s \nkepada semua '\
-      'Peserta DPLK?' % (namaBiaya)):
+  if app.ConfirmDialog('Anda yakin akan melakukan pengenaan %s \nkepada semua '\
+    'Peserta DPLK?' % (namaBiaya)):
 
-      #pid = app.ExecuteScriptTrackable('transaksi/L_BiayaTahunan', \
-      param =  app.CreateValues(['code',codeBiaya],
-        ['tglhitung',uipInput.TanggalHitung],
-        ['execFile','transaksi/L_BiayaTahunan'])
-        
-      app.ExecuteScript('longscripts/ExecuteLongScript', param)
+    #pid = app.ExecuteScriptTrackable('transaksi/L_BiayaTahunan', \
+    param =  app.CreateValues(['code',codeBiaya],
+      ['tglhitung',uipInput.TanggalHitung])
+      
+    resp = app.ExecuteScript('transaksi/BiayaMassal', param)
+
+    status = resp.FirstRecord
+    if status.IsErr :
+      app.ShowMessage(status.ErrMessage)
+      return
       #pcConsole.ConsoleFilterName = namaBiaya + '_' + str(pid)
-      sender.Enabled = sender.Default = 0
-      sender.OwnerForm.GetControlByName('pButton.bCancel').Caption = '&Tutup'
-      sender.OwnerForm.GetControlByName('pButton.bCancel').Default = 1
-  finally:
-    app = None
+    sender.Enabled = sender.Default = 0
+    sender.OwnerForm.GetControlByName('pButton.bCancel').Caption = '&Tutup'
+    sender.OwnerForm.GetControlByName('pButton.bCancel').Default = 1
+

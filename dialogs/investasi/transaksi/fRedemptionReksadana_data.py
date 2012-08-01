@@ -1,6 +1,13 @@
 import sys, time, string
-sys.path.append('c:/dafapp/dplk07/script_modules')
-import moduleapi, TransactInv
+#sys.path.append('c:/dafapp/dplk07/script_modules')
+#import moduleapi, TransactInv
+import com.ihsan.util.modman as modman
+modman.loadStdModules(globals(), 
+  [
+    "moduleapi",
+    "scripts#investasi.transaksi.paketinvinfo"
+  ]
+)
 
 mode = ''
 
@@ -20,7 +27,7 @@ def FormGeneralSetData(uideflist, auiname, apobjconst):
     rec_tpi.mode = auiname
     mode = auiname
 
-    rec_tpi.biaya_redempt = 0.0
+    #rec_tpi.biaya_redempt = 0.0
 
     rec_tpi.user_id = config.SecurityContext.userid
     rec_tpi.terminal_id = config.SecurityContext.GetSessionInfo()[1]

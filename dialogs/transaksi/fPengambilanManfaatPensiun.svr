@@ -33,6 +33,10 @@ object:rpclass::TPClassUIDefList<
           Name='isSkipPPh'
           DataTypeName='integer'
           DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='persen_anuitas_pilihan_peserta'
+          DataTypeName='double'
+          DataLength=20
         >
       }
       CustomLoadedLinks={
@@ -51,7 +55,7 @@ object:rpclass::TPClassUIDefList<
     >, object:rpclass::TPClassUIDef<
       Name='uipPeserta'
       PClassName='NasabahDPLK'
-      LoadedFieldList='tgl_registrasi;kode_nasabah_corporate;no_peserta;nama_lengkap;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_email;NPWP;tanggal_lahir;tgl_registrasi;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.nama_perusahaan'
+      LoadedFieldList='tgl_registrasi;kode_nasabah_corporate;no_peserta;nama_lengkap;alamat_jalan;alamat_rtrw;alamat_rw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_email;NPWP;tanggal_lahir;tgl_registrasi;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.nama_perusahaan'
       CustomLoadedFields={
         object:rpclass::TCustomLoadedField<
           Name='IuranPk'
@@ -131,7 +135,7 @@ object:rpclass::TPClassUIDefList<
           DataTypeName='double'
           DataLength=20
         >, object:rpclass::TCustomLoadedField<
-          Name='proporsiBiaya'
+          Name='proporsiHari'
           DataTypeName='double'
           DataLength=20
         >

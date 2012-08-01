@@ -12,6 +12,29 @@ object:rpclass::TPClassUIDefList<
       PClassName='IuranPeserta'
       LoadedFieldList='tgl_transaksi;keterangan;mutasi_iuran_pk;mutasi_iuran_pst;mutasi_iuran_tmb;catatan_bayar_iuran'
       StoredFieldList='tgl_transaksi;keterangan;mutasi_iuran_pk;mutasi_iuran_pst;mutasi_iuran_tmb;catatan_bayar_iuran'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='LReconcile.id_detil_giro'
+          DataTypeName='INTEGER'
+        >, object:rpclass::TCustomLoadedField<
+          Name='LReconcile.rekening_sumber'
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='LReconcile.nominal'
+          DataTypeName='DOUBLE'
+        >, object:rpclass::TCustomLoadedField<
+          Name='LReconcile.id_detil_giro'
+          DataTypeName='INTEGER'
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LReconcile'
+          ClassTypeName='DetilRiwayatGiro'
+          FieldNames='id_detil_giro;rekening_sumber;nominal;id_detil_giro'
+        >
+      }
       Mode=imSingleRow
       CreateInstanceOnNew=true
     >, object:rpclass::TPClassUIDef<
@@ -44,19 +67,36 @@ object:rpclass::TPClassUIDefList<
           Name='PRESISI_ANGKA_FLOAT'
           DataTypeName='double'
           DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='MIN_JML_IURAN_PK'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='MIN_JML_IURAN_PST'
+          DataTypeName='double'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='MIN_JML_IURAN_TMB'
+          DataTypeName='double'
+          DataLength=20
         >
       }
       Mode=imSingleRow
     >, object:rpclass::TPClassUIDef<
       Name='uipRekening'
       PClassName='RekInvDPLK'
-      LoadedFieldList='operation_code;no_rekening;iuran_pk;iuran_pst'
+      LoadedFieldList='operation_code;rekasuransi_id;no_rekening;iuran_pk;iuran_pst'
       Mode=imSingleRow
     >, object:rpclass::TPClassUIDef<
       Name='uipDetilRekening'
       MasterUIName='uipRekening'
       ListName='Ls_RekeningDPLK'
       LoadedFieldList='nomor_rekening;kode_paket_investasi;pct_alokasi;nilai_unit;jml_unit;jml_unit_pk;jml_unit_psl;jml_unit_tmb;jml_unit_pst;is_deleted'
+    >, object:rpclass::TPClassUIDef<
+      Name='uipRekAsuransi'
+      PClassName='RekAsuransi'
+      LoadedFieldList='no_polis;besar_premi;tgl_akseptasi;tgl_berakhir'
+      Mode=imSingleRow
     >
   }
   OnSetDataEx='Form_OnSetDataEx'

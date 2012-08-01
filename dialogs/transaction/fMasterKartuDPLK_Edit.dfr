@@ -11,7 +11,7 @@ object:rtf::Form<
   Left=50
   Top=50
   Width=500
-  Height=320
+  Height=240
   BeforeDeleteRow=''
   BeforeResultSent=''
   OnGeneralSetData=''
@@ -54,6 +54,9 @@ object:rtf::Form<
             'LRekeningDPLK'#13#10,
             'TGL_CETAK'#13#10,
             'TGL_KIRIM'#13#10]
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='NO_SERI_KARTU'
         >
       }
       Elements={
@@ -93,21 +96,26 @@ object:rtf::Form<
           Name='TGL_KIRIM'
           Hidden=false
           ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='NO_SERI_KARTU'
+          Hidden=false
+          ReadOnlyControl=false
         >
       }
       Name='pMain'
       Width=481
-      Height=153
+      Height=169
       Bordered=true
       UIPart=$UIPARTS['uipMasterKartuDPLK']
       Controls={
         *object:rtf::DBLookupEdit<
           Name='LNasabahDPLK'
-          Top=24
+          Top=52
           Left=20
           Width=121
           Height=21
           ControlCaption='Nasabah'
+          LayoutOrder=2
           FieldName='LNasabahDPLK.no_peserta'
           LookupField='LNasabahDPLK.nama_lengkap'
           DisplayLookupField=true
@@ -115,11 +123,12 @@ object:rtf::Form<
           DisplayLookupWidth=200
         >, *object:rtf::DBLookupEdit<
           Name='LRekeningDPLK'
-          Top=52
+          Top=80
           Left=20
           Width=121
           Height=21
           ControlCaption='Rekening DPLK'
+          LayoutOrder=3
           FieldName='LRekeningDPLK.no_rekening'
           LookupField='LRekeningDPLK.tgl_akseptasi'
           DisplayLookupField=true
@@ -127,14 +136,23 @@ object:rtf::Form<
           DisplayLookupWidth=200
         >, *object:rtf::DBDateEdit<
           Name='TGL_CETAK'
-          Top=80
-          Left=20
-          ControlCaption='Tgl. Cetak Kartu'
-        >, *object:rtf::DBDateEdit<
-          Name='TGL_KIRIM'
           Top=108
           Left=20
+          ControlCaption='Tgl. Cetak Kartu'
+          LayoutOrder=4
+        >, *object:rtf::DBDateEdit<
+          Name='TGL_KIRIM'
+          Top=136
+          Left=20
           ControlCaption='Tgl. Kirim Kartu'
+          LayoutOrder=5
+        >, *object:rtf::DBEdit<
+          Name='NO_SERI_KARTU'
+          Top=24
+          Left=20
+          Color=-16777192
+          ControlCaption='Nomor Kartu DPLK'
+          LayoutOrder=1
         >
       }
       EqualCaptionWidth=120

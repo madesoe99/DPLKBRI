@@ -77,6 +77,9 @@ object:rtf::Form<
           Action=caView
           DataMembers=['jpd_id'#13#10,
             'jpd_id_ortu'#13#10]
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='HUBUNGAN_KELENGKAPAN'
         >
       }
       Elements={
@@ -238,6 +241,10 @@ object:rtf::Form<
           Name='jpd_id_ortu'
           Hidden=false
           ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='HUBUNGAN_KELENGKAPAN'
+          Hidden=false
+          ReadOnlyControl=false
         >
       }
       Name='uipMaster'
@@ -395,7 +402,7 @@ object:rtf::Form<
           Name='LJenisUsaha'
           Top=86
           Left=20
-          ControlCaption='Jenis Usaha'
+          ControlCaption='Bidang Usaha'
           LayoutOrder=3
           LookupField='LJenisUsaha.nama_jenis_usaha'
           DisplayLookupField=true
@@ -453,7 +460,7 @@ object:rtf::Form<
           Top=114
           Left=20
           Enabled=false
-          ControlCaption='Risk Jenis Usaha'
+          ControlCaption='Risk Bidang Usaha'
           LayoutOrder=4
           FieldName='LJenisUsaha.risk_flag'
           Items=['Low'#13#10,
@@ -602,6 +609,9 @@ object:rtf::Form<
         >, object:rtf::ControlDef<
           Action=caEdit
           DataMember='penghasilan_orang_tua'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='HUBUNGAN_KELENGKAPAN'
         >
       }
       Elements={
@@ -635,7 +645,6 @@ object:rtf::Form<
             '  LJenisJabatan.kode_jenis_jabatan AS kode_jenis_jabatan,'#13#10,
             '  LJenisJabatan.nama_jenis_jabatan AS nama_jenis_jabatan,'#13#10,
             '  risk_flag,'#13#10,
-            '  jpd_id,'#13#10,
             '  self'#13#10,
             ') THEN ORDER BY kode_jenis_jabatan;']
           LookupOption=loCustomOQL
@@ -660,6 +669,10 @@ object:rtf::Form<
           ReadOnlyControl=false
         >, *object:rtf::FieldUIElmtSetting<
           Name='penghasilan_orang_tua'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='HUBUNGAN_KELENGKAPAN'
           Hidden=false
           ReadOnlyControl=false
         >, object:rtf::FieldUIElmtSetting<
@@ -692,76 +705,82 @@ object:rtf::Form<
         >
       }
       Name='pKelengkapan'
-      Width=451
-      Height=353
+      Width=500
+      Height=401
       Bordered=true
       UIPart=$UIPARTS['uipRegisterCIF']
       Controls={
         *object:rtf::DBEdit<
           Name='nama_orang_tua'
-          Top=24
-          Left=20
-          ControlCaption='Nama Lengkap'
-          LayoutOrder=1
-        >, *object:rtf::DBLookupEdit<
-          Name='LJenisPekerjaanOrtu'
           Top=52
           Left=20
-          ControlCaption='Jenis Pekerjaan'
+          ControlCaption='Nama Lengkap'
           LayoutOrder=2
+        >, *object:rtf::DBLookupEdit<
+          Name='LJenisPekerjaanOrtu'
+          Top=164
+          Left=20
+          ControlCaption='Jenis Pekerjaan'
+          LayoutOrder=6
           LookupField='LJenisPekerjaanOrtu.nama_jenis_pekerjaan'
           DisplayLookupField=true
         >, *object:rtf::DBLookupEdit<
           Name='LJenisPekerjaanDetailOrtu'
-          Top=108
+          Top=220
           Left=20
           ControlCaption='Jabatan Pekerjaan'
-          LayoutOrder=4
+          LayoutOrder=8
           LookupField='LJenisPekerjaanDetailOrtu.LJenisJabatan.nama_jenis_jabatan'
           DisplayLookupField=true
         >, *object:rtf::DBLookupEdit<
           Name='LJenisUsahaOrtu'
-          Top=164
+          Top=108
           Left=20
-          ControlCaption='Jenis Usaha'
-          LayoutOrder=6
+          ControlCaption='Bidang Usaha'
+          LayoutOrder=4
           LookupField='LJenisUsahaOrtu.nama_jenis_usaha'
           DisplayLookupField=true
         >, *object:rtf::DBEdit<
           Name='nama_perusahaan_ortu'
-          Top=220
-          Left=20
-          ControlCaption='Nama Perusahaan '
-          LayoutOrder=8
-        >, *object:rtf::DBEdit<
-          Name='penghasilan_orang_tua'
-          Top=248
-          Left=20
-          ControlCaption='Total Penghasilan'
-          LayoutOrder=9
-        >, *object:rtf::DBComboBox<
-          Name='RF_JenisPekerjaanOrtu'
           Top=80
           Left=20
-          Enabled=false
-          ControlCaption='Risk Jenis Pekerjaan'
+          ControlCaption='Nama Perusahaan '
           LayoutOrder=3
-          FieldName='LJenisPekerjaanOrtu.risk_flag'
-        >, *object:rtf::DBComboBox<
-          Name='RF_JPDOrtu'
-          Top=136
+        >, *object:rtf::DBEdit<
+          Name='penghasilan_orang_tua'
+          Top=276
           Left=20
-          Enabled=false
-          ControlCaption='Risk Jabatan Pekerjaan'
-          LayoutOrder=5
-          FieldName='LJenisPekerjaanDetailOrtu.risk_flag'
+          ControlCaption='Total Penghasilan'
+          LayoutOrder=10
         >, *object:rtf::DBComboBox<
-          Name='RF_JenisUsahaOrtu'
+          Name='HUBUNGAN_KELENGKAPAN'
+          Top=24
+          Left=20
+          ControlCaption='Hubungan'
+          LayoutOrder=1
+        >, *object:rtf::DBComboBox<
+          Name='RF_JenisPekerjaanOrtu'
           Top=192
           Left=20
           Enabled=false
-          ControlCaption='Risk Jenis Usaha'
+          ControlCaption='Risk Jenis Pekerjaan'
           LayoutOrder=7
+          FieldName='LJenisPekerjaanOrtu.risk_flag'
+        >, *object:rtf::DBComboBox<
+          Name='RF_JPDOrtu'
+          Top=248
+          Left=20
+          Enabled=false
+          ControlCaption='Risk Jabatan Pekerjaan'
+          LayoutOrder=9
+          FieldName='LJenisPekerjaanDetailOrtu.risk_flag'
+        >, *object:rtf::DBComboBox<
+          Name='RF_JenisUsahaOrtu'
+          Top=136
+          Left=20
+          Enabled=false
+          ControlCaption='Risk Bidang Usaha'
+          LayoutOrder=5
           FieldName='LJenisUsahaOrtu.risk_flag'
         >
       }
@@ -771,7 +790,7 @@ object:rtf::Form<
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
-      Caption='APU-PPT: Kelengkapan Data Orang Tua / Suami / Istri'
+      Caption='Kelengkapan: Data Orang Tua / Suami / Istri / Keluarga Lain'
     >, object:rtf::Panel<
       ControlDefs={
         object:rtf::MultiControlDef<
@@ -834,38 +853,44 @@ object:rtf::Form<
       Controls={
         *object:rtf::DBEdit<
           Name='no_referensi'
-          Top=30
+          Top=142
           Left=20
+          Visible=false
           Color=12695295
           ControlCaption='Nomor Referensi'
+          LayoutOrder=5
         >, *object:rtf::DBLookupEdit<
           Name='LNasabahDPLK'
-          Top=58
+          Top=30
           Left=20
           Width=100
           Height=21
           Enabled=false
           ControlCaption='Peserta DPLK'
+          LayoutOrder=1
           LookupField='LNasabahDPLK.nama_lengkap'
           DisplayLookupField=true
         >, *object:rtf::DBEdit<
           Name='keterangan'
-          Top=86
+          Top=58
           Left=20
           ControlCaption='Keterangan'
+          LayoutOrder=2
         >, *object:rtf::DBEdit<
           Name='user_id'
-          Top=114
+          Top=86
           Left=20
           Color=-2147483624
           ControlCaption='User Penginput'
+          LayoutOrder=3
           ReadOnly=true
         >, *object:rtf::DBEdit<
           Name='terminal_id'
-          Top=142
+          Top=114
           Left=20
           Color=-2147483624
           ControlCaption='Terminal Input'
+          LayoutOrder=4
           ReadOnly=true
         >
       }
@@ -893,7 +918,7 @@ object:rtf::Form<
           ReadOnlyControl=false
         >, *object:rtf::FieldUIElmtSetting<
           Name='beneficial_owner'
-          Hidden=false
+          Hidden=true
           ReadOnlyControl=false
         >, *object:rtf::FieldUIElmtSetting<
           Name='penghasilan_tetap'
@@ -918,18 +943,13 @@ object:rtf::Form<
           Color=12695295
           ControlCaption='Ibu Kandung'
         >, *object:rtf::DBEdit<
-          Name='beneficial_owner'
-          Top=58
-          Left=20
-          ControlCaption='Beneficial Owner'
-        >, *object:rtf::DBEdit<
           Name='penghasilan_tetap'
-          Top=86
+          Top=58
           Left=20
           ControlCaption='Penghasilan Tetap'
         >, *object:rtf::DBEdit<
           Name='penghasilan_tambahan'
-          Top=114
+          Top=86
           Left=20
           ControlCaption='Penghasilan Tambahan'
         >

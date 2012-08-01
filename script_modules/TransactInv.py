@@ -1,4 +1,9 @@
-import moduleapi
+import com.ihsan.util.modman as modman
+modman.loadStdModules(globals(), 
+  [
+    "moduleapi"
+  ]
+)
 
 def ListToFloatDate(config, LsInt) :
   y,m,d = LsInt[:3]
@@ -60,6 +65,57 @@ def CreateSPI(config, nama, oInvestasi, oTransInduk, prof, kode_jenis_trinvestas
   config.SendDebugMsg('SPI5')
   return oSPI
 
+def CreateSPINoBatch(config, nama, oInvestasi, oTransInduk, prof, kode_jenis_trinvestasi, tgltrans = ''):
+# pendapatan (atau biaya) beli obligasi sebagai selisih dari nominal_jual
+  if prof == 0.0 :
+    return 0
+  config.SendDebugMsg('SPI1:'+kode_jenis_trinvestasi)
+  oSPI = config.CreatePObject('TransaksiSPInvestasi')
+  oSPI.kode_jenis_trinvestasi = kode_jenis_trinvestasi
+  config.SendDebugMsg('SPI12:'+str(oInvestasi.id_investasi))
+  oSPI.LInvestasi = oInvestasi
+  oSPI.nama_investasi = nama
+  config.SendDebugMsg('SPI13:'+str(oInvestasi.kode_jns_investasi))
+  oSPI.kode_jns_investasi = oInvestasi.kode_jns_investasi
+  #oSPI.nominal = prof
+  #oPendapatanObligasi.no_rekening = oRegisterObligasi.no_rekening
+
+  config.SendDebugMsg('SPI2')
+  if prof >= 0.0:
+    # pendapatan
+    oSPI.mutasi_debet = prof
+    oSPI.mutasi_kredit = 0.0
+  else:
+    # biaya
+    oSPI.mutasi_debet = 0.0
+    oSPI.mutasi_kredit = -prof
+
+  oSPI.isCommitted = 'T'
+
+  config.SendDebugMsg('SPI3')
+  if tgltrans == '' :
+    oSPI.tgl_transaksi = moduleapi.DateTimeTupleToFloat(config, oTransInduk.tgl_transaksi)
+    oSPI.LIndukTransaksiInvestasi = oTransInduk
+    oSPI.user_id = oTransInduk.user_id
+    oSPI.terminal_id = oTransInduk.terminal_id
+  else :
+    oSPI.tgl_transaksi = tgltrans
+    oSPI.user_id = config.SecurityContext.userid
+    oSPI.terminal_id = config.SecurityContext.GetSessionInfo()[1]
+    
+  oSPI.tgl_sistem = config.Now()
+  oSPI.tgl_otorisasi = config.Now()
+
+  config.SendDebugMsg('SPI4')
+  oSPI.user_id_auth = config.SecurityContext.userid
+  oSPI.terminal_id_auth = config.SecurityContext.GetSessionInfo()[1]
+  oSPI.no_bilyet = oInvestasi.no_bilyet
+  
+  oSPI.saldo_awal = (oInvestasi.akum_SPI or 0.0)
+  oInvestasi.akum_SPI = oSPI.saldo_awal + prof
+  config.SendDebugMsg('SPI5')
+  return oSPI
+  
 def CreatePNI(config, nama, oInvestasi, oTransInduk, prof, kode_jenis_trinvestasi, Batch = '', tgltrans = ''):
 # pendapatan (atau biaya) beli obligasi sebagai selisih dari nominal_jual
   if prof == 0.0 :
@@ -107,6 +163,49 @@ def CreatePNI(config, nama, oInvestasi, oTransInduk, prof, kode_jenis_trinvestas
   oInvestasi.akum_PNI = oPNI.saldo_awal + prof
   return oPNI
 
+def CreatePNINoBatch(config, nama, oInvestasi, oTransInduk, prof, kode_jenis_trinvestasi, tgltrans = ''):
+# pendapatan (atau biaya) beli obligasi sebagai selisih dari nominal_jual
+  if prof == 0.0 :
+    return 0
+  oPNI = config.CreatePObject('TransaksiPNInvestasi')
+  oPNI.kode_jenis_trinvestasi = kode_jenis_trinvestasi # pendapatan/biaya obligasi
+  oPNI.LInvestasi = oInvestasi
+  oPNI.nama_investasi = nama
+  oPNI.kode_jns_investasi = oInvestasi.kode_jns_investasi
+  #oPNI.nominal = prof
+  #oPendapatanObligasi.no_rekening = oRegisterObligasi.no_rekening
+
+  if prof >= 0.0:
+    # pendapatan
+    oPNI.mutasi_debet = 0.0
+    oPNI.mutasi_kredit = prof
+  else:
+    # biaya
+    oPNI.mutasi_debet = -prof
+    oPNI.mutasi_kredit = 0.0
+
+  oPNI.isCommitted = 'T'
+  if tgltrans == '' :
+    oPNI.tgl_transaksi = moduleapi.DateTimeTupleToFloat(config, oTransInduk.tgl_transaksi)
+    oPNI.LIndukTransaksiInvestasi = oTransInduk
+    oPNI.user_id = oTransInduk.user_id
+    oPNI.terminal_id = oTransInduk.terminal_id
+  else :
+    oPNI.tgl_transaksi = tgltrans
+    oPNI.user_id = config.SecurityContext.userid
+    oPNI.terminal_id = config.SecurityContext.GetSessionInfo()[1]
+    
+  oPNI.tgl_sistem = config.Now()
+  oPNI.tgl_otorisasi = config.Now()
+  oPNI.user_id_auth = config.SecurityContext.userid
+  oPNI.terminal_id_auth = config.SecurityContext.GetSessionInfo()[1]
+  oPNI.no_bilyet = oInvestasi.no_bilyet
+  oPNI.LIndukTransaksiInvestasi = oTransInduk
+
+  oPNI.saldo_awal = (oInvestasi.akum_PNI or 0.0)
+  oInvestasi.akum_PNI = oPNI.saldo_awal + prof
+  return oPNI
+  
 def CreatePendapatanReksadana(config, oRedemptReksadana):
 # pendapatan (atau biaya) redempt reksadana sebagai selisih dari NAB
 # pendapatan diperoleh secara tunai, maka tidak menggunakan transpiutanglrinv
@@ -339,4 +438,3 @@ def CreateRincianBagiHasil(config, oInvestasi, nom, Ajd = False) :
       oRincianInvestasi.Akum_LR_Paket += oRincianInvestasi.proporsi * nom
 
     resSQL.Next()
-

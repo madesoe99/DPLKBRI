@@ -37,7 +37,7 @@ object:rmn::Menu<
       AllowedGroups='OPR;SPV'
     >, object:rmn::MenuItem<
       Name='mnuAuthorize'
-      Caption='Authorize...'
+      Caption='Approval...'
       OnClick='mnuAuthorizeClick'
       AllowedGroups='SPV'
     >

@@ -10,12 +10,24 @@ object:rpclass::TPClassUIDefList<
     object:rpclass::TPClassUIDef<
       Name='uipRegisterCIF'
       PClassName='RegisterIuran'
-      LoadedFieldList='registercif_id;no_referensi;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;keterangan;user_id;terminal_id;registercif_id;LRekeningDPLK.no_rekening;LRekeningDPLK.no_rekening;LRekeningDPLK.keterangan;sistem_pembayaran_iuran;iuran_pst;iuran_pk;tgl_penarikan_iuran;REKSUMBER_NO;REKSUMBER_NAMA'
-      StoredFieldList='no_referensi;LNasabahDPLK;keterangan;user_id;terminal_id;LRekeningDPLK;sistem_pembayaran_iuran;iuran_pst;iuran_pk;tgl_penarikan_iuran;REKSUMBER_NO;REKSUMBER_NAMA'
+      LoadedFieldList='registercif_id;no_referensi;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;keterangan;user_id;terminal_id;registercif_id;LRekeningDPLK.no_rekening;LRekeningDPLK.no_rekening;LRekeningDPLK.kode_nasabah_corporate;LRekeningDPLK.LNasabahDPLKCorporate.nama_perusahaan;LRekeningDPLK.keterangan;sistem_pembayaran_iuran;iuran_pst;iuran_pk;tgl_penarikan_iuran;REKSUMBER_NO;REKSUMBER_NAMA;iuran_tmb'
+      StoredFieldList='no_referensi;LNasabahDPLK;keterangan;user_id;terminal_id;LRekeningDPLK;sistem_pembayaran_iuran;iuran_pst;iuran_pk;tgl_penarikan_iuran;REKSUMBER_NO;REKSUMBER_NAMA;iuran_tmb'
       CustomLoadedFields={
         object:rpclass::TCustomLoadedField<
           Name='mode'
           DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='kode_nasabah_corporate'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='nama_perusahaan'
+          DataTypeName='varchar'
+          DataLength=100
+        >, object:rpclass::TCustomLoadedField<
+          Name='nasabah_korporat'
+          DataTypeName='integer'
           DataLength=20
         >
       }
@@ -27,7 +39,7 @@ object:rpclass::TPClassUIDefList<
         >, object:rpclass::TCustomLoadedLink<
           Name='LRekeningDPLK'
           ClassTypeName='RekInvDPLK'
-          FieldNames='no_rekening;no_rekening;keterangan'
+          FieldNames='no_rekening;no_rekening;kode_nasabah_corporate;LNasabahDPLKCorporate.nama_perusahaan;keterangan'
         >
       }
       Mode=imSingleRow
@@ -36,12 +48,16 @@ object:rpclass::TPClassUIDefList<
     >, object:rpclass::TPClassUIDef<
       Name='uipMaster'
       PClassName='RekInvDPLK'
-      LoadedFieldList='no_rekening;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;iuran_pst;iuran_pk;no_peserta;keterangan;sistem_pembayaran_iuran;tgl_penarikan_iuran;REKSUMBER_NO;REKSUMBER_NAMA'
+      LoadedFieldList='no_rekening;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;iuran_pst;iuran_pk;no_peserta;keterangan;sistem_pembayaran_iuran;tgl_penarikan_iuran;REKSUMBER_NO;REKSUMBER_NAMA;iuran_tmb;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.nama_perusahaan'
       CustomLoadedLinks={
         object:rpclass::TCustomLoadedLink<
           Name='LNasabahDPLK'
           ClassTypeName='NasabahDPLK'
           FieldNames='no_peserta;no_peserta;nama_lengkap'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLKCorporate'
+          ClassTypeName='NasabahDPLKCorporate'
+          FieldNames='kode_nasabah_corporate;kode_nasabah_corporate;nama_perusahaan'
         >
       }
       Mode=imSingleRow
@@ -63,6 +79,10 @@ object:rpclass::TPClassUIDefList<
         >, object:rpclass::TCustomLoadedField<
           Name='IS_ONLY_MIN_JML_IURAN_PST'
           DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='MIN_JML_IURAN_TMB'
+          DataTypeName='double'
           DataLength=20
         >
       }

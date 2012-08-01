@@ -33,6 +33,11 @@ object:rmn::Menu<
           StringTag='qDaerahKecamatan'
           ImageIndex=0
         >, object:rmn::MenuItem<
+          Name='mnuDaerahKodePos'
+          Caption='Daftar Kode Pos'
+          OnClick='DisplayMasterQuery'
+          StringTag='qDaerahKodePos'
+        >, object:rmn::MenuItem<
           Caption='-'
           AllowedGroups='ADM'
         >, object:rmn::MenuItem<
@@ -184,7 +189,7 @@ object:rmn::Menu<
           ImageIndex=6
         >, object:rmn::MenuItem<
           Name='mnuDaftarOtorisasiPerusahaan'
-          Caption='Daftar Register Korporat Baru'
+          Caption='Daftar Register Korporat'
           OnClick='DisplayTransactionQuery'
           AllowedGroups='OPR;SPV'
           StringTag='qRegistrasiCorp'
@@ -302,7 +307,7 @@ object:rmn::Menu<
           StringTag='fHistoriNasabahRekening_Intro'
         >, object:rmn::MenuItem<
           Name='mnuHistoriTransaksi'
-          Caption='Lihat Riwayat Transaksi Peserta...'
+          Caption='Lihat Riwayat Transaksi Peserta per Account...'
           OnClick='DisplayTransactionForm'
           AllowedGroups='OPR;SPV'
           StringTag='fHistoriTransaksi_Intro'
@@ -318,22 +323,24 @@ object:rmn::Menu<
         >, object:rmn::MenuItem<
           Name='InputAmbilBuku'
           Caption='Registrasi Nomor Buku DPLK'
-          OnClick='DisplayTransactionForm'
+          OnClick='DisplayFormInputBukuDPLK'
           AllowedGroups='OPR'
           StringTag='InputAmbilBuku'
+          NumberTag=1
           ImageIndex=13
         >, object:rmn::MenuItem<
           Name='GantiBukuBaru'
           Caption='Penggantian Buku Hilang / Rusak'
-          OnClick='DisplayTransactionForm'
+          OnClick='DisplayFormInputBukuDPLK'
           AllowedGroups='OPR'
-          StringTag='GantiBukuBaru'
+          StringTag='InputAmbilBuku'
+          NumberTag=2
           ImageIndex=13
         >, object:rmn::MenuItem<
           Name='fReserveNoBuku'
           Caption='Maintenance Nomor Buku DPLK'
           OnClick='mnuShowModal2'
-          AllowedGroups='OPR'
+          AllowedGroups='XXX'
           StringTag='transaction'
           NumberTag=5000
           ImageIndex=13
@@ -429,12 +436,6 @@ object:rmn::Menu<
               AllowedGroups='ADM;OPR'
               StringTag='transaksi/fPengalihanDariDPPK'
             >, object:rmn::MenuItem<
-              Name='transaksi/fSelectRekening'
-              Caption='Pengalihan Dari DPK Lain'
-              OnClick='mnuSelectRekening'
-              AllowedGroups='ADM;OPR'
-              StringTag='transaksi/fPengalihanDariDPK'
-            >, object:rmn::MenuItem<
               Caption='-'
             >, object:rmn::MenuItem<
               Name='transaksi/fSelectRekening'
@@ -446,23 +447,11 @@ object:rmn::Menu<
           }
           AllowedGroups='ADM;OPR'
         >, object:rmn::MenuItem<
+          Name='transaksi/fSelectRekening'
           Caption='Penarikan &Dana'
-          MenuItems={
-            object:rmn::MenuItem<
-              Name='transaksi/fSelectRekening'
-              Caption='Penarikan Dana Sebagian'
-              OnClick='mnuSelectRekening'
-              AllowedGroups='ADM;OPR'
-              StringTag='transaksi/fPenarikanDana30'
-            >, object:rmn::MenuItem<
-              Name='transaksi/fSelectRekening'
-              Caption='Penarikan Dana PHK'
-              OnClick='mnuSelectRekening'
-              AllowedGroups='ADM;OPR'
-              StringTag='transaksi/fPenarikanDanaPHK'
-            >
-          }
+          OnClick='mnuSelectRekening'
           AllowedGroups='ADM;OPR'
+          StringTag='transaksi/fPenarikanDana30'
         >, object:rmn::MenuItem<
           Name='transaksi/fSelectRekening'
           Caption='Pengambilan Manfaat Pensiun'
@@ -495,18 +484,21 @@ object:rmn::Menu<
           MenuItems={
             object:rmn::MenuItem<
               Name='A'
-              Caption='Reconcile Auto Payment'
+              Caption='Rekonsiliasi Auto Payment'
               OnClick='showForm2'
               AllowedGroups='ADM;OPR'
               StringTag='transaksi/fPRAutoPayment_Daftar'
-              NumberTag=2
             >, object:rmn::MenuItem<
               Name='E'
-              Caption='Reconcile E-Channel'
+              Caption='Rekonsiliasi E-Channel'
               OnClick='showForm2'
               AllowedGroups='ADM;OPR'
               StringTag='transaksi/fPRAutoPayment_Daftar'
-              NumberTag=2
+            >, object:rmn::MenuItem<
+              Name='M'
+              Caption='Rekonsiliasi Manual Giro'
+              OnClick='showForm2'
+              StringTag='transaksi/fPRAutoPayment_Daftar'
             >
           }
           AllowedGroups='ADM;OPR'

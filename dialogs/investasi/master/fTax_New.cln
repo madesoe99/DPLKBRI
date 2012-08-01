@@ -4,56 +4,70 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rtf::Form<
+>
+object:rtf::Form<
   MainContainer=$CONTAINERS['MultiSplit']
   Caption='Tambah Tax'
   Left=50
   Top=50
   Width=380
   Height=310
-  UIParts={object:rtf::PClassUI<
+  UIParts={
+    object:rtf::PClassUI<
       Name='uip'
       ClassTypeName='Tax'
       DataBinding=bmMaster
       AlwaysPostToServer=true
       CreateInstanceOnNew=true
-    >}Containers={object:rtf::Panel<
-      Elements={object:rtf::FieldUIElmtSetting<
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
           Name='tax_code'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='VARCHAR'
           DataLength=5
         >, object:rtf::FieldUIElmtSetting<
           Name='description'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='VARCHAR'
           DataLength=30
         >, object:rtf::FieldUIElmtSetting<
           Name='tax_percentage'
+          Hidden=false
+          ReadOnlyControl=false
           DataTypeName='DOUBLE'
           DataLength=0
-        >}Name='pData'
+        >
+      }
+      Name='pData'
       Width=377
       Height=147
       Bordered=true
       UIPart=$UIPARTS['uip']
-      Controls={*object:rtf::DBEdit<
+      Controls={
+        *object:rtf::DBEdit<
           Name='tax_code'
           Top=20
           Left=20
-          Color=0
           ControlCaption='Tax Code'
         >, *object:rtf::DBEdit<
           Name='description'
           Top=48
           Left=20
-          Color=0
           ControlCaption='Description'
         >, *object:rtf::DBEdit<
           Name='tax_percentage'
           Top=76
           Left=20
-          Color=0
           ControlCaption='Percentage'
-        >}EqualCaptionWidth=120
+        >
+      }
+      EqualCaptionWidth=120
       ControlLeftMargin=20
       ControlTopMargin=20
       DefaultControlHeight=21
@@ -63,12 +77,12 @@ document <
       Name='pButton'
       Width=240
       Height=40
-      Controls={object:rtf::Button<
+      Controls={
+        object:rtf::Button<
           Name='btnOK'
           Layout=clNewLine
           Top=8
           Left=20
-          Color=0
           ControlCaption=''
           Caption='&Simpan'
           Default=true
@@ -78,12 +92,13 @@ document <
           Layout=clNextSide
           Top=8
           Left=99
-          Color=0
           ControlCaption=''
           Caption='&Batal'
           Cancel=true
           ExitAction=eaQuitCancel
-        >}ControlLeftMargin=20
+        >
+      }
+      ControlLeftMargin=20
       ControlTopMargin=8
       DefaultControlHeight=21
       HorizontalControlGap=4
@@ -104,7 +119,15 @@ document <
       Name='MultiSplit'
       Width=380
       Height=310
-      Side1Containers={$CONTAINERS['pData']
-      }Side2Containers={$CONTAINERS['pButton']
-      }SpaceContainer=$CONTAINERS['pUser']
-    >}>
+      Side1Containers={
+        $CONTAINERS['pData']
+
+      }
+      Side2Containers={
+        $CONTAINERS['pButton']
+
+      }
+      SpaceContainer=$CONTAINERS['pUser']
+    >
+  }
+>

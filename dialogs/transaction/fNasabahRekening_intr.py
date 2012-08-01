@@ -12,13 +12,13 @@ class fNasabahRekening:
     uipNasabahDPLK = form.GetUIPartByName('uipNasabahDPLK')
     uipNasabahDPLK.Edit()
     
-    if uipNasabahDPLK.GetFieldValue('LNasabahDPLKCorporate.kode_nasabah_corporate') \
-      not in [None,'']:
+    #if uipNasabahDPLK.GetFieldValue('LNasabahDPLKCorporate.kode_nasabah_corporate') \
+    #  not in [None,'']:
       #termasuk anggota peserta korporat
-      uipNasabahDPLK.nasabah_korporat = 1
-    else:
+    #  uipNasabahDPLK.nasabah_korporat = 1
+    #else:
       #tidak termasuk peserta korporat
-      uipNasabahDPLK.nasabah_korporat = 0
+    #  uipNasabahDPLK.nasabah_korporat = 0
 
     self.bindRekInvDPLK()
     self.bindRekeningDPLK()

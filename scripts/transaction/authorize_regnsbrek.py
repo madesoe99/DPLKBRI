@@ -18,7 +18,7 @@ def CreateNasabahDPLK(config, oRegisterNasabahRekening):
   oNasabahDPLK = config.CreatePObject('NasabahDPLK')
   
   oNasabahDPLK.no_peserta = oRegisterNasabahRekening.no_peserta
-  oNasabahDPLK.LBranchLocation = oRegisterNasabahRekening.LBranchLocation
+  #oNasabahDPLK.LBranchLocation = oRegisterNasabahRekening.LBranchLocation
   #oNasabahDPLK.kode_cab_daftar = oRegisterNasabahRekening.kode_cab_daftar
   oNasabahDPLK.ibu_kandung = oRegisterNasabahRekening.ibu_kandung
   oNasabahDPLK.nama_lengkap = oRegisterNasabahRekening.nama_lengkap
@@ -34,19 +34,21 @@ def CreateNasabahDPLK(config, oRegisterNasabahRekening):
   oNasabahDPLK.kewarganegaraan = oRegisterNasabahRekening.kewarganegaraan
   oNasabahDPLK.LNegara = oRegisterNasabahRekening.LNegara
   #oNasabahDPLK.kode_negara = oRegisterNasabahRekening.kode_negara
+  oNasabahDPLK.JENIS_KARTU_IDENTITAS = oRegisterNasabahRekening.JENIS_KARTU_IDENTITAS
   oNasabahDPLK.no_identitas_diri = oRegisterNasabahRekening.no_identitas_diri
   oNasabahDPLK.tgl_exp_identitas = oRegisterNasabahRekening.tgl_exp_identitas
   
-  oNasabahDPLK.LKelompok = oRegisterNasabahRekening.LKelompok
+  #oNasabahDPLK.LKelompok = oRegisterNasabahRekening.LKelompok
   #oNasabahDPLK.kode_kelompok = oRegisterNasabahRekening.kode_kelompok
   oNasabahDPLK.alamat_email = oRegisterNasabahRekening.alamat_email
   oNasabahDPLK.NPWP = oRegisterNasabahRekening.NPWP
   oNasabahDPLK.penghasilan_tetap = oRegisterNasabahRekening.penghasilan_tetap
   oNasabahDPLK.penghasilan_tambahan = oRegisterNasabahRekening.penghasilan_tambahan
-  oNasabahDPLK.beneficial_owner = oRegisterNasabahRekening.beneficial_owner
-  oNasabahDPLK.LLDPLain = oRegisterNasabahRekening.LLDPLain
+  #oNasabahDPLK.beneficial_owner = oRegisterNasabahRekening.beneficial_owner
+  #oNasabahDPLK.LLDPLain = oRegisterNasabahRekening.LLDPLain
   #oNasabahDPLK.kode_dp = oRegisterNasabahRekening.kode_dp
   
+  oNasabahDPLK.HUBUNGAN_KELENGKAPAN = oRegisterNasabahRekening.HUBUNGAN_KELENGKAPAN
   oNasabahDPLK.nama_orang_tua = oRegisterNasabahRekening.nama_orang_tua
   oNasabahDPLK.LJenisPekerjaanOrtu = oRegisterNasabahRekening.LJenisPekerjaanOrtu
   oNasabahDPLK.LJenisPekerjaanDetailOrtu = oRegisterNasabahRekening.LJenisPekerjaanDetailOrtu
@@ -57,28 +59,32 @@ def CreateNasabahDPLK(config, oRegisterNasabahRekening):
   oNasabahDPLK.alamat_jalan = oRegisterNasabahRekening.alamat_jalan
   oNasabahDPLK.alamat_jalan2 = oRegisterNasabahRekening.alamat_jalan2
   oNasabahDPLK.alamat_rtrw = oRegisterNasabahRekening.alamat_rtrw
+  oNasabahDPLK.alamat_rw = oRegisterNasabahRekening.alamat_rw
   oNasabahDPLK.alamat_kelurahan = oRegisterNasabahRekening.alamat_kelurahan
   oNasabahDPLK.alamat_kecamatan = oRegisterNasabahRekening.alamat_kecamatan
+  #oNasabahDPLK.alamat_kode_pos = oRegisterNasabahRekening.alamat_kode_pos
   #oNasabahDPLK.alamat_kota = oRegisterNasabahRekening.alamat_kota
   #oNasabahDPLK.alamat_propinsi = oRegisterNasabahRekening.alamat_propinsi
+  oNasabahDPLK.LATKodePos = oRegisterNasabahRekening.LATKodePos
   oNasabahDPLK.LATKecamatan = oRegisterNasabahRekening.LATKecamatan
   oNasabahDPLK.LATKota = oRegisterNasabahRekening.LATKota
   oNasabahDPLK.LATPropinsi = oRegisterNasabahRekening.LATPropinsi
-  oNasabahDPLK.alamat_kode_pos = oRegisterNasabahRekening.alamat_kode_pos
   oNasabahDPLK.alamat_telepon = oRegisterNasabahRekening.alamat_telepon
   oNasabahDPLK.alamat_telepon2 = oRegisterNasabahRekening.alamat_telepon2
   
   oNasabahDPLK.alamat_surat_jalan = oRegisterNasabahRekening.alamat_surat_jalan
   oNasabahDPLK.alamat_surat_jalan2 = oRegisterNasabahRekening.alamat_surat_jalan2
   oNasabahDPLK.alamat_surat_rtrw = oRegisterNasabahRekening.alamat_surat_rtrw
+  oNasabahDPLK.alamat_surat_rw = oRegisterNasabahRekening.alamat_surat_rw
   oNasabahDPLK.alamat_surat_kelurahan = oRegisterNasabahRekening.alamat_surat_kelurahan
   oNasabahDPLK.alamat_surat_kecamatan = oRegisterNasabahRekening.alamat_surat_kecamatan
+  #oNasabahDPLK.alamat_surat_kode_pos = oRegisterNasabahRekening.alamat_surat_kode_pos
   #oNasabahDPLK.alamat_surat_kota = oRegisterNasabahRekening.alamat_surat_kota
   #oNasabahDPLK.alamat_surat_propinsi = oRegisterNasabahRekening.alamat_surat_propinsi
+  oNasabahDPLK.LASKodePos = oRegisterNasabahRekening.LASKodePos
   oNasabahDPLK.LASKecamatan = oRegisterNasabahRekening.LASKecamatan
   oNasabahDPLK.LASKota = oRegisterNasabahRekening.LASKota
   oNasabahDPLK.LASPropinsi = oRegisterNasabahRekening.LASPropinsi
-  oNasabahDPLK.alamat_surat_kode_pos = oRegisterNasabahRekening.alamat_surat_kode_pos
   oNasabahDPLK.alamat_surat_telepon = oRegisterNasabahRekening.alamat_surat_telepon
   oNasabahDPLK.alamat_surat_telepon2 = oRegisterNasabahRekening.alamat_surat_telepon2
   
@@ -88,7 +94,7 @@ def CreateNasabahDPLK(config, oRegisterNasabahRekening):
   oNasabahDPLK.status_pep = oRegisterNasabahRekening.status_pep
   oNasabahDPLK.keterangan_pep = oRegisterNasabahRekening.keterangan_pep
   
-  oNasabahDPLK.LNasabahDPLKCorporate = oRegisterNasabahRekening.LNasabahDPLKCorporate
+  #oNasabahDPLK.LNasabahDPLKCorporate = oRegisterNasabahRekening.LNasabahDPLKCorporate
   #oNasabahDPLK.kode_nasabah_corporate = oRegisterNasabahRekening.kode_nasabah_corporate
   oNasabahDPLK.nama_perusahaan = oRegisterNasabahRekening.nama_perusahaan
   oNasabahDPLK.LJenisUsaha = oRegisterNasabahRekening.LJenisUsaha
@@ -98,12 +104,13 @@ def CreateNasabahDPLK(config, oRegisterNasabahRekening):
   oNasabahDPLK.alamat_kantor_jalan = oRegisterNasabahRekening.alamat_kantor_jalan
   oNasabahDPLK.alamat_kantor_kelurahan = oRegisterNasabahRekening.alamat_kantor_kelurahan
   oNasabahDPLK.alamat_kantor_kecamatan = oRegisterNasabahRekening.alamat_kantor_kecamatan
+  #oNasabahDPLK.alamat_kantor_kode_pos = oRegisterNasabahRekening.alamat_kantor_kode_pos
   #oNasabahDPLK.alamat_kantor_kota = oRegisterNasabahRekening.alamat_kantor_kota
   #oNasabahDPLK.alamat_kantor_propinsi = oRegisterNasabahRekening.alamat_kantor_propinsi
+  oNasabahDPLK.LAKKodePos = oRegisterNasabahRekening.LAKKodePos
   oNasabahDPLK.LAKKecamatan = oRegisterNasabahRekening.LAKKecamatan
   oNasabahDPLK.LAKKota = oRegisterNasabahRekening.LAKKota
   oNasabahDPLK.LAKPropinsi = oRegisterNasabahRekening.LAKPropinsi
-  oNasabahDPLK.alamat_kantor_kode_pos = oRegisterNasabahRekening.alamat_kantor_kode_pos
   oNasabahDPLK.alamat_kantor_telepon = oRegisterNasabahRekening.alamat_kantor_telepon
   oNasabahDPLK.alamat_kantor_telepon2 = oRegisterNasabahRekening.alamat_kantor_telepon2
 
@@ -112,6 +119,7 @@ def CreateNasabahDPLK(config, oRegisterNasabahRekening):
   oNasabahDPLK.REFR_UKER = oRegisterNasabahRekening.REFR_UKER
   
   oNasabahDPLK.tgl_registrasi = moduleapi.DateTimeTupleToFloat(config, oRegisterNasabahRekening.tanggal_register)
+  oNasabahDPLK.tgl_otorisasi = config.ModDateTime.Now()
   oNasabahDPLK.last_update = config.ModDateTime.Now()
   oNasabahDPLK.user_id = oRegisterNasabahRekening.user_id
   oNasabahDPLK.auth_user_id = config.SecurityContext.userid
@@ -120,26 +128,34 @@ def CreateNasabahDPLK(config, oRegisterNasabahRekening):
   oNasabahDPLK.no_referensi = oRegisterNasabahRekening.no_referensi
   oNasabahDPLK.terminal_id = oRegisterNasabahRekening.terminal_id
   oNasabahDPLK.keterangan = oRegisterNasabahRekening.keterangan_registrasi
-  oNasabahDPLK.isPesertaPengalihan = oRegisterNasabahRekening.isPesertaPengalihan
+  #oNasabahDPLK.isPesertaPengalihan = oRegisterNasabahRekening.isPesertaPengalihan
   #oNasabahDPLK.status_risk_request = None
   #oNasabahDPLK.risk_flag_request = None
   #oNasabahDPLK.tgl_renewal_identitas = None
-  oNasabahDPLK.total_credit = 0.0
-  oNasabahDPLK.total_debit = 0.0
-  oNasabahDPLK.frek_credit = 0.0
-  oNasabahDPLK.frek_debit = 0.0
-  oNasabahDPLK.limit_credit = 0.0
-  oNasabahDPLK.limit_debit = 0.0
-  oNasabahDPLK.limit_frek_credit = 0.0
-  oNasabahDPLK.limit_frek_debit = 0.0
+  #oNasabahDPLK.total_credit = 0.0
+  #oNasabahDPLK.total_debit = 0.0
+  #oNasabahDPLK.frek_credit = 0.0
+  #oNasabahDPLK.frek_debit = 0.0
+  #oNasabahDPLK.limit_credit = 0.0
+  #oNasabahDPLK.limit_debit = 0.0
+  #oNasabahDPLK.limit_frek_credit = 0.0
+  #oNasabahDPLK.limit_frek_debit = 0.0
   oNasabahDPLK.is_deleted = 0
   #oNasabahDPLK.LOperationCode = oRegisterNasabahRekening.LOperationCode
   oNasabahDPLK.operation_code = 'F'
   
   return oNasabahDPLK
 
-def CreateRekInvDPLK(config, oRegisterNasabahRekening):
+def CreateRekInvDPLK(config, oRegisterNasabahRekening, ikut_asuransi):
   oRekNasabah = config.CreatePObject('RekInvDPLK') 
+  
+  oRekNasabah.LBranchLocation = oRegisterNasabahRekening.LBranchLocation
+  oRekNasabah.isPesertaPengalihan = oRegisterNasabahRekening.isPesertaPengalihan
+  oRekNasabah.LLDPLain = oRegisterNasabahRekening.LLDPLain
+  oRekNasabah.LNasabahDPLKCorporate = oRegisterNasabahRekening.LNasabahDPLKCorporate
+  oRekNasabah.LKelompok = oRegisterNasabahRekening.LKelompok
+  oRekNasabah.tgl_registrasi = moduleapi.DateTimeTupleToFloat(config, oRegisterNasabahRekening.tanggal_register)
+  oRekNasabah.tgl_otorisasi = config.ModDateTime.Now()
   
   oRekNasabah.LSumberDana = oRegisterNasabahRekening.LSumberDana
   #oRekNasabah.sumber_dana = oRegisterNasabahRekening.sumber_dana
@@ -154,11 +170,12 @@ def CreateRekInvDPLK(config, oRegisterNasabahRekening):
   oRekNasabah.setoran_awal = oRegisterNasabahRekening.setoran_awal
   oRekNasabah.iuran_pk = oRegisterNasabahRekening.iuran_pk
   oRekNasabah.iuran_pst = oRegisterNasabahRekening.iuran_pst
+  oRekNasabah.iuran_tmb = oRegisterNasabahRekening.iuran_tmb
   oRekNasabah.tgl_penarikan_iuran = oRegisterNasabahRekening.tgl_penarikan_iuran
   oRekNasabah.REKSUMBER_NO = oRegisterNasabahRekening.REKSUMBER_NO
   oRekNasabah.REKSUMBER_NAMA = oRegisterNasabahRekening.REKSUMBER_NAMA
   
-  oRekNasabah.LBranchLocation = oRegisterNasabahRekening.LBranchLocation
+  #oRekNasabah.LBranchLocation = oRegisterNasabahRekening.LBranchLocation
   #oRekNasabah.kode_cab_daftar = oRegisterNasabahRekening.kode_cab_daftar
   oRekNasabah.STATUS_BIAYA_DAFTAR = oRegisterNasabahRekening.status_biaya_daftar
   #oRekNasabah.LNasabahDPLK = oRegisterNasabahRekening.LNasabahDPLK
@@ -187,16 +204,24 @@ def CreateRekInvDPLK(config, oRegisterNasabahRekening):
   oRekNasabah.last_update = config.ModDateTime.Now()
   oRekNasabah.last_terminal_id = config.SecurityContext.GetSessionInfo()[1]
   oRekNasabah.status_anuitas = 'F'
+  
   oRekNasabah.status_autodebet = 'F'
-  oRekNasabah.status_asuransi = 'F'
-  #oRekNasabah.keterangan = oRegisterNasabahRekening.keterangan_iuran
+  if oRekNasabah.sistem_pembayaran_iuran == 'R':
+    oRekNasabah.status_autodebet = 'T'
+  
+  oRekNasabah.status_asuransi = ikut_asuransi
+  
+  oRekNasabah.keterangan = oRegisterNasabahRekening.keterangan_registrasi
+  oRekNasabah.no_referensi = oRegisterNasabahRekening.no_referensi
   #oRekNasabah.confidential_code = oRegisterNasabahRekening.confidential_code
   #oRekNasabah.collectivity_asuransi = oRegisterNasabahRekening.collectivity_asuransi
   #oRekNasabah.kewajiban_asuransi = oRegisterNasabahRekening.kewajiban_asuransi
   #oRekNasabah.Is_Boleh_Debet = oRegisterNasabahRekening.Is_Boleh_Debet
   #oRekNasabah.bln_tunggakan_asuransi = oRegisterNasabahRekening.bln_tunggakan_asuransi
-  oRekNasabah.has_passbook = 'F'
   oRekNasabah.No_Seri_Buku = oRegisterNasabahRekening.nomor_buku
+  oRekNasabah.has_passbook = 'F'
+  if not oRekNasabah.No_Seri_Buku in [0,'',None]:
+    oRekNasabah.has_passbook = 'T'
   oRekNasabah.IS_DELETED = 0
   
   return oRekNasabah
@@ -255,19 +280,6 @@ def CreateRekeningDPLK(config, oRegisterNasabahRekening, kode_paket_investasi, p
   oRekeningDPLK.is_deleted == 'F'
   
   return oRekeningDPLK
-
-def CreateAllRekSumber(config, oRegisterNasabahRekening, oRekInvDPLK):
-  Ls_RegNRSumber = oRegisterNasabahRekening.Ls_REGISTERNASABAHREKSUMBER
-  Ls_RegNRSumber.First()
-  while not Ls_RegNRSumber.EndOfList:
-    oRegNRSumber = Ls_RegNRSumber.CurrentElement
-
-    oRekSumber = config.CreatePObject('RekeningSumber')
-    #id rekening sumber
-    oRekSumber.norek_sumber = oRegNRSumber.norek_sumber
-    oRekSumber.LBranchLocation = oRegNRSumber.LBranchLocation
-    oRekSumber.LRekInvDPLK = oRekInvDPLK
-    Ls_RegNRSumber.Next()
 
 def CreateAllAhliWaris(config, oRegisterNasabahRekening, oNasabahDPLK):
   Ls_RegNRAhliWaris = oRegisterNasabahRekening.Ls_RegNRAhliWaris
@@ -369,14 +381,14 @@ def DAFScriptMain(config, parameter, returnpacket):
 
   config.BeginTransaction()
   try:
-    if oRegisterNasabahRekening.no_peserta_existing not in [0, '', None]:
+    if not oRegisterNasabahRekening.no_peserta_existing in [0, '', None]:
       oNasabahDPLK = oRegisterNasabahRekening.LExistingNasabahDPLK
     else:  
       oNasabahDPLK = CreateNasabahDPLK(config, oRegisterNasabahRekening)
       CreateAllAhliWaris(config, oRegisterNasabahRekening, oNasabahDPLK)
     
-    oRekInvDPLK = CreateRekInvDPLK(config, oRegisterNasabahRekening)
-    CreateAllRekSumber(config, oRegisterNasabahRekening, oRekInvDPLK)
+    oRekInvDPLK = CreateRekInvDPLK(config, oRegisterNasabahRekening, oRegisterNasabahRekening.ikut_asuransi)
+    #CreateAllRekSumber(config, oRegisterNasabahRekening, oRekInvDPLK)
     #CreateRegisterPassbook(config, oRegisterNasabahRekening)
     #CreateHistoriBuku(config, oRegisterNasabahRekening)
     #if oRegisterNasabahRekening.auto_debet == 'T':
@@ -408,7 +420,7 @@ def DAFScriptMain(config, parameter, returnpacket):
     #hapus objek Register Nasabah Rekening
     oRegisterNasabahRekening.Ls_RegNRAhliWaris.DeleteAllPObjs()
     oRegisterNasabahRekening.Ls_RegisterNasabahRekPaket.DeleteAllPObjs()
-    oRegisterNasabahRekening.Ls_RegisterNasabahRekSumber.DeleteAllPObjs()
+    #oRegisterNasabahRekening.Ls_RegisterNasabahRekSumber.DeleteAllPObjs()
     oRegisterNasabahRekening.Delete()
     #KirimPesertaKeCoreBanking(config, oNasabahDPLK.no_peserta, \
     #oNasabahDPLK.nama_lengkap, oRekeningDPLK.kode_paket_investasi,\

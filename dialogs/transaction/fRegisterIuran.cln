@@ -10,8 +10,8 @@ object:rtf::Form<
   Caption='Koreksi Iuran Peserta / Pemberi Kerja'
   Left=30
   Top=30
-  Width=460
-  Height=460
+  Width=820
+  Height=340
   OnFormShow='FormShow'
   UIParts={
     object:rtf::PClassUI<
@@ -146,6 +146,60 @@ object:rtf::Form<
           ReadOnlyControl=false
           DataTypeName='VARCHAR'
           DataLength=100
+        >, object:rtf::FieldUIElmtSetting<
+          Name='iuran_tmb'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LNasabahDPLKCorporate'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          ClassTypeName='NasabahDPLKCorporate'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLKCorporate.kode_nasabah_corporate'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsKey=true
+              KeyOrDisplayName='kode_nasabah_corporate'
+              FinalDisplayFieldName='kode_nasabah_corporate'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLKCorporate.kode_nasabah_corporate'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_nasabah_corporate'
+              FinalDisplayFieldName='kode_nasabah_corporate'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LNasabahDPLKCorporate.nama_perusahaan'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=100
+              UsedAsDisplay=true
+              KeyOrDisplayName='nama_perusahaan'
+              FinalDisplayFieldName='nama_perusahaan'
+            >
+          }
+          Restrictions=''
+          OQLText=['SELECT FROM NasabahDPLPKCorporate ('#13#10,
+            '  kode_nasabah_corporate,'#13#10,
+            '  nama_perusahaan,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY kode_nasabah_corporate;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LNasabahDPLKCorporate'
         >
       }
       Name='uipMaster'
@@ -176,6 +230,12 @@ object:rtf::Form<
           Hidden=true
           ReadOnlyControl=false
           DataTypeName='integer'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='MIN_JML_IURAN_TMB'
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='double'
           DataLength=20
         >
       }
@@ -292,6 +352,24 @@ object:rtf::Form<
               KeyOrDisplayName='no_rekening'
               FinalDisplayFieldName='no_rekening'
             >, object:rtf::FieldUIElmtSetting<
+              Name='LRekeningDPLK.kode_nasabah_corporate'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=11
+              UsedAsDisplay=true
+              KeyOrDisplayName='kode_nasabah_corporate'
+              FinalDisplayFieldName='kode_nasabah_corporate'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LRekeningDPLK.LNasabahDPLKCorporate.nama_perusahaan'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=100
+              UsedAsDisplay=true
+              KeyOrDisplayName='LNasabahDPLKCorporate.nama_perusahaan'
+              FinalDisplayFieldName='nama_perusahaan'
+            >, object:rtf::FieldUIElmtSetting<
               Name='LRekeningDPLK.keterangan'
               Hidden=false
               ReadOnlyControl=false
@@ -303,10 +381,12 @@ object:rtf::Form<
             >
           }
           Restrictions=''
-          OQLText=['SELECT * FROM RekInvDPLK('#13#10,
-            '  self,'#13#10,
+          OQLText=['SELECT FROM RekInvDPLK ('#13#10,
             '  no_rekening,'#13#10,
-            '  keterangan'#13#10,
+            '  kode_nasabah_corporate,'#13#10,
+            '  LNasabahDPLKCorporate.nama_perusahaan,'#13#10,
+            '  keterangan,'#13#10,
+            '  self'#13#10,
             ') THEN ORDER BY no_rekening;']
           LookupOption=loCustomOQL
           FieldBaseName='LRekeningDPLK'
@@ -316,21 +396,43 @@ object:rtf::Form<
           ReadOnlyControl=false
           DataTypeName='varchar'
           DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='kode_nasabah_corporate'
+          Hidden=false
+          ReadOnlyControl=true
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='nama_perusahaan'
+          Hidden=false
+          ReadOnlyControl=true
+          DataTypeName='varchar'
+          DataLength=100
+        >, object:rtf::FieldUIElmtSetting<
+          Name='nasabah_korporat'
+          Hidden=false
+          ReadOnlyControl=true
+          DataTypeName='integer'
+          DataLength=20
+          EnumeratedValues=['1=True'#13#10,
+            '0=False'#13#10]
+          GenerateCheckBoxForEnum=true
         >
       }
       Name='pData'
-      Width=433
-      Height=209
+      Width=385
+      Height=280
       Bordered=true
       UIPart=$UIPARTS['uipRegisterCIF']
       Controls={
         *object:rtf::DBEdit<
           Name='no_referensi'
-          Top=80
+          Top=248
           Left=20
+          Visible=false
           Color=12695295
           ControlCaption='Nomor Referensi'
-          LayoutOrder=15
+          LayoutOrder=9
         >, *object:rtf::DBLookupEdit<
           Name='LNasabahDPLK'
           Top=24
@@ -339,35 +441,35 @@ object:rtf::Form<
           Height=21
           Enabled=false
           Color=15128749
-          ControlCaption='Peserta DPLK'
-          LayoutOrder=5
+          ControlCaption='CIF Peserta'
+          LayoutOrder=1
           LookupField='LNasabahDPLK.nama_lengkap'
           DisplayLookupField=true
         >, *object:rtf::DBEdit<
           Name='keterangan'
-          Top=108
+          Top=164
           Left=20
           Width=180
           Height=21
           ControlCaption='Keterangan'
-          LayoutOrder=20
+          LayoutOrder=6
         >, *object:rtf::DBEdit<
           Name='user_id'
-          Top=136
+          Top=192
           Left=20
           Width=135
           Height=21
           Color=-16777192
           ControlCaption='User Penginput'
-          LayoutOrder=25
+          LayoutOrder=7
           ReadOnly=true
         >, *object:rtf::DBEdit<
           Name='terminal_id'
-          Top=164
+          Top=220
           Left=20
           Color=-16777192
           ControlCaption='Terminal Input'
-          LayoutOrder=30
+          LayoutOrder=8
           ReadOnly=true
         >, *object:rtf::DBLookupEdit<
           Name='LRekeningDPLK'
@@ -376,11 +478,38 @@ object:rtf::Form<
           Width=100
           Height=21
           Enabled=false
-          ControlCaption='Nomor Rekening'
-          LayoutOrder=10
-          LookupField='LRekeningDPLK.keterangan'
-          DisplayLookupField=true
-          DisableLookup=true
+          ControlCaption='Account DPLK'
+          LookupField='LRekeningDPLK.kode_nasabah_corporate'
+          DisplayLookupField=false
+        >, *object:rtf::DBEdit<
+          Name='kode_nasabah_corporate'
+          Top=108
+          Left=20
+          Enabled=false
+          Color=-16777192
+          ControlCaption='CIF Korporat'
+          LayoutOrder=4
+          FieldName='LRekeningDPLK.kode_nasabah_corporate'
+        >, *object:rtf::DBEdit<
+          Name='nama_perusahaan'
+          Top=136
+          Left=20
+          Enabled=false
+          Color=-16777192
+          ControlCaption='Nama Perusahaan'
+          LayoutOrder=5
+          FieldName='LRekeningDPLK.LNasabahDPLKCorporate.nama_perusahaan'
+        >, *object:rtf::DBCheckBox<
+          Name='nasabah_korporat'
+          Top=80
+          Left=20
+          Width=197
+          Height=17
+          Enabled=false
+          ControlCaption='Termasuk Anggota dari Korporat'
+          LayoutOrder=3
+          ValueChecked='1'
+          ValueUnchecked='0'
         >
       }
       EqualCaptionWidth=100
@@ -431,17 +560,18 @@ object:rtf::Form<
       RowControlGap=7
     >, object:rtf::DualSplit<
       Name='DualSplit'
-      Width=460
-      Height=460
+      Width=240
+      Height=96
       Container1=$CONTAINERS['pButton']
       Container2=$CONTAINERS['DualSplitLR']
       InversedAlign=true
     >, object:rtf::DualSplit<
       Name='DualSplitLR'
-      Width=460
-      Height=419
+      Width=240
+      Height=96
       Container1=$CONTAINERS['pData']
       Container2=$CONTAINERS['pDataBaru']
+      SplitDirection=sdrSplitLeftRight
     >, object:rtf::Panel<
       Elements={
         object:rtf::FieldUIElmtSetting<
@@ -512,11 +642,17 @@ object:rtf::Form<
           ReadOnlyControl=false
           DataTypeName='VARCHAR'
           DataLength=100
+        >, object:rtf::FieldUIElmtSetting<
+          Name='iuran_tmb'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='DOUBLE'
+          DataLength=0
         >
       }
       Name='pDataBaru'
       Width=417
-      Height=201
+      Height=225
       Bordered=true
       UIPart=$UIPARTS['uipRegisterCIF']
       Controls={
@@ -525,36 +661,47 @@ object:rtf::Form<
           Top=24
           Left=20
           ControlCaption='Sistem Pembayaran Iuran'
+          LayoutOrder=1
+          OnChange='sistem_pembayaran_iuranOnChange'
         >, *object:rtf::DBEdit<
           Name='iuran_pst'
-          Top=52
+          Top=108
           Left=20
-          Color=12695295
-          ControlCaption='Iuran Rutin Peserta'
+          ControlCaption='Iuran Peserta'
+          LayoutOrder=4
         >, *object:rtf::DBEdit<
           Name='iuran_pk'
           Top=80
           Left=20
-          Color=12695295
           ControlCaption='Iuran Pemberi Kerja'
+          LayoutOrder=3
         >, *object:rtf::DBComboBox<
           Name='tgl_penarikan_iuran'
-          Top=108
+          Top=52
           Left=20
-          ControlCaption='Tgl. Penarikan Iuran Rutin'
+          ControlCaption='Tgl. Debet Rekening'
+          LayoutOrder=2
         >, *object:rtf::DBEdit<
           Name='REKSUMBER_NO'
-          Top=136
-          Left=20
-          ControlCaption='No. Akun Rekening Sumber'
-        >, *object:rtf::DBEdit<
-          Name='REKSUMBER_NAMA'
           Top=164
           Left=20
+          ControlCaption='Nomor Rekening Sumber'
+          LayoutOrder=6
+        >, *object:rtf::DBEdit<
+          Name='REKSUMBER_NAMA'
+          Top=192
+          Left=20
           ControlCaption='Nama Pemilik Rekening Sumber'
+          LayoutOrder=7
+        >, *object:rtf::DBEdit<
+          Name='iuran_tmb'
+          Top=136
+          Left=20
+          ControlCaption='Iuran Tambahan'
+          LayoutOrder=5
         >
       }
-      EqualCaptionWidth=160
+      EqualCaptionWidth=180
       ControlLeftMargin=20
       ControlTopMargin=24
       DefaultControlHeight=21

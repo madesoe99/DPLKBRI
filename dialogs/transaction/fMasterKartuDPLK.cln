@@ -11,17 +11,16 @@ object:rtf::Form<
   Left=50
   Top=50
   Width=500
-  Height=320
+  Height=250
   UIParts={
     object:rtf::PClassUI<
       Elements={
         object:rtf::FieldUIElmtSetting<
-          Name='no_rekening'
-          AccessOption=aoReadOnlyOnEdit
-          Hidden=false
+          Name='tmp_year'
+          Hidden=true
           ReadOnlyControl=false
-          DataTypeName='VARCHAR'
-          DataLength=20
+          DataTypeName='varchar'
+          DataLength=4
         >
       }
       Name='uipMasterKartuDPLK'
@@ -142,48 +141,66 @@ object:rtf::Form<
           ReadOnlyControl=false
           DataTypeName='TIMESTAMP'
           DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='NO_SERI_KARTU'
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=40
         >
       }
       Name='pMain'
       Width=481
-      Height=153
+      Height=185
       Bordered=true
       UIPart=$UIPARTS['uipMasterKartuDPLK']
       Controls={
         *object:rtf::DBLookupEdit<
           Name='LNasabahDPLK'
-          Top=24
-          Left=20
-          Width=121
-          Height=21
-          ControlCaption='Nasabah'
-          FieldName='LNasabahDPLK.no_peserta'
-          LookupField='LNasabahDPLK.nama_lengkap'
-          DisplayLookupField=true
-          DisplayLookupColor=-16777192
-          DisplayLookupWidth=200
-        >, *object:rtf::DBLookupEdit<
-          Name='LRekeningDPLK'
           Top=52
           Left=20
           Width=121
           Height=21
+          ControlCaption='Nasabah'
+          LayoutOrder=2
+          FieldName='LNasabahDPLK.no_peserta'
+          LookupField='LNasabahDPLK.nama_lengkap'
+          DisplayLookupField=true
+          OnAfterLookup='LNasabahDPLKOnAfterLookup'
+          DisplayLookupColor=-16777192
+          DisplayLookupWidth=200
+        >, *object:rtf::DBLookupEdit<
+          Name='LRekeningDPLK'
+          Top=80
+          Left=20
+          Width=121
+          Height=21
           ControlCaption='Rekening DPLK'
+          LayoutOrder=3
           FieldName='LRekeningDPLK.no_rekening'
           LookupField='LRekeningDPLK.tgl_akseptasi'
           DisplayLookupField=true
+          OnAfterLookup='LNasabahDPLKOnAfterLookup'
           DisplayLookupColor=-16777192
           DisplayLookupWidth=200
         >, *object:rtf::DBDateEdit<
           Name='TGL_CETAK'
-          Top=80
-          Left=20
-          ControlCaption='Tgl. Cetak Kartu'
-        >, *object:rtf::DBDateEdit<
-          Name='TGL_KIRIM'
           Top=108
           Left=20
+          ControlCaption='Tgl. Cetak Kartu'
+          LayoutOrder=4
+        >, *object:rtf::DBDateEdit<
+          Name='TGL_KIRIM'
+          Top=136
+          Left=20
           ControlCaption='Tgl. Kirim Kartu'
+          LayoutOrder=5
+        >, *object:rtf::DBEdit<
+          Name='NO_SERI_KARTU'
+          Top=24
+          Left=20
+          Enabled=false
+          ControlCaption='Nomor Kartu DPLK'
         >
       }
       EqualCaptionWidth=120
@@ -222,8 +239,8 @@ object:rtf::Form<
       RowControlGap=7
     >, object:rtf::DualSplit<
       Name='dualsplit1'
-      Width=240
-      Height=96
+      Width=500
+      Height=250
       Container1=$CONTAINERS['pButton']
       Container2=$CONTAINERS['pMain']
       InversedAlign=true

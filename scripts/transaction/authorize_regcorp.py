@@ -1,7 +1,14 @@
-import sys
-sys.path.append('c:/dafapp/dplk/script_modules')
+import sys, time
+#sys.path.append('c:/dafapp/dplk/script_modules')
 
-import moduleapi
+import com.ihsan.foundation.appserver as appserver
+import com.ihsan.util.modman as modman 
+
+modman.loadStdModules(globals(),
+  [
+    "moduleapi",
+  ]
+)
 
 def CreateNasabahDPLKCorporate(config, oRegEditNasabahDPLKCorporate):
   if oRegEditNasabahDPLKCorporate.operation_code == 'N':
@@ -43,10 +50,11 @@ def CreateNasabahDPLKCorporate(config, oRegEditNasabahDPLKCorporate):
   oNasabahDPLKCorporate.alamat_kantor_kecamatan = oRegEditNasabahDPLKCorporate.alamat_kantor_kecamatan
   #oNasabahDPLKCorporate.alamat_kantor_kota = oRegEditNasabahDPLKCorporate.alamat_kantor_kota
   #oNasabahDPLKCorporate.alamat_kantor_propinsi = oRegEditNasabahDPLKCorporate.alamat_kantor_propinsi
+  #oNasabahDPLKCorporate.alamat_kantor_kode_pos = oRegEditNasabahDPLKCorporate.alamat_kantor_kode_pos
   oNasabahDPLKCorporate.LAKPropinsi = oRegEditNasabahDPLKCorporate.LAKPropinsi
   oNasabahDPLKCorporate.LAKKota = oRegEditNasabahDPLKCorporate.LAKKota
   oNasabahDPLKCorporate.LAKKecamatan = oRegEditNasabahDPLKCorporate.LAKKecamatan
-  oNasabahDPLKCorporate.alamat_kantor_kode_pos = oRegEditNasabahDPLKCorporate.alamat_kantor_kode_pos
+  oNasabahDPLKCorporate.LAKKodePos = oRegEditNasabahDPLKCorporate.LAKKodePos
   oNasabahDPLKCorporate.alamat_kantor_telepon = oRegEditNasabahDPLKCorporate.alamat_kantor_telepon
   oNasabahDPLKCorporate.alamat_kantor_telepon2 = oRegEditNasabahDPLKCorporate.alamat_kantor_telepon2
   oNasabahDPLKCorporate.alamat_kantor_fax = oRegEditNasabahDPLKCorporate.alamat_kantor_fax
@@ -69,6 +77,7 @@ def CreateNasabahDPLKCorporate(config, oRegEditNasabahDPLKCorporate):
   oNasabahDPLKCorporate.REFR_ACCNO = oRegEditNasabahDPLKCorporate.REFR_ACCNO
   oNasabahDPLKCorporate.REFR_NAMA = oRegEditNasabahDPLKCorporate.REFR_NAMA
   oNasabahDPLKCorporate.REFR_UKER = oRegEditNasabahDPLKCorporate.REFR_UKER
+  oNasabahDPLKCorporate.BENEFICIAL_OWNER = oRegEditNasabahDPLKCorporate.BENEFICIAL_OWNER
 
   if oRegEditNasabahDPLKCorporate.operation_code == 'N':
     sSQL = """SELECT *

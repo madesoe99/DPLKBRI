@@ -59,23 +59,24 @@ object:rtf::Form<
       WindowSize=20
       Columns={
         object:rtf::QueryColumn<
-          FieldName='RegEditNasabahDPLKCorporate.no_referensi'
-          Width=100
-          Caption='Nomor Referensi'
-        >, object:rtf::QueryColumn<
-          FieldName='RegEditNasabahDPLKCorporate.nama_perusahaan'
-          Width=140
-          Caption='Nama Korporat'
-        >, object:rtf::QueryColumn<
           FieldName='RegEditNasabahDPLKCorporate.kode_holding'
           Width=80
           Caption='Kode Holding'
         >, object:rtf::QueryColumn<
+          FieldName='RegEditNasabahDPLKCorporate.no_referensi'
+          Width=100
+          Caption='Nomor Referensi'
+          Hidden=true
+        >, object:rtf::QueryColumn<
           FieldName='RegEditNasabahDPLKCorporate.kode_nasabah_corporate'
           Width=80
-          Caption='Kode Peserta Korporat'
+          Caption='CIF Korporat'
           UseCustomColor=true
           Color=15128749
+        >, object:rtf::QueryColumn<
+          FieldName='RegEditNasabahDPLKCorporate.nama_perusahaan'
+          Width=140
+          Caption='Nama Korporat'
         >, object:rtf::QueryColumn<
           FieldName='RegEditNasabahDPLKCorporate.NPWP'
           Width=100
@@ -87,7 +88,7 @@ object:rtf::Form<
         >, object:rtf::QueryColumn<
           FieldName='RegEditNasabahDPLKCorporate.nama_jenis_usaha'
           Width=140
-          Caption='Nama Jenis Usaha'
+          Caption='Bidang Usaha'
         >, object:rtf::QueryColumn<
           FieldName='RegEditNasabahDPLKCorporate.kepemilikan'
           Width=100
@@ -96,6 +97,7 @@ object:rtf::Form<
           FieldName='RegEditNasabahDPLKCorporate.keterangan'
           Width=300
           Caption='Keterangan'
+          Hidden=true
         >, object:rtf::QueryColumn<
           FieldName='RegEditNasabahDPLKCorporate.operation_code'
           Width=100

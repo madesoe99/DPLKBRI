@@ -50,20 +50,25 @@ object:rtf::Form<
         '  keterangan,'#13#10,
         '  user_id,'#13#10,
         '  terminal_id,'#13#10,
+        '  kode_holding,'#13#10,
         '  self'#13#10,
         ') then order by kode_nasabah_corporate;']
       DirectDisplay=true
       WindowSize=20
       Columns={
         object:rtf::QueryColumn<
+          FieldName='NasabahDPLKCorporate.kode_holding'
+          Width=80
+          Caption='Kode Holding'
+        >, object:rtf::QueryColumn<
           FieldName='NasabahDPLKCorporate.kode_nasabah_corporate'
-          Width=150
-          Caption='Kode Korporat'
+          Width=80
+          Caption='CIF Korporat'
           UseCustomColor=true
           Color=15128749
         >, object:rtf::QueryColumn<
           FieldName='NasabahDPLKCorporate.nama_perusahaan'
-          Width=250
+          Width=180
           Caption='Nama Korporat'
         >, object:rtf::QueryColumn<
           FieldName='NasabahDPLKCorporate.NPWP'
@@ -75,8 +80,8 @@ object:rtf::Form<
           Caption='Nomor Perjanjian'
         >, object:rtf::QueryColumn<
           FieldName='NasabahDPLKCorporate.nama_jenis_usaha'
-          Width=150
-          Caption='Nama Jenis Usaha'
+          Width=140
+          Caption='Bidang Usaha'
         >, object:rtf::QueryColumn<
           FieldName='NasabahDPLKCorporate.kepemilikan'
           Width=100
@@ -85,6 +90,7 @@ object:rtf::Form<
           FieldName='NasabahDPLKCorporate.keterangan'
           Width=300
           Caption='Keterangan'
+          Hidden=true
         >
       }
       EnableColumns=true

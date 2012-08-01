@@ -67,6 +67,18 @@ def Form_OnSetDataEx(uideflist, parameterForm):
   oParameter.Key = 'PRESISI_ANGKA_FLOAT'
   recParameter.PRESISI_ANGKA_FLOAT = oParameter.Numeric_Value
 
+  oParameter.Key = 'BIAYA_SKN'
+  recParameter.BiayaSKN = oParameter.Numeric_Value
+  oParameter.Key = 'BIAYA_RTGS'
+  recParameter.BiayaRTGS = oParameter.Numeric_Value
+  oParameter.Key = 'BIAYA_TUNAI'
+  recParameter.BiayaTunai = oParameter.Numeric_Value
+  oParameter.Key = 'BIAYA_PINDAH_BUKU'
+  recParameter.BiayaPindahBuku = oParameter.Numeric_Value
+
+  oParameter.Key = 'PERSEN_DENDA_NPWP'
+  recParameter.PERSEN_DENDA_NPWP = oParameter.Numeric_Value
+    
   #cek parameter default atau parameter korporat
   if recPeserta.kode_nasabah_corporate not in (None,''):
     #pakai parameter korporat
@@ -74,29 +86,13 @@ def Form_OnSetDataEx(uideflist, parameterForm):
     dictParameterKorporat = transaksiAPI.GetParameterCorporate(config, \
       recPeserta.kode_nasabah_corporate, listParameterKey)
     
-    recParameter.BiayaSKN = dictParameterKorporat['BIAYA_SKN'][1]
-    recParameter.BiayaRTGS = dictParameterKorporat['BIAYA_RTGS'][1]
-    recParameter.BiayaTunai = dictParameterKorporat['BIAYA_TUNAI'][1]
-    recParameter.BiayaPindahBuku = dictParameterKorporat['BIAYA_PINDAH_BUKU'][1]
-
     #recParameter.PERSEN_PENARIKAN_PHK = dictParameterKorporat['PERSEN_PENARIKAN_PHK'][1]
     recParameter.MIN_JML_AKUM_IURAN_PST = dictParameterKorporat['MIN_JML_AKUM_IURAN_PST'][1]
     
     recParameter.PERSEN_BIAYA_TARIK_PHK = dictParameterKorporat['PERSEN_BIAYA_TARIK_PHK'][1]
     recParameter.MIN_BIAYA_TARIK = dictParameterKorporat['MIN_BIAYA_TARIK'][1]
-
-    recParameter.PERSEN_DENDA_NPWP = dictParameterKorporat['PERSEN_DENDA_NPWP'][1]
   else:
     #pakai parameter default aplikasi
-    oParameter.Key = 'BIAYA_SKN'
-    recParameter.BiayaSKN = oParameter.Numeric_Value
-    oParameter.Key = 'BIAYA_RTGS'
-    recParameter.BiayaRTGS = oParameter.Numeric_Value
-    oParameter.Key = 'BIAYA_TUNAI'
-    recParameter.BiayaTunai = oParameter.Numeric_Value
-    oParameter.Key = 'BIAYA_PINDAH_BUKU'
-    recParameter.BiayaPindahBuku = oParameter.Numeric_Value
-  
     #oParameter.Key = 'PERSEN_PENARIKAN_PHK'
     #recParameter.PERSEN_PENARIKAN_PHK = oParameter.Numeric_Value
     oParameter.Key = 'MIN_JML_AKUM_IURAN_PST'
@@ -107,9 +103,6 @@ def Form_OnSetDataEx(uideflist, parameterForm):
     oParameter.Key = 'MIN_BIAYA_TARIK'
     recParameter.MIN_BIAYA_TARIK = oParameter.Numeric_Value
 
-    oParameter.Key = 'PERSEN_DENDA_NPWP'
-    recParameter.PERSEN_DENDA_NPWP = oParameter.Numeric_Value
-    
   recParameter.isHitungMode = 1
 
   #set field data rekening

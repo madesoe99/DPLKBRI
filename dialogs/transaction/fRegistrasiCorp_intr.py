@@ -25,7 +25,7 @@ def SetControlsForAuth(form):
   form.GetControlByName('pButton.btnOK').Caption = '&Setujui'
   form.GetControlByName('pButton.btnCancel').Caption = '&Tolak'
   form.GetControlByName('pButton.btnClose').Visible = 1
-  form.Caption = 'Otorisasi Hasil ' + form.Caption
+  form.Caption = 'Approval Hasil ' + form.Caption
 
 def FormShow(form, parameter):
   app = form.ClientApplication
@@ -55,7 +55,8 @@ def FormShow(form, parameter):
       'REFR_ACCNO;REFR_NAMA;REFR_UKER;',
       'LAKPropinsi.kode_propinsi;LAKPropinsi.nama_propinsi;',
       'LAKKota.kode_kota;LAKKota.nama_kota;',
-      'LAKKecamatan.kode_kecamatan;LAKKecamatan.nama_kecamatan'
+      'LAKKecamatan.kode_kecamatan;LAKKecamatan.nama_kecamatan;',
+      'LAKKodePos.id_kodepos;LAKKodePos.kode_pos;BENEFICIAL_OWNER'
     ])
     uipNasabahDPLKCorporate.CopyAttributes(uipRegEditNasabahDPLKCorporate,dataCopy)
     form.GetControlByName('pDataLeft.kode_nasabah_corporate').ReadOnly = 1
@@ -77,9 +78,9 @@ def btnOKClick(sender):
     #mode new, edit, editdoc
     form.CommitBuffer()
     
-    if uipRegEditNasabahDPLKCorporate.no_referensi in ['',None]:
-      form.ShowMessage('Nomor Referensi masih kosong. Mohon untuk diisi.')
-      return
+    #if uipRegEditNasabahDPLKCorporate.no_referensi in ['',None]:
+    #  form.ShowMessage('Nomor Referensi masih kosong. Mohon untuk diisi.')
+    #  return
   
     if uipRegEditNasabahDPLKCorporate.kode_nasabah_corporate in ['',None]:
       form.ShowMessage('Kode Peserta Korporat masih kosong. Mohon untuk diisi.')
@@ -98,15 +99,15 @@ def btnOKClick(sender):
       return
 
     #checking tgl bayar iuran
-    if uipRegEditNasabahDPLKCorporate.tgl_bayar_iuran in ['',None]:
-      form.ShowMessage('Tanggal Bayar Iuran masih kosong. Mohon untuk diisi.')
-      return
+    #if uipRegEditNasabahDPLKCorporate.tgl_bayar_iuran in ['',None]:
+    #  form.ShowMessage('Tanggal Bayar Iuran masih kosong. Mohon untuk diisi.')
+    #  return
 
     #checking biaya daftar anggota
-    if uipRegEditNasabahDPLKCorporate.biaya_daftar_anggota in ['',None] or \
-      uipRegEditNasabahDPLKCorporate.biaya_daftar_anggota < 0.0:
-      form.ShowMessage('Biaya Daftar Anggota tidak boleh kosong atau 0.')
-      return
+    #if uipRegEditNasabahDPLKCorporate.biaya_daftar_anggota in ['',None] or \
+    #  uipRegEditNasabahDPLKCorporate.biaya_daftar_anggota < 0.0:
+    #  form.ShowMessage('Biaya Daftar Anggota tidak boleh kosong atau 0.')
+    #  return
 
     if uipRegEditNasabahDPLKCorporate.GetFieldValue("LNegara.kode_negara") in ['',None]:
       form.ShowMessage('Negara masih kosong. Mohon untuk diisi.')
@@ -119,7 +120,7 @@ def btnOKClick(sender):
     form.PostResult()
 
   elif uipRegEditNasabahDPLKCorporate.mode == 'auth':
-    #mode auth, go otorisasi
+    #mode auth, go approval
     app.ExecuteScript('transaction/authorize_regcorp',app.CreateValues(['id',\
       uipRegEditNasabahDPLKCorporate.regeditndplkcorp_id]))
   #else: mode view, do nothing
@@ -141,3 +142,28 @@ def btnCancelClick(sender):
       sender.ExitAction = 3
   else:
     sender.ExitAction = 2
+
+
+def LAKKodePosOnAfterLookup(sender, linkui):
+  # procedure(sender: TrtfDBLookupEdit; linkui: TrtfLinkUIElmtSetting)
+  form = sender.OwnerForm
+  pDataRight = form.GetPanelByName('pDataRight')
+  
+  uipReg = form.GetUIPartByName('uipRegEditNasabahDPLKCorporate')
+  uipReg.Edit()
+  
+  uipReg.SetFieldValue('LAKPropinsi.kode_propinsi', uipReg.GetFieldValue('LAKKodePos.kode_propinsi'))
+  uipReg.SetFieldValue('LAKPropinsi.nama_propinsi', uipReg.GetFieldValue('LAKKodePos.LPropinsi.nama_propinsi'))
+  pDataRight.GetControlByName('LAKPropinsi').Enabled = 0
+  
+  uipReg.SetFieldValue('LAKKota.kode_kota', uipReg.GetFieldValue('LAKKodePos.kode_kota'))
+  uipReg.SetFieldValue('LAKKota.nama_kota', uipReg.GetFieldValue('LAKKodePos.LKota.nama_kota'))
+  pDataRight.GetControlByName('LAKKota').Enabled = 0
+  
+  uipReg.SetFieldValue('LAKKecamatan.kode_kecamatan', uipReg.GetFieldValue('LAKKodePos.kode_kecamatan'))
+  uipReg.SetFieldValue('LAKKecamatan.nama_kecamatan', uipReg.GetFieldValue('LAKKodePos.LKecamatan.nama_kecamatan'))
+  pDataRight.GetControlByName('LAKKecamatan').Enabled = 0
+  
+  uipReg.SetFieldValue('alamat_kantor_kelurahan', uipReg.GetFieldValue('LAKKodePos.nama_kelurahan'))
+  if not uipReg.GetFieldValue('LAKKodePos.nama_kelurahan') in ['', None]:
+    pDataRight.GetControlByName('alamat_kantor_kelurahan').Enabled = 0

@@ -10,10 +10,37 @@ object:rpclass::TPClassUIDefList<
     object:rpclass::TPClassUIDef<
       Name='uipDetail'
       PClassName='UploadCorpRegisterPeserta'
-      LoadedFieldList='upload_id;no_peserta;no_rekening;is_valid;keterangan;is_auth;nama_lengkap;no_referensi;alamat_jalan;alamat_rtrw;LATPropinsi.kode_propinsi;LATPropinsi.kode_propinsi;LATPropinsi.nama_propinsi;LATKota.kode_kota;LATKota.kode_kota;LATKota.nama_kota;tempat_lahir;tanggal_lahir;status_perkawinan;jenis_kelamin;NPWP;ibu_kandung'
-      StoredFieldList='no_peserta;no_rekening;is_valid;keterangan;is_auth;nama_lengkap;no_referensi;alamat_jalan;alamat_rtrw;LATPropinsi;LATKota;tempat_lahir;tanggal_lahir;status_perkawinan;jenis_kelamin;NPWP;ibu_kandung'
+      LoadedFieldList='upload_id;ibu_kandung;nama_lengkap;tempat_lahir;tanggal_lahir;jenis_kelamin;status_perkawinan;kewarganegaraan;LNegara.kode_negara;LNegara.kode_negara;LNegara.nama_negara;LNegara.risk_flag;email;NPWP;penghasilan_setahun;alamat_jalan;alamat_rtrw;alamat_kota;alamat_telepon;alamat_telepon2;alamat_propinsi;LATPropinsi.kode_propinsi;LATPropinsi.kode_propinsi;LATPropinsi.nama_propinsi;LATKota.kode_kota;LATKota.kode_kota;LATKota.nama_kota;LATKecamatan.kode_kecamatan;LATKecamatan.kode_kecamatan;LATKecamatan.nama_kecamatan;LATKodePos.id_kodepos;LATKodePos.id_kodepos;LATKodePos.kode_pos;LATKodePos.kode_propinsi;LATKodePos.kode_kota;LATKodePos.kode_kecamatan;LATKodePos.LPropinsi.nama_propinsi;LATKodePos.LKota.nama_kota;LATKodePos.LKecamatan.nama_kecamatan;LATKodePos.nama_kelurahan;alamat_rw;LJenisPekerjaan.kode_jenis_pekerjaan;LJenisPekerjaan.kode_jenis_pekerjaan;LJenisPekerjaan.nama_jenis_pekerjaan;LJenisPekerjaan.risk_flag;LJenisPekerjaanDetail.jpd_id;LJenisPekerjaanDetail.kode_jenis_jabatan;LJenisPekerjaanDetail.LJenisJabatan.nama_jenis_jabatan;LJenisPekerjaanDetail.risk_flag;no_peserta;no_rekening;is_valid;keterangan;is_auth;isPesertaPengalihan;LSumberDana.sumber_dana;LSumberDana.sumber_dana;LSumberDana.keterangan;usia_pensiun;tgl_pensiun;tgl_pensiun_dipercepat;sistem_pembayaran_iuran;tgl_debet_rekening;REKSUMBER_NO;REKSUMBER_NAMA;iuran_tmb;ikut_asuransi'
+      StoredFieldList='ibu_kandung;nama_lengkap;tempat_lahir;tanggal_lahir;jenis_kelamin;status_perkawinan;kewarganegaraan;LNegara;email;NPWP;penghasilan_setahun;alamat_jalan;alamat_rtrw;alamat_kota;alamat_telepon;alamat_telepon2;alamat_propinsi;LATPropinsi;LATKota;LATKecamatan;LATKodePos;alamat_rw;LJenisPekerjaan;LJenisPekerjaanDetail;no_peserta;no_rekening;is_valid;keterangan;is_auth;isPesertaPengalihan;LSumberDana;usia_pensiun;tgl_pensiun;tgl_pensiun_dipercepat;sistem_pembayaran_iuran;tgl_debet_rekening;REKSUMBER_NO;REKSUMBER_NAMA;iuran_tmb;ikut_asuransi'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='RF_Negara'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='mode'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='nolimitlocation'
+          DataTypeName='varchar'
+          DataLength=1
+        >, object:rpclass::TCustomLoadedField<
+          Name='RF_JenisPekerjaan'
+          DataTypeName='varchar'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='RF_JPD'
+          DataTypeName='varchar'
+          DataLength=20
+        >
+      }
       CustomLoadedLinks={
         object:rpclass::TCustomLoadedLink<
+          Name='LNegara'
+          ClassTypeName='Negara'
+          FieldNames='kode_negara;kode_negara;nama_negara;risk_flag'
+        >, object:rpclass::TCustomLoadedLink<
           Name='LATPropinsi'
           ClassTypeName='DaerahAsal'
           FieldNames='kode_propinsi;kode_propinsi;nama_propinsi'
@@ -21,6 +48,26 @@ object:rpclass::TPClassUIDefList<
           Name='LATKota'
           ClassTypeName='DaerahKota'
           FieldNames='kode_kota;kode_kota;nama_kota'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LATKecamatan'
+          ClassTypeName='DaerahKecamatan'
+          FieldNames='kode_kecamatan;kode_kecamatan;nama_kecamatan'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LATKodePos'
+          ClassTypeName='DaerahKodePos'
+          FieldNames='id_kodepos;id_kodepos;kode_pos;kode_propinsi;kode_kota;kode_kecamatan;LPropinsi.nama_propinsi;LKota.nama_kota;LKecamatan.nama_kecamatan;nama_kelurahan'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LJenisPekerjaan'
+          ClassTypeName='JenisPekerjaan'
+          FieldNames='kode_jenis_pekerjaan;kode_jenis_pekerjaan;nama_jenis_pekerjaan;risk_flag'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LJenisPekerjaanDetail'
+          ClassTypeName='JenisPekerjaanDetail'
+          FieldNames='jpd_id;kode_jenis_jabatan;LJenisJabatan.nama_jenis_jabatan;risk_flag'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LSumberDana'
+          ClassTypeName='SumberDana'
+          FieldNames='sumber_dana;sumber_dana;keterangan'
         >
       }
       Mode=imSingleRow

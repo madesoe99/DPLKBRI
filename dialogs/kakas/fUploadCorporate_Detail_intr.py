@@ -31,7 +31,7 @@ class fUploadCorporate_Detail:
     elif self.fMode == 'edit':
       form.Caption = 'Koreksi Data ' + form.Caption
     elif self.fMode == 'auth':
-      form.Caption = 'Otorisasi Data ' + form.Caption
+      form.Caption = 'Approve ' + form.Caption
       
       self.pGeneral.SetAllControlsReadOnly(1)
       #formSpecific.qDetails.ContextMenuName = ''

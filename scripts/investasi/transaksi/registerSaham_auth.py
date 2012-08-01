@@ -1,7 +1,28 @@
+import sys, time
 import com.ihsan.util.modman as modman
 
 #moduleapi = modman.getModule(config, 'moduleapi')
 
+dictFund = {'A':'DPLK-MM',
+            'B':'DPLK-FIX',
+            'C':'DPLK-EQ',
+           }
+
+def FormatDate(tgl):
+  if tgl == None: restgl = ''
+  else: restgl = '%s/%s/%s' % (tgl[1],tgl[2],tgl[0])
+
+  return restgl
+  
+def runSQL(config, sSQL):
+  print 'SQL:> \n', sSQL
+  t1 = time.clock()
+  if config.ExecSQL(sSQL) < 0:
+    raise 'runSQL', config.GetDBConnErrorInfo()
+  t2 = time.clock()
+  
+  print '>>... %.8f seconds\n' % (t2-t1)
+  
 def CreateRincianSaham(config, oSaham):
   # buat satu objek rincianSaham
   # karena dalam kasus Saham, satu Saham hanya mengacu ke satu paket saja (B)
@@ -36,7 +57,12 @@ def CreateSaham(config, oRegisterSaham):
   oSaham.NAB = 0.0 #oRegisterSaham.NAB
   oSaham.kode_jns_Saham = oRegisterSaham.kode_jns_Saham
   oSaham.LCustodianBank = oRegisterSaham.LCustodianBank
-
+             
+  oSaham.LAccrual = oRegisterSaham.LAccrual
+  oSaham.LBroker = oRegisterSaham.LBroker
+  oSaham.LPayingAgent = oRegisterSaham.LPayingAgent
+  oSaham.LSubJenisInv = oRegisterSaham.LSubJenisInv
+  
   oSaham.tgl_otorisasi = config.Now()
   oSaham.last_update = config.Now()
   oSaham.user_id = oRegisterSaham.user_id
@@ -55,7 +81,6 @@ def CreateTransPiutangInvestasi(config, oSaham, oRegisterSaham):
   oSubscribeSaham = config.CreatePObject('SubscribeSaham')
   oSubscribeSaham.LInvestasi = oSaham
   oSubscribeSaham.nama_investasi = oSaham.nama_Saham
-  oSubscribeSaham.LTransactionBatch = oRegisterSaham.LTransactionBatch
   oSubscribeSaham.kode_jns_investasi = oRegisterSaham.kode_jns_investasi#'C' # Saham
   oSubscribeSaham.kode_jenis_trinvestasi = 'SS' # buat investasi baru, subscribe Saham
   oSubscribeSaham.tgl_transaksi = moduleapi.DateTimeTupleToFloat(config, oSaham.tgl_buka)
@@ -81,13 +106,50 @@ def CreateTransPiutangInvestasi(config, oSaham, oRegisterSaham):
   oSubscribeSaham.unit_penyertaan = 0.0 #oSaham.unit_penyertaan
   oSubscribeSaham.UP_Awal = 0.0
   
+  CreateTrxCIM(config, oSubscribeSaham, oSaham)
+
+def CreateTrxCIM(config, oTransPiutangInvestasi, oSaham):
+  if oSaham.LPayingAgent.IsNull:
+    JenisTransaksi = 'RFOP'
+  else:
+    JenisTransaksi = 'RVP'
+  JenisTransaksi = JenisTransaksi + '-EQ'
+  TanggalTransaksi = FormatDate(oSaham.tgl_buka)
+  ClientID = SubAccountId = dictFund[oSaham.kode_paket_investasi]
+  SecurityType = oSaham.kode_subjns_LRInvestasi
+  subCustodian = 'BRI'
+  if oSaham.LBroker.IsNull:
+    broker = 'NA'
+  else:
+    broker = oSaham.LBroker.broker_code
+  if oSaham.LPayingAgent.IsNull:
+    bankId = ''
+    bankAcc = ''
+  else:
+    bankId = oSaham.LPayingAgent.agent_code
+    bankAcc = oSaham.LPayingAgent.agent_name 
+
+  scriptlessstatus = 'N'
+  status = 'A'
+  statusdesc = 'APPROVAL ENTRY'
+  config.SendDebugMsg('a')
+  sSQL = "INSERT INTO TrxToCIM (IDTransaksiDPLK,JenisTransaksi,TanggalTransaksi,\
+  ClientID,SubAccountID,SecurityType,SubCustodian,Broker,ScriptlessStatus,\
+  Quantity,Price,BankID,BankAcc,Status,StatusDesc,CIM_SendStatus) \
+  VALUES (%s,'%s','%s','%s','%s','%s','%s','%s','%s',%s,%s,'%s','%s','%s','%s','F')\
+  " % (oTransPiutangInvestasi.id_transaksiinvestasi,JenisTransaksi,TanggalTransaksi,\
+  ClientID,SubAccountId,SecurityType,subCustodian,broker,scriptlessstatus, oSaham.unit_penyertaan, \
+  oSaham.NAB, bankId,bankAcc,status,statusdesc)
+  
+  config.SendDebugMsg(sSQL)
+  runSQL(config, sSQL)  
+  
 # biaya subscribe
 def CreateBiayaSubscribe(config, oRegisterSaham, oSaham):
   moduleapi = modman.getModule(config, 'moduleapi')
   
   oTransLRInvestasi = config.CreatePObject('TransLRInvestasi')
   oTransLRInvestasi.LInvestasi = oSaham
-  oTransLRInvestasi.LTransactionBatch = oRegisterSaham.LTransactionBatch
   oTransLRInvestasi.kode_jns_investasi = oRegisterSaham.kode_jns_investasi
   oTransLRInvestasi.kode_jenis_trinvestasi = 'D' # biaya Saham
   oTransLRInvestasi.kode_subjns_LRInvestasi = 'C-SUB' # biaya subscribe fee Saham
@@ -134,4 +196,3 @@ def DAFScriptMain(config, parameter, returnpacket):
     raise
 
   return 1
-

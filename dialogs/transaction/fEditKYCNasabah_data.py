@@ -14,9 +14,10 @@ def FormEndSetData(uideflist, auiname, apobjconst):
       no_peserta = uiCalled.ActiveRecord.no_peserta
     else:
       no_peserta = uiCalled.ActiveRecord.GetFieldByName('LNasabahDPLK.no_peserta')
+    
     moduleapi.IsPesertaAktif(config, no_peserta)
-
     moduleapi.CheckRegCIFRestriction(uideflist, auiname, apobjconst)
+    
     if uideflist.uipMaster.Dataset.RecordCount > 0:
       rec = uideflist.uipMaster.ActiveRecord
       moduleapi.CheckRegisterCIFUniq(config, rec.no_peserta, 'Y')
@@ -44,8 +45,8 @@ def uipRegisterCIFApplyRow(sender, oData):
   #sender.ActiveInstance.jpd_id = sender.ActiveRecord.jpd_id
   #sender.ActiveInstance.jpd_id_ortu = sender.ActiveRecord.jpd_id_ortu
   
-  if oData.no_referensi in ['', None]:
-    raise Exception,'\nRegistrasi Error\n\nNomor referensi tidak terdefinisi.'
+  #if oData.no_referensi in ['', None]:
+  #  raise Exception,'\nRegistrasi Error\n\nNomor referensi tidak terdefinisi.'
 
 
 

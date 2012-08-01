@@ -3,32 +3,13 @@ import com.ihsan.util.modman as modman
 #moduleapi = modman.getModule(config, 'moduleapi')
 #TransactInv = modman.getModule(config, 'TransactInv')
 
-def CreateBatch(config,tgl) :
-  oBatch = config.CreatePObject('TransactionBatch')
-  oBatch.batch_type = 'I'
-  oBatch.batch_sub_type = 'M'
-  oBatch.tgl_create = tgl
-  oBatch.account_link_type = 'S'
-  oBatch.tgl_used = tgl
-  oBatch.user_id_create = oBatch.user_id_owner = config.SecurityContext.userid
-  oBatch.batch_status = 'O'
-  oBatch.terminal_id_create = config.SecurityContext.GetSessionInfo()[1]
-  oBatch.no_batch = 'B' + oBatch.batch_type + '.' + oBatch.user_id_owner + '.' + \
-      str(oBatch.tgl_used[0]) + \
-      str(oBatch.tgl_used[1]).zfill(2) + \
-      str(oBatch.tgl_used[2]).zfill(2) + '.' + str(oBatch.ID_TransactionBatch)
-  oUser = config.CreatePObjImplProxy('UserApp')
-  oUser.Key = oBatch.user_id_owner
-  oBatch.branch_code = oUser.branch_code
-
-  return oBatch
-
-def UbahNominalInvestasi(config, oBatch, oSaham, oHist,statNAB, Nom):
-  moduleapi = modman.getModule(config, 'moduleapi')
+def UbahNominalInvestasi(config, oSaham, oHist,statNAB, Nom):
+  moduleapi = modman.getModule(config, 'moduleapi')   
+  TransactInv = modman.getModule(config, 'TransactInv')
   
   tgl = config.Now()
-  if  oBatch == '' :
-    oBatch = CreateBatch(config,tgl)
+  #if  oBatch == '' :
+  #  oBatch = CreateBatch(config,tgl)
 
   #oTransPiutangInvestasi = config.CreatePObject('TransPiutangInvestasi')
   #oTransPiutangInvestasi.LInvestasi = oSaham
@@ -58,12 +39,12 @@ def UbahNominalInvestasi(config, oBatch, oSaham, oHist,statNAB, Nom):
   prof = oSaham.akum_nominal-akum_awal
 
   TransactInv = modman.getModule(config, 'TransactInv')
-  oSPI = TransactInv.CreateSPI(config, oSaham.nama_Saham, oSaham, '', prof,'N',oBatch,moduleapi.DateTimeTupleToFloat(config, oHist.tgl_penetapan))
-  TransactInv.CreatePNI(config, oSaham.nama_Saham, oSaham, oSPI, prof,'N')
+  oSPI = TransactInv.CreateSPINoBatch(config, oSaham.nama_Saham, oSaham, '', prof,'N',moduleapi.DateTimeTupleToFloat(config, oHist.tgl_penetapan))
+  TransactInv.CreatePNINoBatch(config, oSaham.nama_Saham, oSaham, oSPI, prof,'N')
   TransactInv.CreateRincianPokok(config, oSaham, oSaham.akum_nominal-akum_awal)  
   
-  UpdatePosisiReturn(config, prof, oHist.tgl_penetapan)
-  UpdatePosisiReturnPeserta(config, prof)
+  #UpdatePosisiReturn(config, prof, oHist.tgl_penetapan)
+  #UpdatePosisiReturnPeserta(config, prof)
    
 def UpdatePosisiReturn(config, nom_return, tgl):
   strtgl = '%s/%s/%s' % (tgl[0],tgl[1],tgl[2])
@@ -94,7 +75,7 @@ def UpdatePosisiReturnPeserta(config, nom_return):
   config.SendDebugMsg(sExc)
   config.ExecSQL(sExc)
     
-def OtorisasiPerubahanSaham(config, oSaham, oHist, IsSubs, oBatch):
+def OtorisasiPerubahanSaham(config, oSaham, oHist, IsSubs):
   TransactInv = modman.getModule(config, 'TransactInv')
   oHR = TransactInv.GetLastHistSaham(config, oSaham)
   oHist.TglUbah = config.Now()    
@@ -116,11 +97,11 @@ def OtorisasiPerubahanSaham(config, oSaham, oHist, IsSubs, oBatch):
   
   if Nom != 0.0 :
     #oSaham.akum_piutangLR += Nom
-    UbahNominalInvestasi(config, oBatch, oSaham, oHist,statNAB, Nom)
+    UbahNominalInvestasi(config, oSaham, oHist,statNAB, Nom)
 
   if int(oHist.TerminalOto) : #Proses Unrealize Hasil Saham
     #oBatch = CreateBatch(config,ftglAkhir)
-    UnrealReturn(config, oSaham, oHist, oBatch)
+    UnrealReturn(config, oSaham, oHist)
 
   oHist.UserOto = config.SecurityContext.UserID
   #oHist.tgl_penetapan = config.Now()
@@ -129,14 +110,13 @@ def OtorisasiPerubahanSaham(config, oSaham, oHist, IsSubs, oBatch):
 def BatalkanPerubahanSaham(config, oSaham, oHist) :
   oHist.Delete()
 
-def UnrealReturn(config, oSaham, oHist, oBatch) :
+def UnrealReturn(config, oSaham, oHist) :
   #kenaikan /penurunan investasi
   moduleapi = modman.getModule(config, 'moduleapi')
   
   oTransLRInvestasi = config.CreatePObject('KlaimLRSaham')
   oTransLRInvestasi.LInvestasi = oSaham
   oTransLRInvestasi.nama_investasi = oSaham.nama_Saham
-  oTransLRInvestasi.LTransactionBatch = oBatch
   oTransLRInvestasi.kode_jns_investasi = oSaham.kode_jns_investasi
   oTransLRInvestasi.kode_jenis_trinvestasi = 'L' # fLoat return
   oTransLRInvestasi.tgl_transaksi = moduleapi.DateTimeTupleToFloat(config, oHist.tgl_penetapan)
@@ -164,15 +144,13 @@ def UnrealReturn(config, oSaham, oHist, oBatch) :
   oSaham.akum_LR += unrealReturn
   TransactInv.CreatePNI(config, oSaham.nama_Saham, oSaham, oTransLRInvestasi, -unrealReturn,'L')
 
-def RealReturn (config, oSaham, oRR, oBatch, oHist ):
+def RealReturn (config, oSaham, oRR, oHist ):
   moduleapi = modman.getModule(config, 'moduleapi')
   
   oTransLRInvestasi = config.CreatePObject('RealisasiReturnSaham')
   config.SendDebugMsg('RR1')
   oTransLRInvestasi.LInvestasi = oSaham
   oTransLRInvestasi.nama_investasi = oSaham.nama_Saham
-  oTransLRInvestasi.LTransactionBatch = oBatch
-  config.SendDebugMsg('RR:%s' % oBatch.no_batch)  
   oTransLRInvestasi.kode_jns_investasi = oSaham.kode_jns_investasi
   oTransLRInvestasi.kode_jenis_trinvestasi = 'RRS' # realisasi return
   oTransLRInvestasi.tgl_transaksi = moduleapi.DateTimeTupleToFloat(config, oRR.tgl_transaksi)
@@ -207,11 +185,11 @@ def RealReturn (config, oSaham, oRR, oBatch, oHist ):
   
   #config.SendDebugMsg('RR5')
   #tambahan SPI
-  TransactInv.CreateSPI(config, oSaham.nama_Saham, oSaham, oTransLRInvestasi, -RealReturn ,'N', oBatch, tgl)
+  TransactInv.CreateSPINoBatch(config, oSaham.nama_Saham, oSaham, oTransLRInvestasi, -RealReturn ,'N',  tgl)
   #config.SendDebugMsg('RR6')
-  TransactInv.CreatePNI(config, oSaham.nama_Saham, oSaham, oTransLRInvestasi, -RealReturn,'N', oBatch, tgl)
+  TransactInv.CreatePNINoBatch(config, oSaham.nama_Saham, oSaham, oTransLRInvestasi, -RealReturn,'N', tgl)
   #config.SendDebugMsg('RR7')
-  UnrealReturn(config, oSaham, oHist, oBatch)
+  UnrealReturn(config, oSaham, oHist)
   #config.SendDebugMsg('RR8')
 
 def DAFScriptMain(config, parameter, returnpacket):
@@ -242,8 +220,8 @@ def DAFScriptMain(config, parameter, returnpacket):
       raise Exception, 'PERINGATAN' + 'Investasi tidak ditemukan'
     config.SendDebugMsg('a1')
     if modeOto : 
-       oBatch = config.CreatePObjImplProxy('TransactionBatch')
-       oBatch.key = oHist.ID_TransactionBatch
+       #oBatch = config.CreatePObjImplProxy('TransactionBatch')
+       #oBatch.key = oHist.ID_TransactionBatch
        if recReksa.jenis_perubahan == 0 : #topup
           oSR = TransactInv.GetLastHistSaham(config, oSaham)
           oSR.NAB_Transaksi = recReksa.NAB
@@ -261,7 +239,7 @@ def DAFScriptMain(config, parameter, returnpacket):
           oSaham.NAB_Transaksi = round(oSaham.nominal_pembukaan / oSaham.unit_penyertaan,6)
        
        config.SendDebugMsg('a2')
-       OtorisasiPerubahanSaham(config, oSaham, oHist, not recReksa.jenis_perubahan, oBatch)
+       OtorisasiPerubahanSaham(config, oSaham, oHist, not recReksa.jenis_perubahan)
        config.SendDebugMsg('a3')
        
        if recReksa.jenis_perubahan == 2 :#redemption
@@ -287,7 +265,7 @@ def DAFScriptMain(config, parameter, returnpacket):
           config.SendDebugMsg('a5')
             
           #Realize return
-          RealReturn (config, oSaham, oRR, oBatch, oHist)
+          RealReturn (config, oSaham, oRR, oHist)
           config.SendDebugMsg('a6')
           
           oSaham.Unit_Penyertaan -= recReksa.unit_penyertaanbaru
@@ -303,4 +281,3 @@ def DAFScriptMain(config, parameter, returnpacket):
 
 
   return 1
-

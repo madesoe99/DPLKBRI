@@ -7,7 +7,7 @@ document <
 >
 object:rtf::Form<
   MainContainer=$CONTAINERS['DualSplit']
-  Caption='Register Korporat Baru'
+  Caption='Register Korporat'
   Left=100
   Top=100
   Width=800
@@ -110,6 +110,12 @@ object:rtf::Form<
           DataMembers=['LAKPropinsi'#13#10,
             'LAKKota'#13#10,
             'LAKKecamatan'#13#10]
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='LAKKodePos'
+        >, object:rtf::ControlDef<
+          Action=caView
+          DataMember='BENEFICIAL_OWNER'
         >
       }
       Elements={
@@ -333,6 +339,23 @@ object:rtf::Form<
             ') THEN ORDER BY kode_kecamatan;']
           LookupOption=loCustomOQL
           FieldBaseName='LAKKecamatan'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LAKKodePos'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='id_kodepos;kode_pos'
+          Restrictions=''
+          OQLText=['SELECT FROM DaerahKodePos ('#13#10,
+            '  id_kodepos,'#13#10,
+            '  kode_pos,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY kode_pos;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LAKKodePos'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='BENEFICIAL_OWNER'
+          Hidden=false
+          ReadOnlyControl=false
         >
       }
       Name='uipNasabahDPLKCorporate'
@@ -497,7 +520,7 @@ object:rtf::Form<
           Name='keterangan1'
           Top=52
           Left=15
-          ControlCaption='Isi Perjanjian'
+          ControlCaption='Nomor Adendum'
         >, *object:rtf::DBEdit<
           Name='keterangan2'
           Top=80
@@ -541,6 +564,9 @@ object:rtf::Form<
         >, object:rtf::ControlDef<
           Action=caEdit
           DataMember='biaya_daftar_anggota'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='BENEFICIAL_OWNER'
         >
       }
       Elements={
@@ -644,6 +670,10 @@ object:rtf::Form<
           Name='biaya_daftar_anggota'
           Hidden=false
           ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='BENEFICIAL_OWNER'
+          Hidden=false
+          ReadOnlyControl=false
         >, object:rtf::FieldUIElmtSetting<
           Name='mode'
           Hidden=true
@@ -664,7 +694,7 @@ object:rtf::Form<
       }
       Name='pDataLeft'
       Width=400
-      Height=320
+      Height=361
       Bordered=true
       UIPart=$UIPARTS['uipRegEditNasabahDPLKCorporate']
       Controls={
@@ -673,25 +703,28 @@ object:rtf::Form<
           Top=24
           Left=15
           Color=12695295
-          ControlCaption='Kode Peserta Korporat'
+          ControlCaption='CIF Korporat'
+          LayoutOrder=1
         >, *object:rtf::DBEdit<
           Name='nama_perusahaan'
           Top=52
           Left=15
           Color=12695295
           ControlCaption='Nama Korporat'
+          LayoutOrder=2
         >, *object:rtf::DBEdit<
           Name='NPWP'
           Top=80
           Left=15
           ControlCaption='NPWP'
+          LayoutOrder=3
         >, *object:rtf::DBLookupEdit<
           Name='LJenisUsaha'
           Top=108
           Left=15
           Color=12695295
-          ControlCaption='Jenis Usaha'
-          LayoutOrder=5
+          ControlCaption='Bidang Usaha'
+          LayoutOrder=4
           FieldName='LJenisUsaha.kode_jenis_usaha'
           LookupField='LJenisUsaha.nama_jenis_usaha'
           DisplayLookupField=true
@@ -703,7 +736,7 @@ object:rtf::Form<
           Left=15
           Color=12695295
           ControlCaption='Kepemilikan'
-          LayoutOrder=22
+          LayoutOrder=8
           FieldName='LKepemilikan.kode_pemilikan'
           LookupField='LKepemilikan.keterangan'
           DisplayLookupField=true
@@ -716,16 +749,15 @@ object:rtf::Form<
           Left=15
           Width=120
           Height=21
-          Color=12695295
           ControlCaption='Tanggal Bayar Iuran'
-          LayoutOrder=23
+          LayoutOrder=9
         >, *object:rtf::DBLookupEdit<
           Name='LNegara'
           Top=164
           Left=15
           Color=12695295
           ControlCaption='Negara'
-          LayoutOrder=12
+          LayoutOrder=6
           FieldName='LNegara.kode_negara'
           LookupField='LNegara.nama_negara'
           DisplayLookupField=true
@@ -735,17 +767,22 @@ object:rtf::Form<
           Name='biaya_daftar_anggota'
           Top=276
           Left=15
-          Color=12695295
           ControlCaption='Biaya Daftar Anggota'
-          LayoutOrder=26
+          LayoutOrder=10
+        >, *object:rtf::DBEdit<
+          Name='BENEFICIAL_OWNER'
+          Top=304
+          Left=15
+          ControlCaption='Beneficial Owner'
+          LayoutOrder=11
         >, object:rtf::DBComboBox<
           Name='cbRFJenisUsaha'
           Layout=clNewLine
           Top=136
           Left=15
           Enabled=false
-          ControlCaption='Risk Jenis Usaha'
-          LayoutOrder=6
+          ControlCaption='Risk Bidang Usaha'
+          LayoutOrder=5
           FieldName='LJenisUsaha.risk_flag'
           Items=['Low'#13#10,
             'High'#13#10,
@@ -760,7 +797,7 @@ object:rtf::Form<
           Left=15
           Enabled=false
           ControlCaption='Risk Negara'
-          LayoutOrder=13
+          LayoutOrder=7
           FieldName='LNegara.risk_flag'
           Items=['Low'#13#10,
             'High'#13#10,
@@ -779,20 +816,27 @@ object:rtf::Form<
       Caption='Data Peserta Korporat'
     >, object:rtf::Panel<
       ControlDefs={
-        object:rtf::MultiControlDef<
+        object:rtf::ControlDef<
           Action=caEdit
-          DataMembers=['alamat_kantor_jalan'#13#10,
-            'alamat_kantor_kelurahan'#13#10,
-            'alamat_kantor_kota'#13#10]
+          DataMember='alamat_kantor_jalan'
         >, object:rtf::ControlDef<
           Action=caEdit
-          DataMember='alamat_kantor_propinsi'
+          DataMember='LAKKodePos'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='alamat_kantor_kode_pos'
         >, object:rtf::ControlDef<
           Action=caEdit
           DataMember='LAKPropinsi'
         >, object:rtf::ControlDef<
           Action=caEdit
+          DataMember='alamat_kantor_propinsi'
+        >, object:rtf::ControlDef<
+          Action=caEdit
           DataMember='LAKKota'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='alamat_kantor_kota'
         >, object:rtf::ControlDef<
           Action=caEdit
           DataMember='LAKKecamatan'
@@ -801,7 +845,7 @@ object:rtf::Form<
           DataMember='alamat_kantor_kecamatan'
         >, object:rtf::ControlDef<
           Action=caEdit
-          DataMember='alamat_kantor_kode_pos'
+          DataMember='alamat_kantor_kelurahan'
         >, object:rtf::ControlDef<
           Action=caEdit
           DataMember='alamat_kantor_telepon'
@@ -811,6 +855,9 @@ object:rtf::Form<
         >, object:rtf::ControlDef<
           Action=caEdit
           DataMember='alamat_kantor_fax'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='alamat_email'
         >
       }
       Elements={
@@ -818,16 +865,28 @@ object:rtf::Form<
           Name='alamat_kantor_jalan'
           Hidden=false
           ReadOnlyControl=false
-        >, *object:rtf::FieldUIElmtSetting<
-          Name='alamat_kantor_kelurahan'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LAKKodePos'
           Hidden=false
           ReadOnlyControl=false
+          DisplayFields='id_kodepos;kode_pos;kode_propinsi;kode_kota;kode_kecamatan;nama_kelurahan;LPropinsi.nama_propinsi;LKota.nama_kota;LKecamatan.nama_kecamatan'
+          Restrictions=''
+          OQLText=['SELECT FROM DaerahKodePos ('#13#10,
+            '  id_kodepos,'#13#10,
+            '  kode_pos,'#13#10,
+            '  kode_propinsi,'#13#10,
+            '  LPropinsi.nama_propinsi AS nama_propinsi,'#13#10,
+            '  kode_kota,'#13#10,
+            '  LKota.nama_kota AS nama_kota,'#13#10,
+            '  kode_kecamatan,'#13#10,
+            '  LKecamatan.nama_kecamatan AS nama_kecamatan,'#13#10,
+            '  nama_kelurahan,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY kode_pos;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LAKKodePos'
         >, *object:rtf::FieldUIElmtSetting<
-          Name='alamat_kantor_kota'
-          Hidden=true
-          ReadOnlyControl=false
-        >, *object:rtf::FieldUIElmtSetting<
-          Name='alamat_kantor_propinsi'
+          Name='alamat_kantor_kode_pos'
           Hidden=true
           ReadOnlyControl=false
         >, *object:rtf::LinkUIElmtSetting<
@@ -843,6 +902,10 @@ object:rtf::Form<
             ') THEN ORDER BY kode_propinsi;']
           LookupOption=loCustomOQL
           FieldBaseName='LAKPropinsi'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kantor_propinsi'
+          Hidden=true
+          ReadOnlyControl=false
         >, *object:rtf::LinkUIElmtSetting<
           Name='LAKKota'
           Hidden=false
@@ -858,6 +921,10 @@ object:rtf::Form<
             ') THEN ORDER BY kode_kota;']
           LookupOption=loCustomOQL
           FieldBaseName='LAKKota'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_kantor_kota'
+          Hidden=true
+          ReadOnlyControl=false
         >, *object:rtf::LinkUIElmtSetting<
           Name='LAKKecamatan'
           Hidden=false
@@ -878,7 +945,7 @@ object:rtf::Form<
           Hidden=false
           ReadOnlyControl=false
         >, *object:rtf::FieldUIElmtSetting<
-          Name='alamat_kantor_kode_pos'
+          Name='alamat_kantor_kelurahan'
           Hidden=false
           ReadOnlyControl=false
         >, *object:rtf::FieldUIElmtSetting<
@@ -893,11 +960,15 @@ object:rtf::Form<
           Name='alamat_kantor_fax'
           Hidden=false
           ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='alamat_email'
+          Hidden=false
+          ReadOnlyControl=false
         >
       }
       Name='pDataRight'
       Width=361
-      Height=313
+      Height=337
       Bordered=true
       UIPart=$UIPARTS['uipRegEditNasabahDPLKCorporate']
       Controls={
@@ -905,16 +976,20 @@ object:rtf::Form<
           Name='alamat_kantor_jalan'
           Top=24
           Left=15
-          ControlCaption='Jalan'
-        >, *object:rtf::DBEdit<
-          Name='alamat_kantor_kelurahan'
+          ControlCaption='Alamat Kantor'
+        >, *object:rtf::DBLookupEdit<
+          Name='LAKKodePos'
           Top=52
           Left=15
-          ControlCaption='Kelurahan'
+          ControlCaption='Kode Pos'
+          LookupField='LAKKodePos.kode_pos'
+          DisplayLookupField=true
+          OnAfterLookup='LAKKodePosOnAfterLookup'
         >, *object:rtf::DBLookupEdit<
           Name='LAKPropinsi'
           Top=80
           Left=15
+          Enabled=false
           ControlCaption='Propinsi'
           LookupField='LAKPropinsi.nama_propinsi'
           DisplayLookupField=true
@@ -922,6 +997,7 @@ object:rtf::Form<
           Name='LAKKota'
           Top=108
           Left=15
+          Enabled=false
           ControlCaption='Kota'
           LookupField='LAKKota.nama_kota'
           DisplayLookupField=true
@@ -929,6 +1005,7 @@ object:rtf::Form<
           Name='LAKKecamatan'
           Top=136
           Left=15
+          Enabled=false
           ControlCaption='Kecamatan'
           LookupField='LAKKecamatan.nama_kecamatan'
           DisplayLookupField=true
@@ -939,12 +1016,10 @@ object:rtf::Form<
           Visible=false
           ControlCaption='Kecamatan'
         >, *object:rtf::DBEdit<
-          Name='alamat_kantor_kode_pos'
+          Name='alamat_kantor_kelurahan'
           Top=192
           Left=15
-          Width=100
-          Height=21
-          ControlCaption='Kode Pos'
+          ControlCaption='Kelurahan'
         >, *object:rtf::DBEdit<
           Name='alamat_kantor_telepon'
           Top=220
@@ -960,6 +1035,11 @@ object:rtf::Form<
           Top=276
           Left=15
           ControlCaption='Faksimili'
+        >, *object:rtf::DBEdit<
+          Name='alamat_email'
+          Top=304
+          Left=15
+          ControlCaption='E-Mail'
         >
       }
       EqualCaptionWidth=90
@@ -1028,11 +1108,11 @@ object:rtf::Form<
       Elements={
         *object:rtf::FieldUIElmtSetting<
           Name='no_referensi'
-          Hidden=false
+          Hidden=true
           ReadOnlyControl=false
         >, *object:rtf::FieldUIElmtSetting<
           Name='keterangan'
-          Hidden=false
+          Hidden=true
           ReadOnlyControl=false
         >, *object:rtf::FieldUIElmtSetting<
           Name='tgl_bergabung'
@@ -1058,36 +1138,28 @@ object:rtf::Form<
       Bordered=true
       UIPart=$UIPARTS['uipRegEditNasabahDPLKCorporate']
       Controls={
-        *object:rtf::DBEdit<
-          Name='no_referensi'
-          Top=24
-          Left=20
-          Color=12695295
-          ControlCaption='Nomor Referensi'
-        >, *object:rtf::DBEdit<
-          Name='keterangan'
-          Top=52
-          Left=20
-          ControlCaption='Keterangan'
-        >, *object:rtf::DBDateEdit<
+        *object:rtf::DBDateEdit<
           Name='tgl_bergabung'
-          Top=80
+          Top=24
           Left=20
           ControlCaption='Tanggal Bergabung'
         >, *object:rtf::DBDateEdit<
           Name='tanggal_register'
-          Top=108
+          Top=52
           Left=20
+          Enabled=false
           ControlCaption='Tanggal Register'
         >, *object:rtf::DBEdit<
           Name='user_id'
-          Top=136
+          Top=80
           Left=20
+          Enabled=false
           ControlCaption='User ID'
         >, *object:rtf::DBEdit<
           Name='terminal_id'
-          Top=164
+          Top=108
           Left=20
+          Enabled=false
           ControlCaption='Terminal ID'
         >
       }
@@ -1142,7 +1214,7 @@ object:rtf::Form<
           Name='REFR_UKER'
           Top=80
           Left=20
-          ControlCaption='Kode Brinets / Uker'
+          ControlCaption='Uker'
         >
       }
       EqualCaptionWidth=110
@@ -1155,7 +1227,7 @@ object:rtf::Form<
     >, object:rtf::DualSplit<
       Name='dualsplit3'
       Width=792
-      Height=508
+      Height=511
       Container1=$CONTAINERS['pRefr']
       Container2=$CONTAINERS['pRegister']
     >

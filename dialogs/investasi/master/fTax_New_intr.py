@@ -5,7 +5,7 @@ def btnOKClick(sender):
 
   form.CommitBuffer()
   try:
-    uipa.Edit()
+    uip.Edit()
     uip.__SYSFLAG = 'N'
     form.PostResult()
     sender.ExitAction = 1

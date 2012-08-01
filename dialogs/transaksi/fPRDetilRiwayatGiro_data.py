@@ -13,9 +13,10 @@ def Form_OnSetDataEx(uideflist, params):
    rec.waktu_mulai             = RG.LReconcile.waktu_mulai
    rec.sum_nominal             = RG.sum_nominal
    rec.sum_procced_nominal     = RG.sum_procced_nominal
+   rec.sum_koreksi             = RG.sum_koreksi
    rec.sum_pindahbuku          = RG.sum_pindahbuku
-   rec.is_pindahbuku           = RG.is_pindahbuku
+   rec.is_pindahbuku           = RG.is_pindahbuku or 'F'
    rec.is_reconciled           = RG.is_reconciled
-   rec.sum_sisa                = RG.sum_nominal - RG.sum_procced_nominal
+   rec.sum_sisa                = RG.sum_nominal - RG.sum_procced_nominal - RG.sum_koreksi
 
 

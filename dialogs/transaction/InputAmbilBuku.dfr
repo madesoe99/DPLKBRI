@@ -21,7 +21,7 @@ object:rtf::Form<
   OnFormShow='FormShow'
   OnBeginSetData=''
   OnEndSetData=''
-  OnSetDataEx=''
+  OnSetDataEx='FormOnSetDataEx'
   OnBeginProcessData=''
   OnEndProcessData=''
   UIParts={
@@ -103,6 +103,7 @@ object:rtf::Form<
           Name='nomor_buku'
           Top=66
           Left=20
+          Enabled=false
           ControlCaption='Nomor Buku DPLK'
         >
       }
@@ -134,7 +135,7 @@ object:rtf::Form<
           ControlCaption=''
           Caption='&Batal'
           Cancel=true
-          ExitAction=eaQuitCancel
+          OnClick='bCancelOnClick'
         >, object:rtf::Button<
           Name='Button'
           Layout=clNextSide
@@ -159,4 +160,5 @@ object:rtf::Form<
       InversedAlign=true
     >
   }
+  FormClassName='InputAmbilBuku'
 >

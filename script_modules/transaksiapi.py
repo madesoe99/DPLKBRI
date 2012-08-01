@@ -1,5 +1,6 @@
 #import string, rotor, sys
 import string, sys
+import calendar
 import com.ihsan.foundation.appserver as appserver
 import com.ihsan.util.modman as modman
 
@@ -210,9 +211,20 @@ def HitungPajakPengambilanManfaatAsli(AValue):
 ## PERHITUNGAN PROPORSIONAL BIAYA PENGELOLAAN / BIAYA ADMINISTRASI
 #-------------------------------------------------------------------------------
 
+def HitungProporsiHariSebulan(config, tgl_transaksi):
+  #proporsi hari dihitung dari tanggal 1 awal bulan sampai dengan tgl transaksi
+  
+  #cari jumlah hari dalam bulan saat tgl transaksi
+  y,m,d = config.ModLibUtils.DecodeDate(tgl_transaksi)
+  totalHariSebulan = calendar.monthrange(y,m)[1] 
+  
+  #hitung proporsi jumlah hari tgl transaksi dengan total hari dalam bulan
+  proporsi = float(d) / float(totalHariSebulan)
+
+  return proporsi
+
 #def HitungProporsiBiaya(config, kode_jenis_transaksi, no_peserta, tgl_transaksi):
 def HitungProporsiBiaya(config, kode_jenis_transaksi, no_rekening, tgl_transaksi):
-
   #cari tanggal transaksi terakhir    
   sSQL = 'select top 1 TGL_TRANSAKSI from TRANSAKSIDPLK ' \
          'where KODE_JENIS_TRANSAKSI = \'%s\' and ' \
@@ -476,7 +488,7 @@ def CekBatasTarikMaxPHK(config, ID_Transaksi):
     raise Exception, 'ID: Kesalahan Jumlah Penarikan Dana PHK:\nNominal Penarikan melebihi batas nominal dana yang boleh ditarik!!'
     
 #-------------------------------------------------------------------------------
-## AMBIL PARAMETER KORPORATE
+## AMBIL PARAMETER KORPORAT
 #-------------------------------------------------------------------------------
 
 def GetParameterCorporate(config, kodeNasabahCorporate, listParameterKey):
@@ -503,3 +515,18 @@ def GetParameterCorporate(config, kodeNasabahCorporate, listParameterKey):
     #--
     return dictParameterKorporat
 #--
+
+#-------------------------------------------------------------------------------
+## CEK MASA KEPESERTAAN
+#-------------------------------------------------------------------------------
+
+def CekMasaKepesertaan(config, nomorRekInv, minMasaKepesertaan):
+  oRekInv = config.CreatePObjImplProxy('RekInvDPLK')
+  oRekInv.Key = nomorRekInv
+  
+  y,m,d = oRekInv.tgl_registrasi[:3]
+  floatTglRegistrasi = config.ModLibUtils.EncodeDate(y,m,d)
+  masaKepesertaan = config.ModLibUtils.Now() - floatTglRegistrasi
+  if masaKepesertaan < minMasaKepesertaan:
+    raise Exception, 'ID: Masa kepesertaan peserta kurang dari minimal masa kepesertaan!'
+#--  

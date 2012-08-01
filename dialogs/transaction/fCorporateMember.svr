@@ -10,7 +10,7 @@ object:rpclass::TPClassUIDefList<
     object:rpclass::TPClassUIDef<
       Name='uipNasabahDPLKCorporate'
       PClassName='NasabahDPLKCorporate'
-      LoadedFieldList='no_referensi;kode_nasabah_corporate;nama_perusahaan;NPWP;LJenisUsaha.kode_jenis_usaha;LJenisUsaha.kode_jenis_usaha;LJenisUsaha.nama_jenis_usaha;LKepemilikan.kode_pemilikan;LKepemilikan.kode_pemilikan;LKepemilikan.keterangan;tgl_bayar_iuran;biaya_daftar_anggota;alamat_kantor_jalan;alamat_kantor_kelurahan;alamat_kantor_kecamatan;alamat_kantor_kota;alamat_kantor_kode_pos;alamat_kantor_telepon;alamat_kantor_telepon2;alamat_kantor_fax;alamat_kantor_propinsi'
+      LoadedFieldList='no_referensi;kode_nasabah_corporate;nama_perusahaan;NPWP;LJenisUsaha.kode_jenis_usaha;LJenisUsaha.kode_jenis_usaha;LJenisUsaha.nama_jenis_usaha;LKepemilikan.kode_pemilikan;LKepemilikan.kode_pemilikan;LKepemilikan.keterangan;tgl_bayar_iuran;biaya_daftar_anggota'
       CustomLoadedFields={
         object:rpclass::TCustomLoadedField<
           Name='mode'

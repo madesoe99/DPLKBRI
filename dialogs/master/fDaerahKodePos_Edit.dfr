@@ -1,0 +1,186 @@
+document <
+  libversionID='{34FC4F41-D74A-11D5-AB5B-FB56D633B52C}'
+  DocumentTypeID='{781210D2-E6AA-49BD-934A-EF8503DE20B0}'
+  DocumentID=''
+  MajorVersion='0'
+  MinorVersion='0'
+>
+object:rtf::Form<
+  MainContainer=$CONTAINERS['DualSplit']
+  Caption='Koreksi Daerah Kecamatan'
+  Left=50
+  Top=50
+  Width=350
+  Height=230
+  BeforeDeleteRow=''
+  BeforeResultSent=''
+  OnGeneralSetData=''
+  AfterSetData=''
+  OnGeneralProcessData=''
+  OnProcessRawData=''
+  OnFormShow='FormShow'
+  OnBeginSetData=''
+  OnEndSetData=''
+  OnSetDataEx=''
+  OnBeginProcessData=''
+  OnEndProcessData=''
+  UIParts={
+    object:rtf::PClassUI<
+      Name='uipDaerahKodePos'
+      ClassTypeName='DaerahKodePos'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
+      CreateInstanceOnNew=true
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Name='pButton'
+      Width=240
+      Height=74
+      Controls={
+        object:rtf::Button<
+          Name='btnOK'
+          Layout=clNewLine
+          Top=8
+          Left=8
+          ControlCaption=''
+          Caption='&OK'
+          Default=true
+          DefaultAction=daProcessAllUI
+          ExitAction=eaQuitOK
+        >, object:rtf::Button<
+          Name='btnCancel'
+          Layout=clNextSide
+          Top=8
+          Left=87
+          ControlCaption=''
+          Caption='&Batal'
+          Cancel=true
+          ExitAction=eaQuitCancel
+        >
+      }
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >, object:rtf::DualSplit<
+      Name='DualSplit'
+      Width=350
+      Height=230
+      Container1=$CONTAINERS['pButton']
+      Container2=$CONTAINERS['pData']
+      InversedAlign=true
+    >, object:rtf::Panel<
+      ControlDefs={
+        object:rtf::MultiControlDef<
+          Action=caEdit
+          DataMembers=['kode_pos'#13#10,
+            'nama_kelurahan'#13#10,
+            'LPropinsi'#13#10,
+            'LKota'#13#10,
+            'LKecamatan'#13#10]
+        >
+      }
+      Elements={
+        *object:rtf::FieldUIElmtSetting<
+          Name='kode_pos'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='nama_kelurahan'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LPropinsi'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='kode_propinsi;nama_propinsi'
+          Restrictions=''
+          OQLText=['SELECT FROM DaerahAsal('#13#10,
+            '  kode_propinsi,'#13#10,
+            '  nama_propinsi,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY kode_propinsi;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LPropinsi'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LKota'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='kode_kota;nama_kota'
+          Restrictions='LPropinsi|LPropinsi'
+          OQLText=['SELECT FROM DaerahKota ['#13#10,
+            '  LPropinsi=:LPropinsi'#13#10,
+            ']('#13#10,
+            '  kode_kota,'#13#10,
+            '  nama_kota,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY kode_kota;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LKota'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LKecamatan'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='kode_kecamatan;nama_kecamatan'
+          Restrictions='LKota|LKota'
+          OQLText=['SELECT FROM DaerahKecamatan ['#13#10,
+            '  LKota=:LKota'#13#10,
+            ']('#13#10,
+            '  kode_kecamatan,'#13#10,
+            '  nama_kecamatan,'#13#10,
+            '  self'#13#10,
+            ') THEN ORDER BY kode_kecamatan;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LKecamatan'
+        >
+      }
+      Name='pData'
+      Width=320
+      Height=240
+      UIPart=$UIPARTS['uipDaerahKodePos']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='kode_pos'
+          Top=8
+          Left=8
+          ControlCaption='Kode Pos'
+        >, *object:rtf::DBEdit<
+          Name='nama_kelurahan'
+          Top=36
+          Left=8
+          ControlCaption='Nama Kelurahan'
+        >, *object:rtf::DBLookupEdit<
+          Name='LPropinsi'
+          Top=64
+          Left=8
+          ControlCaption='lpropinsi'
+          LookupField='LPropinsi.nama_propinsi'
+          DisplayLookupField=true
+        >, *object:rtf::DBLookupEdit<
+          Name='LKota'
+          Top=92
+          Left=8
+          ControlCaption='lkota'
+          LookupField='LKota.nama_kota'
+          DisplayLookupField=true
+        >, *object:rtf::DBLookupEdit<
+          Name='LKecamatan'
+          Top=120
+          Left=8
+          ControlCaption='Kecamatan'
+          LookupField='LKecamatan.nama_kecamatan'
+          DisplayLookupField=true
+        >
+      }
+      EqualCaptionWidth=100
+      ControlLeftMargin=8
+      ControlTopMargin=8
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+    >
+  }
+>

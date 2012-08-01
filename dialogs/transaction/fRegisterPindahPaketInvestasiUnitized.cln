@@ -196,8 +196,8 @@ object:rtf::Form<
       RowControlGap=7
     >, object:rtf::DualSplit<
       Name='DualSplit'
-      Width=240
-      Height=96
+      Width=730
+      Height=480
       Container1=$CONTAINERS['pButton']
       Container2=$CONTAINERS['dualsplit1']
       InversedAlign=true
@@ -439,17 +439,18 @@ object:rtf::Form<
       }
       Name='pData'
       Width=593
-      Height=209
+      Height=185
       Bordered=true
       UIPart=$UIPARTS['uipRegisterCIF']
       Controls={
         *object:rtf::DBEdit<
           Name='no_referensi'
-          Top=80
+          Top=164
           Left=20
+          Visible=false
           Color=12695295
           ControlCaption='Nomor Referensi'
-          LayoutOrder=15
+          LayoutOrder=6
         >, *object:rtf::DBLookupEdit<
           Name='LNasabahDPLK'
           Top=24
@@ -459,34 +460,34 @@ object:rtf::Form<
           Enabled=false
           Color=15128749
           ControlCaption='Peserta DPLK'
-          LayoutOrder=5
+          LayoutOrder=1
           LookupField='LNasabahDPLK.nama_lengkap'
           DisplayLookupField=true
         >, *object:rtf::DBEdit<
           Name='keterangan'
-          Top=108
+          Top=80
           Left=20
           Width=180
           Height=21
           ControlCaption='Keterangan'
-          LayoutOrder=20
+          LayoutOrder=3
         >, *object:rtf::DBEdit<
           Name='user_id'
-          Top=136
+          Top=108
           Left=20
           Width=135
           Height=21
           Color=-16777192
           ControlCaption='User Penginput'
-          LayoutOrder=25
+          LayoutOrder=4
           ReadOnly=true
         >, *object:rtf::DBEdit<
           Name='terminal_id'
-          Top=164
+          Top=136
           Left=20
           Color=-16777192
           ControlCaption='Terminal Input'
-          LayoutOrder=30
+          LayoutOrder=5
           ReadOnly=true
         >, *object:rtf::DBLookupEdit<
           Name='LRekeningDPLK'
@@ -496,7 +497,7 @@ object:rtf::Form<
           Height=21
           Enabled=false
           ControlCaption='Nomor Rekening'
-          LayoutOrder=10
+          LayoutOrder=2
           LookupField='LRekeningDPLK.keterangan'
           DisplayLookupField=false
           DisableLookup=true
@@ -512,14 +513,14 @@ object:rtf::Form<
     >, object:rtf::DualSplit<
       Name='dualsplit2'
       Width=730
-      Height=229
+      Height=253
       Container1=$CONTAINERS['gPaketLama']
       Container2=$CONTAINERS['dualsplit3']
       SplitDirection=sdrSplitLeftRight
     >, object:rtf::DualSplit<
       Name='dualsplit1'
-      Width=240
-      Height=96
+      Width=730
+      Height=439
       Container1=$CONTAINERS['pData']
       Container2=$CONTAINERS['dualsplit2']
     >, object:rtf::Panel<
@@ -629,7 +630,7 @@ object:rtf::Form<
       }
       Name='gPaketBaru'
       Width=394
-      Height=171
+      Height=195
       UIPart=$UIPARTS['uipRegDetail']
       ControlLeftMargin=8
       ControlTopMargin=8
@@ -660,7 +661,7 @@ object:rtf::Form<
     >, object:rtf::DualSplit<
       Name='dualsplit3'
       Width=394
-      Height=229
+      Height=253
       Container1=$CONTAINERS['pPaketInvestasi']
       Container2=$CONTAINERS['gPaketBaru']
     >

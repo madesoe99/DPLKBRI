@@ -15,13 +15,13 @@ object:rmn::Menu<
       StringTag='new'
     >, object:rmn::MenuItem<
       Name='mnuEdit'
-      Caption='Koreksi Register Korporat...'
+      Caption='Koreksi Data Register Korporat...'
       OnClick='ShowForm'
       AllowedGroups='OPR'
       StringTag='edit'
     >, object:rmn::MenuItem<
       Name='mnuView'
-      Caption='Lihat Detil Hasil Register Korporat...'
+      Caption='Lihat Detil Data Register Korporat'
       OnClick='ShowForm'
       AllowedGroups='OPR;SPV'
       StringTag='view'
@@ -31,7 +31,7 @@ object:rmn::Menu<
       AllowedGroups='OPR;SPV'
     >, object:rmn::MenuItem<
       Name='mnuAuth'
-      Caption='Otorisasi Hasil Register Korporat...'
+      Caption='Approval Hasil Register Korporat...'
       OnClick='ShowForm'
       AllowedGroups='SPV'
       StringTag='auth'

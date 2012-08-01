@@ -43,98 +43,89 @@ object:rtf::Form<
       RowControlGap=7
       OQLText=['select from RekInvDPLK'#13#10,
         '['#13#10,
-        '  (1 = :display_all_cabang OR  LNasabahDPLK.kode_cab_daftar = :kode_cab_daftar)'#13#10,
+        '  (1 = :display_all_cabang OR  kode_cab_daftar = :kode_cab_daftar)'#13#10,
         '  AND (is_deleted IS NULL OR is_deleted = 0)'#13#10,
         '  AND (LNasabahDPLK.is_deleted IS NULL OR LNasabahDPLK.is_deleted = 0)'#13#10,
         ']'#13#10,
         '( '#13#10,
         '  self,'#13#10,
-        '  LNasabahDPLK.no_peserta AS No_Peserta,'#13#10,
-        '  LNasabahDPLK.nama_lengkap AS  Nama_Lengkap,'#13#10,
-        '  no_rekening AS No_Rekening,'#13#10,
-        '  LNasabahDPLK.tanggal_lahir AS Tanggal_Lahir,'#13#10,
-        '  LNasabahDPLK.tgl_registrasi as Tgl_Registrasi,'#13#10,
-        '  LNasabahDPLK.LDaerahAsal.kode_propinsi as Kode_Propinsi,'#13#10,
-        '  LNasabahDPLK.LDaerahAsal.nama_propinsi as Nama_Propinsi,'#13#10,
-        '  LNasabahDPLK.LKepemilikan.kode_pemilikan as Kode_Pemilikan,'#13#10,
-        '  LNasabahDPLK.LKepemilikan.keterangan as Keterangan,'#13#10,
-        '  LNasabahDPLK.LJenisUsaha.kode_jenis_usaha as Kode_Jenis_Usaha,'#13#10,
-        '  LNasabahDPLK.LJenisUsaha.nama_jenis_usaha as Nama_Jenis_Usaha,'#13#10,
-        '  akum_iuran_pk as Akum_Iuran_Pk,'#13#10,
-        '  akum_iuran_pst as Akum_Iuran_Pst,'#13#10,
-        '  akum_iuran_tmb as Akum_Iuran_Tmb,'#13#10,
-        '  akum_psl as Akum_Psl,'#13#10,
-        '  akum_pmb_pk as Akum_Pmb_Pk,'#13#10,
-        '  akum_pmb_psl as Akum_Pmb_Psl,'#13#10,
-        '  akum_pmb_pst as Akum_Pmb_Pst,'#13#10,
-        '  akum_pmb_tmb as Akum_Pmb_Tmb,'#13#10,
+        '  no_rekening,'#13#10,
+        '  LNasabahDPLK.no_peserta AS no_peserta,'#13#10,
+        '  LNasabahDPLK.nama_lengkap AS  nama_lengkap,'#13#10,
+        '  tgl_registrasi,'#13#10,
+        '  iuran_pk,'#13#10,
+        '  iuran_pst,'#13#10,
+        '  iuran_tmb,'#13#10,
+        '  akum_iuran_pk,'#13#10,
+        '  akum_iuran_pst,'#13#10,
+        '  akum_iuran_tmb,'#13#10,
+        '  akum_psl,'#13#10,
+        '  akum_pmb_pk,'#13#10,
+        '  akum_pmb_pst,'#13#10,
+        '  akum_pmb_tmb,'#13#10,
+        '  akum_pmb_psl,'#13#10,
         '  is_deleted $ as Is_Deleted'#13#10,
         ') then order by No_Peserta;']
       WindowSize=20
       Columns={
         object:rtf::QueryColumn<
-          FieldName='RekInvDPLK.No_Rekening'
+          FieldName='RekInvDPLK.no_rekening'
           Width=80
-          Caption='Nomor Rekening'
+          Caption='Nomor Account'
         >, object:rtf::QueryColumn<
-          FieldName='RekInvDPLK.No_Peserta'
+          FieldName='RekInvDPLK.no_peserta'
           Width=80
-          Caption='Nomor Peserta'
+          Caption='CIF Peserta'
         >, object:rtf::QueryColumn<
-          FieldName='RekInvDPLK.Nama_Lengkap'
+          FieldName='RekInvDPLK.nama_lengkap'
           Width=160
           Caption='Nama Lengkap'
         >, object:rtf::QueryColumn<
-          FieldName='RekInvDPLK.Tempat_Lahir'
-          Width=100
-          Caption='Tempat Lahir'
-          Hidden=true
+          FieldName='RekInvDPLK.tgl_registrasi'
+          Width=75
+          Caption='Tgl. Registrasi'
         >, object:rtf::QueryColumn<
-          FieldName='RekInvDPLK.Tgl_Registrasi'
-          Width=65
-          Caption='Tgl Registrasi'
-        >, object:rtf::QueryColumn<
-          FieldName='RekInvDPLK.Akum_Iuran_Pst'
-          Width=65
-          Caption='Akum Iuran Pst'
+          FieldName='RekInvDPLK.akum_iuran_pst'
+          Width=85
+          Caption='Akum Iuran PST'
           Color=12695295
         >, object:rtf::QueryColumn<
-          FieldName='RekInvDPLK.Akum_Iuran_Pk'
-          Width=60
+          FieldName='RekInvDPLK.akum_iuran_pk'
+          Width=85
           Caption='Akum Iuran PK'
           Color=12695295
         >, object:rtf::QueryColumn<
-          FieldName='RekInvDPLK.Akum_Iuran_Tmb'
-          Width=60
-          Caption='Akum Iuran Tambahan'
+          FieldName='RekInvDPLK.akum_iuran_tmb'
+          Width=85
+          Caption='Akum Iuran TMB'
         >, object:rtf::QueryColumn<
-          FieldName='RekInvDPLK.Akum_Psl'
-          Width=100
-          Caption='Akum Iuran PSL'
+          FieldName='RekInvDPLK.akum_psl'
+          Width=85
+          Caption='Akum PSL'
           UseCustomColor=true
           Color=12695295
         >, object:rtf::QueryColumn<
-          FieldName='RekInvDPLK.Akum_Pmb_Pst'
-          Width=100
-          Caption='Akum Pengemb. Pst'
+          FieldName='RekInvDPLK.akum_pmb_pk'
+          Width=85
+          Caption='Akum Pmb. PK'
           UseCustomColor=true
           Color=15128749
         >, object:rtf::QueryColumn<
-          FieldName='RekInvDPLK.Akum_Pmb_Pk'
-          Width=100
-          Caption='Akum Pengemb. PK'
+          FieldName='RekInvDPLK.akum_pmb_pst'
+          Width=85
+          Caption='Akum Pmb. PST'
           UseCustomColor=true
           Color=15128749
         >, object:rtf::QueryColumn<
-          FieldName='RekInvDPLK.Akum_Pmb_Tambahan'
-          Width=100
-          Caption='Akum Pengemb.Tambahan'
+          FieldName='RekInvDPLK.akum_pmb_tmb'
+          Width=85
+          Caption='Akum Pmb. TMB'
           UseCustomColor=true
           Color=15128749
         >, object:rtf::QueryColumn<
-          FieldName='RekInvDPLK.Akum_Pmb_Psl'
-          Width=70
-          Caption='Akum Pengemb. PSL'
+          FieldName='RekInvDPLK.akum_pmb_psl'
+          Width=85
+          Caption='Akum Pmb. PSL'
           Color=15128749
         >, object:rtf::QueryColumn<
           FieldName='RekInvDPLK.is_deleted'
@@ -201,8 +192,8 @@ object:rtf::Form<
       RowControlGap=7
     >, object:rtf::DualSplit<
       Name='DualSplit'
-      Width=240
-      Height=96
+      Width=800
+      Height=600
       Container1=$CONTAINERS['pFilter']
       Container2=$CONTAINERS['qNasabahDPLK']
     >

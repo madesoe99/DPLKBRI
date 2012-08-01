@@ -55,4 +55,5 @@ object:rpclass::TPClassUIDefList<
       CreateInstanceOnNew=true
     >
   }
+  OnSetDataEx='FormOnSetDataEx'
 >

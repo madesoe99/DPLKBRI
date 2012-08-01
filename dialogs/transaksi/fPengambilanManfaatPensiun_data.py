@@ -87,6 +87,18 @@ def Form_OnSetDataEx(uideflist, parameterForm):
   oParameter.Key = 'JUMLAH_HARI_SETAHUN'
   recParameter.JUMLAH_HARI_SETAHUN = oParameter.Numeric_Value
 
+  oParameter.Key = 'BIAYA_SKN'
+  recParameter.BiayaSKN = oParameter.Numeric_Value
+  oParameter.Key = 'BIAYA_RTGS'
+  recParameter.BiayaRTGS = oParameter.Numeric_Value
+  oParameter.Key = 'BIAYA_TUNAI'
+  recParameter.BiayaTunai = oParameter.Numeric_Value
+  oParameter.Key = 'BIAYA_PINDAH_BUKU'
+  recParameter.BiayaPindahBuku = oParameter.Numeric_Value
+
+  oParameter.Key = 'PERSEN_DENDA_NPWP'
+  recParameter.PERSEN_DENDA_NPWP = oParameter.Numeric_Value
+
   #cek parameter default atau parameter korporat
   if recPeserta.kode_nasabah_corporate not in (None,''):
     #pakai parameter korporat
@@ -94,11 +106,6 @@ def Form_OnSetDataEx(uideflist, parameterForm):
     dictParameterKorporat = transaksiAPI.GetParameterCorporate(config, \
       recPeserta.kode_nasabah_corporate, listParameterKey)
     
-    recParameter.BiayaSKN = dictParameterKorporat['BIAYA_SKN'][1]
-    recParameter.BiayaRTGS = dictParameterKorporat['BIAYA_RTGS'][1]
-    recParameter.BiayaTunai = dictParameterKorporat['BIAYA_TUNAI'][1]
-    recParameter.BiayaPindahBuku = dictParameterKorporat['BIAYA_PINDAH_BUKU'][1]
-
     recParameter.PERSEN_CAIR_MANFAAT_UMUM = dictParameterKorporat['PERSEN_CAIR_MANFAAT_>=1TH'][1]
     recParameter.PERSEN_CAIR_MANFAAT_KURANG_SETAHUN = dictParameterKorporat['PERSEN_CAIR_MANFAAT_<1TH'][1]
   
@@ -107,19 +114,8 @@ def Form_OnSetDataEx(uideflist, parameterForm):
   
     recParameter.PERSEN_BIAYA_PENGELOLAAN = dictParameterKorporat['PERSEN_BIAYA_PENGELOLAAN'][1]
     recParameter.BIAYA_ADM_TAHUNAN = dictParameterKorporat['BIAYA_ADM_TAHUNAN'][1]
-
-    recParameter.PERSEN_DENDA_NPWP = dictParameterKorporat['PERSEN_DENDA_NPWP'][1]
   else:
     #pakai parameter default aplikasi
-    oParameter.Key = 'BIAYA_SKN'
-    recParameter.BiayaSKN = oParameter.Numeric_Value
-    oParameter.Key = 'BIAYA_RTGS'
-    recParameter.BiayaRTGS = oParameter.Numeric_Value
-    oParameter.Key = 'BIAYA_TUNAI'
-    recParameter.BiayaTunai = oParameter.Numeric_Value
-    oParameter.Key = 'BIAYA_PINDAH_BUKU'
-    recParameter.BiayaPindahBuku = oParameter.Numeric_Value
-    
     oParameter.Key = 'PERSEN_CAIR_MANFAAT_>=1TH'
     recParameter.PERSEN_CAIR_MANFAAT_UMUM = oParameter.Numeric_Value
     oParameter.Key = 'PERSEN_CAIR_MANFAAT_<1TH'
@@ -134,9 +130,6 @@ def Form_OnSetDataEx(uideflist, parameterForm):
     recParameter.PERSEN_BIAYA_PENGELOLAAN = oParameter.Numeric_Value
     oParameter.Key = 'BIAYA_ADM_TAHUNAN'
     recParameter.BIAYA_ADM_TAHUNAN = oParameter.Numeric_Value
-  
-    oParameter.Key = 'PERSEN_DENDA_NPWP'
-    recParameter.PERSEN_DENDA_NPWP = oParameter.Numeric_Value
   
   recParameter.isHitungMode = 1
   
@@ -164,10 +157,12 @@ def Form_OnSetDataEx(uideflist, parameterForm):
     recRekening.akum_iuran_tmb + \
     recRekening.akum_psl
     
+  #set % anuitas pilihan peserta
+  recTransaksi.persen_anuitas_pilihan_peserta = 0.0
+    
   #do get proporsi biaya untuk biaya pengelolaan dan biaya administrasi
   transaksiAPI = modman.getModule(config, 'transaksiapi')
-  recParameter.proporsiBiaya = transaksiAPI.HitungProporsiBiaya(config, 'C', \
-    recRekening.no_rekening, recTransaksi.tgl_transaksi)
+  recParameter.proporsiHari = transaksiAPI.HitungProporsiHariSebulan(config, recTransaksi.tgl_transaksi)
   
 def SimpanTransaksi(config, params, returns):
   recT = params.uipTransaksi.GetRecord(0)

@@ -51,6 +51,10 @@ object:rpclass::TPClassUIDefList<
           DataTypeName='timestamp'
           DataLength=20
         >, object:rpclass::TCustomLoadedField<
+          Name='Metode'
+          DataTypeName='varchar'
+          DataLength=1
+        >, object:rpclass::TCustomLoadedField<
           Name='cbStatusOtorisasi'
           DataTypeName='varchar'
           DataLength=1

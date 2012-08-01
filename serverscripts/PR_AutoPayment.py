@@ -9,7 +9,7 @@ def GetRekening(config,NoRek):
     return resSQL.STATUS_DPLK or '', resSQL.KODE_NASABAH_CORPORATE or '', resSQL.IURAN_PST or 0
 
 def cekPR(config,nama_file):
-    strSQL  = "SELECT COUNT(*) JML FROM PROSESRECONCILE WHERE IS_FILE_VALID='T' AND TANGGAL_TRANSAKSI='2012-07-11' AND NAMA_FILE='"+nama_file+"'"
+    strSQL  = "SELECT COUNT(*) JML FROM PROSESRECONCILE WHERE IS_FILE_VALID='T' AND NAMA_FILE='"+nama_file+"'"
     resSQL = config.CreateSQL(strSQL).RawResult
     
     return resSQL.JML or 0
@@ -50,12 +50,15 @@ def UploadData(config):
     
     config.BeginTransaction()    
     try:
-        acc_giro = config.SysVarIntf.GetStringSysVar('GIROCOREBANKING','GiroPenampungan')
-        
+        acc_giro = config.SysVarIntf.GetStringSysVar('GIROCOREBANKING','Giro_AutoPayment')
+        oParameter = config.CreatePObjImplProxy('Parameter')
+        oParameter.Key = 'MIN_JML_IURAN_PST'
+        MIN_JML_IURAN_PST = oParameter.Numeric_Value
         RG = config.CreatePObject('RiwayatGiro')
         RG.account_giro   = acc_giro
         RG.id_reconcile   = id_r
         RG.is_reconciled  = 'F'
+        RG.is_pindahbuku  = 'F'
         
         id_detil = GetIdGen(config,'DETILRIWAYATGIRO')
         hfilename = config.GetGlobalSetting('RECONCILE_FILE_DIR')+'\\'+nama_file
@@ -89,7 +92,7 @@ def UploadData(config):
                   is_valid = 'F'
                 elif is_korporat == '':
                   is_corporate ='F'
-                  if nominal < iuran_pst :
+                  if nominal < iuran_pst or nominal < MIN_JML_IURAN_PST:
                     ket = 'Untuk Peserta Perorangan, nominal angsuran tidak boleh kurang dari nominal iuran peserta !!'
                     is_valid = 'F'
 

@@ -4,12 +4,16 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rpclass::TPClassUIDefList<
-  UIDefs={object:rpclass::TPClassUIDef<
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
       Name='uip'
       PClassName='Tax'
       StoredFieldList='tax_code;description;tax_percentage'
       Mode=imSingleRow
       CreateInstanceOnNew=true
-    >}OnGeneralSetData='FormGeneralSetData'
+    >
+  }
+  OnGeneralSetData='FormGeneralSetData'
 >

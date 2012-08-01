@@ -10,6 +10,8 @@ class fPenarikanDanaPHK:
       self.uipTransaksi.biaya_lain = self.uipParameter.BiayaSKN
     elif index == 1:
       self.uipTransaksi.biaya_lain = self.uipParameter.BiayaRTGS
+    elif index == 2:
+      self.uipTransaksi.biaya_lain = self.uipParameter.BiayaPindahBuku
   #--
   
   def JumlahTarik_OnExit(self, dbEdit):
@@ -55,7 +57,7 @@ class fPenarikanDanaPHK:
     self.uipHitung.jml_tarik = self.uipTransaksi.jml_tarik
     
     self.uipHitung.biaya_tarik = self.uipParameter.PERSEN_BIAYA_TARIK_PHK / 100 * \
-      self.uipHitung.saldo_pmb
+      self.uipHitung.jml_tarik
     if self.uipHitung.biaya_tarik < self.uipParameter.MIN_BIAYA_TARIK:
       self.uipHitung.biaya_tarik = self.uipParameter.MIN_BIAYA_TARIK
     
@@ -134,5 +136,3 @@ class fPenarikanDanaPHK:
     if self.uipTransaksi.jml_tarik < self.uipParameter.PRESISI_ANGKA_FLOAT:
       self.FormObject.ShowMessage('Silahkan isi nominal jumlah penarikan!')
       return
-    
-  

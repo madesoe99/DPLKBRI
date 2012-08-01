@@ -15,7 +15,7 @@ object:rmn::Menu<
       StringTag='fUploadCorporate_Detail'
     >, object:rmn::MenuItem<
       Name='mnuAuth'
-      Caption='Otorisasi data...'
+      Caption='Approval Hasil Import...'
       OnClick='ShowFormData'
       AllowedGroups='SPV'
       StringTag='fUploadCorporate_Detail'

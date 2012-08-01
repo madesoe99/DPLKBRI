@@ -4,7 +4,7 @@ def FormOnSetDataEx(uideflist, params):
    rec = uideflist.uipart.Dataset.AddRecord()
    rec.tgl_awal       = int(config.Now()-1)
    rec.tgl_akhir      = int(config.Now())
-   rec.is_berhasil    = 'T'
+   rec.is_berhasil    = 'A'
    rec.is_reconciled  = 'F'
    #rec.jenis_reconcile= 'S'
 

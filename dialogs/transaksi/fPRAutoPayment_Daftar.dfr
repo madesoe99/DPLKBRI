@@ -34,7 +34,7 @@ object:rtf::Form<
     object:rtf::Query<
       Name='qPR'
       Width=641
-      Height=294
+      Height=270
       ControlLeftMargin=8
       ControlTopMargin=8
       DefaultControlHeight=21
@@ -66,25 +66,21 @@ object:rtf::Form<
           Width=120
           Caption='Waktu Selesai'
         >, object:rtf::QueryColumn<
-          FieldName='riwayatgiro.jenis_reconcile'
-          Width=90
-          Caption='Jenis Reconcile'
-        >, object:rtf::QueryColumn<
           FieldName='riwayatgiro.nama_file'
           Width=140
           Caption='Nama File'
         >, object:rtf::QueryColumn<
           FieldName='riwayatgiro.is_file_valid'
           Width=90
-          Caption='Berhasil ?'
+          Caption='Proses Valid?'
         >, object:rtf::QueryColumn<
           FieldName='riwayatgiro.sum_nominal'
           Width=90
           Caption='Total Nominal'
         >, object:rtf::QueryColumn<
-          FieldName='riwayatgiro.sum_pindahbuku'
-          Width=90
-          Caption='Tontal Pindah buku'
+          FieldName='riwayatgiro.keterangan'
+          Width=120
+          Caption='Keterangan'
         >
       }
       EnableColumns=true
@@ -102,6 +98,14 @@ object:rtf::Form<
           ControlCaption=''
           Caption='&Lihat Detil'
           OnClick='bViewDetilOnClick'
+        >, object:rtf::Button<
+          Name='button1'
+          Layout=clAbsolute
+          Top=8
+          Left=88
+          ControlCaption=''
+          Caption='&Tutup'
+          ExitAction=eaQuitOK
         >
       }
       ControlLeftMargin=8
@@ -118,7 +122,7 @@ object:rtf::Form<
     >, object:rtf::DualSplit<
       Name='dualsplit2'
       Width=641
-      Height=335
+      Height=311
       Container1=$CONTAINERS['tutup']
       Container2=$CONTAINERS['qPR']
       InversedAlign=true
@@ -155,14 +159,14 @@ object:rtf::Form<
           ControlCaption='Berhasil ?'
           DataTypeName='varchar'
           DataLength=1
-          EnumeratedValues=['F=False'#13#10,
-            'T=True'#13#10]
-          GenerateCheckBoxForEnum=true
+          EnumeratedValues=['A=Semua'#13#10,
+            'F=Gagal'#13#10,
+            'T=Berhasil'#13#10]
         >, object:rtf::FieldUIElmtSetting<
           Name='is_reconciled'
           Hidden=false
           ReadOnlyControl=false
-          ControlCaption='Sudah Direkonsil ?'
+          ControlCaption='Sudah Direkonsil?'
           DataTypeName='varchar'
           DataLength=1
           EnumeratedValues=['F=False'#13#10,
@@ -172,7 +176,7 @@ object:rtf::Form<
       }
       Name='Header'
       Width=641
-      Height=89
+      Height=113
       UIPart=$UIPARTS['uipart']
       Controls={
         *object:rtf::DBDateEdit<
@@ -186,25 +190,22 @@ object:rtf::Form<
           Top=8
           Left=256
           ControlCaption='s.d.'
-        >, *object:rtf::DBCheckBox<
+        >, *object:rtf::DBComboBox<
           Name='is_berhasil'
           Top=36
           Left=8
           ControlCaption='Berhasil ?'
-          ValueChecked='T'
-          ValueUnchecked='F'
         >, *object:rtf::DBCheckBox<
           Name='is_reconciled'
-          Layout=clAbsolute
-          Top=36
-          Left=128
-          ControlCaption='Sudah Direkonsil ?'
+          Top=64
+          Left=8
+          ControlCaption='Sudah Direkonsil?'
           ValueChecked='T'
           ValueUnchecked='F'
         >, object:rtf::Button<
           Name='Tampilkan'
           Layout=clAbsolute
-          Top=56
+          Top=86
           Left=8
           Width=89
           Height=25

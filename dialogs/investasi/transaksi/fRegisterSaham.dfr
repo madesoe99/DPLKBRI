@@ -11,7 +11,7 @@ object:rtf::Form<
   Left=50
   Top=50
   Width=800
-  Height=410
+  Height=257
   BeforeDeleteRow=''
   BeforeResultSent=''
   OnGeneralSetData='FormGeneralSetData'
@@ -62,10 +62,21 @@ object:rtf::Form<
       ControlDefs={
         object:rtf::ControlDef<
           Action=caEdit
+          DataMember='LSubJenisInv'
+        >, object:rtf::ControlDef<
+          Action=caEdit
           DataMember='nama_Saham'
         >, object:rtf::ControlDef<
           Action=caEdit
           DataMember='LPihakKetiga'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LBroker'
+          ControlCaption='Broker'
+        >, object:rtf::ControlDef<
+          Action=caEdit
+          DataMember='LPayingAgent'
+          ControlCaption='Payment Bank'
         >, object:rtf::ControlDef<
           Action=caEdit
           DataMember='LRincianPaketInvestasi'
@@ -93,7 +104,20 @@ object:rtf::Form<
         >
       }
       Elements={
-        *object:rtf::FieldUIElmtSetting<
+        *object:rtf::LinkUIElmtSetting<
+          Name='LSubJenisInv'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Security Type'
+          DisplayFields='kode_subjns_LRInvestasi;deskripsi'
+          Restrictions=''
+          OQLText=['select from SubJnsTransLRInvestasi'#13#10,
+            '[kode_jns_investasi =''S'']'#13#10,
+            '(kode_subjns_LRInvestasi,'#13#10,
+            'deskripsi,'#13#10,
+            'self);']
+          LookupOption=loCustomOQL
+        >, *object:rtf::FieldUIElmtSetting<
           Name='nama_SAHAM'
           Hidden=false
           ReadOnlyControl=false
@@ -115,6 +139,32 @@ object:rtf::Form<
             ') then order by kode_pihak_ketiga;']
           LookupOption=loCustomOQL
           FieldBaseName='LPihakKetiga'
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LBroker'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='broker_code;broker_name'
+          Restrictions=''
+          OQLText=['select from Broker'#13#10,
+            '('#13#10,
+            '  broker_code,'#13#10,
+            '  broker_name,'#13#10,
+            '  self'#13#10,
+            ') then order by broker_code;']
+          LookupOption=loCustomOQL
+        >, *object:rtf::LinkUIElmtSetting<
+          Name='LPayingAgent'
+          Hidden=false
+          ReadOnlyControl=false
+          DisplayFields='agent_code;agent_name'
+          Restrictions=''
+          OQLText=['select from PayingAgent'#13#10,
+            '('#13#10,
+            '  agent_code,'#13#10,
+            '  agent_name,'#13#10,
+            '  self'#13#10,
+            ') then order by agent_code;'#13#10]
+          LookupOption=loCustomOQL
         >, *object:rtf::LinkUIElmtSetting<
           Name='LRincianPaketInvestasi'
           Hidden=false
@@ -146,27 +196,27 @@ object:rtf::Form<
           ReadOnlyControl=false
         >, *object:rtf::FieldUIElmtSetting<
           Name='dpkPaket'
-          Hidden=false
+          Hidden=true
           ReadOnlyControl=true
         >, *object:rtf::FieldUIElmtSetting<
           Name='dpkInvExisting'
-          Hidden=false
+          Hidden=true
           ReadOnlyControl=true
         >, *object:rtf::FieldUIElmtSetting<
           Name='dpkTersedia'
-          Hidden=false
+          Hidden=true
           ReadOnlyControl=true
         >, *object:rtf::FieldUIElmtSetting<
           Name='nominalGiro'
-          Hidden=false
+          Hidden=true
           ReadOnlyControl=true
         >, *object:rtf::FieldUIElmtSetting<
           Name='nilaiMaksProporsi'
-          Hidden=false
+          Hidden=true
           ReadOnlyControl=true
         >, object:rtf::FieldUIElmtSetting<
           Name='maks_proporsi'
-          Hidden=false
+          Hidden=true
           ReadOnlyControl=true
           DataTypeName='double'
           DataLength=20
@@ -177,14 +227,21 @@ object:rtf::Form<
       Height=390
       UIPart=$UIPARTS['uipRegisterSaham']
       Controls={
-        *object:rtf::DBEdit<
-          Name='nama_Saham'
+        *object:rtf::DBLookupEdit<
+          Name='LSubJenisInv'
           Top=20
+          Left=20
+          ControlCaption='Security Type'
+          LookupField='LSubJenisInv.deskripsi'
+          DisplayLookupField=true
+        >, *object:rtf::DBEdit<
+          Name='nama_Saham'
+          Top=48
           Left=20
           ControlCaption='Nama Saham'
         >, *object:rtf::DBLookupEdit<
           Name='LPihakKetiga'
-          Top=48
+          Top=76
           Left=20
           ControlCaption='manajer investasi'
           LayoutOrder=3
@@ -192,8 +249,22 @@ object:rtf::Form<
           DisplayLookupField=true
           DirectInput=true
         >, *object:rtf::DBLookupEdit<
+          Name='LBroker'
+          Top=104
+          Left=20
+          ControlCaption='Broker'
+          LookupField='LBroker.broker_name'
+          DisplayLookupField=true
+        >, *object:rtf::DBLookupEdit<
+          Name='LPayingAgent'
+          Top=160
+          Left=20
+          ControlCaption='Payment Bank'
+          LookupField='LPayingAgent.agent_name'
+          DisplayLookupField=true
+        >, *object:rtf::DBLookupEdit<
           Name='LRincianPaketInvestasi'
-          Top=76
+          Top=132
           Left=20
           Width=121
           Height=21
@@ -204,58 +275,10 @@ object:rtf::Form<
           DirectInput=true
         >, *object:rtf::DBDateEdit<
           Name='tgl_buka'
-          Top=272
+          Top=188
           Left=20
           ControlCaption='tgl buka'
           LayoutOrder=12
-        >, *object:rtf::DBEdit<
-          Name='dpkPaket'
-          Top=132
-          Left=20
-          Color=-2147483624
-          ControlCaption='nominal paket'
-          LayoutOrder=6
-          ReadOnly=true
-        >, *object:rtf::DBEdit<
-          Name='dpkInvExisting'
-          Top=188
-          Left=20
-          Color=-2147483624
-          ControlCaption='Saham existing'
-          LayoutOrder=8
-          ReadOnly=true
-        >, *object:rtf::DBEdit<
-          Name='dpkTersedia'
-          Top=216
-          Left=20
-          Color=-2147483624
-          ControlCaption='dana idle'
-          LayoutOrder=9
-          ReadOnly=true
-        >, *object:rtf::DBEdit<
-          Name='nominalGiro'
-          Top=244
-          Left=20
-          Color=-2147483624
-          ControlCaption='nominal giro'
-          LayoutOrder=10
-          ReadOnly=true
-        >, *object:rtf::DBEdit<
-          Name='nilaiMaksProporsi'
-          Top=160
-          Left=20
-          Color=-2147483624
-          ControlCaption='nilai maks. proporsi'
-          LayoutOrder=7
-          ReadOnly=true
-        >, *object:rtf::DBEdit<
-          Name='maks_proporsi'
-          Top=104
-          Left=20
-          Color=-2147483624
-          ControlCaption='maks proporsi'
-          LayoutOrder=5
-          ReadOnly=true
         >
       }
       EqualCaptionWidth=120
@@ -331,7 +354,6 @@ object:rtf::Form<
           Name='NAB_awal'
           Top=48
           Left=20
-          Visible=false
           ControlCaption='NAB pembelian'
           LayoutOrder=2
           OnExit='NAB_awalExit'
@@ -339,11 +361,8 @@ object:rtf::Form<
           Name='unit_penyertaan'
           Top=76
           Left=20
-          Visible=false
-          Color=-2147483624
           ControlCaption='unit penyertaan'
           LayoutOrder=7
-          ReadOnly=true
         >, *object:rtf::DBLookupEdit<
           Name='LCustodianBank'
           Top=104
@@ -482,21 +501,21 @@ object:rtf::Form<
     >, object:rtf::DualSplit<
       Name='DualSplit'
       Width=800
-      Height=410
+      Height=257
       Container1=$CONTAINERS['pButton']
       Container2=$CONTAINERS['DualSplitTop']
       InversedAlign=true
     >, object:rtf::DualSplit<
       Name='DualSplitTop'
       Width=800
-      Height=369
+      Height=216
       Container1=$CONTAINERS['pData']
       Container2=$CONTAINERS['DualSplitRight']
       SplitDirection=sdrSplitLeftRight
     >, object:rtf::DualSplit<
       Name='DualSplitRight'
       Width=399
-      Height=369
+      Height=216
       Container1=$CONTAINERS['pDataRight']
       Container2=$CONTAINERS['pRegister']
     >

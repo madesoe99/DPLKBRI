@@ -26,7 +26,7 @@ def reserveNumber(config, params, returns):
     while countAwal <= countAkhir:
     
        #config.SendDebugMsg('no : '+ str(countAwal))
-       noBuku = '%s' % (moduleapi.MyZFill(str(countAwal), 6))
+       noBuku = '%s' % (moduleapi.MyZFill(str(countAwal), 10))
 
        oReg = config.CreatePObject('MasterBukuDPLK')
        oReg.no_seri_buku = noBuku

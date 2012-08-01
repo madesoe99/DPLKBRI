@@ -90,15 +90,13 @@ object:rtf::Form<
           ReadOnlyControl=false
           DataTypeName='VARCHAR'
           DataLength=1
-          EnumeratedValues=['0=Peserta'#13#10,
-            '1=Ayah'#13#10,
+          EnumeratedValues=['1=Ayah'#13#10,
             '2=Ibu'#13#10,
             '3=Anak'#13#10,
             '4=Kakak'#13#10,
             '5=Adik'#13#10,
             '6=Istri'#13#10,
-            '7=Suami'#13#10,
-            '8=Lain-lain'#13#10]
+            '7=Suami'#13#10]
         >
       }
       Name='uipAhliWaris'
@@ -229,39 +227,45 @@ object:rtf::Form<
       Controls={
         *object:rtf::DBEdit<
           Name='no_referensi'
-          Top=20
+          Top=132
           Left=20
+          Visible=false
           Color=12695295
           ControlCaption='Nomor Referensi'
+          LayoutOrder=5
         >, *object:rtf::DBLookupEdit<
           Name='LNasabahDPLK'
-          Top=48
+          Top=20
           Left=20
           Width=100
           Height=21
           Enabled=false
           Color=15128749
           ControlCaption='Peserta DPLK'
+          LayoutOrder=1
           LookupField='LNasabahDPLK.nama_lengkap'
           DisplayLookupField=true
         >, *object:rtf::DBEdit<
           Name='keterangan'
-          Top=76
+          Top=48
           Left=20
           ControlCaption='Keterangan'
+          LayoutOrder=2
         >, *object:rtf::DBEdit<
           Name='user_id'
-          Top=104
+          Top=76
           Left=20
           Color=-2147483624
           ControlCaption='User Penginput'
+          LayoutOrder=3
           ReadOnly=true
         >, *object:rtf::DBEdit<
           Name='terminal_id'
-          Top=132
+          Top=104
           Left=20
           Color=-2147483624
           ControlCaption='Terminal Input'
+          LayoutOrder=4
           ReadOnly=true
         >
       }
@@ -319,15 +323,13 @@ object:rtf::Form<
           ControlCaption='Hubungan Keluarga'
           DataTypeName='VARCHAR'
           DataLength=1
-          EnumeratedValues=['0=Peserta'#13#10,
-            '1=Ayah'#13#10,
+          EnumeratedValues=['1=Ayah'#13#10,
             '2=Ibu'#13#10,
             '3=Anak'#13#10,
             '4=Kakak'#13#10,
             '5=Adik'#13#10,
             '6=Istri'#13#10,
-            '7=Suami'#13#10,
-            '8=Lain-lain'#13#10]
+            '7=Suami'#13#10]
         >, object:rtf::FieldUIElmtSetting<
           Name='keterangan'
           Hidden=false
@@ -387,6 +389,7 @@ object:rtf::Form<
           FieldName='status_ahli_waris'
           DisplayFormat=''
           TitleCaption='Status Ahli Waris'
+          Hidden=true
         >, *object:rtf::GridColumn<
           Name='hubungan_keluarga'
           InputStyle=cisEnumerated

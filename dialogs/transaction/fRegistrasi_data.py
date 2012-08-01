@@ -5,11 +5,12 @@ import com.ihsan.foundation.appserver as appserver
 def uipRegisterNasabahOnSetData(sender):
   ## sender is TPClassUIDef
   config = sender.UIDefList.Config
+  #import rpdb2; rpdb2.start_embedded_debugger('solusi', True, True)
   if sender.ActiveInstance.LNasabahDPLKCorporate.IsNull:
     sender.ActiveRecord.nasabah_korporat = 0
   else:
     sender.ActiveRecord.nasabah_korporat = 1
-
+  
 def OnSetDataEx(uideflist, params):
   config = uideflist.Config   
   uideflist.SetData('uipRegisterNasabahRekening', params.FirstRecord.key)
@@ -35,6 +36,9 @@ def OnSetDataEx(uideflist, params):
   oP.Key = 'MIN_JML_IURAN_PK'
   recP.MIN_JML_IURAN_PK = oP.Numeric_Value
 
+  oP.Key = 'MIN_JML_IURAN_TMB'
+  recP.MIN_JML_IURAN_TMB = oP.Numeric_Value
+
   oP.Key = 'IS_ONLY_MIN_JML_IURAN_PST'
   recP.IS_ONLY_MIN_JML_IURAN_PST = int(oP.Numeric_Value)
 
@@ -53,8 +57,8 @@ def uipRegisterNasabahRekeningApplyRow(sender, oData):
   config = sender.UIDefList.Config
   rec = sender.ActiveRecord
 
-  if rec.no_referensi in ['', None]:
-    raise BaseException, '\n\nPERINGATAN\nNomor Referensi belum terdefinisi! Mohon isi dahulu.'
+  #if rec.no_referensi in ['', None]:
+  #  raise BaseException, '\n\nPERINGATAN\nNomor Referensi belum terdefinisi! Mohon isi dahulu.'
 
   if rec.jenis_kelamin in ['', None]:
     raise BaseException, '\n\nPERINGATAN\nJenis Kelamin belum terdefinisi! Mohon isi dahulu.'

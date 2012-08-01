@@ -51,6 +51,7 @@ object:rtf::Form<
         '  no_rekening,'#13#10,
         '  LRekeningDPLK.no_peserta as no_peserta,'#13#10,
         '  LRekeningDPLK.LNasabahDPLK.nama_lengkap as nama_lengkap,'#13#10,
+        '  LRekeningDPLK.kode_cab_daftar as kode_cab_daftar,'#13#10,
         '  tgl_akseptasi,'#13#10,
         '  besar_premi,'#13#10,
         '  manfaat_asuransi,'#13#10,
@@ -74,6 +75,9 @@ object:rtf::Form<
           FieldName='RekAsuransi.nama_lengkap'
           Width=200
           Caption='Nama Lengkap'
+        >, object:rtf::QueryColumn<
+          FieldName='RekAsuransi.kode_cab_daftar'
+          Caption='Kode Cabang'
         >, object:rtf::QueryColumn<
           FieldName='RekAsuransi.tgl_akseptasi'
           Width=75

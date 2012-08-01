@@ -194,7 +194,7 @@ object:rtf::Form<
           Hidden=false
           ReadOnlyControl=false
           DataTypeName='VARCHAR'
-          DataLength=7
+          DataLength=3
         >, object:rtf::FieldUIElmtSetting<
           Name='alamat_kelurahan'
           AccessOption=aoReadOnly
@@ -433,8 +433,9 @@ object:rtf::Form<
           Name='TotalMutasi'
           Top=76
           Left=10
-          Color=65280
+          Color=16744703
           ControlCaption='Total Mutasi'
+          ReadOnly=true
         >
       }
       EqualCaptionWidth=160
@@ -852,7 +853,6 @@ object:rtf::Form<
           DisplayFormat=',0.00'
           TitleCaption='Mutasi PSL'
           Width=150
-          Hidden=true
           ReadOnly=true
         >, *object:rtf::GridColumn<
           Name='LRekeningDPLK.pct_alokasi'
@@ -872,7 +872,6 @@ object:rtf::Form<
           DisplayFormat=',0.00'
           TitleCaption='Mutasi Pengembangan Iuran PK'
           Width=150
-          Hidden=true
           ReadOnly=true
         >, *object:rtf::GridColumn<
           Name='mutasi_pmb_pst'
@@ -883,7 +882,6 @@ object:rtf::Form<
           DisplayFormat=',0.00'
           TitleCaption='Mutasi Pengembangan Iuran Peserta'
           Width=150
-          Hidden=true
           ReadOnly=true
         >, *object:rtf::GridColumn<
           Name='mutasi_pmb_tmb'
@@ -894,7 +892,6 @@ object:rtf::Form<
           DisplayFormat=',0.00'
           TitleCaption='Mutasi Pengembangan Iuran Tambahan'
           Width=150
-          Hidden=true
           ReadOnly=true
         >, *object:rtf::GridColumn<
           Name='mutasi_pmb_psl'
@@ -905,7 +902,6 @@ object:rtf::Form<
           DisplayFormat=',0.00'
           TitleCaption='Mutasi Pengembangan PSL'
           Width=150
-          Hidden=true
           ReadOnly=true
         >
       }

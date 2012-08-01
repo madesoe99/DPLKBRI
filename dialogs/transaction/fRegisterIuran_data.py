@@ -47,6 +47,9 @@ def FormEndSetData(uideflist, auiname, apobjconst):
   oP.Key = 'MIN_JML_IURAN_PK'
   recP.MIN_JML_IURAN_PK = oP.Numeric_Value
 
+  oP.Key = 'MIN_JML_IURAN_TMB'
+  recP.MIN_JML_IURAN_TMB = oP.Numeric_Value
+
   oP.Key = 'IS_ONLY_MIN_JML_IURAN_PST'
   recP.IS_ONLY_MIN_JML_IURAN_PST = int(oP.Numeric_Value)
 
@@ -55,8 +58,7 @@ def uipRegisterCIFApplyRow(sender, oData):
   config = uideflist.Config
   #mode = sender.ActiveRecord.mode
 
-  if oData.no_referensi in ['', None]:
-    raise Exception, 'Registrasi Error' + 'Nomor referensi tidak terdefinisi.'
+  #if oData.no_referensi in ['', None]:
+  #  raise Exception, 'Registrasi Error' + 'Nomor referensi tidak terdefinisi.'
 
   oData.tanggal_register = config.Now()
-

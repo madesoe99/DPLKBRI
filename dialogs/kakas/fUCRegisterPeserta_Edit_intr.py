@@ -7,12 +7,18 @@ class fUCRegisterPeserta_Edit:
     form = self.FormObject
     
     if mode == 'view':
-      self.pInput.SetAllControlsReadOnly(1)
+      self.pNasabah.SetAllControlsReadOnly(1)
+      self.pPekerjaan.SetAllControlsReadOnly(1)
+      self.pAlamat.SetAllControlsReadOnly(1)
+      self.pRekening.SetAllControlsReadOnly(1)
+      self.pRegister.SetAllControlsReadOnly(1)
       self.pButton.GetControlByName('btnSave').Enabled = 0
     elif mode == 'edit' and self.uipDetail.is_auth == 'T':
       form.ShowMessage('''
       Data ini sudah diotorisasi...
-      Koreksi selanjutnya dapat dilakukan melalui menu: Nasabah > Daftar Peserta''')
+      Koreksi selanjutnya dapat dilakukan melalui menu:
+      Nasabah > Daftar Peserta, atau 
+      Nasabah > Daftar Rekening''')
       form.Close(1)
       return
     
@@ -159,3 +165,7 @@ class fUCRegisterPeserta_Edit:
     form.PostResult()
   
     sender.ExitAction = 1
+
+  def btnCekPesertaTerdaftarOnClick(self, sender):
+    # procedure(sender: TrtfButton)
+    pass

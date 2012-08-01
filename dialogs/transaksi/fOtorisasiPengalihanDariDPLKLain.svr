@@ -10,7 +10,7 @@ object:rpclass::TPClassUIDefList<
     object:rpclass::TPClassUIDef<
       Name='uipTransaksi'
       PClassName='PengalihanDariDPLKLain'
-      LoadedFieldList='ID_Transaksi;tgl_transaksi;keterangan;LLDP.kode_dp;LLDP.kode_dp;LLDP.nama_dp;no_dplk_lain;mutasi_iuran_pk;mutasi_iuran_pst;mutasi_iuran_tmb;mutasi_psl;user_id;terminal_id;tgl_sistem;user_id_auth;terminal_id_auth;tgl_otorisasi'
+      LoadedFieldList='ID_Transaksi;tgl_transaksi;keterangan;LLDP.kode_dp;LLDP.kode_dp;LLDP.nama_dp;no_dplk_lain;mutasi_iuran_pk;mutasi_iuran_pst;mutasi_iuran_tmb;mutasi_psl;mutasi_pmb_pk;mutasi_pmb_pst;mutasi_pmb_tmb;mutasi_pmb_psl;user_id;terminal_id;tgl_sistem;user_id_auth;terminal_id_auth;tgl_otorisasi'
       CustomLoadedLinks={
         object:rpclass::TCustomLoadedLink<
           Name='LLDP'
@@ -23,7 +23,7 @@ object:rpclass::TPClassUIDefList<
     >, object:rpclass::TPClassUIDef<
       Name='uipPeserta'
       PClassName='NasabahDPLK'
-      LoadedFieldList='no_peserta;nama_lengkap;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_email'
+      LoadedFieldList='no_peserta;nama_lengkap;alamat_jalan;alamat_rtrw;alamat_rw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_email;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.nama_perusahaan'
       CustomLoadedFields={
         object:rpclass::TCustomLoadedField<
           Name='IuranPk'
@@ -35,11 +35,25 @@ object:rpclass::TPClassUIDefList<
           DataLength=20
         >
       }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLKCorporate'
+          ClassTypeName='NasabahDPLKCorporate'
+          FieldNames='kode_nasabah_corporate;kode_nasabah_corporate;nama_perusahaan'
+        >
+      }
       Mode=imSingleRow
     >, object:rpclass::TPClassUIDef<
       Name='uipRekening'
       PClassName='RekInvDPLK'
-      LoadedFieldList='no_peserta;no_rekening;iuran_pk;iuran_pst;akum_iuran_pk;akum_iuran_pst;akum_iuran_tmb;akum_psl'
+      LoadedFieldList='no_peserta;akum_pmb_pk;akum_pmb_pst;akum_pmb_tmb;akum_pmb_psl;no_rekening;iuran_pk;iuran_pst;akum_iuran_pk;akum_iuran_pst;akum_iuran_tmb;akum_psl'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='akum_pmb'
+          DataTypeName='double'
+          DataLength=20
+        >
+      }
       Mode=imSingleRow
     >, object:rpclass::TPClassUIDef<
       Name='uipDetilTransaksi'
@@ -55,6 +69,5 @@ object:rpclass::TPClassUIDefList<
       }
     >
   }
-  OnGeneralProcessData='Form_OnGeneralProcessData'
   OnSetDataEx='Form_OnSetDataEx'
 >

@@ -4,59 +4,74 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rtf::Form<
+>
+object:rtf::Form<
   MainContainer=$CONTAINERS['MultiSplit']
   Caption='Tambah Jenis Reksadana'
   Left=50
   Top=50
   Width=401
   Height=241
-  UIParts={object:rtf::PClassUI<
+  UIParts={
+    object:rtf::PClassUI<
       Name='uipJenisReksadana'
       ClassTypeName='JenisReksadana'
       DataBinding=bmMaster
       AlwaysPostToServer=true
       CreateInstanceOnNew=true
-    >}Containers={object:rtf::Panel<
-      Elements={object:rtf::FieldUIElmtSetting<
+    >
+  }
+  Containers={
+    object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
           Name='kode_jns_reksadana'
+          Hidden=false
+          ReadOnlyControl=false
           ControlCaption='Kode Jenis Reksadana'
           DataTypeName='VARCHAR'
           DataLength=20
         >, object:rtf::FieldUIElmtSetting<
           Name='jenis_reksadana'
+          Hidden=false
+          ReadOnlyControl=false
           ControlCaption='Jenis Reksadana'
           DataTypeName='VARCHAR'
           DataLength=50
         >, object:rtf::FieldUIElmtSetting<
           Name='keterangan'
+          Hidden=false
+          ReadOnlyControl=false
           ControlCaption='Keterangan'
           DataTypeName='VARCHAR'
           DataLength=100
-        >}Name='pData'
+        >
+      }
+      Name='pData'
       Width=401
       Height=117
       Bordered=true
       UIPart=$UIPARTS['uipJenisReksadana']
-      Controls={*object:rtf::DBEdit<
+      Controls={
+        *object:rtf::DBEdit<
           Name='kode_jns_reksadana'
           Top=20
           Left=20
-          Color=0
           ControlCaption='Kode Jenis Reksadana'
+          OnExit='kode_onexit'
         >, *object:rtf::DBEdit<
           Name='jenis_reksadana'
           Top=48
           Left=20
-          Color=0
           ControlCaption='Jenis Reksadana'
         >, *object:rtf::DBEdit<
           Name='keterangan'
           Top=76
           Left=20
-          Color=0
           ControlCaption='Keterangan'
-        >}EqualCaptionWidth=120
+        >
+      }
+      EqualCaptionWidth=120
       ControlLeftMargin=20
       ControlTopMargin=20
       DefaultControlHeight=21
@@ -66,12 +81,12 @@ document <
       Name='pButton'
       Width=240
       Height=40
-      Controls={object:rtf::Button<
+      Controls={
+        object:rtf::Button<
           Name='btnOK'
           Layout=clNewLine
           Top=8
           Left=20
-          Color=0
           ControlCaption=''
           Caption='&Simpan'
           Default=true
@@ -81,35 +96,42 @@ document <
           Layout=clNextSide
           Top=8
           Left=99
-          Color=0
           ControlCaption=''
           Caption='&Batal'
           Cancel=true
           ExitAction=eaQuitCancel
-        >}ControlLeftMargin=20
+        >
+      }
+      ControlLeftMargin=20
       ControlTopMargin=8
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
     >, object:rtf::Panel<
-      Elements={object:rtf::FieldUIElmtSetting<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
           Name='user_id'
+          Hidden=false
           ReadOnlyControl=true
           ControlCaption='ID Pengguna'
           DataTypeName='VARCHAR'
           DataLength=20
         >, object:rtf::FieldUIElmtSetting<
           Name='last_update'
+          Hidden=false
           ReadOnlyControl=true
           ControlCaption='Terakhir Diperbarui'
           DataTypeName='TIMESTAMP'
           DataLength=0
-        >}Name='pUser'
+        >
+      }
+      Name='pUser'
       Width=240
       Height=40
       Bordered=true
       UIPart=$UIPARTS['uipJenisReksadana']
-      Controls={*object:rtf::DBEdit<
+      Controls={
+        *object:rtf::DBEdit<
           Name='user_id'
           Top=20
           Left=20
@@ -122,7 +144,9 @@ document <
           Left=20
           Color=-2147483624
           ControlCaption='Terakhir Diperbarui'
-        >}EqualCaptionWidth=120
+        >
+      }
+      EqualCaptionWidth=120
       ControlLeftMargin=20
       ControlTopMargin=20
       DefaultControlHeight=21
@@ -132,7 +156,15 @@ document <
       Name='MultiSplit'
       Width=401
       Height=241
-      Side1Containers={$CONTAINERS['pData']
-      }Side2Containers={$CONTAINERS['pButton']
-      }SpaceContainer=$CONTAINERS['pUser']
-    >}>
+      Side1Containers={
+        $CONTAINERS['pData']
+
+      }
+      Side2Containers={
+        $CONTAINERS['pButton']
+
+      }
+      SpaceContainer=$CONTAINERS['pUser']
+    >
+  }
+>

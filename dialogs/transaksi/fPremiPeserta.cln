@@ -155,7 +155,7 @@ object:rtf::Form<
           Hidden=false
           ReadOnlyControl=false
           DataTypeName='VARCHAR'
-          DataLength=7
+          DataLength=3
         >, object:rtf::FieldUIElmtSetting<
           Name='alamat_kelurahan'
           AccessOption=aoReadOnly

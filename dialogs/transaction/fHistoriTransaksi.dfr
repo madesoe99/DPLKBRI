@@ -44,11 +44,8 @@ object:rtf::Form<
           Action=caView
           DataMembers=['no_peserta'#13#10,
             'nama_lengkap'#13#10,
-            'tempat_lahir'#13#10,
-            'tanggal_lahir'#13#10,
-            'LDaerahAsal'#13#10,
-            'LKepemilikan'#13#10,
-            'LJenisUsaha'#13#10]
+            'ibu_kandung'#13#10,
+            'tanggal_lahir'#13#10]
         >
       }
       Elements={
@@ -63,62 +60,19 @@ object:rtf::Form<
           ReadOnlyControl=false
           ControlCaption='Nama Lengkap'
         >, *object:rtf::FieldUIElmtSetting<
-          Name='tempat_lahir'
+          Name='ibu_kandung'
           Hidden=false
           ReadOnlyControl=false
-          ControlCaption='Tempat Lahir'
         >, *object:rtf::FieldUIElmtSetting<
           Name='tanggal_lahir'
           Hidden=false
           ReadOnlyControl=false
           ControlCaption='Tanggal Lahir'
-        >, *object:rtf::LinkUIElmtSetting<
-          Name='LDaerahAsal'
-          Hidden=false
-          ReadOnlyControl=false
-          ControlCaption='Daerah Asal'
-          DisplayFields='kode_propinsi;nama_propinsi'
-          Restrictions=''
-          OQLText=['SELECT FROM DaerahAsal ('#13#10,
-            '  self,'#13#10,
-            '  kode_propinsi,'#13#10,
-            '  nama_propinsi'#13#10,
-            ') THEN ORDER BY kode_propinsi;']
-          LookupOption=loCustomOQL
-          FieldBaseName='LDaerahAsal'
-        >, *object:rtf::LinkUIElmtSetting<
-          Name='LKepemilikan'
-          Hidden=false
-          ReadOnlyControl=false
-          ControlCaption='Kepemilikan'
-          DisplayFields='kode_pemilikan;keterangan'
-          Restrictions=''
-          OQLText=['SELECT FROM Kepemilikan ('#13#10,
-            '  self,'#13#10,
-            '  kode_pemilikan,'#13#10,
-            '  keterangan'#13#10,
-            ') THEN ORDER BY kode_pemilikan;']
-          LookupOption=loCustomOQL
-          FieldBaseName='LKepemilikan'
-        >, *object:rtf::LinkUIElmtSetting<
-          Name='LJenisUsaha'
-          Hidden=false
-          ReadOnlyControl=false
-          ControlCaption='Jenis Usaha'
-          DisplayFields='kode_jenis_usaha;nama_jenis_usaha'
-          Restrictions=''
-          OQLText=['SELECT FROM JenisUsaha ('#13#10,
-            '  self,'#13#10,
-            '  kode_jenis_usaha,'#13#10,
-            '  nama_jenis_usaha'#13#10,
-            ') THEN ORDER BY kode_jenis_usaha;']
-          LookupOption=loCustomOQL
-          FieldBaseName='LJenisUsaha'
         >
       }
       Name='pDataUmumNsb'
       Width=394
-      Height=257
+      Height=145
       Bordered=true
       UIPart=$UIPARTS['uipNasabahDPLK']
       Controls={
@@ -127,52 +81,29 @@ object:rtf::Form<
           Top=30
           Left=20
           Color=-2147483624
-          ControlCaption='Nomor Peserta'
+          ControlCaption='CIF Peserta'
+          LayoutOrder=1
         >, *object:rtf::DBEdit<
           Name='nama_lengkap'
           Top=58
           Left=20
           Color=-2147483624
           ControlCaption='Nama Lengkap'
+          LayoutOrder=2
         >, *object:rtf::DBEdit<
-          Name='tempat_lahir'
+          Name='ibu_kandung'
           Top=86
           Left=20
-          Color=-2147483624
-          ControlCaption='Tempat Lahir'
+          Color=-16777192
+          ControlCaption='Ibu Kandung'
+          LayoutOrder=3
         >, *object:rtf::DBDateEdit<
           Name='tanggal_lahir'
           Top=114
           Left=20
           Color=-2147483624
           ControlCaption='Tanggal Lahir'
-        >, *object:rtf::DBLookupEdit<
-          Name='LDaerahAsal'
-          Top=142
-          Left=20
-          Enabled=false
-          ControlCaption='Daerah Asal'
-          LookupField='LDaerahAsal.nama_propinsi'
-          DisplayLookupField=true
-          DisableLookup=true
-        >, *object:rtf::DBLookupEdit<
-          Name='LKepemilikan'
-          Top=170
-          Left=20
-          Enabled=false
-          ControlCaption='Kepemilikan'
-          LookupField='LKepemilikan.keterangan'
-          DisplayLookupField=true
-          DisableLookup=true
-        >, *object:rtf::DBLookupEdit<
-          Name='LJenisUsaha'
-          Top=198
-          Left=20
-          Enabled=false
-          ControlCaption='Jenis Usaha'
-          LookupField='LJenisUsaha.nama_jenis_usaha'
-          DisplayLookupField=true
-          DisableLookup=true
+          LayoutOrder=4
         >
       }
       EqualCaptionWidth=120
@@ -184,8 +115,8 @@ object:rtf::Form<
       Caption='Identitas Peserta'
     >, object:rtf::MultiSplit<
       Name='MultiSplit'
-      Width=800
-      Height=600
+      Width=320
+      Height=320
       Side1Containers={
         $CONTAINERS['DualSplitTop']
 
@@ -197,8 +128,8 @@ object:rtf::Form<
       SpaceContainer=$CONTAINERS['MultiPages']
     >, object:rtf::DualSplit<
       Name='DualSplitTop'
-      Width=240
-      Height=260
+      Width=800
+      Height=161
       Container1=$CONTAINERS['pDataUmumNsb']
       Container2=$CONTAINERS['pDataUmumRek']
       SplitDirection=sdrSplitLeftRight
@@ -240,7 +171,7 @@ object:rtf::Form<
     >, object:rtf::Query<
       Name='qTransaksiDPLK'
       Width=792
-      Height=270
+      Height=369
       ControlLeftMargin=8
       ControlTopMargin=8
       DefaultControlHeight=21
@@ -248,14 +179,14 @@ object:rtf::Form<
       RowControlGap=7
       OQLText=['select from TransaksiDPLK'#13#10,
         '['#13#10,
-        '  LRekeningDPLK.no_peserta = :no_peserta '#13#10,
+        '  LRekeningDPLK.no_rekening = :no_rekening '#13#10,
         '  and (tgl_transaksi >= :tgl_transaksi_awal OR :all_tgl_awal = 1)'#13#10,
         '  and (tgl_transaksi <= :tgl_transaksi_akhir OR :all_tgl_akhir = 1)'#13#10,
         '  and isCommitted = ''T'''#13#10,
         ']'#13#10,
         '('#13#10,
         '  self,'#13#10,
-        '  LRekeningDPLK.no_peserta as subaccount,'#13#10,
+        '  LRekeningDPLK.no_rekening as subaccount,'#13#10,
         '  tgl_transaksi,'#13#10,
         '  LJenisTransaksiDPLK.nama_transaksi as nama_transaksi,'#13#10,
         '  mutasi_iuran_pk as iuran_pk,'#13#10,
@@ -296,8 +227,18 @@ object:rtf::Form<
         ') then order by ID;']
       WindowSize=20
     >, object:rtf::Panel<
+      ControlDefs={
+        object:rtf::ControlDef<
+          Action=caView
+          DataMember='no_rekening'
+        >
+      }
       Elements={
-        object:rtf::FieldUIElmtSetting<
+        *object:rtf::FieldUIElmtSetting<
+          Name='no_rekening'
+          Hidden=false
+          ReadOnlyControl=false
+        >, object:rtf::FieldUIElmtSetting<
           Name='tanggal_filter'
           Hidden=false
           ReadOnlyControl=false
@@ -313,26 +254,32 @@ object:rtf::Form<
       }
       Name='pDataUmumRek'
       Width=400
-      Height=265
+      Height=153
       Bordered=true
       UIPart=$UIPARTS['uipRekInvDPLK']
       Controls={
-        *object:rtf::DBDateEdit<
-          Name='tanggal_filter'
+        *object:rtf::DBEdit<
+          Name='no_rekening'
           Top=30
+          Left=20
+          Color=-16777192
+          ControlCaption='Nomor Account DPLK'
+        >, *object:rtf::DBDateEdit<
+          Name='tanggal_filter'
+          Top=58
           Left=20
           Color=12695295
           ControlCaption='Mulai Tanggal'
         >, *object:rtf::DBDateEdit<
           Name='tanggal_filter_akhir'
-          Top=58
+          Top=86
           Left=20
           Color=12695295
           ControlCaption='Hingga Tanggal'
         >, object:rtf::Button<
           Name='btnShow'
           Layout=clNewLine
-          Top=86
+          Top=114
           Left=20
           ControlCaption=''
           Caption='T&ampilkan'

@@ -4,11 +4,15 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rmn::Menu<
-  MenuItems={object:rmn::MenuItem<
+>
+object:rmn::Menu<
+  MenuItems={
+    object:rmn::MenuItem<
       Name='mnuAuth'
-      Caption='Otorisasi Hasil Register CIF...'
+      Caption='Approval Hasil Register CIF...'
       OnClick='OtoClick'
-      StringTag='Yakin otorisasi?'
-    >}MenuType=mtPopupMenu
+      StringTag='Yakin approve data?'
+    >
+  }
+  MenuType=mtPopupMenu
 >

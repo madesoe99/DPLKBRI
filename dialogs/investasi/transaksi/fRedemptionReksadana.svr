@@ -4,13 +4,16 @@ document <
   DocumentID=''
   MajorVersion='0'
   MinorVersion='0'
->object:rpclass::TPClassUIDefList<
-  UIDefs={object:rpclass::TPClassUIDef<
+>
+object:rpclass::TPClassUIDefList<
+  UIDefs={
+    object:rpclass::TPClassUIDef<
       Name='uipRedemptionReksadana'
       PClassName='RedemptReksadana'
       LoadedFieldList='id_transaksiinvestasi;tgl_transaksi;mutasi_kredit;nilai_redempt;unit_penyertaan;biaya_redempt;no_rekening;user_id;terminal_id;tgl_otorisasi;user_id_auth;terminal_id_auth;tgl_sistem;LReksadana.id_investasi;LReksadana.nama_reksadana;LReksadana.tgl_buka;LReksadana.id_investasi;LReksadana.LPihakKetiga.nama_pihak_ketiga;LReksadana.LRincianPaketInvestasi.LPaketInvestasi.Nama_paket_investasi;LReksadana.LRincianPaketInvestasi.LJenisInvestasi.nama_jns_investasi;LReksadana.akum_nominal;LReksadana.akum_piutangLR;LReksadana.akum_LR;LReksadana.kode_pihak_ketiga;LReksadana.kode_paket_investasi;LReksadana.kode_jns_investasi;LReksadana.unit_penyertaan;LReksadana.NAB;LReksadana.min_inv_awal'
       StoredFieldList='tgl_transaksi;nilai_redempt;unit_penyertaan;biaya_redempt;no_rekening;tgl_sistem;LReksadana'
-      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
           Name='nama_reksadana'
           DataTypeName='varchar'
           DataLength=15
@@ -64,7 +67,10 @@ document <
           Name='mode'
           DataTypeName='varchar'
           DataLength=20
-        >}CustomLoadedLinks={object:rpclass::TCustomLoadedLink<
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
           Name='LReksadana'
           ClassTypeName='Reksadana'
           FieldNames='id_investasi;nama_reksadana;tgl_buka;id_investasi;LPihakKetiga.nama_pihak_ketiga;LRincianPaketInvestasi.LPaketInvestasi.Nama_paket_investasi;LRincianPaketInvestasi.LJenisInvestasi.nama_jns_investasi;akum_nominal;akum_piutangLR;akum_LR;kode_pihak_ketiga;kode_paket_investasi;kode_jns_investasi;unit_penyertaan;NAB;min_inv_awal'
@@ -84,7 +90,9 @@ document <
           Name='LReksadanaSwitch'
           ClassTypeName='Reksadana'
           FieldNames='id_investasi;id_investasi;nama_reksadana'
-        >}Mode=imSingleRow
+        >
+      }
+      Mode=imSingleRow
       CreateInstanceOnNew=true
       AfterApplyRow='uipRedemptionReksadanaApplyRow'
     >, object:rpclass::TPClassUIDef<
@@ -95,7 +103,8 @@ document <
       OnSetData='uipReksadanaSetData'
     >, object:rpclass::TPClassUIDef<
       Name='uipParameter'
-      CustomLoadedFields={object:rpclass::TCustomLoadedField<
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
           Name='nowDate'
           DataTypeName='varchar'
           DataLength=10
@@ -103,8 +112,12 @@ document <
           Name='inv'
           DataTypeName='varchar'
           DataLength=1
-        >}Mode=imSingleRow
+        >
+      }
+      Mode=imSingleRow
       CreateInstanceOnNew=true
-    >}OnGeneralSetData='FormGeneralSetData'
+    >
+  }
+  OnGeneralSetData='FormGeneralSetData'
   OnEndProcessData='FormEndProcessData'
 >

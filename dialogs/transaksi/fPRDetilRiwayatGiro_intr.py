@@ -14,8 +14,8 @@ class fPRDetilRiwayatGiro:
        self.caption = 'e - Channel'
     if self.uipart.is_reconciled =='T':
        self.tutup_bProses.Enabled = 0
-    if self.uipart.is_pindahbuku =='T':
-       self.tutup_bPindahbuku.Enabled = 0
+       #self.tutup_bPindahbuku.Enabled = 1
+      
     self.FormObject.Caption += self.caption
     self.TampilGrid()
     self.FormContainer.Show()

@@ -1,6 +1,6 @@
 class fPengalihanKeDPLK:
   def __init__(self, formObj, parentForm):
-    pass
+    self.app = formObj.ClientApplication
   #--
 
   def JenisBiaya_OnChange(self, cbJenisBiaya):
@@ -10,7 +10,9 @@ class fPengalihanKeDPLK:
       self.uipTransaksi.biaya_lain = self.uipParameter.BiayaSKN
     elif index == 1:
       self.uipTransaksi.biaya_lain = self.uipParameter.BiayaRTGS
-  #--
+    elif index == 2:
+      self.uipTransaksi.biaya_lain = self.uipParameter.BiayaPindahBuku
+  #--                                      
   
   def bHitungClick(self, button):
     form = self.FormObject
@@ -34,10 +36,19 @@ class fPengalihanKeDPLK:
       self.uipHitung.saldo_iuran_pst + self.uipHitung.saldo_iuran_tmb + \
       self.uipHitung.saldo_pmb + self.uipHitung.saldo_psl
     
-    self.uipHitung.biaya_pengelolaan = 0.0
-    self.uipHitung.biaya_administrasi = self.uipParameter.BiayaADM
-    self.uipHitung.biaya_pengalihan = (self.uipParameter.BiayaPindah / 100) * \
-      self.uipHitung.saldo_jml_dana
+    self.uipHitung.biaya_pengelolaan = self.uipParameter.proporsiHari * \
+      (self.uipParameter.PERSEN_BIAYA_PENGELOLAAN / 100 / 12) * self.uipHitung.saldo_jml_dana
+    self.uipHitung.biaya_administrasi = self.uipParameter.BiayaADM / 12
+    
+    if self.uipParameter.MODUS_BIAYA_PINDAH_DPLK == 'P':
+      #modus biaya pengalihan / pindah berbentuk persentase
+      self.uipHitung.biaya_pengalihan = (self.uipParameter.BiayaPindah / 100) * \
+        self.uipHitung.saldo_jml_dana
+    elif self.uipParameter.MODUS_BIAYA_PINDAH_DPLK == 'F':
+      #modus biaya pengalihan / pindah berbentuk fix nominal
+      self.uipHitung.biaya_pengalihan = self.uipParameter.FIX_BIAYA_PINDAH_DPLK
+    else:
+      form.ShowMessage('Modus Biaya Transaksi Pengalihan Dana Ke DPLK Lain tidak terdefinisi!')
       
     self.uipHitung.saldo_dana_dialihkan = self.uipHitung.saldo_jml_dana - \
       self.uipHitung.biaya_pengelolaan - self.uipHitung.biaya_administrasi - \
@@ -70,6 +81,10 @@ class fPengalihanKeDPLK:
         'belum terisi, mohon diisi dahulu.')
       return
 
+    if self.app.ConfirmDialog('Anda yakin Simpan transaksi Pengalihan Ke DPKL lain Peserta %s %s?' % (self.uipPeserta.no_peserta, self.uipPeserta.nama_lengkap)):
+      pass
+    else:
+      return 0
     
     form.CommitBuffer()
     phForm = form.GetDataPacket()

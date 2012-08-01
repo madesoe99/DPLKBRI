@@ -16,35 +16,10 @@ def Form_OnSetDataEx(uideflist, parameterForm):
   uideflist.SetData('uipPeserta','PObj:NasabahDPLK#no_peserta='+recRekening.no_peserta)
   uipPeserta = uideflist.uipPeserta
   recPeserta = uipPeserta.Dataset.GetRecord(0)
+  
+  if recTransaksi.catatan_bayar_iuran not in (None,''):
+    DRG = config.CreatePObjImplProxy('DetilRiwayatGiro')
+    DRG.key = recTransaksi.catatan_bayar_iuran
+    recTransaksi.SetFieldByName('LReconcile.rekening_sumber',DRG.rekening_sumber) 
+    recTransaksi.SetFieldByName('LReconcile.nominal',DRG.nominal) 
 
-def Form_OnGeneralProcessData(uideflist, data):
-  config = uideflist.Config
-  recT = data.uipTransaksi.GetRecord(0)
-  try:
-    #otorisasi transaksi
-    OtorisasiTransaksi = modman.getModule(config,'scripts#transaksi.OtorisasiTransaksi')
-    returns = OtorisasiTransaksi.ProsesOtorisasi(config, recT.ID_Transaksi, 'A')
-  except:
-    raise Exception, "Gagal otorisasi transaksi: "+ str(sys.exc_info()[1])
-
-  return 0
-
-def OtorisasiTransaksi(config, params, returns):
-  recT = params.uipTransaksi.GetRecord(0)
-  try:
-    #otorisasi transaksi
-    OtorisasiTransaksi = modman.getModule(config,'scripts#transaksi.OtorisasiTransaksi')
-    returns = OtorisasiTransaksi.ProsesOtorisasi(config, recT.ID_Transaksi, 'A')
-
-    errorStatus = 0
-    errorMessage = ""
-  except:
-    config.Rollback()
-    errorStatus = 1
-    errorMessage = "Gagal otorisasi transaksi: "+ str(sys.exc_info()[1])
-      
-  # pattern untuk catch status dan error
-  ds = returns.AddNewDatasetEx("status", "error_status: integer; error_message: string;")
-  rec = ds.AddRecord()
-  rec.error_status = errorStatus
-  rec.error_message = errorMessage

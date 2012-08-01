@@ -185,6 +185,13 @@ object:rtf::Form<
           ControlCaption='Accrual'
           DisplayFields='accrual_code;accrual_day'
           Restrictions=''
+          OQLText=['select from accrual'#13#10,
+            '('#13#10,
+            '  accrual_code,'#13#10,
+            '  accrual_day,'#13#10,
+            '  self'#13#10,
+            ') then order by accrual_code;']
+          LookupOption=loCustomOQL
           FieldBaseName='LAccrual'
         >, *object:rtf::LinkUIElmtSetting<
           Name='LPayingAgent'
@@ -390,13 +397,13 @@ object:rtf::Form<
       RowControlGap=7
     >, object:rtf::DualSplit<
       Name='DualSplitRight'
-      Width=240
-      Height=96
+      Width=424
+      Height=351
       Container1=$CONTAINERS['pDataRight']
     >, object:rtf::MultiSplit<
       Name='MSMain'
-      Width=320
-      Height=320
+      Width=921
+      Height=559
       Side1Containers={
         $CONTAINERS['DualSplitTop']
 
@@ -570,8 +577,8 @@ object:rtf::Form<
       }
     >, object:rtf::DualSplit<
       Name='DSMain'
-      Width=240
-      Height=96
+      Width=921
+      Height=600
       Container1=$CONTAINERS['pButton']
       Container2=$CONTAINERS['MSMain']
       InversedAlign=true

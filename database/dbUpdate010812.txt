@@ -1,0 +1,22 @@
+-- alter tabel detiltransaksi
+ALTER TABLE DETILTRANSAKSIDPLK ADD COLUMN nav_custody float;
+
+-- alter tabel paket invastasi
+ALTER TABLE PAKETINVESTASI ADD COLUMN nav_custody float;
+ALTER TABLE PAKETINVESTASI ADD COLUMN unit_custody float;
+
+-- alter tabel riwayatgiro
+ALTER TABLE RIWAYATGIRO ADD COLUMN SUM_KOREKSI float;
+
+-- alter tabel detilriwayatgiro
+ALTER TABLE DETILRIWAYATGIRO ADD COLUMN ID_TRANSAKSI INT;
+
+-- alter tabel prosesreconcile
+ALTER TABLE PROSESRECONCILE ADD COLUMN KETERANGAN VARCHAR(100);
+
+--insert tabel enum
+INSERT INTO ENUM_VARCHAR (enum_name, enum_value, enum_description) VALUES ('ARBoolean', 'F', 'Belum Approve');
+INSERT INTO ENUM_VARCHAR (enum_name, enum_value, enum_description) VALUES ('ARBoolean', 'T', 'Approved');
+
+
+

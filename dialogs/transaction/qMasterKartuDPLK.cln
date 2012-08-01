@@ -32,20 +32,26 @@ object:rtf::Form<
       RowControlGap=7
       OQLText=['select from MasterKartuDPLK'#13#10,
         '['#13#10,
-        '  (1 = :display_all_cabang OR  LNasabahDPLK.kode_cab_daftar = :kode_cab_daftar)'#13#10,
+        '  (1 = :display_all_cabang OR  LRekeningDPLK.kode_cab_daftar = :kode_cab_daftar)'#13#10,
         ']'#13#10,
         '('#13#10,
         '  self,'#13#10,
+        '  no_seri_kartu,'#13#10,
         '  no_rekening,'#13#10,
         '  no_peserta,'#13#10,
         '  LNasabahDPLK.nama_lengkap as nama_lengkap,'#13#10,
         '  tgl_cetak,'#13#10,
         '  tgl_kirim,'#13#10,
-        '  LNasabahDPLK.LBranchLocation.branchname AS branchname'#13#10,
+        '  LRekeningDPLK.kode_cab_daftar AS kode_cab_daftar,'#13#10,
+        '  LRekeningDPLK.LBranchLocation.branchname AS branchname'#13#10,
         ') then order by no_rekening;']
       WindowSize=20
       Columns={
         object:rtf::QueryColumn<
+          FieldName='MasterKartuDPLK.no_seri_kartu'
+          Width=160
+          Caption='Nomor Kartu DPLK'
+        >, object:rtf::QueryColumn<
           FieldName='MasterKartuDPLK.no_rekening'
           Width=100
           Caption='Nomor Rekening'
@@ -64,6 +70,9 @@ object:rtf::Form<
         >, object:rtf::QueryColumn<
           FieldName='MasterKartuDPLK.tgl_kirim'
           Caption='Tanggal Kirim'
+        >, object:rtf::QueryColumn<
+          FieldName='MasterKartuDPLK.kode_cab_daftar'
+          Caption='Kode Cabang'
         >, object:rtf::QueryColumn<
           FieldName='MasterKartuDPLK.branchname'
           Caption='Kirim Ke Cabang'

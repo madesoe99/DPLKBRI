@@ -77,9 +77,9 @@ def btnOKClick(sender):
     #mode new or edit
 
     #checking nomor referensi
-    if uipRegisterCIF.no_referensi in ['',None]:
-      form.ShowMessage('Nomor Referensi masih kosong. Mohon untuk diisi.')
-      return
+    #if uipRegisterCIF.no_referensi in ['',None]:
+    #  form.ShowMessage('Nomor Referensi masih kosong. Mohon untuk diisi.')
+    #  return
 
     form.CommitBuffer()
     form.PostResult()

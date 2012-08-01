@@ -24,7 +24,7 @@ object:rmn::Menu<
       AllowedGroups='OPR;SPV'
     >, object:rmn::MenuItem<
       Name='mnuAuth'
-      Caption='Otorisasi Pengajuan Anuitas...'
+      Caption='Approval Pengajuan Anuitas...'
       OnClick='displayWithData'
       AllowedGroups='SPV'
       StringTag='auth'

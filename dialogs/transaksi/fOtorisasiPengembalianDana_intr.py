@@ -3,6 +3,7 @@ class fOtorisasiPengembalianDana:
     self.FormObj = formObj
     self.App = formObj.ClientApplication
     self.Mode = mode
+    self.ket={'A':'Approve', 'R':'Tolak'}
   #--
 
   def Form_OnFormShow(self, form, parameter):
@@ -18,16 +19,21 @@ class fOtorisasiPengembalianDana:
   #--
 
   def bReject_Click(self, button):
-    if self.App.ConfirmDialog('Anda yakin membatalkan transaksi Pengembalian Dana peserta %s %s?' \
-      % (self.uipPeserta.no_peserta, self.uipPeserta.nama_lengkap)):
+      phReturn = self.Proses_Click(button,'R')
+      #process return
+
+  def bApprove_Click(self, button):
+      phReturn = self.Proses_Click(button,'A')
+      #process return
+
+  def Proses_Click(self, button,jenis):
+    if self.App.ConfirmDialog('Anda yakin %s transaksi Penarikan peserta %s %s?' \
+      % (self.ket[jenis], self.uipPeserta.no_peserta, self.uipPeserta.nama_lengkap)):
       # reject transaksi
       ph = self.App.CreateValues(\
-        ['id_transaksi',self.uipTransaksi.ID_Transaksi],\
-        ['mode','R']
-      )
+        ['id_transaksi',self.uipTransaksi.ID_Transaksi],['mode',jenis])
       phReturn = self.App.ExecuteScript('transaksi/OtorisasiTransaksi', ph)
 
-      #process return
       dsStatus = phReturn.Packet.status
       rec = dsStatus.GetRecord(0)
       if rec.error_status:

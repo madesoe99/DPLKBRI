@@ -1,4 +1,5 @@
 import sys
+import com.ihsan.util.modman as modman
 
 def downloadFile(config, parameter, returns):
   fileName = config.UserHomeDirectory + parameter.FirstRecord.fileName
@@ -8,6 +9,7 @@ def downloadFile(config, parameter, returns):
 
 def Form_OnSetDataEx(uideflist, parameterForm):
   config = uideflist.config
+  transaksiAPI = modman.getModule(config, 'transaksiapi')
 
   recParameterForm = parameterForm.FirstRecord
   uideflist.SetData('uipPeserta','PObj:NasabahDPLK#no_peserta='+recParameterForm.no_peserta)
@@ -33,16 +35,58 @@ def Form_OnSetDataEx(uideflist, parameterForm):
   oParameter = config.CreatePObjImplProxy('Parameter')
   oParameter.Key = 'PRESISI_ANGKA_FLOAT'
   recParameter.PRESISI_ANGKA_FLOAT = oParameter.Numeric_Value
+  oParameter.Key = 'JUMLAH_HARI_SETAHUN'
+  recParameter.JUMLAH_HARI_SETAHUN = oParameter.Numeric_Value
+
   oParameter.Key = 'BIAYA_SKN'
   recParameter.BiayaSKN = oParameter.Numeric_Value
   oParameter.Key = 'BIAYA_RTGS'
   recParameter.BiayaRTGS = oParameter.Numeric_Value
-  oParameter.Key = 'BIAYA_ADM_TAHUNAN'
-  recParameter.BiayaADM = oParameter.Numeric_Value
-  oParameter.Key = 'PERSEN_BIAYA_PINDAH_DPLK'
-  recParameter.BiayaPindah = oParameter.Numeric_Value
+  oParameter.Key = 'BIAYA_TUNAI'
+  recParameter.BiayaTunai = oParameter.Numeric_Value
+  oParameter.Key = 'BIAYA_PINDAH_BUKU'
+  recParameter.BiayaPindahBuku = oParameter.Numeric_Value
+
+  oParameter.Key = 'MIN_KEPESERTAAN_ALIH_KELUAR'
+  recParameter.MIN_KEPESERTAAN_ALIH_KELUAR = oParameter.Numeric_Value
+
+  #cek parameter default atau parameter korporat
+  if recPeserta.kode_nasabah_corporate not in (None,''):
+    #pakai parameter korporat
+    listParameterKey =[]
+    dictParameterKorporat = transaksiAPI.GetParameterCorporate(config, \
+      recPeserta.kode_nasabah_corporate, listParameterKey)
+    
+    recParameter.BiayaADM = dictParameterKorporat['BIAYA_ADM_TAHUNAN'][1]
+    recParameter.PERSEN_BIAYA_PENGELOLAAN = dictParameterKorporat['PERSEN_BIAYA_PENGELOLAAN'][1]
+   
+    recParameter.MODUS_BIAYA_PINDAH_DPLK = dictParameterKorporat['MODUS_BIAYA_PINDAH_DPLK'][0]
+    recParameter.FIX_BIAYA_PINDAH_DPLK = dictParameterKorporat['FIX_BIAYA_PINDAH_DPLK'][1]
+    recParameter.BiayaPindah = dictParameterKorporat['PERSEN_BIAYA_PINDAH_DPLK'][1]
+
+    recParameter.MIN_KEPESERTAAN_ALIH_KELUAR = dictParameterKorporat['MIN_KEPESERTAAN_ALIH_KELUAR'][1]
+  else:
+    #pakai parameter default aplikasi
+    oParameter.Key = 'BIAYA_ADM_TAHUNAN'
+    recParameter.BiayaADM = oParameter.Numeric_Value
+    oParameter.Key = 'PERSEN_BIAYA_PENGELOLAAN'
+    recParameter.PERSEN_BIAYA_PENGELOLAAN = oParameter.Numeric_Value
+   
+    oParameter.Key = 'MODUS_BIAYA_PINDAH_DPLK'
+    recParameter.MODUS_BIAYA_PINDAH_DPLK = oParameter.Varchar_Value
+    oParameter.Key = 'FIX_BIAYA_PINDAH_DPLK'
+    recParameter.FIX_BIAYA_PINDAH_DPLK = oParameter.Numeric_Value
+    oParameter.Key = 'PERSEN_BIAYA_PINDAH_DPLK'
+    recParameter.BiayaPindah = oParameter.Numeric_Value
+    
+    oParameter.Key = 'MIN_KEPESERTAAN_ALIH_KELUAR'
+    recParameter.MIN_KEPESERTAAN_ALIH_KELUAR = oParameter.Numeric_Value
   
   recParameter.isHitungMode = 1
+
+  #cek masa kepesertaan
+  minMasaKepesertaan = recParameter.MIN_KEPESERTAAN_ALIH_KELUAR * recParameter.JUMLAH_HARI_SETAHUN
+  transaksiAPI.CekMasaKepesertaan(config, recParameterForm.no_rekening, minMasaKepesertaan)
 
   #set field data rekening
   recRekening.akum_pmb = recRekening.akum_pmb_pk + recRekening.akum_pmb_pst + \
@@ -54,6 +98,10 @@ def Form_OnSetDataEx(uideflist, parameterForm):
   #recTransaksi.tgl_transaksi = config.ModLibUtils.CutDate(config.ModLibUtils.Now())
   recTransaksi.jenis_biaya = 'S'
   recTransaksi.biaya_lain = recParameter.BiayaSKN
+  
+  #do get proporsi biaya untuk biaya pengelolaan dan biaya administrasi
+  transaksiAPI = modman.getModule(config, 'transaksiapi')
+  recParameter.proporsiHari = transaksiAPI.HitungProporsiHariSebulan(config, recTransaksi.tgl_transaksi)
   
 def SimpanTransaksi(config, params, returns):
   recT = params.uipTransaksi.GetRecord(0)

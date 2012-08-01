@@ -8,30 +8,15 @@ document <
 object:rmn::Menu<
   MenuItems={
     object:rmn::MenuItem<
-      Name='mnuNew'
-      Caption='Buat Baru...'
-      OnClick='mnuNewClick'
-      StringTag='fJnsTransInvestasi_New'
-    >
-    , object:rmn::MenuItem<
       Name='mnuEdit'
       Caption='Koreksi...'
       OnClick='displayWithData'
       StringTag='fJnsTransInvestasi_Edit'
-    >
-    , object:rmn::MenuItem<
+    >, object:rmn::MenuItem<
       Name='mnuView'
       Caption='Lihat'
       OnClick='displayWithData'
       StringTag='fJnsTransInvestasi_View'
-    >
-    , object:rmn::MenuItem<
-      Caption='-'
-    >
-    , object:rmn::MenuItem<
-      Name='mnuDelete'
-      Caption='Hapus'
-      OnClick='mnuDeleteClick'
     >
   }
   MenuType=mtPopupMenu

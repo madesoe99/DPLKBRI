@@ -84,7 +84,7 @@ object:rtf::Form<
           Enabled=false
           ControlCaption=''
           LayoutOrder=1
-          Caption='&Otorisasi'
+          Caption='&Setujui'
           OnClick='btnAuthOnClick'
         >
       }

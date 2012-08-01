@@ -18,17 +18,17 @@ def searchRekeningDPLK(config, params, returns):
   
   sSQL = """
     SELECT 
-      rd.no_rekening, 
-      rd.kode_paket_investasi, 
-      rd.pct_alokasi,
-      rd.akum_iuran_pk,
-      rd.akum_iuran_pst,
-      rd.akum_iuran_tmb,
-      rd.akum_psl,
-      rd.akum_pmb_pk,
-      rd.akum_pmb_pst,
-      rd.akum_pmb_tmb,
-      rd.akum_pmb_psl
+      rd.No_Rekening,
+      rd.Kode_Paket_Investasi, 
+      rd.Pct_Alokasi,
+      rd.Akum_Iuran_PK,
+      rd.Akum_Iuran_PST,
+      rd.Akum_Iuran_TMB,
+      rd.Akum_PSL,
+      rd.Akum_Pmb_PK,
+      rd.Akum_Pmb_PST,
+      rd.Akum_Pmb_TMB,
+      rd.Akum_Pmb_PSL
     FROM 
       RekInvDPLK ri
       INNER JOIN RekeningDPLK rd ON rd.no_rekening = ri.no_rekening

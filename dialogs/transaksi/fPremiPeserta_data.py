@@ -40,7 +40,7 @@ def SimpanTransaksi(config, params, returns):
   recT = params.uipTransaksi.GetRecord(0)  
   config.BeginTransaction()
   try:
-    #Titipa premi
+    #Titipan premi
     oT = config.CreatePObject('TitipanPremi')
     oT.besar_premi = recT.besar_premi   
 

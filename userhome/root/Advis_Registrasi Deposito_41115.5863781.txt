@@ -1,0 +1,28 @@
+DPLK Bank Rakyat Indonesia
+Lembar Advis Registrasi Deposito
+========================================================================
+Rekening Deposito             : tes
+No. Bilyet                    : tes
+Pihak Ketiga                  : BBKPS - Bank Bukopin Syariah
+Rate                          : 8.00 %
+Tgl Buka                      : 25-7-2012
+Jangka Waktu                  : 1 Bulan
+Jatuh Tempo On Call           : 0
+Pokok Saat Jatuh Tempo        : ARO
+Bagi Hasil                    : Pindah Buku
+Rekening Tujuan               : 3110000415
+Nominal Pembukaan             : 500,000,000.00
+
+
+
+
+         Inputer data           Checker           Approver
+
+
+
+
+         root
+
+----------
+Tanggal pembuatan advis : 25-07-2012 14:04:23
+User pembuat advis      : root user

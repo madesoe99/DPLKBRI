@@ -234,6 +234,13 @@ object:rtf::Form<
             >
           }
           Restrictions=''
+          OQLText=['select from mastergiro'#13#10,
+            '('#13#10,
+            '  no_giro,'#13#10,
+            '  acc_giro,'#13#10,
+            '  self'#13#10,
+            ') then order by no_giro;']
+          LookupOption=loCustomOQL
           FieldBaseName='LMasterGiro'
         >, object:rtf::LinkUIElmtSetting<
           Name='LSahamSwitch'

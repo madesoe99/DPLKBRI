@@ -23,6 +23,17 @@ def DisplayForm(sender, app, folder):
   form = app.GetForm(folder+'/'+formID, formID, 0)
   form.Show(app.CreateValues(['mode','new']))
 
+def DisplayFormInputBukuDPLK(sender, app):
+  folder = 'transaction'
+  formID = sender.StringTag
+  form = app.CreateForm('transaction/'+formID, formID, 0, None, None)
+  
+  mode = 'new'
+  if sender.Name == 'GantiBukuBaru':
+    mode = 'ganti'
+  
+  form.Show(app.CreateValues(['mode',mode]))
+
 def DisplayFormWithData(sender, app, folder, key, uipart):
   formID = sender.StringTag
   form = app.GetFormWithData(folder+'/'+formID, formID, 0, key, uipart)

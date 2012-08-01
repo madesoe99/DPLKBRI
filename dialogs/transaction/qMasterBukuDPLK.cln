@@ -40,7 +40,8 @@ object:rtf::Form<
         '  LBranchLocation.BranchName as branchname,'#13#10,
         '  tgl_input,'#13#10,
         '  user_id,'#13#10,
-        '  status_buku'#13#10,
+        '  status_buku,'#13#10,
+        '  is_reserved'#13#10,
         ') then order by no_seri_buku;']
       WindowSize=20
       Columns={
@@ -64,8 +65,11 @@ object:rtf::Form<
           FieldName='MasterBukuDPLK.user_id'
           Caption='User Id'
         >, object:rtf::QueryColumn<
+          FieldName='MasterBukuDPLK.is_reserved'
+          Caption='Reserved'
+        >, object:rtf::QueryColumn<
           FieldName='MasterBukuDPLK.status_buku'
-          Caption='Status Buku'
+          Caption='Digunakan'
         >
       }
       EnableColumns=true
@@ -153,8 +157,8 @@ object:rtf::Form<
       RowControlGap=7
     >, object:rtf::DualSplit<
       Name='DualSplit'
-      Width=240
-      Height=96
+      Width=800
+      Height=600
       Container1=$CONTAINERS['pFilter']
       Container2=$CONTAINERS['qMasterBukuDPLK']
     >

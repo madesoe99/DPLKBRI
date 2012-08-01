@@ -51,6 +51,12 @@ GiroPremi=3010044315
 GiroPendaftaran=3010024115
 GiroReturnInvestasi=3110000415
 GiroPenampungan=3010024015
+Giro_AutoPayment=3010024015
+Giro_EChannel=3010024015
+
+[GIROTAMPUNGAN]
+GiroDPLK=[('A','3010024016'),('B','3010024017'),('C','3010024018'),('K','3010024019')]
+
 
 [SETTINGAKUNTANSI]
 ; keterangan BranchCode: 001 - Pusat, 002 - Internal DPLK, 003 - Takaful

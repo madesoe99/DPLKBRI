@@ -10,7 +10,30 @@ object:rpclass::TPClassUIDefList<
     object:rpclass::TPClassUIDef<
       Name='uipTransaksi'
       PClassName='PengambilanManfaat'
-      LoadedFieldList='ID_Transaksi;tgl_transaksi;keterangan;Ljenis_penerimaan_manfaat.kode_jns_manfaat;Ljenis_penerimaan_manfaat.kode_jns_manfaat;Ljenis_penerimaan_manfaat.nama_jns_manfaat;LAhliWaris.ahliwaris_id;LAhliWaris.ahliwaris_id;LAhliWaris.nama_lengkap;LAhliWaris.hubungan_keluarga;LAhliWaris.nomor_urut_prioritas;saldo_jml_dana;nama_anuitas;jenis_biaya;biaya_lain;user_id;terminal_id;tgl_sistem;user_id_auth;terminal_id_auth;tgl_otorisasi;saldo_iuran_pk;saldo_pmb_pk;saldo_iuran_pst;saldo_pmb_pst;saldo_iuran_tmb;saldo_pmb_tmb;saldo_psl;saldo_pmb_psl;saldo_jml_dana;saldo_peralihan_1th;biaya_pencairan;biaya_pengelolaan;biaya_administrasi;saldo_manfaat;pajak;manfaat_stlh_pajak;manfaat_tunai;manfaat_anuitas;jenis_biaya;biaya_lain;manfaat_tunai_diterima'
+      LoadedFieldList='ID_Transaksi;tgl_transaksi;keterangan;jenis_biaya;biaya_lain;Ljenis_penerimaan_manfaat.kode_jns_manfaat;Ljenis_penerimaan_manfaat.kode_jns_manfaat;Ljenis_penerimaan_manfaat.nama_jns_manfaat;LAhliWaris.ahliwaris_id;LAhliWaris.ahliwaris_id;LAhliWaris.nama_lengkap;LAhliWaris.hubungan_keluarga;LAhliWaris.nomor_urut_prioritas;saldo_jml_dana;nama_anuitas;user_id;terminal_id;tgl_sistem;user_id_auth;terminal_id_auth;tgl_otorisasi;saldo_iuran_pk;saldo_pmb_pk;saldo_iuran_pst;saldo_pmb_pst;saldo_iuran_tmb;saldo_pmb_tmb;saldo_psl;saldo_pmb_psl;saldo_jml_dana;saldo_peralihan_1th;biaya_pencairan;biaya_pengelolaan;biaya_administrasi;saldo_manfaat;pajak;manfaat_stlh_pajak;manfaat_tunai;manfaat_anuitas;jenis_biaya;biaya_lain;manfaat_tunai_diterima'
+      CustomLoadedFields={
+        object:rpclass::TCustomLoadedField<
+          Name='isCekAturanMenkeu'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='isKepesertaanKurangSetahun'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='isPengalihanKurangSetahun'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='isSkipPPh'
+          DataTypeName='integer'
+          DataLength=20
+        >, object:rpclass::TCustomLoadedField<
+          Name='persen_anuitas_pilihan_peserta'
+          DataTypeName='double'
+          DataLength=20
+        >
+      }
       CustomLoadedLinks={
         object:rpclass::TCustomLoadedLink<
           Name='Ljenis_penerimaan_manfaat'
@@ -27,7 +50,7 @@ object:rpclass::TPClassUIDefList<
     >, object:rpclass::TPClassUIDef<
       Name='uipPeserta'
       PClassName='NasabahDPLK'
-      LoadedFieldList='no_peserta;nama_lengkap;alamat_jalan;alamat_rtrw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_email;NPWP'
+      LoadedFieldList='no_peserta;nama_lengkap;alamat_jalan;alamat_rtrw;alamat_rw;alamat_kelurahan;alamat_kecamatan;alamat_kota;alamat_kode_pos;alamat_telepon;alamat_email;NPWP;tanggal_lahir;tgl_registrasi;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.kode_nasabah_corporate;LNasabahDPLKCorporate.nama_perusahaan'
       CustomLoadedFields={
         object:rpclass::TCustomLoadedField<
           Name='IuranPk'
@@ -37,6 +60,13 @@ object:rpclass::TPClassUIDefList<
           Name='IuranPst'
           DataTypeName='double'
           DataLength=20
+        >
+      }
+      CustomLoadedLinks={
+        object:rpclass::TCustomLoadedLink<
+          Name='LNasabahDPLKCorporate'
+          ClassTypeName='NasabahDPLKCorporate'
+          FieldNames='kode_nasabah_corporate;kode_nasabah_corporate;nama_perusahaan'
         >
       }
       Mode=imSingleRow
@@ -66,6 +96,5 @@ object:rpclass::TPClassUIDefList<
       }
     >
   }
-  OnGeneralProcessData='Form_OnGeneralProcessData'
   OnSetDataEx='Form_OnSetDataEx'
 >

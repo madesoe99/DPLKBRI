@@ -73,7 +73,7 @@ def GetFormInfoByCIFCode(kode_jenis_registercif):
   elif kode_jenis_registercif == 'I':
     return ['fRegisterIuran','RekInvDPLK']
   elif kode_jenis_registercif == 'K':
-    return ['fRegisterStatusKerja','NasabahDPLK']
+    return ['fRegisterStatusKerja','RekInvDPLK']
   elif kode_jenis_registercif == 'N':
     return ['fRegisterAnuitas','RekInvDPLK']
   elif kode_jenis_registercif == 'P':

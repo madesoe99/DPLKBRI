@@ -22,10 +22,19 @@ def btnOKClick(sender):
   except:
     raise
   
-def GridBeforePost(pclassui):
-  if pclassui.maks_proporsi <= 0.0:
-    raise Exception, 'PERINGATAN' + 'Maksimal proporsi harus lebih besar dari 0!'
+def GridBeforePost(pclassui):  
+  form = pclassui.OwnerForm
+  pclassui.kode_paket_investasi = form.GetUIPartByName('uipPaketInvestasi').kode_paket_investasi
+  if pclassui.maks_proporsi <= 0.0 or pclassui.maks_proporsi > 100.0:
+    raise Exception, 'PERINGATAN' + 'Maksimal proporsi harus lebih besar dari 0 dan kurang dari sama dengan 100!'
 
 def GridAfterNewRecord(pclassui):
   #inisialisasi maksimal proporsi dengan nilai 0.0
   pclassui.maks_proporsi = 0.0
+
+def LJenisInvAfterLookup(sender, linkui):
+  form = sender.OwnerForm
+  app = form.ClientApplication
+  uipRincianPaketInvestasi = form.GetUIPartByName('uipRincianPaketInvestasi')
+  uipRincianPaketInvestasi.Edit()
+  uipRincianPaketInvestasi.kode_jns_investasi = uipRincianPaketInvestasi.GetFieldValue('LJenisInvestasi.kode_jns_investasi')

@@ -1,7 +1,15 @@
 import sys, time, string
-sys.path.append('c:/dafapp/dplk07/script_modules')
+
+'''sys.path.append('c:/dafapp/dplk07/script_modules')
 sys.path.append('c:/dafapp/dplk07/scripts/investasi/transaksi')
-import moduleapi, paketinvinfo
+import moduleapi, paketinvinfo'''
+import com.ihsan.util.modman as modman
+modman.loadStdModules(globals(), 
+  [
+    "moduleapi",
+    "scripts#investasi.transaksi.paketinvinfo"
+  ]
+)
 
 def FormGeneralSetData(uideflist, auiname, apobjconst):
   config = uideflist.Config
@@ -21,7 +29,10 @@ def FormGeneralSetData(uideflist, auiname, apobjconst):
     rec.nominal = 0.0
     rec.tanggal_register = config.Now()
     rec.mode = auiname
-
+    
+    rec.SetFieldByName('LSubJenisInv.kode_subjns_LRInvestasi', 'RKS')
+    rec.SetFieldByName('LSubJenisInv.deskripsi', 'Reksadana')
+    
     rec.biaya = 0.0
     rec.unit_penyertaan = 0.0
     rec.NAB_awal = 0.0

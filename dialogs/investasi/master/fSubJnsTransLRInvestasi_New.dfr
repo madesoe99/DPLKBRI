@@ -6,7 +6,7 @@ document <
   MinorVersion='0'
 >
 object:rtf::Form<
-  MainContainer=$CONTAINERS['pData']
+  MainContainer=$CONTAINERS['DualSplit']
   Caption='Tambah Sub Jenis Investasi'
   Left=50
   Top=50
@@ -38,35 +38,39 @@ object:rtf::Form<
         object:rtf::ControlDef<
           Action=caNew
           DataMember='kode_subjns_LRInvestasi'
-        >
-        , object:rtf::ControlDef<
+        >, object:rtf::ControlDef<
           Action=caEdit
           DataMember='kategori'
-        >
-        , object:rtf::ControlDef<
+        >, object:rtf::ControlDef<
           Action=caEdit
           DataMember='LJenisInvestasi'
-        >
-        , object:rtf::ControlDef<
+        >, object:rtf::ControlDef<
           Action=caEdit
           DataMember='account_code'
-        >
-        , object:rtf::ControlDef<
+        >, object:rtf::ControlDef<
           Action=caEdit
           DataMember='deskripsi'
-        >
-        , object:rtf::ControlDef<
+        >, object:rtf::ControlDef<
           Action=caEdit
           DataMember='user_id'
-        >
-        , object:rtf::ControlDef<
+        >, object:rtf::ControlDef<
           Action=caEdit
           DataMember='last_update'
         >
       }
       Elements={
-        *object:rtf::LinkUIElmtSetting<
+        *object:rtf::FieldUIElmtSetting<
+          Name='kode_subjns_LRInvestasi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='kategori'
+          Hidden=true
+          ReadOnlyControl=false
+        >, *object:rtf::LinkUIElmtSetting<
           Name='LJenisInvestasi'
+          Hidden=false
+          ReadOnlyControl=false
           DisplayFields='kode_jns_investasi;nama_jns_investasi'
           Restrictions=''
           OQLText=['select from JenisInvestasi'#13#10,
@@ -83,52 +87,67 @@ object:rtf::Form<
             '  self'#13#10,
             ') then order by Kode_Jns_Investasi;']
           LookupOption=loCustomOQL
-        >
-        , *object:rtf::FieldUIElmtSetting<
+          FieldBaseName='LJenisInvestasi'
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='account_code'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
+          Name='deskripsi'
+          Hidden=false
+          ReadOnlyControl=false
+        >, *object:rtf::FieldUIElmtSetting<
           Name='user_id'
+          Hidden=false
           ReadOnlyControl=true
-        >
-        , *object:rtf::FieldUIElmtSetting<
+        >, *object:rtf::FieldUIElmtSetting<
           Name='last_update'
+          Hidden=false
           ReadOnlyControl=true
         >
       }
       Name='pData'
-      Width=240
-      Height=40
+      Width=401
+      Height=265
       Bordered=true
       UIPart=$UIPARTS['uipSubJnsTransLRInvestasi']
       Controls={
         *object:rtf::DBEdit<
           Name='kode_subjns_LRInvestasi'
+          Top=20
+          Left=20
           ControlCaption='Kode Sub Jenis Investasi'
+          OnExit='kode_onexit'
           CharCase=ecUpperCase
-        >
-        , *object:rtf::DBComboBox<
-          Name='kategori'
-          ControlCaption='Kategori'
-        >
-        , *object:rtf::DBLookupEdit<
+        >, *object:rtf::DBLookupEdit<
           Name='LJenisInvestasi'
+          Top=48
+          Left=20
           ControlCaption='Jenis Investasi'
           LookupField='LJenisInvestasi.nama_jns_investasi'
           DisplayLookupField=true
-        >
-        , *object:rtf::DBEdit<
+        >, *object:rtf::DBEdit<
           Name='account_code'
+          Top=76
+          Left=20
           ControlCaption='Kode Akun'
-        >
-        , *object:rtf::DBEdit<
+        >, *object:rtf::DBEdit<
           Name='deskripsi'
+          Top=104
+          Left=20
           ControlCaption='Deskripsi'
-        >
-        , *object:rtf::DBEdit<
+        >, *object:rtf::DBEdit<
           Name='user_id'
+          Top=132
+          Left=20
+          Color=-16777192
           ControlCaption='ID Pengguna'
           ReadOnly=true
-        >
-        , *object:rtf::DBDateEdit<
+        >, *object:rtf::DBDateEdit<
           Name='last_update'
+          Top=160
+          Left=20
+          Color=-16777192
           ControlCaption='Terakhir Diperbarui'
         >
       }
@@ -138,8 +157,7 @@ object:rtf::Form<
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
-    >
-    , object:rtf::Panel<
+    >, object:rtf::Panel<
       Name='pButton'
       Width=240
       Height=40
@@ -147,16 +165,17 @@ object:rtf::Form<
         object:rtf::Button<
           Name='btnOK'
           Layout=clNewLine
-          Color=0
+          Top=8
+          Left=20
           ControlCaption=''
           Caption='&Simpan'
           Default=true
           OnClick='btnOKClick'
-        >
-        , object:rtf::Button<
+        >, object:rtf::Button<
           Name='btnCancel'
           Layout=clNextSide
-          Color=0
+          Top=8
+          Left=99
           ControlCaption=''
           Caption='&Batal'
           Cancel=true
@@ -168,11 +187,10 @@ object:rtf::Form<
       DefaultControlHeight=21
       HorizontalControlGap=4
       RowControlGap=7
-    >
-    , object:rtf::DualSplit<
+    >, object:rtf::DualSplit<
       Name='DualSplit'
-      Width=240
-      Height=100
+      Width=400
+      Height=310
       Container1=$CONTAINERS['pButton']
       Container2=$CONTAINERS['pData']
       InversedAlign=true

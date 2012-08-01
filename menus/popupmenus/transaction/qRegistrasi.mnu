@@ -32,13 +32,13 @@ object:rmn::Menu<
       Name='mnuPayment'
       Caption='Bayar Biaya Pendaftaran dan Iuran Pertama...'
       OnClick='mnuPaymentClick'
-      AllowedGroups='OPR'
+      AllowedGroups='XXX'
     >, object:rmn::MenuItem<
       Caption='-'
       AllowedGroups='OPR;SPV'
     >, object:rmn::MenuItem<
       Name='mnuAuth'
-      Caption='Otorisasi Hasil Register Peserta...'
+      Caption='Approval Hasil Register Peserta...'
       OnClick='displayWithData'
       AllowedGroups='SPV'
       StringTag='auth'

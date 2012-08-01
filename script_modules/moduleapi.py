@@ -12,7 +12,7 @@ dictMonth={
   2:'Feb',
   3:'Mar',
   4:'Apr',
-  5:'May',
+  5:'May',                 
   6:'Jun',
   7:'Jul',
   8:'Aug',
@@ -307,25 +307,27 @@ def CheckRegCIFRestriction(uideflist, auiname, apobjconst):
 
   if oUserApp.NoLimitLocation == 'F':
     if auiname == 'uipMaster':
-      uiCalled = uideflist.GetPClassUIByName(auiname)
-      no_peserta = uiCalled.ActiveRecord.no_peserta
-      oRekeningDPLK = config.CreatePObjImplProxy('RekeningDPLK')
-      oRekeningDPLK.Key = no_peserta
+      #uiCalled = uideflist.GetPClassUIByName(auiname)
+      #no_peserta = uiCalled.ActiveRecord.no_peserta
+      #oRekInvDPLK = config.CreatePObjImplProxy('RekInvDPLK')
+      #oRekInvDPLK.Key = no_peserta
 
-      if oRekeningDPLK.kode_cab_daftar <> oUserApp.branch_code:
-        raise Exception,'\n\nPERINGATAN\nAnda tidak diperkenankan mengoreksi peserta ini!'
+      #if oRekInvDPLK.kode_cab_daftar <> oUserApp.branch_code:
+      #  raise Exception,'\n\nPERINGATAN\nAnda tidak diperkenankan mengoreksi peserta ini!'
+      pass
 
 def CheckRegCIFRestr(config, no_peserta):
   oUserApp = config.CreatePObjImplProxy('UserApp')
   oUserApp.Key = config.SecurityContext.GetUserInfo()[0]
 
   if oUserApp.NoLimitLocation == 'F':
-    oRekeningDPLK = config.CreatePObjImplProxy('RekeningDPLK')
-    oRekeningDPLK.Key = no_peserta
+    #oRekeningDPLK = config.CreatePObjImplProxy('RekeningDPLK')
+    #oRekeningDPLK.Key = no_peserta
 
-    if oRekeningDPLK.kode_cab_daftar <> oUserApp.branch_code:
-      raise Exception,'\n\nPERINGATAN\nAnda tidak diperkenankan mengoreksi peserta ini!'
-
+    #if oRekeningDPLK.kode_cab_daftar <> oUserApp.branch_code:
+    #  raise Exception,'\n\nPERINGATAN\nAnda tidak diperkenankan mengoreksi peserta ini!'
+    pass
+    
 def IsNasabahAvail(config, no_peserta):
   oNasabahDPLK = config.CreatePObjImplProxy('NasabahDPLK')
   oNasabahDPLK.Key = no_peserta
@@ -582,20 +584,31 @@ def ProsesChargeBiaya(config, oBiaya, nominalBiaya):
   Ls_RekeningDPLK = oRekInv.Ls_RekeningDPLK
   while not Ls_RekeningDPLK.EndOfList:
     oRekDPLK = Ls_RekeningDPLK.CurrentElement 
-    
-    oDetilTransaksi = config.CreatePObject('DetilTransaksiDPLK')
-    oDetilTransaksi.ID_Transaksi = oBiaya.ID_Transaksi
-    oDetilTransaksi.nomor_rekening = oRekDPLK.nomor_rekening 
-    oDetilTransaksi.kode_paket_investasi = oRekDPLK.kode_paket_investasi
-    
-    oDetilTransaksi.mutasi_iuran_pk = (oRekDPLK.pct_alokasi / 100.0) * oBiaya.mutasi_iuran_pk  
-    oDetilTransaksi.mutasi_iuran_pst = (oRekDPLK.pct_alokasi / 100.0) * oBiaya.mutasi_iuran_pst  
-    oDetilTransaksi.mutasi_iuran_tmb = (oRekDPLK.pct_alokasi / 100.0) * oBiaya.mutasi_iuran_tmb
-    oDetilTransaksi.mutasi_psl = (oRekDPLK.pct_alokasi / 100.0) * oBiaya.mutasi_psl
-    oDetilTransaksi.mutasi_pmb_pk = (oRekDPLK.pct_alokasi / 100.0) * oBiaya.mutasi_pmb_pk
-    oDetilTransaksi.mutasi_pmb_pst = (oRekDPLK.pct_alokasi / 100.0) * oBiaya.mutasi_pmb_pst 
-    oDetilTransaksi.mutasi_pmb_tmb = (oRekDPLK.pct_alokasi / 100.0) * oBiaya.mutasi_pmb_tmb 
-    oDetilTransaksi.mutasi_pmb_psl = (oRekDPLK.pct_alokasi / 100.0) * oBiaya.mutasi_pmb_psl 
+    if oRekDPLK.is_deleted == 'F':
+      oDetilTransaksi = config.CreatePObject('DetilTransaksiDPLK')
+      oDetilTransaksi.ID_Transaksi = oBiaya.ID_Transaksi
+      oDetilTransaksi.nomor_rekening = oRekDPLK.nomor_rekening 
+      oDetilTransaksi.kode_paket_investasi = oRekDPLK.kode_paket_investasi
+      
+      oDetilTransaksi.mutasi_iuran_pk = (oRekDPLK.pct_alokasi / 100.0) * oBiaya.mutasi_iuran_pk  
+      oDetilTransaksi.mutasi_iuran_pst = (oRekDPLK.pct_alokasi / 100.0) * oBiaya.mutasi_iuran_pst  
+      oDetilTransaksi.mutasi_iuran_tmb = (oRekDPLK.pct_alokasi / 100.0) * oBiaya.mutasi_iuran_tmb
+      oDetilTransaksi.mutasi_psl = (oRekDPLK.pct_alokasi / 100.0) * oBiaya.mutasi_psl
+      oDetilTransaksi.mutasi_pmb_pk = (oRekDPLK.pct_alokasi / 100.0) * oBiaya.mutasi_pmb_pk
+      oDetilTransaksi.mutasi_pmb_pst = (oRekDPLK.pct_alokasi / 100.0) * oBiaya.mutasi_pmb_pst 
+      oDetilTransaksi.mutasi_pmb_tmb = (oRekDPLK.pct_alokasi / 100.0) * oBiaya.mutasi_pmb_tmb 
+      oDetilTransaksi.mutasi_pmb_psl = (oRekDPLK.pct_alokasi / 100.0) * oBiaya.mutasi_pmb_psl 
+      
+      oRekDPLK.akum_iuran_pk  += oDetilTransaksi.mutasi_iuran_pk
+      oRekDPLK.akum_iuran_pst += oDetilTransaksi.mutasi_iuran_pst
+      oRekDPLK.akum_iuran_tmb += oDetilTransaksi.mutasi_iuran_tmb
+      oRekDPLK.akum_psl       += oDetilTransaksi.mutasi_psl
+      oRekDPLK.akum_pmb_pk    += oDetilTransaksi.mutasi_pmb_pk 
+      oRekDPLK.akum_pmb_pst   += oDetilTransaksi.mutasi_pmb_pst
+      oRekDPLK.akum_pmb_tmb   += oDetilTransaksi.mutasi_pmb_tmb
+      oRekDPLK.akum_pmb_psl   += oDetilTransaksi.mutasi_pmb_psl
+      
+      #raise Exception,oRekDPLK.akum_pmb_tmb
     
     Ls_RekeningDPLK.Next()
   #-- 

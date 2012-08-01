@@ -14,13 +14,12 @@ object:rpclass::TPClassUIDefList<
       StoredFieldList='kode_paket_investasi;nama_paket_investasi;acc_giro;acc_iuran;acc_kedplklain;acc_manfaat;acc_pengembangan;acc_peralihan;isAktif;no_giro;total_potensi_profit;total_srr;user_id;last_update'
       Mode=imSingleRow
       CreateInstanceOnNew=true
-    >
-    , object:rpclass::TPClassUIDef<
+    >, object:rpclass::TPClassUIDef<
       Name='uipRincianPaketInvestasi'
       MasterUIName='uipPaketInvestasi'
       ListName='Ls_RincianPaketInvestasi'
       LoadedFieldList='LJenisInvestasi.kode_jns_investasi;LJenisInvestasi.kode_jns_investasi;LJenisInvestasi.nama_jns_investasi;maks_proporsi'
-      StoredFieldList='LJenisInvestasi;maks_proporsi'
+      StoredFieldList='LJenisInvestasi;maks_proporsi;kode_paket_investasi;kode_jns_investasi'
       CustomLoadedLinks={
         object:rpclass::TCustomLoadedLink<
           Name='LJenisInvestasi'

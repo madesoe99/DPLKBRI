@@ -10,8 +10,8 @@ object:rpclass::TPClassUIDefList<
     object:rpclass::TPClassUIDef<
       Name='uipRegisterCIF'
       PClassName='RegEditNasabahRekening'
-      LoadedFieldList='registercif_id;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;LNasabahDPLK.kode_nasabah_corporate;nama_lengkap;tempat_lahir;tanggal_lahir;jenis_kelamin;golongan_darah;agama;pendidikan_terakhir;status_perkawinan;LDaerahAsal.kode_propinsi;LDaerahAsal.kode_propinsi;LDaerahAsal.nama_propinsi;kewarganegaraan;no_identitas_diri;tgl_exp_identitas;LKelompok.kode_kelompok;LKelompok.kode_kelompok;LKelompok.nama_kelompok;NPWP;alamat_email;LLDPLain.kode_dp;LLDPLain.kode_dp;LLDPLain.nama_dp;no_referensi;keterangan;user_id;terminal_id;tanggal_register'
-      StoredFieldList='LNasabahDPLK;nama_lengkap;tempat_lahir;tanggal_lahir;jenis_kelamin;golongan_darah;agama;pendidikan_terakhir;status_perkawinan;LDaerahAsal;kewarganegaraan;no_identitas_diri;tgl_exp_identitas;LKelompok;NPWP;alamat_email;LLDPLain;no_referensi;keterangan;user_id;terminal_id;tanggal_register'
+      LoadedFieldList='registercif_id;LNasabahDPLK.no_peserta;LNasabahDPLK.no_peserta;LNasabahDPLK.nama_lengkap;LNasabahDPLK.ibu_kandung;nama_lengkap;tempat_lahir;tanggal_lahir;jenis_kelamin;golongan_darah;agama;pendidikan_terakhir;status_perkawinan;LDaerahAsal.kode_propinsi;LDaerahAsal.kode_propinsi;LDaerahAsal.nama_propinsi;kewarganegaraan;no_identitas_diri;tgl_exp_identitas;jenis_kartu_identitas;NPWP;alamat_email;LKepemilikan.kode_pemilikan;LKepemilikan.kode_pemilikan;LKepemilikan.keterangan;nama_perusahaan;no_referensi;keterangan;user_id;terminal_id;tanggal_register'
+      StoredFieldList='LNasabahDPLK;nama_lengkap;tempat_lahir;tanggal_lahir;jenis_kelamin;golongan_darah;agama;pendidikan_terakhir;status_perkawinan;LDaerahAsal;kewarganegaraan;no_identitas_diri;tgl_exp_identitas;jenis_kartu_identitas;NPWP;alamat_email;LKepemilikan;nama_perusahaan;no_referensi;keterangan;user_id;terminal_id;tanggal_register'
       CustomLoadedFields={
         object:rpclass::TCustomLoadedField<
           Name='mode'
@@ -23,19 +23,15 @@ object:rpclass::TPClassUIDefList<
         object:rpclass::TCustomLoadedLink<
           Name='LNasabahDPLK'
           ClassTypeName='NasabahDPLK'
-          FieldNames='no_peserta;no_peserta;nama_lengkap;kode_nasabah_corporate'
+          FieldNames='no_peserta;no_peserta;nama_lengkap;ibu_kandung'
         >, object:rpclass::TCustomLoadedLink<
           Name='LDaerahAsal'
           ClassTypeName='DaerahAsal'
           FieldNames='kode_propinsi;kode_propinsi;nama_propinsi'
         >, object:rpclass::TCustomLoadedLink<
-          Name='LKelompok'
-          ClassTypeName='Kelompok'
-          FieldNames='kode_kelompok;kode_kelompok;nama_kelompok'
-        >, object:rpclass::TCustomLoadedLink<
-          Name='LLDPLain'
-          ClassTypeName='LDP'
-          FieldNames='kode_dp;kode_dp;nama_dp'
+          Name='LKepemilikan'
+          ClassTypeName='Kepemilikan'
+          FieldNames='kode_pemilikan;kode_pemilikan;keterangan'
         >
       }
       Mode=imSingleRow
@@ -44,7 +40,7 @@ object:rpclass::TPClassUIDefList<
     >, object:rpclass::TPClassUIDef<
       Name='uipMaster'
       PClassName='NasabahDPLK'
-      LoadedFieldList='no_peserta;nama_lengkap;tempat_lahir;tanggal_lahir;tgl_registrasi;LDaerahAsal.kode_propinsi;LDaerahAsal.kode_propinsi;LDaerahAsal.nama_propinsi;keterangan;jenis_kelamin;LKelompok.kode_kelompok;LKelompok.kode_kelompok;LKelompok.nama_kelompok;no_identitas_diri;NPWP;LLDPLain.kode_dp;LLDPLain.kode_dp;LLDPLain.nama_dp;alamat_email;golongan_darah;agama;pendidikan_terakhir;status_perkawinan;kewarganegaraan;tgl_exp_identitas'
+      LoadedFieldList='no_peserta;nama_lengkap;tempat_lahir;tanggal_lahir;tgl_registrasi;LDaerahAsal.kode_propinsi;LDaerahAsal.kode_propinsi;LDaerahAsal.nama_propinsi;keterangan;jenis_kelamin;LKelompok.kode_kelompok;LKelompok.kode_kelompok;LKelompok.nama_kelompok;no_identitas_diri;NPWP;LLDPLain.kode_dp;LLDPLain.kode_dp;LLDPLain.nama_dp;alamat_email;golongan_darah;agama;pendidikan_terakhir;status_perkawinan;kewarganegaraan;tgl_exp_identitas;jenis_kartu_identitas;LKepemilikan.kode_pemilikan;LKepemilikan.kode_pemilikan;LKepemilikan.keterangan;ibu_kandung;nama_perusahaan'
       CustomLoadedLinks={
         object:rpclass::TCustomLoadedLink<
           Name='LDaerahAsal'
@@ -58,6 +54,10 @@ object:rpclass::TPClassUIDefList<
           Name='LLDPLain'
           ClassTypeName='LDP'
           FieldNames='kode_dp;kode_dp;nama_dp'
+        >, object:rpclass::TCustomLoadedLink<
+          Name='LKepemilikan'
+          ClassTypeName='Kepemilikan'
+          FieldNames='kode_pemilikan;kode_pemilikan;keterangan'
         >
       }
       Mode=imSingleRow

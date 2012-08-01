@@ -67,6 +67,7 @@ object:rtf::Form<
           FieldName='RegisterCIF.no_referensi'
           Width=100
           Caption='Nomor Referensi'
+          Hidden=true
         >, object:rtf::QueryColumn<
           FieldName='RegisterCIF.branch_code'
           Width=75
@@ -90,7 +91,7 @@ object:rtf::Form<
         >, object:rtf::QueryColumn<
           FieldName='RegisterCIF.no_peserta'
           Width=100
-          Caption='Nomor Peserta'
+          Caption='CIF Peserta'
         >, object:rtf::QueryColumn<
           FieldName='RegisterCIF.nama_lengkap'
           Width=200
@@ -98,7 +99,7 @@ object:rtf::Form<
         >, object:rtf::QueryColumn<
           FieldName='RegisterCIF.no_rekening'
           Width=100
-          Caption='Nomor Rekening'
+          Caption='Nomor Account'
         >, object:rtf::QueryColumn<
           FieldName='RegisterCIF.keterangan'
           Width=200

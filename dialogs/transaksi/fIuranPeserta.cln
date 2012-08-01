@@ -44,6 +44,24 @@ object:rtf::Form<
           ReadOnlyControl=false
           DataTypeName='double'
           DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='MIN_JML_IURAN_PK'
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='double'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='MIN_JML_IURAN_PST'
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='double'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='MIN_JML_IURAN_TMB'
+          Hidden=true
+          ReadOnlyControl=false
+          DataTypeName='double'
+          DataLength=20
         >
       }
       Name='uipParameter'
@@ -56,6 +74,13 @@ object:rtf::Form<
           ReadOnlyControl=false
           DataTypeName='VARCHAR'
           DataLength=1
+        >, object:rtf::FieldUIElmtSetting<
+          Name='rekasuransi_id'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='INTEGER'
+          DataLength=0
         >
       }
       Name='uipRekening'
@@ -68,6 +93,11 @@ object:rtf::Form<
       DataBinding=bmList
       Master=$UIPARTS['uipRekening']
       ListName='Ls_RekeningDPLK'
+    >, object:rtf::PClassUI<
+      Name='uipRekAsuransi'
+      ClassTypeName='RekAsuransi'
+      DataBinding=bmMaster
+      AlwaysPostToServer=true
     >
   }
   Containers={
@@ -130,7 +160,7 @@ object:rtf::Form<
           Hidden=false
           ReadOnlyControl=false
           DataTypeName='VARCHAR'
-          DataLength=7
+          DataLength=3
         >, object:rtf::FieldUIElmtSetting<
           Name='alamat_kelurahan'
           AccessOption=aoReadOnly
@@ -242,67 +272,67 @@ object:rtf::Form<
           Top=20
           Left=10
           Color=-16777192
-          ControlCaption='no peserta'
+          ControlCaption='Nomor Peserta (CIF)'
         >, *object:rtf::DBEdit<
           Name='nama_lengkap'
           Top=48
           Left=10
           Color=-16777192
-          ControlCaption='nama lengkap'
+          ControlCaption='Nama Lengkap'
         >, *object:rtf::DBEdit<
           Name='alamat_jalan'
           Top=76
           Left=10
           Color=-16777192
-          ControlCaption='alamat jalan'
+          ControlCaption='Alamat Jalan'
         >, *object:rtf::DBEdit<
           Name='alamat_rtrw'
           Top=104
           Left=10
           Color=-16777192
-          ControlCaption='alamat rtrw'
+          ControlCaption='Alamat RT RW'
         >, *object:rtf::DBEdit<
           Name='alamat_kelurahan'
           Top=132
           Left=10
           Color=-16777192
-          ControlCaption='alamat kelurahan'
+          ControlCaption='Alamat Kelurahan'
         >, *object:rtf::DBEdit<
           Name='alamat_kecamatan'
           Top=160
           Left=10
           Color=-16777192
-          ControlCaption='alamat kecamatan'
+          ControlCaption='Alamat Kecamatan'
         >, *object:rtf::DBEdit<
           Name='alamat_kota'
           Top=188
           Left=10
           Color=-16777192
-          ControlCaption='alamat kota'
+          ControlCaption='Alamat Kota'
         >, *object:rtf::DBEdit<
           Name='alamat_kode_pos'
           Top=216
           Left=10
           Color=-16777192
-          ControlCaption='alamat kode pos'
+          ControlCaption='Alamat Kode Pos'
         >, *object:rtf::DBEdit<
           Name='alamat_telepon'
           Top=244
           Left=10
           Color=-16777192
-          ControlCaption='alamat telepon'
+          ControlCaption='Alamat Telepon'
         >, *object:rtf::DBEdit<
           Name='alamat_email'
           Top=272
           Left=10
           Color=-16777192
-          ControlCaption='alamat email'
+          ControlCaption='Alamat Email'
         >, *object:rtf::DBLookupEdit<
           Name='LNasabahDPLKCorporate'
           Top=300
           Left=10
           Enabled=false
-          ControlCaption='korporat'
+          ControlCaption='Korporat'
           LookupField='LNasabahDPLKCorporate.nama_perusahaan'
           DisplayLookupField=true
           DisableLookup=true
@@ -317,15 +347,15 @@ object:rtf::Form<
       Caption='Data Peserta'
     >, object:rtf::DualSplit<
       Name='dualsplit1'
-      Width=240
-      Height=96
+      Width=800
+      Height=600
       Container1=$CONTAINERS['pButton']
       Container2=$CONTAINERS['MultiPages']
       InversedAlign=true
     >, object:rtf::MultiPages<
       Name='MultiPages'
-      Width=320
-      Height=320
+      Width=800
+      Height=559
       Pages={
         object:rtf::Page<
           PageName='pageTransaksi'
@@ -348,7 +378,7 @@ object:rtf::Form<
       Width=792
       Height=531
       Container1=$CONTAINERS['pDataTransaksi']
-      Container2=$CONTAINERS['pRekening']
+      Container2=$CONTAINERS['dualsplit3']
       DynamicSplit=true
       SplitDirection=sdrSplitLeftRight
     >, object:rtf::Panel<
@@ -390,14 +420,75 @@ object:rtf::Form<
           DataLength=0
         >, object:rtf::FieldUIElmtSetting<
           Name='catatan_bayar_iuran'
-          Hidden=false
+          Hidden=true
           ReadOnlyControl=false
           DataTypeName='VARCHAR'
           DataLength=100
+        >, object:rtf::LinkUIElmtSetting<
+          Name='LReconcile'
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Reconcile Invalid'
+          ClassTypeName='DetilRiwayatGiro'
+          KeyFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LReconcile.id_detil_giro'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='INTEGER'
+              DataLength=0
+              UsedAsKey=true
+              KeyOrDisplayName='id_detil_giro'
+              FinalDisplayFieldName='id_detil_giro'
+            >
+          }
+          DisplayedFields={
+            object:rtf::FieldUIElmtSetting<
+              Name='LReconcile.rekening_sumber'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='VARCHAR'
+              DataLength=20
+              UsedAsDisplay=true
+              KeyOrDisplayName='rekening_sumber'
+              FinalDisplayFieldName='rekening_sumber'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LReconcile.nominal'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='DOUBLE'
+              DataLength=0
+              UsedAsDisplay=true
+              KeyOrDisplayName='nominal'
+              FinalDisplayFieldName='nominal'
+            >, object:rtf::FieldUIElmtSetting<
+              Name='LReconcile.id_detil_giro'
+              Hidden=false
+              ReadOnlyControl=false
+              DataTypeName='INTEGER'
+              DataLength=0
+              UsedAsDisplay=true
+              KeyOrDisplayName='id_detil_giro'
+              FinalDisplayFieldName='id_detil_giro'
+            >
+          }
+          Restrictions=''
+          OQLText=['select From DetilRiwayatGiro'#13#10,
+            '[is_valid =''F'' and id_transaksi is null]'#13#10,
+            '('#13#10,
+            ' rekening_sumber,'#13#10,
+            ' nominal,'#13#10,
+            ' LRiwayatGiro.LReconcile.tanggal_transaksi,'#13#10,
+            ' LRiwayatGiro.LReconcile.jenis_reconcile $,'#13#10,
+            ' keterangan,'#13#10,
+            ' self'#13#10,
+            ')then order by rekening_sumber;']
+          LookupOption=loCustomOQL
+          FieldBaseName='LReconcile'
         >
       }
       Name='pDataTransaksi'
-      Width=400
+      Width=544
       Height=400
       Bordered=true
       UIPart=$UIPARTS['uipTransaksi']
@@ -406,35 +497,66 @@ object:rtf::Form<
           Name='tgl_transaksi'
           Top=20
           Left=10
-          ControlCaption='tanggal transaksi'
+          ControlCaption='Tanggal Transaksi'
         >, *object:rtf::DBEdit<
           Name='keterangan'
-          Top=48
+          Top=160
           Left=10
-          ControlCaption='keterangan'
+          ControlCaption='Keterangan Transaksi (Remark)'
+          LayoutOrder=20
         >, *object:rtf::DBEdit<
           Name='mutasi_iuran_pk'
           Top=76
           Left=10
           Color=12695295
-          ControlCaption='nominal iuran pemberi kerja'
+          ControlCaption='Nominal Iuran Pemberi Kerja'
+          LayoutOrder=3
+          OnEnter='OnEnter'
+          OnExit='OnExit'
         >, *object:rtf::DBEdit<
           Name='mutasi_iuran_pst'
           Top=104
           Left=10
           Color=12695295
-          ControlCaption='nominal iuran peserta'
+          ControlCaption='Nominal Iuran Peserta'
+          LayoutOrder=4
+          OnEnter='OnEnter'
+          OnExit='OnExit'
         >, *object:rtf::DBEdit<
           Name='mutasi_iuran_tmb'
           Top=132
           Left=10
           Color=12695295
-          ControlCaption='nominal iuran tambahan'
-        >, *object:rtf::DBEdit<
-          Name='catatan_bayar_iuran'
-          Top=160
+          ControlCaption='Nominal Iuran Tambahan'
+          LayoutOrder=5
+          OnEnter='OnEnter'
+          OnExit='OnExit'
+        >, *object:rtf::DBLookupEdit<
+          Name='LReconcile'
+          Top=48
           Left=10
-          ControlCaption='catatan bayar iuran'
+          Width=200
+          Height=21
+          ControlCaption='Reconcile Invalid'
+          FieldName='LReconcile.rekening_sumber'
+          LookupField='LReconcile.nominal'
+          DisplayLookupField=true
+          OnAfterLookup='LReconcileOnAfterLookup'
+          DisplayLookupColor=-16777192
+          DisplayLookupWidth=100
+        >, object:rtf::Label<
+          Name='label1'
+          Layout=clAbsolute
+          Top=184
+          Left=176
+          Width=26
+          Height=17
+          ControlCaption=''
+          Caption='Cth : Transaksi iuran dari reconcile invalid Aoto Payment'
+          AutoSize=true
+          FontName='Tahoma'
+          FontColor=16711680
+          FontSize=8
         >
       }
       EqualCaptionWidth=160
@@ -444,66 +566,6 @@ object:rtf::Form<
       HorizontalControlGap=4
       RowControlGap=7
       Caption='Data Transaksi'
-    >, object:rtf::Panel<
-      Elements={
-        object:rtf::FieldUIElmtSetting<
-          Name='no_rekening'
-          AccessOption=aoReadOnly
-          Hidden=false
-          ReadOnlyControl=false
-          DataTypeName='VARCHAR'
-          DataLength=20
-        >, object:rtf::FieldUIElmtSetting<
-          Name='iuran_pk'
-          AccessOption=aoReadOnly
-          Hidden=false
-          ReadOnlyControl=false
-          ControlCaption='iuran pemberi kerja'
-          DataTypeName='DOUBLE'
-          DataLength=0
-        >, object:rtf::FieldUIElmtSetting<
-          Name='iuran_pst'
-          AccessOption=aoReadOnly
-          Hidden=false
-          ReadOnlyControl=false
-          ControlCaption='iuran peserta'
-          DataTypeName='DOUBLE'
-          DataLength=0
-        >
-      }
-      Name='pRekening'
-      Width=400
-      Height=400
-      Bordered=true
-      UIPart=$UIPARTS['uipRekening']
-      Controls={
-        *object:rtf::DBEdit<
-          Name='no_rekening'
-          Top=20
-          Left=10
-          Color=-16777192
-          ControlCaption='no rekening'
-        >, *object:rtf::DBEdit<
-          Name='iuran_pk'
-          Top=48
-          Left=10
-          Color=9498256
-          ControlCaption='iuran pemberi kerja'
-        >, *object:rtf::DBEdit<
-          Name='iuran_pst'
-          Top=76
-          Left=10
-          Color=9498256
-          ControlCaption='iuran peserta'
-        >
-      }
-      EqualCaptionWidth=160
-      ControlLeftMargin=10
-      ControlTopMargin=20
-      DefaultControlHeight=21
-      HorizontalControlGap=4
-      RowControlGap=7
-      Caption='Data Rekening'
     >, object:rtf::Grid<
       Elements={
         object:rtf::FieldUIElmtSetting<
@@ -597,7 +659,7 @@ object:rtf::Form<
           EnumeratedValues=''
           FieldName='nomor_rekening'
           DisplayFormat=''
-          TitleCaption='nomor rekening'
+          TitleCaption='Nomor Rekening'
           ReadOnly=true
         >, *object:rtf::GridColumn<
           Name='kode_paket_investasi'
@@ -605,7 +667,7 @@ object:rtf::Form<
           EnumeratedValues=''
           FieldName='kode_paket_investasi'
           DisplayFormat=''
-          TitleCaption='paket investasi'
+          TitleCaption='Paket Investasi'
           ReadOnly=true
         >, *object:rtf::GridColumn<
           Name='pct_alokasi'
@@ -613,7 +675,7 @@ object:rtf::Form<
           EnumeratedValues=''
           FieldName='pct_alokasi'
           DisplayFormat=''
-          TitleCaption='% alokasi'
+          TitleCaption='% Alokasi'
           ReadOnly=true
         >, *object:rtf::GridColumn<
           Name='nilai_unit'
@@ -621,7 +683,7 @@ object:rtf::Form<
           EnumeratedValues=''
           FieldName='nilai_unit'
           DisplayFormat=''
-          TitleCaption='nilai unit'
+          TitleCaption='Nilai Unit'
           ReadOnly=true
         >, *object:rtf::GridColumn<
           Name='jml_unit'
@@ -629,7 +691,7 @@ object:rtf::Form<
           EnumeratedValues=''
           FieldName='jml_unit'
           DisplayFormat=''
-          TitleCaption='jumlah unit'
+          TitleCaption='Jumlah Unit'
           ReadOnly=true
         >, *object:rtf::GridColumn<
           Name='jml_unit_pk'
@@ -637,15 +699,16 @@ object:rtf::Form<
           EnumeratedValues=''
           FieldName='jml_unit_pk'
           DisplayFormat=''
-          TitleCaption='jumlah unit iuran PK'
+          TitleCaption='Jumlah Unit Iuran PK'
           ReadOnly=true
         >, *object:rtf::GridColumn<
           Name='jml_unit_psl'
           InputStyle=cisNormal
           EnumeratedValues=''
+          Index=9
           FieldName='jml_unit_psl'
           DisplayFormat=''
-          TitleCaption='jumlah unit PSL'
+          TitleCaption='Jumlah Unit PSL'
           ReadOnly=true
         >, *object:rtf::GridColumn<
           Name='jml_unit_tmb'
@@ -653,21 +716,163 @@ object:rtf::Form<
           EnumeratedValues=''
           FieldName='jml_unit_tmb'
           DisplayFormat=''
-          TitleCaption='jumlah unit iuran tambahan'
+          TitleCaption='Jumlah Unit Iuran Tmb'
           ReadOnly=true
         >, *object:rtf::GridColumn<
           Name='jml_unit_pst'
           InputStyle=cisNormal
           EnumeratedValues=''
+          Index=7
           FieldName='jml_unit_pst'
           DisplayFormat=''
-          TitleCaption='jumlah unit iuran peserta'
+          TitleCaption='Jumlah Unit Iuran Pst'
           ReadOnly=true
         >
       }
       ReadOnly=true
       RowSelect=true
       SuppressHelpLine=true
+    >, object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='no_polis'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Nomor Polis'
+          DataTypeName='VARCHAR'
+          DataLength=30
+        >, object:rtf::FieldUIElmtSetting<
+          Name='besar_premi'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Besar Premi'
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tgl_akseptasi'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Tanggal Akseptasi'
+          DataTypeName='TIMESTAMP'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='tgl_berakhir'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='Tanggal Berakhir Asuransi'
+          DataTypeName='timestamp'
+          DataLength=0
+        >
+      }
+      Name='pAsuransi'
+      Width=400
+      Height=400
+      Bordered=true
+      UIPart=$UIPARTS['uipRekAsuransi']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='no_polis'
+          Top=20
+          Left=10
+          Color=-16777192
+          ControlCaption='Nomor Polis'
+        >, *object:rtf::DBEdit<
+          Name='besar_premi'
+          Top=48
+          Left=10
+          Color=-16777192
+          ControlCaption='Besar Premi'
+        >, *object:rtf::DBDateEdit<
+          Name='tgl_akseptasi'
+          Top=76
+          Left=10
+          Color=-16777192
+          ControlCaption='Tanggal Akseptasi'
+        >, *object:rtf::DBDateEdit<
+          Name='tgl_berakhir'
+          Top=104
+          Left=10
+          Color=-16777192
+          ControlCaption='Tanggal Berakhir Asuransi'
+        >
+      }
+      EqualCaptionWidth=160
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Asuransi'
+    >, object:rtf::Panel<
+      Elements={
+        object:rtf::FieldUIElmtSetting<
+          Name='no_rekening'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          DataTypeName='VARCHAR'
+          DataLength=20
+        >, object:rtf::FieldUIElmtSetting<
+          Name='iuran_pk'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='iuran pemberi kerja'
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >, object:rtf::FieldUIElmtSetting<
+          Name='iuran_pst'
+          AccessOption=aoReadOnly
+          Hidden=false
+          ReadOnlyControl=false
+          ControlCaption='iuran peserta'
+          DataTypeName='DOUBLE'
+          DataLength=0
+        >
+      }
+      Name='pRekening'
+      Width=400
+      Height=400
+      Bordered=true
+      UIPart=$UIPARTS['uipRekening']
+      Controls={
+        *object:rtf::DBEdit<
+          Name='no_rekening'
+          Top=20
+          Left=10
+          Color=-16777192
+          ControlCaption='Nomor Rekening DPLK'
+        >, *object:rtf::DBEdit<
+          Name='iuran_pk'
+          Top=48
+          Left=10
+          Color=9498256
+          ControlCaption='Iuran Pemberi Kerja'
+        >, *object:rtf::DBEdit<
+          Name='iuran_pst'
+          Top=76
+          Left=10
+          Color=9498256
+          ControlCaption='Iuran Peserta'
+        >
+      }
+      EqualCaptionWidth=160
+      ControlLeftMargin=10
+      ControlTopMargin=20
+      DefaultControlHeight=21
+      HorizontalControlGap=4
+      RowControlGap=7
+      Caption='Data Rekening'
+    >, object:rtf::DualSplit<
+      Name='dualsplit3'
+      Width=247
+      Height=531
+      Container1=$CONTAINERS['pRekening']
+      Container2=$CONTAINERS['pAsuransi']
     >
   }
   FormClassName='fIuranPeserta'
